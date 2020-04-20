@@ -1,0 +1,29 @@
+itemGroup.materialis.creativeTab=Materialis
+
+//materials
+item.fairy_ingot.name=Fairy Ingot
+tile.fairy_block.name=Fairy Block
+fluid.fairy.name=Molten Fairy
+material.fairy.name=Fairy
+
+item.pokefennium_ingot.name=Pokefennium Ingot
+tile.pokefennium_block.name=Pokefennium Block
+fluid.pokefennium.name=Molten Pokefennium
+material.pokefennium.name=Pokefennium
+
+item.red_aurum_ingot.name=Red Aurum Ingot
+tile.red_aurum_block.name=Red Aurum Block
+fluid.red_aurum.name=Molten Red Aurum
+material.red_aurum.name=Red Aurum
+
+item.drulloy_ingot.name=Drulloy Ingot
+tile.drulloy_block.name=Drulloy Block
+fluid.drulloy.name=Molten Drulloy
+material.drulloy.name=Drulloy
+
+
+
+//traits
+modifier.limited.name=Limited
+modifier.limited.desc=§oLIMITED POWER§r\nDecreases attack damage and mining speed.
+

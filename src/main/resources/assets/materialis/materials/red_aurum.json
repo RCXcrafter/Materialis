@@ -1,0 +1,11 @@
+{
+    "type": "textured_outline",
+    "parameters": {
+		"texture": "materialis:material/red_aurum_outline",
+		"mode": "brightness",
+        "bright": "FF995B",
+        "mid": "F02F00",
+        "dark": "B02900",
+		"threshold": 140
+    }
+}

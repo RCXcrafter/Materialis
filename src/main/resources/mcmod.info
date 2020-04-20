@@ -1,0 +1,16 @@
+[
+{
+  "modid": "materialis",
+  "name": "Materialis",
+  "description": "more materials to do stuff with",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["RCXcrafter"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

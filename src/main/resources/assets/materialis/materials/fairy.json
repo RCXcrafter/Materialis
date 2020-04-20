@@ -1,0 +1,11 @@
+{
+    "type": "textured_outline",
+    "parameters": {
+		"texture": "materialis:material/fairy_outline",
+		"mode": "edge",
+        "bright": "FF83C3",
+        "mid": "FF54AB",
+        "dark": "FF40A1",
+		"threshold": 89
+    }
+}
