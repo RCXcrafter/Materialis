@@ -1,7 +1,9 @@
 package com.rcx.materialis.modules;
 
 import com.rcx.materialis.Materialis;
+import com.rcx.materialis.MaterialisConfig;
 import com.rcx.materialis.MaterialisRegistry;
+import com.rcx.materialis.proxy.CommonProxy;
 import com.rcx.materialis.resources.BlockBasic;
 import com.rcx.materialis.resources.FluidCustom;
 import com.rcx.materialis.resources.ItemBasic;
@@ -63,7 +65,7 @@ public class ModuleTConstruct implements IModule {
 
 	@Override
 	public Boolean shouldLoad() {
-		return true;
+		return !MaterialisConfig.blacklist.isModuleBlacklisted(this.getName());
 	}
 
 	@Override
@@ -73,162 +75,186 @@ public class ModuleTConstruct implements IModule {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
-		MaterialisRegistry.registerItem(fairyIngot);
-		MaterialisRegistry.registerItem(fairyNugget);
-		MaterialisRegistry.registerBlock(fairyBlock);
-		fairyFluid.setTemperature(900);
-		MaterialisRegistry.registerFluid(fairyFluid, fairy.materialTextColor);
-
-		MaterialisRegistry.registerItem(pokefenniumIngot);
-		MaterialisRegistry.registerItem(pokefenniumNugget);
-		MaterialisRegistry.registerBlock(pokefenniumBlock);
-		pokefenniumFluid.setTemperature(850);
-		MaterialisRegistry.registerFluid(pokefenniumFluid, pokefennium.materialTextColor);
-
-		MaterialisRegistry.registerItem(redAurumIngot);
-		MaterialisRegistry.registerItem(redAurumNugget);
-		MaterialisRegistry.registerBlock(redAurumBlock);
-		redAurumFluid.setTemperature(455);
-		MaterialisRegistry.registerFluid(redAurumFluid, redAurum.materialTextColor);
-
-		MaterialisRegistry.registerItem(drulloyIngot);
-		MaterialisRegistry.registerItem(drulloyNugget);
-		MaterialisRegistry.registerBlock(drulloyBlock);
-		drulloyFluid.setTemperature(643);
-		MaterialisRegistry.registerFluid(drulloyFluid, drulloy.materialTextColor);
-
-		MaterialisRegistry.registerItem(alumiteIngot);
-		MaterialisRegistry.registerItem(alumiteNugget);
-		MaterialisRegistry.registerBlock(alumiteBlock);
-		alumiteFluid.setTemperature(940);
-		MaterialisRegistry.registerFluid(alumiteFluid, alumite.materialTextColor);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fairy")) {
+			MaterialisRegistry.registerItem(fairyIngot);
+			MaterialisRegistry.registerItem(fairyNugget);
+			MaterialisRegistry.registerBlock(fairyBlock);
+			fairyFluid.setTemperature(900);
+			MaterialisRegistry.registerFluid(fairyFluid, fairy.materialTextColor);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
+			MaterialisRegistry.registerItem(pokefenniumIngot);
+			MaterialisRegistry.registerItem(pokefenniumNugget);
+			MaterialisRegistry.registerBlock(pokefenniumBlock);
+			pokefenniumFluid.setTemperature(850);
+			MaterialisRegistry.registerFluid(pokefenniumFluid, pokefennium.materialTextColor);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
+			MaterialisRegistry.registerItem(redAurumIngot);
+			MaterialisRegistry.registerItem(redAurumNugget);
+			MaterialisRegistry.registerBlock(redAurumBlock);
+			redAurumFluid.setTemperature(455);
+			MaterialisRegistry.registerFluid(redAurumFluid, redAurum.materialTextColor);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
+			MaterialisRegistry.registerItem(drulloyIngot);
+			MaterialisRegistry.registerItem(drulloyNugget);
+			MaterialisRegistry.registerBlock(drulloyBlock);
+			drulloyFluid.setTemperature(643);
+			MaterialisRegistry.registerFluid(drulloyFluid, drulloy.materialTextColor);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
+			MaterialisRegistry.registerItem(alumiteIngot);
+			MaterialisRegistry.registerItem(alumiteNugget);
+			MaterialisRegistry.registerBlock(alumiteBlock);
+			alumiteFluid.setTemperature(940);
+			MaterialisRegistry.registerFluid(alumiteFluid, alumite.materialTextColor);
+		}
 	}
 
 	@Override
 	public void registerItems(Register<Item> event) {
-		OreDictionary.registerOre("ingotFairy", new ItemStack(fairyIngot));
-		OreDictionary.registerOre("nuggetFairy", new ItemStack(fairyNugget));
-		OreDictionary.registerOre("blockFairy", new ItemStack(fairyBlock));
-
-		OreDictionary.registerOre("ingotPokefennium", new ItemStack(pokefenniumIngot));
-		OreDictionary.registerOre("nuggetPokefennium", new ItemStack(pokefenniumNugget));
-		OreDictionary.registerOre("blockPokefennium", new ItemStack(pokefenniumBlock));
-
-		OreDictionary.registerOre("ingotRedAurum", new ItemStack(redAurumIngot));
-		OreDictionary.registerOre("nuggetRedAurum", new ItemStack(redAurumNugget));
-		OreDictionary.registerOre("blockRedAurum", new ItemStack(redAurumBlock));
-
-		OreDictionary.registerOre("ingotDrulloy", new ItemStack(drulloyIngot));
-		OreDictionary.registerOre("nuggetDrulloy", new ItemStack(drulloyNugget));
-		OreDictionary.registerOre("blockDrulloy", new ItemStack(drulloyBlock));
-
-		OreDictionary.registerOre("ingotAlumite", new ItemStack(alumiteIngot));
-		OreDictionary.registerOre("nuggetAlumite", new ItemStack(alumiteNugget));
-		OreDictionary.registerOre("blockAlumite", new ItemStack(alumiteBlock));
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fairy")) {
+			OreDictionary.registerOre("ingotFairy", new ItemStack(fairyIngot));
+			OreDictionary.registerOre("nuggetFairy", new ItemStack(fairyNugget));
+			OreDictionary.registerOre("blockFairy", new ItemStack(fairyBlock));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
+			OreDictionary.registerOre("ingotPokefennium", new ItemStack(pokefenniumIngot));
+			OreDictionary.registerOre("nuggetPokefennium", new ItemStack(pokefenniumNugget));
+			OreDictionary.registerOre("blockPokefennium", new ItemStack(pokefenniumBlock));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
+			OreDictionary.registerOre("ingotRedAurum", new ItemStack(redAurumIngot));
+			OreDictionary.registerOre("nuggetRedAurum", new ItemStack(redAurumNugget));
+			OreDictionary.registerOre("blockRedAurum", new ItemStack(redAurumBlock));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
+			OreDictionary.registerOre("ingotDrulloy", new ItemStack(drulloyIngot));
+			OreDictionary.registerOre("nuggetDrulloy", new ItemStack(drulloyNugget));
+			OreDictionary.registerOre("blockDrulloy", new ItemStack(drulloyBlock));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
+			OreDictionary.registerOre("ingotAlumite", new ItemStack(alumiteIngot));
+			OreDictionary.registerOre("nuggetAlumite", new ItemStack(alumiteNugget));
+			OreDictionary.registerOre("blockAlumite", new ItemStack(alumiteBlock));
+		}
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		fairy.addItem("ingotFairy", 1, Material.VALUE_Ingot);
-		fairy.setRepresentativeItem(fairyIngot);
-		fairy.setFluid(fairyFluid);
-		fairy.setCraftable(false).setCastable(true);
-		fairy.addTrait(TinkerTraits.unnatural, MaterialTypes.HEAD);
-		fairy.addTrait(TinkerTraits.holy);
-		TinkerRegistry.addMaterial(fairy);
-		TinkerRegistry.addMaterialStats(fairy,
-				new HeadMaterialStats(843, 6.68F, 2.5F, 4),
-				new HandleMaterialStats(0.5F, 188),
-				new ExtraMaterialStats(200),
-				new BowMaterialStats(0.9F, 1.1F, 1.0F));
-
-		pokefennium.addItem("ingotPokefennium", 1, Material.VALUE_Ingot);
-		pokefennium.setRepresentativeItem(pokefenniumIngot);
-		pokefennium.setFluid(pokefenniumFluid);
-		pokefennium.setCraftable(false).setCastable(true);
-		pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.HANDLE);
-		pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.EXTRA);
-		TinkerRegistry.addMaterial(pokefennium);
-		TinkerRegistry.addMaterialStats(pokefennium,
-				new HeadMaterialStats(765, 10.98F, 1.0F, 4),
-				new HandleMaterialStats(3.0F, 100),
-				new ExtraMaterialStats(400),
-				new BowMaterialStats(0.5F, 1.3F, 5.0F));
-
-		redAurum.addItem("ingotRedAurum", 1, Material.VALUE_Ingot);
-		redAurum.setRepresentativeItem(redAurumIngot);
-		redAurum.setFluid(redAurumFluid);
-		redAurum.setCraftable(false).setCastable(true);
-		redAurum.addTrait(TinkerTraits.sharp);
-		TinkerRegistry.addMaterial(redAurum);
-		TinkerRegistry.addMaterialStats(redAurum,
-				new HeadMaterialStats(22, 13.3F, 3.0F, 2),
-				new HandleMaterialStats(0.5F, 6),
-				new ExtraMaterialStats(30),
-				new BowMaterialStats(1.9F, 1.1F, 0.0F));
-
-		drulloy.addItem("ingotDrulloy", 1, Material.VALUE_Ingot);
-		drulloy.setRepresentativeItem(drulloyIngot);
-		drulloy.setFluid(drulloyFluid);
-		drulloy.setCraftable(false).setCastable(true);
-		drulloy.addTrait(TinkerTraits.heavy, MaterialTypes.HEAD);
-		drulloy.addTrait(TinkerTraits.dense);
-		TinkerRegistry.addMaterial(drulloy);
-		TinkerRegistry.addMaterialStats(drulloy,
-				new HeadMaterialStats(199, 8.45F, 2.9F, 2),
-				new HandleMaterialStats(0.4F, 100),
-				new ExtraMaterialStats(100),
-				new BowMaterialStats(1.3F, 1.2F, 2.0F));
-
-		alumite.addItem("ingotAlumite", 1, Material.VALUE_Ingot);
-		alumite.setRepresentativeItem(alumiteIngot);
-		alumite.setFluid(alumiteFluid);
-		alumite.setCraftable(false).setCastable(true);
-		alumite.addTrait(TinkerTraits.duritos);
-		TinkerRegistry.addMaterial(alumite);
-		TinkerRegistry.addMaterialStats(alumite,
-				new HeadMaterialStats(700, 8.0F, 4.5F, 4),
-				new HandleMaterialStats(1.3F, 80),
-				new ExtraMaterialStats(100),
-				new BowMaterialStats(1.1F, 1.3F, 4.0F));
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fairy")) {
+			fairy.addItem("ingotFairy", 1, Material.VALUE_Ingot);
+			fairy.setRepresentativeItem(fairyIngot);
+			fairy.setFluid(fairyFluid);
+			fairy.setCraftable(false).setCastable(true);
+			fairy.addTrait(TinkerTraits.unnatural, MaterialTypes.HEAD);
+			fairy.addTrait(TinkerTraits.holy);
+			TinkerRegistry.addMaterial(fairy);
+			TinkerRegistry.addMaterialStats(fairy,
+					new HeadMaterialStats(843, 6.68F, 2.5F, 4),
+					new HandleMaterialStats(0.5F, 188),
+					new ExtraMaterialStats(200),
+					new BowMaterialStats(0.9F, 1.1F, 1.0F));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
+			pokefennium.addItem("ingotPokefennium", 1, Material.VALUE_Ingot);
+			pokefennium.setRepresentativeItem(pokefenniumIngot);
+			pokefennium.setFluid(pokefenniumFluid);
+			pokefennium.setCraftable(false).setCastable(true);
+			pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.HANDLE);
+			pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.EXTRA);
+			TinkerRegistry.addMaterial(pokefennium);
+			TinkerRegistry.addMaterialStats(pokefennium,
+					new HeadMaterialStats(765, 10.98F, 1.0F, 4),
+					new HandleMaterialStats(3.0F, 100),
+					new ExtraMaterialStats(400),
+					new BowMaterialStats(0.5F, 1.3F, 5.0F));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
+			redAurum.addItem("ingotRedAurum", 1, Material.VALUE_Ingot);
+			redAurum.setRepresentativeItem(redAurumIngot);
+			redAurum.setFluid(redAurumFluid);
+			redAurum.setCraftable(false).setCastable(true);
+			redAurum.addTrait(TinkerTraits.sharp);
+			TinkerRegistry.addMaterial(redAurum);
+			TinkerRegistry.addMaterialStats(redAurum,
+					new HeadMaterialStats(22, 13.3F, 3.0F, 2),
+					new HandleMaterialStats(0.5F, 6),
+					new ExtraMaterialStats(30),
+					new BowMaterialStats(1.9F, 1.1F, 0.0F));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
+			drulloy.addItem("ingotDrulloy", 1, Material.VALUE_Ingot);
+			drulloy.setRepresentativeItem(drulloyIngot);
+			drulloy.setFluid(drulloyFluid);
+			drulloy.setCraftable(false).setCastable(true);
+			drulloy.addTrait(TinkerTraits.heavy, MaterialTypes.HEAD);
+			drulloy.addTrait(TinkerTraits.dense);
+			TinkerRegistry.addMaterial(drulloy);
+			TinkerRegistry.addMaterialStats(drulloy,
+					new HeadMaterialStats(199, 8.45F, 2.9F, 2),
+					new HandleMaterialStats(0.4F, 100),
+					new ExtraMaterialStats(100),
+					new BowMaterialStats(1.3F, 1.2F, 2.0F));
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
+			alumite.addItem("ingotAlumite", 1, Material.VALUE_Ingot);
+			alumite.setRepresentativeItem(alumiteIngot);
+			alumite.setFluid(alumiteFluid);
+			alumite.setCraftable(false).setCastable(true);
+			alumite.addTrait(TinkerTraits.duritos);
+			TinkerRegistry.addMaterial(alumite);
+			TinkerRegistry.addMaterialStats(alumite,
+					new HeadMaterialStats(700, 8.0F, 4.5F, 4),
+					new HandleMaterialStats(1.3F, 80),
+					new ExtraMaterialStats(100),
+					new BowMaterialStats(1.1F, 1.3F, 4.0F));
+		}
 	}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent postEvent) {
-		Materialis.tabItem = new ItemStack(fairyIngot);
-		TinkerRegistry.registerAlloy(new FluidStack(fairyFluid, 2), new FluidStack(TinkerFluids.ardite, 1), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.blood, 1));
-		new MaterialIntegration(fairy, fairyFluid, "Fairy").toolforge().integrate();
-		MaterialisRegistry.addRecipe(new ItemStack(fairyNugget, 9), "fairy_nugget", new Object[]{"I", 'I', "ingotFairy"});
-		MaterialisRegistry.addRecipe(new ItemStack(fairyIngot), "fairy_unnugget", "fairy_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetFairy"});
-		MaterialisRegistry.addRecipe(new ItemStack(fairyBlock), "fairy_block", new Object[]{"III", "III", "III", 'I', "ingotFairy"});
-		MaterialisRegistry.addRecipe(new ItemStack(fairyIngot, 9), "fairy_unblock", "fairy_ingot", new Object[]{"B", 'B', "blockFairy"});
-
-		TinkerRegistry.registerAlloy(new FluidStack(pokefenniumFluid, 2), new FluidStack(TinkerFluids.cobalt, 1), new FluidStack(TinkerFluids.iron, 1), new FluidStack(TinkerFluids.blood, 2));
-		new MaterialIntegration(pokefennium, pokefenniumFluid, "Pokefennium").toolforge().integrate();
-		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumNugget, 9), "pokefennium_nugget", new Object[]{"I", 'I', "ingotPokefennium"});
-		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumIngot), "pokefennium_unnugget", "pokefennium_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetPokefennium"});
-		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumBlock), "pokefennium_block", new Object[]{"III", "III", "III", 'I', "ingotPokefennium"});
-		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumIngot, 9), "pokefennium_unblock", "pokefennium_ingot", new Object[]{"B", 'B', "blockPokefennium"});
-
-		TinkerRegistry.registerAlloy(new FluidStack(redAurumFluid, 1), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.blood, 3));
-		new MaterialIntegration(redAurum, redAurumFluid, "RedAurum").toolforge().integrate();
-		MaterialisRegistry.addRecipe(new ItemStack(redAurumNugget, 9), "red_aurum_nugget", new Object[]{"I", 'I', "ingotRedAurum"});
-		MaterialisRegistry.addRecipe(new ItemStack(redAurumIngot), "red_aurum_unnugget", "red_aurum_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetRedAurum"});
-		MaterialisRegistry.addRecipe(new ItemStack(redAurumBlock), "red_aurum_block", new Object[]{"III", "III", "III", 'I', "ingotRedAurum"});
-		MaterialisRegistry.addRecipe(new ItemStack(redAurumIngot, 9), "red_aurum_unblock", "red_aurum_ingot", new Object[]{"B", 'B', "blockRedAurum"});
-
-		TinkerRegistry.registerAlloy(new FluidStack(drulloyFluid, 2), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.clay, 4));
-		new MaterialIntegration(drulloy, drulloyFluid, "Drulloy").toolforge().integrate();
-		MaterialisRegistry.addRecipe(new ItemStack(drulloyNugget, 9), "drulloy_nugget", new Object[]{"I", 'I', "ingotDrulloy"});
-		MaterialisRegistry.addRecipe(new ItemStack(drulloyIngot), "drulloy_unnugget", "drulloy_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetDrulloy"});
-		MaterialisRegistry.addRecipe(new ItemStack(drulloyBlock), "drulloy_block", new Object[]{"III", "III", "III", 'I', "ingotDrulloy"});
-		MaterialisRegistry.addRecipe(new ItemStack(drulloyIngot, 9), "drulloy_unblock", "drulloy_ingot", new Object[]{"B", 'B', "blockDrulloy"});
-
-		TinkerRegistry.registerAlloy(new FluidStack(alumiteFluid, 3), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.iron, 2), new FluidStack(TinkerFluids.aluminum, 5));
-		new MaterialIntegration(alumite, alumiteFluid, "Alumite").toolforge().integrate();
-		MaterialisRegistry.addRecipe(new ItemStack(alumiteNugget, 9), "alumite_nugget", new Object[]{"I", 'I', "ingotAlumite"});
-		MaterialisRegistry.addRecipe(new ItemStack(alumiteIngot), "alumite_unnugget", "alumite_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetAlumite"});
-		MaterialisRegistry.addRecipe(new ItemStack(alumiteBlock), "alumite_block", new Object[]{"III", "III", "III", 'I', "ingotAlumite"});
-		MaterialisRegistry.addRecipe(new ItemStack(alumiteIngot, 9), "alumite_unblock", "alumite_ingot", new Object[]{"B", 'B', "blockAlumite"});
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fairy")) {
+			Materialis.tabItem = new ItemStack(fairyIngot);
+			TinkerRegistry.registerAlloy(new FluidStack(fairyFluid, 2), new FluidStack(TinkerFluids.ardite, 1), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.blood, 1));
+			new MaterialIntegration(fairy, fairyFluid, "Fairy").toolforge().integrate();
+			MaterialisRegistry.addRecipe(new ItemStack(fairyNugget, 9), "fairy_nugget", new Object[]{"I", 'I', "ingotFairy"});
+			MaterialisRegistry.addRecipe(new ItemStack(fairyIngot), "fairy_unnugget", "fairy_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetFairy"});
+			MaterialisRegistry.addRecipe(new ItemStack(fairyBlock), "fairy_block", new Object[]{"III", "III", "III", 'I', "ingotFairy"});
+			MaterialisRegistry.addRecipe(new ItemStack(fairyIngot, 9), "fairy_unblock", "fairy_ingot", new Object[]{"B", 'B', "blockFairy"});
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
+			TinkerRegistry.registerAlloy(new FluidStack(pokefenniumFluid, 2), new FluidStack(TinkerFluids.cobalt, 1), new FluidStack(TinkerFluids.iron, 1), new FluidStack(TinkerFluids.blood, 2));
+			new MaterialIntegration(pokefennium, pokefenniumFluid, "Pokefennium").toolforge().integrate();
+			MaterialisRegistry.addRecipe(new ItemStack(pokefenniumNugget, 9), "pokefennium_nugget", new Object[]{"I", 'I', "ingotPokefennium"});
+			MaterialisRegistry.addRecipe(new ItemStack(pokefenniumIngot), "pokefennium_unnugget", "pokefennium_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetPokefennium"});
+			MaterialisRegistry.addRecipe(new ItemStack(pokefenniumBlock), "pokefennium_block", new Object[]{"III", "III", "III", 'I', "ingotPokefennium"});
+			MaterialisRegistry.addRecipe(new ItemStack(pokefenniumIngot, 9), "pokefennium_unblock", "pokefennium_ingot", new Object[]{"B", 'B', "blockPokefennium"});
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
+			TinkerRegistry.registerAlloy(new FluidStack(redAurumFluid, 1), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.blood, 3));
+			new MaterialIntegration(redAurum, redAurumFluid, "RedAurum").toolforge().integrate();
+			MaterialisRegistry.addRecipe(new ItemStack(redAurumNugget, 9), "red_aurum_nugget", new Object[]{"I", 'I', "ingotRedAurum"});
+			MaterialisRegistry.addRecipe(new ItemStack(redAurumIngot), "red_aurum_unnugget", "red_aurum_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetRedAurum"});
+			MaterialisRegistry.addRecipe(new ItemStack(redAurumBlock), "red_aurum_block", new Object[]{"III", "III", "III", 'I', "ingotRedAurum"});
+			MaterialisRegistry.addRecipe(new ItemStack(redAurumIngot, 9), "red_aurum_unblock", "red_aurum_ingot", new Object[]{"B", 'B', "blockRedAurum"});
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
+			TinkerRegistry.registerAlloy(new FluidStack(drulloyFluid, 2), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.clay, 4));
+			new MaterialIntegration(drulloy, drulloyFluid, "Drulloy").toolforge().integrate();
+			MaterialisRegistry.addRecipe(new ItemStack(drulloyNugget, 9), "drulloy_nugget", new Object[]{"I", 'I', "ingotDrulloy"});
+			MaterialisRegistry.addRecipe(new ItemStack(drulloyIngot), "drulloy_unnugget", "drulloy_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetDrulloy"});
+			MaterialisRegistry.addRecipe(new ItemStack(drulloyBlock), "drulloy_block", new Object[]{"III", "III", "III", 'I', "ingotDrulloy"});
+			MaterialisRegistry.addRecipe(new ItemStack(drulloyIngot, 9), "drulloy_unblock", "drulloy_ingot", new Object[]{"B", 'B', "blockDrulloy"});
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
+			TinkerRegistry.registerAlloy(new FluidStack(alumiteFluid, 3), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.iron, 2), new FluidStack(TinkerFluids.aluminum, 5));
+			new MaterialIntegration(alumite, alumiteFluid, "Alumite").toolforge().integrate();
+			MaterialisRegistry.addRecipe(new ItemStack(alumiteNugget, 9), "alumite_nugget", new Object[]{"I", 'I', "ingotAlumite"});
+			MaterialisRegistry.addRecipe(new ItemStack(alumiteIngot), "alumite_unnugget", "alumite_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetAlumite"});
+			MaterialisRegistry.addRecipe(new ItemStack(alumiteBlock), "alumite_block", new Object[]{"III", "III", "III", 'I', "ingotAlumite"});
+			MaterialisRegistry.addRecipe(new ItemStack(alumiteIngot, 9), "alumite_unblock", "alumite_ingot", new Object[]{"B", 'B', "blockAlumite"});
+		}
 	}
 }
