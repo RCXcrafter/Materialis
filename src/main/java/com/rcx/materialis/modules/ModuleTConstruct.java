@@ -10,6 +10,7 @@ import com.rcx.materialis.traits.MaterialisTraits;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -32,23 +33,33 @@ public class ModuleTConstruct implements IModule {
 
 	public static Material fairy = new Material("fairy", 0xFF83C3);
 	public static Item fairyIngot = new ItemBasic("fairy_ingot");
+	public static Item fairyNugget = new ItemBasic("fairy_nugget");
 	public static Block fairyBlock = new BlockBasic("fairy_block", net.minecraft.block.material.Material.IRON, 1.7F);
 	public static FluidMolten fairyFluid = new FluidCustom("fairy");//no not ferrofluid
 
 	public static Material pokefennium = new Material("pokefennium", 0x64A7B5);
 	public static Item pokefenniumIngot = new ItemBasic("pokefennium_ingot");
+	public static Item pokefenniumNugget = new ItemBasic("pokefennium_nugget");
 	public static Block pokefenniumBlock = new BlockBasic("pokefennium_block", net.minecraft.block.material.Material.IRON, 2.2F);
 	public static FluidMolten pokefenniumFluid = new FluidCustom("pokefennium");
 
 	public static Material redAurum = new Material("red_aurum", 0xFFD000);
 	public static Item redAurumIngot = new ItemBasic("red_aurum_ingot");
-	public static Block redAurumBlock = new BlockBasic("red_aurum_block", net.minecraft.block.material.Material.IRON, 1.7F);
+	public static Item redAurumNugget = new ItemBasic("red_aurum_nugget");
+	public static Block redAurumBlock = new BlockBasic("red_aurum_block", net.minecraft.block.material.Material.IRON, 1.3F);
 	public static FluidMolten redAurumFluid = new FluidCustom("red_aurum");
 
 	public static Material drulloy = new Material("drulloy", 0xD2915C);
 	public static Item drulloyIngot = new ItemBasic("drulloy_ingot");
-	public static Block drulloyBlock = new BlockBasic("drulloy_block", net.minecraft.block.material.Material.IRON, 2.2F);
+	public static Item drulloyNugget = new ItemBasic("drulloy_nugget");
+	public static Block drulloyBlock = new BlockBasic("drulloy_block", net.minecraft.block.material.Material.IRON, 1.4F);
 	public static FluidMolten drulloyFluid = new FluidCustom("drulloy");
+
+	public static Material alumite = new Material("alumite", 0xFF7CE2);
+	public static Item alumiteIngot = new ItemBasic("alumite_ingot");
+	public static Item alumiteNugget = new ItemBasic("alumite_nugget");
+	public static Block alumiteBlock = new BlockBasic("alumite_block", net.minecraft.block.material.Material.IRON, 3.2F);
+	public static FluidMolten alumiteFluid = new FluidCustom("alumite");
 
 	@Override
 	public Boolean shouldLoad() {
@@ -63,31 +74,61 @@ public class ModuleTConstruct implements IModule {
 	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
 		MaterialisRegistry.registerItem(fairyIngot);
+		MaterialisRegistry.registerItem(fairyNugget);
 		MaterialisRegistry.registerBlock(fairyBlock);
 		fairyFluid.setTemperature(900);
 		MaterialisRegistry.registerFluid(fairyFluid, fairy.materialTextColor);
-		Materialis.tabItem = new ItemStack(fairyIngot);
 
 		MaterialisRegistry.registerItem(pokefenniumIngot);
+		MaterialisRegistry.registerItem(pokefenniumNugget);
 		MaterialisRegistry.registerBlock(pokefenniumBlock);
 		pokefenniumFluid.setTemperature(850);
 		MaterialisRegistry.registerFluid(pokefenniumFluid, pokefennium.materialTextColor);
 
 		MaterialisRegistry.registerItem(redAurumIngot);
+		MaterialisRegistry.registerItem(redAurumNugget);
 		MaterialisRegistry.registerBlock(redAurumBlock);
 		redAurumFluid.setTemperature(455);
 		MaterialisRegistry.registerFluid(redAurumFluid, redAurum.materialTextColor);
 
 		MaterialisRegistry.registerItem(drulloyIngot);
+		MaterialisRegistry.registerItem(drulloyNugget);
 		MaterialisRegistry.registerBlock(drulloyBlock);
 		drulloyFluid.setTemperature(643);
 		MaterialisRegistry.registerFluid(drulloyFluid, drulloy.materialTextColor);
+
+		MaterialisRegistry.registerItem(alumiteIngot);
+		MaterialisRegistry.registerItem(alumiteNugget);
+		MaterialisRegistry.registerBlock(alumiteBlock);
+		alumiteFluid.setTemperature(940);
+		MaterialisRegistry.registerFluid(alumiteFluid, alumite.materialTextColor);
+	}
+
+	@Override
+	public void registerItems(Register<Item> event) {
+		OreDictionary.registerOre("ingotFairy", new ItemStack(fairyIngot));
+		OreDictionary.registerOre("nuggetFairy", new ItemStack(fairyNugget));
+		OreDictionary.registerOre("blockFairy", new ItemStack(fairyBlock));
+
+		OreDictionary.registerOre("ingotPokefennium", new ItemStack(pokefenniumIngot));
+		OreDictionary.registerOre("nuggetPokefennium", new ItemStack(pokefenniumNugget));
+		OreDictionary.registerOre("blockPokefennium", new ItemStack(pokefenniumBlock));
+
+		OreDictionary.registerOre("ingotRedAurum", new ItemStack(redAurumIngot));
+		OreDictionary.registerOre("nuggetRedAurum", new ItemStack(redAurumNugget));
+		OreDictionary.registerOre("blockRedAurum", new ItemStack(redAurumBlock));
+
+		OreDictionary.registerOre("ingotDrulloy", new ItemStack(drulloyIngot));
+		OreDictionary.registerOre("nuggetDrulloy", new ItemStack(drulloyNugget));
+		OreDictionary.registerOre("blockDrulloy", new ItemStack(drulloyBlock));
+
+		OreDictionary.registerOre("ingotAlumite", new ItemStack(alumiteIngot));
+		OreDictionary.registerOre("nuggetAlumite", new ItemStack(alumiteNugget));
+		OreDictionary.registerOre("blockAlumite", new ItemStack(alumiteBlock));
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		OreDictionary.registerOre("ingotFairy", new ItemStack(fairyIngot));
-		OreDictionary.registerOre("blockFairy", new ItemStack(fairyBlock));
 		fairy.addItem("ingotFairy", 1, Material.VALUE_Ingot);
 		fairy.setRepresentativeItem(fairyIngot);
 		fairy.setFluid(fairyFluid);
@@ -102,8 +143,6 @@ public class ModuleTConstruct implements IModule {
 				new ExtraMaterialStats(200),
 				new BowMaterialStats(0.9F, 1.1F, 1.0F));
 
-		OreDictionary.registerOre("ingotPokefennium", new ItemStack(pokefenniumIngot));
-		OreDictionary.registerOre("blockPokefennium", new ItemStack(pokefenniumBlock));
 		pokefennium.addItem("ingotPokefennium", 1, Material.VALUE_Ingot);
 		pokefennium.setRepresentativeItem(pokefenniumIngot);
 		pokefennium.setFluid(pokefenniumFluid);
@@ -117,8 +156,6 @@ public class ModuleTConstruct implements IModule {
 				new ExtraMaterialStats(400),
 				new BowMaterialStats(0.5F, 1.3F, 5.0F));
 
-		OreDictionary.registerOre("ingotRedAurum", new ItemStack(redAurumIngot));
-		OreDictionary.registerOre("blockRedAurum", new ItemStack(redAurumBlock));
 		redAurum.addItem("ingotRedAurum", 1, Material.VALUE_Ingot);
 		redAurum.setRepresentativeItem(redAurumIngot);
 		redAurum.setFluid(redAurumFluid);
@@ -133,8 +170,6 @@ public class ModuleTConstruct implements IModule {
 				new ExtraMaterialStats(30),
 				new BowMaterialStats(1.9F, 1.1F, 0.0F));
 
-		OreDictionary.registerOre("ingotDrulloy", new ItemStack(drulloyIngot));
-		OreDictionary.registerOre("blockDrulloy", new ItemStack(drulloyBlock));
 		drulloy.addItem("ingotDrulloy", 1, Material.VALUE_Ingot);
 		drulloy.setRepresentativeItem(drulloyIngot);
 		drulloy.setFluid(drulloyFluid);
@@ -148,28 +183,56 @@ public class ModuleTConstruct implements IModule {
 				new HandleMaterialStats(0.4F, 100),
 				new ExtraMaterialStats(100),
 				new BowMaterialStats(1.3F, 1.2F, 2.0F));
+
+		alumite.addItem("ingotAlumite", 1, Material.VALUE_Ingot);
+		alumite.setRepresentativeItem(alumiteIngot);
+		alumite.setFluid(alumiteFluid);
+		alumite.setCraftable(false).setCastable(true);
+		alumite.addTrait(TinkerTraits.duritos);
+		TinkerRegistry.addMaterial(alumite);
+		TinkerRegistry.addMaterialStats(alumite,
+				new HeadMaterialStats(700, 8.0F, 4.5F, 4),
+				new HandleMaterialStats(1.3F, 80),
+				new ExtraMaterialStats(100),
+				new BowMaterialStats(1.1F, 1.3F, 4.0F));
 	}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent postEvent) {
+		Materialis.tabItem = new ItemStack(fairyIngot);
 		TinkerRegistry.registerAlloy(new FluidStack(fairyFluid, 2), new FluidStack(TinkerFluids.ardite, 1), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.blood, 1));
 		new MaterialIntegration(fairy, fairyFluid, "Fairy").toolforge().integrate();
+		MaterialisRegistry.addRecipe(new ItemStack(fairyNugget, 9), "fairy_nugget", new Object[]{"I", 'I', "ingotFairy"});
+		MaterialisRegistry.addRecipe(new ItemStack(fairyIngot), "fairy_unnugget", "fairy_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetFairy"});
 		MaterialisRegistry.addRecipe(new ItemStack(fairyBlock), "fairy_block", new Object[]{"III", "III", "III", 'I', "ingotFairy"});
 		MaterialisRegistry.addRecipe(new ItemStack(fairyIngot, 9), "fairy_unblock", "fairy_ingot", new Object[]{"B", 'B', "blockFairy"});
 
 		TinkerRegistry.registerAlloy(new FluidStack(pokefenniumFluid, 2), new FluidStack(TinkerFluids.cobalt, 1), new FluidStack(TinkerFluids.iron, 1), new FluidStack(TinkerFluids.blood, 2));
 		new MaterialIntegration(pokefennium, pokefenniumFluid, "Pokefennium").toolforge().integrate();
+		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumNugget, 9), "pokefennium_nugget", new Object[]{"I", 'I', "ingotPokefennium"});
+		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumIngot), "pokefennium_unnugget", "pokefennium_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetPokefennium"});
 		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumBlock), "pokefennium_block", new Object[]{"III", "III", "III", 'I', "ingotPokefennium"});
 		MaterialisRegistry.addRecipe(new ItemStack(pokefenniumIngot, 9), "pokefennium_unblock", "pokefennium_ingot", new Object[]{"B", 'B', "blockPokefennium"});
 
 		TinkerRegistry.registerAlloy(new FluidStack(redAurumFluid, 1), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.blood, 3));
 		new MaterialIntegration(redAurum, redAurumFluid, "RedAurum").toolforge().integrate();
+		MaterialisRegistry.addRecipe(new ItemStack(redAurumNugget, 9), "red_aurum_nugget", new Object[]{"I", 'I', "ingotRedAurum"});
+		MaterialisRegistry.addRecipe(new ItemStack(redAurumIngot), "red_aurum_unnugget", "red_aurum_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetRedAurum"});
 		MaterialisRegistry.addRecipe(new ItemStack(redAurumBlock), "red_aurum_block", new Object[]{"III", "III", "III", 'I', "ingotRedAurum"});
 		MaterialisRegistry.addRecipe(new ItemStack(redAurumIngot, 9), "red_aurum_unblock", "red_aurum_ingot", new Object[]{"B", 'B', "blockRedAurum"});
 
 		TinkerRegistry.registerAlloy(new FluidStack(drulloyFluid, 2), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.clay, 4));
 		new MaterialIntegration(drulloy, drulloyFluid, "Drulloy").toolforge().integrate();
+		MaterialisRegistry.addRecipe(new ItemStack(drulloyNugget, 9), "drulloy_nugget", new Object[]{"I", 'I', "ingotDrulloy"});
+		MaterialisRegistry.addRecipe(new ItemStack(drulloyIngot), "drulloy_unnugget", "drulloy_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetDrulloy"});
 		MaterialisRegistry.addRecipe(new ItemStack(drulloyBlock), "drulloy_block", new Object[]{"III", "III", "III", 'I', "ingotDrulloy"});
 		MaterialisRegistry.addRecipe(new ItemStack(drulloyIngot, 9), "drulloy_unblock", "drulloy_ingot", new Object[]{"B", 'B', "blockDrulloy"});
+
+		TinkerRegistry.registerAlloy(new FluidStack(alumiteFluid, 3), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.iron, 2), new FluidStack(TinkerFluids.aluminum, 5));
+		new MaterialIntegration(alumite, alumiteFluid, "Alumite").toolforge().integrate();
+		MaterialisRegistry.addRecipe(new ItemStack(alumiteNugget, 9), "alumite_nugget", new Object[]{"I", 'I', "ingotAlumite"});
+		MaterialisRegistry.addRecipe(new ItemStack(alumiteIngot), "alumite_unnugget", "alumite_ingot", new Object[]{"NNN", "NNN", "NNN", 'N', "nuggetAlumite"});
+		MaterialisRegistry.addRecipe(new ItemStack(alumiteBlock), "alumite_block", new Object[]{"III", "III", "III", 'I', "ingotAlumite"});
+		MaterialisRegistry.addRecipe(new ItemStack(alumiteIngot, 9), "alumite_unblock", "alumite_ingot", new Object[]{"B", 'B', "blockAlumite"});
 	}
 }

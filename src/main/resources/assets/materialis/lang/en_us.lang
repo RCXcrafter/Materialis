@@ -2,25 +2,34 @@ itemGroup.materialis.creativeTab=Materialis
 
 //materials
 item.fairy_ingot.name=Fairy Ingot
+item.fairy_nugget.name=Fairy Nugget
 tile.fairy_block.name=Fairy Block
 fluid.fairy.name=Molten Fairy
 material.fairy.name=Fairy
 
 item.pokefennium_ingot.name=Pokefennium Ingot
+item.pokefennium_nugget.name=Pokefennium Nugget
 tile.pokefennium_block.name=Pokefennium Block
 fluid.pokefennium.name=Molten Pokefennium
 material.pokefennium.name=Pokefennium
 
 item.red_aurum_ingot.name=Red Aurum Ingot
+item.red_aurum_nugget.name=Red Aurum Nugget
 tile.red_aurum_block.name=Red Aurum Block
 fluid.red_aurum.name=Molten Red Aurum
 material.red_aurum.name=Red Aurum
 
 item.drulloy_ingot.name=Drulloy Ingot
+item.drulloy_nugget.name=Drulloy Nugget
 tile.drulloy_block.name=Drulloy Block
 fluid.drulloy.name=Molten Drulloy
 material.drulloy.name=Drulloy
 
+item.alumite_ingot.name=Alumite Ingot
+item.alumite_nugget.name=Alumite Nugget
+tile.alumite_block.name=Alumite Block
+fluid.alumite.name=Molten Alumite
+material.alumite.name=Alumite
 
 
 //traits

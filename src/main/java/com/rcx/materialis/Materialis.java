@@ -19,11 +19,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.CreativeTab;
+import slimeknights.tconstruct.library.client.material.MaterialRenderInfoLoader;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
 import org.apache.logging.log4j.Logger;
 
 import com.rcx.materialis.proxy.CommonProxy;
+import com.rcx.materialis.render.TexturedOutlineRenderInfoDeserializer;
+import com.rcx.materialis.render.TriColorRenderInfoDeserializer;
 
 @Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-after:tconstruct")
 public class Materialis {
@@ -37,7 +40,12 @@ public class Materialis {
 	public static ItemStack tabItem = TinkerCommons.ingotKnightSlime;
 	public static CreativeTab MatTab = new CreativeTab(ID + ".creativeTab", ItemStack.EMPTY) {
 		@SideOnly(Side.CLIENT)
-	    public ItemStack getTabIconItem() {
+		public ItemStack getIconItemStack() {
+			return tabItem;
+		}
+
+		@SideOnly(Side.CLIENT)
+		public ItemStack getTabIconItem() {
 			return tabItem;
 		};
 	};

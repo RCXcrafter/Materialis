@@ -71,6 +71,11 @@ public class CommonProxy {
 
 		for (Item item : MaterialisRegistry.items)
 			event.getRegistry().register(item);
+
+		for (IModule module : modules) {
+			if (module.shouldLoad())
+				module.registerItems(event);
+		}
 	}
 
 	public void registerModels(ModelRegistryEvent event) {}
