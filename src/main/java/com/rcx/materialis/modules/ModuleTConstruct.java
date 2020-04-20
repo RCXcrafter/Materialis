@@ -133,9 +133,8 @@ public class ModuleTConstruct implements IModule {
 		fairy.setRepresentativeItem(fairyIngot);
 		fairy.setFluid(fairyFluid);
 		fairy.setCraftable(false).setCastable(true);
-		//fairy.addTrait(TinkerTraits.hellish, MaterialTypes.HEAD);
-		//fairy.addTrait(TinkerTraits.aridiculous, MaterialTypes.HEAD);
-		//fairy.addTrait(TinkerTraits.hellish);
+		fairy.addTrait(TinkerTraits.unnatural, MaterialTypes.HEAD);
+		fairy.addTrait(TinkerTraits.holy);
 		TinkerRegistry.addMaterial(fairy);
 		TinkerRegistry.addMaterialStats(fairy,
 				new HeadMaterialStats(843, 6.68F, 2.5F, 4),
@@ -160,9 +159,7 @@ public class ModuleTConstruct implements IModule {
 		redAurum.setRepresentativeItem(redAurumIngot);
 		redAurum.setFluid(redAurumFluid);
 		redAurum.setCraftable(false).setCastable(true);
-		//redAurum.addTrait(TinkerTraits.hellish, MaterialTypes.HEAD);
-		//redAurum.addTrait(TinkerTraits.aridiculous, MaterialTypes.HEAD);
-		//redAurum.addTrait(TinkerTraits.hellish);
+		redAurum.addTrait(TinkerTraits.sharp);
 		TinkerRegistry.addMaterial(redAurum);
 		TinkerRegistry.addMaterialStats(redAurum,
 				new HeadMaterialStats(22, 13.3F, 3.0F, 2),
@@ -174,9 +171,8 @@ public class ModuleTConstruct implements IModule {
 		drulloy.setRepresentativeItem(drulloyIngot);
 		drulloy.setFluid(drulloyFluid);
 		drulloy.setCraftable(false).setCastable(true);
-		//drulloy.addTrait(TinkerTraits.hellish, MaterialTypes.HEAD);
-		//drulloy.addTrait(TinkerTraits.aridiculous, MaterialTypes.HEAD);
-		//drulloy.addTrait(TinkerTraits.hellish);
+		drulloy.addTrait(TinkerTraits.heavy, MaterialTypes.HEAD);
+		drulloy.addTrait(TinkerTraits.dense);
 		TinkerRegistry.addMaterial(drulloy);
 		TinkerRegistry.addMaterialStats(drulloy,
 				new HeadMaterialStats(199, 8.45F, 2.9F, 2),
