@@ -7,24 +7,19 @@ import com.rcx.materialis.MaterialisRegistry;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.modules.IModule;
 import com.rcx.materialis.modules.ModuleTConstruct;
-import com.rcx.materialis.resources.BlockWorldPortal;
 import com.rcx.materialis.traits.MaterialisTraits;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.common.config.Config.Type;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
 

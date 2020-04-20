@@ -4,9 +4,6 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.library.client.RenderUtil;
-import slimeknights.tconstruct.library.client.texture.AbstractColoredTexture;
-import slimeknights.tconstruct.library.client.texture.MetalColoredTexture;
-
 import java.awt.image.DirectColorModel;
 import java.util.Collection;
 import java.util.function.Function;

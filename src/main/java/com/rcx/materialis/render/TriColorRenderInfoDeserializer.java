@@ -1,11 +1,9 @@
 package com.rcx.materialis.render;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
 import slimeknights.tconstruct.library.client.material.deserializers.AbstractRenderInfoDeserializer;
-import slimeknights.tconstruct.library.client.texture.TinkerTexture;
 
 public class TriColorRenderInfoDeserializer extends AbstractRenderInfoDeserializer {
 

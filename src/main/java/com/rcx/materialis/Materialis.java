@@ -1,8 +1,6 @@
 package com.rcx.materialis;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -19,14 +17,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.CreativeTab;
-import slimeknights.tconstruct.library.client.material.MaterialRenderInfoLoader;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
-import org.apache.logging.log4j.Logger;
-
 import com.rcx.materialis.proxy.CommonProxy;
-import com.rcx.materialis.render.TexturedOutlineRenderInfoDeserializer;
-import com.rcx.materialis.render.TriColorRenderInfoDeserializer;
 
 @Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-after:tconstruct")
 public class Materialis {

@@ -1,12 +1,8 @@
 package com.rcx.materialis.render;
 
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.library.client.RenderUtil;
 import slimeknights.tconstruct.library.client.texture.AbstractColoredTexture;
-
-import java.util.function.Function;
 
 public class TriColorTexture extends AbstractColoredTexture {
 
