@@ -2,15 +2,15 @@
 {
   "modid": "materialis",
   "name": "Materialis",
-  "description": "more materials to do stuff with",
+  "description": "Tinkers Construct addon that adds more materials.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/materialis",
   "updateUrl": "",
   "authorList": ["RCXcrafter"],
   "credits": "",
-  "logoFile": "",
+  "logoFile": "materialis_logo.png",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [tconstruct]
 }
 ]
