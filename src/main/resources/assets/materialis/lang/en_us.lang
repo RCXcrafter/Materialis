@@ -52,7 +52,7 @@ modifier.supermassive.name=Supermassive
 modifier.supermassive.desc=§oBONK.§r\nGreatly increases knockback.
 
 modifier.cosmic.name=Cosmic
-modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modidiers and fortune X.
+modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers, instakill and fortune X.
 
 modifier.unbreakable.name=Unbreakable
 modifier.unbreakable.desc=§oCan't break this.§r\nPrevents the tool from taking damage.
