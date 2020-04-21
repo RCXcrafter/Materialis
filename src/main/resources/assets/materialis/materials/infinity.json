@@ -1,0 +1,11 @@
+{
+    "type": "tri_color_textured",
+    "parameters": {
+        "overlay": "materialis:material/infinity",
+        "underlay": false,
+        "bright": "FFFFFF",
+        "mid": "D4D4D4",
+        "dark": "B9B9B9",
+		"threshold": 89
+    }
+}

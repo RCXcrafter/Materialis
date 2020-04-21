@@ -31,8 +31,29 @@ tile.alumite_block.name=Alumite Block
 fluid.alumite.name=Molten Alumite
 material.alumite.name=Alumite
 
+material.crystal_matrix.name=Crystal Matrix
+
+material.cosmic_neutronium.name=Neutronium
+
+material.infinity.name=Infinity
+
 
 //traits
 modifier.limited.name=Limited
 modifier.limited.desc=§oLIMITED POWER§r\nDecreases attack damage and mining speed.
+
+modifier.unlimited.name=Unlimited
+modifier.unlimited.desc=§oUNLIMITED POWER§r\nNegates the effect of the limited trait.
+
+modifier.crystalline.name=Crystalline
+modifier.crystalline.desc=§oNot just pretty.§r\nIncreases mining speed and attack damage.
+
+modifier.supermassive.name=Supermassive
+modifier.supermassive.desc=§oBONK.§r\nGreatly increases knockback.
+
+modifier.cosmic.name=Cosmic
+modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modidiers and fortune X.
+
+modifier.unbreakable.name=Unbreakable
+modifier.unbreakable.desc=§oCan't break this.§r\nPrevents the tool from taking damage.
 

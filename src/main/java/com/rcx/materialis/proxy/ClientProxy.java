@@ -1,6 +1,7 @@
 package com.rcx.materialis.proxy;
 
 import com.rcx.materialis.MaterialisRegistry;
+import com.rcx.materialis.render.TexturedTriColorRenderInfoDeserializer;
 import com.rcx.materialis.render.TexturedOutlineRenderInfoDeserializer;
 import com.rcx.materialis.render.TriColorRenderInfoDeserializer;
 
@@ -25,6 +26,7 @@ public class ClientProxy extends CommonProxy {
 		super.preInit(preEvent);
 	    MaterialRenderInfoLoader.addRenderInfo("tri_color", TriColorRenderInfoDeserializer.class);
 	    MaterialRenderInfoLoader.addRenderInfo("textured_outline", TexturedOutlineRenderInfoDeserializer.class);
+	    MaterialRenderInfoLoader.addRenderInfo("tri_color_textured", TexturedTriColorRenderInfoDeserializer.class);
 	}
 
 	@Override

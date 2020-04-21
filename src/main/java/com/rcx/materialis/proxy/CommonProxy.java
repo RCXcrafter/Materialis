@@ -5,8 +5,7 @@ import java.util.List;
 
 import com.rcx.materialis.MaterialisRegistry;
 import com.rcx.materialis.Materialis;
-import com.rcx.materialis.modules.IModule;
-import com.rcx.materialis.modules.ModuleTConstruct;
+import com.rcx.materialis.modules.*;
 import com.rcx.materialis.traits.MaterialisTraits;
 
 import net.minecraft.block.Block;
@@ -27,6 +26,7 @@ public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent preEvent) {
 		modules.add(new ModuleTConstruct());
+		modules.add(new ModuleAvaritia());
 
 		for (IModule module : modules) {
 			if (module.shouldLoad())

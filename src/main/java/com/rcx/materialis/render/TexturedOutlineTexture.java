@@ -88,7 +88,7 @@ public class TexturedOutlineTexture extends TriColorTexture {
 		textureData = texture.getFrameTextureData(0)[0];
 		textureWidth = texture.getIconWidth();
 		textureHeight = texture.getIconHeight();
-		scale = (float) textureHeight / (float) width;
+		scale = (float) textureHeight / (float) textureWidth;
 	}
 
 	@Override

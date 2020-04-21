@@ -6,24 +6,24 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
-public class TraitLimited extends AbstractTrait {
+public class TraitCrystalline extends AbstractTrait {
 
 	public float modifier = 1.5F;
 
-	public TraitLimited() {
-		super("limited", 0x64A7B5);
+	public TraitCrystalline() {
+		super("crystalline", 0x97F1EB);
 	}
 
 	@Override
 	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
 		if (!ToolHelper.getTraits(tool).contains(MaterialisTraits.unlimited))
-			event.setNewSpeed(event.getOriginalSpeed() / modifier);
+			event.setNewSpeed(event.getOriginalSpeed() * modifier);
 	}
 
 	@Override
 	public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
 		if (ToolHelper.getTraits(tool).contains(MaterialisTraits.unlimited))
 			return newDamage;
-		return newDamage / modifier;
+		return newDamage * modifier;
 	}
 }
