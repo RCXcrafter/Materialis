@@ -37,7 +37,7 @@ public class TraitCosmic extends AbstractTrait {
 		toolTag.setInteger(Tags.FREE_MODIFIERS, Math.max(0, modifiers));
 		TagUtil.setToolTag(rootCompound, toolTag);
 
-		//10 additional fortunes
+		//fortune X
 		boolean harvest = false;
 		boolean weapon = false;
 		for(Category category : TagUtil.getCategories(rootCompound)) {

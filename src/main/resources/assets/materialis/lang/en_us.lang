@@ -37,23 +37,40 @@ material.cosmic_neutronium.name=Neutronium
 
 material.infinity.name=Infinity
 
+material.gold.name=Gold
+
+material.tin.name=Tin
+
+material.zinc.name=Zinc
+
+material.brass.name=Brass
+
+material.nickel.name=Nickel
+
+material.aluminum.name=Aluminum
+
+material.alubrass.name=Aluminum Brass
+
 
 //traits
-modifier.limited.name=Limited
-modifier.limited.desc=§oLIMITED POWER§r\nDecreases attack damage and mining speed.
-
-modifier.unlimited.name=Unlimited
-modifier.unlimited.desc=§oUNLIMITED POWER§r\nNegates the effect of the limited trait.
+modifier.cosmic.name=Cosmic
+modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers, instakill and fortune X.
 
 modifier.crystalline.name=Crystalline
 modifier.crystalline.desc=§oNot just pretty.§r\nIncreases mining speed and attack damage.
 
+modifier.fancy.name=Fancy
+modifier.fancy.desc=§oExpensive and shiny.§r\nDoesn't do anything special, just looks cool.
+
+modifier.limited.name=Limited
+modifier.limited.desc=§oLIMITED POWER§r\nDecreases attack damage and mining speed.
+
 modifier.supermassive.name=Supermassive
 modifier.supermassive.desc=§oBONK.§r\nGreatly increases knockback.
 
-modifier.cosmic.name=Cosmic
-modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers, instakill and fortune X.
-
 modifier.unbreakable.name=Unbreakable
 modifier.unbreakable.desc=§oCan't break this.§r\nPrevents the tool from taking damage.
+
+modifier.unlimited.name=Unlimited
+modifier.unlimited.desc=§oUNLIMITED POWER§r\nNegates the effect of the limited trait.
 

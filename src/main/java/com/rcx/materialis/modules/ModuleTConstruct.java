@@ -169,7 +169,7 @@ public class ModuleTConstruct implements IModule {
 			pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.EXTRA);
 			TinkerRegistry.addMaterial(pokefennium);
 			TinkerRegistry.addMaterialStats(pokefennium,
-					new HeadMaterialStats(765, 6.98F, 2.5F, 4),
+					new HeadMaterialStats(100, 6.98F, 2.5F, 4),
 					new HandleMaterialStats(3.0F, 100),
 					new ExtraMaterialStats(400),
 					new BowMaterialStats(0.5F, 1.3F, 5.0F));
@@ -184,10 +184,10 @@ public class ModuleTConstruct implements IModule {
 			redAurum.addTrait(TinkerTraits.sharp);
 			TinkerRegistry.addMaterial(redAurum);
 			TinkerRegistry.addMaterialStats(redAurum,
-					new HeadMaterialStats(22, 13.3F, 3.0F, 2),
+					new HeadMaterialStats(46, 12.2F, 3.0F, 2),
 					new HandleMaterialStats(0.5F, 6),
 					new ExtraMaterialStats(30),
-					new BowMaterialStats(1.9F, 1.1F, 0.0F));
+					new BowMaterialStats(1.9F, 0.5F, 0.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
 			drulloy.addItem("ingotDrulloy", 1, Material.VALUE_Ingot);

@@ -25,6 +25,8 @@ public class CommonProxy {
 	public static List<IModule> modules = new ArrayList<IModule>();
 
 	public void preInit(FMLPreInitializationEvent preEvent) {
+		modules.add(new ModuleVanilla());
+		modules.add(new ModuleGeneric());
 		modules.add(new ModuleTConstruct());
 		modules.add(new ModuleAvaritia());
 
