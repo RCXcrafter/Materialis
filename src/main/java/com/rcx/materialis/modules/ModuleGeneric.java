@@ -52,9 +52,7 @@ public class ModuleGeneric implements IModule {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("tin") && OreDictionary.doesOreNameExist("ingotTin")) {
-			tin.addItem("ingotTin", 1, Material.VALUE_Ingot);
-			tin.addItem("nuggetTin", 1, Material.VALUE_Nugget);
-			tin.addItem("blockTin", 1, Material.VALUE_Block);
+			tin.addCommonItems("Tin");
 			tin.setRepresentativeItem(getOredictItem("ingotTin"));
 			tin.setFluid(TinkerFluids.tin);
 			tin.setCraftable(false).setCastable(true);
@@ -67,9 +65,7 @@ public class ModuleGeneric implements IModule {
 					new BowMaterialStats(0.5F, 1.6F, 5.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("zinc") && OreDictionary.doesOreNameExist("ingotZinc")) {
-			zinc.addItem("ingotZinc", 1, Material.VALUE_Ingot);
-			zinc.addItem("nuggetZinc", 1, Material.VALUE_Nugget);
-			zinc.addItem("blockZinc", 1, Material.VALUE_Block);
+			zinc.addCommonItems("Zinc");
 			zinc.setRepresentativeItem(getOredictItem("ingotZinc"));
 			zinc.setFluid(TinkerFluids.zinc);
 			zinc.setCraftable(false).setCastable(true);
@@ -82,9 +78,7 @@ public class ModuleGeneric implements IModule {
 					new BowMaterialStats(0.4F, 1.3F, 4.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("brass") && OreDictionary.doesOreNameExist("ingotBrass")) {
-			brass.addItem("ingotBrass", 1, Material.VALUE_Ingot);
-			brass.addItem("nuggetBrass", 1, Material.VALUE_Nugget);
-			brass.addItem("blockBrass", 1, Material.VALUE_Block);
+			brass.addCommonItems("Brass");
 			brass.setRepresentativeItem(getOredictItem("ingotBrass"));
 			brass.setFluid(TinkerFluids.brass);
 			brass.setCraftable(false).setCastable(true);
@@ -97,9 +91,7 @@ public class ModuleGeneric implements IModule {
 					new BowMaterialStats(0.55F, 1.5F, 5.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("nickel") && OreDictionary.doesOreNameExist("ingotNickel")) {
-			nickel.addItem("ingotNickel", 1, Material.VALUE_Ingot);
-			nickel.addItem("nuggetNickel", 1, Material.VALUE_Nugget);
-			nickel.addItem("blockNickel", 1, Material.VALUE_Block);
+			nickel.addCommonItems("Nickel");
 			nickel.setRepresentativeItem(getOredictItem("ingotNickel"));
 			nickel.setFluid(TinkerFluids.nickel);
 			nickel.setCraftable(false).setCastable(true);
@@ -112,9 +104,7 @@ public class ModuleGeneric implements IModule {
 					new BowMaterialStats(0.5F, 1.3F, 8.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("aluminum") && OreDictionary.doesOreNameExist("ingotAluminum")) {
-			aluminum.addItem("ingotAluminum", 1, Material.VALUE_Ingot);
-			aluminum.addItem("nuggetAluminum", 1, Material.VALUE_Nugget);
-			aluminum.addItem("blockAluminum", 1, Material.VALUE_Block);
+			aluminum.addCommonItems("Aluminum");
 			aluminum.setRepresentativeItem(getOredictItem("ingotAluminum"));
 			aluminum.setFluid(TinkerFluids.aluminum);
 			aluminum.setCraftable(false).setCastable(true);
@@ -127,9 +117,7 @@ public class ModuleGeneric implements IModule {
 					new BowMaterialStats(1.2F, 1.1F, 1.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alubrass") && OreDictionary.doesOreNameExist("ingotAlubrass")) {
-			alubrass.addItem("ingotAlubrass", 1, Material.VALUE_Ingot);
-			alubrass.addItem("nuggetAlubrass", 1, Material.VALUE_Nugget);
-			alubrass.addItem("blockAlubrass", 1, Material.VALUE_Block);
+			alubrass.addCommonItems("Alubrass");
 			alubrass.setRepresentativeItem(getOredictItem("ingotAlubrass"));
 			alubrass.setFluid(TinkerFluids.alubrass);
 			alubrass.setCraftable(false).setCastable(true);

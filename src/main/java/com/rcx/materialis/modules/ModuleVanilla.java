@@ -41,9 +41,7 @@ public class ModuleVanilla implements IModule {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("gold")) {
-			gold.addItem("ingotGold", 1, Material.VALUE_Ingot);
-			gold.addItem("nuggetGold", 1, Material.VALUE_Nugget);
-			gold.addItem("blockGold", 1, Material.VALUE_Block);
+			gold.addCommonItems("Gold");
 			gold.setRepresentativeItem(Items.GOLD_INGOT);
 			gold.setFluid(TinkerFluids.gold);
 			gold.setCraftable(false).setCastable(true);

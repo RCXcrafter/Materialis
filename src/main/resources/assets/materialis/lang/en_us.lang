@@ -1,6 +1,15 @@
 itemGroup.materialis.creativeTab=Materialis
 
 //materials
+material.gold.name=Gold
+
+material.tin.name=Tin
+material.zinc.name=Zinc
+material.brass.name=Brass
+material.nickel.name=Nickel
+material.aluminum.name=Aluminum
+material.alubrass.name=Aluminum Brass
+
 item.fairy_ingot.name=Fairy Ingot
 item.fairy_nugget.name=Fairy Nugget
 tile.fairy_block.name=Fairy Block
@@ -31,25 +40,14 @@ tile.alumite_block.name=Alumite Block
 fluid.alumite.name=Molten Alumite
 material.alumite.name=Alumite
 
+material.bamboo.name=Bamboo
+material.jade.name=Jade
+material.fly_wing.name=Fly Wing
+material.dragonfly_wing.name=Dragonfly Wing
+
 material.crystal_matrix.name=Crystal Matrix
-
 material.cosmic_neutronium.name=Neutronium
-
 material.infinity.name=Infinity
-
-material.gold.name=Gold
-
-material.tin.name=Tin
-
-material.zinc.name=Zinc
-
-material.brass.name=Brass
-
-material.nickel.name=Nickel
-
-material.aluminum.name=Aluminum
-
-material.alubrass.name=Aluminum Brass
 
 
 //traits
@@ -58,6 +56,9 @@ modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers
 
 modifier.crystalline.name=Crystalline
 modifier.crystalline.desc=§oNot just pretty.§r\nIncreases mining speed and attack damage.
+
+modifier.depthdigger.name=Depth Digger
+modifier.depthdigger.desc=§oDig deep.§r\nIncreases mining speed the lower you are below sea level.
 
 modifier.fancy.name=Fancy
 modifier.fancy.desc=§oExpensive and shiny.§r\nDoesn't do anything special, just looks cool.

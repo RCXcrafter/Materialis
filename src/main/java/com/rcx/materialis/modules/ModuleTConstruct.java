@@ -142,9 +142,7 @@ public class ModuleTConstruct implements IModule {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fairy")) {
-			fairy.addItem("ingotFairy", 1, Material.VALUE_Ingot);
-			fairy.addItem("nuggetFairy", 1, Material.VALUE_Nugget);
-			fairy.addItem("blockFairy", 1, Material.VALUE_Block);
+			fairy.addCommonItems("Fairy");
 			fairy.setRepresentativeItem(fairyIngot);
 			fairy.setFluid(fairyFluid);
 			fairy.setCraftable(false).setCastable(true);
@@ -158,9 +156,7 @@ public class ModuleTConstruct implements IModule {
 					new BowMaterialStats(0.9F, 1.1F, 1.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
-			pokefennium.addItem("ingotPokefennium", 1, Material.VALUE_Ingot);
-			pokefennium.addItem("nuggetPokefennium", 1, Material.VALUE_Nugget);
-			pokefennium.addItem("blockPokefennium", 1, Material.VALUE_Block);
+			pokefennium.addCommonItems("Pokefennium");
 			pokefennium.setRepresentativeItem(pokefenniumIngot);
 			pokefennium.setFluid(pokefenniumFluid);
 			pokefennium.setCraftable(false).setCastable(true);
@@ -175,9 +171,7 @@ public class ModuleTConstruct implements IModule {
 					new BowMaterialStats(0.5F, 1.3F, 5.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
-			redAurum.addItem("ingotRedAurum", 1, Material.VALUE_Ingot);
-			redAurum.addItem("nuggetRedAurum", 1, Material.VALUE_Nugget);
-			redAurum.addItem("blockRedAurum", 1, Material.VALUE_Block);
+			redAurum.addCommonItems("RedAurum");
 			redAurum.setRepresentativeItem(redAurumIngot);
 			redAurum.setFluid(redAurumFluid);
 			redAurum.setCraftable(false).setCastable(true);
@@ -190,9 +184,7 @@ public class ModuleTConstruct implements IModule {
 					new BowMaterialStats(1.9F, 0.5F, 0.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
-			drulloy.addItem("ingotDrulloy", 1, Material.VALUE_Ingot);
-			drulloy.addItem("nuggetDrulloy", 1, Material.VALUE_Nugget);
-			drulloy.addItem("blockDrulloy", 1, Material.VALUE_Block);
+			drulloy.addCommonItems("Drulloy");
 			drulloy.setRepresentativeItem(drulloyIngot);
 			drulloy.setFluid(drulloyFluid);
 			drulloy.setCraftable(false).setCastable(true);
@@ -206,9 +198,7 @@ public class ModuleTConstruct implements IModule {
 					new BowMaterialStats(1.3F, 1.2F, 2.0F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
-			alumite.addItem("ingotAlumite", 1, Material.VALUE_Ingot);
-			alumite.addItem("nuggetAlumite", 1, Material.VALUE_Nugget);
-			alumite.addItem("blockAlumite", 1, Material.VALUE_Block);
+			alumite.addCommonItems("Alumite");
 			alumite.setRepresentativeItem(alumiteIngot);
 			alumite.setFluid(alumiteFluid);
 			alumite.setCraftable(false).setCastable(true);

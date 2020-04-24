@@ -48,8 +48,7 @@ public class ModuleAvaritia implements IModule {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
-			crystalMatrix.addItem("ingotCrystalMatrix", 1, Material.VALUE_Ingot);
-			crystalMatrix.addItem("blockCrystalMatrix", 1, Material.VALUE_Block);
+			crystalMatrix.addCommonItems("CrystalMatrix");
 			crystalMatrix.setRepresentativeItem(ModItems.crystal_matrix_ingot);
 			crystalMatrix.setCraftable(true);
 			crystalMatrix.addTrait(MaterialisTraits.crystalline);
@@ -58,9 +57,7 @@ public class ModuleAvaritia implements IModule {
 					new ExtraMaterialStats(600));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("cosmic_neutronium")) {
-			neutronium.addItem("ingotCosmicNeutronium", 1, Material.VALUE_Ingot);
-			neutronium.addItem("nuggetCosmicNeutronium", 1, Material.VALUE_Nugget);
-			neutronium.addItem("blockCosmicNeutronium", 1, Material.VALUE_Block);
+			neutronium.addCommonItems("CosmicNeutronium");
 			neutronium.setRepresentativeItem(ModItems.neutronium_ingot);
 			neutronium.setCraftable(true);
 			neutronium.addTrait(MaterialisTraits.supermassive);

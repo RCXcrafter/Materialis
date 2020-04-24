@@ -28,6 +28,7 @@ public class CommonProxy {
 		modules.add(new ModuleVanilla());
 		modules.add(new ModuleGeneric());
 		modules.add(new ModuleTConstruct());
+		modules.add(new ModuleErebus());
 		modules.add(new ModuleAvaritia());
 
 		for (IModule module : modules) {

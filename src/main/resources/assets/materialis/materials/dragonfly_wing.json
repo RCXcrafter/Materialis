@@ -1,0 +1,10 @@
+{
+    "type": "tri_color",
+    "suffix": "wing",
+    "parameters": {
+        "bright": "E5F9FF",
+        "mid": "ABC3C9",
+        "dark": "7588A0",
+		"threshold": 68
+    }
+}
