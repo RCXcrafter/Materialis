@@ -68,9 +68,9 @@ public class ModuleGeneric implements IModule {
 					new BowMaterialStats(0.5F, 1.6F, 5.0F));
 			if (ModuleConarm.loadArmor()) {
 				ModuleConarm.generateArmorStats(tin, 0.0F);
-				tin.addTrait(ArmorTraits.aridiculous, ArmorMaterialType.CORE);
-				tin.addTrait(ArmorTraits.aridiculous, ArmorMaterialType.PLATES);
-				tin.addTrait(ArmorTraits.aridiculous, ArmorMaterialType.TRIM);
+				tin.addTrait(ArmorTraits.petravidity, ArmorMaterialType.CORE);
+				tin.addTrait(ArmorTraits.petravidity, ArmorMaterialType.PLATES);
+				tin.addTrait(ArmorTraits.petravidity, ArmorMaterialType.TRIM);
 			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("zinc") && OreDictionary.doesOreNameExist("ingotZinc")) {

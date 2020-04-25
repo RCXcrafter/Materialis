@@ -1,0 +1,11 @@
+{
+    "type": "tri_color_textured",
+    "parameters": {
+        "overlay": "materialis:material/rivets",
+        "underlay": true,
+        "bright": "D8D8D2",
+        "mid": "80806D",
+        "dark": "5C5C49",
+		"threshold": 89
+    }
+}

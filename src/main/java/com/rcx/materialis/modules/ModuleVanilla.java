@@ -3,8 +3,13 @@ package com.rcx.materialis.modules;
 import com.rcx.materialis.MaterialisConfig;
 import com.rcx.materialis.traits.MaterialisTraits;
 
+import c4.conarm.common.armor.traits.ArmorTraits;
+import c4.conarm.lib.materials.CoreMaterialStats;
+import c4.conarm.lib.materials.PlatesMaterialStats;
+import c4.conarm.lib.materials.TrimMaterialStats;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -21,6 +26,8 @@ import slimeknights.tconstruct.shared.TinkerFluids;
 public class ModuleVanilla implements IModule {
 
 	public static Material gold = new Material("gold", 0xFFE30B);
+
+	public static Material leather = new Material("leather", 0xC65C35);
 
 	@Override
 	public Boolean shouldLoad() {
@@ -54,6 +61,17 @@ public class ModuleVanilla implements IModule {
 					new BowMaterialStats(0.9F, 1.3F, 6.0F));
 			if (ModuleConarm.loadArmor())
 				ModuleConarm.generateArmorStats(gold, 0.0F);
+		}
+		if (ModuleConarm.loadArmor() && !MaterialisConfig.blacklist.isMaterialBlacklisted("leather")) {
+			leather.addItem("leather", 1, Material.VALUE_Ingot);
+			leather.setRepresentativeItem(new ItemStack(Items.LEATHER));
+			leather.setCraftable(true);
+			leather.addTrait(ArmorTraits.ecological);
+			TinkerRegistry.addMaterial(leather);
+			TinkerRegistry.addMaterialStats(leather,
+					new CoreMaterialStats(15, 8.0F),
+					new PlatesMaterialStats(1.0F, 3, 0.0F),
+					new TrimMaterialStats(5));
 		}
 	}
 

@@ -5,6 +5,9 @@ import com.rcx.materialis.MaterialisConfig;
 import c4.conarm.common.armor.modifiers.ArmorModifiers;
 import c4.conarm.common.armor.traits.ArmorTraits;
 import c4.conarm.lib.materials.ArmorMaterialType;
+import c4.conarm.lib.materials.CoreMaterialStats;
+import c4.conarm.lib.materials.PlatesMaterialStats;
+import c4.conarm.lib.materials.TrimMaterialStats;
 import erebus.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -35,6 +38,12 @@ public class ModuleErebus implements IModule {
 	public static Material flyWing = new Material("fly_wing", 0xA5A5A5);
 
 	public static Material dragonflyWing = new Material("dragonfly_wing", 0x9EC0D5);
+
+	public static Material exoskeleton = new Material("exoskeleton", 0xD8D8D2);
+
+	public static Material exoskeletonReinforced = new Material("exoskeleton_reinforced", 0xC1C1B6);
+
+	public static Material exoskeletonRhino = new Material("exoskeleton_rhino", 0x5B5B5B);
 
 	@Override
 	public Boolean shouldLoad() {
@@ -108,13 +117,48 @@ public class ModuleErebus implements IModule {
 			dragonflyWing.setCraftable(true);
 			TinkerRegistry.addMaterial(dragonflyWing);
 			TinkerRegistry.addMaterialStats(dragonflyWing, new FletchingMaterialStats(1.0F, 1.25F));
-		}
+		}//EnumHelper.addArmorMaterial(name, textureName, durability, reductionAmounts, enchantability, soundOnEquip, toughness);
 
 		TinkerModifiers.modSharpness.addItem(new ItemStack(ModItems.WHETSTONE, 1, 1), 1, 72);
 
 		TinkerModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(ModItems.MATERIALS, 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(ModItems.MATERIALS, 1, 12)));
 
 		if (ModuleConarm.loadArmor()) {
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton")) {
+				exoskeleton.addItem(new ItemStack(ModItems.MATERIALS, 1, 0), 1, Material.VALUE_Ingot);
+				exoskeleton.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 0));
+				exoskeleton.setCraftable(true);
+				exoskeleton.addTrait(ArmorTraits.skeletal);
+				TinkerRegistry.addMaterial(exoskeleton);
+				TinkerRegistry.addMaterialStats(exoskeleton,
+						new CoreMaterialStats(7, 8.2F),
+						new PlatesMaterialStats(1.0F, 4, 1.0F),
+						new TrimMaterialStats(17));
+			}
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_reinforced")) {
+				exoskeletonReinforced.addItem(new ItemStack(ModItems.MATERIALS, 1, 15), 1, Material.VALUE_Ingot);
+				exoskeletonReinforced.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 15));
+				exoskeletonReinforced.setCraftable(true);
+				exoskeletonReinforced.addTrait(ArmorTraits.heavy);
+				exoskeletonReinforced.addTrait(ArmorTraits.dense);
+				TinkerRegistry.addMaterial(exoskeletonReinforced);
+				TinkerRegistry.addMaterialStats(exoskeletonReinforced,
+						new CoreMaterialStats(21, 13.2F),
+						new PlatesMaterialStats(1.3F, 7, 3.0F),
+						new TrimMaterialStats(27));
+			}
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_rhino")) {
+				exoskeletonRhino.addItem(new ItemStack(ModItems.MATERIALS, 1, 35), 1, Material.VALUE_Ingot);
+				exoskeletonRhino.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 35));
+				exoskeletonRhino.setCraftable(true);
+				exoskeletonRhino.addTrait(ArmorTraits.dramatic);
+				TinkerRegistry.addMaterial(exoskeletonRhino);
+				TinkerRegistry.addMaterialStats(exoskeletonRhino,
+						new CoreMaterialStats(21, 13.2F),
+						new PlatesMaterialStats(1.3F, 7, 4.0F),
+						new TrimMaterialStats(27));
+			}
+
 			ArmorModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(ModItems.MATERIALS, 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(ModItems.MATERIALS, 1, 12)));
 		}
 	}

@@ -1,7 +1,13 @@
 itemGroup.materialis.creativeTab=Materialis
 
+//config
+materialis.config.blacklist=Blacklist
+materialis.config.blacklist.materials=Materials Blacklist
+materialis.config.blacklist.modules=Modules Blacklist
+
 //materials
 material.gold.name=Gold
+material.leather.name=Leather
 
 material.tin.name=Tin
 material.zinc.name=Zinc
@@ -44,6 +50,9 @@ material.bamboo.name=Bamboo
 material.jade.name=Jade
 material.fly_wing.name=Fly Wing
 material.dragonfly_wing.name=Dragonfly Wing
+material.exoskeleton.name=Exoskeleton
+material.exoskeleton_reinforced.name=Reinforced Exoskeleton
+material.exoskeleton_rhino.name=Rhino Plate
 
 material.crystal_matrix.name=Crystal Matrix
 material.cosmic_neutronium.name=Neutronium
