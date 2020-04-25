@@ -52,6 +52,8 @@ public class ModuleVanilla implements IModule {
 					new HandleMaterialStats(0.7F, 0),
 					new ExtraMaterialStats(50),
 					new BowMaterialStats(0.9F, 1.3F, 6.0F));
+			if (ModuleConarm.loadArmor())
+				ModuleConarm.generateArmorStats(gold, 0.0F);
 		}
 	}
 

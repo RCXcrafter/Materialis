@@ -7,7 +7,10 @@ import com.rcx.materialis.resources.BlockBasic;
 import com.rcx.materialis.resources.FluidCustom;
 import com.rcx.materialis.resources.ItemBasic;
 import com.rcx.materialis.traits.MaterialisTraits;
+import com.rcx.materialis.traits.armor.MaterialisArmorTraits;
 
+import c4.conarm.common.armor.traits.ArmorTraits;
+import c4.conarm.lib.materials.ArmorMaterialType;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -154,6 +157,12 @@ public class ModuleTConstruct implements IModule {
 					new HandleMaterialStats(0.5F, 188),
 					new ExtraMaterialStats(200),
 					new BowMaterialStats(0.9F, 1.1F, 1.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(fairy, 2.0F);
+				fairy.addTrait(ArmorTraits.shielding, ArmorMaterialType.CORE);
+				fairy.addTrait(ArmorTraits.blessed, ArmorMaterialType.PLATES);
+				fairy.addTrait(ArmorTraits.blessed, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
 			pokefennium.addCommonItems("Pokefennium");
@@ -169,6 +178,12 @@ public class ModuleTConstruct implements IModule {
 					new HandleMaterialStats(3.0F, 100),
 					new ExtraMaterialStats(400),
 					new BowMaterialStats(0.5F, 1.3F, 5.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(pokefennium, 1.0F);
+				pokefennium.addTrait(MaterialisTraits.unlimited, ArmorMaterialType.CORE);
+				pokefennium.addTrait(MaterialisArmorTraits.limited, ArmorMaterialType.PLATES);
+				pokefennium.addTrait(MaterialisArmorTraits.limited, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
 			redAurum.addCommonItems("RedAurum");
@@ -182,6 +197,12 @@ public class ModuleTConstruct implements IModule {
 					new HandleMaterialStats(0.5F, 6),
 					new ExtraMaterialStats(30),
 					new BowMaterialStats(1.9F, 0.5F, 0.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(redAurum, 0.0F);
+				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.CORE);
+				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.PLATES);
+				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
 			drulloy.addCommonItems("Drulloy");
@@ -196,6 +217,12 @@ public class ModuleTConstruct implements IModule {
 					new HandleMaterialStats(0.4F, 100),
 					new ExtraMaterialStats(100),
 					new BowMaterialStats(1.3F, 1.2F, 2.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(drulloy, 0.5F);
+				drulloy.addTrait(ArmorTraits.heavy, ArmorMaterialType.CORE);
+				drulloy.addTrait(ArmorTraits.dense, ArmorMaterialType.PLATES);
+				drulloy.addTrait(ArmorTraits.dense, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
 			alumite.addCommonItems("Alumite");
@@ -209,6 +236,12 @@ public class ModuleTConstruct implements IModule {
 					new HandleMaterialStats(1.3F, 80),
 					new ExtraMaterialStats(100),
 					new BowMaterialStats(1.1F, 1.3F, 4.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(alumite, 2.5F);
+				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.CORE);
+				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.PLATES);
+				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.TRIM);
+			}
 		}
 	}
 

@@ -56,11 +56,11 @@ public class TexturedTriColorTexture extends TriColorTexture {
 	@Override
 	protected int colorPixel(int pixel, int pxCoord) {
 		int a = RenderUtil.alpha(pixel);
-		if(a == 0) {
+		if (a == 0) {
 			return pixel;
 		}
 		int texCoord = pxCoord;
-		if(width > textureWidth) {
+		if (width > textureWidth || width < textureWidth) {
 			int texX = (pxCoord % width) % textureWidth;
 			int texY = (pxCoord / height) % textureHeight;
 			texCoord = texY * textureWidth + texX;

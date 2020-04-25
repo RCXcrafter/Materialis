@@ -75,3 +75,19 @@ modifier.unbreakable.desc=§oCan't break this.§r\nPrevents the tool from taking
 modifier.unlimited.name=Unlimited
 modifier.unlimited.desc=§oUNLIMITED POWER§r\nNegates the effect of the limited trait.
 
+//armor traits
+modifier.cosmic_armor.name=modifier.cosmic.name
+modifier.cosmic_armor.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers and invincibility.
+
+modifier.crystalline_armor.name=modifier.crystalline.name
+modifier.crystalline_armor.desc=§oNot just pretty.§r\nExtra damage reduction.
+
+modifier.limited_armor.name=modifier.limited.name
+modifier.limited_armor.desc=§oLIMITED POWER§r\nYou take more damage.
+
+modifier.supermassive_armor.name=modifier.supermassive.name
+modifier.supermassive_armor.desc=§oAn immovable object.§r\nMakes you immune to knockback.
+
+modifier.unbreakable_armor.name=modifier.unbreakable.name
+modifier.unbreakable_armor.desc=§oCan't break this.§r\nPrevents the armor from taking damage.
+

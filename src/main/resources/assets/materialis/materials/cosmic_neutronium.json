@@ -1,5 +1,6 @@
 {
     "type": "textured_outline",
+    "suffix": "outline",
     "parameters": {
 		"texture": "materialis:material/neutronium_outline",
 		"mode": "edge",

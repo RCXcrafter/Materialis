@@ -99,11 +99,11 @@ public class TexturedOutlineTexture extends TriColorTexture {
 
 	@Override
 	protected int colorPixel(int pixel, int pxCoord) {
-		if(!outer[pxCoord]) {
-			if(((edgeMode || bothMode) && edge[pxCoord]) ||
+		if (!outer[pxCoord]) {
+			if (((edgeMode || bothMode) && edge[pxCoord]) ||
 					((brightnessMode || bothMode) && (RenderUtil.red(pixel) + RenderUtil.green(pixel) + RenderUtil.blue(pixel)) < cap * 3.0F)) {
 				int texCoord = pxCoord;
-				if(width > textureWidth) {
+				if (width > textureWidth || width < textureWidth) {
 					int texX = (pxCoord % width) % textureWidth;
 					int texY = (pxCoord / height) % textureHeight;
 					texCoord = texY * textureWidth + texX;

@@ -1,6 +1,9 @@
 package com.rcx.materialis.modules;
 
 import com.rcx.materialis.MaterialisConfig;
+
+import c4.conarm.common.armor.traits.ArmorTraits;
+import c4.conarm.lib.materials.ArmorMaterialType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -63,6 +66,12 @@ public class ModuleGeneric implements IModule {
 					new HandleMaterialStats(1.15F, 40),
 					new ExtraMaterialStats(60),
 					new BowMaterialStats(0.5F, 1.6F, 5.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(tin, 0.0F);
+				tin.addTrait(ArmorTraits.aridiculous, ArmorMaterialType.CORE);
+				tin.addTrait(ArmorTraits.aridiculous, ArmorMaterialType.PLATES);
+				tin.addTrait(ArmorTraits.aridiculous, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("zinc") && OreDictionary.doesOreNameExist("ingotZinc")) {
 			zinc.addCommonItems("Zinc");
@@ -76,6 +85,12 @@ public class ModuleGeneric implements IModule {
 					new HandleMaterialStats(0.95F, 50),
 					new ExtraMaterialStats(100),
 					new BowMaterialStats(0.4F, 1.3F, 4.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(zinc, 0.0F);
+				zinc.addTrait(ArmorTraits.indomitable, ArmorMaterialType.CORE);
+				zinc.addTrait(ArmorTraits.indomitable, ArmorMaterialType.PLATES);
+				zinc.addTrait(ArmorTraits.indomitable, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("brass") && OreDictionary.doesOreNameExist("ingotBrass")) {
 			brass.addCommonItems("Brass");
@@ -89,6 +104,12 @@ public class ModuleGeneric implements IModule {
 					new HandleMaterialStats(1.0F, 40),
 					new ExtraMaterialStats(120),
 					new BowMaterialStats(0.55F, 1.5F, 5.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(brass, 0.5F);
+				brass.addTrait(ArmorTraits.lightweight, ArmorMaterialType.CORE);
+				brass.addTrait(ArmorTraits.lightweight, ArmorMaterialType.PLATES);
+				brass.addTrait(ArmorTraits.lightweight, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("nickel") && OreDictionary.doesOreNameExist("ingotNickel")) {
 			nickel.addCommonItems("Nickel");
@@ -102,6 +123,12 @@ public class ModuleGeneric implements IModule {
 					new HandleMaterialStats(1.0F, 100),
 					new ExtraMaterialStats(70),
 					new BowMaterialStats(0.5F, 1.3F, 8.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(nickel, 1.0F);
+				nickel.addTrait(ArmorTraits.rough, ArmorMaterialType.CORE);
+				nickel.addTrait(ArmorTraits.rough, ArmorMaterialType.PLATES);
+				nickel.addTrait(ArmorTraits.rough, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("aluminum") && OreDictionary.doesOreNameExist("ingotAluminum")) {
 			aluminum.addCommonItems("Aluminum");
@@ -115,6 +142,12 @@ public class ModuleGeneric implements IModule {
 					new HandleMaterialStats(1.1F, 25),
 					new ExtraMaterialStats(100),
 					new BowMaterialStats(1.2F, 1.1F, 1.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(aluminum, 0.0F);
+				aluminum.addTrait(ArmorTraits.lightweight, ArmorMaterialType.CORE);
+				aluminum.addTrait(ArmorTraits.featherweight, ArmorMaterialType.PLATES);
+				aluminum.addTrait(ArmorTraits.featherweight, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alubrass") && OreDictionary.doesOreNameExist("ingotAlubrass")) {
 			alubrass.addCommonItems("Alubrass");
@@ -128,6 +161,12 @@ public class ModuleGeneric implements IModule {
 					new HandleMaterialStats(1.2F, 25),
 					new ExtraMaterialStats(120),
 					new BowMaterialStats(0.9F, 1.3F, 3.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(alubrass, 0.0F);
+				alubrass.addTrait(ArmorTraits.prideful, ArmorMaterialType.CORE);
+				alubrass.addTrait(ArmorTraits.prideful, ArmorMaterialType.PLATES);
+				alubrass.addTrait(ArmorTraits.prideful, ArmorMaterialType.TRIM);
+			}
 		}
 	}
 

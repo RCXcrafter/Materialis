@@ -1,5 +1,6 @@
 {
     "type": "textured_outline",
+    "suffix": "outline",
     "parameters": {
 		"texture": "materialis:material/red_aurum_outline",
 		"mode": "brightness",

@@ -3,7 +3,12 @@ package com.rcx.materialis.modules;
 import com.rcx.materialis.MaterialisConfig;
 import com.rcx.materialis.modifiers.ModInfinity;
 import com.rcx.materialis.traits.MaterialisTraits;
+import com.rcx.materialis.traits.armor.MaterialisArmorTraits;
 
+import c4.conarm.lib.materials.ArmorMaterialType;
+import c4.conarm.lib.materials.CoreMaterialStats;
+import c4.conarm.lib.materials.PlatesMaterialStats;
+import c4.conarm.lib.materials.TrimMaterialStats;
 import morph.avaritia.init.ModItems;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent.Register;
@@ -55,6 +60,11 @@ public class ModuleAvaritia implements IModule {
 			TinkerRegistry.addMaterial(crystalMatrix);
 			TinkerRegistry.addMaterialStats(crystalMatrix,
 					new ExtraMaterialStats(600));
+			if (ModuleConarm.loadArmor()) {
+				TinkerRegistry.addMaterialStats(crystalMatrix,
+						new TrimMaterialStats(40));
+				crystalMatrix.addTrait(MaterialisArmorTraits.crystalline, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("cosmic_neutronium")) {
 			neutronium.addCommonItems("CosmicNeutronium");
@@ -67,6 +77,12 @@ public class ModuleAvaritia implements IModule {
 					new HandleMaterialStats(2.5F, 100),
 					new ExtraMaterialStats(400),
 					new BowMaterialStats(0.5F, 1.3F, 5.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(neutronium, 3.0F);
+				neutronium.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.CORE);
+				neutronium.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.PLATES);
+				neutronium.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("infinity")) {
 			infinity.addItem("ingotInfinity", 1, Material.VALUE_Nugget * 2);
@@ -81,6 +97,18 @@ public class ModuleAvaritia implements IModule {
 					new HandleMaterialStats(10.0F, 999),
 					new ExtraMaterialStats(999),
 					new BowMaterialStats(9999.9F, 999.91F, 99.9F));
+			if (ModuleConarm.loadArmor()) {
+				TinkerRegistry.addMaterialStats(infinity,
+						new CoreMaterialStats(9999, 999.9F),
+						new PlatesMaterialStats(10.0F, 999, 99.9F),
+						new TrimMaterialStats(999));
+				infinity.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.CORE);
+				infinity.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.PLATES);
+				infinity.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.TRIM);
+				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.CORE);
+				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.PLATES);
+				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.TRIM);
+			}
 		}
 		modInfinity.addItem(ModItems.infinity_catalyst, 1, 1);
 	}

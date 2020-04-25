@@ -1,7 +1,12 @@
 package com.rcx.materialis.modules;
 
 import com.rcx.materialis.MaterialisConfig;
+
+import c4.conarm.common.armor.modifiers.ArmorModifiers;
+import c4.conarm.common.armor.traits.ArmorTraits;
+import c4.conarm.lib.materials.ArmorMaterialType;
 import erebus.ModItems;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent.Register;
@@ -9,6 +14,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.BowMaterialStats;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
@@ -17,6 +23,7 @@ import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.tools.TinkerMaterials;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
 public class ModuleErebus implements IModule {
@@ -61,6 +68,12 @@ public class ModuleErebus implements IModule {
 					new HandleMaterialStats(1.0F, 50),
 					new ExtraMaterialStats(25),
 					new BowMaterialStats(0.9F, 1.2F, 0.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(bamboo, 0.0F);
+				bamboo.addTrait(ArmorTraits.ecological, ArmorMaterialType.CORE);
+				bamboo.addTrait(ArmorTraits.ecological, ArmorMaterialType.PLATES);
+				bamboo.addTrait(ArmorTraits.ecological, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("jade")) {
 			jade.addItem("gemJade", 1, Material.VALUE_Ingot);
@@ -75,6 +88,12 @@ public class ModuleErebus implements IModule {
 					new HandleMaterialStats(0.5F, 0),
 					new ExtraMaterialStats(368),
 					new BowMaterialStats(0.2F, 0.4F, -1.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(jade, 1.0F);
+				jade.addTrait(ArmorTraits.ambitious, ArmorMaterialType.CORE);
+				jade.addTrait(ArmorTraits.ambitious, ArmorMaterialType.PLATES);
+				jade.addTrait(ArmorTraits.ambitious, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fly_wing")) {
 			flyWing.addItem(new ItemStack(ModItems.MATERIALS, 1, 6), 1, Material.VALUE_Ingot);
@@ -89,6 +108,14 @@ public class ModuleErebus implements IModule {
 			dragonflyWing.setCraftable(true);
 			TinkerRegistry.addMaterial(dragonflyWing);
 			TinkerRegistry.addMaterialStats(dragonflyWing, new FletchingMaterialStats(1.0F, 1.25F));
+		}
+
+		TinkerModifiers.modSharpness.addItem(new ItemStack(ModItems.WHETSTONE, 1, 1), 1, 72);
+
+		TinkerModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(ModItems.MATERIALS, 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(ModItems.MATERIALS, 1, 12)));
+
+		if (ModuleConarm.loadArmor()) {
+			ArmorModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(ModItems.MATERIALS, 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(ModItems.MATERIALS, 1, 12)));
 		}
 	}
 
