@@ -54,6 +54,9 @@ material.exoskeleton.name=Exoskeleton
 material.exoskeleton_reinforced.name=Reinforced Exoskeleton
 material.exoskeleton_rhino.name=Rhino Plate
 
+material.neptunium.name=Neptunium
+fluid.neptunium.name=Molten Neptunium
+
 material.crystal_matrix.name=Crystal Matrix
 material.cosmic_neutronium.name=Neutronium
 material.infinity.name=Infinity
