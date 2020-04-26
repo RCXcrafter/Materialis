@@ -31,6 +31,7 @@ public class TraitArmorCosmic extends AbstractArmorTrait {
 		//invincivility
 		if (!event.getSource().damageType.equals("infinity")) {
 			event.setCanceled(true);
+			event.setAmount(0);
 			return 0;
 		}
 		return damage;

@@ -70,8 +70,8 @@ public class TexturedTriColorTexture extends TriColorTexture {
 
 		if (underlay) {
 			int r = RenderUtil.red(pixel);
-			int b = RenderUtil.green(pixel);
-			int g = RenderUtil.blue(pixel);
+			int g = RenderUtil.green(pixel);
+			int b = RenderUtil.blue(pixel);
 
 			r = mult(r, RenderUtil.red(tc)) & 0xff;
 			g = mult(g, RenderUtil.green(tc)) & 0xff;
@@ -82,8 +82,8 @@ public class TexturedTriColorTexture extends TriColorTexture {
 		int c = super.colorPixel(pixel, pxCoord);
 
 		int r = RenderUtil.red(c);
-		int b = RenderUtil.blue(c);
 		int g = RenderUtil.green(c);
+		int b = RenderUtil.blue(c);
 
 		r = mult(r, RenderUtil.red(tc)) & 0xff;
 		g = mult(g, RenderUtil.green(tc)) & 0xff;

@@ -26,9 +26,21 @@ public class TriColorTexture extends AbstractColoredTexture {
 			return pixel;
 		}
 
-		float brightness = 2.0F * (Math.max(0, RenderUtil.red(pixel)-cap) + Math.max(0, RenderUtil.green(pixel)-cap) + Math.max(0, RenderUtil.blue(pixel)-cap)) / (3.0F * (255.0F-cap));
+		float brightness = 2.0F * (RenderUtil.red(pixel) - cap + RenderUtil.green(pixel) - cap + RenderUtil.blue(pixel) - cap) / (3.0F * (255.0F-cap));
 
-		if (brightness > 1.0f) {
+		if (brightness < 0.0f) {
+			int r = RenderUtil.red(dark);
+			int g = RenderUtil.green(dark);
+			int b = RenderUtil.blue(dark);
+
+			int gr = Math.max(0, 255 + (int) (brightness * cap));
+
+			r = mult(r, gr) & 0xff;
+			g = mult(g, gr) & 0xff;
+			b = mult(b, gr) & 0xff;
+
+			return RenderUtil.compose(r, g, b, a);
+		} else if (brightness > 1.0f) {
 			return interpolateColors(mid, bright, brightness - 1.0f);
 		}
 		return interpolateColors(dark, mid, brightness);
