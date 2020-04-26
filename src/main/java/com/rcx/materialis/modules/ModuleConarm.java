@@ -1,6 +1,7 @@
 package com.rcx.materialis.modules;
 
 import com.rcx.materialis.MaterialisConfig;
+import com.rcx.materialis.traits.armor.MaterialisArmorTraits;
 
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
@@ -50,7 +51,9 @@ public class ModuleConarm implements IModule {
 	public void registerItems(Register<Item> event) {}
 
 	@Override
-	public void init(FMLInitializationEvent event) {}
+	public void init(FMLInitializationEvent event) {
+		MaterialisArmorTraits.init();
+	}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent postEvent) {}

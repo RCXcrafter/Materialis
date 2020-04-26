@@ -5,7 +5,7 @@ import slimeknights.tconstruct.library.traits.ITrait;
 
 public class MaterialisTraits {
 
-	public static ITrait cosmic = new TraitCosmic();
+	public static ITrait cosmic;
 	public static ITrait crystalline = new TraitCrystalline();
 	public static ITrait fancy = new TraitNoEffect("fancy", 0xFFE30B);
 	public static ITrait limited = new TraitLimited();
@@ -14,7 +14,6 @@ public class MaterialisTraits {
 	public static ITrait unlimited = new TraitNoEffect("unlimited", 0x64A7B5);
 	
 	public static void init() {
-		TinkerRegistry.addTrait(cosmic);
 		TinkerRegistry.addTrait(crystalline);
 		TinkerRegistry.addTrait(fancy);
 		TinkerRegistry.addTrait(limited);

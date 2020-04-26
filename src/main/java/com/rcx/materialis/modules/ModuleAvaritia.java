@@ -3,6 +3,7 @@ package com.rcx.materialis.modules;
 import com.rcx.materialis.MaterialisConfig;
 import com.rcx.materialis.modifiers.ModInfinity;
 import com.rcx.materialis.traits.MaterialisTraits;
+import com.rcx.materialis.traits.TraitCosmic;
 import com.rcx.materialis.traits.armor.MaterialisArmorTraits;
 
 import c4.conarm.lib.materials.ArmorMaterialType;
@@ -52,6 +53,9 @@ public class ModuleAvaritia implements IModule {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
+		MaterialisTraits.cosmic = new TraitCosmic();
+		TinkerRegistry.addTrait(MaterialisTraits.cosmic);
+
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
 			crystalMatrix.addCommonItems("CrystalMatrix");
 			crystalMatrix.setRepresentativeItem(ModItems.crystal_matrix_ingot);
