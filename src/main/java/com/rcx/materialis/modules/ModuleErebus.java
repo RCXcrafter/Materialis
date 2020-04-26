@@ -31,7 +31,7 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 
 public class ModuleErebus implements IModule {
 
-	public static Material bamboo = new Material("bamboo", 0x91A043);
+	public static Material bamboo = new Material("bamboo", 0x91A043, true);
 
 	public static Material jade = new Material("jade", 0x60CF7B);
 
@@ -56,7 +56,11 @@ public class ModuleErebus implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {}
+	public void preInit(FMLPreInitializationEvent preEvent) {
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bamboo")) {
+			
+		}
+	}
 
 	@Override
 	public void registerItems(Register<Item> event) {}
@@ -71,7 +75,7 @@ public class ModuleErebus implements IModule {
 			bamboo.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 3));
 			bamboo.setCraftable(true);
 			bamboo.addTrait(TinkerTraits.ecological);
-			TinkerRegistry.addMaterial(bamboo);
+			bamboo.setVisible();
 			TinkerRegistry.addMaterialStats(bamboo,
 					new HeadMaterialStats(100, 3.0F, 3.0F, 0),
 					new HandleMaterialStats(1.0F, 50),

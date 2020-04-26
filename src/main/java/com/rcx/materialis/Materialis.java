@@ -17,8 +17,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.CreativeTab;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
+import com.rcx.materialis.modules.ModuleErebus;
 import com.rcx.materialis.proxy.CommonProxy;
 
 @Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-after:tconstruct")
@@ -42,6 +44,11 @@ public class Materialis {
 			return tabItem;
 		};
 	};
+	
+	static {
+		//register wood materials early
+		TinkerRegistry.addMaterial(ModuleErebus.bamboo);
+	}
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent preEvent) {
