@@ -10,14 +10,15 @@ public class TriColorRenderInfoDeserializer extends AbstractRenderInfoDeserializ
 	protected String bright;
 	protected String mid;
 	protected String dark;
-	protected int threshold;
+	protected int midthreshold;
+	protected int darkthreshold;
 
 	@Override
 	public MaterialRenderInfo getMaterialRenderInfo() {
 		return new MaterialRenderInfo.AbstractMaterialRenderInfo() {
 			@Override
 			public TextureAtlasSprite getTexture(ResourceLocation baseTexture, String location) {
-				return new TriColorTexture(baseTexture, location, fromHex(bright), fromHex(mid), fromHex(dark), threshold);
+				return new TriColorTexture(baseTexture, location, fromHex(bright), fromHex(mid), fromHex(dark), midthreshold, darkthreshold);
 			}
 		};
 	}

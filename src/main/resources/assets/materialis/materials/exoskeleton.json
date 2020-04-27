@@ -2,8 +2,9 @@
     "type": "tri_color",
     "parameters": {
         "bright": "D8D8D2",
-        "mid": "80806D",
+        "mid": "707059",
         "dark": "5C5C49",
-		"threshold": 89
+		"midthreshold": 150,
+		"darkthreshold": 79
     }
 }

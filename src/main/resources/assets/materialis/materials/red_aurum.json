@@ -7,6 +7,7 @@
         "bright": "FF995B",
         "mid": "F02F00",
         "dark": "B02900",
-		"threshold": 140
+		"midthreshold": 198,
+		"darkthreshold": 140
     }
 }

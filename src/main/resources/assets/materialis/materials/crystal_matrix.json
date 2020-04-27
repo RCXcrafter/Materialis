@@ -5,7 +5,8 @@
         "underlay": true,
         "bright": "FFFFFF",
         "mid": "97F1EB",
-        "dark": "195A56",
-		"threshold": 140
+        "dark": "289992",
+		"midthreshold": 210,
+		"darkthreshold": 155
     }
 }

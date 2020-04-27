@@ -14,7 +14,7 @@ public class TexturedOutlineRenderInfoDeserializer extends TriColorRenderInfoDes
 		return new MaterialRenderInfo.AbstractMaterialRenderInfo() {
 			@Override
 			public TextureAtlasSprite getTexture(ResourceLocation baseTexture, String location) {
-				return new TexturedOutlineTexture(baseTexture, location, new ResourceLocation(texture), mode, fromHex(bright), fromHex(mid), fromHex(dark), threshold);
+				return new TexturedOutlineTexture(baseTexture, location, new ResourceLocation(texture), mode, fromHex(bright), fromHex(mid), fromHex(dark), midthreshold, darkthreshold);
 			}
 		};
 	}

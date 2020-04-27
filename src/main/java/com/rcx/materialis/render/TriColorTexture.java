@@ -9,14 +9,16 @@ public class TriColorTexture extends AbstractColoredTexture {
 	protected int bright;
 	protected int mid;
 	protected int dark;
-	protected float cap;
+	protected float midCap;
+	protected float darkCap;
 
-	TriColorTexture(ResourceLocation baseTextureLocation, String spriteName, int bright, int mid, int dark, int threshold) {
+	TriColorTexture(ResourceLocation baseTextureLocation, String spriteName, int bright, int mid, int dark, int midThreshold, int darkThreshold) {
 		super(baseTextureLocation, spriteName);
 		this.bright = bright;
 		this.mid = mid;
 		this.dark = dark;
-		this.cap = threshold;
+		this.midCap = midThreshold;
+		this.darkCap = darkThreshold;
 	}
 
 	@Override
@@ -25,25 +27,14 @@ public class TriColorTexture extends AbstractColoredTexture {
 		if(a == 0) {
 			return pixel;
 		}
-
-		float brightness = 2.0F * (RenderUtil.red(pixel) - cap + RenderUtil.green(pixel) - cap + RenderUtil.blue(pixel) - cap) / (3.0F * (255.0F-cap));
-
-		if (brightness < 0.0f) {
-			int r = RenderUtil.red(dark);
-			int g = RenderUtil.green(dark);
-			int b = RenderUtil.blue(dark);
-
-			int gr = Math.max(0, 255 + (int) (brightness * cap));
-
-			r = mult(r, gr) & 0xff;
-			g = mult(g, gr) & 0xff;
-			b = mult(b, gr) & 0xff;
-
-			return RenderUtil.compose(r, g, b, a);
-		} else if (brightness > 1.0f) {
-			return interpolateColors(mid, bright, brightness - 1.0f);
+		int gray = (RenderUtil.red(pixel) + RenderUtil.green(pixel) + RenderUtil.blue(pixel)) / 3;
+		if (gray <= darkCap) {
+			return interpolateColors(0, dark, gray / darkCap);
 		}
-		return interpolateColors(dark, mid, brightness);
+		if (gray >= midCap) {
+			return interpolateColors(mid, bright, (gray - midCap) / (255.0F - midCap));
+		}
+		return interpolateColors(dark, mid, (gray - darkCap) / (midCap - darkCap));
 	}
 
 	public static int interpolateColors(int colorDark, int colorBright, float p) {

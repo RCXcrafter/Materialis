@@ -19,8 +19,8 @@ public class TexturedTriColorTexture extends TriColorTexture {
 	protected float scale;
 	protected boolean underlay;
 
-	TexturedTriColorTexture(ResourceLocation baseTexture, String spriteName, ResourceLocation texture, boolean underlay, int bright, int mid, int dark, int threshold) {
-		super(baseTexture, spriteName, bright, mid, dark, threshold);
+	TexturedTriColorTexture(ResourceLocation baseTexture, String spriteName, ResourceLocation texture, boolean underlay, int bright, int mid, int dark, int midThreshold, int darkThreshold) {
+		super(baseTexture, spriteName, bright, mid, dark, midThreshold, darkThreshold);
 		this.textureLocation = texture;
 		this.underlay = underlay;
 	}

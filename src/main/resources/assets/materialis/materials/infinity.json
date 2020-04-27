@@ -4,8 +4,9 @@
         "overlay": "materialis:material/infinity",
         "underlay": false,
         "bright": "FFFFFF",
-        "mid": "D4D4D4",
-        "dark": "B9B9B9",
-		"threshold": 89
+        "mid": "D9D9D9",
+        "dark": "999999",
+		"midthreshold": 185,
+		"darkthreshold": 79
     }
 }

@@ -4,6 +4,7 @@
         "bright": "FFFFB5",
         "mid": "D9BE0F",
         "dark": "5E4800",
-		"threshold": 89
+		"midthreshold": 180,
+		"darkthreshold": 79
     }
 }

@@ -26,8 +26,8 @@ public class TexturedOutlineTexture extends TriColorTexture {
 	boolean[] outer;
 	boolean[] edge;
 
-	public TexturedOutlineTexture(ResourceLocation baseTexture, String spriteName, ResourceLocation texture, String mode, int bright, int mid, int dark, int threshold) {
-		super(baseTexture, spriteName, bright, mid, dark, threshold);
+	public TexturedOutlineTexture(ResourceLocation baseTexture, String spriteName, ResourceLocation texture, String mode, int bright, int mid, int dark, int midThreshold, int darkThreshold) {
+		super(baseTexture, spriteName, bright, mid, dark, midThreshold, darkThreshold);
 		this.textureLocation = texture;
 		this.edgeMode = mode.equals("edge");
 		this.bothMode = mode.equals("both");
@@ -101,7 +101,7 @@ public class TexturedOutlineTexture extends TriColorTexture {
 	protected int colorPixel(int pixel, int pxCoord) {
 		if (!outer[pxCoord]) {
 			if (((edgeMode || bothMode) && edge[pxCoord]) ||
-					((brightnessMode || bothMode) && (RenderUtil.red(pixel) + RenderUtil.green(pixel) + RenderUtil.blue(pixel)) < cap * 3.0F)) {
+					((brightnessMode || bothMode) && (RenderUtil.red(pixel) + RenderUtil.green(pixel) + RenderUtil.blue(pixel)) < darkCap * 3.0F)) {
 				int texCoord = pxCoord;
 				if (width > textureWidth || width < textureWidth) {
 					int texX = (pxCoord % width) % textureWidth;
