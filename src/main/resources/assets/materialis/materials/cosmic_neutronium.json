@@ -6,8 +6,8 @@
 		"mode": "edge",
         "bright": "000000",
         "mid": "595959",
-        "dark": "8E8E8E",
+        "dark": "FFFFFF",
 		"midthreshold": 180,
-		"darkthreshold": 79
+		"darkthreshold": 1
     }
 }

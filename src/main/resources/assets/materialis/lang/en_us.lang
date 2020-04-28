@@ -54,6 +54,9 @@ material.exoskeleton.name=Exoskeleton
 material.exoskeleton_reinforced.name=Reinforced Exoskeleton
 material.exoskeleton_rhino.name=Rhino Plate
 
+material.living.name=Living
+material.wildwood.name=Wildwood
+
 material.neptunium.name=Neptunium
 fluid.neptunium.name=Molten Neptunium
 
@@ -102,4 +105,7 @@ modifier.supermassive_armor.desc=§oAn immovable object.§r\nMakes you immune to
 
 modifier.unbreakable_armor.name=modifier.unbreakable.name
 modifier.unbreakable_armor.desc=§oCan't break this.§r\nPrevents the armor from taking damage.
+
+modifier.untamed_armor.name=Untamed
+modifier.untamed_armor.desc=§oBro that's wild.§r\nOccasionally heals you.
 

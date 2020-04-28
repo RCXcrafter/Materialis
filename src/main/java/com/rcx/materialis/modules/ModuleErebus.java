@@ -56,11 +56,7 @@ public class ModuleErebus implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bamboo")) {
-			
-		}
-	}
+	public void preInit(FMLPreInitializationEvent preEvent) {}
 
 	@Override
 	public void registerItems(Register<Item> event) {}

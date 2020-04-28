@@ -10,6 +10,7 @@ public class MaterialisArmorTraits {
 	public static IArmorTrait limited = new TraitArmorLimited();
 	public static IArmorTrait supermassive = new TraitArmorSupermassive();
 	public static IArmorTrait unbreakable = new TraitArmorUnbreakable();
+	public static IArmorTrait untamed = new TraitArmorUntamed();
 	
 	public static void init() {
 		TinkerRegistry.addTrait(cosmic);
@@ -17,5 +18,6 @@ public class MaterialisArmorTraits {
 		TinkerRegistry.addTrait(limited);
 		TinkerRegistry.addTrait(supermassive);
 		TinkerRegistry.addTrait(unbreakable);
+		TinkerRegistry.addTrait(untamed);
 	}
 }
