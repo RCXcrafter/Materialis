@@ -7,6 +7,9 @@ materialis.config.blacklist.modules=Modules Blacklist
 
 //materials
 material.gold.name=Gold
+material.quartz.name=Quartz
+material.diamond.name=Diamond
+material.emerald.name=Emerald
 material.leather.name=Leather
 
 material.tin.name=Tin

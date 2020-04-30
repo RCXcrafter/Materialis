@@ -74,6 +74,7 @@ public class ModuleRoots implements IModule {
 				wildwood.addItem(Item.REGISTRY.getObject(new ResourceLocation("roots", "bark_wildwood")), 1, 0);
 				wildwood.setRepresentativeItem(Item.REGISTRY.getObject(new ResourceLocation("roots", "bark_wildwood")));
 				wildwood.addTrait(MaterialisArmorTraits.untamed, ArmorMaterialType.CORE);
+				wildwood.addTrait(ArmorTraits.shielding);
 				TinkerRegistry.addMaterial(wildwood);
 				TinkerRegistry.addMaterialStats(wildwood,
 						new CoreMaterialStats(12, 12.0F),

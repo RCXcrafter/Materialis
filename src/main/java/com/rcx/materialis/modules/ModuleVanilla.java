@@ -4,6 +4,7 @@ import com.rcx.materialis.MaterialisConfig;
 import com.rcx.materialis.traits.MaterialisTraits;
 
 import c4.conarm.common.armor.traits.ArmorTraits;
+import c4.conarm.lib.materials.ArmorMaterialType;
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
@@ -21,11 +22,19 @@ import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.shared.TinkerFluids;
+import slimeknights.tconstruct.tools.TinkerTraits;
 
 public class ModuleVanilla implements IModule {
 
 	public static Material gold = new Material("gold", 0xFFE30B);
+
+	public static Material quartz = new Material("quartz", 0xD2C7BA);
+
+	public static Material diamond = new Material("diamond", 0x33EBCB);
+
+	public static Material emerald = new Material("emerald", 0x41F384);
 
 	public static Material leather = new Material("leather", 0xC65C35);
 
@@ -61,6 +70,67 @@ public class ModuleVanilla implements IModule {
 					new BowMaterialStats(0.9F, 1.3F, 6.0F));
 			if (ModuleConarm.loadArmor())
 				ModuleConarm.generateArmorStats(gold, 0.0F);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("quartz")) {
+			quartz.addItem("gemQuartz", 1, Material.VALUE_Ingot);
+			quartz.addItem("nuggetQuartz", 1, Material.VALUE_Nugget);
+			quartz.addItem("blockQuartz", 1, Material.VALUE_Ingot * 4);
+			quartz.setRepresentativeItem(Items.QUARTZ);
+			quartz.setCraftable(true);
+			quartz.addTrait(TinkerTraits.sharp);
+			TinkerRegistry.addMaterial(quartz);
+			TinkerRegistry.addMaterialStats(quartz,
+					new HeadMaterialStats(150, 5.6F, 4.0F, 1),
+					new HandleMaterialStats(0.6F, -10),
+					new ExtraMaterialStats(25),
+					new BowMaterialStats(0.2F, 0.4F, -1.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(quartz, 0.0F);
+				quartz.addTrait(ArmorTraits.rough, ArmorMaterialType.CORE);
+				quartz.addTrait(ArmorTraits.rough, ArmorMaterialType.PLATES);
+				quartz.addTrait(ArmorTraits.rough, ArmorMaterialType.TRIM);
+			}
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("diamond")) {
+			diamond.addItem("gemDiamond", 1, Material.VALUE_Ingot);
+			diamond.addItem("nuggetDiamond", 1, Material.VALUE_Nugget);
+			diamond.addItem("blockDiamond", 1, Material.VALUE_Block);
+			diamond.setRepresentativeItem(Items.DIAMOND);
+			diamond.setCraftable(true);
+			diamond.addTrait(TinkerTraits.crumbling, MaterialTypes.HEAD);
+			diamond.addTrait(TinkerTraits.crude);
+			TinkerRegistry.addMaterial(diamond);
+			TinkerRegistry.addMaterialStats(diamond,
+					new HeadMaterialStats(848, 8.0F, 5.0F, 3),
+					new HandleMaterialStats(1.0F, 50),
+					new ExtraMaterialStats(400),
+					new BowMaterialStats(0.2F, 0.4F, -1.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(diamond, 2.0F);
+				diamond.addTrait(ArmorTraits.subterranean, ArmorMaterialType.CORE);
+				diamond.addTrait(ArmorTraits.subterranean, ArmorMaterialType.PLATES);
+				diamond.addTrait(ArmorTraits.subterranean, ArmorMaterialType.TRIM);
+			}
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("emerald")) {
+			emerald.addItem("gemEmerald", 1, Material.VALUE_Ingot);
+			emerald.addItem("nuggetEmerald", 1, Material.VALUE_Nugget);
+			emerald.addItem("blockEmerald", 1, Material.VALUE_Block);
+			emerald.setRepresentativeItem(Items.EMERALD);
+			emerald.setCraftable(true);
+			emerald.addTrait(TinkerTraits.established);
+			TinkerRegistry.addMaterial(emerald);
+			TinkerRegistry.addMaterialStats(emerald,
+					new HeadMaterialStats(900, 7.6F, 5.0F, 3),
+					new HandleMaterialStats(0.5F, 100),
+					new ExtraMaterialStats(365),
+					new BowMaterialStats(0.2F, 0.4F, -1.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(emerald, 1.0F);
+				emerald.addTrait(ArmorTraits.ambitious, ArmorMaterialType.CORE);
+				emerald.addTrait(ArmorTraits.ambitious, ArmorMaterialType.PLATES);
+				emerald.addTrait(ArmorTraits.ambitious, ArmorMaterialType.TRIM);
+			}
 		}
 		if (ModuleConarm.loadArmor() && !MaterialisConfig.blacklist.isMaterialBlacklisted("leather")) {
 			leather.addItem("leather", 1, Material.VALUE_Ingot);
