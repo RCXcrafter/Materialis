@@ -60,6 +60,14 @@ material.exoskeleton_rhino.name=Rhino Plate
 material.living.name=Living
 material.wildwood.name=Wildwood
 
+material.ghostwood.name=Ghostwood
+material.ghostwood_leaf.name=Ghostwood
+material.bloodwood.name=Bloodwood
+material.darkwood.name=Darkwood
+material.fusewood.name=Fusewood
+material.flamestring.name=Flamestring
+material.impskin.name=Impskin
+
 material.neptunium.name=Neptunium
 fluid.neptunium.name=Molten Neptunium
 
@@ -69,11 +77,17 @@ material.infinity.name=Infinity
 
 
 //traits
+modifier.bloodthirst.name=Bloodthirst
+modifier.bloodthirst.desc=§oSlurp.§r\nYour tool loves blood, when you take damage, it will absorb your blood to repair itself.
+
 modifier.cosmic.name=Cosmic
 modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers, instakill and fortune X.
 
 modifier.crystalline.name=Crystalline
 modifier.crystalline.desc=§oNot just pretty.§r\nIncreases mining speed and attack damage.
+
+modifier.darkness.name=Darkness
+modifier.darkness.desc=§oCan't see.§r\nInflicts hit targets with blindness.
 
 modifier.depthdigger.name=Depth Digger
 modifier.depthdigger.desc=§oDig deep.§r\nIncreases mining speed the lower you are below sea level.
@@ -81,8 +95,17 @@ modifier.depthdigger.desc=§oDig deep.§r\nIncreases mining speed the lower you 
 modifier.fancy.name=Fancy
 modifier.fancy.desc=§oExpensive and shiny.§r\nDoesn't do anything special, just looks cool.
 
+modifier.intangible.name=Intangible
+modifier.intangible.desc=§oLike a wisp of smoke.§r\nOccasionally deals extra damage that goes right through armor.
+
 modifier.limited.name=Limited
 modifier.limited.desc=§oLIMITED POWER§r\nDecreases attack damage and mining speed.
+
+modifier.phasing.name=Phasing
+modifier.phasing.desc=§oWooosh.§r\nArrows fly right through blocks.
+
+modifier.short_fuse.name=Short Fuse
+modifier.short_fuse.desc=§oExplosive personality.§r\nAttacking or mining sometimes causes a small explosion.
 
 modifier.supermassive.name=Supermassive
 modifier.supermassive.desc=§oBONK.§r\nGreatly increases knockback.
@@ -100,8 +123,23 @@ modifier.cosmic_armor.desc=§oFrom the limitless reaches of space.§r\nExtra mod
 modifier.crystalline_armor.name=modifier.crystalline.name
 modifier.crystalline_armor.desc=§oNot just pretty.§r\nExtra damage reduction.
 
+modifier.darkness_armor.name=modifier.darkness.name
+modifier.darkness_armor.desc=§oCan't see.§r\nSometimes inflicts attackers with blindness.
+
+modifier.fireproof_armor.name=Fireproof
+modifier.fireproof_armor.desc=§oFrom the depths of hell.§r\nProvides protection from fire damage and your armor doesn't take damage from fire damage.
+
+modifier.intangible_armor.name=modifier.intangible.name
+modifier.intangible_armor.desc=§oLike a wisp of smoke.§r\nProjectiles sometimes go right through you.
+
 modifier.limited_armor.name=modifier.limited.name
 modifier.limited_armor.desc=§oLIMITED POWER§r\nYou take more damage.
+
+modifier.renewable_energy_armor.name=Renewable Energy
+modifier.renewable_energy_armor.desc=§oWaste not, want not.§r\nWhen you take damage, your blood occasionally drops as coagulated blood.
+
+modifier.short_fuse_armor.name=modifier.short_fuse.name
+modifier.short_fuse_armor.desc=§oExplosive personality.§r\nBeing attacked sometimes causes a small explosion.
 
 modifier.supermassive_armor.name=modifier.supermassive.name
 modifier.supermassive_armor.desc=§oAn immovable object.§r\nMakes you immune to knockback.

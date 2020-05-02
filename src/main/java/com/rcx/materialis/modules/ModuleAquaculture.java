@@ -2,13 +2,13 @@ package com.rcx.materialis.modules;
 
 import com.rcx.materialis.MaterialisConfig;
 import com.rcx.materialis.MaterialisRegistry;
+import com.rcx.materialis.Util;
 import com.rcx.materialis.resources.FluidCustom;
 
 import c4.conarm.common.armor.traits.ArmorTraits;
 import c4.conarm.lib.materials.ArmorMaterialType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -53,17 +53,17 @@ public class ModuleAquaculture implements IModule {
 	@Override
 	public void registerItems(Register<Item> event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("neptunium")) {
-			OreDictionary.registerOre("ingotNeptunium", new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("aquaculture", "loot")), 1, 1));
+			OreDictionary.registerOre("ingotNeptunium", new ItemStack(Util.getItem("aquaculture", "loot"), 1, 1));
 		}
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		TinkerMaterials.bone.addItem(new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("aquaculture", "fish"))), 1, Material.VALUE_Ingot);
+		TinkerMaterials.bone.addItem(new ItemStack(Util.getItem("aquaculture", "fish")), 1, Material.VALUE_Ingot);
 
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("neptunium")) {
 			neptunium.addCommonItems("Neptunium");
-			neptunium.setRepresentativeItem(new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("aquaculture", "loot")), 1, 1));
+			neptunium.setRepresentativeItem(new ItemStack(Util.getItem("aquaculture", "loot"), 1, 1));
 			neptunium.setFluid(neptuniumFluid);
 			neptunium.setCraftable(false).setCastable(true);
 			neptunium.addTrait(TinkerTraits.holy, MaterialTypes.HEAD);

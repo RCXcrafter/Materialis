@@ -31,6 +31,7 @@ public class CommonProxy {
 		modules.add(new ModuleConarm());
 		modules.add(new ModuleErebus());
 		modules.add(new ModuleRoots());
+		modules.add(new ModuleNatura());
 		modules.add(new ModuleAquaculture());
 		modules.add(new ModuleAvaritia());
 

@@ -1,6 +1,7 @@
 package com.rcx.materialis.modules;
 
 import com.rcx.materialis.MaterialisConfig;
+import com.rcx.materialis.Util;
 
 import c4.conarm.common.armor.modifiers.ArmorModifiers;
 import c4.conarm.common.armor.traits.ArmorTraits;
@@ -8,7 +9,6 @@ import c4.conarm.lib.materials.ArmorMaterialType;
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
-import erebus.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -63,12 +63,12 @@ public class ModuleErebus implements IModule {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		TinkerMaterials.bone.addItem(new ItemStack(ModItems.MATERIALS, 1, 2), 1, Material.VALUE_Shard);
+		TinkerMaterials.bone.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 2), 1, Material.VALUE_Shard);
 
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bamboo")) {
 			bamboo.addItem("bamboo", 1, Material.VALUE_Fragment);
 			bamboo.addItem("plankBamboo", 1, Material.VALUE_Ingot);
-			bamboo.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 3));
+			bamboo.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 3));
 			bamboo.setCraftable(true);
 			bamboo.addTrait(TinkerTraits.ecological);
 			bamboo.setVisible();
@@ -88,7 +88,7 @@ public class ModuleErebus implements IModule {
 			jade.addItem("gemJade", 1, Material.VALUE_Ingot);
 			jade.addItem("nuggetJade", 1, Material.VALUE_Nugget);
 			jade.addItem("blockJade", 1, Material.VALUE_Block);
-			jade.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 1));
+			jade.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 1));
 			jade.setCraftable(true);
 			jade.addTrait(TinkerTraits.established);
 			TinkerRegistry.addMaterial(jade);
@@ -105,28 +105,28 @@ public class ModuleErebus implements IModule {
 			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fly_wing")) {
-			flyWing.addItem(new ItemStack(ModItems.MATERIALS, 1, 6), 1, Material.VALUE_Ingot);
-			flyWing.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 6));
+			flyWing.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 6), 1, Material.VALUE_Ingot);
+			flyWing.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 6));
 			flyWing.setCraftable(true);
 			TinkerRegistry.addMaterial(flyWing);
 			TinkerRegistry.addMaterialStats(flyWing, new FletchingMaterialStats(0.6F, 1.5F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("dragonfly_wing")) {
-			dragonflyWing.addItem(new ItemStack(ModItems.MATERIALS, 1, 24), 1, Material.VALUE_Ingot);
-			dragonflyWing.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 24));
+			dragonflyWing.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 24), 1, Material.VALUE_Ingot);
+			dragonflyWing.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 24));
 			dragonflyWing.setCraftable(true);
 			TinkerRegistry.addMaterial(dragonflyWing);
 			TinkerRegistry.addMaterialStats(dragonflyWing, new FletchingMaterialStats(1.0F, 1.25F));
-		}//EnumHelper.addArmorMaterial(name, textureName, durability, reductionAmounts, enchantability, soundOnEquip, toughness);
+		}
 
-		TinkerModifiers.modSharpness.addItem(new ItemStack(ModItems.WHETSTONE, 1, 1), 1, 72);
+		TinkerModifiers.modSharpness.addItem(new ItemStack(Util.getItem("erebus", "whetstone"), 1, 1), 1, 72);
 
-		TinkerModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(ModItems.MATERIALS, 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(ModItems.MATERIALS, 1, 12)));
+		TinkerModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(Util.getItem("erebus", "materials"), 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(Util.getItem("erebus", "materials"), 1, 12)));
 
 		if (ModuleConarm.loadArmor()) {
 			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton")) {
-				exoskeleton.addItem(new ItemStack(ModItems.MATERIALS, 1, 0), 1, Material.VALUE_Ingot);
-				exoskeleton.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 0));
+				exoskeleton.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 0), 1, Material.VALUE_Ingot);
+				exoskeleton.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 0));
 				exoskeleton.setCraftable(true);
 				exoskeleton.addTrait(ArmorTraits.skeletal);
 				TinkerRegistry.addMaterial(exoskeleton);
@@ -136,8 +136,8 @@ public class ModuleErebus implements IModule {
 						new TrimMaterialStats(17));
 			}
 			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_reinforced")) {
-				exoskeletonReinforced.addItem(new ItemStack(ModItems.MATERIALS, 1, 15), 1, Material.VALUE_Ingot);
-				exoskeletonReinforced.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 15));
+				exoskeletonReinforced.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 15), 1, Material.VALUE_Ingot);
+				exoskeletonReinforced.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 15));
 				exoskeletonReinforced.setCraftable(true);
 				exoskeletonReinforced.addTrait(ArmorTraits.heavy);
 				exoskeletonReinforced.addTrait(ArmorTraits.dense);
@@ -148,8 +148,8 @@ public class ModuleErebus implements IModule {
 						new TrimMaterialStats(27));
 			}
 			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_rhino")) {
-				exoskeletonRhino.addItem(new ItemStack(ModItems.MATERIALS, 1, 35), 1, Material.VALUE_Ingot);
-				exoskeletonRhino.setRepresentativeItem(new ItemStack(ModItems.MATERIALS, 1, 35));
+				exoskeletonRhino.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 35), 1, Material.VALUE_Ingot);
+				exoskeletonRhino.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 35));
 				exoskeletonRhino.setCraftable(true);
 				exoskeletonRhino.addTrait(ArmorTraits.dramatic);
 				TinkerRegistry.addMaterial(exoskeletonRhino);
@@ -159,7 +159,7 @@ public class ModuleErebus implements IModule {
 						new TrimMaterialStats(27));
 			}
 
-			ArmorModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(ModItems.MATERIALS, 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(ModItems.MATERIALS, 1, 12)));
+			ArmorModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(Util.getItem("erebus", "materials"), 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(Util.getItem("erebus", "materials"), 1, 12)));
 		}
 	}
 

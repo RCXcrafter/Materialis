@@ -2,6 +2,7 @@ package com.rcx.materialis.modules;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisConfig;
+import com.rcx.materialis.Util;
 import com.rcx.materialis.traits.armor.MaterialisArmorTraits;
 
 import c4.conarm.common.armor.traits.ArmorTraits;
@@ -54,11 +55,11 @@ public class ModuleRoots implements IModule {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("leather"))
-			ModuleVanilla.leather.addItem(Item.REGISTRY.getObject(new ResourceLocation("roots", "fey_leather")));
+			ModuleVanilla.leather.addItem(Util.getItem("roots", "fey_leather"));
 
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("living")) {
-			living.addItem(Item.REGISTRY.getObject(new ResourceLocation("roots", "spirit_herb")), 1, 0);
-			living.setRepresentativeItem(Item.REGISTRY.getObject(new ResourceLocation("roots", "spirit_herb")));
+			living.addItem(Util.getItem("roots", "spirit_herb"), 1, 0);
+			living.setRepresentativeItem(Util.getItem("roots", "spirit_herb"));
 			living.addTrait(TinkerTraits.ecological);
 			TinkerRegistry.addMaterial(living);
 			TinkerRegistry.addMaterialStats(living,
@@ -71,8 +72,8 @@ public class ModuleRoots implements IModule {
 		}
 		if (ModuleConarm.loadArmor()) {
 			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("wildwood")) {
-				wildwood.addItem(Item.REGISTRY.getObject(new ResourceLocation("roots", "bark_wildwood")), 1, 0);
-				wildwood.setRepresentativeItem(Item.REGISTRY.getObject(new ResourceLocation("roots", "bark_wildwood")));
+				wildwood.addItem(Util.getItem("roots", "bark_wildwood"), 1, Material.VALUE_Nugget);
+				wildwood.setRepresentativeItem(Util.getItem("roots", "bark_wildwood"));
 				wildwood.addTrait(MaterialisArmorTraits.untamed, ArmorMaterialType.CORE);
 				wildwood.addTrait(ArmorTraits.shielding);
 				TinkerRegistry.addMaterial(wildwood);
@@ -99,7 +100,7 @@ public class ModuleRoots implements IModule {
 			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("wildwood")) {
-			ItemStack wildwoodBark = new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("roots", "bark_wildwood")));
+			ItemStack wildwoodBark = new ItemStack(Util.getItem("roots", "bark_wildwood"));
 			for (IToolPart part : TinkerRegistry.getToolParts()) {
 				if (part.canUseMaterial(wildwood) && part.canUseMaterial(TinkerMaterials.iron) && part instanceof MaterialItem)
 					ModRecipes.addFeyCraftingRecipe(new ResourceLocation(Materialis.ID, "wildwood_armor_toolpart_" + ((MaterialItem) part).getRegistryName()),

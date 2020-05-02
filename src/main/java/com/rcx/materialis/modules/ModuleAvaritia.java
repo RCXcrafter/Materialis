@@ -1,6 +1,7 @@
 package com.rcx.materialis.modules;
 
 import com.rcx.materialis.MaterialisConfig;
+import com.rcx.materialis.Util;
 import com.rcx.materialis.modifiers.ModInfinity;
 import com.rcx.materialis.traits.MaterialisTraits;
 import com.rcx.materialis.traits.TraitCosmic;
@@ -10,8 +11,8 @@ import c4.conarm.lib.materials.ArmorMaterialType;
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
-import morph.avaritia.init.ModItems;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -58,7 +59,7 @@ public class ModuleAvaritia implements IModule {
 
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
 			crystalMatrix.addCommonItems("CrystalMatrix");
-			crystalMatrix.setRepresentativeItem(ModItems.crystal_matrix_ingot);
+			crystalMatrix.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 1));
 			crystalMatrix.setCraftable(true);
 			crystalMatrix.addTrait(MaterialisTraits.crystalline);
 			TinkerRegistry.addMaterial(crystalMatrix);
@@ -72,7 +73,7 @@ public class ModuleAvaritia implements IModule {
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("cosmic_neutronium")) {
 			neutronium.addCommonItems("CosmicNeutronium");
-			neutronium.setRepresentativeItem(ModItems.neutronium_ingot);
+			neutronium.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 4));
 			neutronium.setCraftable(true);
 			neutronium.addTrait(MaterialisTraits.supermassive);
 			TinkerRegistry.addMaterial(neutronium);
@@ -91,7 +92,7 @@ public class ModuleAvaritia implements IModule {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("infinity")) {
 			infinity.addItem("ingotInfinity", 1, Material.VALUE_Nugget * 2);
 			infinity.addItem("blockInfinity", 1, Material.VALUE_Ingot * 2);
-			infinity.setRepresentativeItem(ModItems.infinity_ingot);
+			infinity.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 6));
 			infinity.setCraftable(true);
 			infinity.addTrait(MaterialisTraits.cosmic);
 			infinity.addTrait(MaterialisTraits.unbreakable);
@@ -114,7 +115,7 @@ public class ModuleAvaritia implements IModule {
 				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.TRIM);
 			}
 		}
-		modInfinity.addItem(ModItems.infinity_catalyst, 1, 1);
+		modInfinity.addItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 5), 1, 1);
 	}
 
 	@Override

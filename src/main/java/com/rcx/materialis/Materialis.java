@@ -21,6 +21,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
 import com.rcx.materialis.modules.ModuleErebus;
+import com.rcx.materialis.modules.ModuleNatura;
 import com.rcx.materialis.proxy.CommonProxy;
 
 @Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-after:tconstruct")
@@ -48,6 +49,11 @@ public class Materialis {
 	static {
 		//register wood materials early
 		TinkerRegistry.addMaterial(ModuleErebus.bamboo);
+		TinkerRegistry.addMaterial(ModuleNatura.ghostwood);
+		TinkerRegistry.addMaterial(ModuleNatura.ghostwoodLeaf);
+		TinkerRegistry.addMaterial(ModuleNatura.bloodwood);
+		TinkerRegistry.addMaterial(ModuleNatura.darkwood);
+		TinkerRegistry.addMaterial(ModuleNatura.fusewood);
 	}
 
 	@EventHandler
