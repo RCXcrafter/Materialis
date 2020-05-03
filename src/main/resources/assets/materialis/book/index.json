@@ -1,0 +1,7 @@
+[
+  {
+    "name": "modifiers",
+    "data": "sections/modifiers.json",
+    "module": "tconstruct:TinkerTools"
+  }
+]

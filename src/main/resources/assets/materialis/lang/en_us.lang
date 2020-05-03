@@ -76,6 +76,10 @@ material.cosmic_neutronium.name=Neutronium
 material.infinity.name=Infinity
 
 
+//modifiers
+modifier.infinity_catalyst.name=Infinity
+
+
 //traits
 modifier.bloodthirst.name=Bloodthirst
 modifier.bloodthirst.desc=§oSlurp.§r\nYour tool loves blood, when you take damage, it will absorb your blood to repair itself.

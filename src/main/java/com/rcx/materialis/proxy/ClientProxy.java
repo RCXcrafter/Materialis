@@ -1,5 +1,6 @@
 package com.rcx.materialis.proxy;
 
+import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisRegistry;
 import com.rcx.materialis.render.TexturedTriColorRenderInfoDeserializer;
 import com.rcx.materialis.render.TexturedOutlineRenderInfoDeserializer;
@@ -10,12 +11,15 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import slimeknights.mantle.client.book.repository.ModuleFileRepository;
+import slimeknights.tconstruct.library.book.TinkerBook;
 import slimeknights.tconstruct.library.client.material.MaterialRenderInfoLoader;
 import slimeknights.tconstruct.smeltery.block.BlockMolten;
 
@@ -27,6 +31,7 @@ public class ClientProxy extends CommonProxy {
 	    MaterialRenderInfoLoader.addRenderInfo("tri_color", TriColorRenderInfoDeserializer.class);
 	    MaterialRenderInfoLoader.addRenderInfo("textured_outline", TexturedOutlineRenderInfoDeserializer.class);
 	    MaterialRenderInfoLoader.addRenderInfo("tri_color_textured", TexturedTriColorRenderInfoDeserializer.class);
+		TinkerBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Materialis.ID, "book").toString()));
 	}
 
 	@Override

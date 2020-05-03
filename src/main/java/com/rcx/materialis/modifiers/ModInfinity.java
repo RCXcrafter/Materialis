@@ -2,15 +2,15 @@ package com.rcx.materialis.modifiers;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.Tags;
+import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 
-public class ModInfinity extends Modifier {
+public class ModInfinity extends ToolModifier {
 
 	public ModInfinity() {
-		super("infinity_catalyst");
+		super("infinity_catalyst", 0xFF5555);
 	}
 
 	@Override

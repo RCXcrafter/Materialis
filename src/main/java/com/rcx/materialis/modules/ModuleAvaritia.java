@@ -34,7 +34,7 @@ public class ModuleAvaritia implements IModule {
 
 	public static Material infinity = new Material("infinity", 0xFF5555);
 
-	public static Modifier modInfinity = new ModInfinity();
+	public static Modifier modInfinity;
 
 	@Override
 	public Boolean shouldLoad() {
@@ -115,6 +115,7 @@ public class ModuleAvaritia implements IModule {
 				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.TRIM);
 			}
 		}
+		modInfinity = new ModInfinity();
 		modInfinity.addItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 5), 1, 1);
 	}
 
