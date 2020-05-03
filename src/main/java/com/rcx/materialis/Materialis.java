@@ -1,5 +1,7 @@
 package com.rcx.materialis;
 
+import com.rcx.materialis.proxy.CommonProxy;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,14 +19,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.CreativeTab;
-import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
-import com.rcx.materialis.modules.ModuleErebus;
-import com.rcx.materialis.modules.ModuleNatura;
-import com.rcx.materialis.proxy.CommonProxy;
-
-@Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-after:tconstruct")
+@Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-before:tconstruct")
 public class Materialis {
 
 	@SidedProxy(clientSide = "com.rcx.materialis.proxy.ClientProxy", serverSide = "com.rcx.materialis.proxy.CommonProxy")
@@ -45,16 +42,6 @@ public class Materialis {
 			return tabItem;
 		};
 	};
-	
-	static {
-		//register wood materials early
-		TinkerRegistry.addMaterial(ModuleErebus.bamboo);
-		TinkerRegistry.addMaterial(ModuleNatura.ghostwood);
-		TinkerRegistry.addMaterial(ModuleNatura.ghostwoodLeaf);
-		TinkerRegistry.addMaterial(ModuleNatura.bloodwood);
-		TinkerRegistry.addMaterial(ModuleNatura.darkwood);
-		TinkerRegistry.addMaterial(ModuleNatura.fusewood);
-	}
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent preEvent) {

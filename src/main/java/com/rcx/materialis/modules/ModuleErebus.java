@@ -25,13 +25,14 @@ import slimeknights.tconstruct.library.materials.FletchingMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
 public class ModuleErebus implements IModule {
 
-	public static Material bamboo = new Material("bamboo", 0x91A043, true);
+	public static Material bamboo = new Material("bamboo", 0x91A043);
 
 	public static Material jade = new Material("jade", 0x60CF7B);
 
@@ -56,7 +57,11 @@ public class ModuleErebus implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {}
+	public void preInit(FMLPreInitializationEvent preEvent) {
+		//register wood materials early
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bamboo"))
+			TinkerRegistry.addMaterial(bamboo);
+	}
 
 	@Override
 	public void registerItems(Register<Item> event) {}
@@ -71,7 +76,6 @@ public class ModuleErebus implements IModule {
 			bamboo.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 3));
 			bamboo.setCraftable(true);
 			bamboo.addTrait(TinkerTraits.ecological);
-			bamboo.setVisible();
 			TinkerRegistry.addMaterialStats(bamboo,
 					new HeadMaterialStats(100, 3.0F, 3.0F, 0),
 					new HandleMaterialStats(1.0F, 50),

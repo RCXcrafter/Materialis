@@ -28,15 +28,15 @@ import slimeknights.tconstruct.tools.TinkerMaterials;
 
 public class ModuleNatura implements IModule {
 
-	public static Material ghostwood = new Material("ghostwood", 0xBDBDBD, true);
+	public static Material ghostwood = new Material("ghostwood", 0xBDBDBD);
 
-	public static Material ghostwoodLeaf = new Material("ghostwood_leaf", 0xF1E9D4, true);
+	public static Material ghostwoodLeaf = new Material("ghostwood_leaf", 0xF1E9D4);
 
-	public static Material bloodwood = new Material("bloodwood", 0xA52919, true);
+	public static Material bloodwood = new Material("bloodwood", 0xA52919);
 
-	public static Material darkwood = new Material("darkwood", 0x3661A0, true);
+	public static Material darkwood = new Material("darkwood", 0x3661A0);
 
-	public static Material fusewood = new Material("fusewood", 0x416B4F, true);
+	public static Material fusewood = new Material("fusewood", 0x416B4F);
 
 	public static Material flamestring = new Material("flamestring", 0xB15E31);
 
@@ -53,7 +53,19 @@ public class ModuleNatura implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {}
+	public void preInit(FMLPreInitializationEvent preEvent) {
+		//register wood materials early
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("ghostwood"))
+			TinkerRegistry.addMaterial(ModuleNatura.ghostwood);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("ghostwood_leaf"))
+			TinkerRegistry.addMaterial(ModuleNatura.ghostwoodLeaf);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bloodwood"))
+			TinkerRegistry.addMaterial(ModuleNatura.bloodwood);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("darkwood"))
+			TinkerRegistry.addMaterial(ModuleNatura.darkwood);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fusewood"))
+			TinkerRegistry.addMaterial(ModuleNatura.fusewood);
+	}
 
 	@Override
 	public void registerItems(Register<Item> event) {}
@@ -69,7 +81,6 @@ public class ModuleNatura implements IModule {
 			ghostwood.setRepresentativeItem(Util.getItem("natura", "nether_planks"));
 			ghostwood.setCraftable(true);
 			ghostwood.addTrait(MaterialisTraits.intangible);
-			ghostwood.setVisible();
 			TinkerRegistry.addMaterialStats(ghostwood,
 					new HeadMaterialStats(35, 2.0F, 2.0F, 0),
 					new HandleMaterialStats(1.0F, 25),
@@ -87,7 +98,6 @@ public class ModuleNatura implements IModule {
 			ghostwoodLeaf.setRepresentativeItem(Util.getItem("natura", "nether_leaves"));
 			ghostwoodLeaf.setCraftable(true);
 			ghostwoodLeaf.addTrait(MaterialisTraits.phasing);
-			ghostwoodLeaf.setVisible();
 			TinkerRegistry.addMaterialStats(ghostwoodLeaf, new FletchingMaterialStats(0.9F, 1.5F));
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("ghostwood")) {
@@ -98,7 +108,6 @@ public class ModuleNatura implements IModule {
 			bloodwood.setRepresentativeItem(new ItemStack(Util.getItem("natura", "nether_planks"), 1, 1));
 			bloodwood.setCraftable(true);
 			bloodwood.addTrait(MaterialisTraits.bloodthirst);
-			bloodwood.setVisible();
 			TinkerRegistry.addMaterialStats(bloodwood,
 					new HeadMaterialStats(250, 7.0F, 5.0F, 2),
 					new HandleMaterialStats(1.0F, 88),
@@ -118,7 +127,6 @@ public class ModuleNatura implements IModule {
 			darkwood.setRepresentativeItem(new ItemStack(Util.getItem("natura", "nether_planks"), 1, 2));
 			darkwood.setCraftable(true);
 			darkwood.addTrait(MaterialisTraits.darkness);
-			darkwood.setVisible();
 			TinkerRegistry.addMaterialStats(darkwood,
 					new HeadMaterialStats(120, 4.0F, 3.0F, 1),
 					new HandleMaterialStats(1.0F, 36),
@@ -138,7 +146,6 @@ public class ModuleNatura implements IModule {
 			fusewood.setRepresentativeItem(new ItemStack(Util.getItem("natura", "nether_planks"), 1, 3));
 			fusewood.setCraftable(true);
 			fusewood.addTrait(MaterialisTraits.shortFuse);
-			fusewood.setVisible();
 			TinkerRegistry.addMaterialStats(fusewood,
 					new HeadMaterialStats(204, 6.0F, 4.0F, 2),
 					new HandleMaterialStats(1.0F, 60),
