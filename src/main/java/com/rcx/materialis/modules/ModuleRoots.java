@@ -23,6 +23,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.oredict.OreIngredient;
 import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.materials.BowMaterialStats;
+import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
+import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tinkering.MaterialItem;
@@ -55,11 +58,16 @@ public class ModuleRoots implements IModule {
 			living.addTrait(TinkerTraits.ecological);
 			TinkerRegistry.addMaterial(living);
 			TinkerRegistry.addMaterialStats(living,
-					new HeadMaterialStats(204, 6.0F, 4.0F, 2));
+					new HeadMaterialStats(204, 6.0F, 4.0F, 2),
+					new HandleMaterialStats(0.85F, 60),
+					new ExtraMaterialStats(50),
+					new BowMaterialStats(0.5F, 1.5F, 7.0F));
 			if (ModuleConarm.loadArmor()) {
 				living.addTrait(ArmorTraits.ecological, ArmorMaterialType.CORE);
 				TinkerRegistry.addMaterialStats(living,
-						new CoreMaterialStats(12, 11.25F));
+						new CoreMaterialStats(12, 11.25F),
+						new PlatesMaterialStats(0.85F, 5, 0.0F),
+						new TrimMaterialStats(4));
 			}
 		}
 		if (ModuleConarm.loadArmor()) {
