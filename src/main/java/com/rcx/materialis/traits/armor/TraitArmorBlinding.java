@@ -10,12 +10,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
-public class TraitArmorDarkness extends AbstractArmorTrait {
+public class TraitArmorBlinding extends AbstractArmorTrait {
 
 	public static float chance = 0.3f;
 
-	public TraitArmorDarkness() {
-		super("darkness", 0x3661A0);
+	public TraitArmorBlinding() {
+		super("blinding", 0x3661A0);
 	}
 
 	@Override

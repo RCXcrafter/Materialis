@@ -7,7 +7,7 @@ public class MaterialisArmorTraits {
 
 	public static IArmorTrait cosmic = new TraitArmorCosmic();
 	public static IArmorTrait crystalline = new TraitArmorCrystalline();
-	public static IArmorTrait darkness = new TraitArmorDarkness();
+	public static IArmorTrait darkness = new TraitArmorBlinding();
 	public static IArmorTrait fireproof = new TraitArmorFireproof();
 	public static IArmorTrait intangible = new TraitArmorIntangible();
 	public static IArmorTrait limited = new TraitArmorLimited();

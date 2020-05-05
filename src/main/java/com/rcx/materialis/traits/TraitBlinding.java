@@ -7,10 +7,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-public class TraitDarkness extends AbstractTrait {
+public class TraitBlinding extends AbstractTrait {
 
-	public TraitDarkness() {
-		super("darkness", 0x3661A0);
+	public TraitBlinding() {
+		super("blinding", 0x3661A0);
 	}
 
 	@Override

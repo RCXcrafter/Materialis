@@ -5,10 +5,10 @@ import slimeknights.tconstruct.library.traits.ITrait;
 
 public class MaterialisTraits {
 
+	public static ITrait blinding = new TraitBlinding();
 	public static ITrait bloodthirst = new TraitBloodthirst();
 	public static ITrait cosmic;
 	public static ITrait crystalline = new TraitCrystalline();
-	public static ITrait darkness = new TraitDarkness();
 	public static ITrait fancy = new TraitNoEffect("fancy", 0xFFE30B);
 	public static ITrait intangible = new TraitIntangible();
 	public static ITrait limited = new TraitLimited();
@@ -19,9 +19,9 @@ public class MaterialisTraits {
 	public static ITrait unlimited = new TraitNoEffect("unlimited", 0x64A7B5);
 	
 	public static void init() {
+		TinkerRegistry.addTrait(blinding);
 		TinkerRegistry.addTrait(bloodthirst);
 		TinkerRegistry.addTrait(crystalline);
-		TinkerRegistry.addTrait(darkness);
 		TinkerRegistry.addTrait(fancy);
 		TinkerRegistry.addTrait(intangible);
 		TinkerRegistry.addTrait(limited);

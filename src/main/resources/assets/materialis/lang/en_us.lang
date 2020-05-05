@@ -81,6 +81,9 @@ modifier.infinity_catalyst.name=Infinity
 
 
 //traits
+modifier.blinding.name=Blinding
+modifier.blinding.desc=§oCan't see.§r\nInflicts hit targets with blindness.
+
 modifier.bloodthirst.name=Bloodthirst
 modifier.bloodthirst.desc=§oSlurp.§r\nYour tool loves blood, when you take damage, it will absorb your blood to repair itself.
 
@@ -89,9 +92,6 @@ modifier.cosmic.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers
 
 modifier.crystalline.name=Crystalline
 modifier.crystalline.desc=§oNot just pretty.§r\nIncreases mining speed and attack damage.
-
-modifier.darkness.name=Darkness
-modifier.darkness.desc=§oCan't see.§r\nInflicts hit targets with blindness.
 
 modifier.depthdigger.name=Depth Digger
 modifier.depthdigger.desc=§oDig deep.§r\nIncreases mining speed the lower you are below sea level.
@@ -121,14 +121,14 @@ modifier.unlimited.name=Unlimited
 modifier.unlimited.desc=§oUNLIMITED POWER§r\nNegates the effect of the limited trait.
 
 //armor traits
+modifier.blinding_armor.name=modifier.blinding.name
+modifier.blinding_armor.desc=§oCan't see.§r\nSometimes inflicts attackers with blindness.
+
 modifier.cosmic_armor.name=modifier.cosmic.name
 modifier.cosmic_armor.desc=§oFrom the limitless reaches of space.§r\nExtra modifiers and invincibility.
 
 modifier.crystalline_armor.name=modifier.crystalline.name
 modifier.crystalline_armor.desc=§oNot just pretty.§r\nExtra damage reduction.
-
-modifier.darkness_armor.name=modifier.darkness.name
-modifier.darkness_armor.desc=§oCan't see.§r\nSometimes inflicts attackers with blindness.
 
 modifier.fireproof_armor.name=Fireproof
 modifier.fireproof_armor.desc=§oFrom the depths of hell.§r\nProvides protection from fire damage and your armor doesn't take damage from fire damage.
