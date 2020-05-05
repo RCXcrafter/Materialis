@@ -47,20 +47,14 @@ public class ModuleAvaritia implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {}
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {}
 
 	@Override
-	public void registerItems(Register<Item> event) {}
-
-	@Override
-	public void init(FMLInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent preEvent) {
 		MaterialisTraits.cosmic = new TraitCosmic();
 		TinkerRegistry.addTrait(MaterialisTraits.cosmic);
 
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
-			crystalMatrix.addCommonItems("CrystalMatrix");
-			crystalMatrix.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 1));
-			crystalMatrix.setCraftable(true);
 			crystalMatrix.addTrait(MaterialisTraits.crystalline);
 			TinkerRegistry.addMaterial(crystalMatrix);
 			TinkerRegistry.addMaterialStats(crystalMatrix,
@@ -72,9 +66,6 @@ public class ModuleAvaritia implements IModule {
 			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("cosmic_neutronium")) {
-			neutronium.addCommonItems("CosmicNeutronium");
-			neutronium.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 4));
-			neutronium.setCraftable(true);
 			neutronium.addTrait(MaterialisTraits.supermassive);
 			TinkerRegistry.addMaterial(neutronium);
 			TinkerRegistry.addMaterialStats(neutronium,
@@ -90,10 +81,6 @@ public class ModuleAvaritia implements IModule {
 			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("infinity")) {
-			infinity.addItem("ingotInfinity", 1, Material.VALUE_Nugget * 2);
-			infinity.addItem("blockInfinity", 1, Material.VALUE_Ingot * 2);
-			infinity.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 6));
-			infinity.setCraftable(true);
 			infinity.addTrait(MaterialisTraits.cosmic);
 			infinity.addTrait(MaterialisTraits.unbreakable);
 			TinkerRegistry.addMaterial(infinity);
@@ -116,6 +103,29 @@ public class ModuleAvaritia implements IModule {
 			}
 		}
 		modInfinity = new ModInfinity();
+	}
+
+	@Override
+	public void registerItems(Register<Item> event) {}
+
+	@Override
+	public void init(FMLInitializationEvent event) {
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
+			crystalMatrix.addCommonItems("CrystalMatrix");
+			crystalMatrix.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 1));
+			crystalMatrix.setCraftable(true);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("cosmic_neutronium")) {
+			neutronium.addCommonItems("CosmicNeutronium");
+			neutronium.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 4));
+			neutronium.setCraftable(true);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("infinity")) {
+			infinity.addItem("ingotInfinity", 1, Material.VALUE_Nugget * 2);
+			infinity.addItem("blockInfinity", 1, Material.VALUE_Ingot * 2);
+			infinity.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 6));
+			infinity.setCraftable(true);
+		}
 		modInfinity.addItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 5), 1, 1);
 	}
 

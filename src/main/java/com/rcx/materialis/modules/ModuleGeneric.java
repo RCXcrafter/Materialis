@@ -24,17 +24,17 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 
 public class ModuleGeneric implements IModule {
 
-	public static Material tin = new Material("tin", 0xD8BFA6);
+	public static Material tin = new Material("tin", 0xD8BFA6, true);
 
-	public static Material zinc = new Material("zinc", 0xEDEBBD);
+	public static Material zinc = new Material("zinc", 0xEDEBBD, true);
 
-	public static Material brass = new Material("brass", 0xFFD177);
+	public static Material brass = new Material("brass", 0xFFD177, true);
 
-	public static Material nickel = new Material("nickel", 0xCDD8B3);
+	public static Material nickel = new Material("nickel", 0xCDD8B3, true);
 
-	public static Material aluminum = new Material("aluminum", 0xEBC4BE);
+	public static Material aluminum = new Material("aluminum", 0xEBC4BE, true);
 
-	public static Material alubrass = new Material("alubrass", 0xF0D467);
+	public static Material alubrass = new Material("alubrass", 0xF0D467, true);
 
 	@Override
 	public Boolean shouldLoad() {
@@ -47,18 +47,11 @@ public class ModuleGeneric implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {}
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {}
 
 	@Override
-	public void registerItems(Register<Item> event) {}
-
-	@Override
-	public void init(FMLInitializationEvent event) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("tin") && OreDictionary.doesOreNameExist("ingotTin")) {
-			tin.addCommonItems("Tin");
-			tin.setRepresentativeItem(getOredictItem("ingotTin"));
-			tin.setFluid(TinkerFluids.tin);
-			tin.setCraftable(false).setCastable(true);
+	public void preInit(FMLPreInitializationEvent preEvent) {
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("tin")) {
 			tin.addTrait(TinkerTraits.depthdigger);
 			TinkerRegistry.addMaterial(tin);
 			TinkerRegistry.addMaterialStats(tin,
@@ -73,11 +66,7 @@ public class ModuleGeneric implements IModule {
 				tin.addTrait(ArmorTraits.petravidity, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("zinc") && OreDictionary.doesOreNameExist("ingotZinc")) {
-			zinc.addCommonItems("Zinc");
-			zinc.setRepresentativeItem(getOredictItem("ingotZinc"));
-			zinc.setFluid(TinkerFluids.zinc);
-			zinc.setCraftable(false).setCastable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("zinc")) {
 			zinc.addTrait(TinkerTraits.fractured);
 			TinkerRegistry.addMaterial(zinc);
 			TinkerRegistry.addMaterialStats(zinc,
@@ -92,11 +81,7 @@ public class ModuleGeneric implements IModule {
 				zinc.addTrait(ArmorTraits.indomitable, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("brass") && OreDictionary.doesOreNameExist("ingotBrass")) {
-			brass.addCommonItems("Brass");
-			brass.setRepresentativeItem(getOredictItem("ingotBrass"));
-			brass.setFluid(TinkerFluids.brass);
-			brass.setCraftable(false).setCastable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("brass")) {
 			brass.addTrait(TinkerTraits.momentum);
 			TinkerRegistry.addMaterial(brass);
 			TinkerRegistry.addMaterialStats(brass,
@@ -111,11 +96,7 @@ public class ModuleGeneric implements IModule {
 				brass.addTrait(ArmorTraits.lightweight, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("nickel") && OreDictionary.doesOreNameExist("ingotNickel")) {
-			nickel.addCommonItems("Nickel");
-			nickel.setRepresentativeItem(getOredictItem("ingotNickel"));
-			nickel.setFluid(TinkerFluids.nickel);
-			nickel.setCraftable(false).setCastable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("nickel")) {
 			nickel.addTrait(TinkerTraits.jagged);
 			TinkerRegistry.addMaterial(nickel);
 			TinkerRegistry.addMaterialStats(nickel,
@@ -130,11 +111,7 @@ public class ModuleGeneric implements IModule {
 				nickel.addTrait(ArmorTraits.rough, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("aluminum") && OreDictionary.doesOreNameExist("ingotAluminum")) {
-			aluminum.addCommonItems("Aluminum");
-			aluminum.setRepresentativeItem(getOredictItem("ingotAluminum"));
-			aluminum.setFluid(TinkerFluids.aluminum);
-			aluminum.setCraftable(false).setCastable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("aluminum")) {
 			aluminum.addTrait(TinkerTraits.lightweight);
 			TinkerRegistry.addMaterial(aluminum);
 			TinkerRegistry.addMaterialStats(aluminum,
@@ -149,11 +126,7 @@ public class ModuleGeneric implements IModule {
 				aluminum.addTrait(ArmorTraits.featherweight, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alubrass") && OreDictionary.doesOreNameExist("ingotAlubrass")) {
-			alubrass.addCommonItems("Alubrass");
-			alubrass.setRepresentativeItem(getOredictItem("ingotAlubrass"));
-			alubrass.setFluid(TinkerFluids.alubrass);
-			alubrass.setCraftable(false).setCastable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alubrass")) {
 			alubrass.addTrait(TinkerTraits.coldblooded);
 			TinkerRegistry.addMaterial(alubrass);
 			TinkerRegistry.addMaterialStats(alubrass,
@@ -171,26 +144,62 @@ public class ModuleGeneric implements IModule {
 	}
 
 	@Override
-	public void postInit(FMLPostInitializationEvent postEvent) {
+	public void registerItems(Register<Item> event) {}
+
+	@Override
+	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("tin") && OreDictionary.doesOreNameExist("ingotTin")) {
+			tin.addCommonItems("Tin");
+			tin.setRepresentativeItem(getOredictItem("ingotTin"));
+			tin.setFluid(TinkerFluids.tin);
+			tin.setCraftable(false).setCastable(true);
+
 			new MaterialIntegration(tin, TinkerFluids.tin, "Tin").toolforge().integrate();
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("zinc") && OreDictionary.doesOreNameExist("ingotZinc")) {
+			zinc.addCommonItems("Zinc");
+			zinc.setRepresentativeItem(getOredictItem("ingotZinc"));
+			zinc.setFluid(TinkerFluids.zinc);
+			zinc.setCraftable(false).setCastable(true);
+
 			new MaterialIntegration(zinc, TinkerFluids.zinc, "Zinc").toolforge().integrate();
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("brass") && OreDictionary.doesOreNameExist("ingotBrass")) {
+			brass.addCommonItems("Brass");
+			brass.setRepresentativeItem(getOredictItem("ingotBrass"));
+			brass.setFluid(TinkerFluids.brass);
+			brass.setCraftable(false).setCastable(true);
+
 			new MaterialIntegration(brass, TinkerFluids.brass, "Brass").toolforge().integrate();
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("nickel") && OreDictionary.doesOreNameExist("ingotNickel")) {
+			nickel.addCommonItems("Nickel");
+			nickel.setRepresentativeItem(getOredictItem("ingotNickel"));
+			nickel.setFluid(TinkerFluids.nickel);
+			nickel.setCraftable(false).setCastable(true);
+
 			new MaterialIntegration(nickel, TinkerFluids.nickel, "Nickel").toolforge().integrate();
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("aluminum") && OreDictionary.doesOreNameExist("ingotAluminum")) {
+			aluminum.addCommonItems("Aluminum");
+			aluminum.setRepresentativeItem(getOredictItem("ingotAluminum"));
+			aluminum.setFluid(TinkerFluids.aluminum);
+			aluminum.setCraftable(false).setCastable(true);
+
 			new MaterialIntegration(aluminum, TinkerFluids.aluminum, "Aluminum").toolforge().integrate();
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alubrass") && OreDictionary.doesOreNameExist("ingotAlubrass")) {
+			alubrass.addCommonItems("Alubrass");
+			alubrass.setRepresentativeItem(getOredictItem("ingotAlubrass"));
+			alubrass.setFluid(TinkerFluids.alubrass);
+			alubrass.setCraftable(false).setCastable(true);
+
 			new MaterialIntegration(alubrass, TinkerFluids.alubrass, "Alubrass").toolforge().integrate();
 		}
 	}
+
+	@Override
+	public void postInit(FMLPostInitializationEvent postEvent) {}
 
 	public static ItemStack getOredictItem(String entry) {
 		NonNullList<ItemStack> entries = OreDictionary.getOres(entry);

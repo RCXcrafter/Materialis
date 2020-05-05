@@ -12,5 +12,19 @@
   "logoFile": "materialis_logo.png",
   "screenshots": [],
   "dependencies": [tconstruct]
+},
+{
+  "modid": "materialispreload",
+  "name": "Materialis Pre Load",
+  "description": "Pre loading for Materialis",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://minecraft.curseforge.com/projects/materialis",
+  "updateUrl": "",
+  "authorList": ["RCXcrafter"],
+  "credits": "",
+  "logoFile": "materialis_logo.png",
+  "screenshots": [],
+  "parent":"materialis"
 }
 ]

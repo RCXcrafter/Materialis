@@ -24,7 +24,8 @@ public class CommonProxy {
 
 	public static List<IModule> modules = new ArrayList<IModule>();
 
-	public void preInit(FMLPreInitializationEvent preEvent) {
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {
+		MaterialisTraits.preInit();
 		modules.add(new ModuleVanilla());
 		modules.add(new ModuleGeneric());
 		modules.add(new ModuleTConstruct());
@@ -37,12 +38,18 @@ public class CommonProxy {
 
 		for (IModule module : modules) {
 			if (module.shouldLoad())
+				module.earlyPreInit(preEvent);
+		}
+	}
+
+	public void preInit(FMLPreInitializationEvent preEvent) {
+		for (IModule module : modules) {
+			if (module.shouldLoad())
 				module.preInit(preEvent);
 		}
 	}
 
 	public void init(FMLInitializationEvent event) {
-		MaterialisTraits.init();
 		for (IModule module : modules) {
 			if (module.shouldLoad())
 				module.init(event);

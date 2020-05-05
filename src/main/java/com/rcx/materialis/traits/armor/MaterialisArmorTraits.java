@@ -5,9 +5,9 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 
 public class MaterialisArmorTraits {
 
+	public static IArmorTrait blinding = new TraitArmorBlinding();
 	public static IArmorTrait cosmic = new TraitArmorCosmic();
 	public static IArmorTrait crystalline = new TraitArmorCrystalline();
-	public static IArmorTrait darkness = new TraitArmorBlinding();
 	public static IArmorTrait fireproof = new TraitArmorFireproof();
 	public static IArmorTrait intangible = new TraitArmorIntangible();
 	public static IArmorTrait limited = new TraitArmorLimited();
@@ -17,10 +17,10 @@ public class MaterialisArmorTraits {
 	public static IArmorTrait unbreakable = new TraitArmorUnbreakable();
 	public static IArmorTrait untamed = new TraitArmorUntamed();
 	
-	public static void init() {
+	public static void preInit() {
+		TinkerRegistry.addTrait(blinding);
 		TinkerRegistry.addTrait(cosmic);
 		TinkerRegistry.addTrait(crystalline);
-		TinkerRegistry.addTrait(darkness);
 		TinkerRegistry.addTrait(fireproof);
 		TinkerRegistry.addTrait(intangible);
 		TinkerRegistry.addTrait(limited);

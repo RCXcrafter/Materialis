@@ -12,6 +12,8 @@ public interface IModule {
 
 	public String getName();
 
+	public void earlyPreInit(FMLPreInitializationEvent preEvent);
+
 	public void preInit(FMLPreInitializationEvent preEvent);
 
 	public void registerItems(RegistryEvent.Register<Item> event);

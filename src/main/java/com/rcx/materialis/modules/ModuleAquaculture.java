@@ -43,10 +43,30 @@ public class ModuleAquaculture implements IModule {
 	}
 
 	@Override
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {}
+
+	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("neptunium")) {
 			neptuniumFluid.setTemperature(1000);
 			MaterialisRegistry.registerFluid(neptuniumFluid, neptunium.materialTextColor);
+
+			neptunium.addTrait(TinkerTraits.holy, MaterialTypes.HEAD);
+			neptunium.addTrait(TinkerTraits.aquadynamic, MaterialTypes.HEAD);
+			neptunium.addTrait(TinkerTraits.aquadynamic);
+			TinkerRegistry.addMaterial(neptunium);
+			TinkerRegistry.addMaterialStats(neptunium,
+					new HeadMaterialStats(650, 9.0F, 6.0F, 3),
+					new HandleMaterialStats(2.0F, 200),
+					new ExtraMaterialStats(500),
+					new BowMaterialStats(0.7F, 1.9F, 9.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(neptunium, 2.0F);
+				neptunium.addTrait(ArmorTraits.blessed, ArmorMaterialType.CORE);
+				neptunium.addTrait(ArmorTraits.absorbent, ArmorMaterialType.CORE);
+				neptunium.addTrait(ArmorTraits.aquaspeed, ArmorMaterialType.PLATES);
+				neptunium.addTrait(ArmorTraits.aquaspeed, ArmorMaterialType.TRIM);
+			}
 		}
 	}
 
@@ -66,22 +86,6 @@ public class ModuleAquaculture implements IModule {
 			neptunium.setRepresentativeItem(new ItemStack(Util.getItem("aquaculture", "loot"), 1, 1));
 			neptunium.setFluid(neptuniumFluid);
 			neptunium.setCraftable(false).setCastable(true);
-			neptunium.addTrait(TinkerTraits.holy, MaterialTypes.HEAD);
-			neptunium.addTrait(TinkerTraits.aquadynamic, MaterialTypes.HEAD);
-			neptunium.addTrait(TinkerTraits.aquadynamic);
-			TinkerRegistry.addMaterial(neptunium);
-			TinkerRegistry.addMaterialStats(neptunium,
-					new HeadMaterialStats(650, 9.0F, 6.0F, 3),
-					new HandleMaterialStats(2.0F, 200),
-					new ExtraMaterialStats(500),
-					new BowMaterialStats(0.7F, 1.9F, 9.0F));
-			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(neptunium, 2.0F);
-				neptunium.addTrait(ArmorTraits.blessed, ArmorMaterialType.CORE);
-				neptunium.addTrait(ArmorTraits.absorbent, ArmorMaterialType.CORE);
-				neptunium.addTrait(ArmorTraits.aquaspeed, ArmorMaterialType.PLATES);
-				neptunium.addTrait(ArmorTraits.aquaspeed, ArmorMaterialType.TRIM);
-			}
 		}
 	}
 

@@ -75,6 +75,9 @@ public class ModuleTConstruct implements IModule {
 	}
 
 	@Override
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {}
+
+	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fairy")) {
 			MaterialisRegistry.registerItem(fairyIngot);
@@ -82,6 +85,21 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.registerBlock(fairyBlock);
 			fairyFluid.setTemperature(900);
 			MaterialisRegistry.registerFluid(fairyFluid, fairy.materialTextColor);
+
+			fairy.addTrait(TinkerTraits.unnatural, MaterialTypes.HEAD);
+			fairy.addTrait(TinkerTraits.holy);
+			TinkerRegistry.addMaterial(fairy);
+			TinkerRegistry.addMaterialStats(fairy,
+					new HeadMaterialStats(843, 6.68F, 2.5F, 4),
+					new HandleMaterialStats(0.5F, 188),
+					new ExtraMaterialStats(200),
+					new BowMaterialStats(0.9F, 1.1F, 1.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(fairy, 2.0F);
+				fairy.addTrait(ArmorTraits.shielding, ArmorMaterialType.CORE);
+				fairy.addTrait(ArmorTraits.blessed, ArmorMaterialType.PLATES);
+				fairy.addTrait(ArmorTraits.blessed, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
 			MaterialisRegistry.registerItem(pokefenniumIngot);
@@ -89,6 +107,22 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.registerBlock(pokefenniumBlock);
 			pokefenniumFluid.setTemperature(850);
 			MaterialisRegistry.registerFluid(pokefenniumFluid, pokefennium.materialTextColor);
+
+			pokefennium.addTrait(MaterialisTraits.unlimited, MaterialTypes.HEAD);
+			pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.HANDLE);
+			pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.EXTRA);
+			TinkerRegistry.addMaterial(pokefennium);
+			TinkerRegistry.addMaterialStats(pokefennium,
+					new HeadMaterialStats(100, 6.98F, 2.5F, 4),
+					new HandleMaterialStats(3.0F, 100),
+					new ExtraMaterialStats(400),
+					new BowMaterialStats(0.5F, 1.3F, 5.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(pokefennium, 1.0F);
+				pokefennium.addTrait(MaterialisTraits.unlimited, ArmorMaterialType.CORE);
+				pokefennium.addTrait(MaterialisArmorTraits.limited, ArmorMaterialType.PLATES);
+				pokefennium.addTrait(MaterialisArmorTraits.limited, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
 			MaterialisRegistry.registerItem(redAurumIngot);
@@ -96,6 +130,20 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.registerBlock(redAurumBlock);
 			redAurumFluid.setTemperature(455);
 			MaterialisRegistry.registerFluid(redAurumFluid, redAurum.materialTextColor);
+
+			redAurum.addTrait(TinkerTraits.sharp);
+			TinkerRegistry.addMaterial(redAurum);
+			TinkerRegistry.addMaterialStats(redAurum,
+					new HeadMaterialStats(46, 12.2F, 3.0F, 2),
+					new HandleMaterialStats(0.5F, 6),
+					new ExtraMaterialStats(30),
+					new BowMaterialStats(1.9F, 0.5F, 0.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(redAurum, 0.0F);
+				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.CORE);
+				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.PLATES);
+				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
 			MaterialisRegistry.registerItem(drulloyIngot);
@@ -103,6 +151,21 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.registerBlock(drulloyBlock);
 			drulloyFluid.setTemperature(643);
 			MaterialisRegistry.registerFluid(drulloyFluid, drulloy.materialTextColor);
+
+			drulloy.addTrait(TinkerTraits.heavy, MaterialTypes.HEAD);
+			drulloy.addTrait(TinkerTraits.dense);
+			TinkerRegistry.addMaterial(drulloy);
+			TinkerRegistry.addMaterialStats(drulloy,
+					new HeadMaterialStats(199, 8.45F, 2.9F, 2),
+					new HandleMaterialStats(0.4F, 100),
+					new ExtraMaterialStats(100),
+					new BowMaterialStats(1.3F, 1.2F, 2.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(drulloy, 0.5F);
+				drulloy.addTrait(ArmorTraits.heavy, ArmorMaterialType.CORE);
+				drulloy.addTrait(ArmorTraits.dense, ArmorMaterialType.PLATES);
+				drulloy.addTrait(ArmorTraits.dense, ArmorMaterialType.TRIM);
+			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
 			MaterialisRegistry.registerItem(alumiteIngot);
@@ -110,6 +173,20 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.registerBlock(alumiteBlock);
 			alumiteFluid.setTemperature(940);
 			MaterialisRegistry.registerFluid(alumiteFluid, alumite.materialTextColor);
+
+			alumite.addTrait(TinkerTraits.duritos);
+			TinkerRegistry.addMaterial(alumite);
+			TinkerRegistry.addMaterialStats(alumite,
+					new HeadMaterialStats(700, 8.0F, 4.5F, 4),
+					new HandleMaterialStats(1.3F, 80),
+					new ExtraMaterialStats(100),
+					new BowMaterialStats(1.1F, 1.3F, 4.0F));
+			if (ModuleConarm.loadArmor()) {
+				ModuleConarm.generateArmorStats(alumite, 2.5F);
+				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.CORE);
+				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.PLATES);
+				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.TRIM);
+			}
 		}
 	}
 
@@ -149,105 +226,7 @@ public class ModuleTConstruct implements IModule {
 			fairy.setRepresentativeItem(fairyIngot);
 			fairy.setFluid(fairyFluid);
 			fairy.setCraftable(false).setCastable(true);
-			fairy.addTrait(TinkerTraits.unnatural, MaterialTypes.HEAD);
-			fairy.addTrait(TinkerTraits.holy);
-			TinkerRegistry.addMaterial(fairy);
-			TinkerRegistry.addMaterialStats(fairy,
-					new HeadMaterialStats(843, 6.68F, 2.5F, 4),
-					new HandleMaterialStats(0.5F, 188),
-					new ExtraMaterialStats(200),
-					new BowMaterialStats(0.9F, 1.1F, 1.0F));
-			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(fairy, 2.0F);
-				fairy.addTrait(ArmorTraits.shielding, ArmorMaterialType.CORE);
-				fairy.addTrait(ArmorTraits.blessed, ArmorMaterialType.PLATES);
-				fairy.addTrait(ArmorTraits.blessed, ArmorMaterialType.TRIM);
-			}
-		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
-			pokefennium.addCommonItems("Pokefennium");
-			pokefennium.setRepresentativeItem(pokefenniumIngot);
-			pokefennium.setFluid(pokefenniumFluid);
-			pokefennium.setCraftable(false).setCastable(true);
-			pokefennium.addTrait(MaterialisTraits.unlimited, MaterialTypes.HEAD);
-			pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.HANDLE);
-			pokefennium.addTrait(MaterialisTraits.limited, MaterialTypes.EXTRA);
-			TinkerRegistry.addMaterial(pokefennium);
-			TinkerRegistry.addMaterialStats(pokefennium,
-					new HeadMaterialStats(100, 6.98F, 2.5F, 4),
-					new HandleMaterialStats(3.0F, 100),
-					new ExtraMaterialStats(400),
-					new BowMaterialStats(0.5F, 1.3F, 5.0F));
-			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(pokefennium, 1.0F);
-				pokefennium.addTrait(MaterialisTraits.unlimited, ArmorMaterialType.CORE);
-				pokefennium.addTrait(MaterialisArmorTraits.limited, ArmorMaterialType.PLATES);
-				pokefennium.addTrait(MaterialisArmorTraits.limited, ArmorMaterialType.TRIM);
-			}
-		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
-			redAurum.addCommonItems("RedAurum");
-			redAurum.setRepresentativeItem(redAurumIngot);
-			redAurum.setFluid(redAurumFluid);
-			redAurum.setCraftable(false).setCastable(true);
-			redAurum.addTrait(TinkerTraits.sharp);
-			TinkerRegistry.addMaterial(redAurum);
-			TinkerRegistry.addMaterialStats(redAurum,
-					new HeadMaterialStats(46, 12.2F, 3.0F, 2),
-					new HandleMaterialStats(0.5F, 6),
-					new ExtraMaterialStats(30),
-					new BowMaterialStats(1.9F, 0.5F, 0.0F));
-			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(redAurum, 0.0F);
-				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.CORE);
-				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.PLATES);
-				redAurum.addTrait(ArmorTraits.indomitable, ArmorMaterialType.TRIM);
-			}
-		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
-			drulloy.addCommonItems("Drulloy");
-			drulloy.setRepresentativeItem(drulloyIngot);
-			drulloy.setFluid(drulloyFluid);
-			drulloy.setCraftable(false).setCastable(true);
-			drulloy.addTrait(TinkerTraits.heavy, MaterialTypes.HEAD);
-			drulloy.addTrait(TinkerTraits.dense);
-			TinkerRegistry.addMaterial(drulloy);
-			TinkerRegistry.addMaterialStats(drulloy,
-					new HeadMaterialStats(199, 8.45F, 2.9F, 2),
-					new HandleMaterialStats(0.4F, 100),
-					new ExtraMaterialStats(100),
-					new BowMaterialStats(1.3F, 1.2F, 2.0F));
-			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(drulloy, 0.5F);
-				drulloy.addTrait(ArmorTraits.heavy, ArmorMaterialType.CORE);
-				drulloy.addTrait(ArmorTraits.dense, ArmorMaterialType.PLATES);
-				drulloy.addTrait(ArmorTraits.dense, ArmorMaterialType.TRIM);
-			}
-		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
-			alumite.addCommonItems("Alumite");
-			alumite.setRepresentativeItem(alumiteIngot);
-			alumite.setFluid(alumiteFluid);
-			alumite.setCraftable(false).setCastable(true);
-			alumite.addTrait(TinkerTraits.duritos);
-			TinkerRegistry.addMaterial(alumite);
-			TinkerRegistry.addMaterialStats(alumite,
-					new HeadMaterialStats(700, 8.0F, 4.5F, 4),
-					new HandleMaterialStats(1.3F, 80),
-					new ExtraMaterialStats(100),
-					new BowMaterialStats(1.1F, 1.3F, 4.0F));
-			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(alumite, 2.5F);
-				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.CORE);
-				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.PLATES);
-				alumite.addTrait(ArmorTraits.duritae, ArmorMaterialType.TRIM);
-			}
-		}
-	}
 
-	@Override
-	public void postInit(FMLPostInitializationEvent postEvent) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fairy")) {
 			Materialis.tabItem = new ItemStack(fairyIngot);
 			TinkerRegistry.registerAlloy(new FluidStack(fairyFluid, 2), new FluidStack(TinkerFluids.ardite, 1), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.blood, 1));
 			new MaterialIntegration(fairy, fairyFluid, "Fairy").toolforge().integrate();
@@ -257,6 +236,11 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.addRecipe(new ItemStack(fairyIngot, 9), "fairy_unblock", "fairy_ingot", new Object[]{"B", 'B', "blockFairy"});
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("pokefennium")) {
+			pokefennium.addCommonItems("Pokefennium");
+			pokefennium.setRepresentativeItem(pokefenniumIngot);
+			pokefennium.setFluid(pokefenniumFluid);
+			pokefennium.setCraftable(false).setCastable(true);
+
 			TinkerRegistry.registerAlloy(new FluidStack(pokefenniumFluid, 2), new FluidStack(TinkerFluids.cobalt, 1), new FluidStack(TinkerFluids.iron, 1), new FluidStack(TinkerFluids.blood, 2));
 			new MaterialIntegration(pokefennium, pokefenniumFluid, "Pokefennium").toolforge().integrate();
 			MaterialisRegistry.addRecipe(new ItemStack(pokefenniumNugget, 9), "pokefennium_nugget", new Object[]{"I", 'I', "ingotPokefennium"});
@@ -265,6 +249,11 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.addRecipe(new ItemStack(pokefenniumIngot, 9), "pokefennium_unblock", "pokefennium_ingot", new Object[]{"B", 'B', "blockPokefennium"});
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("red_aurum")) {
+			redAurum.addCommonItems("RedAurum");
+			redAurum.setRepresentativeItem(redAurumIngot);
+			redAurum.setFluid(redAurumFluid);
+			redAurum.setCraftable(false).setCastable(true);
+
 			TinkerRegistry.registerAlloy(new FluidStack(redAurumFluid, 1), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.blood, 3));
 			new MaterialIntegration(redAurum, redAurumFluid, "RedAurum").toolforge().integrate();
 			MaterialisRegistry.addRecipe(new ItemStack(redAurumNugget, 9), "red_aurum_nugget", new Object[]{"I", 'I', "ingotRedAurum"});
@@ -273,6 +262,11 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.addRecipe(new ItemStack(redAurumIngot, 9), "red_aurum_unblock", "red_aurum_ingot", new Object[]{"B", 'B', "blockRedAurum"});
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("drulloy")) {
+			drulloy.addCommonItems("Drulloy");
+			drulloy.setRepresentativeItem(drulloyIngot);
+			drulloy.setFluid(drulloyFluid);
+			drulloy.setCraftable(false).setCastable(true);
+
 			TinkerRegistry.registerAlloy(new FluidStack(drulloyFluid, 2), new FluidStack(TinkerFluids.gold, 1), new FluidStack(TinkerFluids.clay, 4));
 			new MaterialIntegration(drulloy, drulloyFluid, "Drulloy").toolforge().integrate();
 			MaterialisRegistry.addRecipe(new ItemStack(drulloyNugget, 9), "drulloy_nugget", new Object[]{"I", 'I', "ingotDrulloy"});
@@ -281,6 +275,11 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.addRecipe(new ItemStack(drulloyIngot, 9), "drulloy_unblock", "drulloy_ingot", new Object[]{"B", 'B', "blockDrulloy"});
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("alumite")) {
+			alumite.addCommonItems("Alumite");
+			alumite.setRepresentativeItem(alumiteIngot);
+			alumite.setFluid(alumiteFluid);
+			alumite.setCraftable(false).setCastable(true);
+
 			TinkerRegistry.registerAlloy(new FluidStack(alumiteFluid, 3), new FluidStack(TinkerFluids.obsidian, 2), new FluidStack(TinkerFluids.iron, 2), new FluidStack(TinkerFluids.aluminum, 5));
 			new MaterialIntegration(alumite, alumiteFluid, "Alumite").toolforge().integrate();
 			MaterialisRegistry.addRecipe(new ItemStack(alumiteNugget, 9), "alumite_nugget", new Object[]{"I", 'I', "ingotAlumite"});
@@ -289,4 +288,7 @@ public class ModuleTConstruct implements IModule {
 			MaterialisRegistry.addRecipe(new ItemStack(alumiteIngot, 9), "alumite_unblock", "alumite_ingot", new Object[]{"B", 'B', "blockAlumite"});
 		}
 	}
+
+	@Override
+	public void postInit(FMLPostInitializationEvent postEvent) {}
 }

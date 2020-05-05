@@ -49,18 +49,11 @@ public class ModuleVanilla implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {}
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {}
 
 	@Override
-	public void registerItems(Register<Item> event) {}
-
-	@Override
-	public void init(FMLInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent preEvent) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("gold")) {
-			gold.addCommonItems("Gold");
-			gold.setRepresentativeItem(Items.GOLD_INGOT);
-			gold.setFluid(TinkerFluids.gold);
-			gold.setCraftable(false).setCastable(true);
 			gold.addTrait(MaterialisTraits.fancy);
 			TinkerRegistry.addMaterial(gold);
 			TinkerRegistry.addMaterialStats(gold,
@@ -72,11 +65,6 @@ public class ModuleVanilla implements IModule {
 				ModuleConarm.generateArmorStats(gold, 0.0F);
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("quartz")) {
-			quartz.addItem("gemQuartz", 1, Material.VALUE_Ingot);
-			quartz.addItem("nuggetQuartz", 1, Material.VALUE_Nugget);
-			quartz.addItem("blockQuartz", 1, Material.VALUE_Ingot * 4);
-			quartz.setRepresentativeItem(Items.QUARTZ);
-			quartz.setCraftable(true);
 			quartz.addTrait(TinkerTraits.sharp);
 			TinkerRegistry.addMaterial(quartz);
 			TinkerRegistry.addMaterialStats(quartz,
@@ -92,11 +80,6 @@ public class ModuleVanilla implements IModule {
 			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("diamond")) {
-			diamond.addItem("gemDiamond", 1, Material.VALUE_Ingot);
-			diamond.addItem("nuggetDiamond", 1, Material.VALUE_Nugget);
-			diamond.addItem("blockDiamond", 1, Material.VALUE_Block);
-			diamond.setRepresentativeItem(Items.DIAMOND);
-			diamond.setCraftable(true);
 			diamond.addTrait(TinkerTraits.crumbling, MaterialTypes.HEAD);
 			diamond.addTrait(TinkerTraits.crude);
 			TinkerRegistry.addMaterial(diamond);
@@ -113,11 +96,6 @@ public class ModuleVanilla implements IModule {
 			}
 		}
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("emerald")) {
-			emerald.addItem("gemEmerald", 1, Material.VALUE_Ingot);
-			emerald.addItem("nuggetEmerald", 1, Material.VALUE_Nugget);
-			emerald.addItem("blockEmerald", 1, Material.VALUE_Block);
-			emerald.setRepresentativeItem(Items.EMERALD);
-			emerald.setCraftable(true);
 			emerald.addTrait(TinkerTraits.established);
 			TinkerRegistry.addMaterial(emerald);
 			TinkerRegistry.addMaterialStats(emerald,
@@ -133,9 +111,6 @@ public class ModuleVanilla implements IModule {
 			}
 		}
 		if (ModuleConarm.loadArmor() && !MaterialisConfig.blacklist.isMaterialBlacklisted("leather")) {
-			leather.addItem("leather", 1, Material.VALUE_Ingot);
-			leather.setRepresentativeItem(new ItemStack(Items.LEATHER));
-			leather.setCraftable(true);
 			leather.addTrait(ArmorTraits.ecological);
 			TinkerRegistry.addMaterial(leather);
 			TinkerRegistry.addMaterialStats(leather,
@@ -146,9 +121,46 @@ public class ModuleVanilla implements IModule {
 	}
 
 	@Override
-	public void postInit(FMLPostInitializationEvent postEvent) {
+	public void registerItems(Register<Item> event) {}
+
+	@Override
+	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("gold")) {
+			gold.addCommonItems("Gold");
+			gold.setRepresentativeItem(Items.GOLD_INGOT);
+			gold.setFluid(TinkerFluids.gold);
+			gold.setCraftable(false).setCastable(true);
+
 			new MaterialIntegration(gold, TinkerFluids.gold, "Gold").toolforge().integrate();
 		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("quartz")) {
+			quartz.addItem("gemQuartz", 1, Material.VALUE_Ingot);
+			quartz.addItem("nuggetQuartz", 1, Material.VALUE_Nugget);
+			quartz.addItem("blockQuartz", 1, Material.VALUE_Ingot * 4);
+			quartz.setRepresentativeItem(Items.QUARTZ);
+			quartz.setCraftable(true);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("diamond")) {
+			diamond.addItem("gemDiamond", 1, Material.VALUE_Ingot);
+			diamond.addItem("nuggetDiamond", 1, Material.VALUE_Nugget);
+			diamond.addItem("blockDiamond", 1, Material.VALUE_Block);
+			diamond.setRepresentativeItem(Items.DIAMOND);
+			diamond.setCraftable(true);
+		}
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("emerald")) {
+			emerald.addItem("gemEmerald", 1, Material.VALUE_Ingot);
+			emerald.addItem("nuggetEmerald", 1, Material.VALUE_Nugget);
+			emerald.addItem("blockEmerald", 1, Material.VALUE_Block);
+			emerald.setRepresentativeItem(Items.EMERALD);
+			emerald.setCraftable(true);
+		}
+		if (ModuleConarm.loadArmor() && !MaterialisConfig.blacklist.isMaterialBlacklisted("leather")) {
+			leather.addItem("leather", 1, Material.VALUE_Ingot);
+			leather.setRepresentativeItem(new ItemStack(Items.LEATHER));
+			leather.setCraftable(true);
+		}
 	}
+
+	@Override
+	public void postInit(FMLPostInitializationEvent postEvent) {}
 }

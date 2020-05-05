@@ -18,7 +18,7 @@ public class MaterialisTraits {
 	public static ITrait unbreakable = new TraitUnbreakable();
 	public static ITrait unlimited = new TraitNoEffect("unlimited", 0x64A7B5);
 	
-	public static void init() {
+	public static void preInit() {
 		TinkerRegistry.addTrait(blinding);
 		TinkerRegistry.addTrait(bloodthirst);
 		TinkerRegistry.addTrait(crystalline);

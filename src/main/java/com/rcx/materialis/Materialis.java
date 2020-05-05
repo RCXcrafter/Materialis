@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.CreativeTab;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
-@Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-before:tconstruct")
+@Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-after:tconstruct;after:conarm;after:aquaculture")
 public class Materialis {
 
 	@SidedProxy(clientSide = "com.rcx.materialis.proxy.ClientProxy", serverSide = "com.rcx.materialis.proxy.CommonProxy")

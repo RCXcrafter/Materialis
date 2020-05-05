@@ -45,15 +45,18 @@ public class ModuleConarm implements IModule {
 	}
 
 	@Override
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {
+		MaterialisArmorTraits.preInit();
+	}
+
+	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {}
 
 	@Override
 	public void registerItems(Register<Item> event) {}
 
 	@Override
-	public void init(FMLInitializationEvent event) {
-		MaterialisArmorTraits.init();
-	}
+	public void init(FMLInitializationEvent event) {}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent postEvent) {}

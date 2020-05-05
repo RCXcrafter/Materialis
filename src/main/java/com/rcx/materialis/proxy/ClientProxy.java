@@ -26,12 +26,19 @@ import slimeknights.tconstruct.smeltery.block.BlockMolten;
 public class ClientProxy extends CommonProxy {
 
 	@Override
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {
+		super.earlyPreInit(preEvent);
+		MaterialRenderInfoLoader.addRenderInfo("tri_color", TriColorRenderInfoDeserializer.class);
+		MaterialRenderInfoLoader.addRenderInfo("textured_outline", TexturedOutlineRenderInfoDeserializer.class);
+		MaterialRenderInfoLoader.addRenderInfo("tri_color_textured", TexturedTriColorRenderInfoDeserializer.class);
+	}
+
+	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
 		super.preInit(preEvent);
-	    MaterialRenderInfoLoader.addRenderInfo("tri_color", TriColorRenderInfoDeserializer.class);
-	    MaterialRenderInfoLoader.addRenderInfo("textured_outline", TexturedOutlineRenderInfoDeserializer.class);
-	    MaterialRenderInfoLoader.addRenderInfo("tri_color_textured", TexturedTriColorRenderInfoDeserializer.class);
 		TinkerBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Materialis.ID, "book").toString()));
+		//if (ModuleConarm.loadArmor())
+			//ArmoryBook.INSTANCE.addRepository(new ModuleFileRepository(new ResourceLocation(Materialis.ID, "book_armor").toString()));
 	}
 
 	@Override

@@ -47,19 +47,11 @@ public class ModuleRoots implements IModule {
 	}
 
 	@Override
-	public void preInit(FMLPreInitializationEvent preEvent) {}
+	public void earlyPreInit(FMLPreInitializationEvent preEvent) {}
 
 	@Override
-	public void registerItems(Register<Item> event) {}
-
-	@Override
-	public void init(FMLInitializationEvent event) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("leather"))
-			ModuleVanilla.leather.addItem(Util.getItem("roots", "fey_leather"));
-
+	public void preInit(FMLPreInitializationEvent preEvent) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("living")) {
-			living.addItem(Util.getItem("roots", "spirit_herb"), 1, 0);
-			living.setRepresentativeItem(Util.getItem("roots", "spirit_herb"));
 			living.addTrait(TinkerTraits.ecological);
 			TinkerRegistry.addMaterial(living);
 			TinkerRegistry.addMaterialStats(living,
@@ -72,8 +64,6 @@ public class ModuleRoots implements IModule {
 		}
 		if (ModuleConarm.loadArmor()) {
 			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("wildwood")) {
-				wildwood.addItem(Util.getItem("roots", "bark_wildwood"), 1, Material.VALUE_Nugget);
-				wildwood.setRepresentativeItem(Util.getItem("roots", "bark_wildwood"));
 				wildwood.addTrait(MaterialisArmorTraits.untamed, ArmorMaterialType.CORE);
 				wildwood.addTrait(ArmorTraits.shielding);
 				TinkerRegistry.addMaterial(wildwood);
@@ -86,8 +76,14 @@ public class ModuleRoots implements IModule {
 	}
 
 	@Override
-	public void postInit(FMLPostInitializationEvent postEvent) {
+	public void registerItems(Register<Item> event) {}
+
+	@Override
+	public void init(FMLInitializationEvent event) {
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("living")) {
+			living.addItem(Util.getItem("roots", "spirit_herb"), 1, 0);
+			living.setRepresentativeItem(Util.getItem("roots", "spirit_herb"));
+
 			for (IToolPart part : TinkerRegistry.getToolParts()) {
 				if (part.canUseMaterial(living) && part.canUseMaterial(TinkerMaterials.wood) && part instanceof MaterialItem)
 					ModRecipes.addFeyCraftingRecipe(new ResourceLocation(Materialis.ID, "living_toolpart_" + ((MaterialItem) part).getRegistryName()),
@@ -99,18 +95,26 @@ public class ModuleRoots implements IModule {
 									new OreIngredient("rootsBark")));
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("wildwood")) {
-			ItemStack wildwoodBark = new ItemStack(Util.getItem("roots", "bark_wildwood"));
-			for (IToolPart part : TinkerRegistry.getToolParts()) {
-				if (part.canUseMaterial(wildwood) && part.canUseMaterial(TinkerMaterials.iron) && part instanceof MaterialItem)
-					ModRecipes.addFeyCraftingRecipe(new ResourceLocation(Materialis.ID, "wildwood_armor_toolpart_" + ((MaterialItem) part).getRegistryName()),
-							new FeyCraftingRecipe(part.getItemstackWithMaterial(wildwood), 1).addIngredients(
-									part.getItemstackWithMaterial(TinkerMaterials.iron),
-									wildwoodBark,
-									wildwoodBark,
-									new OreIngredient("plankWood"),
-									new OreIngredient("gemDiamond")));
+		if (ModuleConarm.loadArmor()) {
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("wildwood")) {
+				wildwood.addItem(Util.getItem("roots", "bark_wildwood"), 1, Material.VALUE_Nugget);
+				wildwood.setRepresentativeItem(Util.getItem("roots", "bark_wildwood"));
+
+				ItemStack wildwoodBark = new ItemStack(Util.getItem("roots", "bark_wildwood"));
+				for (IToolPart part : TinkerRegistry.getToolParts()) {
+					if (part.canUseMaterial(wildwood) && part.canUseMaterial(TinkerMaterials.iron) && part instanceof MaterialItem)
+						ModRecipes.addFeyCraftingRecipe(new ResourceLocation(Materialis.ID, "wildwood_armor_toolpart_" + ((MaterialItem) part).getRegistryName()),
+								new FeyCraftingRecipe(part.getItemstackWithMaterial(wildwood), 1).addIngredients(
+										part.getItemstackWithMaterial(TinkerMaterials.iron),
+										wildwoodBark,
+										wildwoodBark,
+										new OreIngredient("plankWood"),
+										new OreIngredient("gemDiamond")));
+				}
 			}
 		}
 	}
+
+	@Override
+	public void postInit(FMLPostInitializationEvent postEvent) {}
 }
