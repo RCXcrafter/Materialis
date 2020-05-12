@@ -2,7 +2,7 @@
     "type": "tri_color_textured",
     "parameters": {
         "overlay": "materialis:material/infinity",
-        "underlay": false,
+        "mode": "overlay_multiply",
         "bright": "FFFFFF",
         "mid": "D9D9D9",
         "dark": "999999",

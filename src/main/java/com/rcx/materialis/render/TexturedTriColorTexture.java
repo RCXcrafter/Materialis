@@ -1,5 +1,6 @@
 package com.rcx.materialis.render;
 
+import java.awt.Color;
 import java.util.Collection;
 import java.util.function.Function;
 
@@ -17,12 +18,12 @@ public class TexturedTriColorTexture extends TriColorTexture {
 	protected int textureWidth;
 	protected int textureHeight;
 	protected float scale;
-	protected boolean underlay;
+	protected String mode;
 
-	TexturedTriColorTexture(ResourceLocation baseTexture, String spriteName, ResourceLocation texture, boolean underlay, int bright, int mid, int dark, int midThreshold, int darkThreshold) {
+	TexturedTriColorTexture(ResourceLocation baseTexture, String spriteName, ResourceLocation texture, String underlay, int bright, int mid, int dark, int midThreshold, int darkThreshold) {
 		super(baseTexture, spriteName, bright, mid, dark, midThreshold, darkThreshold);
 		this.textureLocation = texture;
-		this.underlay = underlay;
+		this.mode = underlay;
 	}
 
 	@Override
@@ -68,7 +69,7 @@ public class TexturedTriColorTexture extends TriColorTexture {
 
 		int tc = textureData[texCoord];
 
-		if (underlay) {
+		if (mode.equals("underlay")) {
 			int r = RenderUtil.red(pixel);
 			int g = RenderUtil.green(pixel);
 			int b = RenderUtil.blue(pixel);
@@ -84,11 +85,25 @@ public class TexturedTriColorTexture extends TriColorTexture {
 		int r = RenderUtil.red(c);
 		int g = RenderUtil.green(c);
 		int b = RenderUtil.blue(c);
-
-		r = mult(r, RenderUtil.red(tc)) & 0xff;
-		g = mult(g, RenderUtil.green(tc)) & 0xff;
-		b = mult(b, RenderUtil.blue(tc)) & 0xff;
-
+		
+		if (mode.equals("overlay_multiply")) {
+			r = mult(r, RenderUtil.red(tc)) & 0xff;
+			g = mult(g, RenderUtil.green(tc)) & 0xff;
+			b = mult(b, RenderUtil.blue(tc)) & 0xff;
+		} else if (mode.equals("overlay_hue")) {
+			float[] underlay = Color.RGBtoHSB(r, g, b, null);
+			Color color = Color.getHSBColor(Color.RGBtoHSB(RenderUtil.red(tc), RenderUtil.green(tc), RenderUtil.blue(tc), null)[0], underlay[1], underlay[2]);
+			r = color.getRed();
+			g = color.getGreen();
+			b = color.getBlue();
+		} else if (mode.equals("overlay_huesat")) {
+			float[] overlay = Color.RGBtoHSB(RenderUtil.red(tc), RenderUtil.green(tc), RenderUtil.blue(tc), null);
+			Color color = Color.getHSBColor(overlay[0], overlay[1], Color.RGBtoHSB(r, g, b, null)[2]);
+			r = color.getRed();
+			g = color.getGreen();
+			b = color.getBlue();
+		}
+		
 		return RenderUtil.compose(r, g, b, a);
 	}
 }
