@@ -64,6 +64,8 @@ public class ModuleRoots implements IModule {
 					new BowMaterialStats(0.5F, 1.5F, 7.0F));
 			if (ModuleConarm.loadArmor()) {
 				living.addTrait(ArmorTraits.ecological, ArmorMaterialType.CORE);
+				living.addTrait(ArmorTraits.ecological, ArmorMaterialType.PLATES);
+				living.addTrait(ArmorTraits.ecological, ArmorMaterialType.TRIM);
 				TinkerRegistry.addMaterialStats(living,
 						new CoreMaterialStats(12, 11.25F),
 						new PlatesMaterialStats(0.85F, 5, 0.0F),

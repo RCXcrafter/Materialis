@@ -15,7 +15,7 @@
 },
 {
   "modid": "materialispreload",
-  "name": "Materialis Pre Load",
+  "name": "Materialis",
   "description": "Pre loading for Materialis",
   "version": "${version}",
   "mcversion": "${mcversion}",
