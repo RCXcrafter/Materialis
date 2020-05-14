@@ -99,9 +99,9 @@ public class ModuleVanilla implements IModule {
 			emerald.addTrait(TinkerTraits.established);
 			TinkerRegistry.addMaterial(emerald);
 			TinkerRegistry.addMaterialStats(emerald,
-					new HeadMaterialStats(900, 7.6F, 5.0F, 3),
+					new HeadMaterialStats(200, 6.66F, 4.0F, 1),
 					new HandleMaterialStats(0.5F, 100),
-					new ExtraMaterialStats(365),
+					new ExtraMaterialStats(150),
 					new BowMaterialStats(0.2F, 0.4F, -1.0F));
 			if (ModuleConarm.loadArmor()) {
 				ModuleConarm.generateArmorStats(emerald, 1.0F);

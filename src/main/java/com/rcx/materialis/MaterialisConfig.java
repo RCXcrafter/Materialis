@@ -18,12 +18,12 @@ public class MaterialisConfig {
 
 		@RequiresMcRestart
 		@LangKey("materialis.config.blacklist.materials")
-		@Comment("Add the id of a material to this list to prevent if from being added.")
+		@Comment("Add the id of a material to this list to prevent it from being added.")
 		public String[] materialBlacklist = new String[] {};
 
 		@RequiresMcRestart
 		@LangKey("materialis.config.blacklist.modules")
-		@Comment("Add the name of a module to this list to prevent if from being loaded.")
+		@Comment("Add the name of a module to this list to prevent it from being loaded.")
 		public String[] moduleBlacklist = new String[] {};
 
 		public Boolean isMaterialBlacklisted(String material) {
