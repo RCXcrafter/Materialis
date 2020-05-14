@@ -85,25 +85,19 @@ public class TexturedTriColorTexture extends TriColorTexture {
 		int r = RenderUtil.red(c);
 		int g = RenderUtil.green(c);
 		int b = RenderUtil.blue(c);
-		
+
 		if (mode.equals("overlay_multiply")) {
 			r = mult(r, RenderUtil.red(tc)) & 0xff;
 			g = mult(g, RenderUtil.green(tc)) & 0xff;
 			b = mult(b, RenderUtil.blue(tc)) & 0xff;
-		} else if (mode.equals("overlay_hue")) {
-			float[] underlay = Color.RGBtoHSB(r, g, b, null);
-			Color color = Color.getHSBColor(Color.RGBtoHSB(RenderUtil.red(tc), RenderUtil.green(tc), RenderUtil.blue(tc), null)[0], underlay[1], underlay[2]);
-			r = color.getRed();
-			g = color.getGreen();
-			b = color.getBlue();
 		} else if (mode.equals("overlay_huesat")) {
 			float[] overlay = Color.RGBtoHSB(RenderUtil.red(tc), RenderUtil.green(tc), RenderUtil.blue(tc), null);
-			Color color = Color.getHSBColor(overlay[0], overlay[1], Color.RGBtoHSB(r, g, b, null)[2]);
+			float[] base = Color.RGBtoHSB(r, g, b, null);
+			Color color = Color.getHSBColor(overlay[0], overlay[1] * base[1], base[2]);
 			r = color.getRed();
 			g = color.getGreen();
 			b = color.getBlue();
 		}
-		
 		return RenderUtil.compose(r, g, b, a);
 	}
 }

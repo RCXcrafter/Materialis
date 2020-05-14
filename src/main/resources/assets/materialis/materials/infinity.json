@@ -2,10 +2,10 @@
     "type": "tri_color_textured",
     "parameters": {
         "overlay": "materialis:material/infinity",
-        "mode": "overlay_multiply",
-        "bright": "FFFFFF",
-        "mid": "D9D9D9",
-        "dark": "999999",
+        "mode": "overlay_huesat",
+        "bright": "FF4040",
+        "mid": "D90B0B",
+        "dark": "990000",
 		"midthreshold": 185,
 		"darkthreshold": 79
     }
