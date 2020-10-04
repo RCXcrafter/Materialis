@@ -33,11 +33,15 @@ import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
+import java.util.*;
+
 public class ModuleRoots implements IModule {
 
-	public static Material living = new Material("living", 0x349434);
+	private static final Material LIVING = new Material("living", 0x349434);
 
-	public static Material wildwood = new Material("wildwood", 0x917341);
+	private static final Material WILDWOOD = new Material("wildwood", 0x917341);
+
+	private static final Map<String, Boolean> I_REGISTERED_THE_MATERIAL = new HashMap<>();
 
 	@Override
 	public Boolean shouldLoad() {
@@ -54,34 +58,38 @@ public class ModuleRoots implements IModule {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("living")) {
-			living.addTrait(TinkerTraits.ecological);
-			TinkerRegistry.addMaterial(living);
-			TinkerRegistry.addMaterialStats(living,
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(LIVING.getIdentifier())
+				&& "unknown".equals(TinkerRegistry.getMaterial(LIVING.getIdentifier()).getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(LIVING.getIdentifier(), true);
+
+			LIVING.addTrait(TinkerTraits.ecological);
+			TinkerRegistry.addMaterial(LIVING);
+			TinkerRegistry.addMaterialStats(LIVING,
 					new HeadMaterialStats(204, 6.0F, 4.0F, 2),
 					new HandleMaterialStats(0.85F, 60),
 					new ExtraMaterialStats(50),
 					new BowMaterialStats(0.5F, 1.5F, 7.0F));
 			if (ModuleConarm.loadArmor()) {
-				living.addTrait(ArmorTraits.ecological, ArmorMaterialType.CORE);
-				living.addTrait(ArmorTraits.ecological, ArmorMaterialType.PLATES);
-				living.addTrait(ArmorTraits.ecological, ArmorMaterialType.TRIM);
-				TinkerRegistry.addMaterialStats(living,
+				LIVING.addTrait(ArmorTraits.ecological, ArmorMaterialType.CORE);
+				LIVING.addTrait(ArmorTraits.ecological, ArmorMaterialType.PLATES);
+				LIVING.addTrait(ArmorTraits.ecological, ArmorMaterialType.TRIM);
+				TinkerRegistry.addMaterialStats(LIVING,
 						new CoreMaterialStats(12, 11.25F),
 						new PlatesMaterialStats(0.85F, 5, 0.0F),
 						new TrimMaterialStats(4));
 			}
 		}
-		if (ModuleConarm.loadArmor()) {
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("wildwood")) {
-				wildwood.addTrait(MaterialisArmorTraits.untamed, ArmorMaterialType.CORE);
-				wildwood.addTrait(ArmorTraits.shielding);
-				TinkerRegistry.addMaterial(wildwood);
-				TinkerRegistry.addMaterialStats(wildwood,
-						new CoreMaterialStats(12, 12.0F),
-						new PlatesMaterialStats(0.95F, 5, 1.0F),
-						new TrimMaterialStats(4));
-			}
+		if (ModuleConarm.loadArmor() && !MaterialisConfig.blacklist.isMaterialBlacklisted(WILDWOOD.getIdentifier())
+				&& "unknown".equals(TinkerRegistry.getMaterial(WILDWOOD.getIdentifier()).getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(WILDWOOD.getIdentifier(), true);
+
+			WILDWOOD.addTrait(MaterialisArmorTraits.untamed, ArmorMaterialType.CORE);
+			WILDWOOD.addTrait(ArmorTraits.shielding);
+			TinkerRegistry.addMaterial(WILDWOOD);
+			TinkerRegistry.addMaterialStats(WILDWOOD,
+					new CoreMaterialStats(12, 12.0F),
+					new PlatesMaterialStats(0.95F, 5, 1.0F),
+					new TrimMaterialStats(4));
 		}
 	}
 
@@ -90,14 +98,15 @@ public class ModuleRoots implements IModule {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("living")) {
-			living.addItem(Util.getItem("roots", "spirit_herb"), 1, 0);
-			living.setRepresentativeItem(Util.getItem("roots", "spirit_herb"));
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(LIVING.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(LIVING.getIdentifier(), false)) {
+			LIVING.addItem(Util.getItem("roots", "spirit_herb"), 1, 0);
+			LIVING.setRepresentativeItem(Util.getItem("roots", "spirit_herb"));
 
 			for (IToolPart part : TinkerRegistry.getToolParts()) {
-				if (part.canUseMaterial(living) && part.canUseMaterial(TinkerMaterials.wood) && part instanceof MaterialItem)
+				if (part.canUseMaterial(LIVING) && part.canUseMaterial(TinkerMaterials.wood) && part instanceof MaterialItem)
 					ModRecipes.addFeyCraftingRecipe(new ResourceLocation(Materialis.ID, "living_toolpart_" + ((MaterialItem) part).getRegistryName()),
-							new FeyCraftingRecipe(part.getItemstackWithMaterial(living), 1).addIngredients(
+							new FeyCraftingRecipe(part.getItemstackWithMaterial(LIVING), 1).addIngredients(
 									new GoldOrSilverIngotIngredient(),
 									part.getItemstackWithMaterial(TinkerMaterials.wood),
 									new OreIngredient("wildroot"),
@@ -105,22 +114,22 @@ public class ModuleRoots implements IModule {
 									new OreIngredient("rootsBark")));
 			}
 		}
-		if (ModuleConarm.loadArmor()) {
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("wildwood")) {
-				wildwood.addItem(Util.getItem("roots", "bark_wildwood"), 1, Material.VALUE_Nugget);
-				wildwood.setRepresentativeItem(Util.getItem("roots", "bark_wildwood"));
+		if (ModuleConarm.loadArmor()
+				&& !MaterialisConfig.blacklist.isMaterialBlacklisted(WILDWOOD.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(WILDWOOD.getIdentifier(), false)) {
+			WILDWOOD.addItem(Util.getItem("roots", "bark_wildwood"), 1, Material.VALUE_Nugget);
+			WILDWOOD.setRepresentativeItem(Util.getItem("roots", "bark_wildwood"));
 
-				ItemStack wildwoodBark = new ItemStack(Util.getItem("roots", "bark_wildwood"));
-				for (IToolPart part : TinkerRegistry.getToolParts()) {
-					if (part.canUseMaterial(wildwood) && part.canUseMaterial(TinkerMaterials.iron) && part instanceof MaterialItem)
-						ModRecipes.addFeyCraftingRecipe(new ResourceLocation(Materialis.ID, "wildwood_armor_toolpart_" + ((MaterialItem) part).getRegistryName()),
-								new FeyCraftingRecipe(part.getItemstackWithMaterial(wildwood), 1).addIngredients(
-										part.getItemstackWithMaterial(TinkerMaterials.iron),
-										wildwoodBark,
-										wildwoodBark,
-										new OreIngredient("plankWood"),
-										new OreIngredient("gemDiamond")));
-				}
+			ItemStack wildwoodBark = new ItemStack(Util.getItem("roots", "bark_wildwood"));
+			for (IToolPart part : TinkerRegistry.getToolParts()) {
+				if (part.canUseMaterial(WILDWOOD) && part.canUseMaterial(TinkerMaterials.iron) && part instanceof MaterialItem)
+					ModRecipes.addFeyCraftingRecipe(new ResourceLocation(Materialis.ID, "wildwood_armor_toolpart_" + ((MaterialItem) part).getRegistryName()),
+							new FeyCraftingRecipe(part.getItemstackWithMaterial(WILDWOOD), 1).addIngredients(
+									part.getItemstackWithMaterial(TinkerMaterials.iron),
+									wildwoodBark,
+									wildwoodBark,
+									new OreIngredient("plankWood"),
+									new OreIngredient("gemDiamond")));
 			}
 		}
 	}

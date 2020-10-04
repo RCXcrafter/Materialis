@@ -26,15 +26,19 @@ import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 
+import java.util.*;
+
 public class ModuleAvaritia implements IModule {
 
-	public static Material crystalMatrix = new Material("crystal_matrix", 0x97F1EB);
+	private static final Material CRYSTAL_MATRIX = new Material("crystal_matrix", 0x97F1EB);
 
-	public static Material neutronium = new Material("cosmic_neutronium", 0x6B6B6B);
+	private static final Material NEUTRONIUM = new Material("cosmic_neutronium", 0x6B6B6B);
 
-	public static Material infinity = new Material("infinity", 0xFF5555);
+	private static final Material INFINITY = new Material("infinity", 0xFF5555);
 
-	public static Modifier modInfinity;
+	private static Modifier modInfinity;
+
+	private static final Map<String, Boolean> I_REGISTERED_THE_MATERIAL = new HashMap<>();
 
 	@Override
 	public Boolean shouldLoad() {
@@ -54,52 +58,58 @@ public class ModuleAvaritia implements IModule {
 		MaterialisTraits.cosmic = new TraitCosmic();
 		TinkerRegistry.addTrait(MaterialisTraits.cosmic);
 
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
-			crystalMatrix.addTrait(MaterialisTraits.crystalline);
-			TinkerRegistry.addMaterial(crystalMatrix);
-			TinkerRegistry.addMaterialStats(crystalMatrix,
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(CRYSTAL_MATRIX.getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(CRYSTAL_MATRIX.getIdentifier(), true);
+
+			CRYSTAL_MATRIX.addTrait(MaterialisTraits.crystalline);
+			TinkerRegistry.addMaterial(CRYSTAL_MATRIX);
+			TinkerRegistry.addMaterialStats(CRYSTAL_MATRIX,
 					new ExtraMaterialStats(600));
 			if (ModuleConarm.loadArmor()) {
-				TinkerRegistry.addMaterialStats(crystalMatrix,
+				TinkerRegistry.addMaterialStats(CRYSTAL_MATRIX,
 						new TrimMaterialStats(40));
-				crystalMatrix.addTrait(MaterialisArmorTraits.crystalline, ArmorMaterialType.TRIM);
+				CRYSTAL_MATRIX.addTrait(MaterialisArmorTraits.crystalline, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("cosmic_neutronium")) {
-			neutronium.addTrait(MaterialisTraits.supermassive);
-			TinkerRegistry.addMaterial(neutronium);
-			TinkerRegistry.addMaterialStats(neutronium,
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(NEUTRONIUM.getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(NEUTRONIUM.getIdentifier(), true);
+
+			NEUTRONIUM.addTrait(MaterialisTraits.supermassive);
+			TinkerRegistry.addMaterial(NEUTRONIUM);
+			TinkerRegistry.addMaterialStats(NEUTRONIUM,
 					new HeadMaterialStats(765, 10.98F, 1.0F, 4),
 					new HandleMaterialStats(2.5F, 100),
 					new ExtraMaterialStats(400),
 					new BowMaterialStats(0.5F, 1.3F, 5.0F));
 			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(neutronium, 3.0F);
-				neutronium.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.CORE);
-				neutronium.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.PLATES);
-				neutronium.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.TRIM);
+				ModuleConarm.generateArmorStats(NEUTRONIUM, 3.0F);
+				NEUTRONIUM.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.CORE);
+				NEUTRONIUM.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.PLATES);
+				NEUTRONIUM.addTrait(MaterialisArmorTraits.supermassive, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("infinity")) {
-			infinity.addTrait(MaterialisTraits.cosmic);
-			infinity.addTrait(MaterialisTraits.unbreakable);
-			TinkerRegistry.addMaterial(infinity);
-			TinkerRegistry.addMaterialStats(infinity,
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(INFINITY.getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(INFINITY.getIdentifier(), true);
+
+			INFINITY.addTrait(MaterialisTraits.cosmic);
+			INFINITY.addTrait(MaterialisTraits.unbreakable);
+			TinkerRegistry.addMaterial(INFINITY);
+			TinkerRegistry.addMaterialStats(INFINITY,
 					new HeadMaterialStats(9999, 99999.99F, 99.9F, 99),
 					new HandleMaterialStats(10.0F, 999),
 					new ExtraMaterialStats(999),
 					new BowMaterialStats(9999.9F, 999.91F, 99.9F));
 			if (ModuleConarm.loadArmor()) {
-				TinkerRegistry.addMaterialStats(infinity,
+				TinkerRegistry.addMaterialStats(INFINITY,
 						new CoreMaterialStats(9999, 999.9F),
 						new PlatesMaterialStats(10.0F, 999, 99.9F),
 						new TrimMaterialStats(999));
-				infinity.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.CORE);
-				infinity.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.PLATES);
-				infinity.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.TRIM);
-				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.CORE);
-				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.PLATES);
-				infinity.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.TRIM);
+				INFINITY.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.CORE);
+				INFINITY.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.PLATES);
+				INFINITY.addTrait(MaterialisArmorTraits.cosmic, ArmorMaterialType.TRIM);
+				INFINITY.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.CORE);
+				INFINITY.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.PLATES);
+				INFINITY.addTrait(MaterialisArmorTraits.unbreakable, ArmorMaterialType.TRIM);
 			}
 		}
 		modInfinity = new ModInfinity();
@@ -110,21 +120,24 @@ public class ModuleAvaritia implements IModule {
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
-			crystalMatrix.addCommonItems("CrystalMatrix");
-			crystalMatrix.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 1));
-			crystalMatrix.setCraftable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(CRYSTAL_MATRIX.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(CRYSTAL_MATRIX.getIdentifier(), false)) {
+			CRYSTAL_MATRIX.addCommonItems("CrystalMatrix");
+			CRYSTAL_MATRIX.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 1));
+			CRYSTAL_MATRIX.setCraftable(true);
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("cosmic_neutronium")) {
-			neutronium.addCommonItems("CosmicNeutronium");
-			neutronium.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 4));
-			neutronium.setCraftable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(NEUTRONIUM.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(NEUTRONIUM.getIdentifier(), false)) {
+			NEUTRONIUM.addCommonItems("CosmicNeutronium");
+			NEUTRONIUM.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 4));
+			NEUTRONIUM.setCraftable(true);
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("infinity")) {
-			infinity.addItem("ingotInfinity", 1, Material.VALUE_Nugget * 2);
-			infinity.addItem("blockInfinity", 1, Material.VALUE_Ingot * 2);
-			infinity.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 6));
-			infinity.setCraftable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(INFINITY.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(INFINITY.getIdentifier(), false)) {
+			INFINITY.addItem("ingotInfinity", 1, Material.VALUE_Nugget * 2);
+			INFINITY.addItem("blockInfinity", 1, Material.VALUE_Ingot * 2);
+			INFINITY.setRepresentativeItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 6));
+			INFINITY.setCraftable(true);
 		}
 		modInfinity.addItem(new ItemStack(Util.getItem("avaritia", "resource"), 1, 5), 1, 1);
 	}

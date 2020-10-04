@@ -29,21 +29,25 @@ import slimeknights.tconstruct.tools.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
+import java.util.*;
+
 public class ModuleErebus implements IModule {
 
-	public static Material bamboo = new Material("bamboo", 0x91A043);
+	private static final Material BAMBOO = new Material("bamboo", 0x91A043);
 
-	public static Material jade = new Material("jade", 0x60CF7B);
+	private static final Material JADE = new Material("jade", 0x60CF7B);
 
-	public static Material flyWing = new Material("fly_wing", 0xA5A5A5);
+	private static final Material FLY_WING = new Material("fly_wing", 0xA5A5A5);
 
-	public static Material dragonflyWing = new Material("dragonfly_wing", 0x9EC0D5);
+	private static final Material DRAGONFLY_WING = new Material("dragonfly_wing", 0x9EC0D5);
 
-	public static Material exoskeleton = new Material("exoskeleton", 0xD8D8D2);
+	private static final Material EXOSKELETON = new Material("exoskeleton", 0xD8D8D2);
 
-	public static Material exoskeletonReinforced = new Material("exoskeleton_reinforced", 0xC1C1B6);
+	private static final Material EXOSKELETON_REINFORCED = new Material("exoskeleton_reinforced", 0xC1C1B6);
 
-	public static Material exoskeletonRhino = new Material("exoskeleton_rhino", 0x5B5B5B);
+	private static final Material EXOSKELETON_RHINO = new Material("exoskeleton_rhino", 0x5B5B5B);
+
+	private static final Map<String, Boolean> I_REGISTERED_THE_MATERIAL = new HashMap<>();
 
 	//public static AbstractTrait modWaterStrider;
 
@@ -60,72 +64,87 @@ public class ModuleErebus implements IModule {
 	@Override
 	public void earlyPreInit(FMLPreInitializationEvent preEvent) {
 		//register wood materials early
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bamboo"))
-			TinkerRegistry.addMaterial(bamboo);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(BAMBOO.getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(BAMBOO.getIdentifier(), true);
+			TinkerRegistry.addMaterial(BAMBOO);
+		}
 	}
 
 	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bamboo")) {
-			bamboo.addTrait(TinkerTraits.ecological);
-			TinkerRegistry.addMaterialStats(bamboo,
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(BAMBOO.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(BAMBOO.getIdentifier(), false)) {
+			BAMBOO.addTrait(TinkerTraits.ecological);
+			TinkerRegistry.addMaterialStats(BAMBOO,
 					new HeadMaterialStats(100, 3.0F, 3.0F, 0),
 					new HandleMaterialStats(1.0F, 50),
 					new ExtraMaterialStats(25),
 					new BowMaterialStats(0.9F, 1.2F, 0.0F));
 			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(bamboo, 0.0F);
-				bamboo.addTrait(ArmorTraits.ecological, ArmorMaterialType.CORE);
-				bamboo.addTrait(ArmorTraits.ecological, ArmorMaterialType.PLATES);
-				bamboo.addTrait(ArmorTraits.ecological, ArmorMaterialType.TRIM);
+				ModuleConarm.generateArmorStats(BAMBOO, 0.0F);
+				BAMBOO.addTrait(ArmorTraits.ecological, ArmorMaterialType.CORE);
+				BAMBOO.addTrait(ArmorTraits.ecological, ArmorMaterialType.PLATES);
+				BAMBOO.addTrait(ArmorTraits.ecological, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("jade")) {
-			jade.addTrait(TinkerTraits.established);
-			TinkerRegistry.addMaterial(jade);
-			TinkerRegistry.addMaterialStats(jade,
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(JADE.getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(JADE.getIdentifier(), true);
+
+			JADE.addTrait(TinkerTraits.established);
+			TinkerRegistry.addMaterial(JADE);
+			TinkerRegistry.addMaterialStats(JADE,
 					new HeadMaterialStats(495, 10.0F, 4.0F, 2),
 					new HandleMaterialStats(0.5F, 0),
 					new ExtraMaterialStats(368),
 					new BowMaterialStats(0.2F, 0.4F, -1.0F));
 			if (ModuleConarm.loadArmor()) {
-				ModuleConarm.generateArmorStats(jade, 1.0F);
-				jade.addTrait(ArmorTraits.ambitious, ArmorMaterialType.CORE);
-				jade.addTrait(ArmorTraits.ambitious, ArmorMaterialType.PLATES);
-				jade.addTrait(ArmorTraits.ambitious, ArmorMaterialType.TRIM);
+				ModuleConarm.generateArmorStats(JADE, 1.0F);
+				JADE.addTrait(ArmorTraits.ambitious, ArmorMaterialType.CORE);
+				JADE.addTrait(ArmorTraits.ambitious, ArmorMaterialType.PLATES);
+				JADE.addTrait(ArmorTraits.ambitious, ArmorMaterialType.TRIM);
 			}
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fly_wing")) {
-			TinkerRegistry.addMaterial(flyWing);
-			TinkerRegistry.addMaterialStats(flyWing, new FletchingMaterialStats(0.6F, 1.5F));
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(FLY_WING.getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(FLY_WING.getIdentifier(), true);
+
+			TinkerRegistry.addMaterial(FLY_WING);
+			TinkerRegistry.addMaterialStats(FLY_WING, new FletchingMaterialStats(0.6F, 1.5F));
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("dragonfly_wing")) {
-			TinkerRegistry.addMaterial(dragonflyWing);
-			TinkerRegistry.addMaterialStats(dragonflyWing, new FletchingMaterialStats(1.0F, 1.25F));
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(DRAGONFLY_WING.getIdentifier())) {
+			I_REGISTERED_THE_MATERIAL.put(DRAGONFLY_WING.getIdentifier(), true);
+
+			TinkerRegistry.addMaterial(DRAGONFLY_WING);
+			TinkerRegistry.addMaterialStats(DRAGONFLY_WING, new FletchingMaterialStats(1.0F, 1.25F));
 		}
 
 		if (ModuleConarm.loadArmor()) {
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton")) {
-				exoskeleton.addTrait(ArmorTraits.skeletal);
-				TinkerRegistry.addMaterial(exoskeleton);
-				TinkerRegistry.addMaterialStats(exoskeleton,
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted(EXOSKELETON.getIdentifier())) {
+				I_REGISTERED_THE_MATERIAL.put(EXOSKELETON.getIdentifier(), true);
+
+				EXOSKELETON.addTrait(ArmorTraits.skeletal);
+				TinkerRegistry.addMaterial(EXOSKELETON);
+				TinkerRegistry.addMaterialStats(EXOSKELETON,
 						new CoreMaterialStats(7, 8.2F),
 						new PlatesMaterialStats(1.0F, 4, 1.0F),
 						new TrimMaterialStats(17));
 			}
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_reinforced")) {
-				exoskeletonReinforced.addTrait(ArmorTraits.heavy);
-				exoskeletonReinforced.addTrait(ArmorTraits.dense);
-				TinkerRegistry.addMaterial(exoskeletonReinforced);
-				TinkerRegistry.addMaterialStats(exoskeletonReinforced,
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted(EXOSKELETON_REINFORCED.getIdentifier())) {
+				I_REGISTERED_THE_MATERIAL.put(EXOSKELETON_REINFORCED.getIdentifier(), true);
+
+				EXOSKELETON_REINFORCED.addTrait(ArmorTraits.heavy);
+				EXOSKELETON_REINFORCED.addTrait(ArmorTraits.dense);
+				TinkerRegistry.addMaterial(EXOSKELETON_REINFORCED);
+				TinkerRegistry.addMaterialStats(EXOSKELETON_REINFORCED,
 						new CoreMaterialStats(21, 13.2F),
 						new PlatesMaterialStats(1.3F, 7, 3.0F),
 						new TrimMaterialStats(27));
 			}
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_rhino")) {
-				exoskeletonRhino.addTrait(ArmorTraits.dramatic);
-				TinkerRegistry.addMaterial(exoskeletonRhino);
-				TinkerRegistry.addMaterialStats(exoskeletonRhino,
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted(EXOSKELETON_RHINO.getIdentifier())) {
+				I_REGISTERED_THE_MATERIAL.put(EXOSKELETON_RHINO.getIdentifier(), true);
+
+				EXOSKELETON_RHINO.addTrait(ArmorTraits.dramatic);
+				TinkerRegistry.addMaterial(EXOSKELETON_RHINO);
+				TinkerRegistry.addMaterialStats(EXOSKELETON_RHINO,
 						new CoreMaterialStats(21, 13.2F),
 						new PlatesMaterialStats(1.3F, 7, 4.0F),
 						new TrimMaterialStats(27));
@@ -142,28 +161,32 @@ public class ModuleErebus implements IModule {
 	public void init(FMLInitializationEvent event) {
 		TinkerMaterials.bone.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 2), 1, Material.VALUE_Shard);
 
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("bamboo")) {
-			bamboo.addItem("bamboo", 1, Material.VALUE_Fragment);
-			bamboo.addItem("plankBamboo", 1, Material.VALUE_Ingot);
-			bamboo.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 3));
-			bamboo.setCraftable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(BAMBOO.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(BAMBOO.getIdentifier(), false)) {
+			BAMBOO.addItem("bamboo", 1, Material.VALUE_Fragment);
+			BAMBOO.addItem("plankBamboo", 1, Material.VALUE_Ingot);
+			BAMBOO.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 3));
+			BAMBOO.setCraftable(true);
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("jade")) {
-			jade.addItem("gemJade", 1, Material.VALUE_Ingot);
-			jade.addItem("nuggetJade", 1, Material.VALUE_Nugget);
-			jade.addItem("blockJade", 1, Material.VALUE_Block);
-			jade.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 1));
-			jade.setCraftable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(JADE.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(JADE.getIdentifier(), false)) {
+			JADE.addItem("gemJade", 1, Material.VALUE_Ingot);
+			JADE.addItem("nuggetJade", 1, Material.VALUE_Nugget);
+			JADE.addItem("blockJade", 1, Material.VALUE_Block);
+			JADE.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 1));
+			JADE.setCraftable(true);
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("fly_wing")) {
-			flyWing.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 6), 1, Material.VALUE_Ingot);
-			flyWing.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 6));
-			flyWing.setCraftable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(FLY_WING.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(FLY_WING.getIdentifier(), false)) {
+			FLY_WING.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 6), 1, Material.VALUE_Ingot);
+			FLY_WING.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 6));
+			FLY_WING.setCraftable(true);
 		}
-		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("dragonfly_wing")) {
-			dragonflyWing.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 24), 1, Material.VALUE_Ingot);
-			dragonflyWing.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 24));
-			dragonflyWing.setCraftable(true);
+		if (!MaterialisConfig.blacklist.isMaterialBlacklisted(DRAGONFLY_WING.getIdentifier())
+				&& I_REGISTERED_THE_MATERIAL.getOrDefault(DRAGONFLY_WING.getIdentifier(), false)) {
+			DRAGONFLY_WING.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 24), 1, Material.VALUE_Ingot);
+			DRAGONFLY_WING.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 24));
+			DRAGONFLY_WING.setCraftable(true);
 		}
 
 		TinkerModifiers.modSharpness.addItem(new ItemStack(Util.getItem("erebus", "whetstone"), 1, 1), 1, 72);
@@ -171,23 +194,26 @@ public class ModuleErebus implements IModule {
 		TinkerModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(Util.getItem("erebus", "materials"), 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(Util.getItem("erebus", "materials"), 1, 12)));
 
 		if (ModuleConarm.loadArmor()) {
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton")) {
-				exoskeleton.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 0), 1, Material.VALUE_Ingot);
-				exoskeleton.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 0));
-				exoskeleton.setCraftable(true);
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted(EXOSKELETON.getIdentifier())
+					&& I_REGISTERED_THE_MATERIAL.getOrDefault(EXOSKELETON.getIdentifier(), false)) {
+				EXOSKELETON.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 0), 1, Material.VALUE_Ingot);
+				EXOSKELETON.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 0));
+				EXOSKELETON.setCraftable(true);
 			}
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_reinforced")) {
-				exoskeletonReinforced.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 15), 1, Material.VALUE_Ingot);
-				exoskeletonReinforced.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 15));
-				exoskeletonReinforced.setCraftable(true);
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted(EXOSKELETON_REINFORCED.getIdentifier())
+					&& I_REGISTERED_THE_MATERIAL.getOrDefault(EXOSKELETON_REINFORCED.getIdentifier(), false)) {
+				EXOSKELETON_REINFORCED.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 15), 1, Material.VALUE_Ingot);
+				EXOSKELETON_REINFORCED.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 15));
+				EXOSKELETON_REINFORCED.setCraftable(true);
 			}
-			if (!MaterialisConfig.blacklist.isMaterialBlacklisted("exoskeleton_rhino")) {
-				exoskeletonRhino.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 35), 1, Material.VALUE_Ingot);
-				exoskeletonRhino.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 35));
-				exoskeletonRhino.setCraftable(true);
+			if (!MaterialisConfig.blacklist.isMaterialBlacklisted(EXOSKELETON_RHINO.getIdentifier())
+					&& I_REGISTERED_THE_MATERIAL.getOrDefault(EXOSKELETON_RHINO.getIdentifier(), false)) {
+				EXOSKELETON_RHINO.addItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 35), 1, Material.VALUE_Ingot);
+				EXOSKELETON_RHINO.setRepresentativeItem(new ItemStack(Util.getItem("erebus", "materials"), 1, 35));
+				EXOSKELETON_RHINO.setCraftable(true);
 			}
 
-			MaterialisRegistry.addRecipe(new ItemStack(Util.getItem("conarm", "travel_night")), "travel_night", "travel_night", new Object[]{"LGL", 'L', new ItemStack(Util.getItem("erebus", "materials"), 1, 5), 'G', new ItemStack(Util.getItem("conarm", "travel_goggles_base"))});
+			MaterialisRegistry.addRecipe(new ItemStack(Util.getItem("conarm", "travel_night")), "travel_night", "travel_night", "LGL", 'L', new ItemStack(Util.getItem("erebus", "materials"), 1, 5), 'G', new ItemStack(Util.getItem("conarm", "travel_goggles_base")));
 
 			ArmorModifiers.modGlowing.addRecipeMatch(new RecipeMatch.ItemCombination(1, new ItemStack(Util.getItem("erebus", "materials"), 1, 12), new ItemStack(Items.ENDER_EYE), new ItemStack(Util.getItem("erebus", "materials"), 1, 12)));
 
