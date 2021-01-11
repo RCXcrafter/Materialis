@@ -2,6 +2,7 @@ package com.rcx.materialis.traits.armor;
 
 import c4.conarm.lib.traits.IArmorTrait;
 import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.traits.ITrait;
 
 public class MaterialisArmorTraits {
 
@@ -16,18 +17,23 @@ public class MaterialisArmorTraits {
 	public static IArmorTrait supermassive = new TraitArmorSupermassive();
 	public static IArmorTrait unbreakable = new TraitArmorUnbreakable();
 	public static IArmorTrait untamed = new TraitArmorUntamed();
-	
+
 	public static void preInit() {
-		TinkerRegistry.addTrait(blinding);
-		TinkerRegistry.addTrait(cosmic);
-		TinkerRegistry.addTrait(crystalline);
-		TinkerRegistry.addTrait(fireproof);
-		TinkerRegistry.addTrait(intangible);
-		TinkerRegistry.addTrait(limited);
-		TinkerRegistry.addTrait(renewableEnergy);
-		TinkerRegistry.addTrait(shortFuse);
-		TinkerRegistry.addTrait(supermassive);
-		TinkerRegistry.addTrait(unbreakable);
-		TinkerRegistry.addTrait(untamed);
+		registerTrait(blinding);
+		registerTrait(cosmic);
+		registerTrait(crystalline);
+		registerTrait(fireproof);
+		registerTrait(intangible);
+		registerTrait(limited);
+		registerTrait(renewableEnergy);
+		registerTrait(shortFuse);
+		registerTrait(supermassive);
+		registerTrait(unbreakable);
+		registerTrait(untamed);
+	}
+
+	public static void registerTrait(ITrait trait) {
+		if (TinkerRegistry.getTrait(trait.getIdentifier()) == null)
+			TinkerRegistry.addTrait(trait);
 	}
 }

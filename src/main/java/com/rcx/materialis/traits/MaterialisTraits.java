@@ -17,18 +17,24 @@ public class MaterialisTraits {
 	public static ITrait supermassive = new TraitSupermassive();
 	public static ITrait unbreakable = new TraitUnbreakable();
 	public static ITrait unlimited = new TraitNoEffect("unlimited", 0x64A7B5);
-	
+
 	public static void preInit() {
-		TinkerRegistry.addTrait(blinding);
-		TinkerRegistry.addTrait(bloodthirst);
-		TinkerRegistry.addTrait(crystalline);
-		TinkerRegistry.addTrait(fancy);
-		TinkerRegistry.addTrait(intangible);
-		TinkerRegistry.addTrait(limited);
-		TinkerRegistry.addTrait(phasing);
-		TinkerRegistry.addTrait(shortFuse);
-		TinkerRegistry.addTrait(supermassive);
-		TinkerRegistry.addTrait(unbreakable);
-		TinkerRegistry.addTrait(unlimited);
+		registerTrait(blinding);
+		registerTrait(blinding);
+		registerTrait(bloodthirst);
+		registerTrait(crystalline);
+		registerTrait(fancy);
+		registerTrait(intangible);
+		registerTrait(limited);
+		registerTrait(phasing);
+		registerTrait(shortFuse);
+		registerTrait(supermassive);
+		registerTrait(unbreakable);
+		registerTrait(unlimited);
+	}
+
+	public static void registerTrait(ITrait trait) {
+		if (TinkerRegistry.getTrait(trait.getIdentifier()) == null)
+			TinkerRegistry.addTrait(trait);
 	}
 }
