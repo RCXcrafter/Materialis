@@ -1,6 +1,7 @@
 package com.rcx.materialis.traits.armor;
 
 import com.rcx.materialis.traits.MaterialisTraits;
+import com.rcx.materialis.traits.TraitLimited;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +15,7 @@ public class TraitArmorLimited extends AbstractArmorTrait {
 	public float modifier = 1.5F;
 
 	public TraitArmorLimited() {
-		super("limited", 0x64A7B5);
+		super(TraitLimited.id, 0x64A7B5);
 	}
 
 	@Override

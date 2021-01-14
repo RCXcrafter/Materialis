@@ -6,10 +6,11 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TraitSupermassive extends AbstractTrait {
 
+	public static String id = "supermassive";
 	public float modifier = 10.0F;
 
 	public TraitSupermassive() {
-		super("supermassive", 0x6B6B6B);
+		super(id, 0x6B6B6B);
 	}
 
 	@Override

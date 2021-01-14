@@ -11,8 +11,10 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 public class TraitArmorFireproof extends AbstractArmorTrait {
 
+	public static String id = "fireproof";
+
 	public TraitArmorFireproof() {
-		super("fireproof", 0xBF7C18);
+		super(id, 0xBF7C18);
 	}
 
 	@Override

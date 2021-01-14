@@ -10,10 +10,11 @@ import slimeknights.tconstruct.tools.TinkerTools;
 
 public class TraitIntangible extends AbstractTrait {
 
+	public static String id = "intangible";
 	public static float chance = 0.3f;
 
 	public TraitIntangible() {
-		super("intangible", 0xBDBDBD);
+		super(id, 0xBDBDBD);
 	}
 
 	@Override

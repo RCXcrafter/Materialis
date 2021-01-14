@@ -9,8 +9,10 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitBloodthirst extends AbstractTrait {
 
+	public static String id = "bloodthirst";
+
 	public TraitBloodthirst() {
-		super("bloodthirst", 0xA52919);
+		super(id, 0xA52919);
 	}
 
 	public void onPlayerHurt(ItemStack tool, EntityPlayer player, EntityLivingBase attacker, LivingHurtEvent event) {

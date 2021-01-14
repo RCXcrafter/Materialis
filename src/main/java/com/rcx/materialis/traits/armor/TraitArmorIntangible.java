@@ -1,5 +1,7 @@
 package com.rcx.materialis.traits.armor;
 
+import com.rcx.materialis.traits.TraitIntangible;
+
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -13,7 +15,7 @@ public class TraitArmorIntangible extends AbstractArmorTrait {
 	public static float chance = 0.12f;
 
 	public TraitArmorIntangible() {
-		super("intangible", 0xBDBDBD);
+		super(TraitIntangible.id, 0xBDBDBD);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

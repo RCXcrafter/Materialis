@@ -6,8 +6,10 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TraitUnbreakable extends AbstractTrait {
 
+	public static String id = "unbreakable";
+
 	public TraitUnbreakable() {
-		super("unbreakable", 0xFF5555);
+		super(id, 0xFF5555);
 	}
 	
 	@Override

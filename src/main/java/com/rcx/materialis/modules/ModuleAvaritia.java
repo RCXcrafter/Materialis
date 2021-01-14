@@ -51,8 +51,8 @@ public class ModuleAvaritia implements IModule {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent preEvent) {
-		MaterialisTraits.cosmic = new TraitCosmic();
-		TinkerRegistry.addTrait(MaterialisTraits.cosmic);
+		if (TinkerRegistry.getTrait(TraitCosmic.id) == null)
+			MaterialisTraits.cosmic = new TraitCosmic();
 
 		if (!MaterialisConfig.blacklist.isMaterialBlacklisted("crystal_matrix")) {
 			crystalMatrix.addTrait(MaterialisTraits.crystalline);

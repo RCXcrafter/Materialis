@@ -1,5 +1,7 @@
 package com.rcx.materialis.traits.armor;
 
+import com.rcx.materialis.traits.TraitCrystalline;
+
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -11,7 +13,7 @@ public class TraitArmorCrystalline extends AbstractArmorTrait {
 	public float modifier = 1.5F;
 
 	public TraitArmorCrystalline() {
-		super("crystalline", 0x97F1EB);
+		super(TraitCrystalline.id, 0x97F1EB);
 	}
 
 	@Override

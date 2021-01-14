@@ -10,8 +10,10 @@ import slimeknights.tconstruct.shared.TinkerCommons;
 
 public class TraitArmorRenewableEnergy extends AbstractArmorTrait {
 
+	public static String id = "renewable_energy";
+
 	public TraitArmorRenewableEnergy() {
-		super("renewable_energy", 0xA52919);
+		super(id, 0xA52919);
 	}
 
 	@Override

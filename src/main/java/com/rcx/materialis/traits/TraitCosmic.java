@@ -23,8 +23,10 @@ import slimeknights.tconstruct.library.utils.Tags;
 
 public class TraitCosmic extends AbstractTrait {
 
+	public static String id = "cosmic";
+
 	public TraitCosmic() {
-		super("cosmic", 0xFF5555);
+		super(id, 0xFF5555);
 	}
 
 	@Override

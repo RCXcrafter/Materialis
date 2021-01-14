@@ -8,10 +8,11 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitCrystalline extends AbstractTrait {
 
+	public static String id = "crystalline";
 	public float modifier = 1.5F;
 
 	public TraitCrystalline() {
-		super("crystalline", 0x97F1EB);
+		super(id, 0x97F1EB);
 	}
 
 	@Override

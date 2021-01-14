@@ -1,5 +1,7 @@
 package com.rcx.materialis.traits.armor;
 
+import com.rcx.materialis.traits.TraitBlinding;
+
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,7 +17,7 @@ public class TraitArmorBlinding extends AbstractArmorTrait {
 	public static float chance = 0.3f;
 
 	public TraitArmorBlinding() {
-		super("blinding", 0x3661A0);
+		super(TraitBlinding.id, 0x3661A0);
 	}
 
 	@Override

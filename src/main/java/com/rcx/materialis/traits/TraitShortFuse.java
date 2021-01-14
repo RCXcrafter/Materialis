@@ -9,10 +9,11 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TraitShortFuse extends AbstractTrait {
 
+	public static String id = "short_fuse";
 	public static float chance = 0.3f;
 
 	public TraitShortFuse() {
-		super("short_fuse", 0x416B4F);
+		super(id, 0x416B4F);
 	}
 
 	@Override

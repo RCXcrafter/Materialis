@@ -9,8 +9,10 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TraitBlinding extends AbstractTrait {
 
+	public static String id = "blinding";
+
 	public TraitBlinding() {
-		super("blinding", 0x3661A0);
+		super(id, 0x3661A0);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.rcx.materialis.traits.armor;
 
+import com.rcx.materialis.traits.TraitShortFuse;
+
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +14,7 @@ public class TraitArmorShortFuse extends AbstractArmorTrait {
 	public static float chance = 0.3f;
 
 	public TraitArmorShortFuse() {
-		super("short_fuse", 0x416B4F);
+		super(TraitShortFuse.id, 0x416B4F);
 	}
 
 	@Override

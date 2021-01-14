@@ -8,8 +8,10 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class TraitPhasing extends AbstractTrait {
 
+	public static String id = "phasing";
+
 	public TraitPhasing() {
-		super("phasing", 0xF1E9D4);
+		super(id, 0xF1E9D4);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

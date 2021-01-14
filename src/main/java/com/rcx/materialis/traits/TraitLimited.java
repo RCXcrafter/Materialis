@@ -10,10 +10,11 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitLimited extends AbstractTrait {
 
+	public static String id = "limited";
 	public float modifier = 1.5F;
 
 	public TraitLimited() {
-		super("limited", 0x64A7B5);
+		super(id, 0x64A7B5);
 	}
 
 	@Override

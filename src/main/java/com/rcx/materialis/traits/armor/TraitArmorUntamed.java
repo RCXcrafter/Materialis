@@ -6,8 +6,10 @@ import net.minecraft.world.World;
 
 public class TraitArmorUntamed extends AbstractArmorTrait {
 
+	public static String id = "untamed";
+
 	public TraitArmorUntamed() {
-		super("untamed", 0x917341);
+		super(id, 0x917341);
 	}
 
 	@Override
