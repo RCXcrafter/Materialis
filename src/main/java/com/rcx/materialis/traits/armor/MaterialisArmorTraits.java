@@ -1,7 +1,6 @@
 package com.rcx.materialis.traits.armor;
 
 import com.rcx.materialis.traits.TraitBlinding;
-import com.rcx.materialis.traits.TraitCosmic;
 import com.rcx.materialis.traits.TraitCrystalline;
 import com.rcx.materialis.traits.TraitIntangible;
 import com.rcx.materialis.traits.TraitLimited;
@@ -32,7 +31,7 @@ public class MaterialisArmorTraits {
 	public static void preInit() {
 		if (TinkerRegistry.getTrait(TraitBlinding.id) == null)
 			blinding = new TraitArmorBlinding();
-		if (TinkerRegistry.getTrait(TraitCosmic.id) == null)
+		if (TinkerRegistry.getTrait(TraitArmorCosmic.id) == null)
 			cosmic = new TraitArmorCosmic();
 		if (TinkerRegistry.getTrait(TraitCrystalline.id) == null)
 			crystalline = new TraitArmorCrystalline();

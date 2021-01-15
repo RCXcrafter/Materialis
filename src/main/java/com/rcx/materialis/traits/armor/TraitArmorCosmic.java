@@ -1,7 +1,5 @@
 package com.rcx.materialis.traits.armor;
 
-import com.rcx.materialis.traits.TraitCosmic;
-
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -13,8 +11,10 @@ import slimeknights.tconstruct.library.utils.Tags;
 
 public class TraitArmorCosmic extends AbstractArmorTrait {
 
+	public static String id = "cosmic";
+
 	public TraitArmorCosmic() {
-		super(TraitCosmic.id, 0xFF5555);
+		super(id, 0xFF5555);
 	}
 
 	@Override
