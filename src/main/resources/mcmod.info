@@ -11,7 +11,7 @@
   "credits": "",
   "logoFile": "materialis_logo.png",
   "screenshots": [],
-  "dependencies": [tconstruct]
+  "dependencies": ["tconstruct"]
 },
 {
   "modid": "materialispreload",
