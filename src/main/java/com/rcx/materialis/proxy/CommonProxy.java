@@ -19,6 +19,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEve
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import slimeknights.tconstruct.shared.TinkerCommons;
 
 public class CommonProxy {
 
@@ -61,6 +62,8 @@ public class CommonProxy {
 			if (module.shouldLoad())
 				module.postInit(postEvent);
 		}
+		if (Materialis.tabItem == null)
+			Materialis.tabItem = TinkerCommons.ingotKnightSlime;
 	}
 
 	public void ConfigChanged(OnConfigChangedEvent event) {

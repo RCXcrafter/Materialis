@@ -19,7 +19,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.client.CreativeTab;
-import slimeknights.tconstruct.shared.TinkerCommons;
 
 @Mod(modid = Materialis.ID, name = Materialis.NAME, version = Materialis.VERSION, dependencies = "required-after:tconstruct;after:conarm;after:aquaculture")
 public class Materialis {
@@ -30,7 +29,7 @@ public class Materialis {
 	public static final String NAME = "Materialis";
 	public static final String VERSION = "1.2.5";
 
-	public static ItemStack tabItem = TinkerCommons.ingotKnightSlime;
+	public static ItemStack tabItem = null;
 	public static CreativeTab MatTab = new CreativeTab(ID + ".creativeTab", ItemStack.EMPTY) {
 		@SideOnly(Side.CLIENT)
 		public ItemStack getIconItemStack() {
