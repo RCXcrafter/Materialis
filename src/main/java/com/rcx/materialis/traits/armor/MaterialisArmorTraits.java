@@ -29,27 +29,27 @@ public class MaterialisArmorTraits {
 	public static IArmorTrait untamed = fallback;
 
 	public static void preInit() {
-		if (TinkerRegistry.getTrait(TraitBlinding.id) == null)
+		if (TinkerRegistry.getModifier(TraitBlinding.id) == null)
 			blinding = new TraitArmorBlinding();
-		if (TinkerRegistry.getTrait(TraitArmorCosmic.id) == null)
+		if (TinkerRegistry.getModifier(TraitArmorCosmic.id) == null)
 			cosmic = new TraitArmorCosmic();
-		if (TinkerRegistry.getTrait(TraitCrystalline.id) == null)
+		if (TinkerRegistry.getModifier(TraitCrystalline.id) == null)
 			crystalline = new TraitArmorCrystalline();
-		if (TinkerRegistry.getTrait(TraitArmorFireproof.id) == null)
+		if (TinkerRegistry.getModifier(TraitArmorFireproof.id) == null)
 			fireproof = new TraitArmorFireproof();
-		if (TinkerRegistry.getTrait(TraitIntangible.id) == null)
+		if (TinkerRegistry.getModifier(TraitIntangible.id) == null)
 			intangible = new TraitArmorIntangible();
-		if (TinkerRegistry.getTrait(TraitLimited.id) == null)
+		if (TinkerRegistry.getModifier(TraitLimited.id) == null)
 			limited = new TraitArmorLimited();
-		if (TinkerRegistry.getTrait(TraitArmorRenewableEnergy.id) == null)
+		if (TinkerRegistry.getModifier(TraitArmorRenewableEnergy.id) == null)
 			renewableEnergy = new TraitArmorRenewableEnergy();
-		if (TinkerRegistry.getTrait(TraitShortFuse.id) == null)
+		if (TinkerRegistry.getModifier(TraitShortFuse.id) == null)
 			shortFuse = new TraitArmorShortFuse();
-		if (TinkerRegistry.getTrait(TraitSupermassive.id) == null)
+		if (TinkerRegistry.getModifier(TraitSupermassive.id) == null)
 			supermassive = new TraitArmorSupermassive();
-		if (TinkerRegistry.getTrait(TraitUnbreakable.id) == null)
+		if (TinkerRegistry.getModifier(TraitUnbreakable.id) == null)
 			unbreakable = new TraitArmorUnbreakable();
-		if (TinkerRegistry.getTrait(TraitArmorUntamed.id) == null)
+		if (TinkerRegistry.getModifier(TraitArmorUntamed.id) == null)
 			untamed = new TraitArmorUntamed();
 	}
 }

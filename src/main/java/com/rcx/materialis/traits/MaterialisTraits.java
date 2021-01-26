@@ -21,27 +21,27 @@ public class MaterialisTraits {
 	public static ITrait unlimited = fallback;
 
 	public static void preInit() {
-		if (TinkerRegistry.getTrait(TraitBlinding.id) == null)
+		if (TinkerRegistry.getModifier(TraitBlinding.id) == null)
 			blinding = new TraitBlinding();
-		if (TinkerRegistry.getTrait(TraitBloodthirst.id) == null)
+		if (TinkerRegistry.getModifier(TraitBloodthirst.id) == null)
 			bloodthirst = new TraitBloodthirst();
-		if (TinkerRegistry.getTrait(TraitCrystalline.id) == null)
+		if (TinkerRegistry.getModifier(TraitCrystalline.id) == null)
 			crystalline = new TraitCrystalline();
-		if (TinkerRegistry.getTrait("fancy") == null)
+		if (TinkerRegistry.getModifier("fancy") == null)
 			fancy = new TraitNoEffect("fancy", 0xFFE30B);
-		if (TinkerRegistry.getTrait(TraitIntangible.id) == null)
+		if (TinkerRegistry.getModifier(TraitIntangible.id) == null)
 			intangible = new TraitIntangible();
-		if (TinkerRegistry.getTrait(TraitLimited.id) == null)
+		if (TinkerRegistry.getModifier(TraitLimited.id) == null)
 			limited = new TraitLimited();
-		if (TinkerRegistry.getTrait(TraitPhasing.id) == null)
+		if (TinkerRegistry.getModifier(TraitPhasing.id) == null)
 			phasing = new TraitPhasing();
-		if (TinkerRegistry.getTrait(TraitShortFuse.id) == null)
+		if (TinkerRegistry.getModifier(TraitShortFuse.id) == null)
 			shortFuse = new TraitShortFuse();
-		if (TinkerRegistry.getTrait(TraitSupermassive.id) == null)
+		if (TinkerRegistry.getModifier(TraitSupermassive.id) == null)
 			supermassive = new TraitSupermassive();
-		if (TinkerRegistry.getTrait(TraitUnbreakable.id) == null)
+		if (TinkerRegistry.getModifier(TraitUnbreakable.id) == null)
 			unbreakable = new TraitUnbreakable();
-		if (TinkerRegistry.getTrait("unlimited") == null)
+		if (TinkerRegistry.getModifier("unlimited") == null)
 			unlimited = new TraitNoEffect("unlimited", 0x64A7B5);
 	}
 }
