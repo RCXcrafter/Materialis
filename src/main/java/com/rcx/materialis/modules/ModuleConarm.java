@@ -66,9 +66,11 @@ public class ModuleConarm implements IModule {
 		HandleMaterialStats handle = material.getStats(MaterialTypes.HANDLE);
 		ExtraMaterialStats extra = material.getStats(MaterialTypes.EXTRA);
 
-		TinkerRegistry.addMaterialStats(material,
-				new CoreMaterialStats(head.durability / 30, head.attack * 2.2F),
-				new PlatesMaterialStats(handle.modifier, handle.durability / 17, toughness),
-				new TrimMaterialStats(extra.extraDurability / 16));
+		if (head != null)
+			TinkerRegistry.addMaterialStats(material, new CoreMaterialStats(head.durability / 30, head.attack * 2.2F));
+		if (handle != null)
+			TinkerRegistry.addMaterialStats(material, new PlatesMaterialStats(handle.modifier, handle.durability / 17, toughness));
+		if (extra != null)
+			TinkerRegistry.addMaterialStats(material, new TrimMaterialStats(extra.extraDurability / 16));
 	}
 }
