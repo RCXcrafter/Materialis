@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/fairy",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/fairy"
+  },
+  "result": {
+    "fluid": "materialis:molten_fairy",
+    "amount": 48
+  },
+  "temperature": 450,
+  "time": 32
+}

@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "Materialis resources",
-        "pack_format": 3
-	}
+        "description": "materialis resources",
+        "pack_format": 6
+    }
 }

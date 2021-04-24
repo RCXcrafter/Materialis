@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/single_use/nugget"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "materialis:molten_fairy",
+    "amount": 16
+  },
+  "result": "materialis:fairy_nugget",
+  "cooling_time": 16
+}

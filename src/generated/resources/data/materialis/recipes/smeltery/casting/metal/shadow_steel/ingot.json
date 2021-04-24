@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/shadow_steel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:ingots/shadow_steel"
+  },
+  "result": {
+    "fluid": "materialis:molten_shadow_steel",
+    "amount": 144
+  },
+  "temperature": 1000,
+  "time": 66
+}

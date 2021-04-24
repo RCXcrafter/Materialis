@@ -16,10 +16,16 @@ out
 # gradle
 build
 .gradle
-/gradle
-gradlew
 
 # other
 eclipse
 run
-.~lock*
+
+# Files from Forge MDK
+forge*changelog.txt
+
+lombok.config
+
+Material Tiers.ods
+
+src/generated/resources/.cache/

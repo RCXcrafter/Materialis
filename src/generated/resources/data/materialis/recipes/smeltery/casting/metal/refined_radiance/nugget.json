@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/refined_radiance",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:nuggets/refined_radiance"
+  },
+  "result": {
+    "fluid": "materialis:molten_refined_radiance",
+    "amount": 16
+  },
+  "temperature": 1000,
+  "time": 22
+}

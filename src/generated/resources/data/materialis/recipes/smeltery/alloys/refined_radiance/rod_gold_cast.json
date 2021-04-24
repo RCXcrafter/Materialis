@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/refined_radiance",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/rod"
+  },
+  "fluid": {
+    "name": "materialis:molten_refined_radiance",
+    "amount": 72
+  },
+  "result": {
+    "tag": "forge:rods/refined_radiance"
+  },
+  "cooling_time": 47
+}

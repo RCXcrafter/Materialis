@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ingots/fairy",
+    "#forge:ingots/refined_radiance",
+    "#forge:ingots/shadow_steel"
+  ]
+}

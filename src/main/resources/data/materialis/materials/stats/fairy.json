@@ -1,0 +1,22 @@
+{
+  "materialId": "materialis:fairy",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 789,
+      "miningSpeed": 10.0,
+      "harvestLevel": 3,
+      "attack": 4.0
+    },
+    {
+      "id": "tconstruct:handle",
+      "durability": 1.1,
+      "miningSpeed": 1.3,
+      "attackSpeed": 1.0,
+      "attackDamage": 1.0
+    },
+    {
+      "id": "tconstruct:extra"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "materialId": "materialis:brass",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 450,
+      "miningSpeed": 9.0,
+      "harvestLevel": 3,
+      "attack": 4.0
+    },
+    {
+      "id": "tconstruct:handle",
+      "durability": 1.0,
+      "miningSpeed": 1.1,
+      "attackSpeed": 1.1,
+      "attackDamage": 1.0
+    },
+    {
+      "id": "tconstruct:extra"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:sheetmetals/refined_radiance",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:sheetmetals/refined_radiance"
+  },
+  "result": {
+    "fluid": "materialis:molten_refined_radiance",
+    "amount": 144
+  },
+  "temperature": 1000,
+  "time": 66
+}

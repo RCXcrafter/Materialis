@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "fluid": {
+    "name": "materialis:molten_fairy",
+    "amount": 144
+  },
+  "result": "materialis:fairy_ingot",
+  "cooling_time": 48
+}

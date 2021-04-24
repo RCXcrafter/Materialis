@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "create:refined_radiance",
+      "required": false
+    }
+  ]
+}

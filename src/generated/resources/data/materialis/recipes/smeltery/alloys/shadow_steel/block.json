@@ -1,0 +1,20 @@
+{
+  "type": "tconstruct:casting_basin",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/shadow_steel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "fluid": {
+    "name": "materialis:molten_shadow_steel",
+    "amount": 1296
+  },
+  "result": {
+    "tag": "forge:storage_blocks/shadow_steel"
+  },
+  "cooling_time": 199
+}

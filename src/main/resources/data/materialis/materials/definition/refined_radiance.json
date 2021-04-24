@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/refined_radiance",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 5,
+  "sortOrder": 1,
+  "fluid": "materialis:molten_refined_radiance",
+  "fluidPerUnit": 144,
+  "textColor": "#FFFFFF",
+  "temperature": 1300,
+  "traits": [
+    {
+      "name": "materialis:residual_light",
+      "level": 1
+    }
+  ]
+}

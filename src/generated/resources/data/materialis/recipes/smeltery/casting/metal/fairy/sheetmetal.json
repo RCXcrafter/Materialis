@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:sheetmetals/fairy",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:sheetmetals/fairy"
+  },
+  "result": {
+    "fluid": "materialis:molten_fairy",
+    "amount": 144
+  },
+  "temperature": 450,
+  "time": 48
+}

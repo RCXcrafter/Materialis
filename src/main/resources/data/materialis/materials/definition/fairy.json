@@ -1,0 +1,15 @@
+{
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 0,
+  "fluid": "materialis:molten_fairy",
+  "fluidPerUnit": 144,
+  "textColor": "#FF87BC",
+  "temperature": 750,
+  "traits": [
+    {
+      "name": "tconstruct:holy",
+      "level": 1
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:ingots/fairy"
+  },
+  "result": {
+    "fluid": "materialis:molten_fairy",
+    "amount": 144
+  },
+  "temperature": 450,
+  "time": 48
+}

@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gears/fairy",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/single_use/gear"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "materialis:molten_fairy",
+    "amount": 576
+  },
+  "result": {
+    "tag": "forge:gears/fairy"
+  },
+  "cooling_time": 96
+}
