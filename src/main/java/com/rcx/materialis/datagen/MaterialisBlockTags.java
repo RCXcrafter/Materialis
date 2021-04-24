@@ -10,6 +10,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag.INamedTag;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisBlockTags extends BlockTagsProvider {
 
@@ -47,5 +48,6 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 		tag(tag).add(block);
 		tag(BlockTags.BEACON_BASE_BLOCKS).addTag(tag);
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(tag);
+		tag(TinkerTags.Blocks.ANVIL_METAL).addTag(tag);
 	}
 }

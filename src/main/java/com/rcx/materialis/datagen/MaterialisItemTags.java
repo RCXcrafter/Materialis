@@ -12,6 +12,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisItemTags extends ItemTagsProvider {
 
@@ -32,8 +33,10 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		this.tag(FAIRY_INGOT).add(MaterialisResources.FAIRY_INGOT.get());
 		this.tag(Tags.Items.INGOTS).addTag(FAIRY_INGOT);
 		this.tag(FAIRY_BLOCK).add(MaterialisResources.FAIRY_BLOCK_ITEM.get());
-		this.tag(Tags.Items.NUGGETS).addTag(FAIRY_NUGGET);
+		this.tag(Tags.Items.STORAGE_BLOCKS).addTag(FAIRY_BLOCK);
+		this.tag(TinkerTags.Items.ANVIL_METAL).addTag(FAIRY_BLOCK);
 		this.tag(FAIRY_NUGGET).add(MaterialisResources.FAIRY_NUGGET.get());
+		this.tag(Tags.Items.NUGGETS).addTag(FAIRY_NUGGET);
 
 		//create ingots
 		this.tag(REFINED_RADIANCE_INGOT).addOptional(new ResourceLocation("create", "refined_radiance"));

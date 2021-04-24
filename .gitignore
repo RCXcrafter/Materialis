@@ -29,3 +29,5 @@ lombok.config
 Material Tiers.ods
 
 src/generated/resources/.cache/
+
+*.ods#
