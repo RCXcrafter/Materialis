@@ -36,7 +36,7 @@ public class MaterialisResources {
 	public static final ResourceLocation MOLTEN_FAIRY_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_fairy_still");
 	public static final ResourceLocation MOLTEN_FAIRY_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_fairy_flow");
 	private static ForgeFlowingFluid.Properties getFairyProperties() {
-		return new ForgeFlowingFluid.Properties(FAIRY_FLUID, FAIRY_FLUID_FLOW, FluidAttributes.builder(MOLTEN_FAIRY_STILL, MOLTEN_FAIRY_FLOW).overlay(MOLTEN_FAIRY_STILL).luminosity(15).density(3000).viscosity(6000).temperature(750).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(FAIRY_BUCKET).block(MOLTEN_FAIRY).explosionResistance(1000F).tickRate(9);       
+		return new ForgeFlowingFluid.Properties(FAIRY_FLUID, FAIRY_FLUID_FLOW, FluidAttributes.builder(MOLTEN_FAIRY_STILL, MOLTEN_FAIRY_FLOW).overlay(MOLTEN_FAIRY_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1050).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(FAIRY_BUCKET).block(MOLTEN_FAIRY).explosionResistance(1000F).tickRate(9);       
 	}
 
 	//refined radiance
@@ -45,7 +45,7 @@ public class MaterialisResources {
 	public static final ResourceLocation MOLTEN_REFINED_RADIANCE_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_refined_radiance_still");
 	public static final ResourceLocation MOLTEN_REFINED_RADIANCE_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_refined_radiance_flow");
 	private static ForgeFlowingFluid.Properties getRefinedRadianceProperties() {
-		return new ForgeFlowingFluid.Properties(REFINED_RADIANCE_FLUID, REFINED_RADIANCE_FLUID_FLOW, FluidAttributes.builder(MOLTEN_REFINED_RADIANCE_STILL, MOLTEN_REFINED_RADIANCE_FLOW).overlay(MOLTEN_REFINED_RADIANCE_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1300).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(REFINED_RADIANCE_BUCKET).block(MOLTEN_REFINED_RADIANCE).explosionResistance(1000F).tickRate(9);       
+		return new ForgeFlowingFluid.Properties(REFINED_RADIANCE_FLUID, REFINED_RADIANCE_FLUID_FLOW, FluidAttributes.builder(MOLTEN_REFINED_RADIANCE_STILL, MOLTEN_REFINED_RADIANCE_FLOW).overlay(MOLTEN_REFINED_RADIANCE_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1600).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(REFINED_RADIANCE_BUCKET).block(MOLTEN_REFINED_RADIANCE).explosionResistance(1000F).tickRate(9);       
 	}
 
 	//shadow steel
@@ -54,7 +54,7 @@ public class MaterialisResources {
 	public static final ResourceLocation MOLTEN_SHADOW_STEEL_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_shadow_steel_still");
 	public static final ResourceLocation MOLTEN_SHADOW_STEEL_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_shadow_steel_flow");
 	private static ForgeFlowingFluid.Properties getShadowSteelProperties() {
-		return new ForgeFlowingFluid.Properties(SHADOW_STEEL_FLUID, SHADOW_STEEL_FLUID_FLOW, FluidAttributes.builder(MOLTEN_SHADOW_STEEL_STILL, MOLTEN_SHADOW_STEEL_FLOW).overlay(MOLTEN_SHADOW_STEEL_STILL).luminosity(0).density(3000).viscosity(6000).temperature(1300).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(SHADOW_STEEL_BUCKET).block(MOLTEN_SHADOW_STEEL).explosionResistance(1000F).tickRate(9);       
+		return new ForgeFlowingFluid.Properties(SHADOW_STEEL_FLUID, SHADOW_STEEL_FLUID_FLOW, FluidAttributes.builder(MOLTEN_SHADOW_STEEL_STILL, MOLTEN_SHADOW_STEEL_FLOW).overlay(MOLTEN_SHADOW_STEEL_STILL).luminosity(0).density(3000).viscosity(6000).temperature(1600).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(SHADOW_STEEL_BUCKET).block(MOLTEN_SHADOW_STEEL).explosionResistance(1000F).tickRate(9);       
 	}
 
 

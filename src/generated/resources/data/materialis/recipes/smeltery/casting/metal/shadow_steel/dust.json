@@ -16,6 +16,6 @@
     "fluid": "materialis:molten_shadow_steel",
     "amount": 144
   },
-  "temperature": 1000,
-  "time": 50
+  "temperature": 1300,
+  "time": 56
 }
