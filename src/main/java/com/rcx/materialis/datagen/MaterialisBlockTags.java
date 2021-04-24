@@ -8,13 +8,12 @@ import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag.INamedTag;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class MaterialisBlockTags extends BlockTagsProvider {
 
-	public final INamedTag<Block> FAIRY_BLOCK = BlockTags.bind(new ResourceLocation("forge", "storage_blocks/" + "fairy").toString());
+	public final INamedTag<Block> FAIRY_BLOCK = BlockTags.bind("forge:storage_blocks/fairy");
 
 	public MaterialisBlockTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);

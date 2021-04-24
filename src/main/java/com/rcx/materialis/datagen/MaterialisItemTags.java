@@ -15,13 +15,13 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class MaterialisItemTags extends ItemTagsProvider {
 
-	public final INamedTag<Item> FAIRY_INGOT = ItemTags.bind(new ResourceLocation("forge", "ingots/fairy").toString());
-	public final INamedTag<Item> FAIRY_BLOCK = ItemTags.bind(new ResourceLocation("forge", "storage_blocks/fairy").toString());
-	public final INamedTag<Item> FAIRY_NUGGET = ItemTags.bind(new ResourceLocation("forge", "nuggets/fairy").toString());
+	public final INamedTag<Item> FAIRY_INGOT = ItemTags.bind("forge:ingots/fairy");
+	public final INamedTag<Item> FAIRY_BLOCK = ItemTags.bind("forge:storage_blocks/fairy");
+	public final INamedTag<Item> FAIRY_NUGGET = ItemTags.bind("forge:nuggets/fairy");
 
 	//create ingots
-	public final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind(new ResourceLocation("forge", "ingots/refined_radiance").toString());
-	public final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind(new ResourceLocation("forge", "ingots/shadow_steel").toString());
+	public final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
+	public final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
 
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
