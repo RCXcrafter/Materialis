@@ -48,9 +48,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 	public void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
 		blockIngotNuggetCompression(consumer, MaterialisResources.FAIRY_BLOCK_ITEM.get(), MaterialisResources.FAIRY_INGOT.get(), MaterialisResources.FAIRY_NUGGET.get());
-		String metalFolder = "smeltery/casting/" + "metal/";
+		String metalFolder = "smeltery/casting/metal/";
 		addMetalCastingRecipe(consumer, MaterialisResources.FAIRY_FLUID, MaterialisResources.FAIRY_BLOCK_ITEM.get(), MaterialisResources.FAIRY_INGOT.get(), MaterialisResources.FAIRY_NUGGET.get(), metalFolder, "fairy");
-
 
 		addMetalMelting(consumer, MaterialisResources.FAIRY_FLUID.get(), "fairy", false, metalFolder, false);
 
@@ -66,6 +65,19 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addMetalMelting(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.get(), "refined_radiance", false, metalFolder, true);
 		addMetalOptionalCasting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.get(), "shadow_steel", folder);
 		addMetalMelting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.get(), "shadow_steel", false, metalFolder, true);
+
+		//eidolon stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.get(), "arcane_gold", folder);
+		addMetalMelting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.get(), "arcane_gold", false, metalFolder, true);
+
+		addCastCastingRecipe(withCondition(consumer, tagConditionDomain("materialis", "inlays")),  getTag("materialis", "inlays"),  MaterialisResources.INLAY_CAST,  folder);
+		addOptionalCastingWithCastDomain(consumer, TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays", "inlay", "pewter", folder, "materialis");
+		addOptionalCastingWithCastDomain(consumer, MaterialisResources.ARCANE_GOLD_FLUID.get(), MaterialValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays", "inlay", "arcane_gold", folder, "materialis");
+
+		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "inlays/pewter")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/pewter")), location(metalFolder + "pewter_inlay"));
+		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "inlays/arcane_gold")), MaterialisResources.ARCANE_GOLD_FLUID.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/arcane_gold")), location(metalFolder + "arcane_gold_inlay"));
+
+		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "pewter_blend")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT, 1.0f).build(withCondition(consumer, tagConditionDomain("materialis", "pewter_blend")), location(metalFolder + "pewter_blend"));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, Item block, Item ingot, Item nugget) {
@@ -331,9 +343,13 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 	/** Adds a recipe for casting using a cast */
 	private void addOptionalCastingWithCast(Consumer<IFinishedRecipe> consumer, Fluid fluid, int amount, CastItemObject cast, String tagPrefix, String recipeName, String name, String folder) {
+		addOptionalCastingWithCastDomain(consumer, fluid, amount, cast, tagPrefix, recipeName, name, folder, "forge");
+	}
+
+	private void addOptionalCastingWithCastDomain(Consumer<IFinishedRecipe> consumer, Fluid fluid, int amount, CastItemObject cast, String tagPrefix, String recipeName, String name, String folder, String domain) {
 		String tagName = tagPrefix + "/" + name;
-		ITag<Item> tag = getTag("forge", tagName);
-		Consumer<IFinishedRecipe> wrapped = withCondition(consumer, tagCondition(tagName));
+		ITag<Item> tag = getTag(domain, tagName);
+		Consumer<IFinishedRecipe> wrapped = withCondition(consumer, tagConditionDomain(domain, tagName));
 		ItemCastingRecipeBuilder.tableRecipe(tag)
 		.setFluidAndTime(new FluidStack(fluid, amount))
 		.setCast(cast.getMultiUseTag(), false)
@@ -417,6 +433,16 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 	 */
 	protected static ICondition tagCondition(String name) {
 		return new NotCondition(new TagEmptyCondition("forge", name));
+	}
+
+	/**
+	 * Creates a condition for a tag existing
+	 * @param domain  Tag domain
+	 * @param name  Tag name
+	 * @return  Condition for tag existing
+	 */
+	protected static ICondition tagConditionDomain(String domain, String name) {
+		return new NotCondition(new TagEmptyCondition(domain, name));
 	}
 
 	/**

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "eidolon:pewter_blend",
+      "required": false
+    }
+  ]
+}

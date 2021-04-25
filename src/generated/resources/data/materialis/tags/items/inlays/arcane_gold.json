@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "eidolon:gold_inlay",
+      "required": false
+    }
+  ]
+}

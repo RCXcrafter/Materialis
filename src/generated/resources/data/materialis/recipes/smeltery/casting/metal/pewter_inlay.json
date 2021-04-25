@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "materialis:inlays/pewter",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "materialis:inlays/pewter"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_pewter",
+    "amount": 288
+  },
+  "temperature": 400,
+  "time": 69
+}

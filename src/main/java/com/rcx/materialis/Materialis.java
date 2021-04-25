@@ -53,6 +53,7 @@ public class Materialis {
 		MaterialisResources.FLUIDS.register(bus);
 		MaterialisResources.BLOCKS.register(bus);
 		MaterialisResources.ITEMS.register(bus);
+		MaterialisResources.ITEMS_EXTENDED.register(bus);
 		MaterialisModifiers.MODIFIERS.register(bus);
 
 		// Register ourselves for server and other game events we are interested in

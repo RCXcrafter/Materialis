@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/pewter",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 1,
+  "fluid": "tconstruct:molten_pewter",
+  "fluidPerUnit": 144,
+  "textColor": "#A1A097",
+  "temperature": 400,
+  "traits": [
+    {
+      "name": "materialis:inertia",
+      "level": 1
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "materialis:item/molten_arcane_gold_bucket"
+  }
+}

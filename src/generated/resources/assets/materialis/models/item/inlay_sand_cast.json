@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "materialis:item/inlay_sand_cast"
+  }
+}

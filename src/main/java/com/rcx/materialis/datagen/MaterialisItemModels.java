@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
+import slimeknights.tconstruct.common.registration.CastItemObject;
 
 public class MaterialisItemModels extends ItemModelProvider {
 
@@ -23,15 +24,33 @@ public class MaterialisItemModels extends ItemModelProvider {
 		itemWithModel(MaterialisResources.FAIRY_NUGGET, "item/generated");
 		bucketModel(MaterialisResources.FAIRY_BUCKET);
 
+		//custom casts
+		castModels(MaterialisResources.INLAY_CAST);
+
 		//create fluids
 		bucketModel(MaterialisResources.REFINED_RADIANCE_BUCKET);
 		bucketModel(MaterialisResources.SHADOW_STEEL_BUCKET);
+
+		//eidolon fluids
+		bucketModel(MaterialisResources.ARCANE_GOLD_BUCKET);
 	}
 
 	public void itemWithModel(RegistryObject<? extends Item> registryObject, String model) {
 		ResourceLocation id = registryObject.getId();
 		ResourceLocation textureLocation = new ResourceLocation(id.getNamespace(), "item/" + id.getPath());
 		singleTexture(id.getPath(), new ResourceLocation(model), "layer0", textureLocation);
+	}
+
+	public void castModels(CastItemObject cast) {
+		ResourceLocation idGold = cast.get().getRegistryName();
+		ResourceLocation textureLocationGold = new ResourceLocation(idGold.getNamespace(), "item/" + idGold.getPath());
+		singleTexture(idGold.getPath(), new ResourceLocation("item/generated"), "layer0", textureLocationGold);
+		ResourceLocation idSand = cast.getSand().getRegistryName();
+		ResourceLocation textureLocationSand = new ResourceLocation(idSand.getNamespace(), "item/" + idSand.getPath());
+		singleTexture(idSand.getPath(), new ResourceLocation("item/generated"), "layer0", textureLocationSand);
+		ResourceLocation idSandRed = cast.getRedSand().getRegistryName();
+		ResourceLocation textureLocationSandRed = new ResourceLocation(idSandRed.getNamespace(), "item/" + idSandRed.getPath());
+		singleTexture(idSandRed.getPath(), new ResourceLocation("item/generated"), "layer0", textureLocationSandRed);
 	}
 
 	public void bucketModel(RegistryObject<? extends BucketItem> registryObject) {
