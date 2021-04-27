@@ -63,6 +63,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.arcane", "Arcane");
 		add("modifier.materialis.arcane.flavor", "Magic *snort*");
 		add("modifier.materialis.arcane.description", "Deals a small amount of extra magic damage to attacked targets");
+		add("modifier.materialis.reaping", "Reaping");
+		add("modifier.materialis.reaping.flavor", "Harvester of souls");
+		add("modifier.materialis.reaping.description", "Killing undead mobs will destroy their bodies and crystallize their souls");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

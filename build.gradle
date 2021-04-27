@@ -146,8 +146,8 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
     //implementation fg.deobf("curse.maven:create-328085:3278516")
-    //compile fg.deobf("curse.maven:eidolon-429625:3157832")
-    //compile fg.deobf("curse.maven:curios-309927:3275653")
+    compileOnly fg.deobf("curse.maven:eidolon-429625:3157832")
+    compileOnly fg.deobf("curse.maven:curios-309927:3275653")
 
 	//annotationProcessor 'org.spongepowered:mixin:0.1.2-SNAPSHOT:processor'
 

@@ -1,0 +1,30 @@
+{
+  "condition": {
+    "modid": "eidolon",
+    "type": "forge:mod_loaded"
+  },
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "eidolon:tattered_cloth"
+    },
+    {
+      "item": "eidolon:unholy_symbol"
+    },
+    {
+      "item": "eidolon:tattered_cloth"
+    },
+    {
+      "item": "eidolon:soul_shard"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "result": {
+    "name": "materialis:reaping",
+    "level": 1
+  },
+  "max_level": 1,
+  "ability_slots": 1
+}
