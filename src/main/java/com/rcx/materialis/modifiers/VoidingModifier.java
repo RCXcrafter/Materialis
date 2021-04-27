@@ -2,6 +2,8 @@ package com.rcx.materialis.modifiers;
 
 import java.util.List;
 
+import com.rcx.materialis.MaterialisUtil;
+
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
@@ -10,7 +12,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
-import slimeknights.tconstruct.tools.TinkerModifiers;
 
 public class VoidingModifier extends SingleUseModifier {
 
@@ -35,7 +36,7 @@ public class VoidingModifier extends SingleUseModifier {
 		ToolStack tool = getHeldTool(event.getAttackingPlayer());
 		if (tool != null) {
 			if (tool.getModifierLevel(this) > 0) {
-				float modifier = 1 + event.getAttackingPlayer().level.random.nextFloat() * tool.getModifierLevel(TinkerModifiers.luck.get());
+				float modifier = 1 + event.getAttackingPlayer().level.random.nextFloat() * MaterialisUtil.getEffectiveLuckLevel(tool, event.getAttackingPlayer().level.random);
 				event.setDroppedExperience((int) (event.getDroppedExperience() * modifier + 0.4f));
 			}
 		}
