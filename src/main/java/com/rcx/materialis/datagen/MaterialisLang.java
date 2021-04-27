@@ -30,8 +30,19 @@ public class MaterialisLang extends LanguageProvider {
 		//custom casts
 		addCast(MaterialisResources.INLAY_CAST, "Inlay");
 
-		//create stuff
+		//general oredict materials
 		add("material.materialis.brass", "Brass");
+		//add("material.materialis.aluminum", "Aluminum");
+		//add("material.materialis.nickel", "Nickel");
+		//add("material.materialis.platinum", "Platinum");
+		//add("material.materialis.tin", "Tin");
+		//add("material.materialis.zinc", "Zinc");
+		add("material.materialis.uranium", "Uranium");
+		//add("material.materialis.osmium", "Osmium");
+		//add("material.materialis.tungsten", "Tungsten");
+		//add("material.materialis.invar", "Invar");
+
+		//create stuff
 		add("material.materialis.rose_quartz", "Rose Quartz");
 		add("material.materialis.refined_radiance", "Refined Radiance");
 		add("material.materialis.refined_radiance.format", "Radiant %s");
@@ -57,6 +68,9 @@ public class MaterialisLang extends LanguageProvider {
 		addItem(MaterialisResources.NEPTUNIUM_BUCKET, "Molten Neptunium Bucket");
 
 		//modifiers
+		add("modifier.materialis.enhanced_quartz", "Enhanced");
+		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
+		add("modifier.materialis.enhanced_quartz.description", "Rose quartz goes great with a bonus upgrade!");
 		add("modifier.materialis.voiding", "Voiding");
 		add("modifier.materialis.voiding.flavor", "Forged in the void");
 		add("modifier.materialis.voiding.description", "Voids block and mob drops, drops extra experience for killing mobs");
@@ -78,6 +92,11 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.neptunes_blessing", "Neptune's Blessing");
 		add("modifier.materialis.neptunes_blessing.flavor", "Stay hydrated");
 		add("modifier.materialis.neptunes_blessing.description", "Increases mining speed underwater and damage to wet mobs");
+		add("modifier.materialis.half_life", "Half-Life");
+		add("modifier.materialis.half_life.3", "Half-Life II: Episode I");
+		add("modifier.materialis.half_life.4", "Half-Life II: Episode II");
+		add("modifier.materialis.half_life.flavor", "Smell the ashes");
+		add("modifier.materialis.half_life.description", "Your tool loses durability faster when it has high durability and loses durability slower when it has low durability");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

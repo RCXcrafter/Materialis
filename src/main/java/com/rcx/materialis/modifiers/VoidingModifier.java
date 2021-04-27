@@ -36,7 +36,7 @@ public class VoidingModifier extends SingleUseModifier {
 		ToolStack tool = getHeldTool(event.getAttackingPlayer());
 		if (tool != null) {
 			if (tool.getModifierLevel(this) > 0) {
-				float modifier = 1 + event.getAttackingPlayer().level.random.nextFloat() * MaterialisUtil.getEffectiveLuckLevel(tool, event.getAttackingPlayer().level.random);
+				float modifier = 1 + RANDOM.nextFloat() * MaterialisUtil.getEffectiveLuckLevel(tool, RANDOM);
 				event.setDroppedExperience((int) (event.getDroppedExperience() * modifier + 0.4f));
 			}
 		}

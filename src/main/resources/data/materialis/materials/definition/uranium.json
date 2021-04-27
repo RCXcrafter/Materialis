@@ -1,21 +1,21 @@
 {
   "condition": {
     "value": {
-      "tag": "forge:ingots/brass",
+      "tag": "forge:ingots/uranium",
       "type": "forge:tag_empty"
     },
     "type": "forge:not"
   },
   "craftable": false,
-  "tier": 3,
+  "tier": 2,
   "sortOrder": 1,
-  "fluid": "tconstruct:molten_brass",
+  "fluid": "tconstruct:molten_uranium",
   "fluidPerUnit": 144,
-  "textColor": "#FFD359",
-  "temperature": 605,
+  "textColor": "#42BE30",
+  "temperature": 830,
   "traits": [
     {
-      "name": "materialis:featherweight",
+      "name": "materialis:half_life",
       "level": 1
     }
   ]
