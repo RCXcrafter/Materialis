@@ -15,7 +15,7 @@
   "temperature": 605,
   "traits": [
     {
-      "name": "tconstruct:lightweight",
+      "name": "tconstruct:featherweight",
       "level": 1
     }
   ]

@@ -66,6 +66,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.inertia", "Inertia");
 		add("modifier.materialis.inertia.flavor", "A property of matter");
 		add("modifier.materialis.inertia.description", "Decreases attack speed but increases attack damage");
+		add("modifier.materialis.featherweight", "Featherweight");
+		add("modifier.materialis.featherweight.flavor", "Beep beep");
+		add("modifier.materialis.featherweight.description", "Decreases attack damage but increases attack speed");
 		add("modifier.materialis.arcane", "Arcane");
 		add("modifier.materialis.arcane.flavor", "Magic *snort*");
 		add("modifier.materialis.arcane.description", "Deals a small amount of extra magic damage to attacked targets");
