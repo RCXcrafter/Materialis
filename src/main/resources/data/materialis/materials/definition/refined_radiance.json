@@ -7,7 +7,7 @@
     "type": "forge:not"
   },
   "craftable": false,
-  "tier": 5,
+  "tier": 4,
   "sortOrder": 1,
   "fluid": "materialis:molten_refined_radiance",
   "fluidPerUnit": 144,

@@ -33,6 +33,9 @@ public class MaterialisItemModels extends ItemModelProvider {
 
 		//eidolon fluids
 		bucketModel(MaterialisResources.ARCANE_GOLD_BUCKET);
+
+		//aquaculture fluids
+		bucketModel(MaterialisResources.NEPTUNIUM_BUCKET);
 	}
 
 	public void itemWithModel(RegistryObject<? extends Item> registryObject, String model) {

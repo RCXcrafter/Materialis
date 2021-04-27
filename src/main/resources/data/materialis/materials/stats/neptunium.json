@@ -1,0 +1,22 @@
+{
+  "materialId": "materialis:neptunium",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 1450,
+      "miningSpeed": 9.0,
+      "harvestLevel": 3,
+      "attack": 6.0
+    },
+    {
+      "id": "tconstruct:handle",
+      "durability": 1.0,
+      "miningSpeed": 1.3,
+      "attackSpeed": 1.0,
+      "attackDamage": 1.0
+    },
+    {
+      "id": "tconstruct:extra"
+    }
+  ]
+}

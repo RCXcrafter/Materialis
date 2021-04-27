@@ -69,6 +69,15 @@ public class MaterialisResources {
 		return new ForgeFlowingFluid.Properties(ARCANE_GOLD_FLUID, ARCANE_GOLD_FLUID_FLOW, FluidAttributes.builder(MOLTEN_ARCANE_GOLD_STILL, MOLTEN_ARCANE_GOLD_FLOW).overlay(MOLTEN_ARCANE_GOLD_STILL).luminosity(15).density(3000).viscosity(6000).temperature(970).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(ARCANE_GOLD_BUCKET).block(MOLTEN_ARCANE_GOLD).explosionResistance(1000F).tickRate(9);       
 	}
 
+	//neptunium
+	public static final RegistryObject<ForgeFlowingFluid.Source> NEPTUNIUM_FLUID = FLUIDS.register("molten_neptunium", () -> new ForgeFlowingFluid.Source(getNeptuniumProperties()));
+	public static final RegistryObject<ForgeFlowingFluid.Flowing> NEPTUNIUM_FLUID_FLOW = FLUIDS.register("flowing_molten_neptunium", () -> new ForgeFlowingFluid.Flowing(getNeptuniumProperties()));
+	public static final ResourceLocation MOLTEN_NEPTUNIUM_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_neptunium_still");
+	public static final ResourceLocation MOLTEN_NEPTUNIUM_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_neptunium_flow");
+	private static ForgeFlowingFluid.Properties getNeptuniumProperties() {
+		return new ForgeFlowingFluid.Properties(NEPTUNIUM_FLUID, NEPTUNIUM_FLUID_FLOW, FluidAttributes.builder(MOLTEN_NEPTUNIUM_STILL, MOLTEN_NEPTUNIUM_FLOW).overlay(MOLTEN_NEPTUNIUM_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1700).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(NEPTUNIUM_BUCKET).block(MOLTEN_NEPTUNIUM).explosionResistance(1000F).tickRate(9);       
+	}
+
 
 
 
@@ -89,7 +98,10 @@ public class MaterialisResources {
 	public static final RegistryObject<FlowingFluidBlock> MOLTEN_SHADOW_STEEL = BLOCKS.register("molten_shadow_steel_block", () -> new FlowingFluidBlock(SHADOW_STEEL_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 0; }).randomTicks().strength(100.0F).noDrops()));
 
 	//eidolon fluids
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_ARCANE_GOLD = BLOCKS.register("molten_arcane_gold_block", () -> new FlowingFluidBlock(ARCANE_GOLD_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 0; }).randomTicks().strength(100.0F).noDrops()));
+	public static final RegistryObject<FlowingFluidBlock> MOLTEN_ARCANE_GOLD = BLOCKS.register("molten_arcane_gold_block", () -> new FlowingFluidBlock(ARCANE_GOLD_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
+
+	//aquaculture fluids
+	public static final RegistryObject<FlowingFluidBlock> MOLTEN_NEPTUNIUM = BLOCKS.register("molten_neptunium_block", () -> new FlowingFluidBlock(NEPTUNIUM_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
 
 
 
@@ -116,6 +128,10 @@ public class MaterialisResources {
 
 	//eidolon fluids
 	public static final RegistryObject<BucketItem> ARCANE_GOLD_BUCKET = ITEMS.register("arcane_gold_bucket", () -> new BucketItem(ARCANE_GOLD_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+
+	//aquaculture fluids
+	public static final RegistryObject<BucketItem> NEPTUNIUM_BUCKET = ITEMS.register("neptunium_bucket", () -> new BucketItem(NEPTUNIUM_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+
 
 
 

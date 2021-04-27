@@ -50,6 +50,12 @@ public class MaterialisLang extends LanguageProvider {
 		addFluid(MaterialisResources.ARCANE_GOLD_FLUID, "Molten Arcane Gold");
 		addItem(MaterialisResources.ARCANE_GOLD_BUCKET, "Molten Arcane Gold Bucket");
 
+		//aquaculture stuff
+		add("material.materialis.neptunium", "Neptunium");
+		addBlock(MaterialisResources.MOLTEN_NEPTUNIUM, "Molten Neptunium");
+		addFluid(MaterialisResources.NEPTUNIUM_FLUID, "Molten Neptunium");
+		addItem(MaterialisResources.NEPTUNIUM_BUCKET, "Molten Neptunium Bucket");
+
 		//modifiers
 		add("modifier.materialis.voiding", "Voiding");
 		add("modifier.materialis.voiding.flavor", "Forged in the void");
@@ -66,6 +72,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.reaping", "Reaping");
 		add("modifier.materialis.reaping.flavor", "Harvester of souls");
 		add("modifier.materialis.reaping.description", "Killing undead mobs will destroy their bodies and crystallize their souls");
+		add("modifier.materialis.neptunes_blessing", "Neptune's Blessing");
+		add("modifier.materialis.neptunes_blessing.flavor", "Stay hydrated");
+		add("modifier.materialis.neptunes_blessing.description", "Increases mining speed underwater and damage to wet mobs");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

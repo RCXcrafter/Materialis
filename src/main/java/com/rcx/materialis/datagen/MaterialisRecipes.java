@@ -78,6 +78,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "inlays/arcane_gold")), MaterialisResources.ARCANE_GOLD_FLUID.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/arcane_gold")), location(metalFolder + "arcane_gold_inlay"));
 
 		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "pewter_blend")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT, 1.0f).build(withCondition(consumer, tagConditionDomain("materialis", "pewter_blend")), location(metalFolder + "pewter_blend"));
+
+		//aquaculture stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.get(), "neptunium", folder);
+		addMetalMelting(consumer, MaterialisResources.NEPTUNIUM_FLUID.get(), "neptunium", false, metalFolder, true);
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, Item block, Item ingot, Item nugget) {

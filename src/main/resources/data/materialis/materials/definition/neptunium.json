@@ -1,21 +1,21 @@
 {
   "condition": {
     "value": {
-      "tag": "forge:ingots/shadow_steel",
+      "tag": "forge:ingots/neptunium",
       "type": "forge:tag_empty"
     },
     "type": "forge:not"
   },
   "craftable": false,
-  "tier": 4,
+  "tier": 3,
   "sortOrder": 1,
-  "fluid": "materialis:molten_shadow_steel",
+  "fluid": "materialis:molten_neptunium",
   "fluidPerUnit": 144,
-  "textColor": "#635D71",
-  "temperature": 1300,
+  "textColor": "#17F1B6",
+  "temperature": 1400,
   "traits": [
     {
-      "name": "materialis:voiding",
+      "name": "materialis:neptunes_blessing",
       "level": 1
     }
   ]
