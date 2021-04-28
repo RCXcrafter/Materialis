@@ -32,14 +32,14 @@ public class MaterialisLang extends LanguageProvider {
 
 		//general oredict materials
 		add("material.materialis.brass", "Brass");
-		//add("material.materialis.aluminum", "Aluminum");
+		add("material.materialis.aluminum", "Aluminum");
 		//add("material.materialis.nickel", "Nickel");
 		//add("material.materialis.platinum", "Platinum");
 		//add("material.materialis.tin", "Tin");
 		//add("material.materialis.zinc", "Zinc");
 		add("material.materialis.uranium", "Uranium");
 		//add("material.materialis.osmium", "Osmium");
-		//add("material.materialis.tungsten", "Tungsten");
+		add("material.materialis.tungsten", "Tungsten");
 		//add("material.materialis.invar", "Invar");
 
 		//create stuff
@@ -97,6 +97,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.half_life.4", "Half-Life II: Episode II");
 		add("modifier.materialis.half_life.flavor", "Smell the ashes");
 		add("modifier.materialis.half_life.description", "Your tool loses durability faster when it has high durability and loses durability slower when it has low durability");
+		add("modifier.materialis.work_hardened", "Work Hardened");
+		add("modifier.materialis.work_hardened.flavor", "Play hardeneder");
+		add("modifier.materialis.work_hardened.description", "Your tool loses durability slower when it has low durability");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

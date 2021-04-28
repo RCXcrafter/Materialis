@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/aluminum",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 2,
+  "sortOrder": 1,
+  "fluid": "tconstruct:molten_aluminum",
+  "fluidPerUnit": 144,
+  "textColor": "#E6B7BF",
+  "temperature": 425,
+  "traits": [
+    {
+      "name": "tconstruct:lightweight",
+      "level": 1
+    }
+  ]
+}

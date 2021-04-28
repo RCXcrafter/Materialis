@@ -1,0 +1,22 @@
+{
+  "materialId": "materialis:tungsten",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 740,
+      "miningSpeed": 8.0,
+      "harvestLevel": 3,
+      "attack": 5.0
+    },
+    {
+      "id": "tconstruct:handle",
+      "durability": 1.1,
+      "miningSpeed": 1.0,
+      "attackSpeed": 0.9,
+      "attackDamage": 1.2
+    },
+    {
+      "id": "tconstruct:extra"
+    }
+  ]
+}

@@ -20,6 +20,7 @@
   "item.materialis.neptunium_bucket": "Molten Neptunium Bucket",
   "item.materialis.refined_radiance_bucket": "Liquified Radiance Bucket",
   "item.materialis.shadow_steel_bucket": "Molten Shadow Steel Bucket",
+  "material.materialis.aluminum": "Aluminum",
   "material.materialis.arcane_gold": "Arcane Gold",
   "material.materialis.brass": "Brass",
   "material.materialis.fairy": "Fairy",
@@ -29,6 +30,7 @@
   "material.materialis.refined_radiance.format": "Radiant %s",
   "material.materialis.rose_quartz": "Rose Quartz",
   "material.materialis.shadow_steel": "Shadow Steel",
+  "material.materialis.tungsten": "Tungsten",
   "material.materialis.uranium": "Uranium",
   "modifier.materialis.arcane": "Arcane",
   "modifier.materialis.arcane.description": "Deals a small amount of extra magic damage to attacked targets",
@@ -58,5 +60,8 @@
   "modifier.materialis.residual_light.flavor": "Forged from light",
   "modifier.materialis.voiding": "Voiding",
   "modifier.materialis.voiding.description": "Voids block and mob drops, drops extra experience for killing mobs",
-  "modifier.materialis.voiding.flavor": "Forged in the void"
+  "modifier.materialis.voiding.flavor": "Forged in the void",
+  "modifier.materialis.work_hardened": "Work Hardened",
+  "modifier.materialis.work_hardened.description": "Your tool loses durability slower when it has low durability",
+  "modifier.materialis.work_hardened.flavor": "Play hardeneder"
 }
