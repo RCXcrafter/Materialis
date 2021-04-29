@@ -15,7 +15,7 @@
   "temperature": 425,
   "traits": [
     {
-      "name": "tconstruct:lightweight",
+      "name": "materialis:featherweight",
       "level": 1
     }
   ]

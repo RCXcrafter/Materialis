@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 public class FeatherweightModifier extends Modifier {
 
 	public FeatherweightModifier() {
-		super(0xFFD359);
+		super(0xE6B7BF);
 	}
 
 	@Override

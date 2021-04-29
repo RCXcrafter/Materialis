@@ -100,6 +100,12 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.work_hardened", "Work Hardened");
 		add("modifier.materialis.work_hardened.flavor", "Play hardeneder");
 		add("modifier.materialis.work_hardened.description", "Your tool loses durability slower when it has low durability");
+		add("modifier.materialis.daredevil", "Daredevil");
+		add("modifier.materialis.daredevil.flavor", "Living on the edge");
+		add("modifier.materialis.daredevil.description", "Boosts mining speed when your health is low");
+		add("modifier.materialis.polished", "Polished");
+		add("modifier.materialis.polished.flavor", "I can see my face in it!");
+		add("modifier.materialis.polished.description", "Deals more damage at a higher durability");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

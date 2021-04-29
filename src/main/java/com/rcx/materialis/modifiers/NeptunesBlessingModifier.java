@@ -22,7 +22,7 @@ public class NeptunesBlessingModifier extends SingleUseModifier {
 
 	@Override
 	public void onBreakSpeed(IModifierToolStack tool, int level, BreakSpeed event, Direction sideHit, boolean isEffective, float miningSpeedModifier) {
-		if (event.getEntityLiving().isEyeInFluid(FluidTags.WATER))
+		if (isEffective && event.getEntityLiving().isEyeInFluid(FluidTags.WATER))
 			event.setNewSpeed(event.getNewSpeed() * 5.0f);
 	}
 }
