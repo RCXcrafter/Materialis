@@ -1,19 +1,21 @@
 package com.rcx.materialis.modifiers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.rcx.materialis.MaterialisUtil;
 
-import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
+import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class VoidingModifier extends SingleUseModifier {
+	
+	//Predicate<ItemStack> alwaysTrue = i -> true; 
 
 	public VoidingModifier() {
 		super(0x635D71);
@@ -21,15 +23,8 @@ public class VoidingModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public List<ItemStack> processLoot(ToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
-		World world = context.getLevel();
-		if (!generatedLoot.isEmpty()) {
-			for (ItemStack stack : generatedLoot) {
-				world.addFreshEntity(new ExperienceOrbEntity(world, level, level, level, level));
-			}
-			generatedLoot.removeAll(generatedLoot);
-		}
-		return generatedLoot;
+	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
+		return new ArrayList<ItemStack>();
 	}
 
 	private void onExperienceDrop(LivingExperienceDropEvent event) {

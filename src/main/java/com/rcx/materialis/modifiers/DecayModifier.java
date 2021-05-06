@@ -8,7 +8,6 @@ import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 
 public class DecayModifier extends Modifier {
 
-	private int counter;
 	int CHANCE_BOUND = 100;
 
 	public DecayModifier() {
@@ -17,11 +16,8 @@ public class DecayModifier extends Modifier {
 
 	@Override
 	public void onInventoryTick(IModifierToolStack tool, int level, World world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-		counter = counter >= 20 ? 1 : counter + 1;
-		if (!tool.isBroken() && counter % 20 == 0) {
-			if (RANDOM.nextInt(CHANCE_BOUND) <= 1 + level) {
-				tool.setDamage(tool.getDamage() + 1);
-			}
+		if (!tool.isBroken() && holder.tickCount % 20 == 0 && RANDOM.nextInt(CHANCE_BOUND) <= 1 + level) {
+			tool.setDamage(tool.getDamage() + 1);
 		}
 	}
 
