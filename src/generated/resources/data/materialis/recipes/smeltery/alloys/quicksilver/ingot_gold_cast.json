@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/quicksilver",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "fluid": {
+    "name": "materialis:molten_quicksilver",
+    "amount": 144
+  },
+  "result": {
+    "tag": "forge:ingots/quicksilver"
+  },
+  "cooling_time": 46
+}

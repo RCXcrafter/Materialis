@@ -23,4 +23,6 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> halfLifeModifier = MODIFIERS.register("half_life", HalfLifeModifier::new);
 	public static final RegistryObject<Modifier> workHardenedModifier = MODIFIERS.register("work_hardened", WorkHardenedModifier::new);
 	public static final RegistryObject<Modifier> polishedModifier = MODIFIERS.register("polished", PolishedModifier::new);
+	public static final RegistryObject<Modifier> daredevilModifier = MODIFIERS.register("daredevil", DaredevilModifier::new);
+	public static final RegistryObject<Modifier> decayModifier = MODIFIERS.register("decay", DecayModifier::new);
 }

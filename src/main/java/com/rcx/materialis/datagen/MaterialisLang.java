@@ -67,6 +67,12 @@ public class MaterialisLang extends LanguageProvider {
 		addFluid(MaterialisResources.NEPTUNIUM_FLUID, "Molten Neptunium");
 		addItem(MaterialisResources.NEPTUNIUM_BUCKET, "Molten Neptunium Bucket");
 
+		//mystical world stuff
+		add("material.materialis.quicksilver", "Quicksilver");
+		addBlock(MaterialisResources.MOLTEN_QUICKSILVER, "Molten Quicksilver");
+		addFluid(MaterialisResources.QUICKSILVER_FLUID, "Molten Quicksilver");
+		addItem(MaterialisResources.QUICKSILVER_BUCKET, "Molten Quicksilver Bucket");
+
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
 		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
@@ -106,6 +112,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.polished", "Polished");
 		add("modifier.materialis.polished.flavor", "I can see my face in it!");
 		add("modifier.materialis.polished.description", "Deals more damage at a higher durability");
+		add("modifier.materialis.decay", "Decay");
+		add("modifier.materialis.decay.flavor", "Disintegrates into chalk");
+		add("modifier.materialis.decay.description", "Your tool doesn't use durability on use but instead decays over time");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

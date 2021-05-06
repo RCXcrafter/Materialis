@@ -82,6 +82,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//aquaculture stuff
 		addMetalOptionalCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.get(), "neptunium", folder);
 		addMetalMelting(consumer, MaterialisResources.NEPTUNIUM_FLUID.get(), "neptunium", false, metalFolder, true);
+		
+		//mystical world stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.QUICKSILVER_FLUID.get(), "quicksilver", folder);
+		addMetalMelting(consumer, MaterialisResources.QUICKSILVER_FLUID.get(), "quicksilver", true, metalFolder, true);
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, Item block, Item ingot, Item nugget) {

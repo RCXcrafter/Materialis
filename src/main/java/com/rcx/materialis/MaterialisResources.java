@@ -78,6 +78,15 @@ public class MaterialisResources {
 		return new ForgeFlowingFluid.Properties(NEPTUNIUM_FLUID, NEPTUNIUM_FLUID_FLOW, FluidAttributes.builder(MOLTEN_NEPTUNIUM_STILL, MOLTEN_NEPTUNIUM_FLOW).overlay(MOLTEN_NEPTUNIUM_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1700).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(NEPTUNIUM_BUCKET).block(MOLTEN_NEPTUNIUM).explosionResistance(1000F).tickRate(9);       
 	}
 
+	//quicksilver
+	public static final RegistryObject<ForgeFlowingFluid.Source> QUICKSILVER_FLUID = FLUIDS.register("molten_quicksilver", () -> new ForgeFlowingFluid.Source(getQuicksilverProperties()));
+	public static final RegistryObject<ForgeFlowingFluid.Flowing> QUICKSILVER_FLUID_FLOW = FLUIDS.register("flowing_molten_quicksilver", () -> new ForgeFlowingFluid.Flowing(getQuicksilverProperties()));
+	public static final ResourceLocation MOLTEN_QUICKSILVER_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_quicksilver_still");
+	public static final ResourceLocation MOLTEN_QUICKSILVER_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_quicksilver_flow");
+	private static ForgeFlowingFluid.Properties getQuicksilverProperties() {
+		return new ForgeFlowingFluid.Properties(QUICKSILVER_FLUID, QUICKSILVER_FLUID_FLOW, FluidAttributes.builder(MOLTEN_QUICKSILVER_STILL, MOLTEN_QUICKSILVER_FLOW).overlay(MOLTEN_QUICKSILVER_STILL).luminosity(15).density(3000).viscosity(6000).temperature(700).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(QUICKSILVER_BUCKET).block(MOLTEN_QUICKSILVER).explosionResistance(1000F).tickRate(9);       
+	}
+
 
 
 
@@ -102,6 +111,9 @@ public class MaterialisResources {
 
 	//aquaculture fluids
 	public static final RegistryObject<FlowingFluidBlock> MOLTEN_NEPTUNIUM = BLOCKS.register("molten_neptunium_block", () -> new FlowingFluidBlock(NEPTUNIUM_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
+
+	//mystical world fluids
+	public static final RegistryObject<FlowingFluidBlock> MOLTEN_QUICKSILVER = BLOCKS.register("molten_quicksilver_block", () -> new FlowingFluidBlock(QUICKSILVER_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
 
 
 
@@ -131,6 +143,9 @@ public class MaterialisResources {
 
 	//aquaculture fluids
 	public static final RegistryObject<BucketItem> NEPTUNIUM_BUCKET = ITEMS.register("neptunium_bucket", () -> new BucketItem(NEPTUNIUM_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+
+	//mystical world fluids
+	public static final RegistryObject<BucketItem> QUICKSILVER_BUCKET = ITEMS.register("quicksilver_bucket", () -> new BucketItem(QUICKSILVER_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 
 
 

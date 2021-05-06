@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/quicksilver",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/quicksilver"
+  },
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 48
+  },
+  "temperature": 400,
+  "time": 31
+}

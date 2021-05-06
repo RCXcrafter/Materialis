@@ -29,7 +29,7 @@ public class HalfLifeModifier extends Modifier {
 
 	@Override
 	public ITextComponent getDisplayName(int level) {
-		if (level > 2 && level < 4) {
+		if (level > 2 && level < 5) {
 			return new TranslationTextComponent(getTranslationKey() + "." + level) .withStyle(style -> style.withColor(Color.fromRgb(this.getColor())));
 		}
 		if (level > 2)
