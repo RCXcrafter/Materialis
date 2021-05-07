@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/starmetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "fluid": {
+    "name": "materialis:molten_starmetal",
+    "amount": 144
+  },
+  "result": {
+    "tag": "forge:ingots/starmetal"
+  },
+  "cooling_time": 59
+}

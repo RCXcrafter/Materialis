@@ -73,6 +73,12 @@ public class MaterialisLang extends LanguageProvider {
 		addFluid(MaterialisResources.QUICKSILVER_FLUID, "Molten Quicksilver");
 		addItem(MaterialisResources.QUICKSILVER_BUCKET, "Molten Quicksilver Bucket");
 
+		//astral sorcery stuff
+		add("material.materialis.starmetal", "Starmetal");
+		addBlock(MaterialisResources.MOLTEN_STARMETAL, "Molten Starmetal");
+		addFluid(MaterialisResources.STARMETAL_FLUID, "Molten Starmetal");
+		addItem(MaterialisResources.STARMETAL_BUCKET, "Molten Starmetal Bucket");
+
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
 		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
@@ -115,6 +121,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.decay", "Decay");
 		add("modifier.materialis.decay.flavor", "Disintegrates into chalk");
 		add("modifier.materialis.decay.description", "Your tool doesn't use durability on use but instead decays over time");
+		add("modifier.materialis.nocturnal", "Nocturnal");
+		add("modifier.materialis.nocturnal.flavor", "Stay up past bedtime!");
+		add("modifier.materialis.nocturnal.description", "gives bonus mining speed during the night, most powerful at midnight");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

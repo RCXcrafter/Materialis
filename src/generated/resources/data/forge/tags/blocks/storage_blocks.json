@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#forge:storage_blocks/fairy"
+    "#forge:storage_blocks/fairy",
+    "#forge:storage_blocks/starmetal"
   ]
 }

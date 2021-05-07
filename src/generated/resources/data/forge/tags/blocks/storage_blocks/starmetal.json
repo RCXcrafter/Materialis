@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "astralsorcery:starmetal",
+      "required": false
+    }
+  ]
+}

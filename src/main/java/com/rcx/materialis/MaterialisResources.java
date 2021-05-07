@@ -87,6 +87,15 @@ public class MaterialisResources {
 		return new ForgeFlowingFluid.Properties(QUICKSILVER_FLUID, QUICKSILVER_FLUID_FLOW, FluidAttributes.builder(MOLTEN_QUICKSILVER_STILL, MOLTEN_QUICKSILVER_FLOW).overlay(MOLTEN_QUICKSILVER_STILL).luminosity(15).density(3000).viscosity(6000).temperature(700).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(QUICKSILVER_BUCKET).block(MOLTEN_QUICKSILVER).explosionResistance(1000F).tickRate(9);       
 	}
 
+	//starmetal
+	public static final RegistryObject<ForgeFlowingFluid.Source> STARMETAL_FLUID = FLUIDS.register("molten_starmetal", () -> new ForgeFlowingFluid.Source(getStarmetalProperties()));
+	public static final RegistryObject<ForgeFlowingFluid.Flowing> STARMETAL_FLUID_FLOW = FLUIDS.register("flowing_molten_starmetal", () -> new ForgeFlowingFluid.Flowing(getStarmetalProperties()));
+	public static final ResourceLocation MOLTEN_STARMETAL_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_starmetal_still");
+	public static final ResourceLocation MOLTEN_STARMETAL_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_starmetal_flow");
+	private static ForgeFlowingFluid.Properties getStarmetalProperties() {
+		return new ForgeFlowingFluid.Properties(STARMETAL_FLUID, STARMETAL_FLUID_FLOW, FluidAttributes.builder(MOLTEN_STARMETAL_STILL, MOLTEN_STARMETAL_FLOW).overlay(MOLTEN_STARMETAL_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1050).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(STARMETAL_BUCKET).block(MOLTEN_STARMETAL).explosionResistance(1000F).tickRate(9);       
+	}
+
 
 
 
@@ -114,6 +123,9 @@ public class MaterialisResources {
 
 	//mystical world fluids
 	public static final RegistryObject<FlowingFluidBlock> MOLTEN_QUICKSILVER = BLOCKS.register("molten_quicksilver_block", () -> new FlowingFluidBlock(QUICKSILVER_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
+
+	//astral sorcery fluids
+	public static final RegistryObject<FlowingFluidBlock> MOLTEN_STARMETAL = BLOCKS.register("molten_starmetal_block", () -> new FlowingFluidBlock(STARMETAL_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
 
 
 
@@ -146,6 +158,9 @@ public class MaterialisResources {
 
 	//mystical world fluids
 	public static final RegistryObject<BucketItem> QUICKSILVER_BUCKET = ITEMS.register("quicksilver_bucket", () -> new BucketItem(QUICKSILVER_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+
+	//astral sorcery fluids
+	public static final RegistryObject<BucketItem> STARMETAL_BUCKET = ITEMS.register("starmetal_bucket", () -> new BucketItem(STARMETAL_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 
 
 

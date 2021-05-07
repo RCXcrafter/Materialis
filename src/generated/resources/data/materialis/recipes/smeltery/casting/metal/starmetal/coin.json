@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/starmetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/starmetal"
+  },
+  "result": {
+    "fluid": "materialis:molten_starmetal",
+    "amount": 48
+  },
+  "temperature": 750,
+  "time": 39
+}

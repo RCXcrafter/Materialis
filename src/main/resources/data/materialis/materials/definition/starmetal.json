@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/starmetal",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 1,
+  "fluid": "materialis:molten_starmetal",
+  "fluidPerUnit": 144,
+  "textColor": "#003CC9",
+  "temperature": 750,
+  "traits": [
+    {
+      "name": "materialis:nocturnal",
+      "level": 1
+    }
+  ]
+}

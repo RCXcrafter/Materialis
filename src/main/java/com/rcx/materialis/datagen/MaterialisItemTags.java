@@ -34,6 +34,11 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind("materialis:inlays/arcane_gold");
 	public final INamedTag<Item> PEWTER_BLEND = ItemTags.bind("materialis:pewter_blend");
 
+	//astral sorcery stuff
+	public final INamedTag<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");
+	public final INamedTag<Item> STARMETAL_BLOCK = ItemTags.bind("forge:storage_blocks/starmetal");
+	public final INamedTag<Item> STARMETAL_ORE = ItemTags.bind("forge:ores/starmetal");
+
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
 	}
@@ -70,5 +75,13 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		this.tag(ARCANE_GOLD_INLAY).addOptional(new ResourceLocation("eidolon", "gold_inlay"));
 		this.tag(INLAYS).addTag(ARCANE_GOLD_INLAY);
 		this.tag(PEWTER_BLEND).addOptional(new ResourceLocation("eidolon", "pewter_blend"));
+
+		//astral sorcery stuff
+		this.tag(STARMETAL_INGOT).addOptional(new ResourceLocation("astralsorcery", "starmetal_ingot"));
+		this.tag(Tags.Items.INGOTS).addTag(STARMETAL_INGOT);
+		this.tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
+		this.tag(Tags.Items.STORAGE_BLOCKS).addTag(STARMETAL_BLOCK);
+		this.tag(STARMETAL_ORE).addOptional(new ResourceLocation("astralsorcery", "starmetal_ore"));
+		this.tag(Tags.Items.ORES).addTag(STARMETAL_ORE);
 	}
 }

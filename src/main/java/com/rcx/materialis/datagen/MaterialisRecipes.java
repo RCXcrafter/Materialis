@@ -86,6 +86,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//mystical world stuff
 		addMetalOptionalCasting(consumer, MaterialisResources.QUICKSILVER_FLUID.get(), "quicksilver", folder);
 		addMetalMelting(consumer, MaterialisResources.QUICKSILVER_FLUID.get(), "quicksilver", true, metalFolder, true);
+		
+		//astral sorcery stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.STARMETAL_FLUID.get(), "starmetal", folder);
+		addMetalMelting(consumer, MaterialisResources.STARMETAL_FLUID.get(), "starmetal", true, metalFolder, true);
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, Item block, Item ingot, Item nugget) {

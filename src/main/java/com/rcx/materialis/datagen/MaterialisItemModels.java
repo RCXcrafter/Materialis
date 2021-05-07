@@ -39,6 +39,9 @@ public class MaterialisItemModels extends ItemModelProvider {
 
 		//mystical world fluids
 		bucketModel(MaterialisResources.QUICKSILVER_BUCKET);
+
+		//astral sorcery fluids
+		bucketModel(MaterialisResources.STARMETAL_BUCKET);
 	}
 
 	public void itemWithModel(RegistryObject<? extends Item> registryObject, String model) {

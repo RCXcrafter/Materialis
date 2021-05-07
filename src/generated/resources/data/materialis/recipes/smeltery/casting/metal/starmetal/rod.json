@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/starmetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:rods/starmetal"
+  },
+  "result": {
+    "fluid": "materialis:molten_starmetal",
+    "amount": 72
+  },
+  "temperature": 750,
+  "time": 12
+}
