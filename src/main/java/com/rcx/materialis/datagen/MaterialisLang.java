@@ -79,6 +79,14 @@ public class MaterialisLang extends LanguageProvider {
 		addFluid(MaterialisResources.STARMETAL_FLUID, "Molten Starmetal");
 		addItem(MaterialisResources.STARMETAL_BUCKET, "Molten Starmetal Bucket");
 
+		//industrial foregoing stuff
+		add("material.materialis.plastic", "Plastic");
+		add("material.materialis.pink_slime", "Pink Slime");
+		addBlock(MaterialisResources.MOLTEN_PINK_SLIME, "Molten Pink Slime Alloy");
+		addFluid(MaterialisResources.PINK_SLIME_FLUID, "Molten Pink Slime Alloy");
+		addItem(MaterialisResources.PINK_SLIME_BUCKET, "Molten Pink Slime Alloy Bucket");
+		addItem(MaterialisResources.PINK_SLIME_CRYSTAL, "Pink Slime Crystal");
+
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
 		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
@@ -124,6 +132,12 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.nocturnal", "Nocturnal");
 		add("modifier.materialis.nocturnal.flavor", "Stay up past bedtime!");
 		add("modifier.materialis.nocturnal.description", "gives bonus mining speed during the night, most powerful at midnight");
+		add("modifier.materialis.feeble", "Feeble");
+		add("modifier.materialis.feeble.flavor", "Handle with care");
+		add("modifier.materialis.feeble.description", "Decreases knockback on attacked mobs");
+		add("modifier.materialis.overweight", "Overweight");
+		add("modifier.materialis.overweight.flavor", "Supersized!");
+		add("modifier.materialis.overweight.description", "Eats some mining speed and attack speed to gain more overslime capacity");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

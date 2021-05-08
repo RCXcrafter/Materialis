@@ -96,6 +96,15 @@ public class MaterialisResources {
 		return new ForgeFlowingFluid.Properties(STARMETAL_FLUID, STARMETAL_FLUID_FLOW, FluidAttributes.builder(MOLTEN_STARMETAL_STILL, MOLTEN_STARMETAL_FLOW).overlay(MOLTEN_STARMETAL_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1050).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(STARMETAL_BUCKET).block(MOLTEN_STARMETAL).explosionResistance(1000F).tickRate(9);       
 	}
 
+	//pink slime alloy
+	public static final RegistryObject<ForgeFlowingFluid.Source> PINK_SLIME_FLUID = FLUIDS.register("molten_pink_slime", () -> new ForgeFlowingFluid.Source(getPinkSlimeProperties()));
+	public static final RegistryObject<ForgeFlowingFluid.Flowing> PINK_SLIME_FLUID_FLOW = FLUIDS.register("flowing_molten_pink_slime", () -> new ForgeFlowingFluid.Flowing(getPinkSlimeProperties()));
+	public static final ResourceLocation MOLTEN_PINK_SLIME_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_pink_slime_still");
+	public static final ResourceLocation MOLTEN_PINK_SLIME_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_pink_slime_flow");
+	private static ForgeFlowingFluid.Properties getPinkSlimeProperties() {
+		return new ForgeFlowingFluid.Properties(PINK_SLIME_FLUID, PINK_SLIME_FLUID_FLOW, FluidAttributes.builder(MOLTEN_PINK_SLIME_STILL, MOLTEN_PINK_SLIME_FLOW).overlay(MOLTEN_PINK_SLIME_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1260).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(PINK_SLIME_BUCKET).block(MOLTEN_PINK_SLIME).explosionResistance(1000F).tickRate(9);       
+	}
+
 
 
 
@@ -126,6 +135,9 @@ public class MaterialisResources {
 
 	//astral sorcery fluids
 	public static final RegistryObject<FlowingFluidBlock> MOLTEN_STARMETAL = BLOCKS.register("molten_starmetal_block", () -> new FlowingFluidBlock(STARMETAL_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
+
+	//industrial foregoing fluids
+	public static final RegistryObject<FlowingFluidBlock> MOLTEN_PINK_SLIME = BLOCKS.register("molten_pink_slime_block", () -> new FlowingFluidBlock(PINK_SLIME_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
 
 
 
@@ -162,6 +174,9 @@ public class MaterialisResources {
 	//astral sorcery fluids
 	public static final RegistryObject<BucketItem> STARMETAL_BUCKET = ITEMS.register("starmetal_bucket", () -> new BucketItem(STARMETAL_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 
+	//industrial foregoing stuff
+	public static final RegistryObject<BucketItem> PINK_SLIME_BUCKET = ITEMS.register("pink_slime_bucket", () -> new BucketItem(PINK_SLIME_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
 
 
 

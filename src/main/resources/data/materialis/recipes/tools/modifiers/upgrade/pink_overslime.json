@@ -1,0 +1,11 @@
+{
+  "condition": {
+    "modid": "industrialforegoing",
+    "type": "forge:mod_loaded"
+  },
+  "type": "tconstruct:overslime_modifier",
+  "ingredient": {
+    "item": "materialis:pink_slime_crystal"
+  },
+  "restore_amount": 70
+}

@@ -16,28 +16,32 @@ import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisItemTags extends ItemTagsProvider {
 
-	public final INamedTag<Item> FAIRY_INGOT = ItemTags.bind("forge:ingots/fairy");
-	public final INamedTag<Item> FAIRY_BLOCK = ItemTags.bind("forge:storage_blocks/fairy");
-	public final INamedTag<Item> FAIRY_NUGGET = ItemTags.bind("forge:nuggets/fairy");
+	public static final INamedTag<Item> FAIRY_INGOT = ItemTags.bind("forge:ingots/fairy");
+	public static final INamedTag<Item> FAIRY_BLOCK = ItemTags.bind("forge:storage_blocks/fairy");
+	public static final INamedTag<Item> FAIRY_NUGGET = ItemTags.bind("forge:nuggets/fairy");
 
 	//custom casts
-	public final INamedTag<Item> INLAY_CAST = ItemTags.bind("materialis:casts/multi_use/inlay");
-	public final INamedTag<Item> INLAY_CAST_SINGLE = ItemTags.bind("materialis:casts/single_use/inlay");
+	public static final INamedTag<Item> INLAY_CAST = ItemTags.bind("materialis:casts/multi_use/inlay");
+	public static final INamedTag<Item> INLAY_CAST_SINGLE = ItemTags.bind("materialis:casts/single_use/inlay");
 
 	//create ingots
-	public final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
-	public final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
+	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
+	public static final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
 
 	//eidolon stuff
-	public final INamedTag<Item> INLAYS = ItemTags.bind("materialis:inlays");
-	public final INamedTag<Item> PEWTER_INLAY = ItemTags.bind("materialis:inlays/pewter");
-	public final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind("materialis:inlays/arcane_gold");
-	public final INamedTag<Item> PEWTER_BLEND = ItemTags.bind("materialis:pewter_blend");
+	public static final INamedTag<Item> INLAYS = ItemTags.bind("materialis:inlays");
+	public static final INamedTag<Item> PEWTER_INLAY = ItemTags.bind("materialis:inlays/pewter");
+	public static final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind("materialis:inlays/arcane_gold");
+	public static final INamedTag<Item> PEWTER_BLEND = ItemTags.bind("materialis:pewter_blend");
 
 	//astral sorcery stuff
-	public final INamedTag<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");
-	public final INamedTag<Item> STARMETAL_BLOCK = ItemTags.bind("forge:storage_blocks/starmetal");
-	public final INamedTag<Item> STARMETAL_ORE = ItemTags.bind("forge:ores/starmetal");
+	public static final INamedTag<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");
+	public static final INamedTag<Item> STARMETAL_BLOCK = ItemTags.bind("forge:storage_blocks/starmetal");
+	public static final INamedTag<Item> STARMETAL_ORE = ItemTags.bind("forge:ores/starmetal");
+
+	//industrial foregoing stuff
+	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
+	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind("materialis:pink_slime");
 
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
@@ -83,5 +87,10 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		this.tag(Tags.Items.STORAGE_BLOCKS).addTag(STARMETAL_BLOCK);
 		this.tag(STARMETAL_ORE).addOptional(new ResourceLocation("astralsorcery", "starmetal_ore"));
 		this.tag(Tags.Items.ORES).addTag(STARMETAL_ORE);
+
+		//industrial foregoing stuff
+		this.tag(PINK_SLIME_INGOT).addOptional(new ResourceLocation("industrialforegoing", "pink_slime_ingot"));
+		this.tag(Tags.Items.INGOTS).addTag(PINK_SLIME_INGOT);
+		this.tag(PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
 	}
 }

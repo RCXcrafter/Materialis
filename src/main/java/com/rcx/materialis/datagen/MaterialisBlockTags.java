@@ -15,11 +15,11 @@ import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisBlockTags extends BlockTagsProvider {
 
-	public final INamedTag<Block> FAIRY_BLOCK = BlockTags.bind("forge:storage_blocks/fairy");
+	public static final INamedTag<Block> FAIRY_BLOCK = BlockTags.bind("forge:storage_blocks/fairy");
 
 	//astral sorcery stuff
-	public final INamedTag<Block> STARMETAL_BLOCK = BlockTags.bind("forge:storage_blocks/starmetal");
-	public final INamedTag<Block> STARMETAL_ORE = BlockTags.bind("forge:ores/starmetal");
+	public static final INamedTag<Block> STARMETAL_BLOCK = BlockTags.bind("forge:storage_blocks/starmetal");
+	public static final INamedTag<Block> STARMETAL_ORE = BlockTags.bind("forge:ores/starmetal");
 
 	public MaterialisBlockTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);

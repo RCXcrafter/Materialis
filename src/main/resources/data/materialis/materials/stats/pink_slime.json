@@ -1,0 +1,22 @@
+{
+  "materialId": "materialis:pink_slime",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 830,
+      "miningSpeed": 7.0,
+      "harvestLevel": 3,
+      "attack": 4.0
+    },
+    {
+      "id": "tconstruct:handle",
+      "durability": 1.0,
+      "miningSpeed": 0.9,
+      "attackSpeed": 0.9,
+      "attackDamage": 1.2
+    },
+    {
+      "id": "tconstruct:extra"
+    }
+  ]
+}

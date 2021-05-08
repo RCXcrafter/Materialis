@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 
+import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
@@ -26,6 +27,7 @@ import net.minecraftforge.common.Tags.Fluids;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.fluids.FluidStack;
@@ -82,14 +84,29 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//aquaculture stuff
 		addMetalOptionalCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.get(), "neptunium", folder);
 		addMetalMelting(consumer, MaterialisResources.NEPTUNIUM_FLUID.get(), "neptunium", false, metalFolder, true);
-		
+
 		//mystical world stuff
 		addMetalOptionalCasting(consumer, MaterialisResources.QUICKSILVER_FLUID.get(), "quicksilver", folder);
 		addMetalMelting(consumer, MaterialisResources.QUICKSILVER_FLUID.get(), "quicksilver", true, metalFolder, true);
-		
+
 		//astral sorcery stuff
 		addMetalOptionalCasting(consumer, MaterialisResources.STARMETAL_FLUID.get(), "starmetal", folder);
 		addMetalMelting(consumer, MaterialisResources.STARMETAL_FLUID.get(), "starmetal", true, metalFolder, true);
+
+		//industrial foregoing stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.PINK_SLIME_FLUID.get(), "pink_slime", folder);
+		addMetalMelting(consumer, MaterialisResources.PINK_SLIME_FLUID.get(), "pink_slime", false, metalFolder, true);
+
+		Consumer<IFinishedRecipe> industrialForegoingLoaded = withCondition(consumer, new ModLoadedCondition("industrialforegoing"));
+		AlloyRecipeBuilder.alloy(MaterialisResources.PINK_SLIME_FLUID.get(), MaterialValues.INGOT)
+		.addInput(TinkerFluids.moltenGold.get(), MaterialValues.INGOT * 2)
+		.addInput(TinkerFluids.moltenIron.get(), MaterialValues.INGOT * 2)
+		.addInput(MaterialisFluidTags.LIQUID_PINK_SLIME, 1000)
+		.build(industrialForegoingLoaded, prefixR(MaterialisResources.PINK_SLIME_FLUID, folder));
+
+		CookingRecipeBuilder.blasting(Ingredient.of(MaterialisItemTags.PINK_SLIME), MaterialisResources.PINK_SLIME_CRYSTAL.get(), 1.0f, 400)
+		.unlockedBy("has_item", has(MaterialisItemTags.PINK_SLIME))
+		.save(industrialForegoingLoaded, new ResourceLocation(Materialis.modID, "pink_slime_crystal_blasting"));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, Item block, Item ingot, Item nugget) {

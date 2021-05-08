@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/pink_slime",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/rod"
+  },
+  "fluid": {
+    "name": "materialis:molten_pink_slime",
+    "amount": 72
+  },
+  "result": {
+    "tag": "forge:rods/pink_slime"
+  },
+  "cooling_time": 46
+}

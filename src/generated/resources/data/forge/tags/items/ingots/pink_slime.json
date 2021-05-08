@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "industrialforegoing:pink_slime_ingot",
+      "required": false
+    }
+  ]
+}

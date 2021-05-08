@@ -1,0 +1,20 @@
+{
+  "type": "tconstruct:casting_basin",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/pink_slime",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "fluid": {
+    "name": "materialis:molten_pink_slime",
+    "amount": 1296
+  },
+  "result": {
+    "tag": "forge:storage_blocks/pink_slime"
+  },
+  "cooling_time": 195
+}

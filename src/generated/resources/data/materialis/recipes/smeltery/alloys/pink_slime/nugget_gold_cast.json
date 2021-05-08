@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/pink_slime",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/nugget"
+  },
+  "fluid": {
+    "name": "materialis:molten_pink_slime",
+    "amount": 16
+  },
+  "result": {
+    "tag": "forge:nuggets/pink_slime"
+  },
+  "cooling_time": 22
+}

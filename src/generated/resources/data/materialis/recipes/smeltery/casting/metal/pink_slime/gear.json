@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gears/pink_slime",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:gears/pink_slime"
+  },
+  "result": {
+    "fluid": "materialis:molten_pink_slime",
+    "amount": 576
+  },
+  "temperature": 960,
+  "time": 130
+}

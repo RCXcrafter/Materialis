@@ -42,6 +42,10 @@ public class MaterialisItemModels extends ItemModelProvider {
 
 		//astral sorcery fluids
 		bucketModel(MaterialisResources.STARMETAL_BUCKET);
+
+		//industrial foregoing stuff
+		bucketModel(MaterialisResources.PINK_SLIME_BUCKET);
+		itemWithModel(MaterialisResources.PINK_SLIME_CRYSTAL, "item/generated");
 	}
 
 	public void itemWithModel(RegistryObject<? extends Item> registryObject, String model) {
