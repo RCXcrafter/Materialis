@@ -1,5 +1,8 @@
 package com.rcx.materialis.datagen;
 
+import java.util.function.BiFunction;
+
+import com.google.gson.JsonObject;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 
@@ -7,7 +10,10 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.generators.CustomLoaderBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelBuilder;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
 import slimeknights.tconstruct.common.registration.CastItemObject;
@@ -67,31 +73,15 @@ public class MaterialisItemModels extends ItemModelProvider {
 	}
 
 	public void bucketModel(RegistryObject<? extends BucketItem> registryObject) {
-		ResourceLocation id = registryObject.getId();
-		ResourceLocation textureLocation = new ResourceLocation(id.getNamespace(), "item/" + id.getPath());
-		getBuilder(id.getPath()).parent(getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", id.getNamespace() + ":item/" + registryObject.get().getFluid().getRegistryName().getPath() + "_bucket");
+		ModelBuilder builder = getBuilder(registryObject.getId().getPath()).parent(getExistingFile(new ResourceLocation(Materialis.modID, "item/bucket_fluid")));
 
-		//wip code for forge bucket models, won't finish
-		/*ResourceLocation id = registryObject.getId();
-		ResourceLocation textureLocation = new ResourceLocation(id.getNamespace(), "item/" + id.getPath());
-		//singleTexture(id.getPath(), new ResourceLocation(model), "layer0", textureLocation);
-		ModelBuilder builder = getBuilder(id.getPath()).parent(getExistingFile(new ResourceLocation("forge:item/bucket_drip")));
-		//.texture("loader", "forge:bucket").texture("fluid", registryObject.get().getFluid().getRegistryName().toString());
-		builder.customLoader(new BiFunction<ModelBuilder, ExistingFileHelper, CustomLoaderBuilder>() {
-
-			@Override
-			public CustomLoaderBuilder apply(ModelBuilder t, ExistingFileHelper u) {
-				return new CustomLoaderBuilder(t.getLocation(), t, u) {
-					public JsonObject toJson(JsonObject json)
-				    {
-				        json.addProperty("loader", loaderId.toString());
-
-
-				        return json;
-				    }
-				};
+		//I'm not sure how this works but it works
+		builder.customLoader((t, u) ->  new CustomLoaderBuilder(((ModelBuilder) t).getLocation(), (ModelBuilder) t, (ExistingFileHelper) u) {
+			public JsonObject toJson(JsonObject json) {
+				json.addProperty("loader", "forge:bucket");
+				json.addProperty("fluid", registryObject.get().getFluid().getRegistryName().toString());
+				return json;
 			}
-
-		});*/
+		});
 	}
 }

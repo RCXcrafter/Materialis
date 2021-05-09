@@ -20,7 +20,7 @@ public class MaterialisBlockStates extends BlockStateProvider {
 	@Override
 	protected void registerStatesAndModels() {
 		blockWithItem(MaterialisResources.FAIRY_BLOCK);
-		
+
 		//this is just to give them proper particles
 		fluid(MaterialisResources.MOLTEN_FAIRY);
 		fluid(MaterialisResources.MOLTEN_REFINED_RADIANCE);

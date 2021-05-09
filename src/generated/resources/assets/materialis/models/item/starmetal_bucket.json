@@ -1,6 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "materialis:item/molten_starmetal_bucket"
-  }
+  "parent": "materialis:item/bucket_fluid",
+  "loader": "forge:bucket",
+  "fluid": "materialis:molten_starmetal"
 }
