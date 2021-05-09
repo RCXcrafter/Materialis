@@ -28,4 +28,5 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> nocturnalModifier = MODIFIERS.register("nocturnal", NocturnalModifier::new);
 	public static final RegistryObject<Modifier> feebleModifier = MODIFIERS.register("feeble", FeebleModifier::new);
 	public static final RegistryObject<Modifier> overqeightModifier = MODIFIERS.register("overweight", OverweightModifier::new);
+	public static final RegistryObject<Modifier> overclockedModifier = MODIFIERS.register("overclocked", OverclockedModifier::new);
 }

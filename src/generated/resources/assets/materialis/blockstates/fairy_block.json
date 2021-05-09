@@ -1,40 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "materialis:block/fairy_block"
-      },
-      {
-        "model": "materialis:block/fairy_block",
-        "y": 90
-      },
-      {
-        "model": "materialis:block/fairy_block",
-        "y": 180
-      },
-      {
-        "model": "materialis:block/fairy_block",
-        "y": 270
-      },
-      {
-        "model": "materialis:block/fairy_block",
-        "x": 180
-      },
-      {
-        "model": "materialis:block/fairy_block",
-        "x": 180,
-        "y": 90
-      },
-      {
-        "model": "materialis:block/fairy_block",
-        "x": 180,
-        "y": 180
-      },
-      {
-        "model": "materialis:block/fairy_block",
-        "x": 180,
-        "y": 270
-      }
-    ]
+    "": {
+      "model": "materialis:block/fairy_block"
+    }
   }
 }

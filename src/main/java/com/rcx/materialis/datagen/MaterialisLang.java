@@ -138,6 +138,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.overweight", "Overweight");
 		add("modifier.materialis.overweight.flavor", "Supersized!");
 		add("modifier.materialis.overweight.description", "Eats some mining speed and attack speed to gain more overslime capacity");
+		add("modifier.materialis.overclocked", "Overclocked");
+		add("modifier.materialis.overclocked.flavor", "No warranty");
+		add("modifier.materialis.overclocked.description", "Boosts attack damage and mining speed at the cost of durability");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
