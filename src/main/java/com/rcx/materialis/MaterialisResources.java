@@ -1,5 +1,8 @@
 package com.rcx.materialis;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.rcx.materialis.block.LightResidueBlock;
 
 import net.minecraft.block.AbstractBlock;
@@ -28,154 +31,75 @@ import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
 public class MaterialisResources {
 
+	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Materialis.modID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Materialis.modID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Materialis.modID);
+	protected static final ItemDeferredRegisterExtension ITEMS_EXTENDED = new ItemDeferredRegisterExtension(Materialis.modID);
+
 	/*
 	 * FLUIDS
 	 */
-	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Materialis.modID);
+	public static List<FluidWithBlockNBucket> fluidList = new ArrayList<FluidWithBlockNBucket>();
 
-	//fairy
-	public static final RegistryObject<ForgeFlowingFluid.Source> FAIRY_FLUID = FLUIDS.register("molten_fairy", () -> new ForgeFlowingFluid.Source(getFairyProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> FAIRY_FLUID_FLOW = FLUIDS.register("flowing_molten_fairy", () -> new ForgeFlowingFluid.Flowing(getFairyProperties()));
-	public static final ResourceLocation MOLTEN_FAIRY_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_fairy_still");
-	public static final ResourceLocation MOLTEN_FAIRY_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_fairy_flow");
-	private static ForgeFlowingFluid.Properties getFairyProperties() {
-		return new ForgeFlowingFluid.Properties(FAIRY_FLUID, FAIRY_FLUID_FLOW, FluidAttributes.builder(MOLTEN_FAIRY_STILL, MOLTEN_FAIRY_FLOW).overlay(MOLTEN_FAIRY_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1050).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(FAIRY_BUCKET).block(MOLTEN_FAIRY).explosionResistance(1000F).tickRate(9);       
+	public static FluidWithBlockNBucket addFluid(String name, String localizedName, int temperature, int light, int density, int viscosity) {
+		FluidWithBlockNBucket fluid = new FluidWithBlockNBucket(name, localizedName, temperature, light, density, viscosity);
+		fluidList.add(fluid);
+		return fluid;
 	}
 
-	//refined radiance
-	public static final RegistryObject<ForgeFlowingFluid.Source> REFINED_RADIANCE_FLUID = FLUIDS.register("molten_refined_radiance", () -> new ForgeFlowingFluid.Source(getRefinedRadianceProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> REFINED_RADIANCE_FLUID_FLOW = FLUIDS.register("flowing_molten_refined_radiance", () -> new ForgeFlowingFluid.Flowing(getRefinedRadianceProperties()));
-	public static final ResourceLocation MOLTEN_REFINED_RADIANCE_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_refined_radiance_still");
-	public static final ResourceLocation MOLTEN_REFINED_RADIANCE_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_refined_radiance_flow");
-	private static ForgeFlowingFluid.Properties getRefinedRadianceProperties() {
-		return new ForgeFlowingFluid.Properties(REFINED_RADIANCE_FLUID, REFINED_RADIANCE_FLUID_FLOW, FluidAttributes.builder(MOLTEN_REFINED_RADIANCE_STILL, MOLTEN_REFINED_RADIANCE_FLOW).overlay(MOLTEN_REFINED_RADIANCE_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1600).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(REFINED_RADIANCE_BUCKET).block(MOLTEN_REFINED_RADIANCE).explosionResistance(1000F).tickRate(9);       
-	}
+	//materialis fluids
+	public static final FluidWithBlockNBucket FAIRY_FLUID = addFluid("molten_fairy", "Molten Fairy", 1050, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket RED_AURUM_FLUID = addFluid("molten_red_aurum", "Molten Red Aurum", 1050, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket DRULLOY_FLUID = addFluid("molten_drulloy", "Molten Drulloy", 1050, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket POKEFENNIUM_FLUID = addFluid("molten_pokefennium", "Molten Pokefennium", 1050, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket ALUMITE_FLUID = addFluid("molten_alumite", "Molten Alumite", 1050, 15, 3000, 6000);
 
-	//shadow steel
-	public static final RegistryObject<ForgeFlowingFluid.Source> SHADOW_STEEL_FLUID = FLUIDS.register("molten_shadow_steel", () -> new ForgeFlowingFluid.Source(getShadowSteelProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> SHADOW_STEEL_FLUID_FLOW = FLUIDS.register("flowing_molten_shadow_steel", () -> new ForgeFlowingFluid.Flowing(getShadowSteelProperties()));
-	public static final ResourceLocation MOLTEN_SHADOW_STEEL_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_shadow_steel_still");
-	public static final ResourceLocation MOLTEN_SHADOW_STEEL_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_shadow_steel_flow");
-	private static ForgeFlowingFluid.Properties getShadowSteelProperties() {
-		return new ForgeFlowingFluid.Properties(SHADOW_STEEL_FLUID, SHADOW_STEEL_FLUID_FLOW, FluidAttributes.builder(MOLTEN_SHADOW_STEEL_STILL, MOLTEN_SHADOW_STEEL_FLOW).overlay(MOLTEN_SHADOW_STEEL_STILL).luminosity(0).density(3000).viscosity(6000).temperature(1600).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(SHADOW_STEEL_BUCKET).block(MOLTEN_SHADOW_STEEL).explosionResistance(1000F).tickRate(9);       
-	}
+	//create fluids
+	public static final FluidWithBlockNBucket REFINED_RADIANCE_FLUID = addFluid("molten_refined_radiance", "Liquified Radiance", 1600, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket SHADOW_STEEL_FLUID = addFluid("molten_shadow_steel", "Molten Shadow Steel", 1600, 0, 3000, 6000);
 
-	//arcane gold
-	public static final RegistryObject<ForgeFlowingFluid.Source> ARCANE_GOLD_FLUID = FLUIDS.register("molten_arcane_gold", () -> new ForgeFlowingFluid.Source(getArcaneGoldProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> ARCANE_GOLD_FLUID_FLOW = FLUIDS.register("flowing_molten_arcane_gold", () -> new ForgeFlowingFluid.Flowing(getArcaneGoldProperties()));
-	public static final ResourceLocation MOLTEN_ARCANE_GOLD_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_arcane_gold_still");
-	public static final ResourceLocation MOLTEN_ARCANE_GOLD_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_arcane_gold_flow");
-	private static ForgeFlowingFluid.Properties getArcaneGoldProperties() {
-		return new ForgeFlowingFluid.Properties(ARCANE_GOLD_FLUID, ARCANE_GOLD_FLUID_FLOW, FluidAttributes.builder(MOLTEN_ARCANE_GOLD_STILL, MOLTEN_ARCANE_GOLD_FLOW).overlay(MOLTEN_ARCANE_GOLD_STILL).luminosity(15).density(3000).viscosity(6000).temperature(970).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(ARCANE_GOLD_BUCKET).block(MOLTEN_ARCANE_GOLD).explosionResistance(1000F).tickRate(9);       
-	}
+	//eidolon fluids
+	public static final FluidWithBlockNBucket ARCANE_GOLD_FLUID = addFluid("molten_arcane_gold", "Molten Arcane Gold", 970, 15, 3000, 6000);
 
-	//neptunium
-	public static final RegistryObject<ForgeFlowingFluid.Source> NEPTUNIUM_FLUID = FLUIDS.register("molten_neptunium", () -> new ForgeFlowingFluid.Source(getNeptuniumProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> NEPTUNIUM_FLUID_FLOW = FLUIDS.register("flowing_molten_neptunium", () -> new ForgeFlowingFluid.Flowing(getNeptuniumProperties()));
-	public static final ResourceLocation MOLTEN_NEPTUNIUM_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_neptunium_still");
-	public static final ResourceLocation MOLTEN_NEPTUNIUM_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_neptunium_flow");
-	private static ForgeFlowingFluid.Properties getNeptuniumProperties() {
-		return new ForgeFlowingFluid.Properties(NEPTUNIUM_FLUID, NEPTUNIUM_FLUID_FLOW, FluidAttributes.builder(MOLTEN_NEPTUNIUM_STILL, MOLTEN_NEPTUNIUM_FLOW).overlay(MOLTEN_NEPTUNIUM_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1700).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(NEPTUNIUM_BUCKET).block(MOLTEN_NEPTUNIUM).explosionResistance(1000F).tickRate(9);       
-	}
+	//aquaculture fluids
+	public static final FluidWithBlockNBucket NEPTUNIUM_FLUID = addFluid("molten_neptunium", "Molten Neptunium", 1700, 15, 3000, 6000);
 
-	//quicksilver
-	public static final RegistryObject<ForgeFlowingFluid.Source> QUICKSILVER_FLUID = FLUIDS.register("molten_quicksilver", () -> new ForgeFlowingFluid.Source(getQuicksilverProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> QUICKSILVER_FLUID_FLOW = FLUIDS.register("flowing_molten_quicksilver", () -> new ForgeFlowingFluid.Flowing(getQuicksilverProperties()));
-	public static final ResourceLocation MOLTEN_QUICKSILVER_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_quicksilver_still");
-	public static final ResourceLocation MOLTEN_QUICKSILVER_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_quicksilver_flow");
-	private static ForgeFlowingFluid.Properties getQuicksilverProperties() {
-		return new ForgeFlowingFluid.Properties(QUICKSILVER_FLUID, QUICKSILVER_FLUID_FLOW, FluidAttributes.builder(MOLTEN_QUICKSILVER_STILL, MOLTEN_QUICKSILVER_FLOW).overlay(MOLTEN_QUICKSILVER_STILL).luminosity(15).density(3000).viscosity(6000).temperature(700).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(QUICKSILVER_BUCKET).block(MOLTEN_QUICKSILVER).explosionResistance(1000F).tickRate(9);       
-	}
+	//mystical world fluids
+	public static final FluidWithBlockNBucket QUICKSILVER_FLUID = addFluid("molten_quicksilver", "Molten Quicksilver", 700, 15, 3000, 6000);
 
-	//starmetal
-	public static final RegistryObject<ForgeFlowingFluid.Source> STARMETAL_FLUID = FLUIDS.register("molten_starmetal", () -> new ForgeFlowingFluid.Source(getStarmetalProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> STARMETAL_FLUID_FLOW = FLUIDS.register("flowing_molten_starmetal", () -> new ForgeFlowingFluid.Flowing(getStarmetalProperties()));
-	public static final ResourceLocation MOLTEN_STARMETAL_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_starmetal_still");
-	public static final ResourceLocation MOLTEN_STARMETAL_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_starmetal_flow");
-	private static ForgeFlowingFluid.Properties getStarmetalProperties() {
-		return new ForgeFlowingFluid.Properties(STARMETAL_FLUID, STARMETAL_FLUID_FLOW, FluidAttributes.builder(MOLTEN_STARMETAL_STILL, MOLTEN_STARMETAL_FLOW).overlay(MOLTEN_STARMETAL_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1050).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(STARMETAL_BUCKET).block(MOLTEN_STARMETAL).explosionResistance(1000F).tickRate(9);       
-	}
+	//astral sorcery fluids
+	public static final FluidWithBlockNBucket STARMETAL_FLUID = addFluid("molten_starmetal", "Molten Starmetal", 1050, 15, 3000, 6000);
 
-	//pink slime alloy
-	public static final RegistryObject<ForgeFlowingFluid.Source> PINK_SLIME_FLUID = FLUIDS.register("molten_pink_slime", () -> new ForgeFlowingFluid.Source(getPinkSlimeProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> PINK_SLIME_FLUID_FLOW = FLUIDS.register("flowing_molten_pink_slime", () -> new ForgeFlowingFluid.Flowing(getPinkSlimeProperties()));
-	public static final ResourceLocation MOLTEN_PINK_SLIME_STILL = new ResourceLocation(Materialis.modID, "block/fluid/molten_pink_slime_still");
-	public static final ResourceLocation MOLTEN_PINK_SLIME_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/molten_pink_slime_flow");
-	private static ForgeFlowingFluid.Properties getPinkSlimeProperties() {
-		return new ForgeFlowingFluid.Properties(PINK_SLIME_FLUID, PINK_SLIME_FLUID_FLOW, FluidAttributes.builder(MOLTEN_PINK_SLIME_STILL, MOLTEN_PINK_SLIME_FLOW).overlay(MOLTEN_PINK_SLIME_STILL).luminosity(15).density(3000).viscosity(6000).temperature(1260).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA)).bucket(PINK_SLIME_BUCKET).block(MOLTEN_PINK_SLIME).explosionResistance(1000F).tickRate(9);       
-	}
-
-
+	//industrial foregoing fluids
+	public static final FluidWithBlockNBucket PINK_SLIME_FLUID = addFluid("molten_pink_slime", "Molten Pink Slime Alloy", 1260, 15, 3000, 6000);
 
 
 	/*
 	 * BLOCKS
 	 */
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Materialis.modID);
 
 	//light residue for residual light modifier
 	public static final RegistryObject<Block> LIGHT_RESIDUE = BLOCKS.register("light_residue", () -> new LightResidueBlock(AbstractBlock.Properties.of(Material.AIR, MaterialColor.NONE).strength(0.0F, 0.0F).lightLevel((state) -> { return 15; }).randomTicks().air().noCollission().noDrops()));
 
 	//fairy
 	public static final RegistryObject<Block> FAIRY_BLOCK = BLOCKS.register("fairy_block", () -> new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_PINK).harvestLevel(1).harvestTool(ToolType.PICKAXE).strength(6.0F, 6.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_FAIRY = BLOCKS.register("molten_fairy_block", () -> new FlowingFluidBlock(FAIRY_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
-
-	//create fluids
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_REFINED_RADIANCE = BLOCKS.register("molten_refined_radiance_block", () -> new FlowingFluidBlock(REFINED_RADIANCE_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_SHADOW_STEEL = BLOCKS.register("molten_shadow_steel_block", () -> new FlowingFluidBlock(SHADOW_STEEL_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 0; }).randomTicks().strength(100.0F).noDrops()));
-
-	//eidolon fluids
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_ARCANE_GOLD = BLOCKS.register("molten_arcane_gold_block", () -> new FlowingFluidBlock(ARCANE_GOLD_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
-
-	//aquaculture fluids
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_NEPTUNIUM = BLOCKS.register("molten_neptunium_block", () -> new FlowingFluidBlock(NEPTUNIUM_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
-
-	//mystical world fluids
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_QUICKSILVER = BLOCKS.register("molten_quicksilver_block", () -> new FlowingFluidBlock(QUICKSILVER_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
-
-	//astral sorcery fluids
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_STARMETAL = BLOCKS.register("molten_starmetal_block", () -> new FlowingFluidBlock(STARMETAL_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
-
-	//industrial foregoing fluids
-	public static final RegistryObject<FlowingFluidBlock> MOLTEN_PINK_SLIME = BLOCKS.register("molten_pink_slime_block", () -> new FlowingFluidBlock(PINK_SLIME_FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return 15; }).randomTicks().strength(100.0F).noDrops()));
-
-
 
 
 	/*
 	 * ITEMS
 	 */
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Materialis.modID);
-	protected static final ItemDeferredRegisterExtension ITEMS_EXTENDED = new ItemDeferredRegisterExtension(Materialis.modID);
 
 	//fairy
 	public static final RegistryObject<Item> FAIRY_INGOT = ITEMS.register("fairy_ingot", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
 	public static final RegistryObject<Item> FAIRY_NUGGET = ITEMS.register("fairy_nugget", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
-	public static final RegistryObject<BucketItem> FAIRY_BUCKET = ITEMS.register("fairy_bucket", () -> new BucketItem(FAIRY_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+	//public static final RegistryObject<BucketItem> FAIRY_BUCKET = ITEMS.register("fairy_bucket", () -> new BucketItem(FAIRY_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 	public static final RegistryObject<BlockItem> FAIRY_BLOCK_ITEM = ITEMS.register("fairy_block", () -> new BlockItem(FAIRY_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
 
 	//custom casts
 	private static final Item.Properties SMELTERY_PROPS = new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY);
 	public static final CastItemObject INLAY_CAST = ITEMS_EXTENDED.registerCast("inlay", SMELTERY_PROPS);
 
-	//create fluids
-	public static final RegistryObject<BucketItem> REFINED_RADIANCE_BUCKET = ITEMS.register("refined_radiance_bucket", () -> new BucketItem(REFINED_RADIANCE_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
-	public static final RegistryObject<BucketItem> SHADOW_STEEL_BUCKET = ITEMS.register("shadow_steel_bucket", () -> new BucketItem(SHADOW_STEEL_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
-
-	//eidolon fluids
-	public static final RegistryObject<BucketItem> ARCANE_GOLD_BUCKET = ITEMS.register("arcane_gold_bucket", () -> new BucketItem(ARCANE_GOLD_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
-
-	//aquaculture fluids
-	public static final RegistryObject<BucketItem> NEPTUNIUM_BUCKET = ITEMS.register("neptunium_bucket", () -> new BucketItem(NEPTUNIUM_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
-
-	//mystical world fluids
-	public static final RegistryObject<BucketItem> QUICKSILVER_BUCKET = ITEMS.register("quicksilver_bucket", () -> new BucketItem(QUICKSILVER_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
-
-	//astral sorcery fluids
-	public static final RegistryObject<BucketItem> STARMETAL_BUCKET = ITEMS.register("starmetal_bucket", () -> new BucketItem(STARMETAL_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
-
 	//industrial foregoing stuff
-	public static final RegistryObject<BucketItem> PINK_SLIME_BUCKET = ITEMS.register("pink_slime_bucket", () -> new BucketItem(PINK_SLIME_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
 
 
@@ -206,4 +130,52 @@ public class MaterialisResources {
 			this.item = item;
 		}
 	}*/
+
+	public static class FluidWithBlockNBucket {
+
+		public final ForgeFlowingFluid.Properties PROPERTIES;
+
+		public final RegistryObject<ForgeFlowingFluid.Source> FLUID;
+		public final RegistryObject<ForgeFlowingFluid.Flowing> FLUID_FLOW;
+
+		public final ResourceLocation TEXTURE_STILL;
+		public final ResourceLocation TEXTURE_FLOW;
+
+		public final RegistryObject<FlowingFluidBlock> FLUID_BLOCK;
+
+		public final RegistryObject<BucketItem> FLUID_BUCKET;
+
+		public final String name;
+		public final String localizedName;
+		public final int temperature;
+		public final int light;
+		public final int density;
+		public final int viscosity;
+
+		public FluidWithBlockNBucket(String name, String localizedName, int temperature, int light, int density, int viscosity) {
+			this.name = name;
+			this.localizedName = localizedName;
+			this.temperature = temperature;
+			this.light = light;
+			this.density = density;
+			this.viscosity = viscosity;
+
+			FLUID = FLUIDS.register(name, () -> new ForgeFlowingFluid.Source(getFluidProperties()));
+			FLUID_FLOW = FLUIDS.register("flowing_" + name, () -> new ForgeFlowingFluid.Flowing(getFluidProperties()));
+
+			TEXTURE_STILL = new ResourceLocation(Materialis.modID, "block/fluid/" + name + "_still");
+			TEXTURE_FLOW = new ResourceLocation(Materialis.modID, "block/fluid/" + name + "_flow");
+
+			PROPERTIES = new ForgeFlowingFluid.Properties(FLUID, FLUID_FLOW, FluidAttributes.builder(TEXTURE_STILL, TEXTURE_FLOW).overlay(TEXTURE_STILL).luminosity(light).density(density).viscosity(6000).temperature(temperature).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA));
+
+			FLUID_BLOCK = BLOCKS.register(name + "_block", () -> new FlowingFluidBlock(FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return light; }).randomTicks().strength(100.0F).noDrops()));
+			FLUID_BUCKET = ITEMS.register(name + "_bucket", () -> new BucketItem(FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+
+			PROPERTIES.bucket(FLUID_BUCKET).block(FLUID_BLOCK).explosionResistance(1000F).tickRate(9);
+		}
+
+		public ForgeFlowingFluid.Properties getFluidProperties() {
+			return PROPERTIES;       
+		}
+	}
 }

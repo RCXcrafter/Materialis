@@ -2,6 +2,7 @@ package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
 
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
@@ -22,14 +23,9 @@ public class MaterialisBlockStates extends BlockStateProvider {
 		blockWithItem(MaterialisResources.FAIRY_BLOCK);
 
 		//this is just to give them proper particles
-		fluid(MaterialisResources.MOLTEN_FAIRY);
-		fluid(MaterialisResources.MOLTEN_REFINED_RADIANCE);
-		fluid(MaterialisResources.MOLTEN_SHADOW_STEEL);
-		fluid(MaterialisResources.MOLTEN_ARCANE_GOLD);
-		fluid(MaterialisResources.MOLTEN_NEPTUNIUM);
-		fluid(MaterialisResources.MOLTEN_QUICKSILVER);
-		fluid(MaterialisResources.MOLTEN_STARMETAL);
-		fluid(MaterialisResources.MOLTEN_PINK_SLIME);
+		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {
+			fluid(fluid.FLUID_BLOCK);
+		}
 	}
 
 	public void blockWithItem(RegistryObject<? extends Block> registryObject) {

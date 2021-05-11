@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
@@ -19,13 +20,16 @@ public class MaterialisLang extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
+		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {
+			addBlock(fluid.FLUID_BLOCK, fluid.localizedName);
+			addFluid(fluid.FLUID, fluid.localizedName);
+			addItem(fluid.FLUID_BUCKET, fluid.localizedName + " Bucket");
+		}
+
 		add("material.materialis.fairy", "Fairy");
 		addBlock(MaterialisResources.FAIRY_BLOCK, "Fairy Block");
-		addBlock(MaterialisResources.MOLTEN_FAIRY, "Molten Fairy");
 		addItem(MaterialisResources.FAIRY_INGOT, "Fairy Ingot");
 		addItem(MaterialisResources.FAIRY_NUGGET, "Fairy Nugget");
-		addFluid(MaterialisResources.FAIRY_FLUID, "Molten Fairy");
-		addItem(MaterialisResources.FAIRY_BUCKET, "Molten Fairy Bucket");
 
 		//custom casts
 		addCast(MaterialisResources.INLAY_CAST, "Inlay");
@@ -46,45 +50,24 @@ public class MaterialisLang extends LanguageProvider {
 		add("material.materialis.rose_quartz", "Rose Quartz");
 		add("material.materialis.refined_radiance", "Refined Radiance");
 		add("material.materialis.refined_radiance.format", "Radiant %s");
-		addBlock(MaterialisResources.MOLTEN_REFINED_RADIANCE, "Liquified Radiance");
-		addFluid(MaterialisResources.REFINED_RADIANCE_FLUID, "Liquified Radiance");
-		addItem(MaterialisResources.REFINED_RADIANCE_BUCKET, "Liquified Radiance Bucket");
 		add("material.materialis.shadow_steel", "Shadow Steel");
-		addBlock(MaterialisResources.MOLTEN_SHADOW_STEEL, "Molten Shadow Steel");
-		addFluid(MaterialisResources.SHADOW_STEEL_FLUID, "Molten Shadow Steel");
-		addItem(MaterialisResources.SHADOW_STEEL_BUCKET, "Molten Shadow Steel Bucket");
 
 		//eidolon stuff
 		add("material.materialis.pewter", "Pewter");
 		add("material.materialis.arcane_gold", "Arcane Gold");
-		addBlock(MaterialisResources.MOLTEN_ARCANE_GOLD, "Molten Arcane Gold");
-		addFluid(MaterialisResources.ARCANE_GOLD_FLUID, "Molten Arcane Gold");
-		addItem(MaterialisResources.ARCANE_GOLD_BUCKET, "Molten Arcane Gold Bucket");
 
 		//aquaculture stuff
 		add("material.materialis.neptunium", "Neptunium");
-		addBlock(MaterialisResources.MOLTEN_NEPTUNIUM, "Molten Neptunium");
-		addFluid(MaterialisResources.NEPTUNIUM_FLUID, "Molten Neptunium");
-		addItem(MaterialisResources.NEPTUNIUM_BUCKET, "Molten Neptunium Bucket");
 
 		//mystical world stuff
 		add("material.materialis.quicksilver", "Quicksilver");
-		addBlock(MaterialisResources.MOLTEN_QUICKSILVER, "Molten Quicksilver");
-		addFluid(MaterialisResources.QUICKSILVER_FLUID, "Molten Quicksilver");
-		addItem(MaterialisResources.QUICKSILVER_BUCKET, "Molten Quicksilver Bucket");
 
 		//astral sorcery stuff
 		add("material.materialis.starmetal", "Starmetal");
-		addBlock(MaterialisResources.MOLTEN_STARMETAL, "Molten Starmetal");
-		addFluid(MaterialisResources.STARMETAL_FLUID, "Molten Starmetal");
-		addItem(MaterialisResources.STARMETAL_BUCKET, "Molten Starmetal Bucket");
 
 		//industrial foregoing stuff
 		add("material.materialis.plastic", "Plastic");
 		add("material.materialis.pink_slime", "Pink Slime");
-		addBlock(MaterialisResources.MOLTEN_PINK_SLIME, "Molten Pink Slime Alloy");
-		addFluid(MaterialisResources.PINK_SLIME_FLUID, "Molten Pink Slime Alloy");
-		addItem(MaterialisResources.PINK_SLIME_BUCKET, "Molten Pink Slime Alloy Bucket");
 		addItem(MaterialisResources.PINK_SLIME_CRYSTAL, "Pink Slime Crystal");
 
 		//modifiers
