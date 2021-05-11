@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
+import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
@@ -26,10 +27,13 @@ public class MaterialisLang extends LanguageProvider {
 			addItem(fluid.FLUID_BUCKET, fluid.localizedName + " Bucket");
 		}
 
+		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
+			addBlock(material.BLOCK, material.localizedName + " Block");
+			addItem(material.INGOT, material.localizedName + " Ingot");
+			addItem(material.NUGGET, material.localizedName + " Nugget");
+		}
+
 		add("material.materialis.fairy", "Fairy");
-		addBlock(MaterialisResources.FAIRY_BLOCK, "Fairy Block");
-		addItem(MaterialisResources.FAIRY_INGOT, "Fairy Ingot");
-		addItem(MaterialisResources.FAIRY_NUGGET, "Fairy Nugget");
 
 		//custom casts
 		addCast(MaterialisResources.INLAY_CAST, "Inlay");

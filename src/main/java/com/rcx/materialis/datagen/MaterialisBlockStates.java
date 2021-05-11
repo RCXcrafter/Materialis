@@ -3,6 +3,7 @@ package com.rcx.materialis.datagen;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
+import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
@@ -20,7 +21,9 @@ public class MaterialisBlockStates extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		blockWithItem(MaterialisResources.FAIRY_BLOCK);
+		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
+			blockWithItem(material.BLOCK);
+		}
 
 		//this is just to give them proper particles
 		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {

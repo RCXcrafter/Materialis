@@ -2,6 +2,7 @@ package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -15,10 +16,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisItemTags extends ItemTagsProvider {
-
-	public static final INamedTag<Item> FAIRY_INGOT = ItemTags.bind("forge:ingots/fairy");
-	public static final INamedTag<Item> FAIRY_BLOCK = ItemTags.bind("forge:storage_blocks/fairy");
-	public static final INamedTag<Item> FAIRY_NUGGET = ItemTags.bind("forge:nuggets/fairy");
 
 	//custom casts
 	public static final INamedTag<Item> INLAY_CAST = ItemTags.bind("materialis:casts/multi_use/inlay");
@@ -49,13 +46,19 @@ public class MaterialisItemTags extends ItemTagsProvider {
 
 	@Override
 	protected void addTags() {
-		this.tag(FAIRY_INGOT).add(MaterialisResources.FAIRY_INGOT.get());
-		this.tag(Tags.Items.INGOTS).addTag(FAIRY_INGOT);
-		this.tag(FAIRY_BLOCK).add(MaterialisResources.FAIRY_BLOCK_ITEM.get());
-		this.tag(Tags.Items.STORAGE_BLOCKS).addTag(FAIRY_BLOCK);
-		this.tag(TinkerTags.Items.ANVIL_METAL).addTag(FAIRY_BLOCK);
-		this.tag(FAIRY_NUGGET).add(MaterialisResources.FAIRY_NUGGET.get());
-		this.tag(Tags.Items.NUGGETS).addTag(FAIRY_NUGGET);
+		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
+			INamedTag<Item> INGOT = ItemTags.bind("forge:ingots/" + material.name);
+			INamedTag<Item> BLOCK = ItemTags.bind("forge:storage_blocks/" + material.name);
+			INamedTag<Item> NUGGET = ItemTags.bind("forge:nuggets/" + material.name);
+
+			this.tag(INGOT).add(material.INGOT.get());
+			this.tag(Tags.Items.INGOTS).addTag(INGOT);
+			this.tag(BLOCK).add(material.BLOCK_ITEM.get());
+			this.tag(Tags.Items.STORAGE_BLOCKS).addTag(BLOCK);
+			this.tag(TinkerTags.Items.ANVIL_METAL).addTag(BLOCK);
+			this.tag(NUGGET).add(material.NUGGET.get());
+			this.tag(Tags.Items.NUGGETS).addTag(NUGGET);
+		}
 
 		//custom casts
 		this.tag(INLAY_CAST).add(MaterialisResources.INLAY_CAST.get());

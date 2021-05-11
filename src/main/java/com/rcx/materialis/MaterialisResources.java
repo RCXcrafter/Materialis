@@ -81,19 +81,10 @@ public class MaterialisResources {
 	//light residue for residual light modifier
 	public static final RegistryObject<Block> LIGHT_RESIDUE = BLOCKS.register("light_residue", () -> new LightResidueBlock(AbstractBlock.Properties.of(Material.AIR, MaterialColor.NONE).strength(0.0F, 0.0F).lightLevel((state) -> { return 15; }).randomTicks().air().noCollission().noDrops()));
 
-	//fairy
-	public static final RegistryObject<Block> FAIRY_BLOCK = BLOCKS.register("fairy_block", () -> new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_PINK).harvestLevel(1).harvestTool(ToolType.PICKAXE).strength(6.0F, 6.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
-
 
 	/*
 	 * ITEMS
 	 */
-
-	//fairy
-	public static final RegistryObject<Item> FAIRY_INGOT = ITEMS.register("fairy_ingot", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
-	public static final RegistryObject<Item> FAIRY_NUGGET = ITEMS.register("fairy_nugget", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
-	//public static final RegistryObject<BucketItem> FAIRY_BUCKET = ITEMS.register("fairy_bucket", () -> new BucketItem(FAIRY_FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
-	public static final RegistryObject<BlockItem> FAIRY_BLOCK_ITEM = ITEMS.register("fairy_block", () -> new BlockItem(FAIRY_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
 
 	//custom casts
 	private static final Item.Properties SMELTERY_PROPS = new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY);
@@ -104,32 +95,39 @@ public class MaterialisResources {
 
 
 
-	//my clever plan doesn't work >:(
-	/*
-	public static List<ItemRegistryStuff> items = new ArrayList<ItemRegistryStuff>();
 
-	static {
-		registerItem("fairy_ingot", "Fairy Ingot", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
-		registerItem("fairy_nugget", "Fairy Nugget", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
+	public static List<IngotWithBlockNNugget> materialList = new ArrayList<IngotWithBlockNNugget>();
+
+	public static final IngotWithBlockNNugget FAIRY_INGOT = addIngot("fairy", "Fairy", MaterialColor.COLOR_PINK, 1, 6.0f, 6.0f);
+
+	public static IngotWithBlockNNugget addIngot(String name, String localizedName, MaterialColor color, int miningLevel, float hardness, float explosionResistance) {
+		IngotWithBlockNNugget ingot = new IngotWithBlockNNugget(name, localizedName, color, miningLevel, hardness, explosionResistance);
+		materialList.add(ingot);
+		return ingot;
 	}
 
-	public static void registerItem(String unlocName, String locName, Supplier<? extends Item> item) {
-		items.add(new ItemRegistryStuff(locName, locName, item));
-		ITEMS.register(unlocName, item);
-	}
+	public static class IngotWithBlockNNugget {
 
-	public static class ItemRegistryStuff {
+		public final String name;
+		public final String localizedName;
 
-		public String unlocName;
-		public String locName;
-		public Supplier<? extends Item> item;
+		public final RegistryObject<Block> BLOCK;
+		public final RegistryObject<Item> INGOT;
+		public final RegistryObject<Item> NUGGET;
+		public final RegistryObject<BlockItem> BLOCK_ITEM;
 
-		public ItemRegistryStuff(String unlocName, String locName, Supplier<? extends Item> item) {
-			this.unlocName = unlocName;
-			this.locName = locName;
-			this.item = item;
+
+		public IngotWithBlockNNugget(String name, String localizedName, MaterialColor color, int miningLevel, float hardness, float explosionResistance) {
+			this.name = name;
+			this.localizedName = localizedName;
+
+			BLOCK = BLOCKS.register(name + "_block", () -> new Block(AbstractBlock.Properties.of(Material.METAL, color).harvestLevel(miningLevel).harvestTool(ToolType.PICKAXE).strength(hardness, explosionResistance).sound(SoundType.METAL).requiresCorrectToolForDrops()));
+
+			INGOT = ITEMS.register(name + "_ingot", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
+			NUGGET = ITEMS.register(name + "_nugget", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
+			BLOCK_ITEM = ITEMS.register(name + "_block", () -> new BlockItem(BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
 		}
-	}*/
+	}
 
 	public static class FluidWithBlockNBucket {
 

@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
+import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.BucketItem;
@@ -27,8 +28,11 @@ public class MaterialisItemModels extends ItemModelProvider {
 		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {
 			bucketModel(fluid.FLUID_BUCKET);
 		}
-		itemWithModel(MaterialisResources.FAIRY_INGOT, "item/generated");
-		itemWithModel(MaterialisResources.FAIRY_NUGGET, "item/generated");
+
+		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
+			itemWithModel(material.INGOT, "item/generated");
+			itemWithModel(material.NUGGET, "item/generated");
+		}
 
 		//custom casts
 		castModels(MaterialisResources.INLAY_CAST);

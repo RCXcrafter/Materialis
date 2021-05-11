@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
 import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
@@ -49,10 +50,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 	}
 
 	public void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
-		blockIngotNuggetCompression(consumer, MaterialisResources.FAIRY_BLOCK_ITEM.get(), MaterialisResources.FAIRY_INGOT.get(), MaterialisResources.FAIRY_NUGGET.get());
-		String metalFolder = "smeltery/casting/metal/";
-		addMetalCastingRecipe(consumer, MaterialisResources.FAIRY_FLUID.FLUID, MaterialisResources.FAIRY_BLOCK_ITEM.get(), MaterialisResources.FAIRY_INGOT.get(), MaterialisResources.FAIRY_NUGGET.get(), metalFolder, "fairy");
+		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
+			blockIngotNuggetCompression(consumer, material.BLOCK_ITEM.get(), material.INGOT.get(), material.NUGGET.get());
+		}
 
+		String metalFolder = "smeltery/casting/metal/";
+		addMetalCastingRecipe(consumer, MaterialisResources.FAIRY_FLUID.FLUID, MaterialisResources.FAIRY_INGOT.BLOCK.get(), MaterialisResources.FAIRY_INGOT.INGOT.get(), MaterialisResources.FAIRY_INGOT.NUGGET.get(), metalFolder, "fairy");
 		addMetalMelting(consumer, MaterialisResources.FAIRY_FLUID.FLUID.get(), "fairy", false, metalFolder, false);
 
 		String folder = "smeltery/alloys/";

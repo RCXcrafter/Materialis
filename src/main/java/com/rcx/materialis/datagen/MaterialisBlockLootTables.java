@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
 import net.minecraft.block.Block;
 import net.minecraft.data.loot.BlockLootTables;
@@ -24,6 +25,8 @@ public class MaterialisBlockLootTables extends BlockLootTables {
 
 	@Override
 	protected void addTables() {
-		this.dropSelf(MaterialisResources.FAIRY_BLOCK.get());
+		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
+			this.dropSelf(material.BLOCK.get());
+		}
 	}
 }

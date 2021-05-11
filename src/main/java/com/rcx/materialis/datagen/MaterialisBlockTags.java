@@ -2,6 +2,7 @@ package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
 import net.minecraft.block.Block;
 import net.minecraft.data.BlockTagsProvider;
@@ -15,8 +16,6 @@ import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisBlockTags extends BlockTagsProvider {
 
-	public static final INamedTag<Block> FAIRY_BLOCK = BlockTags.bind("forge:storage_blocks/fairy");
-
 	//astral sorcery stuff
 	public static final INamedTag<Block> STARMETAL_BLOCK = BlockTags.bind("forge:storage_blocks/starmetal");
 	public static final INamedTag<Block> STARMETAL_ORE = BlockTags.bind("forge:ores/starmetal");
@@ -27,7 +26,9 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 
 	@Override
 	protected void addTags() {
-		addBlockTag(MaterialisResources.FAIRY_BLOCK.get(), FAIRY_BLOCK);
+		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
+			addBlockTag(material.BLOCK.get(), BlockTags.bind("forge:storage_blocks/" + material.name));
+		}
 
 		tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
 		tag(BlockTags.BEACON_BASE_BLOCKS).addTag(STARMETAL_BLOCK);
