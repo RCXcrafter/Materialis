@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/red_aurum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/rod"
+  },
+  "fluid": {
+    "name": "materialis:molten_red_aurum",
+    "amount": 72
+  },
+  "result": {
+    "tag": "forge:rods/red_aurum"
+  },
+  "cooling_time": 41
+}

@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/pokefennium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/coin"
+  },
+  "fluid": {
+    "name": "materialis:molten_pokefennium",
+    "amount": 48
+  },
+  "result": {
+    "tag": "forge:coins/pokefennium"
+  },
+  "cooling_time": 34
+}

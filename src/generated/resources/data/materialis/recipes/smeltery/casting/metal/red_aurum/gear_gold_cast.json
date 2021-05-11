@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gears/red_aurum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/gear"
+  },
+  "fluid": {
+    "name": "materialis:molten_red_aurum",
+    "amount": 576
+  },
+  "result": {
+    "tag": "forge:gears/red_aurum"
+  },
+  "cooling_time": 117
+}

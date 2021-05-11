@@ -99,6 +99,10 @@ public class MaterialisResources {
 	public static List<IngotWithBlockNNugget> materialList = new ArrayList<IngotWithBlockNNugget>();
 
 	public static final IngotWithBlockNNugget FAIRY_INGOT = addIngot("fairy", "Fairy", MaterialColor.COLOR_PINK, 1, 6.0f, 6.0f);
+	public static final IngotWithBlockNNugget RED_AURUM_INGOT = addIngot("red_aurum", "Red Aurum", MaterialColor.COLOR_RED, 1, 6.0f, 6.0f);
+	public static final IngotWithBlockNNugget DRULLOY_INGOT = addIngot("drulloy", "Drulloy", MaterialColor.TERRACOTTA_BROWN, 1, 6.0f, 6.0f);
+	public static final IngotWithBlockNNugget POKEFENNIUM_INGOT = addIngot("pokefennium", "Pokefennium", MaterialColor.COLOR_CYAN, 1, 6.0f, 6.0f);
+	public static final IngotWithBlockNNugget ALUMITE_INGOT = addIngot("alumite", "Alumite", MaterialColor.TERRACOTTA_WHITE, 1, 6.0f, 6.0f);
 
 	public static IngotWithBlockNNugget addIngot(String name, String localizedName, MaterialColor color, int miningLevel, float hardness, float explosionResistance) {
 		IngotWithBlockNNugget ingot = new IngotWithBlockNNugget(name, localizedName, color, miningLevel, hardness, explosionResistance);

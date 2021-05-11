@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:nuggets/drulloy"
+  },
+  "result": {
+    "fluid": "materialis:molten_drulloy",
+    "amount": 16
+  },
+  "temperature": 750,
+  "time": 20
+}

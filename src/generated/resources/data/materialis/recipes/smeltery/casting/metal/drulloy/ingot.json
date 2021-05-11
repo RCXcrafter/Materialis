@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:ingots/drulloy"
+  },
+  "result": {
+    "fluid": "materialis:molten_drulloy",
+    "amount": 144
+  },
+  "temperature": 750,
+  "time": 59
+}

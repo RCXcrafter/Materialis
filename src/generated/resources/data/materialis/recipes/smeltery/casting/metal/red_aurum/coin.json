@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/red_aurum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/red_aurum"
+  },
+  "result": {
+    "fluid": "materialis:molten_red_aurum",
+    "amount": 48
+  },
+  "temperature": 750,
+  "time": 39
+}

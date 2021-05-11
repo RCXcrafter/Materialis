@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:sheetmetals/pokefennium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:sheetmetals/pokefennium"
+  },
+  "result": {
+    "fluid": "materialis:molten_pokefennium",
+    "amount": 144
+  },
+  "temperature": 750,
+  "time": 59
+}

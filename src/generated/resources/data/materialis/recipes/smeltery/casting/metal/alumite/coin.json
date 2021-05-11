@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/alumite",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/alumite"
+  },
+  "result": {
+    "fluid": "materialis:molten_alumite",
+    "amount": 48
+  },
+  "temperature": 750,
+  "time": 39
+}

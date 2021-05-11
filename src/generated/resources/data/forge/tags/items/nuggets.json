@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "#forge:nuggets/fairy"
+    "#forge:nuggets/fairy",
+    "#forge:nuggets/red_aurum",
+    "#forge:nuggets/drulloy",
+    "#forge:nuggets/pokefennium",
+    "#forge:nuggets/alumite"
   ]
 }

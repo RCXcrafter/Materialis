@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/pokefennium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/pokefennium"
+  },
+  "result": {
+    "fluid": "materialis:molten_pokefennium",
+    "amount": 48
+  },
+  "temperature": 750,
+  "time": 39
+}

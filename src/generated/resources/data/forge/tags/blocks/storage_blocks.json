@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "#forge:storage_blocks/fairy",
+    "#forge:storage_blocks/red_aurum",
+    "#forge:storage_blocks/drulloy",
+    "#forge:storage_blocks/pokefennium",
+    "#forge:storage_blocks/alumite",
     "#forge:storage_blocks/starmetal"
   ]
 }
