@@ -51,7 +51,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 	public void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
 		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
-			blockIngotNuggetCompression(consumer, material.BLOCK_ITEM.get(), material.INGOT.get(), material.NUGGET.get());
+			blockIngotNuggetCompression(consumer, material.name, material.BLOCK_ITEM.get(), material.INGOT.get(), material.NUGGET.get());
 		}
 
 		String metalFolder = "smeltery/casting/metal/";
@@ -120,13 +120,14 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.save(industrialForegoingLoaded, new ResourceLocation(Materialis.modID, "pink_slime_crystal_blasting"));
 	}
 
-	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, Item block, Item ingot, Item nugget) {
+	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
 		ConditionalRecipe.builder().addCondition(this.TRUE()).addRecipe(
 				ShapedRecipeBuilder.shaped(block, 1)
 				.pattern("XXX")
+				.pattern("XYX")
 				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', ingot)
+				.define('X', ItemTags.bind("forge:ingots/" + name))
+				.define('Y', ingot)
 				.group("")
 				.unlockedBy("has_ingot", has(ingot))
 				::save
@@ -147,9 +148,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		ConditionalRecipe.builder().addCondition(this.TRUE()).addRecipe(
 				ShapedRecipeBuilder.shaped(ingot, 1)
 				.pattern("XXX")
+				.pattern("XYX")
 				.pattern("XXX")
-				.pattern("XXX")
-				.define('X', nugget)
+				.define('X', ItemTags.bind("forge:nuggets/" + name))
+				.define('Y', nugget)
 				.group("")
 				.unlockedBy("has_nugget", has(nugget))
 				::save
