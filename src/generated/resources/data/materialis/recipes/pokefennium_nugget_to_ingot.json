@@ -11,11 +11,14 @@
         "type": "minecraft:crafting_shaped",
         "pattern": [
           "XXX",
-          "XXX",
+          "XYX",
           "XXX"
         ],
         "key": {
           "X": {
+            "tag": "forge:nuggets/pokefennium"
+          },
+          "Y": {
             "item": "materialis:pokefennium_nugget"
           }
         },

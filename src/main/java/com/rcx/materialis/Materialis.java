@@ -12,6 +12,9 @@ import com.rcx.materialis.datagen.MaterialisItemModels;
 import com.rcx.materialis.datagen.MaterialisItemTags;
 import com.rcx.materialis.datagen.MaterialisLang;
 import com.rcx.materialis.datagen.MaterialisLootTables;
+import com.rcx.materialis.datagen.MaterialisMaterials;
+import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialStats;
+import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
 import com.rcx.materialis.datagen.MaterialisRecipes;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 
@@ -28,6 +31,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -125,6 +129,10 @@ public class Materialis {
 			gen.addProvider(blockTags);
 			gen.addProvider(new MaterialisItemTags(gen, blockTags, event.getExistingFileHelper()));
 			gen.addProvider(new MaterialisFluidTags(gen, event.getExistingFileHelper()));
+			AbstractMaterialDataProvider materials = new MaterialisMaterials(gen);
+			gen.addProvider(materials);
+			gen.addProvider(new MaterialisMaterialStats(gen, materials));
+			gen.addProvider(new MaterialisMaterialTraits(gen, materials));
 		}
 	}
 }

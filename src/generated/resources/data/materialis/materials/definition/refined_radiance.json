@@ -1,0 +1,9 @@
+{
+  "craftable": false,
+  "tier": 4,
+  "sortOrder": 3,
+  "fluid": "materialis:molten_refined_radiance",
+  "fluidPerUnit": 144,
+  "textColor": "#FFFFFF",
+  "temperature": 1300
+}

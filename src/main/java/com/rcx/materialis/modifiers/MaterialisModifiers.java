@@ -5,9 +5,9 @@ import com.rcx.materialis.Materialis;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.tools.modifiers.shared.ExtraModifier;
-import slimeknights.tconstruct.tools.modifiers.shared.ExtraModifier.ExtraType;
-import slimeknights.tconstruct.tools.modifiers.shared.ExtraModifier.ModifierSource;
+import slimeknights.tconstruct.library.modifiers.ExtraModifier;
+import slimeknights.tconstruct.library.modifiers.ExtraModifier.ExtraType;
+import slimeknights.tconstruct.library.modifiers.ExtraModifier.ModifierSource;
 
 public class MaterialisModifiers {
 	public static final DeferredRegister<Modifier> MODIFIERS = DeferredRegister.create(Modifier.class, Materialis.modID);
@@ -27,6 +27,5 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> decayModifier = MODIFIERS.register("decay", DecayModifier::new);
 	public static final RegistryObject<Modifier> nocturnalModifier = MODIFIERS.register("nocturnal", NocturnalModifier::new);
 	public static final RegistryObject<Modifier> feebleModifier = MODIFIERS.register("feeble", FeebleModifier::new);
-	public static final RegistryObject<Modifier> overqeightModifier = MODIFIERS.register("overweight", OverweightModifier::new);
-	public static final RegistryObject<Modifier> overclockedModifier = MODIFIERS.register("overclocked", OverclockedModifier::new);
+	public static final RegistryObject<Modifier> overweightModifier = MODIFIERS.register("overweight", OverweightModifier::new);
 }

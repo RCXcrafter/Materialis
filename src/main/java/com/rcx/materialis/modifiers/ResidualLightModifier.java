@@ -18,13 +18,13 @@ public class ResidualLightModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public void afterBlockBreak(IModifierToolStack tool, int level, World world, BlockState state, BlockPos pos, LivingEntity living, boolean wasEffective) {
+	public void afterBlockBreak(IModifierToolStack tool, int level, World world, BlockState state, BlockPos pos, LivingEntity living, boolean canharvest, boolean wasEffective) {
 		if (world.getBlockState(pos).isAir(world, pos))
 			world.setBlock(pos, MaterialisResources.LIGHT_RESIDUE.get().defaultBlockState(), 3 | 64);
 	}
 
 	@Override
-	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, LivingEntity target, float damageDealt, boolean isCritical, boolean fullyCharged) {
+	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, LivingEntity target, float damageDealt, boolean isCritical, float cooldown) {
 		if (target.isAlive()) {
 			// set entity so the potion is attributed as a player kill
 			target.setLastHurtByMob(attacker);

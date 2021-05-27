@@ -1,0 +1,9 @@
+{
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 7,
+  "fluid": "materialis:molten_fairy",
+  "fluidPerUnit": 144,
+  "textColor": "#FF87BC",
+  "temperature": 750
+}

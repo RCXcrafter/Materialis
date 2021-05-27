@@ -11,11 +11,14 @@
         "type": "minecraft:crafting_shaped",
         "pattern": [
           "XXX",
-          "XXX",
+          "XYX",
           "XXX"
         ],
         "key": {
           "X": {
+            "tag": "forge:nuggets/drulloy"
+          },
+          "Y": {
             "item": "materialis:drulloy_nugget"
           }
         },

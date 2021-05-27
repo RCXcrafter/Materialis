@@ -13,7 +13,7 @@ public class ArcaneModifier extends Modifier {
 	}
 
 	@Override
-	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, LivingEntity target, float damageDealt, boolean isCritical, boolean fullyCharged) {
+	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, LivingEntity target, float damageDealt, boolean isCritical, float cooldown) {
 		DamageSource source;
 		if (attacker instanceof PlayerEntity) {
 			source = DamageSource.playerAttack((PlayerEntity)attacker);

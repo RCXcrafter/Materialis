@@ -1,0 +1,9 @@
+{
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 0,
+  "fluid": "materialis:molten_pink_slime",
+  "fluidPerUnit": 144,
+  "textColor": "#FF9FEF",
+  "temperature": 960
+}

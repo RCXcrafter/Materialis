@@ -1,0 +1,9 @@
+{
+  "craftable": false,
+  "tier": 2,
+  "sortOrder": 1,
+  "fluid": "tconstruct:molten_uranium",
+  "fluidPerUnit": 144,
+  "textColor": "#42BE30",
+  "temperature": 830
+}
