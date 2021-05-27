@@ -1,6 +1,10 @@
 {
   "default": [
     {
+      "name": "materialis:overweight",
+      "level": 1
+    },
+    {
       "name": "tconstruct:overslime",
       "level": 1
     }

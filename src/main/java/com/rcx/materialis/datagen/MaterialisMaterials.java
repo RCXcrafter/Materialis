@@ -133,8 +133,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(starmetal, MaterialisModifiers.nocturnalModifier.get());
 			//industrial foregoing materials
 			addDefaultTraits(plastic, MaterialisModifiers.feebleModifier.get());
-			addDefaultTraits(pink_slime, MaterialisModifiers.overweightModifier.get());
-			addDefaultTraits(pink_slime, TinkerModifiers.overslime.get());
+			addDefaultTraits(pink_slime, MaterialisModifiers.overweightModifier.get(), TinkerModifiers.overslime.get());
 		}
 	}
 
