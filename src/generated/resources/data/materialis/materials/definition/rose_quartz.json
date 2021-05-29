@@ -1,4 +1,8 @@
 {
+  "condition": {
+    "modid": "create",
+    "type": "forge:mod_loaded"
+  },
   "craftable": true,
   "tier": 3,
   "sortOrder": 7,

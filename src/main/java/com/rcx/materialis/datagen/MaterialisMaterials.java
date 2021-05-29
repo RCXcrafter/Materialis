@@ -5,7 +5,11 @@ import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
+import net.minecraftforge.common.crafting.conditions.NotCondition;
+import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
@@ -67,26 +71,26 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	protected void addMaterials() {
 		addMetalMaterial(fairy, 3, ORDER_NETHER, MaterialisResources.FAIRY_FLUID.FLUID.get(), 0xFF87BC);
 		//general oredict materials
-		addMetalMaterial(brass, 3, ORDER_WEAPON, TinkerFluids.moltenBrass.get(), 0xFFD359);
-		addMetalMaterial(aluminum, 2, ORDER_HARVEST, TinkerFluids.moltenAluminum.get(), 0xE6B7BF);
-		addMetalMaterial(uranium, 2, ORDER_HARVEST, TinkerFluids.moltenUranium.get(), 0x42BE30);
-		addMetalMaterial(tungsten, 3, ORDER_WEAPON, TinkerFluids.moltenTungsten.get(), 0xA7A88F);
+		addCompatMetalMaterial(brass, 3, ORDER_WEAPON, TinkerFluids.moltenBrass.get(), 0xFFD359);
+		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST, TinkerFluids.moltenAluminum.get(), 0xE6B7BF);
+		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST, TinkerFluids.moltenUranium.get(), 0x42BE30);
+		addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, TinkerFluids.moltenTungsten.get(), 0xA7A88F);
 		//create materials
-		addMaterialNoFluid(rose_quartz, 3, ORDER_NETHER, true, 0xFF8C80);
-		addMetalMaterial(refined_radiance, 4, ORDER_SPECIAL, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), 0xFFFFFF);
-		addMetalMaterial(shadow_steel, 4, ORDER_SPECIAL, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), 0x635D71);
+		addMaterial(rose_quartz, 3, ORDER_NETHER, Fluids.EMPTY, 0, true, 0xFF8C80, new ModLoadedCondition("create"));
+		addCompatMetalMaterial(refined_radiance, 4, ORDER_SPECIAL, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), 0xFFFFFF);
+		addCompatMetalMaterial(shadow_steel, 4, ORDER_SPECIAL, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), 0x635D71);
 		//eidolon materials
-		addMetalMaterial(pewter, 3, ORDER_HARVEST, TinkerFluids.moltenPewter.get(), 0xA1A097);
-		addMetalMaterial(arcane_gold, 3, ORDER_WEAPON, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), 0xFFC069);
+		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST, TinkerFluids.moltenPewter.get(), 0xA1A097);
+		addCompatMetalMaterial(arcane_gold, 3, ORDER_WEAPON, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), 0xFFC069);
 		//aquaculture materials
-		addMetalMaterial(neptunium, 3, ORDER_GENERAL, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), 0x17F1B6);
+		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), 0x17F1B6);
 		//mystical world materials
-		addMetalMaterial(quicksilver, 2, ORDER_HARVEST, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), 0xA9C2C4);
+		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), 0xA9C2C4);
 		//astral sorcery materials
-		addMetalMaterial(starmetal, 3, ORDER_HARVEST, MaterialisResources.STARMETAL_FLUID.FLUID.get(), 0x003CC9);
+		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, MaterialisResources.STARMETAL_FLUID.FLUID.get(), 0x003CC9);
 		//industrial foregoing materials
-		addMaterialNoFluid(plastic, 2, ORDER_HARVEST, true, 0xD9D9D9);
-		addMetalMaterial(pink_slime, 3, ORDER_GENERAL, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), 0xFF9FEF);
+		this.addMaterial(plastic, 2, ORDER_HARVEST, Fluids.EMPTY, 0, true, 0xD9D9D9, new NotCondition(new TagEmptyCondition("forge:plastic")));
+		addCompatMetalMaterial(pink_slime, 3, ORDER_GENERAL, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), 0xFF9FEF);
 	}
 
 	private static MaterialId createMaterial(String name) {
