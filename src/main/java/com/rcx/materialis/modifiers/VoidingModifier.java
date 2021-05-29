@@ -20,6 +20,11 @@ public class VoidingModifier extends SingleUseModifier {
 	}
 
 	@Override
+	public int getPriority() {
+		return 50; //hopefully after other loot modifying modifiers
+	}
+
+	@Override
 	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
 		return new ArrayList<ItemStack>();
 	}

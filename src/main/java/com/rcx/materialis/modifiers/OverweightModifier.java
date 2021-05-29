@@ -16,6 +16,11 @@ public class OverweightModifier extends Modifier {
 	}
 
 	@Override
+	public int getPriority() {
+		return 80; //after overcast
+	}
+
+	@Override
 	public void addVolatileData(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		OverslimeModifier overslime = TinkerModifiers.overslime.get();
 		overslime.setFriend(volatileData);

@@ -15,6 +15,11 @@ public class DecayModifier extends Modifier {
 	}
 
 	@Override
+	public int getPriority() {
+		return 125; //after overslime, but before reinforced
+	}
+
+	@Override
 	public void onInventoryTick(IModifierToolStack tool, int level, World world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
 		if (!tool.isBroken() && holder.tickCount % 20 == 0 && RANDOM.nextInt(CHANCE_BOUND) <= 1 + level) {
 			tool.setDamage(tool.getDamage() + 1);

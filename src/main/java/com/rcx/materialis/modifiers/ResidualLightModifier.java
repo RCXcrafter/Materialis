@@ -18,6 +18,11 @@ public class ResidualLightModifier extends SingleUseModifier {
 	}
 
 	@Override
+	public int getPriority() {
+		return Short.MIN_VALUE - 30; //after exchanging
+	}
+
+	@Override
 	public void afterBlockBreak(IModifierToolStack tool, int level, World world, BlockState state, BlockPos pos, LivingEntity living, boolean canharvest, boolean wasEffective) {
 		if (world.getBlockState(pos).isAir(world, pos))
 			world.setBlock(pos, MaterialisResources.LIGHT_RESIDUE.get().defaultBlockState(), 3 | 64);
