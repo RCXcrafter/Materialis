@@ -1,38 +1,46 @@
 package com.rcx.materialis.modifiers;
 
+import java.util.List;
+
 import elucent.eidolon.Registry;
 import elucent.eidolon.network.CrystallizeEffectPacket;
 import elucent.eidolon.network.Networking;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.LootParameters;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
 public class ReapingModifier extends SingleUseModifier {
 
 	public ReapingModifier() {
 		super(0xE388DD);
-		MinecraftForge.EVENT_BUS.addListener(this::onLivingDrop);
 	}
 
-	private void onLivingDrop(LivingDropsEvent event) {
-		LivingEntity target = event.getEntityLiving();
-		if (target.level.isClientSide() || !(event.getSource().getEntity() instanceof LivingEntity))
-			return;
-		LivingEntity source = (LivingEntity) event.getSource().getEntity();
-		ToolStack tool = getHeldTool(source);
-		if (tool != null) {
-			if (tool.getModifierLevel(this) > 0 && target.isInvertedHealAndHarm()) {
-				event.getDrops().clear();
-				ItemEntity drop = new ItemEntity(source.level, target.getX(), target.getY(), target.getZ(), new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + tool.getModifierLevel(TinkerModifiers.luck.get()))));
-				drop.setDefaultPickUpDelay();
-				event.getDrops().add(drop);
+	@Override
+	public int getPriority() {
+		return 75; //hopefully after other loot modifying modifiers, but before voiding
+	}
+
+	@Override
+	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
+		if (!context.hasParam(LootParameters.DAMAGE_SOURCE)) {
+			return generatedLoot;
+		}
+
+		Entity entity = context.getParamOrNull(LootParameters.THIS_ENTITY);
+		if (entity != null && entity instanceof LivingEntity) {
+			LivingEntity target = (LivingEntity) entity;
+			if (target.isInvertedHealAndHarm()) {
+				generatedLoot.clear();
+				ItemStack drop = new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + tool.getModifierLevel(TinkerModifiers.luck.get())));
+				generatedLoot.add(drop);
 				Networking.sendToTracking(target.level, target.blockPosition(), new CrystallizeEffectPacket(target.blockPosition()));
 			}
 		}
+		return generatedLoot;
 	}
 }
