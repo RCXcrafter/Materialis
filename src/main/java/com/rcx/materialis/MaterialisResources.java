@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rcx.materialis.block.LightResidueBlock;
+import com.rcx.materialis.item.OptionalItem;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -20,11 +21,13 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
@@ -91,7 +94,7 @@ public class MaterialisResources {
 	public static final CastItemObject INLAY_CAST = ITEMS_EXTENDED.registerCast("inlay", SMELTERY_PROPS);
 
 	//industrial foregoing stuff
-	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
+	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new OptionalItem(new Item.Properties().tab(TinkerModule.TAB_GENERAL), new ModLoadedCondition("industrialforegoing")));
 
 
 
@@ -127,9 +130,9 @@ public class MaterialisResources {
 
 			BLOCK = BLOCKS.register(name + "_block", () -> new Block(AbstractBlock.Properties.of(Material.METAL, color).harvestLevel(miningLevel).harvestTool(ToolType.PICKAXE).strength(hardness, explosionResistance).sound(SoundType.METAL).requiresCorrectToolForDrops()));
 
-			INGOT = ITEMS.register(name + "_ingot", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
-			NUGGET = ITEMS.register(name + "_nugget", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MISC)));
-			BLOCK_ITEM = ITEMS.register(name + "_block", () -> new BlockItem(BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
+			INGOT = ITEMS.register(name + "_ingot", () -> new Item(new Item.Properties().tab(TinkerModule.TAB_GENERAL)));
+			NUGGET = ITEMS.register(name + "_nugget", () -> new Item(new Item.Properties().tab(TinkerModule.TAB_GENERAL)));
+			BLOCK_ITEM = ITEMS.register(name + "_block", () -> new BlockItem(BLOCK.get(), new Item.Properties().tab(TinkerModule.TAB_GENERAL)));
 		}
 	}
 
