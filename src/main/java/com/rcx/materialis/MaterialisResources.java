@@ -49,10 +49,10 @@ public class MaterialisResources {
 
 	//materialis fluids
 	public static final FluidWithBlockNBucket FAIRY_FLUID = addFluid("molten_fairy", "Molten Fairy", 1050, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket RED_AURUM_FLUID = addFluid("molten_red_aurum", "Molten Red Aurum", 1050, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket DRULLOY_FLUID = addFluid("molten_drulloy", "Molten Drulloy", 1050, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket POKEFENNIUM_FLUID = addFluid("molten_pokefennium", "Molten Pokefennium", 1050, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket ALUMITE_FLUID = addFluid("molten_alumite", "Molten Alumite", 1050, 15, 3000, 6000);
+	//public static final FluidWithBlockNBucket RED_AURUM_FLUID = addFluid("molten_red_aurum", "Molten Red Aurum", 1050, 15, 3000, 6000);
+	//public static final FluidWithBlockNBucket DRULLOY_FLUID = addFluid("molten_drulloy", "Molten Drulloy", 1050, 15, 3000, 6000);
+	//public static final FluidWithBlockNBucket POKEFENNIUM_FLUID = addFluid("molten_pokefennium", "Molten Pokefennium", 1050, 15, 3000, 6000);
+	//public static final FluidWithBlockNBucket ALUMITE_FLUID = addFluid("molten_alumite", "Molten Alumite", 1050, 15, 3000, 6000);
 
 	//create fluids
 	public static final FluidWithBlockNBucket REFINED_RADIANCE_FLUID = addFluid("molten_refined_radiance", "Liquified Radiance", 1600, 15, 3000, 6000);
@@ -99,10 +99,10 @@ public class MaterialisResources {
 	public static List<IngotWithBlockNNugget> materialList = new ArrayList<IngotWithBlockNNugget>();
 
 	public static final IngotWithBlockNNugget FAIRY_INGOT = addIngot("fairy", "Fairy", MaterialColor.COLOR_PINK, 1, 6.0f, 6.0f);
-	public static final IngotWithBlockNNugget RED_AURUM_INGOT = addIngot("red_aurum", "Red Aurum", MaterialColor.COLOR_RED, 1, 6.0f, 6.0f);
-	public static final IngotWithBlockNNugget DRULLOY_INGOT = addIngot("drulloy", "Drulloy", MaterialColor.TERRACOTTA_BROWN, 1, 6.0f, 6.0f);
-	public static final IngotWithBlockNNugget POKEFENNIUM_INGOT = addIngot("pokefennium", "Pokefennium", MaterialColor.COLOR_CYAN, 1, 6.0f, 6.0f);
-	public static final IngotWithBlockNNugget ALUMITE_INGOT = addIngot("alumite", "Alumite", MaterialColor.TERRACOTTA_WHITE, 1, 6.0f, 6.0f);
+	//public static final IngotWithBlockNNugget RED_AURUM_INGOT = addIngot("red_aurum", "Red Aurum", MaterialColor.COLOR_RED, 1, 6.0f, 6.0f);
+	//public static final IngotWithBlockNNugget DRULLOY_INGOT = addIngot("drulloy", "Drulloy", MaterialColor.TERRACOTTA_BROWN, 1, 6.0f, 6.0f);
+	//public static final IngotWithBlockNNugget POKEFENNIUM_INGOT = addIngot("pokefennium", "Pokefennium", MaterialColor.COLOR_CYAN, 1, 6.0f, 6.0f);
+	//public static final IngotWithBlockNNugget ALUMITE_INGOT = addIngot("alumite", "Alumite", MaterialColor.TERRACOTTA_WHITE, 1, 6.0f, 6.0f);
 
 	public static IngotWithBlockNNugget addIngot(String name, String localizedName, MaterialColor color, int miningLevel, float hardness, float explosionResistance) {
 		IngotWithBlockNNugget ingot = new IngotWithBlockNNugget(name, localizedName, color, miningLevel, hardness, explosionResistance);
