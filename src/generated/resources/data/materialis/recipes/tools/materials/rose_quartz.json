@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "tag": "materialis:rose_quartz"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "materialis:rose_quartz"
+}

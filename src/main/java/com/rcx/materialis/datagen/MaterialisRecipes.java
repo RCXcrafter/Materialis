@@ -36,9 +36,11 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.fluids.TinkerFluids;
+import slimeknights.tconstruct.library.materials.MaterialId;
 import slimeknights.tconstruct.library.materials.MaterialValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.molding.MoldingRecipeBuilder;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
@@ -118,6 +120,28 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		CookingRecipeBuilder.blasting(Ingredient.of(MaterialisItemTags.PINK_SLIME), MaterialisResources.PINK_SLIME_CRYSTAL.get(), 1.0f, 400)
 		.unlockedBy("has_item", has(MaterialisItemTags.PINK_SLIME))
 		.save(industrialForegoingLoaded, new ResourceLocation(Materialis.modID, "pink_slime_crystal_blasting"));
+
+
+		//materials
+		addIngotMaterialRepairs(consumer, MaterialisMaterials.fairy);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.brass);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.aluminum);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.uranium);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.tungsten);
+		addMaterialRepairs(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.rose_quartz, Ingredient.of(ItemTags.bind(Materialis.modID + ":rose_quartz")), 1, 1);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refined_radiance);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.shadow_steel);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pewter);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.arcane_gold);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.neptunium);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.quicksilver);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.starmetal);
+		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:plastic")), MaterialisMaterials.plastic, Ingredient.of(ItemTags.bind("forge:plastic")), 1, 1);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pink_slime);
+	}
+
+	public ICondition tagNotEmpty(String tag) {
+		return new NotCondition(new TagEmptyCondition(tag));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
@@ -168,6 +192,32 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				)
 		.generateAdvancement()
 		.build(consumer, new ResourceLocation(Materialis.modID, ingot.getRegistryName().getPath() + "_to_nugget"));
+	}
+
+	private void addIngotMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material) {
+		String name = material.getPath();
+		addMaterialRepairs(consumer, material, Ingredient.of(ItemTags.bind("forge:nuggets/" + name)), 1, 9, name + "/nugget");
+		addMaterialRepairs(consumer, material, Ingredient.of(ItemTags.bind("forge:ingots/" + name)), 1, 1, name + "/ingot");
+		addMaterialRepairs(consumer, material, Ingredient.of(ItemTags.bind("forge:storage_blocks/" + name)), 9, 1, name + "/block");
+	}
+
+	private void addConditionalIngotMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material) {
+		String name = material.getPath();
+		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:nuggets/" + name)), material, Ingredient.of(ItemTags.bind("forge:nuggets/" + name)), 1, 9, name + "/nugget");
+		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:ingots/" + name)), material, Ingredient.of(ItemTags.bind("forge:ingots/" + name)), 1, 1, name + "/ingot");
+		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:storage_blocks/" + name)), material, Ingredient.of(ItemTags.bind("forge:storage_blocks/" + name)), 9, 1, name + "/block");
+	}
+
+	private void addMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material, Ingredient input, int value, int needed) {
+		addMaterialRepairs(consumer, material, input, value, needed, material.getPath());
+	}
+
+	private void addMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material, Ingredient input, int value, int needed, String saveName) {
+		MaterialRecipeBuilder.materialRecipe(material)
+		.setIngredient(input)
+		.setValue(value)
+		.setNeeded(needed)
+		.build(consumer, location("tools/materials/" + saveName));
 	}
 
 	/* Helpers */ //stolen from tinkers construct

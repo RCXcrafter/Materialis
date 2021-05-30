@@ -21,7 +21,8 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> INLAY_CAST = ItemTags.bind("materialis:casts/multi_use/inlay");
 	public static final INamedTag<Item> INLAY_CAST_SINGLE = ItemTags.bind("materialis:casts/single_use/inlay");
 
-	//create ingots
+	//create stuff
+	public static final INamedTag<Item> ROSE_QUARTZ = ItemTags.bind("materialis:rose_quartz");
 	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
 	public static final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
 
@@ -71,6 +72,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		this.tag(TinkerTags.Items.SINGLE_USE_CASTS).addTag(INLAY_CAST_SINGLE);
 
 		//create ingots
+		this.tag(ROSE_QUARTZ).addOptional(new ResourceLocation("create", "polished_rose_quartz"));
 		this.tag(REFINED_RADIANCE_INGOT).addOptional(new ResourceLocation("create", "refined_radiance"));
 		this.tag(Tags.Items.INGOTS).addTag(REFINED_RADIANCE_INGOT);
 		this.tag(SHADOW_STEEL_INGOT).addOptional(new ResourceLocation("create", "shadow_steel"));
