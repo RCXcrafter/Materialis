@@ -12,7 +12,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class MaterialisFluidTags extends FluidTagsProvider {
 
-	public static final INamedTag<Fluid> LIQUID_PINK_SLIME = FluidTags.bind("materialis:pink_slime");
+	public static final INamedTag<Fluid> LIQUID_PINK_SLIME = FluidTags.bind(Materialis.modID + ":pink_slime");
 
 	public MaterialisFluidTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);

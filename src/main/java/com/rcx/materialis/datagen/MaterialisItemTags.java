@@ -18,19 +18,19 @@ import slimeknights.tconstruct.common.TinkerTags;
 public class MaterialisItemTags extends ItemTagsProvider {
 
 	//custom casts
-	public static final INamedTag<Item> INLAY_CAST = ItemTags.bind("materialis:casts/multi_use/inlay");
-	public static final INamedTag<Item> INLAY_CAST_SINGLE = ItemTags.bind("materialis:casts/single_use/inlay");
+	public static final INamedTag<Item> INLAY_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/inlay");
+	public static final INamedTag<Item> INLAY_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/inlay");
 
 	//create stuff
-	public static final INamedTag<Item> ROSE_QUARTZ = ItemTags.bind("materialis:rose_quartz");
+	public static final INamedTag<Item> ROSE_QUARTZ = ItemTags.bind(Materialis.modID + ":rose_quartz");
 	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
 	public static final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
 
 	//eidolon stuff
-	public static final INamedTag<Item> INLAYS = ItemTags.bind("materialis:inlays");
-	public static final INamedTag<Item> PEWTER_INLAY = ItemTags.bind("materialis:inlays/pewter");
-	public static final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind("materialis:inlays/arcane_gold");
-	public static final INamedTag<Item> PEWTER_BLEND = ItemTags.bind("materialis:pewter_blend");
+	public static final INamedTag<Item> INLAYS = ItemTags.bind(Materialis.modID + ":inlays");
+	public static final INamedTag<Item> PEWTER_INLAY = ItemTags.bind(Materialis.modID + ":inlays/pewter");
+	public static final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind(Materialis.modID + ":inlays/arcane_gold");
+	public static final INamedTag<Item> PEWTER_BLEND = ItemTags.bind(Materialis.modID + ":pewter_blend");
 
 	//astral sorcery stuff
 	public static final INamedTag<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");
@@ -39,7 +39,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 
 	//industrial foregoing stuff
 	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
-	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind("materialis:pink_slime");
+	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
 
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
