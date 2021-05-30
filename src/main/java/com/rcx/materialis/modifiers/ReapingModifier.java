@@ -10,11 +10,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
 import net.minecraft.loot.LootParameters;
+import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
 public class ReapingModifier extends SingleUseModifier {
+
+	boolean enabled = ModList.get().isLoaded("eidolon");
 
 	public ReapingModifier() {
 		super(0xE388DD);
@@ -27,7 +30,7 @@ public class ReapingModifier extends SingleUseModifier {
 
 	@Override
 	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
-		if (!context.hasParam(LootParameters.DAMAGE_SOURCE)) {
+		if (!enabled || !context.hasParam(LootParameters.DAMAGE_SOURCE)) {
 			return generatedLoot;
 		}
 
