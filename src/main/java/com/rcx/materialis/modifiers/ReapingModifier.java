@@ -25,7 +25,7 @@ public class ReapingModifier extends SingleUseModifier {
 
 	@Override
 	public int getPriority() {
-		return 75; //hopefully after other loot modifying modifiers, but before voiding
+		return 95; //hopefully after other loot modifying modifiers, but before voiding
 	}
 
 	@Override

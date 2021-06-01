@@ -1,6 +1,5 @@
 package com.rcx.materialis.modifiers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.item.ItemStack;
@@ -21,12 +20,13 @@ public class VoidingModifier extends SingleUseModifier {
 
 	@Override
 	public int getPriority() {
-		return 50; //hopefully after other loot modifying modifiers
+		return 93; //hopefully after other loot modifying modifiers, but before melting
 	}
 
 	@Override
 	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
-		return new ArrayList<ItemStack>();
+		generatedLoot.clear();
+		return generatedLoot;
 	}
 
 	private void onExperienceDrop(LivingExperienceDropEvent event) {
