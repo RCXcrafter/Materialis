@@ -3,9 +3,11 @@ package com.rcx.materialis.modifiers;
 import com.rcx.materialis.MaterialisResources;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
@@ -26,6 +28,8 @@ public class ResidualLightModifier extends SingleUseModifier {
 	public void afterBlockBreak(IModifierToolStack tool, int level, World world, BlockState state, BlockPos pos, LivingEntity living, boolean canharvest, boolean wasEffective) {
 		if (world.getBlockState(pos).isAir(world, pos))
 			world.setBlock(pos, MaterialisResources.LIGHT_RESIDUE.get().defaultBlockState(), 3 | 64);
+		else if (world.getBlockState(pos).equals(Blocks.WATER.defaultBlockState()))
+			world.setBlock(pos, MaterialisResources.LIGHT_RESIDUE.get().defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, true), 3 | 64);
 	}
 
 	@Override
