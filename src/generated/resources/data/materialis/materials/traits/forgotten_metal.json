@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "materialis:old_timer",
+      "level": 1
+    },
+    {
+      "name": "materialis:underlord",
+      "level": 1
+    }
+  ]
+}

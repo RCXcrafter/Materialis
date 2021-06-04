@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gears/cloggrum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/single_use/gear"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "materialis:molten_cloggrum",
+    "amount": 576
+  },
+  "result": {
+    "tag": "forge:gears/cloggrum"
+  },
+  "cooling_time": 110
+}

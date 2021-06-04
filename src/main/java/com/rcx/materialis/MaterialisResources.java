@@ -76,6 +76,13 @@ public class MaterialisResources {
 	//industrial foregoing fluids
 	public static final FluidWithBlockNBucket PINK_SLIME_FLUID = addFluid("molten_pink_slime", "Molten Pink Slime Alloy", 1260, 15, 3000, 6000);
 
+	//undergarden fluids
+	public static final FluidWithBlockNBucket CLOGGRUM_FLUID = addFluid("molten_cloggrum", "Molten Cloggrum", 950, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket FROSTSTEEL_FLUID = addFluid("molten_froststeel", "Molten Froststeel", 1160, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket UTHERIUM_FLUID = addFluid("molten_utherium", "Molten Utherium", 1370, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket FORGOTTEN_FLUID = addFluid("molten_forgotten_metal", "Molten Forgotten Metal", 1530, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket REGALIUM_FLUID = addFluid("molten_regalium", "Molten Regalium", 920, 15, 3000, 6000);
+
 
 	/*
 	 * BLOCKS

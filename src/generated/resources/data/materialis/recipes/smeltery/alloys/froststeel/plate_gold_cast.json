@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:plates/froststeel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/plate"
+  },
+  "fluid": {
+    "name": "materialis:molten_froststeel",
+    "amount": 144
+  },
+  "result": {
+    "tag": "forge:plates/froststeel"
+  },
+  "cooling_time": 62
+}

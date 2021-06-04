@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/froststeel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:nuggets/froststeel"
+  },
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 16
+  },
+  "temperature": 860,
+  "time": 21
+}

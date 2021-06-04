@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/froststeel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/coin"
+  },
+  "fluid": {
+    "name": "materialis:molten_froststeel",
+    "amount": 48
+  },
+  "result": {
+    "tag": "forge:coins/froststeel"
+  },
+  "cooling_time": 36
+}

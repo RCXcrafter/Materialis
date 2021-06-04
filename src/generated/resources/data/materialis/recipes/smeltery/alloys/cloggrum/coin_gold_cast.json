@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/cloggrum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/coin"
+  },
+  "fluid": {
+    "name": "materialis:molten_cloggrum",
+    "amount": 48
+  },
+  "result": {
+    "tag": "forge:coins/cloggrum"
+  },
+  "cooling_time": 32
+}

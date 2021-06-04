@@ -1,0 +1,31 @@
+{
+  "type": "tconstruct:table_casting_composite",
+  "conditions": [
+    {
+      "values": [
+        {
+          "value": {
+            "tag": "forge:ingots/cloggrum",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        },
+        {
+          "value": {
+            "tag": "forge:ingots/forgotten_metal",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "type": "forge:and"
+    }
+  ],
+  "input": "materialis:cloggrum",
+  "fluid": {
+    "name": "materialis:molten_forgotten_metal",
+    "amount": 144
+  },
+  "result": "materialis:forgotten_metal",
+  "temperature": 1230
+}

@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/forgotten_metal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/single_use/rod"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "materialis:molten_forgotten_metal",
+    "amount": 72
+  },
+  "result": {
+    "tag": "forge:rods/forgotten_metal"
+  },
+  "cooling_time": 52
+}

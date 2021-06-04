@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/forgotten_metal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/single_use/nugget"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "materialis:molten_forgotten_metal",
+    "amount": 16
+  },
+  "result": {
+    "tag": "forge:nuggets/forgotten_metal"
+  },
+  "cooling_time": 24
+}

@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/utherium",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 2,
+  "fluid": "materialis:molten_utherium",
+  "fluidPerUnit": 144,
+  "textColor": "#EB515B",
+  "temperature": 1070
+}

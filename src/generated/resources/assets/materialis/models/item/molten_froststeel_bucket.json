@@ -1,0 +1,5 @@
+{
+  "parent": "materialis:item/bucket_fluid",
+  "loader": "forge:bucket",
+  "fluid": "materialis:molten_froststeel"
+}

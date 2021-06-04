@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/forgotten_metal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "fluid": {
+    "name": "materialis:molten_forgotten_metal",
+    "amount": 144
+  },
+  "result": {
+    "tag": "forge:ingots/forgotten_metal"
+  },
+  "cooling_time": 73
+}

@@ -74,6 +74,13 @@ public class MaterialisLang extends LanguageProvider {
 		add("material.materialis.pink_slime", "Pink Slime");
 		addItem(MaterialisResources.PINK_SLIME_CRYSTAL, "Pink Slime Crystal");
 
+		//undergarden stuff
+		add("material.materialis.cloggrum", "Cloggrum");
+		add("material.materialis.froststeel", "Froststeel");
+		add("material.materialis.utherium", "Utherium");
+		add("material.materialis.forgotten_metal", "Forgotten Metal");
+		add("material.materialis.forgotten_metal.format", "Forgotten %s");
+
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
 		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
@@ -125,9 +132,21 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.overweight", "Overweight");
 		add("modifier.materialis.overweight.flavor", "Supersized!");
 		add("modifier.materialis.overweight.description", "Eats some mining speed and attack speed to gain more overslime capacity");
-		add("modifier.materialis.overclocked", "Overclocked");
-		add("modifier.materialis.overclocked.flavor", "No warranty");
-		add("modifier.materialis.overclocked.description", "Boosts attack damage and mining speed at the cost of durability");
+		add("modifier.materialis.economical", "Economical");
+		add("modifier.materialis.economical.flavor", "Waste not, want not");
+		add("modifier.materialis.economical.description", "Repairing your tool is cheaper when your tool has low durability");
+		add("modifier.materialis.old_timer", "Old-Timer");
+		add("modifier.materialis.old_timer.flavor", "Rust Bucket!");
+		add("modifier.materialis.old_timer.description", "Repairing your tool is more expensive when your tool has high durability");
+		add("modifier.materialis.freezing", "Freezing");
+		add("modifier.materialis.freezing.flavor", "As cold as ice!");
+		add("modifier.materialis.freezing.description", "Slows down hit mobs");
+		add("modifier.materialis.cleansing", "Cleansing");
+		add("modifier.materialis.cleansing.flavor", "Begone foul beast!");
+		add("modifier.materialis.cleansing.description", "Deals more damage to rotspawn");
+		add("modifier.materialis.underlord", "Underlord");
+		add("modifier.materialis.underlord.flavor", "Master of the Undergarden");
+		add("modifier.materialis.underlord.description", "Deals more damage to non-boss undergarden mobs");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

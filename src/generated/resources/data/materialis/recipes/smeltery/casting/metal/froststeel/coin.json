@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/froststeel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/froststeel"
+  },
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 48
+  },
+  "temperature": 860,
+  "time": 41
+}

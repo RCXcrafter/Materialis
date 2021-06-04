@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/utherium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/rod"
+  },
+  "fluid": {
+    "name": "materialis:molten_utherium",
+    "amount": 72
+  },
+  "result": {
+    "tag": "forge:rods/utherium"
+  },
+  "cooling_time": 48
+}

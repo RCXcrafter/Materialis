@@ -26,6 +26,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags.Fluids;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.AndCondition;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
@@ -40,6 +41,7 @@ import slimeknights.tconstruct.library.materials.MaterialId;
 import slimeknights.tconstruct.library.materials.MaterialValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.casting.material.CompositeCastingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.molding.MoldingRecipeBuilder;
@@ -121,8 +123,23 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.unlockedBy("has_item", has(MaterialisItemTags.PINK_SLIME))
 		.save(industrialForegoingLoaded, new ResourceLocation(Materialis.modID, "pink_slime_crystal_blasting"));
 
+		//undergarden stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), "cloggrum", folder);
+		addMetalMelting(consumer, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), "cloggrum", true, metalFolder, true);
+		addMetalOptionalCasting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", folder);
+		addMetalMelting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", true, metalFolder, true);
+		addMetalOptionalCasting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", folder);
+		addMetalMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", true, metalFolder, true);
+		addMetalOptionalCasting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", folder);
+		addMetalMelting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", false, metalFolder, true);
+		addMetalOptionalCasting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", folder);
+		addMetalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, metalFolder, true);
+		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), MaterialValues.NUGGET / 4, 1.0f).build(withCondition(consumer, tagConditionDomain("materialis", "utheric_shard")), location(metalFolder + "utheric_shard"));
+
+
 
 		//materials
+		String compositeFolder = "tools/parts/composite/";
 		addIngotMaterialRepairs(consumer, MaterialisMaterials.fairy);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.brass);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.aluminum);
@@ -136,12 +153,15 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.neptunium);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.quicksilver);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.starmetal);
-		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:plastic")), MaterialisMaterials.plastic, Ingredient.of(ItemTags.bind("forge:plastic")), 1, 1);
+		addMaterialRepairs(withCondition(consumer, tagCondition("plastic")), MaterialisMaterials.plastic, Ingredient.of(ItemTags.bind("forge:plastic")), 1, 1);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pink_slime);
-	}
-
-	public ICondition tagNotEmpty(String tag) {
-		return new NotCondition(new TagEmptyCondition(tag));
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.cloggrum);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.froststeel);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.utherium);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.forgottenMetal);
+		CompositeCastingRecipeBuilder.table(MaterialisMaterials.cloggrum, MaterialisMaterials.forgottenMetal)
+		.setFluid(new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), MaterialValues.INGOT))
+		.build(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), location(compositeFolder + "forgotten_metal"));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
@@ -203,9 +223,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 	private void addConditionalIngotMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material) {
 		String name = material.getPath();
-		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:nuggets/" + name)), material, Ingredient.of(ItemTags.bind("forge:nuggets/" + name)), 1, 9, name + "/nugget");
-		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:ingots/" + name)), material, Ingredient.of(ItemTags.bind("forge:ingots/" + name)), 1, 1, name + "/ingot");
-		addMaterialRepairs(withCondition(consumer, tagNotEmpty("forge:storage_blocks/" + name)), material, Ingredient.of(ItemTags.bind("forge:storage_blocks/" + name)), 9, 1, name + "/block");
+		addMaterialRepairs(withCondition(consumer, tagCondition("nuggets/" + name)), material, Ingredient.of(ItemTags.bind("forge:nuggets/" + name)), 1, 9, name + "/nugget");
+		addMaterialRepairs(withCondition(consumer, tagCondition("ingots/" + name)), material, Ingredient.of(ItemTags.bind("forge:ingots/" + name)), 1, 1, name + "/ingot");
+		addMaterialRepairs(withCondition(consumer, tagCondition("storage_blocks/" + name)), material, Ingredient.of(ItemTags.bind("forge:storage_blocks/" + name)), 9, 1, name + "/block");
 	}
 
 	private void addMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material, Ingredient input, int value, int needed) {

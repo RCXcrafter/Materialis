@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "materialis:utheric_shard",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "materialis:utheric_shard"
+  },
+  "result": {
+    "fluid": "materialis:molten_utherium",
+    "amount": 4
+  },
+  "temperature": 1070,
+  "time": 68
+}

@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/cloggrum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/cloggrum"
+  },
+  "result": {
+    "fluid": "materialis:molten_cloggrum",
+    "amount": 1296
+  },
+  "temperature": 650,
+  "time": 166
+}

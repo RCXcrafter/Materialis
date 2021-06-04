@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:sheetmetals/regalium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:sheetmetals/regalium"
+  },
+  "result": {
+    "fluid": "materialis:molten_regalium",
+    "amount": 144
+  },
+  "temperature": 620,
+  "time": 54
+}

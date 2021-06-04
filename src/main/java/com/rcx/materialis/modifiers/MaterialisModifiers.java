@@ -28,4 +28,9 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> nocturnalModifier = MODIFIERS.register("nocturnal", NocturnalModifier::new);
 	public static final RegistryObject<Modifier> feebleModifier = MODIFIERS.register("feeble", FeebleModifier::new);
 	public static final RegistryObject<Modifier> overweightModifier = MODIFIERS.register("overweight", OverweightModifier::new);
+	public static final RegistryObject<Modifier> economicalModifier = MODIFIERS.register("economical", EconomicalModifier::new);
+	public static final RegistryObject<Modifier> oldTimerModifier = MODIFIERS.register("old_timer", OldTimerModifier::new);
+	public static final RegistryObject<Modifier> freezingModifier = MODIFIERS.register("freezing", FreezingModifier::new);
+	public static final RegistryObject<Modifier> cleansingModifier = MODIFIERS.register("cleansing", CleansingModifier::new);
+	public static final RegistryObject<Modifier> underlordModifier = MODIFIERS.register("underlord", UnderlordModifier::new);
 }

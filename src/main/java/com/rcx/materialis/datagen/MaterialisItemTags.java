@@ -41,6 +41,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
 	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
 
+	//undergarden stuff
+	public static final INamedTag<Item> UTHERIC_SHARD = ItemTags.bind(Materialis.modID + ":utheric_shard");
+
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
 	}
@@ -97,5 +100,8 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		this.tag(PINK_SLIME_INGOT).addOptional(new ResourceLocation("industrialforegoing", "pink_slime_ingot"));
 		this.tag(Tags.Items.INGOTS).addTag(PINK_SLIME_INGOT);
 		this.tag(PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
+
+		//undergarden stuff
+		this.tag(UTHERIC_SHARD).addOptional(new ResourceLocation("undergarden", "utheric_shard"));
 	}
 }

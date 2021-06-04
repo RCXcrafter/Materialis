@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/regalium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/single_use/coin"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "materialis:molten_regalium",
+    "amount": 48
+  },
+  "result": {
+    "tag": "forge:coins/regalium"
+  },
+  "cooling_time": 31
+}

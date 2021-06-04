@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/utherium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/coin"
+  },
+  "fluid": {
+    "name": "materialis:molten_utherium",
+    "amount": 48
+  },
+  "result": {
+    "tag": "forge:coins/utherium"
+  },
+  "cooling_time": 39
+}

@@ -58,6 +58,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId plastic = createMaterial("plastic");
 	public static final MaterialId pink_slime = createMaterial("pink_slime");
 
+	//undergarden materials
+	public static final MaterialId cloggrum = createMaterial("cloggrum");
+	public static final MaterialId froststeel = createMaterial("froststeel");
+	public static final MaterialId utherium = createMaterial("utherium");
+	public static final MaterialId forgottenMetal = createMaterial("forgotten_metal");
+
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -91,6 +97,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//industrial foregoing materials
 		this.addMaterial(plastic, 2, ORDER_HARVEST, Fluids.EMPTY, 0, true, 0xD9D9D9, new NotCondition(new TagEmptyCondition("forge:plastic")));
 		addCompatMetalMaterial(pink_slime, 3, ORDER_GENERAL, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), 0xFF9FEF);
+		//undergarden materials
+		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), 0x9C8878);
+		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), 0x95BDE3);
+		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), 0xEB515B);
+		addMaterialNoFluid(forgottenMetal, 3, ORDER_GENERAL, false, 0x6CD7AA);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -138,6 +149,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//industrial foregoing materials
 			addDefaultTraits(plastic, MaterialisModifiers.feebleModifier.get());
 			addDefaultTraits(pink_slime, MaterialisModifiers.overweightModifier.get(), TinkerModifiers.overslime.get());
+			//undergarden materials
+			addDefaultTraits(cloggrum, MaterialisModifiers.economicalModifier.get());
+			addDefaultTraits(froststeel, MaterialisModifiers.freezingModifier.get());
+			addDefaultTraits(utherium, MaterialisModifiers.cleansingModifier.get());
+			addDefaultTraits(forgottenMetal, MaterialisModifiers.oldTimerModifier.get(), MaterialisModifiers.underlordModifier.get());
 		}
 	}
 
@@ -182,6 +198,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//industrial foregoing materials
 			addMaterialStats(plastic, new HeadMaterialStats(200, 6f, 2, 2f), new HandleMaterialStats(0.8f, 1f, 1.2f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(pink_slime, new HeadMaterialStats(830, 7f, 3, 4f), new HandleMaterialStats(1f, 0.9f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
+			//undergarden materials
+			addMaterialStats(cloggrum, new HeadMaterialStats(286, 5f, 2, 4f), new HandleMaterialStats(1f, 1.1f, 0.8f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(froststeel, new HeadMaterialStats(575, 6f, 3, 3f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(utherium, new HeadMaterialStats(852, 8f, 4, 3.5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(forgottenMetal, new HeadMaterialStats(921, 10f, 4, 6f), new HandleMaterialStats(1f, 1.2f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }

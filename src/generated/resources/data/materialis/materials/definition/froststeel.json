@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/froststeel",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 2,
+  "sortOrder": 2,
+  "fluid": "materialis:molten_froststeel",
+  "fluidPerUnit": 144,
+  "textColor": "#95BDE3",
+  "temperature": 860
+}

@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/forgotten_metal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:ingots/forgotten_metal"
+  },
+  "result": {
+    "fluid": "materialis:molten_forgotten_metal",
+    "amount": 144
+  },
+  "temperature": 1230,
+  "time": 73
+}
