@@ -7,7 +7,7 @@
     }
   ],
   "ingredient": {
-    "tag": "materialis:rose_quartz"
+    "item": "create:polished_rose_quartz"
   },
   "value": 1,
   "needed": 1,

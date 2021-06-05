@@ -2,15 +2,12 @@
   "type": "tconstruct:melting",
   "conditions": [
     {
-      "value": {
-        "tag": "materialis:pewter_blend",
-        "type": "forge:tag_empty"
-      },
-      "type": "forge:not"
+      "modid": "eidolon",
+      "type": "forge:mod_loaded"
     }
   ],
   "ingredient": {
-    "tag": "materialis:pewter_blend"
+    "item": "eidolon:pewter_blend"
   },
   "result": {
     "fluid": "tconstruct:molten_pewter",

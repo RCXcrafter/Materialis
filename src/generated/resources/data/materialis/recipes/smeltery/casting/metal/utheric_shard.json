@@ -2,15 +2,12 @@
   "type": "tconstruct:melting",
   "conditions": [
     {
-      "value": {
-        "tag": "materialis:utheric_shard",
-        "type": "forge:tag_empty"
-      },
-      "type": "forge:not"
+      "modid": "undergarden",
+      "type": "forge:mod_loaded"
     }
   ],
   "ingredient": {
-    "tag": "materialis:utheric_shard"
+    "item": "undergarden:utheric_shard"
   },
   "result": {
     "fluid": "materialis:molten_utherium",

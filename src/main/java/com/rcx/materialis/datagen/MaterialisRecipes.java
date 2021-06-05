@@ -35,6 +35,7 @@ import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
+import slimeknights.mantle.recipe.data.ItemNameIngredient;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.materials.MaterialId;
@@ -94,7 +95,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "inlays/pewter")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/pewter")), location(metalFolder + "pewter_inlay"));
 		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "inlays/arcane_gold")), MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/arcane_gold")), location(metalFolder + "arcane_gold_inlay"));
 
-		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "pewter_blend")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT, 1.0f).build(withCondition(consumer, tagConditionDomain("materialis", "pewter_blend")), location(metalFolder + "pewter_blend"));
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("eidolon", "pewter_blend")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT, 1.0f).build(withCondition(consumer, new ModLoadedCondition("eidolon")), location(metalFolder + "pewter_blend"));
 
 		//aquaculture stuff
 		addMetalOptionalCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), "neptunium", folder);
@@ -134,7 +135,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addMetalMelting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", false, metalFolder, true);
 		addMetalOptionalCasting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", folder);
 		addMetalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, metalFolder, true);
-		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), MaterialValues.NUGGET / 4, 1.0f).build(withCondition(consumer, tagConditionDomain("materialis", "utheric_shard")), location(metalFolder + "utheric_shard"));
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), MaterialValues.NUGGET / 4, 1.0f).build(withCondition(consumer, new ModLoadedCondition("undergarden")), location(metalFolder + "utheric_shard"));
 
 
 
@@ -145,7 +146,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.aluminum);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.uranium);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.tungsten);
-		addMaterialRepairs(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.rose_quartz, Ingredient.of(ItemTags.bind(Materialis.modID + ":rose_quartz")), 1, 1);
+		addMaterialRepairs(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.rose_quartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refined_radiance);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.shadow_steel);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pewter);
