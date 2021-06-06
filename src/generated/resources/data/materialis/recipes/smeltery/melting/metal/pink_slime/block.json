@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:casting_basin",
+  "type": "tconstruct:melting",
   "conditions": [
     {
       "value": {
@@ -9,12 +9,13 @@
       "type": "forge:not"
     }
   ],
-  "fluid": {
-    "name": "materialis:molten_pink_slime",
-    "amount": 1296
-  },
-  "result": {
+  "ingredient": {
     "tag": "forge:storage_blocks/pink_slime"
   },
-  "cooling_time": 195
+  "result": {
+    "fluid": "materialis:molten_pink_slime",
+    "amount": 1296
+  },
+  "temperature": 960,
+  "time": 195
 }

@@ -1,0 +1,27 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ores/starmetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:ores/starmetal"
+  },
+  "result": {
+    "fluid": "materialis:molten_starmetal",
+    "amount": 144
+  },
+  "temperature": 750,
+  "time": 88,
+  "byproducts": [
+    {
+      "fluid": "astralsorcery:liquid_starlight",
+      "amount": 50
+    }
+  ]
+}

@@ -1,12 +1,9 @@
 {
-  "type": "tconstruct:melting",
-  "ingredient": {
-    "tag": "forge:storage_blocks/fairy"
-  },
-  "result": {
-    "fluid": "materialis:molten_fairy",
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "name": "materialis:molten_fairy",
     "amount": 1296
   },
-  "temperature": 750,
-  "time": 176
+  "result": "materialis:fairy_block",
+  "cooling_time": 176
 }

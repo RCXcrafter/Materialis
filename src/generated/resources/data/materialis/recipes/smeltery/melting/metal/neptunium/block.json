@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:casting_basin",
+  "type": "tconstruct:melting",
   "conditions": [
     {
       "value": {
@@ -9,12 +9,13 @@
       "type": "forge:not"
     }
   ],
-  "fluid": {
-    "name": "materialis:molten_neptunium",
-    "amount": 1296
-  },
-  "result": {
+  "ingredient": {
     "tag": "forge:storage_blocks/neptunium"
   },
-  "cooling_time": 233
+  "result": {
+    "fluid": "materialis:molten_neptunium",
+    "amount": 1296
+  },
+  "temperature": 1400,
+  "time": 233
 }

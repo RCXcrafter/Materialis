@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:casting_basin",
+  "type": "tconstruct:melting",
   "conditions": [
     {
       "value": {
@@ -9,12 +9,13 @@
       "type": "forge:not"
     }
   ],
-  "fluid": {
-    "name": "materialis:molten_froststeel",
-    "amount": 1296
-  },
-  "result": {
+  "ingredient": {
     "tag": "forge:storage_blocks/froststeel"
   },
-  "cooling_time": 186
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 1296
+  },
+  "temperature": 860,
+  "time": 186
 }

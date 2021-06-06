@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:casting_basin",
+  "type": "tconstruct:melting",
   "conditions": [
     {
       "value": {
@@ -9,12 +9,13 @@
       "type": "forge:not"
     }
   ],
-  "fluid": {
-    "name": "materialis:molten_quicksilver",
-    "amount": 1296
-  },
-  "result": {
+  "ingredient": {
     "tag": "forge:storage_blocks/quicksilver"
   },
-  "cooling_time": 139
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 1296
+  },
+  "temperature": 400,
+  "time": 139
 }

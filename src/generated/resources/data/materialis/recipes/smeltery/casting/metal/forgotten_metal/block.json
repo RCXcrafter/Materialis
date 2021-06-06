@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:melting",
+  "type": "tconstruct:casting_basin",
   "conditions": [
     {
       "value": {
@@ -9,13 +9,12 @@
       "type": "forge:not"
     }
   ],
-  "ingredient": {
-    "tag": "forge:storage_blocks/forgotten_metal"
-  },
-  "result": {
-    "fluid": "materialis:molten_forgotten_metal",
+  "fluid": {
+    "name": "materialis:molten_forgotten_metal",
     "amount": 1296
   },
-  "temperature": 1230,
-  "time": 219
+  "result": {
+    "tag": "forge:storage_blocks/forgotten_metal"
+  },
+  "cooling_time": 219
 }

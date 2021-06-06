@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:melting",
+  "type": "tconstruct:casting_basin",
   "conditions": [
     {
       "value": {
@@ -9,13 +9,12 @@
       "type": "forge:not"
     }
   ],
-  "ingredient": {
-    "tag": "forge:storage_blocks/refined_glowstone"
-  },
-  "result": {
-    "fluid": "materialis:molten_refined_glowstone",
+  "fluid": {
+    "name": "materialis:molten_refined_glowstone",
     "amount": 1296
   },
-  "temperature": 900,
-  "time": 190
+  "result": {
+    "tag": "forge:storage_blocks/refined_glowstone"
+  },
+  "cooling_time": 190
 }

@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:casting_basin",
+  "type": "tconstruct:melting",
   "conditions": [
     {
       "value": {
@@ -9,12 +9,13 @@
       "type": "forge:not"
     }
   ],
-  "fluid": {
-    "name": "materialis:molten_regalium",
-    "amount": 1296
-  },
-  "result": {
+  "ingredient": {
     "tag": "forge:storage_blocks/regalium"
   },
-  "cooling_time": 163
+  "result": {
+    "fluid": "materialis:molten_regalium",
+    "amount": 1296
+  },
+  "temperature": 620,
+  "time": 163
 }
