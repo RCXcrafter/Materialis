@@ -1,0 +1,8 @@
+{
+  "default": [
+    {
+      "name": "materialis:auxiliary_power",
+      "level": 1
+    }
+  ]
+}

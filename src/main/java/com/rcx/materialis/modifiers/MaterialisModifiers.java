@@ -33,4 +33,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> freezingModifier = MODIFIERS.register("freezing", FreezingModifier::new);
 	public static final RegistryObject<Modifier> cleansingModifier = MODIFIERS.register("cleansing", CleansingModifier::new);
 	public static final RegistryObject<Modifier> underlordModifier = MODIFIERS.register("underlord", UnderlordModifier::new);
+	public static final RegistryObject<Modifier> shortSightedModifier = MODIFIERS.register("short_sighted", ShortSightedModifier::new);
+	public static final RegistryObject<Modifier> auxiliaryPowerModifier = MODIFIERS.register("auxiliary_power", AuxiliaryPowerModifier::new);
+	public static final RegistryObject<Modifier> adrenalineModifier = MODIFIERS.register("adrenaline", AdrenalineModifier::new);
 }

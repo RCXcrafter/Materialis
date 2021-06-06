@@ -137,6 +137,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addMetalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, metalFolder, true);
 		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), MaterialValues.NUGGET / 4, 1.0f).build(withCondition(consumer, new ModLoadedCondition("undergarden")), location(metalFolder + "utheric_shard"));
 
+		//mekanism stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", folder);
+		addMetalMelting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", false, metalFolder, true);
+		addMetalOptionalCasting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", folder);
+		addMetalMelting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", false, metalFolder, true);
+
 
 
 		//materials
@@ -146,16 +152,16 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.aluminum);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.uranium);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.tungsten);
-		addMaterialRepairs(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.rose_quartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refined_radiance);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.shadow_steel);
+		addMaterialRepairs(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedRadiance);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.shadowSteel);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pewter);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.arcane_gold);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.arcaneGold);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.neptunium);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.quicksilver);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.starmetal);
 		addMaterialRepairs(withCondition(consumer, tagCondition("plastic")), MaterialisMaterials.plastic, Ingredient.of(ItemTags.bind("forge:plastic")), 1, 1);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pink_slime);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pinkSlime);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.cloggrum);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.froststeel);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.utherium);
@@ -163,6 +169,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		CompositeCastingRecipeBuilder.table(MaterialisMaterials.cloggrum, MaterialisMaterials.forgottenMetal)
 		.setFluid(new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), MaterialValues.INGOT))
 		.build(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), location(compositeFolder + "forgotten_metal"));
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.osmium);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedObsidian);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedGlowstone);
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

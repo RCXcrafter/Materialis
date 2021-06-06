@@ -83,6 +83,10 @@ public class MaterialisResources {
 	public static final FluidWithBlockNBucket FORGOTTEN_FLUID = addFluid("molten_forgotten_metal", "Molten Forgotten Metal", 1530, 15, 3000, 6000);
 	public static final FluidWithBlockNBucket REGALIUM_FLUID = addFluid("molten_regalium", "Molten Regalium", 920, 15, 3000, 6000);
 
+	//mekanism fluids
+	public static final FluidWithBlockNBucket REFINED_OBSIDIAN_FLUID = addFluid("molten_refined_obsidian", "Molten Refined Obsidian", 1500, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket REFINED_GLOWSTONE_FLUID = addFluid("molten_refined_glowstone", "Molten Refined Glowstone", 1200, 15, 3000, 6000);
+
 
 	/*
 	 * BLOCKS

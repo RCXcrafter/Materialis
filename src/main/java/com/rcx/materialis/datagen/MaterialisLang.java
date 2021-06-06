@@ -46,7 +46,7 @@ public class MaterialisLang extends LanguageProvider {
 		//add("material.materialis.tin", "Tin");
 		//add("material.materialis.zinc", "Zinc");
 		add("material.materialis.uranium", "Uranium");
-		//add("material.materialis.osmium", "Osmium");
+		add("material.materialis.osmium", "Osmium");
 		add("material.materialis.tungsten", "Tungsten");
 		//add("material.materialis.invar", "Invar");
 
@@ -80,6 +80,10 @@ public class MaterialisLang extends LanguageProvider {
 		add("material.materialis.utherium", "Utherium");
 		add("material.materialis.forgotten_metal", "Forgotten Metal");
 		add("material.materialis.forgotten_metal.format", "Forgotten %s");
+
+		//mekanism stuff
+		add("material.materialis.refined_obsidian", "Refined Obsidian");
+		add("material.materialis.refined_glowstone", "Refined Glowstone");
 
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
@@ -147,6 +151,15 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.underlord", "Underlord");
 		add("modifier.materialis.underlord.flavor", "Master of the Undergarden");
 		add("modifier.materialis.underlord.description", "Deals more damage to non-boss undergarden mobs");
+		add("modifier.materialis.short_sighted", "Short-Sighted");
+		add("modifier.materialis.short_sighted.flavor", "Do now, think later");
+		add("modifier.materialis.short_sighted.description", "Decreases your reach distance");
+		add("modifier.materialis.auxiliary_power", "Auxiliary Power");
+		add("modifier.materialis.auxiliary_power.flavor", "Extra Juice!");
+		add("modifier.materialis.auxiliary_power.description", "Boosts your attack speed based on your mining speed");
+		add("modifier.materialis.adrenaline", "Adrenaline");
+		add("modifier.materialis.adrenaline.flavor", "Fight or Flight!");
+		add("modifier.materialis.adrenaline.description", "Boosts attack damage when your health is low");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

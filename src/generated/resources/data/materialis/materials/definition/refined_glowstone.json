@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/refined_glowstone",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 2,
+  "fluid": "materialis:molten_refined_glowstone",
+  "fluidPerUnit": 144,
+  "textColor": "#FFE55C",
+  "temperature": 900
+}

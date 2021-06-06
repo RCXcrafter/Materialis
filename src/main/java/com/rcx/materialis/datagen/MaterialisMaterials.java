@@ -32,18 +32,18 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	//public static final MaterialId tin = createMaterial("tin");
 	//public static final MaterialId zinc = createMaterial("zinc");
 	public static final MaterialId uranium = createMaterial("uranium");
-	//public static final MaterialId osmium = createMaterial("osmium");
+	public static final MaterialId osmium = createMaterial("osmium");
 	public static final MaterialId tungsten = createMaterial("tungsten");
 	//public static final MaterialId invar = createMaterial("invar");
 
 	//create materials
-	public static final MaterialId rose_quartz = createMaterial("rose_quartz");
-	public static final MaterialId refined_radiance = createMaterial("refined_radiance");
-	public static final MaterialId shadow_steel = createMaterial("shadow_steel");
+	public static final MaterialId roseQuartz = createMaterial("rose_quartz");
+	public static final MaterialId refinedRadiance = createMaterial("refined_radiance");
+	public static final MaterialId shadowSteel = createMaterial("shadow_steel");
 
 	//eidolon materials
 	public static final MaterialId pewter = createMaterial("pewter");
-	public static final MaterialId arcane_gold = createMaterial("arcane_gold");
+	public static final MaterialId arcaneGold = createMaterial("arcane_gold");
 
 	//aquaculture materials
 	public static final MaterialId neptunium = createMaterial("neptunium");
@@ -56,13 +56,17 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
 	//industrial foregoing materials
 	public static final MaterialId plastic = createMaterial("plastic");
-	public static final MaterialId pink_slime = createMaterial("pink_slime");
+	public static final MaterialId pinkSlime = createMaterial("pink_slime");
 
 	//undergarden materials
 	public static final MaterialId cloggrum = createMaterial("cloggrum");
 	public static final MaterialId froststeel = createMaterial("froststeel");
 	public static final MaterialId utherium = createMaterial("utherium");
 	public static final MaterialId forgottenMetal = createMaterial("forgotten_metal");
+
+	//mekanism materials
+	public static final MaterialId refinedObsidian = createMaterial("refined_obsidian");
+	public static final MaterialId refinedGlowstone = createMaterial("refined_glowstone");
 
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
@@ -80,14 +84,15 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(brass, 3, ORDER_WEAPON, TinkerFluids.moltenBrass.get(), 0xFFD359);
 		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST, TinkerFluids.moltenAluminum.get(), 0xE6B7BF);
 		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST, TinkerFluids.moltenUranium.get(), 0x42BE30);
+		addCompatMetalMaterial(osmium, 2, ORDER_WEAPON, TinkerFluids.moltenOsmium.get(), 0xCDE8FD);
 		addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, TinkerFluids.moltenTungsten.get(), 0xA7A88F);
 		//create materials
-		addMaterial(rose_quartz, 3, ORDER_NETHER, Fluids.EMPTY, 0, true, 0xFF8C80, new ModLoadedCondition("create"));
-		addCompatMetalMaterial(refined_radiance, 4, ORDER_SPECIAL, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), 0xFFFFFF);
-		addCompatMetalMaterial(shadow_steel, 4, ORDER_SPECIAL, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), 0x635D71);
+		addMaterial(roseQuartz, 3, ORDER_NETHER, Fluids.EMPTY, 0, true, 0xFF8C80, new ModLoadedCondition("create"));
+		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), 0xFFFFFF);
+		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), 0x635D71);
 		//eidolon materials
 		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST, TinkerFluids.moltenPewter.get(), 0xA1A097);
-		addCompatMetalMaterial(arcane_gold, 3, ORDER_WEAPON, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), 0xFFC069);
+		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), 0xFFC069);
 		//aquaculture materials
 		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), 0x17F1B6);
 		//mystical world materials
@@ -96,12 +101,15 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, MaterialisResources.STARMETAL_FLUID.FLUID.get(), 0x003CC9);
 		//industrial foregoing materials
 		this.addMaterial(plastic, 2, ORDER_HARVEST, Fluids.EMPTY, 0, true, 0xD9D9D9, new NotCondition(new TagEmptyCondition("forge:plastic")));
-		addCompatMetalMaterial(pink_slime, 3, ORDER_GENERAL, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), 0xFF9FEF);
+		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), 0xFF9FEF);
 		//undergarden materials
 		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), 0x9C8878);
 		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), 0x95BDE3);
 		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), 0xEB515B);
 		addMaterialNoFluid(forgottenMetal, 3, ORDER_GENERAL, false, 0x6CD7AA);
+		//mekanism materials
+		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), 0xB78FD2);
+		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), 0xFFE55C);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -130,16 +138,16 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//addDefaultTraits(tin, MaterialisModifiers.daredevilModifier.get());
 			//addDefaultTraits(zinc, MaterialisModifiers.daredevilModifier.get());
 			addDefaultTraits(uranium, MaterialisModifiers.halfLifeModifier.get());
-			//addDefaultTraits(osmium, MaterialisModifiers.daredevilModifier.get());
+			addDefaultTraits(osmium, MaterialisModifiers.adrenalineModifier.get());
 			addDefaultTraits(tungsten, MaterialisModifiers.workHardenedModifier.get());
 			//addDefaultTraits(invar, MaterialisModifiers.daredevilModifier.get());
 			//create materials
-			addDefaultTraits(rose_quartz, MaterialisModifiers.enhancedQuartzModifier.get());
-			addDefaultTraits(refined_radiance, MaterialisModifiers.residualLightModifier.get());
-			addDefaultTraits(shadow_steel, MaterialisModifiers.voidingModifier.get());
+			addDefaultTraits(roseQuartz, MaterialisModifiers.enhancedQuartzModifier.get());
+			addDefaultTraits(refinedRadiance, MaterialisModifiers.residualLightModifier.get());
+			addDefaultTraits(shadowSteel, MaterialisModifiers.voidingModifier.get());
 			//eidolon materials
 			addDefaultTraits(pewter, MaterialisModifiers.inertiaModifier.get());
-			addDefaultTraits(arcane_gold, MaterialisModifiers.arcaneModifier.get());
+			addDefaultTraits(arcaneGold, MaterialisModifiers.arcaneModifier.get());
 			//aquaculture materials
 			addDefaultTraits(neptunium, MaterialisModifiers.neptunesBlessingModifier.get());
 			//mystical world materials
@@ -148,12 +156,15 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(starmetal, MaterialisModifiers.nocturnalModifier.get());
 			//industrial foregoing materials
 			addDefaultTraits(plastic, MaterialisModifiers.feebleModifier.get());
-			addDefaultTraits(pink_slime, MaterialisModifiers.overweightModifier.get(), TinkerModifiers.overslime.get());
+			addDefaultTraits(pinkSlime, MaterialisModifiers.overweightModifier.get(), TinkerModifiers.overslime.get());
 			//undergarden materials
 			addDefaultTraits(cloggrum, MaterialisModifiers.economicalModifier.get());
 			addDefaultTraits(froststeel, MaterialisModifiers.freezingModifier.get());
 			addDefaultTraits(utherium, MaterialisModifiers.cleansingModifier.get());
 			addDefaultTraits(forgottenMetal, MaterialisModifiers.oldTimerModifier.get(), MaterialisModifiers.underlordModifier.get());
+			//mekanism materials
+			addDefaultTraits(refinedObsidian, MaterialisModifiers.shortSightedModifier.get());
+			addDefaultTraits(refinedGlowstone, MaterialisModifiers.auxiliaryPowerModifier.get());
 		}
 	}
 
@@ -179,16 +190,16 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//addMaterialStats(tin, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			//addMaterialStats(zinc, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(uranium, new HeadMaterialStats(689, 9f, 2, 4f), new HandleMaterialStats(1.3f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(osmium, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(osmium, new HeadMaterialStats(500, 7f, 2, 3f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(tungsten, new HeadMaterialStats(740, 8f, 3, 5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
 			//addMaterialStats(invar, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			//create materials
-			addMaterialStats(rose_quartz, new HeadMaterialStats(175, 6f, 2, 5f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(refined_radiance, new HeadMaterialStats(999, 11f, 4, 5f), new HandleMaterialStats(0.5f, 1f, 1f, 1.4f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(shadow_steel, new HeadMaterialStats(1300, 12f, 4, 6f), new HandleMaterialStats(1.1f, 1f, 1.3f, 1.3f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(roseQuartz, new HeadMaterialStats(175, 6f, 2, 5f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(refinedRadiance, new HeadMaterialStats(999, 11f, 4, 5f), new HandleMaterialStats(0.5f, 1f, 1f, 1.4f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(shadowSteel, new HeadMaterialStats(1300, 12f, 4, 6f), new HandleMaterialStats(1.1f, 1f, 1.3f, 1.3f), ExtraMaterialStats.DEFAULT);
 			//eidolon materials
 			addMaterialStats(pewter, new HeadMaterialStats(325, 6.5f, 2, 2f), new HandleMaterialStats(1.1f, 1.1f, 0.8f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(arcane_gold, new HeadMaterialStats(200, 11f, 2, 4f), new HandleMaterialStats(0.8f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(arcaneGold, new HeadMaterialStats(200, 11f, 2, 4f), new HandleMaterialStats(0.8f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			//aquaculture materials
 			addMaterialStats(neptunium, new HeadMaterialStats(1450, 9f, 3, 6f), new HandleMaterialStats(1f, 1.3f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//mystical world materials
@@ -197,12 +208,15 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(starmetal, new HeadMaterialStats(340, 6f, 2, 3f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//industrial foregoing materials
 			addMaterialStats(plastic, new HeadMaterialStats(200, 6f, 2, 2f), new HandleMaterialStats(0.8f, 1f, 1.2f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(pink_slime, new HeadMaterialStats(830, 7f, 3, 4f), new HandleMaterialStats(1f, 0.9f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(pinkSlime, new HeadMaterialStats(830, 7f, 3, 4f), new HandleMaterialStats(1f, 0.9f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
 			//undergarden materials
 			addMaterialStats(cloggrum, new HeadMaterialStats(286, 5f, 2, 4f), new HandleMaterialStats(1f, 1.1f, 0.8f, 1.1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(froststeel, new HeadMaterialStats(575, 6f, 3, 3f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(utherium, new HeadMaterialStats(852, 8f, 4, 3.5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(forgottenMetal, new HeadMaterialStats(921, 10f, 4, 6f), new HandleMaterialStats(1f, 1.2f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(forgottenMetal, new HeadMaterialStats(921, 10f, 4, 5f), new HandleMaterialStats(1f, 1.2f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
+			//mekanism materials
+			addMaterialStats(refinedObsidian, new HeadMaterialStats(900, 11f, 3, 6f), new HandleMaterialStats(1.3f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(refinedGlowstone, new HeadMaterialStats(200, 8f, 2, 5f), new HandleMaterialStats(0.7f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }
