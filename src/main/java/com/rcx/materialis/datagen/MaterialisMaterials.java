@@ -117,7 +117,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), 0xFFE55C);
 		//psi materials
 		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), 0xB6A9E7);
-		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), 0x1B1515);
+		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), 0x3D3838);
 		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), 0xF6F9ED);
 	}
 

@@ -13,7 +13,7 @@ public class PsichoKillerModifier extends Modifier {
 	boolean enabled = ModList.get().isLoaded("psi");
 
 	public PsichoKillerModifier() {
-		super(0x1B1515);
+		super(0x3D3838);
 	}
 
 	@Override
