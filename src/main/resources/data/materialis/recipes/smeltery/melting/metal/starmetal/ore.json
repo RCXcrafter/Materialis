@@ -21,7 +21,7 @@
   "byproducts": [
     {
       "fluid": "astralsorcery:liquid_starlight",
-      "amount": 50
+      "amount": 100
     }
   ]
 }

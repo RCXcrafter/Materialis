@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:sheetmetals/ivory_psimetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:sheetmetals/ivory_psimetal"
+  },
+  "result": {
+    "fluid": "materialis:molten_ivory_psimetal",
+    "amount": 144
+  },
+  "temperature": 1130,
+  "time": 70
+}

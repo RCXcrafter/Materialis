@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.rcx.materialis.compat.PsiCompat;
 import com.rcx.materialis.datagen.MaterialisBlockStates;
 import com.rcx.materialis.datagen.MaterialisBlockTags;
 import com.rcx.materialis.datagen.MaterialisFluidTags;
@@ -23,12 +24,15 @@ import net.minecraft.client.renderer.model.ItemTransformVec3f;
 import net.minecraft.client.renderer.model.Variant;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
@@ -46,7 +50,7 @@ public class Materialis {
 	public Materialis() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		// Register the setup method for modloading
-		//bus.addListener(this::setup);
+		bus.addListener(this::setup);
 		// Register the enqueueIMC method for modloading
 		//bus.addListener(this::enqueueIMC);
 		// Register the processIMC method for modloading
@@ -64,13 +68,15 @@ public class Materialis {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	/*private void setup(final FMLCommonSetupEvent event) {
+	private void setup(final FMLCommonSetupEvent event) {
 		// some preinit code
-		LOGGER.info("HELLO FROM PREINIT");
-		LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+		//LOGGER.info("HELLO FROM PREINIT");
+		//LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+		if (ModList.get().isLoaded("psi"))
+			MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, new PsiCompat()::attachCapabilities);
 	}
 
-	private void doClientStuff(final FMLClientSetupEvent event) {
+	/*private void doClientStuff(final FMLClientSetupEvent event) {
 		// do something that can only be done on the client
 		//LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
 	}

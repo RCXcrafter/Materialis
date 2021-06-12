@@ -87,6 +87,11 @@ public class MaterialisResources {
 	public static final FluidWithBlockNBucket REFINED_OBSIDIAN_FLUID = addFluid("molten_refined_obsidian", "Molten Refined Obsidian", 1500, 15, 3000, 6000);
 	public static final FluidWithBlockNBucket REFINED_GLOWSTONE_FLUID = addFluid("molten_refined_glowstone", "Molten Refined Glowstone", 1200, 15, 3000, 6000);
 
+	//psi fluids
+	public static final FluidWithBlockNBucket PSIMETAL_FLUID = addFluid("molten_psimetal", "Molten Psimetal", 1050, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket EBONY_PSIMETAL_FLUID = addFluid("molten_ebony_psimetal", "Molten Ebony Psimetal", 1430, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket IVORY_PSIMETAL_FLUID = addFluid("molten_ivory_psimetal", "Molten Ivory Psimetal", 1430, 15, 3000, 6000);
+
 
 	/*
 	 * BLOCKS

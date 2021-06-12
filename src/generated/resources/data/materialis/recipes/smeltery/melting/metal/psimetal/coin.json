@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/psimetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/psimetal"
+  },
+  "result": {
+    "fluid": "materialis:molten_psimetal",
+    "amount": 48
+  },
+  "temperature": 750,
+  "time": 39
+}

@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "#forge:storage_blocks/fairy"
+    "#forge:storage_blocks/fairy",
+    {
+      "id": "#forge:storage_blocks/ebony_psimetal",
+      "required": false
+    },
+    {
+      "id": "#forge:storage_blocks/ivory_psimetal",
+      "required": false
+    }
   ]
 }

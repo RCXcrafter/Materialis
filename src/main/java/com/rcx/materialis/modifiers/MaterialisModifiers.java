@@ -36,4 +36,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> shortSightedModifier = MODIFIERS.register("short_sighted", ShortSightedModifier::new);
 	public static final RegistryObject<Modifier> auxiliaryPowerModifier = MODIFIERS.register("auxiliary_power", AuxiliaryPowerModifier::new);
 	public static final RegistryObject<Modifier> adrenalineModifier = MODIFIERS.register("adrenaline", AdrenalineModifier::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifier = MODIFIERS.register("psionizing_radiation", PsionizingRadiationModifier::new);
+	public static final RegistryObject<Modifier> psichoKillerModifier = MODIFIERS.register("psicho_killer", PsichoKillerModifier::new);
+	public static final RegistryObject<Modifier> psichoDiggerModifier = MODIFIERS.register("psicho_digger", PsichoDiggerModifier::new);
 }

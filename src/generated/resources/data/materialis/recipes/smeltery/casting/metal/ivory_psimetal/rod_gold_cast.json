@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:rods/ivory_psimetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/rod"
+  },
+  "fluid": {
+    "name": "materialis:molten_ivory_psimetal",
+    "amount": 72
+  },
+  "result": {
+    "tag": "forge:rods/ivory_psimetal"
+  },
+  "cooling_time": 50
+}

@@ -85,6 +85,12 @@ public class MaterialisLang extends LanguageProvider {
 		add("material.materialis.refined_obsidian", "Refined Obsidian");
 		add("material.materialis.refined_glowstone", "Refined Glowstone");
 
+		//psi stuff
+		add("material.materialis.psimetal", "Psimetal");
+		add("material.materialis.ebony_psimetal", "Ebony Psimetal");
+		add("material.materialis.ivory_psimetal", "Ivory Psimetal");
+		add("recipe.materialis.remove_modifier.spell_slot_not_empty", "This change removes a socket that currently contains a spell");
+
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
 		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
@@ -160,6 +166,15 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.adrenaline", "Adrenaline");
 		add("modifier.materialis.adrenaline.flavor", "Fight or Flight!");
 		add("modifier.materialis.adrenaline.description", "Boosts attack damage when your health is low");
+		add("modifier.materialis.psionizing_radiation", "Psionizing Radiation");
+		add("modifier.materialis.psionizing_radiation.flavor", "Not Carcinogenic!");
+		add("modifier.materialis.psionizing_radiation.description", "Your tool is highly conductive to psions and is suitable for casting spells, +1 spell socket");
+		add("modifier.materialis.psicho_killer", "Psicho Killer");
+		add("modifier.materialis.psicho_killer.flavor", "Qu'est-ce que c'est?");
+		add("modifier.materialis.psicho_killer.description", "Deals bonus attack damage depending on how much psi you currently have");
+		add("modifier.materialis.psicho_digger", "Psicho Digger");
+		add("modifier.materialis.psicho_digger.flavor", "Run run run away");
+		add("modifier.materialis.psicho_digger.description", "Adds bonus mining speed depending on how much psi you currently have");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

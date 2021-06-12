@@ -146,6 +146,14 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addMetalOptionalCasting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", castingFolder);
 		addMetalMelting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", false, meltingFolder, true);
 
+		//psi stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", castingFolder);
+		addMetalMelting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", false, meltingFolder, true);
+		addMetalOptionalCasting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), "ebony_psimetal", castingFolder);
+		addMetalMelting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), "ebony_psimetal", false, meltingFolder, true);
+		addMetalOptionalCasting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", castingFolder);
+		addMetalMelting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", false, meltingFolder, true);
+
 
 
 		//materials
@@ -175,6 +183,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.osmium);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedObsidian);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedGlowstone);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.psimetal);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ebonyPsimetal);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ivoryPsimetal);
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

@@ -30,12 +30,17 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 			addBlockTag(material.BLOCK.get(), BlockTags.bind("forge:storage_blocks/" + material.name));
 		}
 
+		//astral sorcery stuff
 		tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
 		tag(BlockTags.BEACON_BASE_BLOCKS).addTag(STARMETAL_BLOCK);
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(STARMETAL_BLOCK);
 
 		tag(STARMETAL_ORE).addOptional(new ResourceLocation("astralsorcery", "starmetal_ore"));
 		tag(Tags.Blocks.ORES).addTag(STARMETAL_ORE);
+
+		//psi stuff
+		tag(TinkerTags.Blocks.ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
+		tag(TinkerTags.Blocks.ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
 
 		/*tag(BlockTags.bind(new ResourceLocation(Materialis.MODID, "test").toString()))
 		.add(Blocks.DIAMOND_BLOCK)

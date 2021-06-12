@@ -68,6 +68,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId refinedObsidian = createMaterial("refined_obsidian");
 	public static final MaterialId refinedGlowstone = createMaterial("refined_glowstone");
 
+	//psi materials
+	public static final MaterialId psimetal = createMaterial("psimetal");
+	public static final MaterialId ebonyPsimetal = createMaterial("ebony_psimetal");
+	public static final MaterialId ivoryPsimetal = createMaterial("ivory_psimetal");
+
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -110,6 +115,10 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//mekanism materials
 		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), 0xB78FD2);
 		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), 0xFFE55C);
+		//psi materials
+		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), 0xB6A9E7);
+		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), 0x1B1515);
+		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), 0xF6F9ED);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -165,6 +174,10 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//mekanism materials
 			addDefaultTraits(refinedObsidian, MaterialisModifiers.shortSightedModifier.get());
 			addDefaultTraits(refinedGlowstone, MaterialisModifiers.auxiliaryPowerModifier.get());
+			//psi materials
+			addDefaultTraits(psimetal, MaterialisModifiers.psionizingRadiationModifier.get());
+			addDefaultTraits(ebonyPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoKillerModifier.get());
+			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoDiggerModifier.get());
 		}
 	}
 
@@ -217,6 +230,10 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//mekanism materials
 			addMaterialStats(refinedObsidian, new HeadMaterialStats(900, 11f, 3, 6f), new HandleMaterialStats(1.3f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(refinedGlowstone, new HeadMaterialStats(200, 8f, 2, 5f), new HandleMaterialStats(0.7f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			//psi materials
+			addMaterialStats(psimetal, new HeadMaterialStats(440, 6f, 3, 2.5f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(ebonyPsimetal, new HeadMaterialStats(900, 8f, 4, 5f), new HandleMaterialStats(0.7f, 0.8f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(900, 10f, 4, 3f), new HandleMaterialStats(1.1f, 1.1f, 0.8f, 1f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }

@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/ivory_psimetal",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 3,
+  "sortOrder": 3,
+  "fluid": "materialis:molten_ivory_psimetal",
+  "fluidPerUnit": 144,
+  "textColor": "#F6F9ED",
+  "temperature": 1130
+}

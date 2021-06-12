@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/ebony_psimetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/nugget"
+  },
+  "fluid": {
+    "name": "materialis:molten_ebony_psimetal",
+    "amount": 16
+  },
+  "result": {
+    "tag": "forge:nuggets/ebony_psimetal"
+  },
+  "cooling_time": 23
+}

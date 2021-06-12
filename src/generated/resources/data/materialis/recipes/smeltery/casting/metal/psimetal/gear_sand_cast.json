@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gears/psimetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/single_use/gear"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "name": "materialis:molten_psimetal",
+    "amount": 576
+  },
+  "result": {
+    "tag": "forge:gears/psimetal"
+  },
+  "cooling_time": 117
+}

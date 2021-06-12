@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "materialis:block/fluid/molten_psimetal_still"
+  }
+}
