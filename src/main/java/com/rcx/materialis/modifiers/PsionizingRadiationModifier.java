@@ -47,7 +47,7 @@ public class PsionizingRadiationModifier extends Modifier {
 
 	@Override
 	public int getPriority() {
-		return -100; //after most other things
+		return 200; //before most other things
 	}
 
 	@Override
@@ -78,14 +78,13 @@ public class PsionizingRadiationModifier extends Modifier {
 	}
 
 	@Override
-	public void afterBlockBreak(IModifierToolStack tool, int level, World world, BlockState state, BlockPos pos, LivingEntity living, boolean canharvest, boolean wasEffective) {
-		if (enabled && !tool.isBroken() && living instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity) living;
+	public Boolean removeBlock(IModifierToolStack tool, int level, PlayerEntity player, World world, BlockPos pos, BlockState state, boolean canHarvest, boolean isEffective) {
+		if (enabled && !tool.isBroken()) {
 			ItemStack toolStack = player.getMainHandItem();
 			if (tool instanceof ToolStack)
 				toolStack = ((ToolStack) tool).createStack();
 			if (!TinkerTags.Items.HARVEST_PRIMARY.getValues().contains(toolStack.getItem()))
-				return;
+				return null;
 			PlayerData data = PlayerDataHandler.get(player);
 			ItemStack playerCad = PsiAPI.getPlayerCAD(player);
 
@@ -94,10 +93,11 @@ public class PsionizingRadiationModifier extends Modifier {
 				final ItemStack finalTool = toolStack;
 				ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 5, 10, 0.05F, (SpellContext context) -> {
 					context.tool = finalTool;
-					context.positionBroken = IPsimetalTool.raytraceFromEntity(player.getCommandSenderWorld(), player, RayTraceContext.FluidMode.NONE, player.getAttributes().getValue(ForgeMod.REACH_DISTANCE.get()));
+					context.positionBroken = IPsimetalTool.raytraceFromEntity(player.getCommandSenderWorld(), player, RayTraceContext.FluidMode.NONE, player.getAttributes().getValue(ForgeMod.REACH_DISTANCE.get())).withPosition(pos);
 				});
 			}
 		}
+		return null;
 	}
 
 	@Override
