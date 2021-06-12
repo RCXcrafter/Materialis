@@ -105,13 +105,13 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//astral sorcery materials
 		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, MaterialisResources.STARMETAL_FLUID.FLUID.get(), 0x003CC9);
 		//industrial foregoing materials
-		this.addMaterial(plastic, 2, ORDER_HARVEST, Fluids.EMPTY, 0, true, 0xD9D9D9, new NotCondition(new TagEmptyCondition("forge:plastic")));
+		addMaterial(plastic, 2, ORDER_HARVEST, Fluids.EMPTY, 0, true, 0xD9D9D9, new NotCondition(new TagEmptyCondition("forge:plastic")));
 		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), 0xFF9FEF);
 		//undergarden materials
 		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), 0x9C8878);
 		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), 0x95BDE3);
 		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), 0xEB515B);
-		addMaterialNoFluid(forgottenMetal, 3, ORDER_GENERAL, false, 0x6CD7AA);
+		addMaterial(forgottenMetal, 3, ORDER_GENERAL, Fluids.EMPTY, 0, false, 0x6CD7AA, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal")));
 		//mekanism materials
 		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), 0xB78FD2);
 		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), 0xFFE55C);
