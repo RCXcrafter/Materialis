@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
+import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.MaterialisByproduct;
 
 import net.minecraft.data.CookingRecipeBuilder;
@@ -36,8 +37,10 @@ import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.common.crafting.conditions.TrueCondition;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import slimeknights.mantle.recipe.SizedIngredient;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.materials.MaterialId;
@@ -48,7 +51,10 @@ import slimeknights.tconstruct.library.recipe.casting.material.CompositeCastingR
 import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.molding.MoldingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.ModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.OverslimeModifierRecipeBuilder;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 
 public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder {
 
@@ -64,6 +70,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		String castingFolder = "smeltery/casting/metal/";
 		String meltingFolder = "smeltery/melting/metal/";
 		String alloyFolder = "smeltery/alloys/";
+		String compositeFolder = "tools/parts/composite/";
+		String modifierFolder = "tools/modifiers/";
+		
 		addMetalCastingRecipe(consumer, MaterialisResources.FAIRY_FLUID.FLUID, MaterialisResources.FAIRY_INGOT.BLOCK.get(), MaterialisResources.FAIRY_INGOT.INGOT.get(), MaterialisResources.FAIRY_INGOT.NUGGET.get(), castingFolder, "fairy");
 		addMetalMelting(consumer, MaterialisResources.FAIRY_FLUID.FLUID.get(), "fairy", false, meltingFolder, false);
 		//addMetalCastingRecipe(consumer, MaterialisResources.RED_AURUM_FLUID.FLUID, MaterialisResources.RED_AURUM_INGOT.BLOCK.get(), MaterialisResources.RED_AURUM_INGOT.INGOT.get(), MaterialisResources.RED_AURUM_INGOT.NUGGET.get(), metalFolder, "red_aurum");
@@ -157,7 +166,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 
 		//materials
-		String compositeFolder = "tools/parts/composite/";
 		addIngotMaterialRepairs(consumer, MaterialisMaterials.fairy);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.brass);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.aluminum);
@@ -186,6 +194,24 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.psimetal);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ebonyPsimetal);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ivoryPsimetal);
+
+
+
+		//modifiers
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.reapingModifier.get())
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "tattered_cloth"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "unholy_symbol"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "tattered_cloth"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
+		.setMaxLevel(1)
+		.setAbilitySlots(1)
+		.setTools(TinkerTags.Items.MELEE)
+		.setGroup("materialis:eidolon")
+		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefixR(MaterialisModifiers.reapingModifier, modifierFolder));
+		
+		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
+        .build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefixR(TinkerModifiers.overslime, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

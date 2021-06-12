@@ -1,9 +1,11 @@
 {
-  "condition": {
-    "modid": "eidolon",
-    "type": "forge:mod_loaded"
-  },
   "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "eidolon",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "inputs": [
     {
       "item": "eidolon:tattered_cloth"
@@ -22,7 +24,7 @@
     }
   ],
   "tools": {
-    "tag": "tconstruct:modifiable"
+    "tag": "tconstruct:modifiable/melee"
   },
   "result": {
     "name": "materialis:reaping",
