@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -80,6 +81,13 @@ public class PsionizingRadiationModifier extends Modifier {
 	@Override
 	public Boolean removeBlock(IModifierToolStack tool, int level, PlayerEntity player, World world, BlockPos pos, BlockState state, boolean canHarvest, boolean isEffective) {
 		if (enabled && !tool.isBroken()) {
+			BlockRayTraceResult blockLocation = IPsimetalTool.raytraceFromEntity(player.getCommandSenderWorld(), player, RayTraceContext.FluidMode.NONE, player.getAttributes().getValue(ForgeMod.REACH_DISTANCE.get()));
+			//level 2 unlocks aoe harvest casting
+			if (!blockLocation.getBlockPos().equals(pos)) {
+				if (level < 2)
+					return null;
+				blockLocation = blockLocation.withPosition(pos);
+			}
 			ItemStack toolStack = player.getMainHandItem();
 			if (tool instanceof ToolStack)
 				toolStack = ((ToolStack) tool).createStack();
@@ -91,9 +99,10 @@ public class PsionizingRadiationModifier extends Modifier {
 			if (!playerCad.isEmpty()) {
 				ItemStack bullet = ISocketable.socketable(toolStack).getSelectedBullet();
 				final ItemStack finalTool = toolStack;
+				final BlockRayTraceResult finalLoc = blockLocation;
 				ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 5, 10, 0.05F, (SpellContext context) -> {
 					context.tool = finalTool;
-					context.positionBroken = IPsimetalTool.raytraceFromEntity(player.getCommandSenderWorld(), player, RayTraceContext.FluidMode.NONE, player.getAttributes().getValue(ForgeMod.REACH_DISTANCE.get())).withPosition(pos);
+					context.positionBroken = finalLoc;
 				});
 			}
 		}
