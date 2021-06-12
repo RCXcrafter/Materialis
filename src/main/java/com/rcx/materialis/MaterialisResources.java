@@ -62,35 +62,35 @@ public class MaterialisResources {
 	public static final FluidWithBlockNBucket SHADOW_STEEL_FLUID = addFluid("molten_shadow_steel", "Molten Shadow Steel", 1600, 0, 3000, 6000);
 
 	//eidolon fluids
-	public static final FluidWithBlockNBucket ARCANE_GOLD_FLUID = addFluid("molten_arcane_gold", "Molten Arcane Gold", 970, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket ARCANE_GOLD_FLUID = addFluid("molten_arcane_gold", "Molten Arcane Gold", 970, 13, 3000, 6000);
 
 	//aquaculture fluids
-	public static final FluidWithBlockNBucket NEPTUNIUM_FLUID = addFluid("molten_neptunium", "Molten Neptunium", 1700, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket NEPTUNIUM_FLUID = addFluid("molten_neptunium", "Molten Neptunium", 1700, 13, 3000, 6000);
 
 	//mystical world fluids
-	public static final FluidWithBlockNBucket QUICKSILVER_FLUID = addFluid("molten_quicksilver", "Molten Quicksilver", 700, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket QUICKSILVER_FLUID = addFluid("molten_quicksilver", "Molten Quicksilver", 700, 12, 3000, 6000);
 
 	//astral sorcery fluids
-	public static final FluidWithBlockNBucket STARMETAL_FLUID = addFluid("molten_starmetal", "Molten Starmetal", 1050, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket STARMETAL_FLUID = addFluid("molten_starmetal", "Molten Starmetal", 1050, 11, 3000, 6000);
 
 	//industrial foregoing fluids
-	public static final FluidWithBlockNBucket PINK_SLIME_FLUID = addFluid("molten_pink_slime", "Molten Pink Slime Alloy", 1260, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket PINK_SLIME_FLUID = addFluid("molten_pink_slime", "Molten Pink Slime Alloy", 1260, 12, 3000, 6000);
 
 	//undergarden fluids
-	public static final FluidWithBlockNBucket CLOGGRUM_FLUID = addFluid("molten_cloggrum", "Molten Cloggrum", 950, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket FROSTSTEEL_FLUID = addFluid("molten_froststeel", "Molten Froststeel", 1160, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket UTHERIUM_FLUID = addFluid("molten_utherium", "Molten Utherium", 1370, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket FORGOTTEN_FLUID = addFluid("molten_forgotten_metal", "Molten Forgotten Metal", 1530, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket REGALIUM_FLUID = addFluid("molten_regalium", "Molten Regalium", 920, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket CLOGGRUM_FLUID = addFluid("molten_cloggrum", "Molten Cloggrum", 950, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket FROSTSTEEL_FLUID = addFluid("molten_froststeel", "Molten Froststeel", 1160, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket UTHERIUM_FLUID = addFluid("molten_utherium", "Molten Utherium", 1370, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket FORGOTTEN_FLUID = addFluid("molten_forgotten_metal", "Molten Forgotten Metal", 1530, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket REGALIUM_FLUID = addFluid("molten_regalium", "Molten Regalium", 920, 12, 3000, 6000);
 
 	//mekanism fluids
-	public static final FluidWithBlockNBucket REFINED_OBSIDIAN_FLUID = addFluid("molten_refined_obsidian", "Molten Refined Obsidian", 1500, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket REFINED_OBSIDIAN_FLUID = addFluid("molten_refined_obsidian", "Molten Refined Obsidian", 1500, 9, 3000, 6000);
 	public static final FluidWithBlockNBucket REFINED_GLOWSTONE_FLUID = addFluid("molten_refined_glowstone", "Molten Refined Glowstone", 1200, 15, 3000, 6000);
 
 	//psi fluids
-	public static final FluidWithBlockNBucket PSIMETAL_FLUID = addFluid("molten_psimetal", "Molten Psimetal", 1050, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket EBONY_PSIMETAL_FLUID = addFluid("molten_ebony_psimetal", "Molten Ebony Psimetal", 1430, 15, 3000, 6000);
-	public static final FluidWithBlockNBucket IVORY_PSIMETAL_FLUID = addFluid("molten_ivory_psimetal", "Molten Ivory Psimetal", 1430, 15, 3000, 6000);
+	public static final FluidWithBlockNBucket PSIMETAL_FLUID = addFluid("molten_psimetal", "Molten Psimetal", 1050, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket EBONY_PSIMETAL_FLUID = addFluid("molten_ebony_psimetal", "Molten Ebony Psimetal", 1430, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket IVORY_PSIMETAL_FLUID = addFluid("molten_ivory_psimetal", "Molten Ivory Psimetal", 1430, 12, 3000, 6000);
 
 
 	/*
