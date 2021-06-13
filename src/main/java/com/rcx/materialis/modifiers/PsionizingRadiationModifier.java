@@ -6,14 +6,19 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -113,6 +118,15 @@ public class PsionizingRadiationModifier extends Modifier {
 	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, LivingEntity target, float damageDealt, boolean isCritical, float cooldown) {
 		if (enabled && !tool.isBroken() && attacker instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) attacker;
+			//level 2 unlocks aoe attack casting
+			if (level < 2) {
+				EntityRayTraceResult hit = raytraceHitFromEntity(player, player.getAttributes().getValue(ForgeMod.REACH_DISTANCE.get()));
+				if (hit != null) {
+					if (!hit.getEntity().equals(target))
+						return 0;
+				} else
+					return 0;
+			}
 			ItemStack toolStack = player.getMainHandItem();
 			if (tool instanceof ToolStack)
 				toolStack = ((ToolStack) tool).createStack();
@@ -139,5 +153,20 @@ public class PsionizingRadiationModifier extends Modifier {
 			ITextComponent componentName = ISocketable.getSocketedItemName(((ToolStack) tool).createStack(), "psimisc.none");
 			tooltip.add(new TranslationTextComponent("psimisc.spell_selected", componentName));
 		}
+	}
+
+	public static EntityRayTraceResult raytraceHitFromEntity(LivingEntity entity, double range) {
+		Vector3d start = entity.getEyePosition(1F);
+		Vector3d look = entity.getLookAngle();
+		Vector3d direction = start.add(look.x * range, look.y * range, look.z * range);
+		AxisAlignedBB bb = entity.getBoundingBox().expandTowards(look.x * range, look.y * range, look.z * range).expandTowards(1, 1, 1);
+		return ProjectileHelper.getEntityHitResult(entity.level, entity, start, direction, bb, e -> canHitEntity(entity, e));
+	}
+
+	public static boolean canHitEntity(LivingEntity attacker, Entity target) {
+		if (!target.isSpectator() && target instanceof LivingEntity && target.isPickable()) {
+			return !attacker.isPassengerOfSameVehicle(target) && !target.noPhysics && (attacker.getVehicle() == null || !attacker.getVehicle().equals(target));
+		}
+		return false;
 	}
 }
