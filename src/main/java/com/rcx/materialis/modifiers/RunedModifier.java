@@ -8,6 +8,7 @@ import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
@@ -15,6 +16,7 @@ import vazkii.arl.util.ClientTicker;
 
 public class RunedModifier extends SingleUseModifier {
 
+	boolean enabled = ModList.get().isLoaded("quark");
 	public static final ResourceLocation RUNE_COLOR = new ResourceLocation(Materialis.modID, "rune_color");
 
 	public RunedModifier() {
@@ -32,7 +34,7 @@ public class RunedModifier extends SingleUseModifier {
 
 	@Override
 	public ITextComponent getDisplayName(IModifierToolStack tool, int level) {
-		if (!tool.getPersistentData().contains(RUNE_COLOR, NBT.TAG_INT))
+		if (!enabled || !tool.getPersistentData().contains(RUNE_COLOR, NBT.TAG_INT))
 			return super.getDisplayName();
 
 		int color = tool.getPersistentData().getInt(RUNE_COLOR);
