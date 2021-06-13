@@ -11,7 +11,12 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
+import slimeknights.tconstruct.library.tools.ToolDefinition;
+import slimeknights.tconstruct.library.tools.item.ToolCore;
+import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import vazkii.arl.util.ClientTicker;
 
 public class RunedModifier extends SingleUseModifier {
@@ -21,6 +26,11 @@ public class RunedModifier extends SingleUseModifier {
 
 	public RunedModifier() {
 		super(0xFFFFFF);
+	}
+
+	@Override
+	public void addVolatileData(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
+		volatileData.putBoolean(ToolCore.SHINY, true);
 	}
 
 	@Override
