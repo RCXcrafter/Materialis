@@ -11,8 +11,6 @@ public class PsiCompat {
 
 	public static final ResourceLocation PSIONIC_CAPABILITY = new ResourceLocation(Materialis.modID, "psionic_capability");
 
-	public PsiCompat() { }
-
 	public void attachCapabilities(final AttachCapabilitiesEvent<ItemStack> event) {
 		ItemStack stack = event.getObject();
 		if (stack.getItem() instanceof ToolCore) {

@@ -158,6 +158,9 @@
   "modifier.materialis.residual_light": "Residual Light",
   "modifier.materialis.residual_light.description": "Leaves behind pieces of light (photons) when hitting mobs leaving them glowing or when breaking blocks leaving the air glowing for some time",
   "modifier.materialis.residual_light.flavor": "Forged from light",
+  "modifier.materialis.runed": "Runed",
+  "modifier.materialis.runed.description": "Tool glows with a colored enchantment glint",
+  "modifier.materialis.runed.flavor": "Runic Energy Flows!",
   "modifier.materialis.short_sighted": "Short-Sighted",
   "modifier.materialis.short_sighted.description": "Decreases your reach distance",
   "modifier.materialis.short_sighted.flavor": "Do now, think later",
@@ -170,5 +173,6 @@
   "modifier.materialis.work_hardened": "Work Hardened",
   "modifier.materialis.work_hardened.description": "Your tool loses durability slower when it has low durability",
   "modifier.materialis.work_hardened.flavor": "Play hardeneder",
+  "recipe.materialis.modifier.runed_requirements": "Runed requires Shiny to apply",
   "recipe.materialis.remove_modifier.spell_slot_not_empty": "This change removes a socket that currently contains a spell"
 }

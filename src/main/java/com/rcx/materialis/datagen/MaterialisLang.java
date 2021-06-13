@@ -91,6 +91,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("material.materialis.ivory_psimetal", "Ivory Psimetal");
 		add("recipe.materialis.remove_modifier.spell_slot_not_empty", "This change removes a socket that currently contains a spell");
 
+		//quark stuff
+		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");
+
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
 		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
@@ -175,6 +178,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.psicho_digger", "Psicho Digger");
 		add("modifier.materialis.psicho_digger.flavor", "Run run run away");
 		add("modifier.materialis.psicho_digger.description", "Adds bonus mining speed depending on how much psi you currently have");
+		add("modifier.materialis.runed", "Runed");
+		add("modifier.materialis.runed.flavor", "Runic Energy Flows!");
+		add("modifier.materialis.runed.description", "Tool glows with a colored enchantment glint");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

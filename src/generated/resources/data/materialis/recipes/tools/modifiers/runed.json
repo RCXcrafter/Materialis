@@ -1,0 +1,27 @@
+{
+  "type": "materialis:rune_modifier",
+  "conditions": [
+    {
+      "modid": "quark",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "quark:runes"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "requirements": {
+    "name": "tconstruct:shiny",
+    "level": 1,
+    "error": "recipe.materialis.modifier.runed_requirements"
+  },
+  "result": {
+    "name": "materialis:runed",
+    "level": 1
+  },
+  "max_level": 1
+}

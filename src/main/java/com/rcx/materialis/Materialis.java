@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rcx.materialis.compat.PsiCompat;
+import com.rcx.materialis.compat.QuarkCompat;
 import com.rcx.materialis.datagen.MaterialisBlockStates;
 import com.rcx.materialis.datagen.MaterialisBlockTags;
 import com.rcx.materialis.datagen.MaterialisFluidTags;
@@ -64,6 +65,8 @@ public class Materialis {
 		MaterialisResources.ITEMS_EXTENDED.register(bus);
 		MaterialisModifiers.MODIFIERS.register(bus);
 
+		QuarkCompat.RECIPE_SERIALIZERS.register(bus);
+
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -74,6 +77,8 @@ public class Materialis {
 		//LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 		if (ModList.get().isLoaded("psi"))
 			MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, new PsiCompat()::attachCapabilities);
+		if (ModList.get().isLoaded("quark"))
+			MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, new QuarkCompat()::attachCapabilities);
 	}
 
 	/*private void doClientStuff(final FMLClientSetupEvent event) {

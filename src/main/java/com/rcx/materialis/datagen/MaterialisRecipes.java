@@ -11,6 +11,7 @@ import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.MaterialisByproduct;
+import com.rcx.materialis.util.RuneModifierRecipeBuilder;
 
 import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
@@ -51,6 +52,7 @@ import slimeknights.tconstruct.library.recipe.casting.material.CompositeCastingR
 import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.molding.MoldingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.OverslimeModifierRecipeBuilder;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
@@ -72,7 +74,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		String alloyFolder = "smeltery/alloys/";
 		String compositeFolder = "tools/parts/composite/";
 		String modifierFolder = "tools/modifiers/";
-		
+
 		addMetalCastingRecipe(consumer, MaterialisResources.FAIRY_FLUID.FLUID, MaterialisResources.FAIRY_INGOT.BLOCK.get(), MaterialisResources.FAIRY_INGOT.INGOT.get(), MaterialisResources.FAIRY_INGOT.NUGGET.get(), castingFolder, "fairy");
 		addMetalMelting(consumer, MaterialisResources.FAIRY_FLUID.FLUID.get(), "fairy", false, meltingFolder, false);
 		//addMetalCastingRecipe(consumer, MaterialisResources.RED_AURUM_FLUID.FLUID, MaterialisResources.RED_AURUM_INGOT.BLOCK.get(), MaterialisResources.RED_AURUM_INGOT.INGOT.get(), MaterialisResources.RED_AURUM_INGOT.NUGGET.get(), metalFolder, "red_aurum");
@@ -100,12 +102,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addMetalOptionalCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), "arcane_gold", castingFolder);
 		addMetalMelting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), "arcane_gold", false, meltingFolder, true);
 
-		addCastCastingRecipe(withCondition(consumer, tagConditionDomain("materialis", "inlays")),  getTag("materialis", "inlays"),  MaterialisResources.INLAY_CAST,  castingFolder);
+		addCastCastingRecipe(withCondition(consumer, tagConditionDomain("materialis", "inlays")), MaterialisItemTags.INLAYS,  MaterialisResources.INLAY_CAST,  castingFolder);
 		addOptionalCastingWithCastDomain(consumer, TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays", "inlay", "pewter", castingFolder, "materialis");
 		addOptionalCastingWithCastDomain(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), MaterialValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays", "inlay", "arcane_gold", castingFolder, "materialis");
 
-		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "inlays/pewter")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/pewter")), location(meltingFolder + "pewter_inlay"));
-		MeltingRecipeBuilder.melting(Ingredient.of(getTag("materialis", "inlays/arcane_gold")), MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/arcane_gold")), location(meltingFolder + "arcane_gold_inlay"));
+		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.PEWTER_INLAY), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/pewter")), location(meltingFolder + "pewter_inlay"));
+		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.ARCANE_GOLD_INLAY), MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/arcane_gold")), location(meltingFolder + "arcane_gold_inlay"));
 
 		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("eidolon", "pewter_blend")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT, 1.0f).build(withCondition(consumer, new ModLoadedCondition("eidolon")), location(meltingFolder + "pewter_blend"));
 
@@ -209,9 +211,18 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MELEE)
 		.setGroup("materialis:eidolon")
 		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefixR(MaterialisModifiers.reapingModifier, modifierFolder));
-		
+
 		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
-        .build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefixR(TinkerModifiers.overslime, modifierFolder));
+		.build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefixR(TinkerModifiers.overslime, modifierFolder));
+
+		RuneModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get())
+		.addInput(getTag("quark", "runes"))
+		.setMaxLevel(1)
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setRequirements(ModifierMatch.entry(TinkerModifiers.shiny.get()))
+		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
+		.setGroup("materialis:quark")
+		.build(withCondition(consumer, new ModLoadedCondition("quark")), prefixR(MaterialisModifiers.runedModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

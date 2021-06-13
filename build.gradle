@@ -149,6 +149,8 @@ dependencies {
     compileOnly fg.deobf("curse.maven:eidolon-429625:3157832")
     compileOnly fg.deobf("curse.maven:curios-309927:3275653")
     compileOnly fg.deobf("curse.maven:psi-241665:3288535")
+    compileOnly fg.deobf("curse.maven:quark-243121:3326040")
+    compileOnly fg.deobf("curse.maven:arl-250363:3326041")
 
 	//annotationProcessor 'org.spongepowered:mixin:0.1.2-SNAPSHOT:processor'
 
