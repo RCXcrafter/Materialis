@@ -21,7 +21,7 @@ public class ArcaneModifier extends Modifier {
 			source = DamageSource.mobAttack(attacker);
 		}
 		target.hurtTime = 0;
-		attackEntitySecondary(source.setMagic(), level, target, false);
+		attackEntitySecondary(source.setMagic().bypassArmor(), level, target, false);
 		return 0;
 	}
 }
