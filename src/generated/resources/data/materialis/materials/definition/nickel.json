@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "value": {
+      "tag": "forge:ingots/nickel",
+      "type": "forge:tag_empty"
+    },
+    "type": "forge:not"
+  },
+  "craftable": false,
+  "tier": 2,
+  "sortOrder": 1,
+  "fluid": "tconstruct:molten_nickel",
+  "fluidPerUnit": 144,
+  "textColor": "#F9EA98",
+  "temperature": 950
+}

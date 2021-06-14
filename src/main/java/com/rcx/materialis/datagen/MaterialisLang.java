@@ -41,14 +41,12 @@ public class MaterialisLang extends LanguageProvider {
 		//general oredict materials
 		add("material.materialis.brass", "Brass");
 		add("material.materialis.aluminum", "Aluminum");
-		//add("material.materialis.nickel", "Nickel");
-		//add("material.materialis.platinum", "Platinum");
-		//add("material.materialis.tin", "Tin");
-		//add("material.materialis.zinc", "Zinc");
+		add("material.materialis.nickel", "Nickel");
+		add("material.materialis.platinum", "Platinum");
 		add("material.materialis.uranium", "Uranium");
 		add("material.materialis.osmium", "Osmium");
 		add("material.materialis.tungsten", "Tungsten");
-		//add("material.materialis.invar", "Invar");
+		add("material.materialis.invar", "Invar");
 
 		//create stuff
 		add("material.materialis.rose_quartz", "Rose Quartz");
@@ -134,7 +132,7 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.polished.flavor", "I can see my face in it!");
 		add("modifier.materialis.polished.description", "Deals more damage at a higher durability");
 		add("modifier.materialis.decay", "Decay");
-		add("modifier.materialis.decay.flavor", "Disintegrates into chalk");
+		add("modifier.materialis.decay.flavor", "Also melts in your hands");
 		add("modifier.materialis.decay.description", "Your tool doesn't use durability on use but instead decays over time");
 		add("modifier.materialis.nocturnal", "Nocturnal");
 		add("modifier.materialis.nocturnal.flavor", "Stay up past bedtime!");
@@ -149,7 +147,7 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.economical.flavor", "Waste not, want not");
 		add("modifier.materialis.economical.description", "Repairing your tool is cheaper when your tool has low durability");
 		add("modifier.materialis.old_timer", "Old-Timer");
-		add("modifier.materialis.old_timer.flavor", "Rust Bucket!");
+		add("modifier.materialis.old_timer.flavor", "Rust bucket!");
 		add("modifier.materialis.old_timer.description", "Repairing your tool is more expensive when your tool has high durability");
 		add("modifier.materialis.freezing", "Freezing");
 		add("modifier.materialis.freezing.flavor", "As cold as ice!");
@@ -164,13 +162,13 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.short_sighted.flavor", "Do now, think later");
 		add("modifier.materialis.short_sighted.description", "Decreases your reach distance");
 		add("modifier.materialis.auxiliary_power", "Auxiliary Power");
-		add("modifier.materialis.auxiliary_power.flavor", "Extra Juice!");
+		add("modifier.materialis.auxiliary_power.flavor", "Extra juice!");
 		add("modifier.materialis.auxiliary_power.description", "Boosts your attack speed based on your mining speed");
 		add("modifier.materialis.adrenaline", "Adrenaline");
-		add("modifier.materialis.adrenaline.flavor", "Fight or Flight!");
+		add("modifier.materialis.adrenaline.flavor", "Fight or flight!");
 		add("modifier.materialis.adrenaline.description", "Boosts attack damage when your health is low");
 		add("modifier.materialis.psionizing_radiation", "Psionizing Radiation");
-		add("modifier.materialis.psionizing_radiation.flavor", "Not Carcinogenic!");
+		add("modifier.materialis.psionizing_radiation.flavor", "Not carcinogenic!");
 		add("modifier.materialis.psionizing_radiation.description", "Your tool is highly conductive to psions and is suitable for casting spells, +1 spell socket");
 		add("modifier.materialis.psicho_killer", "Psicho Killer");
 		add("modifier.materialis.psicho_killer.flavor", "Qu'est-ce que c'est?");
@@ -179,8 +177,17 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.psicho_digger.flavor", "Run run run away");
 		add("modifier.materialis.psicho_digger.description", "Adds bonus mining speed depending on how much psi you currently have");
 		add("modifier.materialis.runed", "Runed");
-		add("modifier.materialis.runed.flavor", "Runic Energy Flows!");
+		add("modifier.materialis.runed.flavor", "Runic energy flows!");
 		add("modifier.materialis.runed.description", "Tool glows with a colored enchantment glint");
+		add("modifier.materialis.brittle", "Brittle");
+		add("modifier.materialis.brittle.flavor", "Disintegrates into chalk");
+		add("modifier.materialis.brittle.description", "Tool takes much more durability damage");
+		add("modifier.materialis.refueling", "Refueling");
+		add("modifier.materialis.refueling.flavor", "Feed the fire");
+		add("modifier.materialis.refueling.description", "Attacked mobs that are on fire will burn for longer");
+		add("modifier.materialis.quenching", "Quenching");
+		add("modifier.materialis.quenching.flavor", "Uninflammable!");
+		add("modifier.materialis.quenching.description", "Extinguishes mobs and deals bonus damage depending on how much longer the mob would have burned");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

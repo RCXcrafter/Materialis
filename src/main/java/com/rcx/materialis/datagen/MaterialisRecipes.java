@@ -171,8 +171,11 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addIngotMaterialRepairs(consumer, MaterialisMaterials.fairy);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.brass);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.aluminum);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.nickel);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.platinum);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.uranium);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.tungsten);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.invar);
 		addMaterialRepairs(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedRadiance);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.shadowSteel);

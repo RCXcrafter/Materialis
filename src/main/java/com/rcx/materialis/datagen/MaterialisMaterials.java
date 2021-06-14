@@ -27,14 +27,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	//general oredict materials
 	public static final MaterialId brass = createMaterial("brass");
 	public static final MaterialId aluminum = createMaterial("aluminum");
-	//public static final MaterialId nickel = createMaterial("nickel");
-	//public static final MaterialId platinum = createMaterial("platinum");
-	//public static final MaterialId tin = createMaterial("tin");
-	//public static final MaterialId zinc = createMaterial("zinc");
+	public static final MaterialId nickel = createMaterial("nickel");
+	public static final MaterialId platinum = createMaterial("platinum");
 	public static final MaterialId uranium = createMaterial("uranium");
 	public static final MaterialId osmium = createMaterial("osmium");
 	public static final MaterialId tungsten = createMaterial("tungsten");
-	//public static final MaterialId invar = createMaterial("invar");
+	public static final MaterialId invar = createMaterial("invar");
 
 	//create materials
 	public static final MaterialId roseQuartz = createMaterial("rose_quartz");
@@ -88,9 +86,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//general oredict materials
 		addCompatMetalMaterial(brass, 3, ORDER_WEAPON, TinkerFluids.moltenBrass.get(), 0xFFD359);
 		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST, TinkerFluids.moltenAluminum.get(), 0xE6B7BF);
+		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST, TinkerFluids.moltenNickel.get(), 0xF9EA98);
+		addCompatMetalMaterial(platinum, 3, ORDER_HARVEST, TinkerFluids.moltenPlatinum.get(), 0xA1FFFF);
 		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST, TinkerFluids.moltenUranium.get(), 0x42BE30);
 		addCompatMetalMaterial(osmium, 2, ORDER_WEAPON, TinkerFluids.moltenOsmium.get(), 0xCDE8FD);
 		addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, TinkerFluids.moltenTungsten.get(), 0xA7A88F);
+		addCompatMetalMaterial(invar, 3, ORDER_HARVEST, TinkerFluids.moltenInvar.get(), 0xBAE6D5);
 		//create materials
 		addMaterial(roseQuartz, 3, ORDER_NETHER, Fluids.EMPTY, 0, true, 0xFF8C80, new ModLoadedCondition("create"));
 		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), 0xFFFFFF);
@@ -142,14 +143,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//general oredict materials
 			addDefaultTraits(brass, MaterialisModifiers.polishedModifier.get());
 			addDefaultTraits(aluminum, MaterialisModifiers.featherweightModifier.get());
-			//addDefaultTraits(nickel, MaterialisModifiers.daredevilModifier.get());
-			//addDefaultTraits(platinum, MaterialisModifiers.daredevilModifier.get());
-			//addDefaultTraits(tin, MaterialisModifiers.daredevilModifier.get());
-			//addDefaultTraits(zinc, MaterialisModifiers.daredevilModifier.get());
+			addDefaultTraits(nickel, MaterialisModifiers.refuelingModifier.get());
+			addDefaultTraits(platinum, MaterialisModifiers.brittleModifier.get());
 			addDefaultTraits(uranium, MaterialisModifiers.halfLifeModifier.get());
 			addDefaultTraits(osmium, MaterialisModifiers.adrenalineModifier.get());
 			addDefaultTraits(tungsten, MaterialisModifiers.workHardenedModifier.get());
-			//addDefaultTraits(invar, MaterialisModifiers.daredevilModifier.get());
+			addDefaultTraits(invar, MaterialisModifiers.quenchingModifier.get());
 			//create materials
 			addDefaultTraits(roseQuartz, MaterialisModifiers.enhancedQuartzModifier.get());
 			addDefaultTraits(refinedRadiance, MaterialisModifiers.residualLightModifier.get());
@@ -198,14 +197,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//general oredict materials
 			addMaterialStats(brass, new HeadMaterialStats(450, 9f, 2, 4f), new HandleMaterialStats(1f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(aluminum, new HeadMaterialStats(220, 5f, 2, 5f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(nickel, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(platinum, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(tin, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(zinc, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(nickel, new HeadMaterialStats(520, 5f, 2, 3f), new HandleMaterialStats(1f, 0.9f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(platinum, new HeadMaterialStats(100, 13f, 3, 3f), new HandleMaterialStats(0.7f, 1.4f, 1.3f, 0.9f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(uranium, new HeadMaterialStats(689, 9f, 2, 4f), new HandleMaterialStats(1.3f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(osmium, new HeadMaterialStats(500, 7f, 2, 3f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(tungsten, new HeadMaterialStats(740, 8f, 3, 5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(invar, new HeadMaterialStats(150, 6f, 2, 1.5f), new HandleMaterialStats(0.6f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(invar, new HeadMaterialStats(710, 7f, 3, 4f), new HandleMaterialStats(1.2f, 1f, 0.9f, 1f), ExtraMaterialStats.DEFAULT);
 			//create materials
 			addMaterialStats(roseQuartz, new HeadMaterialStats(175, 6f, 2, 5f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(refinedRadiance, new HeadMaterialStats(999, 11f, 4, 5f), new HandleMaterialStats(0.5f, 1f, 1f, 1.4f), ExtraMaterialStats.DEFAULT);
