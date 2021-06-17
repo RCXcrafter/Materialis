@@ -102,8 +102,8 @@ public class RuneModifierRecipe extends ModifierRecipe {
 		}
 
 		@Override
-		public void write(PacketBuffer buffer, RuneModifierRecipe recipe) {
-			super.write(buffer, recipe);
+		public void writeSafe(PacketBuffer buffer, RuneModifierRecipe recipe) {
+			super.writeSafe(buffer, recipe);
 			buffer.writeVarInt(recipe.inputs.size());
 			for (SizedIngredient ingredient : recipe.inputs) {
 				ingredient.write(buffer);
@@ -153,7 +153,7 @@ public class RuneModifierRecipe extends ModifierRecipe {
 
 		@Override
 		public void toNetwork(PacketBuffer buffer, RuneModifierRecipe recipe) {
-			write(buffer, recipe);
+			writeSafe(buffer, recipe);
 		}
 	}
 }
