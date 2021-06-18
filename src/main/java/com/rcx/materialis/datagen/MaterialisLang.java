@@ -92,6 +92,9 @@ public class MaterialisLang extends LanguageProvider {
 		//quark stuff
 		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");
 
+		//occultism stuff
+		add("material.materialis.iesnium", "Iesnium");
+
 		//modifiers
 		add("modifier.materialis.enhanced_quartz", "Enhanced");
 		add("modifier.materialis.enhanced_quartz.flavor", "Shiny!");
@@ -188,6 +191,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.quenching", "Quenching");
 		add("modifier.materialis.quenching.flavor", "Uninflammable!");
 		add("modifier.materialis.quenching.description", "Extinguishes mobs and deals bonus damage depending on how much longer the mob would have burned");
+		add("modifier.materialis.otherworldly", "Otherworldly");
+		add("modifier.materialis.otherworldly.flavor", "From another plane of existence!");
+		add("modifier.materialis.otherworldly.description", "Allows the tool to harvest blocks from The Other Place");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

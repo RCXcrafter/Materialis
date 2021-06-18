@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/iesnium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:nuggets/iesnium"
+  },
+  "result": {
+    "fluid": "materialis:molten_iesnium",
+    "amount": 16
+  },
+  "temperature": 850,
+  "time": 21
+}

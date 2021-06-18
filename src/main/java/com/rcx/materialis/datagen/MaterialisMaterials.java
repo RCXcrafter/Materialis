@@ -71,6 +71,9 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId ebonyPsimetal = createMaterial("ebony_psimetal");
 	public static final MaterialId ivoryPsimetal = createMaterial("ivory_psimetal");
 
+	//occultism materials
+	public static final MaterialId iesnium = createMaterial("iesnium");
+
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -120,6 +123,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), 0xB6A9E7);
 		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), 0x3D3838);
 		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), 0xF6F9ED);
+		//occultism materials
+		addCompatMetalMaterial(iesnium, 3, ORDER_HARVEST, MaterialisResources.IESNIUM_FLUID.FLUID.get(), 0x8ADAE3);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -177,6 +182,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(psimetal, MaterialisModifiers.psionizingRadiationModifier.get());
 			addDefaultTraits(ebonyPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoKillerModifier.get());
 			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoDiggerModifier.get());
+			//occultism materials
+			addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier.get());
 		}
 	}
 
@@ -231,6 +238,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(psimetal, new HeadMaterialStats(440, 6f, 3, 2.5f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(ebonyPsimetal, new HeadMaterialStats(900, 8f, 4, 5f), new HandleMaterialStats(0.7f, 0.8f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(900, 10f, 4, 3f), new HandleMaterialStats(1.1f, 1.1f, 0.8f, 1f), ExtraMaterialStats.DEFAULT);
+			//occultism materials
+			addMaterialStats(iesnium, new HeadMaterialStats(921, 8f, 3, 3f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }

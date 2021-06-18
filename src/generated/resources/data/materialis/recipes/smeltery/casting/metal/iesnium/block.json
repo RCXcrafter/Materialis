@@ -1,0 +1,20 @@
+{
+  "type": "tconstruct:casting_basin",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/iesnium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "fluid": {
+    "name": "materialis:molten_iesnium",
+    "amount": 1296
+  },
+  "result": {
+    "tag": "forge:storage_blocks/iesnium"
+  },
+  "cooling_time": 185
+}

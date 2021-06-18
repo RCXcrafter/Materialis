@@ -165,6 +165,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addMetalOptionalCasting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", castingFolder);
 		addMetalMelting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", false, meltingFolder, true);
 
+		//occultism stuff
+		addMetalOptionalCasting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID.get(), "iesnium", castingFolder);
+		addMetalMelting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID.get(), "iesnium", true, meltingFolder, true, MaterialisByproduct.SILVER);
+
 
 
 		//materials
@@ -199,6 +203,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.psimetal);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ebonyPsimetal);
 		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ivoryPsimetal);
+		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.iesnium);
 
 
 

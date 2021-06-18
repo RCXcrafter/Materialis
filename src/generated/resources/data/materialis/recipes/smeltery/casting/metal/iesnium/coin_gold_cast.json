@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/iesnium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/coin"
+  },
+  "fluid": {
+    "name": "materialis:molten_iesnium",
+    "amount": 48
+  },
+  "result": {
+    "tag": "forge:coins/iesnium"
+  },
+  "cooling_time": 36
+}
