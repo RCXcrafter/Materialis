@@ -177,7 +177,7 @@
   "modifier.materialis.short_sighted.description": "Decreases your reach distance",
   "modifier.materialis.short_sighted.flavor": "Do now, think later",
   "modifier.materialis.underlord": "Underlord",
-  "modifier.materialis.underlord.description": "Deals more damage to non-boss undergarden mobs",
+  "modifier.materialis.underlord.description": "Deals more damage to non-boss undergarden mobs and mines undergarden blocks faster",
   "modifier.materialis.underlord.flavor": "Master of the Undergarden",
   "modifier.materialis.voiding": "Voiding",
   "modifier.materialis.voiding.description": "Voids block and mob drops, drops extra experience for killing mobs",

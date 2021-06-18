@@ -157,7 +157,7 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.cleansing.description", "Deals more damage to rotspawn");
 		add("modifier.materialis.underlord", "Underlord");
 		add("modifier.materialis.underlord.flavor", "Master of the Undergarden");
-		add("modifier.materialis.underlord.description", "Deals more damage to non-boss undergarden mobs");
+		add("modifier.materialis.underlord.description", "Deals more damage to non-boss undergarden mobs and mines undergarden blocks faster");
 		add("modifier.materialis.short_sighted", "Short-Sighted");
 		add("modifier.materialis.short_sighted.flavor", "Do now, think later");
 		add("modifier.materialis.short_sighted.description", "Decreases your reach distance");

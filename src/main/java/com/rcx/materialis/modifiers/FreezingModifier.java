@@ -17,7 +17,7 @@ public class FreezingModifier extends Modifier {
 		if (target.isAlive()) {
 			// set entity so the potion is attributed as a player kill
 			target.setLastHurtByMob(attacker);
-			target.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, 150 * level, 3));
+			target.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, 150 * level, Math.min(level, 2)));
 		}
 		return 0;
 	}
