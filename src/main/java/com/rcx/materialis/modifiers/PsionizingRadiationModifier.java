@@ -6,29 +6,26 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
+import slimeknights.tconstruct.library.tools.helper.BlockSideHitListener;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
@@ -40,7 +37,6 @@ import vazkii.psi.api.spell.SpellContext;
 import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 import vazkii.psi.common.item.ItemCAD;
-import vazkii.psi.common.item.tool.IPsimetalTool;
 
 public class PsionizingRadiationModifier extends Modifier {
 
@@ -84,14 +80,11 @@ public class PsionizingRadiationModifier extends Modifier {
 	}
 
 	@Override
-	public Boolean removeBlock(IModifierToolStack tool, int level, PlayerEntity player, World world, BlockPos pos, BlockState state, boolean canHarvest, boolean isEffective) {
+	public Boolean removeBlock(IModifierToolStack tool, int level, PlayerEntity player, World world, BlockPos pos, BlockState state, boolean canHarvest, boolean isEffective, boolean isAOEBlock) {
 		if (enabled && !tool.isBroken()) {
-			BlockRayTraceResult blockLocation = IPsimetalTool.raytraceFromEntity(player.getCommandSenderWorld(), player, RayTraceContext.FluidMode.NONE, player.getAttributes().getValue(ForgeMod.REACH_DISTANCE.get()));
 			//level 2 unlocks aoe harvest casting
-			if (!blockLocation.getBlockPos().equals(pos)) {
-				if (level < 2)
-					return null;
-				blockLocation = blockLocation.withPosition(pos);
+			if (isAOEBlock && level < 2) {
+				return null;
 			}
 			ItemStack toolStack = player.getMainHandItem();
 			if (tool instanceof ToolStack)
@@ -104,10 +97,11 @@ public class PsionizingRadiationModifier extends Modifier {
 			if (!playerCad.isEmpty()) {
 				ItemStack bullet = ISocketable.socketable(toolStack).getSelectedBullet();
 				final ItemStack finalTool = toolStack;
-				final BlockRayTraceResult finalLoc = blockLocation;
+				Direction sideHit = BlockSideHitListener.getSideHit(player);
+				Vector3d hit = new Vector3d((double)pos.getX() + 0.5D - sideHit.getStepX() * 0.5D, pos.getY() + 0.5D - sideHit.getStepY() * 0.5D, pos.getZ() + 0.5D - sideHit.getStepZ() * 0.5D);
 				ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 5, 10, 0.05F, (SpellContext context) -> {
 					context.tool = finalTool;
-					context.positionBroken = finalLoc;
+					context.positionBroken = new BlockRayTraceResult(hit, sideHit, pos, false);
 				});
 			}
 		}
@@ -115,17 +109,12 @@ public class PsionizingRadiationModifier extends Modifier {
 	}
 
 	@Override
-	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, LivingEntity target, float damageDealt, boolean isCritical, float cooldown) {
+	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, Hand hand, LivingEntity target, float damageDealt, boolean isCritical, float cooldown, boolean isExtraAttack) {
 		if (enabled && !tool.isBroken() && attacker instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) attacker;
 			//level 2 unlocks aoe attack casting
-			if (level < 2) {
-				EntityRayTraceResult hit = raytraceHitFromEntity(player, player.getAttributes().getValue(ForgeMod.REACH_DISTANCE.get()));
-				if (hit != null) {
-					if (!hit.getEntity().equals(target))
-						return 0;
-				} else
-					return 0;
+			if (isExtraAttack && level < 2) {
+				return 0;
 			}
 			ItemStack toolStack = player.getMainHandItem();
 			if (tool instanceof ToolStack)
@@ -153,20 +142,5 @@ public class PsionizingRadiationModifier extends Modifier {
 			ITextComponent componentName = ISocketable.getSocketedItemName(((ToolStack) tool).createStack(), "psimisc.none");
 			tooltip.add(new TranslationTextComponent("psimisc.spell_selected", componentName));
 		}
-	}
-
-	public static EntityRayTraceResult raytraceHitFromEntity(LivingEntity entity, double range) {
-		Vector3d start = entity.getEyePosition(1F);
-		Vector3d look = entity.getLookAngle();
-		Vector3d direction = start.add(look.x * range, look.y * range, look.z * range);
-		AxisAlignedBB bb = entity.getBoundingBox().expandTowards(look.x * range, look.y * range, look.z * range).expandTowards(1, 1, 1);
-		return ProjectileHelper.getEntityHitResult(entity.level, entity, start, direction, bb, e -> canHitEntity(entity, e));
-	}
-
-	public static boolean canHitEntity(LivingEntity attacker, Entity target) {
-		if (!target.isSpectator() && target instanceof LivingEntity && target.isPickable()) {
-			return !attacker.isPassengerOfSameVehicle(target) && !target.noPhysics && (attacker.getVehicle() == null || !attacker.getVehicle().equals(target));
-		}
-		return false;
 	}
 }

@@ -148,7 +148,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:create-328085:3278516")
     compileOnly fg.deobf("curse.maven:eidolon-429625:3157832")
     compileOnly fg.deobf("curse.maven:curios-309927:3275653")
-    compileOnly fg.deobf("curse.maven:psi-241665:3288535")
+    compileOnly fg.deobf("vazkii.psi:Psi:${psi_version}")
     compileOnly fg.deobf("curse.maven:quark-243121:3326040")
     compileOnly fg.deobf("curse.maven:arl-250363:3326041")
 
@@ -191,6 +191,10 @@ repositories {
     maven {
         name = "CurseMaven"
         url = "https://www.cursemaven.com/"
+    }
+    maven { // Psi
+        name = "jared maven"
+        url = "https://maven.blamejared.com/"
     }
 }
 

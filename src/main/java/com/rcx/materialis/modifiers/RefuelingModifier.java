@@ -1,6 +1,7 @@
 package com.rcx.materialis.modifiers;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.Hand;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 
@@ -16,7 +17,7 @@ public class RefuelingModifier extends Modifier {
 	}
 
 	@Override
-	public float applyLivingDamage(IModifierToolStack tool, int level, LivingEntity attacker, LivingEntity target, float baseDamage, float damage, boolean isCritical, boolean fullyCharged) {
+	public float applyLivingDamage(IModifierToolStack tool, int level, LivingEntity attacker, Hand hand, LivingEntity target, float baseDamage, float damage, boolean isCritical, boolean fullyCharged, boolean isExtraAttack) {
 		if (target.isAlive() && target.isOnFire()) {
 			target.setRemainingFireTicks(target.getRemainingFireTicks() + 10 * level);
 		}
