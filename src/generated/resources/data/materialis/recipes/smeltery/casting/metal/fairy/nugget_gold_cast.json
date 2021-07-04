@@ -4,7 +4,7 @@
     "tag": "tconstruct:casts/multi_use/nugget"
   },
   "fluid": {
-    "name": "materialis:molten_fairy",
+    "tag": "materialis:molten_fairy",
     "amount": 16
   },
   "result": "materialis:fairy_nugget",

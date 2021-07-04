@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "name": "materialis:molten_forgotten_metal",
+    "tag": "materialis:molten_forgotten_metal",
     "amount": 48
   },
   "result": {

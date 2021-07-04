@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/nugget"
   },
   "fluid": {
-    "name": "materialis:molten_psimetal",
+    "tag": "materialis:molten_psimetal",
     "amount": 16
   },
   "result": {

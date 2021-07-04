@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/ingot"
   },
   "fluid": {
-    "name": "materialis:molten_refined_glowstone",
+    "tag": "materialis:molten_refined_glowstone",
     "amount": 144
   },
   "result": {

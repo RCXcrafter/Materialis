@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/gear"
   },
   "fluid": {
-    "name": "materialis:molten_fairy",
+    "tag": "materialis:molten_fairy",
     "amount": 576
   },
   "result": {

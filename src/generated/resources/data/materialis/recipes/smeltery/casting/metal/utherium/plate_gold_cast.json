@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/plate"
   },
   "fluid": {
-    "name": "materialis:molten_utherium",
+    "tag": "materialis:molten_utherium",
     "amount": 144
   },
   "result": {

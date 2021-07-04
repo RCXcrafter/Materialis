@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/rod"
   },
   "fluid": {
-    "name": "materialis:molten_ebony_psimetal",
+    "tag": "materialis:molten_ebony_psimetal",
     "amount": 72
   },
   "result": {

@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/ingot"
   },
   "fluid": {
-    "name": "materialis:molten_quicksilver",
+    "tag": "materialis:molten_quicksilver",
     "amount": 144
   },
   "result": {

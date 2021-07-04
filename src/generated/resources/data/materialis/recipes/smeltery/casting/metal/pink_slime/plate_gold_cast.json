@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/plate"
   },
   "fluid": {
-    "name": "materialis:molten_pink_slime",
+    "tag": "materialis:molten_pink_slime",
     "amount": 144
   },
   "result": {

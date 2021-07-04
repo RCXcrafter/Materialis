@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/gear"
   },
   "fluid": {
-    "name": "materialis:molten_shadow_steel",
+    "tag": "materialis:molten_shadow_steel",
     "amount": 576
   },
   "result": {

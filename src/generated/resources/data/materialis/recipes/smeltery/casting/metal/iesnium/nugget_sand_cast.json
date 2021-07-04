@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "name": "materialis:molten_iesnium",
+    "tag": "materialis:molten_iesnium",
     "amount": 16
   },
   "result": {

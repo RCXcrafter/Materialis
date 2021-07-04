@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "name": "materialis:molten_ebony_psimetal",
+    "tag": "materialis:molten_ebony_psimetal",
     "amount": 576
   },
   "result": {

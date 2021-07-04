@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/coin"
   },
   "fluid": {
-    "name": "materialis:molten_ebony_psimetal",
+    "tag": "materialis:molten_ebony_psimetal",
     "amount": 48
   },
   "result": {

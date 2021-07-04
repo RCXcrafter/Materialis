@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/plate"
   },
   "fluid": {
-    "name": "materialis:molten_starmetal",
+    "tag": "materialis:molten_starmetal",
     "amount": 144
   },
   "result": {

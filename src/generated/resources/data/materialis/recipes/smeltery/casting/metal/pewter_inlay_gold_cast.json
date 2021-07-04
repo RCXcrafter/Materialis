@@ -13,7 +13,7 @@
     "tag": "materialis:casts/multi_use/inlay"
   },
   "fluid": {
-    "name": "tconstruct:molten_pewter",
+    "tag": "tconstruct:molten_pewter",
     "amount": 288
   },
   "result": {
