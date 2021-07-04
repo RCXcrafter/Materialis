@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:pink_slime"
+  "material": "materialis:pink_slime",
+  "leftover": {
+    "tag": "forge:ingots/pink_slime"
+  }
 }

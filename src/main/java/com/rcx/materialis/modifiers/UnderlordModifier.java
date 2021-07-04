@@ -1,11 +1,10 @@
 package com.rcx.materialis.modifiers;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.tools.helper.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 
 public class UnderlordModifier extends Modifier {
@@ -15,10 +14,10 @@ public class UnderlordModifier extends Modifier {
 	}
 
 	@Override
-	public float applyLivingDamage(IModifierToolStack tool, int level, LivingEntity attacker, Hand hand, LivingEntity target, float baseDamage, float damage, boolean isCritical, boolean fullyCharged, boolean isExtraAttack) {
-		if (target.getType().getRegistryName().getNamespace().equals("undergarden") && target.canChangeDimensions())
-			return super.applyLivingDamage(tool, level, attacker, hand, target, baseDamage, damage, isCritical, fullyCharged, isExtraAttack) * (1.0f + 0.5f * level);
-		return super.applyLivingDamage(tool, level, attacker, hand, target, baseDamage, damage, isCritical, fullyCharged, isExtraAttack);
+	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
+		if (context.getTarget().getType().getRegistryName().getNamespace().equals("undergarden") && context.getTarget().canChangeDimensions())
+			return damage * (1.0f + 0.5f * level);
+		return damage;
 	}
 
 	@Override

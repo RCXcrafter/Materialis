@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:shadow_steel",
+  "temperature": 1300,
+  "result": {
+    "fluid": "materialis:molten_shadow_steel",
+    "amount": 144
+  }
+}

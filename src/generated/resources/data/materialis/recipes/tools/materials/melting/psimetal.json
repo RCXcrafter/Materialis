@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:psimetal",
+  "temperature": 750,
+  "result": {
+    "fluid": "materialis:molten_psimetal",
+    "amount": 144
+  }
+}

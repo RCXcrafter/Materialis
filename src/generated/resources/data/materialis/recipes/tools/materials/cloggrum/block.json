@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:cloggrum"
+  "material": "materialis:cloggrum",
+  "leftover": {
+    "tag": "forge:ingots/cloggrum"
+  }
 }

@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 2,
   "sortOrder": 1,
-  "fluid": "materialis:molten_quicksilver",
-  "fluidPerUnit": 144,
   "textColor": "#A9C2C4",
-  "temperature": 400
+  "hidden": false
 }

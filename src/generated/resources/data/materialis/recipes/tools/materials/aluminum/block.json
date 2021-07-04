@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:aluminum"
+  "material": "materialis:aluminum",
+  "leftover": {
+    "tag": "forge:ingots/aluminum"
+  }
 }

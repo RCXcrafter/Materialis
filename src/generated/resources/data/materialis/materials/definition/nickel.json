@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 2,
   "sortOrder": 1,
-  "fluid": "tconstruct:molten_nickel",
-  "fluidPerUnit": 144,
   "textColor": "#F9EA98",
-  "temperature": 950
+  "hidden": false
 }

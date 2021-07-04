@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 2,
   "sortOrder": 2,
-  "fluid": "tconstruct:molten_osmium",
-  "fluidPerUnit": 144,
   "textColor": "#CDE8FD",
-  "temperature": 975
+  "hidden": false
 }

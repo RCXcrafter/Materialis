@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "tag": "materialis:molten_ivory_psimetal",
+    "amount": 144
+  },
+  "temperature": 1130,
+  "output": "materialis:ivory_psimetal"
+}

@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:quicksilver"
+  "material": "materialis:quicksilver",
+  "leftover": {
+    "tag": "forge:ingots/quicksilver"
+  }
 }

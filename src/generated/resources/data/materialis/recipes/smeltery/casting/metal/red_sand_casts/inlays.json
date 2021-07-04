@@ -3,7 +3,7 @@
   "conditions": [
     {
       "value": {
-        "tag": "materialis:inlays",
+        "tag": "forge:inlays",
         "type": "forge:tag_empty"
       },
       "type": "forge:not"
@@ -13,7 +13,7 @@
     "item": "tconstruct:blank_red_sand_cast"
   },
   "pattern": {
-    "tag": "materialis:inlays"
+    "tag": "forge:inlays"
   },
   "result": "materialis:inlay_red_sand_cast"
 }

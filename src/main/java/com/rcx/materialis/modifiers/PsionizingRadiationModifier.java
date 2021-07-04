@@ -5,20 +5,14 @@ import java.util.List;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -26,6 +20,8 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.BlockSideHitListener;
+import slimeknights.tconstruct.library.tools.helper.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.helper.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
@@ -80,28 +76,28 @@ public class PsionizingRadiationModifier extends Modifier {
 	}
 
 	@Override
-	public Boolean removeBlock(IModifierToolStack tool, int level, PlayerEntity player, World world, BlockPos pos, BlockState state, boolean canHarvest, boolean isEffective, boolean isAOEBlock) {
-		if (enabled && !tool.isBroken()) {
+	public Boolean removeBlock(IModifierToolStack tool, int level, ToolHarvestContext context) {
+		if (enabled && !tool.isBroken() && context.getPlayer() != null) {
 			//level 2 unlocks aoe harvest casting
-			if (isAOEBlock && level < 2) {
+			if (context.isAOE() && level < 2) {
 				return null;
 			}
-			ItemStack toolStack = player.getMainHandItem();
+			ItemStack toolStack = context.getPlayer().getMainHandItem();
 			if (tool instanceof ToolStack)
 				toolStack = ((ToolStack) tool).createStack();
 			if (!TinkerTags.Items.HARVEST_PRIMARY.getValues().contains(toolStack.getItem()))
 				return null;
-			PlayerData data = PlayerDataHandler.get(player);
-			ItemStack playerCad = PsiAPI.getPlayerCAD(player);
+			PlayerData data = PlayerDataHandler.get(context.getPlayer());
+			ItemStack playerCad = PsiAPI.getPlayerCAD(context.getPlayer());
 
 			if (!playerCad.isEmpty()) {
 				ItemStack bullet = ISocketable.socketable(toolStack).getSelectedBullet();
 				final ItemStack finalTool = toolStack;
-				Direction sideHit = BlockSideHitListener.getSideHit(player);
-				Vector3d hit = new Vector3d((double)pos.getX() + 0.5D - sideHit.getStepX() * 0.5D, pos.getY() + 0.5D - sideHit.getStepY() * 0.5D, pos.getZ() + 0.5D - sideHit.getStepZ() * 0.5D);
-				ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 5, 10, 0.05F, (SpellContext context) -> {
-					context.tool = finalTool;
-					context.positionBroken = new BlockRayTraceResult(hit, sideHit, pos, false);
+				Direction sideHit = BlockSideHitListener.getSideHit(context.getPlayer());
+				Vector3d hit = new Vector3d((double)context.getPos().getX() + 0.5D - sideHit.getStepX() * 0.5D, context.getPos().getY() + 0.5D - sideHit.getStepY() * 0.5D, context.getPos().getZ() + 0.5D - sideHit.getStepZ() * 0.5D);
+				ItemCAD.cast(context.getPlayer().getCommandSenderWorld(), context.getPlayer(), data, bullet, playerCad, 5, 10, 0.05F, (SpellContext spellContext) -> {
+					spellContext.tool = finalTool;
+					spellContext.positionBroken = new BlockRayTraceResult(hit, sideHit, context.getPos(), false);
 				});
 			}
 		}
@@ -109,27 +105,26 @@ public class PsionizingRadiationModifier extends Modifier {
 	}
 
 	@Override
-	public int afterLivingHit(IModifierToolStack tool, int level, LivingEntity attacker, Hand hand, LivingEntity target, float damageDealt, boolean isCritical, float cooldown, boolean isExtraAttack) {
-		if (enabled && !tool.isBroken() && attacker instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity) attacker;
+	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
+		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null && context.getLivingTarget() != null) {
 			//level 2 unlocks aoe attack casting
-			if (isExtraAttack && level < 2) {
+			if (context.isExtraAttack() && level < 2) {
 				return 0;
 			}
-			ItemStack toolStack = player.getMainHandItem();
+			ItemStack toolStack = context.getPlayerAttacker().getMainHandItem();
 			if (tool instanceof ToolStack)
 				toolStack = ((ToolStack) tool).createStack();
 			if (!TinkerTags.Items.MELEE_PRIMARY.getValues().contains(toolStack.getItem()))
 				return 0;
-			PlayerData data = PlayerDataHandler.get(player);
-			ItemStack playerCad = PsiAPI.getPlayerCAD(player);
+			PlayerData data = PlayerDataHandler.get(context.getPlayerAttacker());
+			ItemStack playerCad = PsiAPI.getPlayerCAD(context.getPlayerAttacker());
 
 			if (!playerCad.isEmpty()) {
 				ItemStack bullet = ISocketable.socketable(toolStack).getSelectedBullet();
 				final ItemStack finalTool = toolStack;
-				ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 5, 10, 0.05F, (SpellContext context) -> {
-					context.attackedEntity = target;
-					context.tool = finalTool;
+				ItemCAD.cast(context.getPlayerAttacker().getCommandSenderWorld(), context.getPlayerAttacker(), data, bullet, playerCad, 5, 10, 0.05F, (SpellContext spellContext) -> {
+					spellContext.attackedEntity = context.getLivingTarget();
+					spellContext.tool = finalTool;
 				});
 			}
 		}

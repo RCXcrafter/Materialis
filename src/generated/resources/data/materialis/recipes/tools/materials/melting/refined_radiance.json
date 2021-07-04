@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:refined_radiance",
+  "temperature": 1300,
+  "result": {
+    "fluid": "materialis:molten_refined_radiance",
+    "amount": 144
+  }
+}

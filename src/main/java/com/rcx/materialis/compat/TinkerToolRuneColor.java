@@ -41,6 +41,6 @@ public class TinkerToolRuneColor implements ICapabilityProvider, IRuneColorProvi
 		IModDataReadOnly persistentData = ToolStack.from(stack).getPersistentData();
 		if (persistentData.contains(RunedModifier.RUNE_COLOR, NBT.TAG_INT))
 			return persistentData.getInt(RunedModifier.RUNE_COLOR);
-		return -1;
+		return 16;
 	}
 }

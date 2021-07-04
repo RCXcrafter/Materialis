@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:froststeel"
+  "material": "materialis:froststeel",
+  "leftover": {
+    "tag": "forge:ingots/froststeel"
+  }
 }

@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 2,
   "sortOrder": 3,
-  "fluid": "materialis:molten_psimetal",
-  "fluidPerUnit": 144,
   "textColor": "#B6A9E7",
-  "temperature": 750
+  "hidden": false
 }

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:utherium",
+  "temperature": 1070,
+  "result": {
+    "fluid": "materialis:molten_utherium",
+    "amount": 144
+  }
+}

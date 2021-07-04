@@ -26,9 +26,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
 
 	//eidolon stuff
-	public static final INamedTag<Item> INLAYS = ItemTags.bind(Materialis.modID + ":inlays");
-	public static final INamedTag<Item> PEWTER_INLAY = ItemTags.bind(Materialis.modID + ":inlays/pewter");
-	public static final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind(Materialis.modID + ":inlays/arcane_gold");
+	public static final INamedTag<Item> INLAYS = ItemTags.bind("forge:inlays");
+	public static final INamedTag<Item> PEWTER_INLAY = ItemTags.bind("forge:inlays/pewter");
+	public static final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind("forge:inlays/arcane_gold");
 
 	//astral sorcery stuff
 	public static final INamedTag<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");

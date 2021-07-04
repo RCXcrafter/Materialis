@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 3,
   "sortOrder": 3,
-  "fluid": "materialis:molten_ebony_psimetal",
-  "fluidPerUnit": 144,
   "textColor": "#3D3838",
-  "temperature": 1130
+  "hidden": false
 }

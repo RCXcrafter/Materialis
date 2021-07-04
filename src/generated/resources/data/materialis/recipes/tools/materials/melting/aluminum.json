@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:aluminum",
+  "temperature": 425,
+  "result": {
+    "fluid": "tconstruct:molten_aluminum",
+    "amount": 144
+  }
+}

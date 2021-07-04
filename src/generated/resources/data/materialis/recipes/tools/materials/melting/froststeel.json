@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:froststeel",
+  "temperature": 860,
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 144
+  }
+}

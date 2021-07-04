@@ -3,22 +3,21 @@
   "conditions": [
     {
       "value": {
-        "tag": "materialis:inlays/arcane_gold",
+        "tag": "forge:inlays/pewter",
         "type": "forge:tag_empty"
       },
       "type": "forge:not"
     }
   ],
   "cast": {
-    "tag": "materialis:casts/single_use/inlay"
+    "tag": "materialis:casts/multi_use/inlay"
   },
-  "cast_consumed": true,
   "fluid": {
-    "name": "materialis:molten_arcane_gold",
+    "name": "tconstruct:molten_pewter",
     "amount": 288
   },
   "result": {
-    "tag": "materialis:inlays/arcane_gold"
+    "tag": "forge:inlays/pewter"
   },
-  "cooling_time": 79
+  "cooling_time": 65
 }

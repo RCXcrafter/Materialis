@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 3,
   "sortOrder": 2,
-  "fluid": "materialis:molten_arcane_gold",
-  "fluidPerUnit": 144,
   "textColor": "#FFC069",
-  "temperature": 670
+  "hidden": false
 }

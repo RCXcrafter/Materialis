@@ -1,8 +1,10 @@
 package com.rcx.materialis.modifiers;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Hand;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.DamageSource;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.tools.helper.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 
 public class QuenchingModifier extends Modifier {
@@ -17,12 +19,21 @@ public class QuenchingModifier extends Modifier {
 	}
 
 	@Override
-	public float applyLivingDamage(IModifierToolStack tool, int level, LivingEntity attacker, Hand hand, LivingEntity target, float baseDamage, float damage, boolean isCritical, boolean fullyCharged, boolean isExtraAttack) {
-		float bonus = 0.0f;
-		if (target.isAlive() && target.isOnFire()) {
-			bonus = (target.getRemainingFireTicks() * level) / 30.0f;
-			target.clearFire();
+	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
+		if (context.getTarget().isAlive() && context.getTarget().isOnFire()) {
+			float bonus = 0.0f;
+			bonus = (context.getTarget().getRemainingFireTicks() * level) / 30.0f;
+			context.getTarget().clearFire();
+
+			DamageSource source;
+			PlayerEntity player = context.getPlayerAttacker();
+			if (player != null) {
+				source = DamageSource.playerAttack(player);
+			} else {
+				source = DamageSource.mobAttack(context.getAttacker());
+			}
+			ToolAttackUtil.attackEntitySecondary(source, bonus, context.getTarget(), context.getLivingTarget(), true);
 		}
-		return super.applyLivingDamage(tool, level, attacker, hand, target, baseDamage, damage, isCritical, fullyCharged, isExtraAttack) + bonus;
+		return 0;
 	}
 }

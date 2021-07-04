@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:neptunium",
+  "temperature": 1400,
+  "result": {
+    "fluid": "materialis:molten_neptunium",
+    "amount": 144
+  }
+}

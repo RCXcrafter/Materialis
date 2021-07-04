@@ -1,11 +1,6 @@
 package com.rcx.materialis.datagen;
 
-import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
-
-import javax.annotation.Nullable;
-
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
@@ -19,13 +14,9 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.ITag.INamedTag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags.Fluids;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
@@ -35,33 +26,33 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
-import net.minecraftforge.common.crafting.conditions.TrueCondition;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 import slimeknights.mantle.recipe.SizedIngredient;
-import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.fluids.TinkerFluids;
-import slimeknights.tconstruct.library.materials.MaterialId;
-import slimeknights.tconstruct.library.materials.MaterialValues;
+import slimeknights.tconstruct.library.data.recipe.ICommonRecipeHelper;
+import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
+import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
+import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
+import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.casting.material.CompositeCastingRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.material.MaterialRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.melting.MaterialMeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.molding.MoldingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.OverslimeModifierRecipeBuilder;
-import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
-public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder {
+public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, ICommonRecipeHelper {
 
 	public MaterialisRecipes(DataGenerator gen) {
 		super(gen);
+	}
+
+	@Override
+	public String getModId() {
+		return Materialis.modID;
 	}
 
 	public void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -72,138 +63,167 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		String castingFolder = "smeltery/casting/metal/";
 		String meltingFolder = "smeltery/melting/metal/";
 		String alloyFolder = "smeltery/alloys/";
+		String materialFolder = "tools/materials/";
 		String compositeFolder = "tools/parts/composite/";
 		String modifierFolder = "tools/modifiers/";
 
-		addMetalCastingRecipe(consumer, MaterialisResources.FAIRY_FLUID.FLUID, MaterialisResources.FAIRY_INGOT.BLOCK.get(), MaterialisResources.FAIRY_INGOT.INGOT.get(), MaterialisResources.FAIRY_INGOT.NUGGET.get(), castingFolder, "fairy");
-		addMetalMelting(consumer, MaterialisResources.FAIRY_FLUID.FLUID.get(), "fairy", false, meltingFolder, false);
-		//addMetalCastingRecipe(consumer, MaterialisResources.RED_AURUM_FLUID.FLUID, MaterialisResources.RED_AURUM_INGOT.BLOCK.get(), MaterialisResources.RED_AURUM_INGOT.INGOT.get(), MaterialisResources.RED_AURUM_INGOT.NUGGET.get(), metalFolder, "red_aurum");
-		//addMetalMelting(consumer, MaterialisResources.RED_AURUM_FLUID.FLUID.get(), "red_aurum", false, metalFolder, false);
-		//addMetalCastingRecipe(consumer, MaterialisResources.DRULLOY_FLUID.FLUID, MaterialisResources.DRULLOY_INGOT.BLOCK.get(), MaterialisResources.DRULLOY_INGOT.INGOT.get(), MaterialisResources.DRULLOY_INGOT.NUGGET.get(), metalFolder, "drulloy");
-		//addMetalMelting(consumer, MaterialisResources.DRULLOY_FLUID.FLUID.get(), "drulloy", false, metalFolder, false);
-		//addMetalCastingRecipe(consumer, MaterialisResources.POKEFENNIUM_FLUID.FLUID, MaterialisResources.POKEFENNIUM_INGOT.BLOCK.get(), MaterialisResources.POKEFENNIUM_INGOT.INGOT.get(), MaterialisResources.POKEFENNIUM_INGOT.NUGGET.get(), metalFolder, "pokefennium");
-		//addMetalMelting(consumer, MaterialisResources.POKEFENNIUM_FLUID.FLUID.get(), "pokefennium", false, metalFolder, false);
-		//addMetalCastingRecipe(consumer, MaterialisResources.ALUMITE_FLUID.FLUID, MaterialisResources.ALUMITE_INGOT.BLOCK.get(), MaterialisResources.ALUMITE_INGOT.INGOT.get(), MaterialisResources.ALUMITE_INGOT.NUGGET.get(), metalFolder, "alumite");
-		//addMetalMelting(consumer, MaterialisResources.ALUMITE_FLUID.FLUID.get(), "alumite", false, metalFolder, false);
+		metalCasting(consumer, MaterialisResources.FAIRY_FLUID.FLUID, MaterialisResources.FAIRY_INGOT.BLOCK.get(), MaterialisResources.FAIRY_INGOT.INGOT.get(), MaterialisResources.FAIRY_INGOT.NUGGET.get(), castingFolder, "fairy");
+		metalMelting(consumer, MaterialisResources.FAIRY_FLUID.FLUID.get(), "fairy", false, meltingFolder, false);
+		//metalCasting(consumer, MaterialisResources.RED_AURUM_FLUID.FLUID, MaterialisResources.RED_AURUM_INGOT.BLOCK.get(), MaterialisResources.RED_AURUM_INGOT.INGOT.get(), MaterialisResources.RED_AURUM_INGOT.NUGGET.get(), metalFolder, "red_aurum");
+		//metalMelting(consumer, MaterialisResources.RED_AURUM_FLUID.FLUID.get(), "red_aurum", false, metalFolder, false);
+		//metalCasting(consumer, MaterialisResources.DRULLOY_FLUID.FLUID, MaterialisResources.DRULLOY_INGOT.BLOCK.get(), MaterialisResources.DRULLOY_INGOT.INGOT.get(), MaterialisResources.DRULLOY_INGOT.NUGGET.get(), metalFolder, "drulloy");
+		//metalMelting(consumer, MaterialisResources.DRULLOY_FLUID.FLUID.get(), "drulloy", false, metalFolder, false);
+		//metalCasting(consumer, MaterialisResources.POKEFENNIUM_FLUID.FLUID, MaterialisResources.POKEFENNIUM_INGOT.BLOCK.get(), MaterialisResources.POKEFENNIUM_INGOT.INGOT.get(), MaterialisResources.POKEFENNIUM_INGOT.NUGGET.get(), metalFolder, "pokefennium");
+		//metalMelting(consumer, MaterialisResources.POKEFENNIUM_FLUID.FLUID.get(), "pokefennium", false, metalFolder, false);
+		//metalCasting(consumer, MaterialisResources.ALUMITE_FLUID.FLUID, MaterialisResources.ALUMITE_INGOT.BLOCK.get(), MaterialisResources.ALUMITE_INGOT.INGOT.get(), MaterialisResources.ALUMITE_INGOT.NUGGET.get(), metalFolder, "alumite");
+		//metalMelting(consumer, MaterialisResources.ALUMITE_FLUID.FLUID.get(), "alumite", false, metalFolder, false);
 
-		AlloyRecipeBuilder.alloy(MaterialisResources.FAIRY_FLUID.FLUID.get(), MaterialValues.INGOT)
-		.addInput(TinkerFluids.moltenGold.get(), MaterialValues.INGOT)
-		.addInput(TinkerFluids.liquidSoul.get(), MaterialValues.GLASS_BLOCK)
+		AlloyRecipeBuilder.alloy(MaterialisResources.FAIRY_FLUID.FLUID.get(), FluidValues.INGOT)
+		.addInput(TinkerFluids.moltenGold.get(), FluidValues.INGOT)
+		.addInput(TinkerFluids.liquidSoul.get(), FluidValues.GLASS_BLOCK)
 		.addInput(Fluids.MILK, 1000)
-		.build(consumer, prefixR(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
+		.build(consumer, prefix(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
 
 		//create stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), "refined_radiance", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), "refined_radiance", false, meltingFolder, true);
-		addMetalOptionalCasting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), "shadow_steel", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), "shadow_steel", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID, "refined_radiance", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), "refined_radiance", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID, "shadow_steel", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), "shadow_steel", false, meltingFolder, true);
 
 		//eidolon stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), "arcane_gold", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), "arcane_gold", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID, "arcane_gold", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), "arcane_gold", false, meltingFolder, true);
 
-		addCastCastingRecipe(withCondition(consumer, tagConditionDomain("materialis", "inlays")), MaterialisItemTags.INLAYS,  MaterialisResources.INLAY_CAST,  castingFolder);
-		addOptionalCastingWithCastDomain(consumer, TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays", "inlay", "pewter", castingFolder, "materialis");
-		addOptionalCastingWithCastDomain(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), MaterialValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays", "inlay", "arcane_gold", castingFolder, "materialis");
+		castCreation(withCondition(consumer, tagConditionDomain("forge", "inlays")), MaterialisItemTags.INLAYS, MaterialisResources.INLAY_CAST, castingFolder);
+		tagCasting(consumer, TinkerFluids.moltenPewter, FluidValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays/pewter", castingFolder + "pewter_inlay", true);
+		tagCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.FLUID, FluidValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays/arcane_gold", castingFolder + "arcane_gold_inlay", true);
 
-		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.PEWTER_INLAY), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/pewter")), location(meltingFolder + "pewter_inlay"));
-		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.ARCANE_GOLD_INLAY), MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), MaterialValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("materialis", "inlays/arcane_gold")), location(meltingFolder + "arcane_gold_inlay"));
+		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.PEWTER_INLAY), TinkerFluids.moltenPewter.get(), FluidValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("forge", "inlays/pewter")), modResource(meltingFolder + "pewter_inlay"));
+		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.ARCANE_GOLD_INLAY), MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("forge", "inlays/arcane_gold")), modResource(meltingFolder + "arcane_gold_inlay"));
 
-		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("eidolon", "pewter_blend")), TinkerFluids.moltenPewter.get(), MaterialValues.INGOT, 1.0f).build(withCondition(consumer, new ModLoadedCondition("eidolon")), location(meltingFolder + "pewter_blend"));
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("eidolon", "pewter_blend")), TinkerFluids.moltenPewter.get(), FluidValues.INGOT, 1.0f).build(withCondition(consumer, new ModLoadedCondition("eidolon")), modResource(meltingFolder + "pewter_blend"));
 
 		//aquaculture stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), "neptunium", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), "neptunium", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.FLUID, "neptunium", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), "neptunium", false, meltingFolder, true);
 
 		//mystical world stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), "quicksilver", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), "quicksilver", true, meltingFolder, true, MaterialisByproduct.ZINC, MaterialisByproduct.TIN);
+		metalTagCasting(consumer, MaterialisResources.QUICKSILVER_FLUID.FLUID, "quicksilver", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), "quicksilver", true, meltingFolder, true, MaterialisByproduct.ZINC, MaterialisByproduct.TIN);
 
 		//astral sorcery stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.STARMETAL_FLUID.FLUID.get(), "starmetal", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.STARMETAL_FLUID.FLUID.get(), "starmetal", false, meltingFolder, true); //the ore recipe is defined manually
+		metalTagCasting(consumer, MaterialisResources.STARMETAL_FLUID.FLUID, "starmetal", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.STARMETAL_FLUID.FLUID.get(), "starmetal", false, meltingFolder, true); //the ore recipe is defined manually
 
 		//industrial foregoing stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), "pink_slime", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), "pink_slime", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.PINK_SLIME_FLUID.FLUID, "pink_slime", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), "pink_slime", false, meltingFolder, true);
 
 		Consumer<IFinishedRecipe> industrialForegoingLoaded = withCondition(consumer, new ModLoadedCondition("industrialforegoing"));
-		AlloyRecipeBuilder.alloy(MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), MaterialValues.INGOT)
-		.addInput(TinkerFluids.moltenGold.get(), MaterialValues.INGOT * 2)
-		.addInput(TinkerFluids.moltenIron.get(), MaterialValues.INGOT * 2)
+		AlloyRecipeBuilder.alloy(MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), FluidValues.INGOT)
+		.addInput(TinkerFluids.moltenGold.get(), FluidValues.INGOT * 2)
+		.addInput(TinkerFluids.moltenIron.get(), FluidValues.INGOT * 2)
 		.addInput(MaterialisFluidTags.LIQUID_PINK_SLIME, 1000)
-		.build(industrialForegoingLoaded, prefixR(MaterialisResources.PINK_SLIME_FLUID.FLUID, alloyFolder));
+		.build(industrialForegoingLoaded, prefix(MaterialisResources.PINK_SLIME_FLUID.FLUID, alloyFolder));
 
 		CookingRecipeBuilder.blasting(Ingredient.of(MaterialisItemTags.PINK_SLIME), MaterialisResources.PINK_SLIME_CRYSTAL.get(), 1.0f, 400)
 		.unlockedBy("has_item", has(MaterialisItemTags.PINK_SLIME))
 		.save(industrialForegoingLoaded, new ResourceLocation(Materialis.modID, "pink_slime_crystal_blasting"));
 
 		//undergarden stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), "cloggrum", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), "cloggrum", true, meltingFolder, true, MaterialisByproduct.FROSTSTEEL);
-		addMetalOptionalCasting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", true, meltingFolder, true, MaterialisByproduct.UTHERIUM);
-		addMetalOptionalCasting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", true, meltingFolder, true, MaterialisByproduct.REGALIUM);
-		addMetalOptionalCasting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", false, meltingFolder, true);
-		addMetalOptionalCasting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, meltingFolder, true, MaterialisByproduct.CLOGGRUM);
-		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), MaterialValues.NUGGET / 4, 1.0f).build(withCondition(consumer, new ModLoadedCondition("undergarden")), location(meltingFolder + "utheric_shard"));
+		metalTagCasting(consumer, MaterialisResources.CLOGGRUM_FLUID.FLUID, "cloggrum", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), "cloggrum", true, meltingFolder, true, MaterialisByproduct.FROSTSTEEL);
+		metalTagCasting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID, "froststeel", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", true, meltingFolder, true, MaterialisByproduct.UTHERIUM);
+		metalTagCasting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID, "utherium", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", true, meltingFolder, true, MaterialisByproduct.REGALIUM);
+		metalTagCasting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID, "forgotten_metal", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID, "regalium", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, meltingFolder, true, MaterialisByproduct.CLOGGRUM);
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 4, 1.0f).build(withCondition(consumer, new ModLoadedCondition("undergarden")), modResource(meltingFolder + "utheric_shard"));
 
 		//mekanism stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", false, meltingFolder, true);
-		addMetalOptionalCasting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID, "refined_obsidian", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID, "refined_glowstone", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", false, meltingFolder, true);
 
 		//psi stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", false, meltingFolder, true);
-		addMetalOptionalCasting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), "ebony_psimetal", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), "ebony_psimetal", false, meltingFolder, true);
-		addMetalOptionalCasting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID, "psimetal", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID, "ebony_psimetal", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), "ebony_psimetal", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID, "ivory_psimetal", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", false, meltingFolder, true);
 
 		//occultism stuff
-		addMetalOptionalCasting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID.get(), "iesnium", castingFolder);
-		addMetalMelting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID.get(), "iesnium", true, meltingFolder, true, MaterialisByproduct.SILVER);
+		metalTagCasting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID, "iesnium", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID.get(), "iesnium", true, meltingFolder, true, MaterialisByproduct.SILVER);
 
 
 
 		//materials
-		addIngotMaterialRepairs(consumer, MaterialisMaterials.fairy);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.brass);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.aluminum);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.nickel);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.platinum);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.uranium);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.tungsten);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.invar);
-		addMaterialRepairs(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedRadiance);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.shadowSteel);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pewter);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.arcaneGold);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.neptunium);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.quicksilver);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.starmetal);
-		addMaterialRepairs(withCondition(consumer, tagCondition("plastic")), MaterialisMaterials.plastic, Ingredient.of(ItemTags.bind("forge:plastic")), 1, 1);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.pinkSlime);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.cloggrum);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.froststeel);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.utherium);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.forgottenMetal);
-		CompositeCastingRecipeBuilder.table(MaterialisMaterials.cloggrum, MaterialisMaterials.forgottenMetal)
-		.setFluid(new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), MaterialValues.INGOT))
-		.build(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), location(compositeFolder + "forgotten_metal"));
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.osmium);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedObsidian);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.refinedGlowstone);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.psimetal);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ebonyPsimetal);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.ivoryPsimetal);
-		addConditionalIngotMaterialRepairs(consumer, MaterialisMaterials.iesnium);
+		metalMaterialRecipe(consumer, MaterialisMaterials.fairy, materialFolder, "fairy", false);
+		metalMaterialRecipe(consumer, MaterialisMaterials.brass, materialFolder, "brass", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.aluminum, materialFolder, "aluminum", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.nickel, materialFolder, "nickel", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.platinum, materialFolder, "platinum", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.uranium, materialFolder, "uranium", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.tungsten, materialFolder, "tungsten", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.invar, materialFolder, "invar", true);
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1, materialFolder + "rose_quartz");
+		metalMaterialRecipe(consumer, MaterialisMaterials.refinedRadiance, materialFolder, "refined_radiance", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.shadowSteel, materialFolder, "shadow_steel", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.pewter, materialFolder, "pewter", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.arcaneGold, materialFolder, "arcane_gold", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.neptunium, materialFolder, "neptunium", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.quicksilver, materialFolder, "quicksilver", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.starmetal, materialFolder, "starmetal", true);
+		materialRecipe(withCondition(consumer, tagCondition("plastic")), MaterialisMaterials.plastic, Ingredient.of(ItemTags.bind("forge:plastic")), 1, 1, materialFolder + "plastic");
+		metalMaterialRecipe(consumer, MaterialisMaterials.pinkSlime, materialFolder, "pink_slime", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.cloggrum, materialFolder, "cloggrum", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.froststeel, materialFolder, "froststeel", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.utherium, materialFolder, "utherium", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.forgottenMetal, materialFolder, "forgotten_metal", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.osmium, materialFolder, "osmium", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.refinedObsidian, materialFolder, "refined_obsidian", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.refinedGlowstone, materialFolder, "refined_glowstone", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.psimetal, materialFolder, "psimetal", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.ebonyPsimetal, materialFolder, "ebony_psimetal", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.ivoryPsimetal, materialFolder, "ivory_psimetal", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.iesnium, materialFolder, "iesnium", true);
+
+		//material casting
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.fairy, MaterialisResources.FAIRY_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.brass, TinkerFluids.moltenBrass, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.aluminum, TinkerFluids.moltenAluminum, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.nickel, TinkerFluids.moltenNickel, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.platinum, TinkerFluids.moltenPlatinum, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.uranium, TinkerFluids.moltenUranium, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.tungsten, TinkerFluids.moltenTungsten, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.invar, TinkerFluids.moltenInvar, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.refinedRadiance, MaterialisResources.REFINED_RADIANCE_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.shadowSteel, MaterialisResources.SHADOW_STEEL_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.pewter, TinkerFluids.moltenPewter, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.arcaneGold, MaterialisResources.ARCANE_GOLD_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.neptunium, MaterialisResources.NEPTUNIUM_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.quicksilver, MaterialisResources.QUICKSILVER_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.starmetal, MaterialisResources.STARMETAL_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.pinkSlime, MaterialisResources.PINK_SLIME_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.cloggrum, MaterialisResources.CLOGGRUM_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.froststeel, MaterialisResources.FROSTSTEEL_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.utherium, MaterialisResources.UTHERIUM_FLUID.OBJECT, materialFolder);
+		addCompositeMaterialRecipe(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), MaterialisMaterials.cloggrum, MaterialisMaterials.forgottenMetal, MaterialisResources.FORGOTTEN_FLUID.OBJECT, FluidValues.INGOT, false, compositeFolder);
+		MaterialMeltingRecipeBuilder.material(MaterialisMaterials.forgottenMetal, new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), FluidValues.INGOT))
+		.build(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), modResource(materialFolder + "melting/forgotten_metal"));
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.osmium, TinkerFluids.moltenOsmium, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.refinedObsidian, MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.refinedGlowstone, MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.psimetal, MaterialisResources.PSIMETAL_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.ebonyPsimetal, MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.ivoryPsimetal, MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT, materialFolder);
+		addMaterialMeltingCasting(consumer, MaterialisMaterials.iesnium, MaterialisResources.IESNIUM_FLUID.OBJECT, materialFolder);
 
 
 
@@ -218,10 +238,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setAbilitySlots(1)
 		.setTools(TinkerTags.Items.MELEE)
 		.setGroup("materialis:eidolon")
-		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefixR(MaterialisModifiers.reapingModifier, modifierFolder));
+		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier, modifierFolder));
 
 		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
-		.build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefixR(TinkerModifiers.overslime, modifierFolder));
+		.build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefix(TinkerModifiers.overslime, modifierFolder));
 
 		RuneModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get())
 		.addInput(getTag("quark", "runes"))
@@ -230,7 +250,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirements(ModifierMatch.entry(TinkerModifiers.shiny.get()))
 		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
 		.setGroup("materialis:quark")
-		.build(withCondition(consumer, new ModLoadedCondition("quark")), prefixR(MaterialisModifiers.runedModifier, modifierFolder));
+		.build(withCondition(consumer, new ModLoadedCondition("quark")), prefix(MaterialisModifiers.runedModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
@@ -283,7 +303,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(consumer, new ResourceLocation(Materialis.modID, ingot.getRegistryName().getPath() + "_to_nugget"));
 	}
 
-	private void addIngotMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material) {
+	/*private void addIngotMaterialRepairs(Consumer<IFinishedRecipe> consumer, MaterialId material) {
 		String name = material.getPath();
 		addMaterialRepairs(consumer, material, Ingredient.of(ItemTags.bind("forge:nuggets/" + name)), 1, 9, name + "/nugget");
 		addMaterialRepairs(consumer, material, Ingredient.of(ItemTags.bind("forge:ingots/" + name)), 1, 1, name + "/ingot");
@@ -307,391 +327,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setValue(value)
 		.setNeeded(needed)
 		.build(consumer, location("tools/materials/" + saveName));
-	}
+	}*/
 
-	/* Helpers */ //stolen from tinkers construct
-
-	/**
-	 * Base logic for {@link  #addMetalMelting(Consumer, Fluid, String, boolean, String, boolean, MaterialisByproduct...)}
-	 * @param consumer    Recipe consumer
-	 * @param fluid       Fluid to melt into
-	 * @param amount      Amount to melt into
-	 * @param tagName     Input tag
-	 * @param factor      Melting factor
-	 * @param recipePath  Recipe output name
-	 * @param isOptional  If true, recipe is optional
-	 */
-	private static void addMetalBase(Consumer<IFinishedRecipe> consumer, Fluid fluid, int amount, String tagName, float factor, String recipePath, boolean isOptional) {
-		Consumer<IFinishedRecipe> wrapped = isOptional ? withCondition(consumer, tagCondition(tagName)) : consumer;
-		MeltingRecipeBuilder.melting(Ingredient.of(getTag("forge", tagName)), fluid, amount, factor)
-		.build(wrapped, location(recipePath));
-	}
-
-	/**
-	 * Adds a basic ingot, nugget, block, ore melting recipe set
-	 * @param consumer    Recipe consumer
-	 * @param fluid       Fluid result
-	 * @param name        Resource name for tags
-	 * @param hasOre      If true, adds recipe for melting the ore
-	 * @param folder      Recipe folder
-	 * @param isOptional  If true, this recipe is entirely optional
-	 * @param byproducts  List of byproduct options for this metal, first one that is present will be used
-	 */
-	private void addMetalMelting(Consumer<IFinishedRecipe> consumer, Fluid fluid, String name, boolean hasOre, String folder, boolean isOptional, MaterialisByproduct... byproducts) {
-		String prefix = folder + "/" + name + "/";
-		addMetalBase(consumer, fluid, MaterialValues.METAL_BLOCK, "storage_blocks/" + name, 3.0f, prefix + "block", isOptional);
-		addMetalBase(consumer, fluid, MaterialValues.INGOT, "ingots/" + name, 1.0f, prefix + "ingot", isOptional);
-		addMetalBase(consumer, fluid, MaterialValues.NUGGET, "nuggets/" + name, 1 / 3f, prefix + "nugget", isOptional);
-		if (hasOre) {
-			addOreMelting(consumer, fluid, MaterialValues.INGOT, "ores/" + name, 1.5f, prefix + "ore", isOptional, byproducts);
-		}
-		// dust is always optional, as we don't do dust
-		addMetalBase(consumer, fluid, MaterialValues.INGOT,      "dusts/" + name,       0.75f, prefix + "dust",       true);
-		addMetalBase(consumer, fluid, MaterialValues.INGOT,      "plates/" + name,      1.0f,  prefix + "plates",     true);
-		addMetalBase(consumer, fluid, MaterialValues.INGOT * 4,  "gears/" + name,       2.0f,  prefix + "gear",       true);
-		addMetalBase(consumer, fluid, MaterialValues.NUGGET * 3, "coins/" + name,       2/3f,  prefix + "coin",       true);
-		addMetalBase(consumer, fluid, MaterialValues.INGOT / 2,  "rods/" + name,        1/5f,  prefix + "rod",        true);
-		addMetalBase(consumer, fluid, MaterialValues.INGOT,      "sheetmetals/" + name, 1.0f,  prefix + "sheetmetal", true);
-	}
-
-	/**
-	 * Base logic for {@link  #addMetalMelting(Consumer, Fluid, String, boolean, String, boolean, MaterialisByproduct...)}
-	 * @param consumer    Recipe consumer
-	 * @param fluid       Fluid to melt into
-	 * @param amount      Amount to melt into
-	 * @param tagName     Input tag
-	 * @param factor      Melting factor
-	 * @param recipePath  Recipe output name
-	 * @param isOptional  If true, recipe is optional
-	 * @param byproducts  List of byproduct options for this metal, first one that is present will be used
-	 */
-	private void addOreMelting(Consumer<IFinishedRecipe> consumer, Fluid fluid, int amount, String tagName, float factor, String recipePath, boolean isOptional, MaterialisByproduct... byproducts) {
-		Consumer<IFinishedRecipe> wrapped = isOptional ? withCondition(consumer, tagCondition(tagName)) : consumer;
-		Supplier<MeltingRecipeBuilder> supplier = () -> MeltingRecipeBuilder.melting(Ingredient.of(getTag("forge", tagName)), fluid, amount, factor).setOre();
-		ResourceLocation location = location(recipePath);
-
-		// if no byproducts, just build directly
-		if (byproducts.length == 0) {
-			supplier.get().build(wrapped, location);
-			// if first option is always present, only need that one
-		} else if (byproducts[0].isAlwaysPresent()) {
-			supplier.get()
-			.addByproduct(new FluidStack(byproducts[0].getFluid(), byproducts[0].getNuggets()))
-			.build(wrapped, location);
-		} else {
-			// multiple options, will need a conditonal recipe
-			ConditionalRecipe.Builder builder = ConditionalRecipe.builder();
-			boolean alwaysPresent = false;
-			for (MaterialisByproduct byproduct : byproducts) {
-				builder.addCondition(tagCondition("ingots/" + byproduct.getName()));
-				builder.addRecipe(supplier.get().addByproduct(new FluidStack(byproduct.getFluid(), byproduct.getNuggets()))::build);
-				// found an always present byproduct? we are done
-				alwaysPresent = byproduct.isAlwaysPresent();
-				if (alwaysPresent) {
-					break;
-				}
-			}
-			// not always present? add a recipe with no byproducts as a final fallback
-			if (!alwaysPresent) {
-				builder.addCondition(TrueCondition.INSTANCE);
-				builder.addRecipe(supplier.get()::build);
-			}
-			builder.build(wrapped, location);
-		}
-	}
-
-
-	/* Casting */
-
-	/** Gets the temperature for a fluid in celsius */
-	private int getTemperature(Supplier<? extends Fluid> supplier) {
-		return supplier.get().getAttributes().getTemperature() - 300;
-	}
-
-	/**
-	 * Adds a casting recipe for a block
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Input fluid
-	 * @param amount    Input amount
-	 * @param block     Output block
-	 * @param location  Output name
-	 */
-	private void addBlockCastingRecipe(Consumer<IFinishedRecipe> consumer, Supplier<? extends Fluid> fluid, int amount, IItemProvider block, String location) {
-		ItemCastingRecipeBuilder.basinRecipe(block)
-		.setFluidAndTime(new FluidStack(fluid.get(), amount))
-		.build(consumer, location(location));
-	}
-
-	/**
-	 * Adds a casting recipe for a block
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Input fluid
-	 * @param amount    Input amount
-	 * @param block     Output block
-	 * @param location  Output name
-	 */
-	private void addBlockCastingRecipe(Consumer<IFinishedRecipe> consumer, ITag<Fluid> fluid, int temperature, int amount, IItemProvider block, String location) {
-		ItemCastingRecipeBuilder.basinRecipe(block)
-		.setFluidAndTime(temperature, fluid, amount)
-		.build(consumer, location(location));
-	}
-
-	/**
-	 * Adds a recipe to create the given seared block using molten clay on stone
-	 * @param consumer  Recipe consumer
-	 * @param block     Output block
-	 * @param cast      Cast item
-	 * @param location  Recipe location
-	 */
-	private static void addSearedCastingRecipe(Consumer<IFinishedRecipe> consumer, IItemProvider block, Ingredient cast, String location) {
-		addSearedCastingRecipe(consumer, block, cast, MaterialValues.SLIMEBALL * 2, location);
-	}
-
-	/**
-	 * Adds a recipe to create the given seared slab block using molten clay on stone
-	 * @param consumer  Recipe consumer
-	 * @param block     Output block
-	 * @param cast      Cast item
-	 * @param location  Recipe location
-	 */
-	private static void addSearedSlabCastingRecipe(Consumer<IFinishedRecipe> consumer, IItemProvider block, Ingredient cast, String location) {
-		addSearedCastingRecipe(consumer, block, cast, MaterialValues.SLIMEBALL, location);
-	}
-
-	/**
-	 * Adds a recipe to create the given seared block using molten clay on stone
-	 * @param consumer  Recipe consumer
-	 * @param block     Output block
-	 * @param cast      Cast item
-	 * @param amount    Amount of fluid needed
-	 * @param location  Recipe location
-	 */
-	private static void addSearedCastingRecipe(Consumer<IFinishedRecipe> consumer, IItemProvider block, Ingredient cast, int amount, String location) {
-		ItemCastingRecipeBuilder.basinRecipe(block)
-		.setFluidAndTime(new FluidStack(TinkerFluids.moltenClay.get(), amount))
-		.setCast(cast, true)
-		.build(consumer, location(location));
-	}
-
-	/**
-	 * Adds a recipe for casting using a cast
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Recipe fluid
-	 * @param amount    Fluid amount
-	 * @param cast      Cast used
-	 * @param output    Recipe output
-	 * @param location  Recipe base
-	 */
-	private void addCastingWithCastRecipe(Consumer<IFinishedRecipe> consumer, Supplier<? extends Fluid> fluid, int amount, CastItemObject cast, IItemProvider output, String location) {
-		FluidStack fluidStack = new FluidStack(fluid.get(), amount);
-		ItemCastingRecipeBuilder.tableRecipe(output)
-		.setFluidAndTime(fluidStack)
-		.setCast(cast.getMultiUseTag(), false)
-		.build(consumer, location(location + "_gold_cast"));
-		ItemCastingRecipeBuilder.tableRecipe(output)
-		.setFluidAndTime(fluidStack)
-		.setCast(cast.getSingleUseTag(), true)
-		.build(consumer, location(location + "_sand_cast"));
-	}
-
-	/**
-	 * Adds a casting recipe using an ingot cast
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Input fluid
-	 * @param amount    Recipe amount
-	 * @param ingot     Ingot output
-	 * @param location  Recipe base
-	 */
-	private void addIngotCastingRecipe(Consumer<IFinishedRecipe> consumer, Supplier<? extends Fluid> fluid, int amount, IItemProvider ingot, String location) {
-		addCastingWithCastRecipe(consumer, fluid, amount, TinkerSmeltery.ingotCast, ingot, location);
-	}
-
-	/**
-	 * Adds a casting recipe using an ingot cast
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Input fluid
-	 * @param ingot     Ingot output
-	 * @param location  Recipe base
-	 */
-	private void addIngotCastingRecipe(Consumer<IFinishedRecipe> consumer, Supplier<? extends Fluid> fluid, IItemProvider ingot, String location) {
-		addIngotCastingRecipe(consumer, fluid, MaterialValues.INGOT, ingot, location);
-	}
-
-	/**
-	 * Adds a casting recipe using an ingot cast
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Input fluid
-	 * @param gem       Gem output
-	 * @param location  Recipe base
-	 */
-	private void addGemCastingRecipe(Consumer<IFinishedRecipe> consumer, Supplier<? extends Fluid> fluid, IItemProvider gem, String location) {
-		addCastingWithCastRecipe(consumer, fluid, MaterialValues.GEM, TinkerSmeltery.gemCast, gem, location);
-	}
-
-	/**
-	 * Adds a casting recipe using a nugget cast
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Input fluid
-	 * @param nugget    Nugget output
-	 * @param location  Recipe base
-	 */
-	private void addNuggetCastingRecipe(Consumer<IFinishedRecipe> consumer, Supplier<? extends Fluid> fluid, IItemProvider nugget, String location) {
-		addCastingWithCastRecipe(consumer, fluid, MaterialValues.NUGGET, TinkerSmeltery.nuggetCast, nugget, location);
-	}
-
-	/**
-	 * Add recipes for a standard mineral
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Fluid input
-	 * @param block     Block result
-	 * @param ingot     Ingot result
-	 * @param nugget    Nugget result
-	 * @param folder    Output folder
-	 */
-	private void addMetalCastingRecipe(Consumer<IFinishedRecipe> consumer, Supplier<? extends Fluid> fluid, @Nullable IItemProvider block, @Nullable IItemProvider ingot, @Nullable IItemProvider nugget, String folder, String metal) {
-		String metalFolder = folder + metal + "/";
-		if (block != null) {
-			addBlockCastingRecipe(consumer, fluid, MaterialValues.METAL_BLOCK, block, metalFolder + "block");
-		}
-		if (ingot != null) {
-			addIngotCastingRecipe(consumer, fluid, ingot, metalFolder + "ingot");
-		}
-		if (nugget != null) {
-			addNuggetCastingRecipe(consumer, fluid, nugget, metalFolder + "nugget");
-		}
-		// plates are always optional, we don't ship them
-		addOptionalCastingWithCast(consumer, fluid.get(), MaterialValues.INGOT,      TinkerSmeltery.plateCast, "plates", "plate", metal, folder);
-		addOptionalCastingWithCast(consumer, fluid.get(), MaterialValues.INGOT * 4,  TinkerSmeltery.gearCast,  "gears",  "gear",  metal, folder);
-		addOptionalCastingWithCast(consumer, fluid.get(), MaterialValues.NUGGET * 3, TinkerSmeltery.coinCast,  "coins",  "coin",  metal, folder);
-		addOptionalCastingWithCast(consumer, fluid.get(), MaterialValues.INGOT / 2,  TinkerSmeltery.rodCast,   "rods",   "rod",   metal, folder);
-	}
-
-	/** Adds a recipe for casting using a cast */
-	private void addOptionalCastingWithCast(Consumer<IFinishedRecipe> consumer, Fluid fluid, int amount, CastItemObject cast, String tagPrefix, String recipeName, String name, String folder) {
-		addOptionalCastingWithCastDomain(consumer, fluid, amount, cast, tagPrefix, recipeName, name, folder, "forge");
-	}
-
-	private void addOptionalCastingWithCastDomain(Consumer<IFinishedRecipe> consumer, Fluid fluid, int amount, CastItemObject cast, String tagPrefix, String recipeName, String name, String folder, String domain) {
-		String tagName = tagPrefix + "/" + name;
-		ITag<Item> tag = getTag(domain, tagName);
-		Consumer<IFinishedRecipe> wrapped = withCondition(consumer, tagConditionDomain(domain, tagName));
-		ItemCastingRecipeBuilder.tableRecipe(tag)
-		.setFluidAndTime(new FluidStack(fluid, amount))
-		.setCast(cast.getMultiUseTag(), false)
-		.build(wrapped, location(folder + name + "/" + recipeName + "_gold_cast"));
-		ItemCastingRecipeBuilder.tableRecipe(tag)
-		.setFluidAndTime(new FluidStack(fluid, amount))
-		.setCast(cast.getSingleUseTag(), true)
-		.build(wrapped, location(folder + name + "/" + recipeName + "_sand_cast"));
-	}
-
-	/**
-	 * Add recipes for a standard mineral
-	 * @param consumer  Recipe consumer
-	 * @param fluid     Fluid input
-	 * @param name      Name of ore
-	 * @param folder    Output folder
-	 */
-	private void addMetalOptionalCasting(Consumer<IFinishedRecipe> consumer, Fluid fluid, String name, String folder) {
-		// nugget and ingot
-		addOptionalCastingWithCast(consumer, fluid, MaterialValues.NUGGET, TinkerSmeltery.nuggetCast, "nuggets", "nugget", name, folder);
-		addOptionalCastingWithCast(consumer, fluid, MaterialValues.INGOT, TinkerSmeltery.ingotCast, "ingots", "ingot", name, folder);
-		addOptionalCastingWithCast(consumer, fluid, MaterialValues.INGOT, TinkerSmeltery.plateCast, "plates", "plate", name, folder);
-		addOptionalCastingWithCast(consumer, fluid, MaterialValues.INGOT * 4, TinkerSmeltery.gearCast, "gears", "gear", name, folder);
-		addOptionalCastingWithCast(consumer, fluid, MaterialValues.NUGGET * 3, TinkerSmeltery.coinCast, "coins", "coin", name, folder);
-		addOptionalCastingWithCast(consumer, fluid, MaterialValues.INGOT / 2, TinkerSmeltery.rodCast, "rods", "rod", name, folder);
-		// block
-		ITag<Item> block = getTag("forge", "storage_blocks/" + name);
-		Consumer<IFinishedRecipe> wrapped = withCondition(consumer, tagCondition("storage_blocks/" + name));
-		ItemCastingRecipeBuilder.basinRecipe(block)
-		.setFluidAndTime(new FluidStack(fluid, MaterialValues.METAL_BLOCK))
-		.build(wrapped, location(folder + name + "/block"));
-	}
-
-	/**
-	 * Adds recipe to create a cast
-	 * @param consumer  Recipe consumer
-	 * @param input     Item consumed to create cast
-	 * @param cast      Produced cast
-	 * @param folder    Output folder
-	 */
-	private void addCastCastingRecipe(Consumer<IFinishedRecipe> consumer, INamedTag<Item> input, CastItemObject cast, String folder) {
-		String path = input.getName().getPath();
-		ItemCastingRecipeBuilder.tableRecipe(cast)
-		.setFluidAndTime(new FluidStack(TinkerFluids.moltenGold.get(), MaterialValues.INGOT))
-		.setCast(input, true)
-		.setSwitchSlots()
-		.build(consumer, location(folder + "casts/" + path));
-		MoldingRecipeBuilder.moldingTable(cast.getSand())
-		.setMaterial(TinkerSmeltery.blankCast.getSand())
-		.setPattern(input, false)
-		.build(consumer, location(folder + "sand_casts/" + path));
-		MoldingRecipeBuilder.moldingTable(cast.getRedSand())
-		.setMaterial(TinkerSmeltery.blankCast.getRedSand())
-		.setPattern(input, false)
-		.build(consumer, location(folder + "red_sand_casts/" + path));
-	}
-
-	/**
-	 * Gets a resource location for Tinkers
-	 * @param id  Location path
-	 * @return  Location for Tinkers
-	 */
-	protected static ResourceLocation location(String id) {
-		return new ResourceLocation(Materialis.modID, id);
-	}
-
-	/**
-	 * Gets a tag by name
-	 * @param modId  Mod ID for tag
-	 * @param name   Tag name
-	 * @return  Tag instance
-	 */
-	protected static INamedTag<Item> getTag(String modId, String name) {
-		return ItemTags.bind(modId + ":" + name);
-	}
-
-	/**
-	 * Creates a condition for a tag existing
-	 * @param name  Forge tag name
-	 * @return  Condition for tag existing
-	 */
-	protected static ICondition tagCondition(String name) {
-		return new NotCondition(new TagEmptyCondition("forge", name));
-	}
-
-	/**
-	 * Creates a condition for a tag existing
-	 * @param domain  Tag domain
-	 * @param name  Tag name
-	 * @return  Condition for tag existing
-	 */
 	protected static ICondition tagConditionDomain(String domain, String name) {
 		return new NotCondition(new TagEmptyCondition(domain, name));
-	}
-
-	/**
-	 * Creates a consumer instance with the added conditions
-	 * @param consumer    Base consumer
-	 * @param conditions  Extra conditions
-	 * @return  Wrapped consumer
-	 */
-	protected static Consumer<IFinishedRecipe> withCondition(Consumer<IFinishedRecipe> consumer, ICondition... conditions) {
-		ConsumerWrapperBuilder builder = ConsumerWrapperBuilder.wrap();
-		for (ICondition condition : conditions) {
-			builder.addCondition(condition);
-		}
-		return builder.build(consumer);
-	}
-
-	/**
-	 * Prefixes the resource location path with the given value
-	 * @param entry   Entry registry name to use
-	 * @param prefix  Prefix value
-	 * @return  Resource location path
-	 */
-	protected static ResourceLocation prefixR(Supplier<? extends IForgeRegistryEntry<?>> entry, String prefix) {
-		ResourceLocation loc = Objects.requireNonNull(entry.get().getRegistryName());
-		return location(prefix + loc.getPath());
 	}
 }

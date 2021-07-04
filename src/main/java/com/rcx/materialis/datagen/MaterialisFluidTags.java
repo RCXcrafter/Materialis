@@ -1,6 +1,8 @@
 package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
+import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.FluidTagsProvider;
@@ -20,6 +22,10 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 
 	@Override
 	public void addTags() {
+		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {
+			tag(fluid.OBJECT.getLocalTag()).add(fluid.FLUID.get());
+		}
+
 		tag(LIQUID_PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
 	}
 }

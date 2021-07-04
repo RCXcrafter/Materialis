@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:starmetal",
+  "temperature": 750,
+  "result": {
+    "fluid": "materialis:molten_starmetal",
+    "amount": 144
+  }
+}

@@ -3,14 +3,14 @@
   "conditions": [
     {
       "value": {
-        "tag": "materialis:inlays",
+        "tag": "forge:inlays",
         "type": "forge:tag_empty"
       },
       "type": "forge:not"
     }
   ],
   "cast": {
-    "tag": "materialis:inlays"
+    "tag": "forge:inlays"
   },
   "cast_consumed": true,
   "switch_slots": true,

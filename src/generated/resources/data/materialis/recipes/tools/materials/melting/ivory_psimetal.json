@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:ivory_psimetal",
+  "temperature": 1130,
+  "result": {
+    "fluid": "materialis:molten_ivory_psimetal",
+    "amount": 144
+  }
+}

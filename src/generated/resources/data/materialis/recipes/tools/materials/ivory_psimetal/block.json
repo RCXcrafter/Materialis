@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:ivory_psimetal"
+  "material": "materialis:ivory_psimetal",
+  "leftover": {
+    "tag": "forge:ingots/ivory_psimetal"
+  }
 }

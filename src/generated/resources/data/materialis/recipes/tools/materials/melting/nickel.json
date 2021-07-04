@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:nickel",
+  "temperature": 950,
+  "result": {
+    "fluid": "tconstruct:molten_nickel",
+    "amount": 144
+  }
+}

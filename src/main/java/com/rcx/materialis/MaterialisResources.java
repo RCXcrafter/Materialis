@@ -27,6 +27,7 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
@@ -161,6 +162,7 @@ public class MaterialisResources {
 
 		public final RegistryObject<ForgeFlowingFluid.Source> FLUID;
 		public final RegistryObject<ForgeFlowingFluid.Flowing> FLUID_FLOW;
+		public final FluidObject<ForgeFlowingFluid> OBJECT;
 
 		public final ResourceLocation TEXTURE_STILL;
 		public final ResourceLocation TEXTURE_FLOW;
@@ -196,6 +198,8 @@ public class MaterialisResources {
 			FLUID_BUCKET = ITEMS.register(name + "_bucket", () -> new BucketItem(FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
 
 			PROPERTIES.bucket(FLUID_BUCKET).block(FLUID_BLOCK).explosionResistance(1000F).tickRate(9);
+
+			OBJECT = new FluidObject<ForgeFlowingFluid>(new ResourceLocation(Materialis.modID, name), name, FLUID, FLUID_FLOW, FLUID_BLOCK);
 		}
 
 		public ForgeFlowingFluid.Properties getFluidProperties() {

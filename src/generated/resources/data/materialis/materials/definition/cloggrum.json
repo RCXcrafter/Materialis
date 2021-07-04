@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 2,
   "sortOrder": 1,
-  "fluid": "materialis:molten_cloggrum",
-  "fluidPerUnit": 144,
   "textColor": "#9C8878",
-  "temperature": 650
+  "hidden": false
 }

@@ -1,20 +1,17 @@
 package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
-import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
-import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
-import slimeknights.tconstruct.library.materials.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
@@ -85,46 +82,46 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
 	@Override
 	protected void addMaterials() {
-		addMetalMaterial(fairy, 3, ORDER_NETHER, MaterialisResources.FAIRY_FLUID.FLUID.get(), 0xFF87BC);
+		addMaterial(fairy, 3, ORDER_NETHER, false, 0xFF87BC);
 		//general oredict materials
-		addCompatMetalMaterial(brass, 3, ORDER_WEAPON, TinkerFluids.moltenBrass.get(), 0xFFD359);
-		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST, TinkerFluids.moltenAluminum.get(), 0xE6B7BF);
-		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST, TinkerFluids.moltenNickel.get(), 0xF9EA98);
-		addCompatMetalMaterial(platinum, 3, ORDER_HARVEST, TinkerFluids.moltenPlatinum.get(), 0xA1FFFF);
-		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST, TinkerFluids.moltenUranium.get(), 0x42BE30);
-		addCompatMetalMaterial(osmium, 2, ORDER_WEAPON, TinkerFluids.moltenOsmium.get(), 0xCDE8FD);
-		addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, TinkerFluids.moltenTungsten.get(), 0xA7A88F);
-		addCompatMetalMaterial(invar, 3, ORDER_HARVEST, TinkerFluids.moltenInvar.get(), 0xBAE6D5);
+		addCompatMetalMaterial(brass, 3, ORDER_WEAPON, 0xFFD359);
+		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST, 0xE6B7BF);
+		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST, 0xF9EA98);
+		addCompatMetalMaterial(platinum, 3, ORDER_HARVEST, 0xA1FFFF);
+		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST, 0x42BE30);
+		addCompatMetalMaterial(osmium, 2, ORDER_WEAPON, 0xCDE8FD);
+		addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, 0xA7A88F);
+		addCompatMetalMaterial(invar, 3, ORDER_HARVEST, 0xBAE6D5);
 		//create materials
-		addMaterial(roseQuartz, 3, ORDER_NETHER, Fluids.EMPTY, 0, true, 0xFF8C80, new ModLoadedCondition("create"));
-		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), 0xFFFFFF);
-		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), 0x635D71);
+		addMaterial(roseQuartz, 3, ORDER_NETHER, true, 0xFF8C80, false, new ModLoadedCondition("create"));
+		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL, 0xFFFFFF);
+		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL, 0x635D71);
 		//eidolon materials
-		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST, TinkerFluids.moltenPewter.get(), 0xA1A097);
-		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON, MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), 0xFFC069);
+		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST, 0xA1A097);
+		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON, 0xFFC069);
 		//aquaculture materials
-		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), 0x17F1B6);
+		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL, 0x17F1B6);
 		//mystical world materials
-		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), 0xA9C2C4);
+		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST, 0xA9C2C4);
 		//astral sorcery materials
-		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, MaterialisResources.STARMETAL_FLUID.FLUID.get(), 0x003CC9);
+		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, 0x003CC9);
 		//industrial foregoing materials
-		addMaterial(plastic, 2, ORDER_HARVEST, Fluids.EMPTY, 0, true, 0xD9D9D9, new NotCondition(new TagEmptyCondition("forge:plastic")));
-		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), 0xFF9FEF);
+		addMaterial(plastic, 2, ORDER_HARVEST, true, 0xD9D9D9, false, new NotCondition(new TagEmptyCondition("forge:plastic")));
+		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL, 0xFF9FEF);
 		//undergarden materials
-		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), 0x9C8878);
-		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), 0x95BDE3);
-		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), 0xEB515B);
-		addMaterial(forgottenMetal, 3, ORDER_GENERAL, Fluids.EMPTY, 0, false, 0x6CD7AA, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal")));
+		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST, 0x9C8878);
+		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON, 0x95BDE3);
+		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON, 0xEB515B);
+		addMaterial(forgottenMetal, 3, ORDER_GENERAL, false, 0x6CD7AA, false, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal")));
 		//mekanism materials
-		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), 0xB78FD2);
-		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), 0xFFE55C);
+		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST, 0xB78FD2);
+		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, 0xFFE55C);
 		//psi materials
-		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), 0xB6A9E7);
-		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), 0x3D3838);
-		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), 0xF6F9ED);
+		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL, 0xB6A9E7);
+		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, 0x3D3838);
+		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, 0xF6F9ED);
 		//occultism materials
-		addCompatMetalMaterial(iesnium, 3, ORDER_HARVEST, MaterialisResources.IESNIUM_FLUID.FLUID.get(), 0x8ADAE3);
+		addCompatMetalMaterial(iesnium, 3, ORDER_HARVEST, 0x8ADAE3);
 	}
 
 	private static MaterialId createMaterial(String name) {

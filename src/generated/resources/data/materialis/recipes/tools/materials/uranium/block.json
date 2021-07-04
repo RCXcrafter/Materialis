@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:uranium"
+  "material": "materialis:uranium",
+  "leftover": {
+    "tag": "forge:ingots/uranium"
+  }
 }

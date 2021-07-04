@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:ebony_psimetal",
+  "temperature": 1130,
+  "result": {
+    "fluid": "materialis:molten_ebony_psimetal",
+    "amount": 144
+  }
+}

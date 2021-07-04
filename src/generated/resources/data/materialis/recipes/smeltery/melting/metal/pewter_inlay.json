@@ -3,14 +3,14 @@
   "conditions": [
     {
       "value": {
-        "tag": "materialis:inlays/pewter",
+        "tag": "forge:inlays/pewter",
         "type": "forge:tag_empty"
       },
       "type": "forge:not"
     }
   ],
   "ingredient": {
-    "tag": "materialis:inlays/pewter"
+    "tag": "forge:inlays/pewter"
   },
   "result": {
     "fluid": "tconstruct:molten_pewter",

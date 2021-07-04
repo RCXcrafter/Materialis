@@ -3,14 +3,14 @@
   "conditions": [
     {
       "value": {
-        "tag": "materialis:inlays/arcane_gold",
+        "tag": "forge:inlays/arcane_gold",
         "type": "forge:tag_empty"
       },
       "type": "forge:not"
     }
   ],
   "ingredient": {
-    "tag": "materialis:inlays/arcane_gold"
+    "tag": "forge:inlays/arcane_gold"
   },
   "result": {
     "fluid": "materialis:molten_arcane_gold",

@@ -3,7 +3,7 @@
   "conditions": [
     {
       "value": {
-        "tag": "materialis:inlays/arcane_gold",
+        "tag": "forge:inlays/arcane_gold",
         "type": "forge:tag_empty"
       },
       "type": "forge:not"
@@ -17,7 +17,7 @@
     "amount": 288
   },
   "result": {
-    "tag": "materialis:inlays/arcane_gold"
+    "tag": "forge:inlays/arcane_gold"
   },
   "cooling_time": 79
 }

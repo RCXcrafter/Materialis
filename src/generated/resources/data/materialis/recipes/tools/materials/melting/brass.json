@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:brass",
+  "temperature": 605,
+  "result": {
+    "fluid": "tconstruct:molten_brass",
+    "amount": 144
+  }
+}

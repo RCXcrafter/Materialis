@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 4,
   "sortOrder": 3,
-  "fluid": "materialis:molten_shadow_steel",
-  "fluidPerUnit": 144,
   "textColor": "#635D71",
-  "temperature": 1300
+  "hidden": false
 }

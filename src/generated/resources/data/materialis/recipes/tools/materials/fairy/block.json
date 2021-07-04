@@ -5,5 +5,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:fairy"
+  "material": "materialis:fairy",
+  "leftover": {
+    "tag": "forge:ingots/fairy"
+  }
 }

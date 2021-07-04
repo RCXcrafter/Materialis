@@ -9,5 +9,6 @@
   "craftable": false,
   "tier": 3,
   "sortOrder": 0,
-  "textColor": "#6CD7AA"
+  "textColor": "#6CD7AA",
+  "hidden": false
 }

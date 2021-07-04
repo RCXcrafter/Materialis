@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 3,
   "sortOrder": 1,
-  "fluid": "materialis:molten_refined_obsidian",
-  "fluidPerUnit": 144,
   "textColor": "#B78FD2",
-  "temperature": 1200
+  "hidden": false
 }

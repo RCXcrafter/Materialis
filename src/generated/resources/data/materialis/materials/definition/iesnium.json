@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 3,
   "sortOrder": 1,
-  "fluid": "materialis:molten_iesnium",
-  "fluidPerUnit": 144,
   "textColor": "#8ADAE3",
-  "temperature": 850
+  "hidden": false
 }

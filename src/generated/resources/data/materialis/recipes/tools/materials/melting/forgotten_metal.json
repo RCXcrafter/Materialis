@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:table_casting_composite",
+  "type": "tconstruct:material_melting",
   "conditions": [
     {
       "values": [
@@ -21,11 +21,10 @@
       "type": "forge:and"
     }
   ],
-  "input": "materialis:cloggrum",
-  "fluid": {
-    "name": "materialis:molten_forgotten_metal",
+  "input": "materialis:forgotten_metal",
+  "temperature": 1230,
+  "result": {
+    "fluid": "materialis:molten_forgotten_metal",
     "amount": 144
-  },
-  "result": "materialis:forgotten_metal",
-  "temperature": 1230
+  }
 }

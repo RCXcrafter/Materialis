@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:cloggrum",
+  "temperature": 650,
+  "result": {
+    "fluid": "materialis:molten_cloggrum",
+    "amount": 144
+  }
+}

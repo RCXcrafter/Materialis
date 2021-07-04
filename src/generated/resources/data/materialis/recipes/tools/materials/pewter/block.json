@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:pewter"
+  "material": "materialis:pewter",
+  "leftover": {
+    "tag": "forge:ingots/pewter"
+  }
 }

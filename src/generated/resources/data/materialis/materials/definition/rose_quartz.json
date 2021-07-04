@@ -6,5 +6,6 @@
   "craftable": true,
   "tier": 3,
   "sortOrder": 7,
-  "textColor": "#FF8C80"
+  "textColor": "#FF8C80",
+  "hidden": false
 }

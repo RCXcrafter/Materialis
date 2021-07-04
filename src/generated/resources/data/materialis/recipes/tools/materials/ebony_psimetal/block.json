@@ -14,5 +14,8 @@
   },
   "value": 9,
   "needed": 1,
-  "material": "materialis:ebony_psimetal"
+  "material": "materialis:ebony_psimetal",
+  "leftover": {
+    "tag": "forge:ingots/ebony_psimetal"
+  }
 }

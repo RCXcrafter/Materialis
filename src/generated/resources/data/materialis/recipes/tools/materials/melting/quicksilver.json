@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:quicksilver",
+  "temperature": 400,
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 144
+  }
+}

@@ -9,15 +9,16 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.fluid.Fluid;
 import slimeknights.tconstruct.fluids.TinkerFluids;
-import slimeknights.tconstruct.library.materials.MaterialValues;
+import slimeknights.tconstruct.library.data.recipe.IByproduct;
+import slimeknights.tconstruct.library.recipe.FluidValues;
 
 @RequiredArgsConstructor
-public enum MaterialisByproduct {
+public enum MaterialisByproduct implements IByproduct {
 	// base mod
 	COPPER    (true, TinkerFluids.moltenCopper),
 	IRON      (true, TinkerFluids.moltenIron),
 	GOLD      (true, TinkerFluids.moltenGold),
-	SMALL_GOLD("gold", true, TinkerFluids.moltenGold, MaterialValues.NUGGET),
+	SMALL_GOLD("gold", true, TinkerFluids.moltenGold, FluidValues.NUGGET),
 	COBALT    (true, TinkerFluids.moltenCobalt),
 	// compat
 	TIN     (false, TinkerFluids.moltenTin),
@@ -25,11 +26,11 @@ public enum MaterialisByproduct {
 	SILVER  (false, TinkerFluids.moltenSilver),
 	NICKEL  (false, TinkerFluids.moltenNickel),
 	LEAD    (false, TinkerFluids.moltenLead),
-	PLATINUM("platinum", false, TinkerFluids.moltenPlatinum, MaterialValues.NUGGET),
+	PLATINUM("platinum", false, TinkerFluids.moltenPlatinum, FluidValues.NUGGET),
 	// undergarden
 	CLOGGRUM    (true, MaterialisResources.CLOGGRUM_FLUID.FLUID),
 	FROSTSTEEL  (true, MaterialisResources.FROSTSTEEL_FLUID.FLUID),
-	UTHERIUM    ("utherium", true, MaterialisResources.UTHERIUM_FLUID.FLUID, MaterialValues.NUGGET),
+	UTHERIUM    ("utherium", true, MaterialisResources.UTHERIUM_FLUID.FLUID, FluidValues.NUGGET),
 	REGALIUM    (true, MaterialisResources.REGALIUM_FLUID.FLUID);
 
 	@Getter
@@ -44,7 +45,7 @@ public enum MaterialisByproduct {
 		this.name = name().toLowerCase(Locale.ROOT);
 		this.alwaysPresent = alwaysPresent;
 		this.fluidSupplier = fluidSupplier;
-		this.nuggets = MaterialValues.NUGGET * 3;
+		this.nuggets = FluidValues.NUGGET * 3;
 	}
 
 	/** Gets the fluid of this byproduct */

@@ -9,8 +9,6 @@
   "craftable": false,
   "tier": 3,
   "sortOrder": 0,
-  "fluid": "materialis:molten_neptunium",
-  "fluidPerUnit": 144,
   "textColor": "#17F1B6",
-  "temperature": 1400
+  "hidden": false
 }
