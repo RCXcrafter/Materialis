@@ -36,6 +36,7 @@ public class MaterialisItemModels extends ItemModelProvider {
 
 		//custom casts
 		castModels(MaterialisResources.INLAY_CAST);
+		castModels(MaterialisResources.WRENCH_HEAD_CAST);
 
 		//industrial foregoing stuff
 		itemWithModel(MaterialisResources.PINK_SLIME_CRYSTAL, "item/generated");

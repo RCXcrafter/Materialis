@@ -1,0 +1,31 @@
+{
+  "type": "tconstruct:modifier",
+  "inputs": [
+    {
+      "item": "materialis:wrench_head",
+      "type": "tconstruct:material"
+    },
+    {
+      "tag": "forge:ingots/netherite_scrap"
+    },
+    {
+      "item": "tconstruct:tool_binding",
+      "type": "tconstruct:material"
+    }
+  ],
+  "tools": {
+    "type": "mantle:without",
+    "base": {
+      "tag": "tconstruct:modifiable"
+    },
+    "without": {
+      "tag": "materialis:wrench"
+    }
+  },
+  "result": {
+    "name": "materialis:wrenching",
+    "level": 1
+  },
+  "max_level": 1,
+  "ability_slots": 1
+}

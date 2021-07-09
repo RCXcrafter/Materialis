@@ -20,23 +20,28 @@ import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
 import com.rcx.materialis.datagen.MaterialisRecipes;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.model.ItemTransformVec3f;
 import net.minecraft.client.renderer.model.Variant;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
+import slimeknights.tconstruct.tools.ToolClientEvents;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -144,6 +149,20 @@ public class Materialis {
 			gen.addProvider(materials);
 			gen.addProvider(new MaterialisMaterialStats(gen, materials));
 			gen.addProvider(new MaterialisMaterialTraits(gen, materials));
+		}
+	}
+
+	@EventBusSubscriber(modid = modID, value = Dist.CLIENT, bus = Bus.MOD)
+	public static class MaterialisClient {
+
+		@SubscribeEvent
+		static void itemColors(ColorHandlerEvent.Item event) {
+			final ItemColors colors = event.getItemColors();
+
+			//tint tool and part textures for fallback
+			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.WRENCH);
+			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.BATTLEWRENCH);
+			ToolClientEvents.registerMaterialItemColors(colors, MaterialisResources.WRENCH_HEAD);
 		}
 	}
 }

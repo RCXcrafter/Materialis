@@ -1,0 +1,14 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "head":        "materialis:item/tool/wrench/head",
+    "broken_head": "materialis:item/tool/wrench/broken_head",
+    "handle":      "materialis:item/tool/wrench/handle"
+  },
+  "modifier_roots": [ "materialis:item/tool/wrench/modifiers/" ],
+  "parts": [
+    { "name": "handle",     "index": 1 },
+    { "name": "head",       "index": 0, "broken": "broken_head" }
+  ]
+}

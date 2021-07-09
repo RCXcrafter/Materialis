@@ -1,0 +1,8 @@
+{
+  "loader": "tconstruct:material",
+  "parent": "forge:item/default",
+  "textures": {
+    "texture": "materialis:item/tool/wrench/head"
+  },
+  "offset": [-3, 2]
+}

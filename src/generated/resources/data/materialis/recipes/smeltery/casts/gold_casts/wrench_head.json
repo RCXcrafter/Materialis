@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "materialis:wrench_head",
+    "type": "tconstruct:material"
+  },
+  "cast_consumed": true,
+  "switch_slots": true,
+  "fluid": {
+    "tag": "tconstruct:molten_gold",
+    "amount": 144
+  },
+  "result": "materialis:wrench_head_cast",
+  "cooling_time": 57
+}

@@ -1,0 +1,34 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "head":         "materialis:item/tool/battlewrench/head",
+    "broken_head":  "materialis:item/tool/battlewrench/broken_head",
+    "handle":       "tconstruct:item/tool/sledge_hammer/handle",
+    "back":         "materialis:item/tool/battlewrench/back",
+    "broken_back":  "materialis:item/tool/battlewrench/broken_back",
+    "front":        "materialis:item/tool/battlewrench/front",
+    "broken_front": "materialis:item/tool/battlewrench/broken_front",
+    
+    "large_head":         "materialis:item/tool/battlewrench/large/head",
+    "large_broken_head":  "materialis:item/tool/battlewrench/large/broken_head",
+    "large_handle":       "tconstruct:item/tool/sledge_hammer/large/handle",
+    "large_back":         "materialis:item/tool/battlewrench/large/back",
+    "large_broken_back":  "materialis:item/tool/battlewrench/large/broken_back",
+    "large_front":        "materialis:item/tool/battlewrench/large/front",
+    "large_broken_front": "materialis:item/tool/battlewrench/large/broken_front"
+  },
+  "modifier_roots": {
+    "small": [ "materialis:item/tool/battlewrench/modifiers/" ],
+    "large": [ "materialis:item/tool/battlewrench/large/modifiers/" ]
+  },
+  "large": true,
+  "large_offset": [-2, 2],
+  "parts": [
+    { "name": "handle", "index": 1 },
+    { "name": "head",   "index": 0, "broken": "broken_head" },
+    { "name": "back",   "index": 2, "broken": "broken_back" },
+    { "name": "front",  "index": 3, "broken": "broken_front" }
+  ]
+}
+

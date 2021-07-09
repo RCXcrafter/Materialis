@@ -45,7 +45,11 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> otherworldly1Modifier = MODIFIERS.register("otherworldly_1", () -> new OtherworldlyModifier(1));
 	public static final RegistryObject<Modifier> otherworldly2Modifier = MODIFIERS.register("otherworldly_2", () -> new OtherworldlyModifier(2));
 
-	//upgrades
+	//upgrades & abilities
 	public static final RegistryObject<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);
 	public static final RegistryObject<Modifier> runedModifier = MODIFIERS.register("runed", RunedModifier::new);
+	public static final RegistryObject<Modifier> wrenchingModifier = MODIFIERS.register("wrenching", () -> new WrenchingModifier(0x8A361E, 75));
+
+	//internal modifiers
+	public static final RegistryObject<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(0xFFFFFF, Integer.MIN_VALUE + 50));
 }

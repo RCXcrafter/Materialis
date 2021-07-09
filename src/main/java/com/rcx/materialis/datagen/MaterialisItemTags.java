@@ -20,6 +20,13 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	//custom casts
 	public static final INamedTag<Item> INLAY_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/inlay");
 	public static final INamedTag<Item> INLAY_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/inlay");
+	public static final INamedTag<Item> WRENCH_HEAD_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/wrench_head");
+	public static final INamedTag<Item> WRENCH_HEAD_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/wrench_head");
+
+	//wrench
+	public static final INamedTag<Item> TOOLS = ItemTags.bind("forge:tools");
+	public static final INamedTag<Item> WRENCH = ItemTags.bind("forge:tools/wrench");
+	public static final INamedTag<Item> WRENCHING = ItemTags.bind(Materialis.modID + ":wrench");
 
 	//create stuff
 	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
@@ -68,6 +75,30 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(TinkerTags.Items.RED_SAND_CASTS).add(MaterialisResources.INLAY_CAST.getRedSand());
 		tag(TinkerTags.Items.MULTI_USE_CASTS).addTag(INLAY_CAST);
 		tag(TinkerTags.Items.SINGLE_USE_CASTS).addTag(INLAY_CAST_SINGLE);
+		tag(WRENCH_HEAD_CAST).add(MaterialisResources.WRENCH_HEAD_CAST.get());
+		tag(WRENCH_HEAD_CAST_SINGLE).add(MaterialisResources.WRENCH_HEAD_CAST.getSand());
+		tag(WRENCH_HEAD_CAST_SINGLE).add(MaterialisResources.WRENCH_HEAD_CAST.getRedSand());
+		tag(TinkerTags.Items.GOLD_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.get());
+		tag(TinkerTags.Items.SAND_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.getSand());
+		tag(TinkerTags.Items.RED_SAND_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.getRedSand());
+		tag(TinkerTags.Items.MULTI_USE_CASTS).addTag(WRENCH_HEAD_CAST);
+		tag(TinkerTags.Items.SINGLE_USE_CASTS).addTag(WRENCH_HEAD_CAST_SINGLE);
+
+		//wrench
+		tag(TOOLS).addTag(WRENCH);
+		tag(TinkerTags.Items.TOOL_PARTS).add(MaterialisResources.WRENCH_HEAD.get());
+		tag(TinkerTags.Items.MELEE).add(MaterialisResources.WRENCH.get());
+		tag(TinkerTags.Items.ONE_HANDED).add(MaterialisResources.WRENCH.get());
+		tag(TinkerTags.Items.MULTIPART_TOOL).add(MaterialisResources.WRENCH.get());
+		tag(WRENCH).add(MaterialisResources.WRENCH.get());
+		tag(WRENCHING).add(MaterialisResources.WRENCH.get());
+		tag(TinkerTags.Items.STRUCTURE_DEBUG).add(MaterialisResources.WRENCH.get());
+		tag(TinkerTags.Items.MELEE_PRIMARY).add(MaterialisResources.BATTLEWRENCH.get());
+		tag(TinkerTags.Items.TWO_HANDED).add(MaterialisResources.BATTLEWRENCH.get());
+		tag(TinkerTags.Items.MULTIPART_TOOL).add(MaterialisResources.BATTLEWRENCH.get());
+		tag(WRENCH).add(MaterialisResources.BATTLEWRENCH.get());
+		tag(WRENCHING).add(MaterialisResources.BATTLEWRENCH.get());
+		tag(TinkerTags.Items.STRUCTURE_DEBUG).add(MaterialisResources.BATTLEWRENCH.get());
 
 		//create ingots
 		tag(REFINED_RADIANCE_INGOT).addOptional(new ResourceLocation("create", "refined_radiance"));

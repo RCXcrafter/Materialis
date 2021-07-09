@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "materialis:inlay_cast"
+    "materialis:inlay_cast",
+    "materialis:wrench_head_cast"
   ]
 }

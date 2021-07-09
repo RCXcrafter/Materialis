@@ -37,6 +37,14 @@ public class MaterialisLang extends LanguageProvider {
 
 		//custom casts
 		addCast(MaterialisResources.INLAY_CAST, "Inlay");
+		addCast(MaterialisResources.WRENCH_HEAD_CAST, "Wrench Head");
+
+		//wrench
+		addItem(MaterialisResources.WRENCH_HEAD, "Wrench Head");
+		add("pattern.materialis.wrench_head", "Wrench Head");
+		addItem(MaterialisResources.WRENCH, "Wrench");
+		add("item.materialis.wrench.description", "The Wrench is a common tool among engineers. It can have many abilities to increase its usefulness.\nRight Click: Rotate block");
+		addItem(MaterialisResources.BATTLEWRENCH, "Battlewrench");
 
 		//general oredict materials
 		add("material.materialis.brass", "Brass");
@@ -194,6 +202,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.otherworldly", "Otherworldly");
 		add("modifier.materialis.otherworldly.flavor", "From another plane of existence!");
 		add("modifier.materialis.otherworldly.description", "Allows the tool to harvest blocks from The Other Place");
+		add("modifier.materialis.wrenching", "Wrenching");
+		add("modifier.materialis.wrenching.flavor", "wretched!");
+		add("modifier.materialis.wrenching.description", "Tool can rotate blocks by right clicking");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

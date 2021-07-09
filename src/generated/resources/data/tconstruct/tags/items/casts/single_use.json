@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#materialis:casts/single_use/inlay"
+    "#materialis:casts/single_use/inlay",
+    "#materialis:casts/single_use/wrench_head"
   ]
 }
