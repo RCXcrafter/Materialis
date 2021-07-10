@@ -37,11 +37,10 @@ public class CreateWrenchingModifier extends SingleUseModifier {
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			Block block = state.getBlock();
 			if (!(block instanceof IWrenchable)) {
-				if (MaterialisBlockTags.CREATE_WRENCH_PICKUP.contains(block))
+				if (context.getPlayer().isSecondaryUseActive() && MaterialisBlockTags.CREATE_WRENCH_PICKUP.contains(block))
 					return onItemUseOnOther(world, pos, state, context);
 				return ActionResultType.PASS;
 			}
-
 			IWrenchable actor = (IWrenchable) block;
 			if (context.getPlayer().isSecondaryUseActive())
 				return actor.onSneakWrenched(state, context);

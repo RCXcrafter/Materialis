@@ -33,6 +33,9 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 			addBlockTag(material.BLOCK.get(), BlockTags.bind("forge:storage_blocks/" + material.name));
 		}
 
+		//wrench stuff
+		tag(CREATE_WRENCH_PICKUP);
+
 		//astral sorcery stuff
 		tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
 		tag(BlockTags.BEACON_BASE_BLOCKS).addTag(STARMETAL_BLOCK);
