@@ -44,125 +44,141 @@ public class WrenchingModifier extends SingleUseModifier {
 
 	@Override
 	public ActionResultType beforeBlockUse(IModifierToolStack tool, int level, ItemUseContext context) {
-		ActionResultType result = ActionResultType.PASS;
 		if (!tool.isBroken() && context.getPlayer() != null) {
 			World world = context.getLevel();
 			BlockPos pos = context.getClickedPos();
-			BlockState state = world.getBlockState(pos);
-			if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, world, pos, context.getPlayer()) || state.getHarvestLevel() > tool.getStats().getInt(ToolStats.HARVEST_LEVEL) || !isRotatable(state, world, pos))
-				return result;
+			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
+			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) != null) {
+				return blockUse(tool, level, world, pos, state, context);
+			}
+		}
+		return ActionResultType.PASS;
+	}
 
-			Direction face = context.getClickedFace();
-			Rotation rotation = context.getClickedFace().getAxisDirection() == Direction.AxisDirection.POSITIVE ? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90;
-			for (Property<?> prop : state.getProperties()) {
-				if (prop instanceof DirectionProperty) {
-					Direction direction = state.getValue((DirectionProperty) prop);
-					Direction newDirection = rotateDirection(direction, face.getAxis(), rotation);
-					if (newDirection != direction) { //make sure something changed
-						BlockState newState = null;
-						int attempts = 0; //check if the block can even be rotated like this
-						while (attempts < 3) {
-							if (prop.getPossibleValues().contains(newDirection)) {
-								newState = state.setValue((DirectionProperty) prop, newDirection);
-								if (newState.canSurvive(world, pos))
-									break;
-							}
-							newDirection = rotateDirection(newDirection, face.getAxis(), rotation); //try the next rotation
-							attempts++;
-						}
-						if (prop.getPossibleValues().contains(newDirection) && newState.canSurvive(world, pos)) {
-							world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
-							result = ActionResultType.SUCCESS;
-							ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-							break;
-						}
-					}
-				}
-				if (prop == BlockStateProperties.AXIS || prop == BlockStateProperties.HORIZONTAL_AXIS) {
-					Direction.Axis axis = prop == BlockStateProperties.AXIS ? state.getValue(BlockStateProperties.AXIS) : state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-					Direction.Axis newAxis = rotateAxis(axis, face.getAxis(), rotation);
-					if (newAxis != axis) { //make sure something changed
-						//check if the block can even be rotated like this
-						if (prop.getPossibleValues().contains(newAxis)) {
-							BlockState newState;
-							if (prop == BlockStateProperties.AXIS)
-								newState = state.setValue(BlockStateProperties.AXIS, newAxis);
-							else
-								newState = state.setValue(BlockStateProperties.HORIZONTAL_AXIS, newAxis);
+	@Override
+	public ActionResultType afterBlockUse(IModifierToolStack tool, int level, ItemUseContext context) {
+		if (!tool.isBroken() && context.getPlayer() != null) {
+			World world = context.getLevel();
+			BlockPos pos = context.getClickedPos();
+			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
+			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) == null) {
+				return blockUse(tool, level, world, pos, state, context);
+			}
+		}
+		return ActionResultType.PASS;
+	}
 
+	public ActionResultType blockUse(IModifierToolStack tool, int level, World world, BlockPos pos, BlockState state, ItemUseContext context) {
+		if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, world, pos, context.getPlayer()) || state.getHarvestLevel() > tool.getStats().getInt(ToolStats.HARVEST_LEVEL) || !isRotatable(state, world, pos))
+			return ActionResultType.PASS;
+
+		Direction face = context.getClickedFace();
+		Rotation rotation = context.getClickedFace().getAxisDirection() == Direction.AxisDirection.POSITIVE ? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90;
+		for (Property<?> prop : state.getProperties()) {
+			if (prop instanceof DirectionProperty) {
+				Direction direction = state.getValue((DirectionProperty) prop);
+				Direction newDirection = rotateDirection(direction, face.getAxis(), rotation);
+				if (newDirection != direction) { //make sure something changed
+					BlockState newState = null;
+					int attempts = 0; //check if the block can even be rotated like this
+					boolean success = false;
+					while (attempts < 3) {
+						if (prop.getPossibleValues().contains(newDirection)) {
+							newState = state.setValue((DirectionProperty) prop, newDirection);
 							if (newState.canSurvive(world, pos)) {
-								world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
-								result = ActionResultType.SUCCESS;
-								ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+								success = true;
 								break;
 							}
 						}
+						newDirection = rotateDirection(newDirection, face.getAxis(), rotation); //try the next rotation
+						attempts++;
 					}
-				}
-				if (prop == BlockStateProperties.RAIL_SHAPE || prop == BlockStateProperties.RAIL_SHAPE_STRAIGHT) {
-					RailShape shape = prop == BlockStateProperties.RAIL_SHAPE ? state.getValue(BlockStateProperties.RAIL_SHAPE) : state.getValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT);
-					RailShape newShape = rotateRail(shape, face.getAxis(), rotation);
-					if (newShape != shape) { //make sure something changed
-						//check if the block can even be rotated like this
-						if (shouldRailBeRemoved(pos, world, newShape))
-							newShape = rotateRail(shape, face.getAxis(), rotation.getRotated(Rotation.CLOCKWISE_180));
-
-						if (!shouldRailBeRemoved(pos, world, newShape) && prop.getPossibleValues().contains(newShape)) {
-							BlockState newState;
-							if (prop == BlockStateProperties.RAIL_SHAPE)
-								newState = state.setValue(BlockStateProperties.RAIL_SHAPE, newShape);
-							else
-								newState = state.setValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT, newShape);
-
-							world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
-							result = ActionResultType.SUCCESS;
-							ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-							break;
-
-						}
-					}
-				}
-				if (prop == BlockStateProperties.ROTATION_16) {
-					int rotation16 = state.getValue(BlockStateProperties.ROTATION_16);
-					rotation16 = (rotation16 + 1) % 16;
-					world.setBlock(pos, state.setValue(BlockStateProperties.ROTATION_16, rotation16), Constants.BlockFlags.DEFAULT_AND_RERENDER);
-					result = ActionResultType.SUCCESS;
-					ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-					break;
-				}
-				if (prop == BlockStateProperties.HALF) {
-					Half half = state.getValue(BlockStateProperties.HALF);
-					if (half == Half.TOP)
-						half = Half.BOTTOM;
-					else
-						half = Half.TOP;
-					BlockState newState = state.setValue(BlockStateProperties.HALF, half);
-					if (newState.canSurvive(world, pos)) {
-						world.setBlock(pos, state.setValue(BlockStateProperties.HALF, half), Constants.BlockFlags.DEFAULT_AND_RERENDER);
-						result = ActionResultType.SUCCESS;
+					if (success) {
+						world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
 						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-						break;
+						return ActionResultType.SUCCESS;
 					}
 				}
-				if (prop == BlockStateProperties.SLAB_TYPE) {
-					SlabType half = state.getValue(BlockStateProperties.SLAB_TYPE);
-					if (half == SlabType.DOUBLE) {
-						if (half == SlabType.TOP)
-							half = SlabType.BOTTOM;
-						else if (half == SlabType.BOTTOM)
-							half = SlabType.TOP;
-						BlockState newState = state.setValue(BlockStateProperties.SLAB_TYPE, half);
+			}
+			if (prop == BlockStateProperties.AXIS || prop == BlockStateProperties.HORIZONTAL_AXIS) {
+				Direction.Axis axis = prop == BlockStateProperties.AXIS ? state.getValue(BlockStateProperties.AXIS) : state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+				Direction.Axis newAxis = rotateAxis(axis, face.getAxis(), rotation);
+				if (newAxis != axis) { //make sure something changed
+					//check if the block can even be rotated like this
+					if (prop.getPossibleValues().contains(newAxis)) {
+						BlockState newState;
+						if (prop == BlockStateProperties.AXIS)
+							newState = state.setValue(BlockStateProperties.AXIS, newAxis);
+						else
+							newState = state.setValue(BlockStateProperties.HORIZONTAL_AXIS, newAxis);
+
 						if (newState.canSurvive(world, pos)) {
 							world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
-							result = ActionResultType.SUCCESS;
 							ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-							break;
+							return ActionResultType.SUCCESS;
 						}
 					}
 				}
 			}
+			if (prop == BlockStateProperties.RAIL_SHAPE || prop == BlockStateProperties.RAIL_SHAPE_STRAIGHT) {
+				RailShape shape = prop == BlockStateProperties.RAIL_SHAPE ? state.getValue(BlockStateProperties.RAIL_SHAPE) : state.getValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT);
+				RailShape newShape = rotateRail(shape, face.getAxis(), rotation);
+				if (newShape != shape) { //make sure something changed
+					//check if the block can even be rotated like this
+					if (shouldRailBeRemoved(pos, world, newShape))
+						newShape = rotateRail(shape, face.getAxis(), rotation.getRotated(Rotation.CLOCKWISE_180));
+
+					if (!shouldRailBeRemoved(pos, world, newShape) && prop.getPossibleValues().contains(newShape)) {
+						BlockState newState;
+						if (prop == BlockStateProperties.RAIL_SHAPE)
+							newState = state.setValue(BlockStateProperties.RAIL_SHAPE, newShape);
+						else
+							newState = state.setValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT, newShape);
+
+						world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+						return ActionResultType.SUCCESS;
+
+					}
+				}
+			}
+			if (prop == BlockStateProperties.ROTATION_16) {
+				int rotation16 = state.getValue(BlockStateProperties.ROTATION_16);
+				rotation16 = (rotation16 + 1) % 16;
+				world.setBlock(pos, state.setValue(BlockStateProperties.ROTATION_16, rotation16), Constants.BlockFlags.DEFAULT_AND_RERENDER);
+				ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+				return ActionResultType.SUCCESS;
+			}
+			if (prop == BlockStateProperties.HALF) {
+				Half half = state.getValue(BlockStateProperties.HALF);
+				if (half == Half.TOP)
+					half = Half.BOTTOM;
+				else
+					half = Half.TOP;
+				BlockState newState = state.setValue(BlockStateProperties.HALF, half);
+				if (newState.canSurvive(world, pos)) {
+					world.setBlock(pos, state.setValue(BlockStateProperties.HALF, half), Constants.BlockFlags.DEFAULT_AND_RERENDER);
+					ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+					return ActionResultType.SUCCESS;
+				}
+			}
+			if (prop == BlockStateProperties.SLAB_TYPE) {
+				SlabType half = state.getValue(BlockStateProperties.SLAB_TYPE);
+				if (half == SlabType.DOUBLE) {
+					if (half == SlabType.TOP)
+						half = SlabType.BOTTOM;
+					else if (half == SlabType.BOTTOM)
+						half = SlabType.TOP;
+					BlockState newState = state.setValue(BlockStateProperties.SLAB_TYPE, half);
+					if (newState.canSurvive(world, pos)) {
+						world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+						return ActionResultType.SUCCESS;
+					}
+				}
+			}
 		}
-		return result;
+		return ActionResultType.PASS;
 	}
 
 	public static Direction rotateDirection(Direction direction, Direction.Axis rotateOn, Rotation rotation) {

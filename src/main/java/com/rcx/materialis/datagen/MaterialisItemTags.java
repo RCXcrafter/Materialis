@@ -89,6 +89,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(TOOLS).addTag(WRENCH);
 		tag(TinkerTags.Items.TOOL_PARTS).add(MaterialisResources.WRENCH_HEAD.get());
 		tag(TinkerTags.Items.MELEE).add(MaterialisResources.WRENCH.get());
+		tag(TinkerTags.Items.HARVEST_PRIMARY).add(MaterialisResources.WRENCH.get());
 		tag(TinkerTags.Items.ONE_HANDED).add(MaterialisResources.WRENCH.get());
 		tag(TinkerTags.Items.MULTIPART_TOOL).add(MaterialisResources.WRENCH.get());
 		tag(WRENCH).add(MaterialisResources.WRENCH.get());
@@ -96,6 +97,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(GALVANIZABLE).add(MaterialisResources.WRENCH.get());
 		tag(TinkerTags.Items.STRUCTURE_DEBUG).add(MaterialisResources.WRENCH.get());
 		tag(TinkerTags.Items.MELEE_PRIMARY).add(MaterialisResources.BATTLEWRENCH.get());
+		tag(TinkerTags.Items.HARVEST_PRIMARY).add(MaterialisResources.BATTLEWRENCH.get());
 		tag(TinkerTags.Items.TWO_HANDED).add(MaterialisResources.BATTLEWRENCH.get());
 		tag(TinkerTags.Items.MULTIPART_TOOL).add(MaterialisResources.BATTLEWRENCH.get());
 		tag(WRENCH).add(MaterialisResources.BATTLEWRENCH.get());
