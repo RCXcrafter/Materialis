@@ -145,7 +145,6 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    //implementation fg.deobf("curse.maven:create-328085:3278516")
     compileOnly fg.deobf("curse.maven:eidolon-429625:3157832")
     compileOnly fg.deobf("curse.maven:curios-309927:3275653")
     compileOnly fg.deobf("vazkii.psi:Psi:${psi_version}")
@@ -153,6 +152,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:arl-250363:3326041")
     compileOnly fg.deobf("curse.maven:thermal-222880:3248150")
     compileOnly fg.deobf("curse.maven:cofhcore-69162:3249453")
+	compileOnly fg.deobf("curse.maven:create-328085:3278516")
 
 	//annotationProcessor 'org.spongepowered:mixin:0.1.2-SNAPSHOT:processor'
 

@@ -116,6 +116,9 @@
   "modifier.materialis.cleansing": "Cleansing",
   "modifier.materialis.cleansing.description": "Deals more damage to rotspawn",
   "modifier.materialis.cleansing.flavor": "Begone foul beast!",
+  "modifier.materialis.create_wrenching": "Mechanical Wrenching",
+  "modifier.materialis.create_wrenching.description": "Tool can dismantle kinetic components by sneak-right clicking",
+  "modifier.materialis.create_wrenching.flavor": "Creative!",
   "modifier.materialis.daredevil": "Daredevil",
   "modifier.materialis.daredevil.description": "Boosts mining speed when your health is low",
   "modifier.materialis.daredevil.flavor": "Living on the edge",
@@ -209,6 +212,7 @@
   "modifier.materialis.wrenching.description": "Tool can rotate blocks by right clicking",
   "modifier.materialis.wrenching.flavor": "Wretched!",
   "pattern.materialis.wrench_head": "Wrench Head",
+  "recipe.materialis.modifier.create_wrenching_requirements": "Mechanical Wrenching requires Wrenching to apply",
   "recipe.materialis.modifier.runed_requirements": "Runed requires Shiny to apply",
   "recipe.materialis.modifier.thermal_wrenching_requirements": "Thermal Wrenching requires Wrenching to apply",
   "recipe.materialis.remove_modifier.spell_slot_not_empty": "This change removes a socket that currently contains a spell"

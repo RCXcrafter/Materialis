@@ -280,17 +280,30 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(Tags.Items.INGOTS_IRON)
 		.setUpgradeSlots(2)
 		.build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
+		
+		ModifierMatch wrenching = ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get()));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.thermalWrenchingModifier.get())
 		.addInput(getTag("forge", "gears/nickel"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "wrench"))))
 		.addInput(getTag("forge", "gears/nickel"))
-		.setRequirements(ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get())))
+		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.thermal_wrenching_requirements")
 		.setMaxLevel(1)
 		.setUpgradeSlots(1)
 		.setGroup("materialis:thermal")
 		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.createWrenchingModifier.get())
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "wrench"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
+		.setRequirements(wrenching)
+		.setRequirementsError("recipe.materialis.modifier.create_wrenching_requirements")
+		.setMaxLevel(1)
+		.setUpgradeSlots(1)
+		.setGroup("materialis:create")
+		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

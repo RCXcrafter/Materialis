@@ -33,7 +33,7 @@ public class ThermalWrenchingModifier extends SingleUseModifier {
 			BlockPos pos = context.getClickedPos();
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			Block block = state.getBlock();
-			if (context.getPlayer().isSecondaryUseActive() && block instanceof IDismantleable && ((IDismantleable) block).canDismantle(world, pos, state, context.getPlayer())) {
+			if (context.getPlayer().isSecondaryUseActive() && block.canEntityDestroy(state, world, pos, context.getPlayer()) && block instanceof IDismantleable && ((IDismantleable) block).canDismantle(world, pos, state, context.getPlayer())) {
 				if (Utils.isServerWorld(world)) {
 					BlockRayTraceResult target = new BlockRayTraceResult(context.getClickLocation(), context.getClickedFace(), context.getClickedPos(), context.isInside());
 					((IDismantleable) block).dismantleBlock(world, pos, state, target, context.getPlayer(), false);

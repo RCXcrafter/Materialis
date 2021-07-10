@@ -46,6 +46,7 @@ public class MaterialisLang extends LanguageProvider {
 		add("item.materialis.wrench.description", "The Wrench is a common tool among engineers. It can have many abilities to increase its usefulness.\nRight Click: Rotate block");
 		addItem(MaterialisResources.BATTLEWRENCH, "Battlewrench");
 		add("recipe.materialis.modifier.thermal_wrenching_requirements", "Thermal Wrenching requires Wrenching to apply");
+		add("recipe.materialis.modifier.create_wrenching_requirements", "Mechanical Wrenching requires Wrenching to apply");
 
 		//general oredict materials
 		add("material.materialis.brass", "Brass");
@@ -212,6 +213,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.thermal_wrenching", "Thermal Wrenching");
 		add("modifier.materialis.thermal_wrenching.flavor", "Crescent!");
 		add("modifier.materialis.thermal_wrenching.description", "Tool can dismantle thermal machines by sneak-right clicking");
+		add("modifier.materialis.create_wrenching", "Mechanical Wrenching");
+		add("modifier.materialis.create_wrenching.flavor", "Creative!");
+		add("modifier.materialis.create_wrenching.description", "Tool can dismantle kinetic components by sneak-right clicking");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
