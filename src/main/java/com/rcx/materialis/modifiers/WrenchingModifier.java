@@ -1,14 +1,17 @@
 package com.rcx.materialis.modifiers;
 
+import java.util.Collection;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PistonBlock;
-import net.minecraft.block.material.PushReaction;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.Property;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.state.properties.ChestType;
 import net.minecraft.state.properties.Half;
+import net.minecraft.state.properties.RailShape;
+import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Rotation;
@@ -43,8 +46,10 @@ public class WrenchingModifier extends SingleUseModifier {
 	public ActionResultType beforeBlockUse(IModifierToolStack tool, int level, ItemUseContext context) {
 		ActionResultType result = ActionResultType.PASS;
 		if (!tool.isBroken() && context.getPlayer() != null) {
-			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-			if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, context.getLevel(), context.getClickedPos(), context.getPlayer()) || state.getHarvestLevel() > tool.getStats().getInt(ToolStats.HARVEST_LEVEL) || !isRotatable(state, context.getLevel(), context.getClickedPos(), true))
+			World world = context.getLevel();
+			BlockPos pos = context.getClickedPos();
+			BlockState state = world.getBlockState(pos);
+			if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, world, pos, context.getPlayer()) || state.getHarvestLevel() > tool.getStats().getInt(ToolStats.HARVEST_LEVEL) || !isRotatable(state, world, pos))
 				return result;
 
 			Direction face = context.getClickedFace();
@@ -53,42 +58,74 @@ public class WrenchingModifier extends SingleUseModifier {
 				if (prop instanceof DirectionProperty) {
 					Direction direction = state.getValue((DirectionProperty) prop);
 					Direction newDirection = rotateDirection(direction, face.getAxis(), rotation);
-					if (newDirection == direction) //make sure something changed
-						continue;
-
-					int attempts = 1; //check if the block can even be rotated like this
-					while (!prop.getPossibleValues().contains(newDirection) && attempts < 3) {
-						newDirection = rotateDirection(direction, face.getAxis(), rotation.getRotated(rotation)); //try the next rotation
-						attempts++;
-					}
-					if (prop.getPossibleValues().contains(newDirection)) {
-						context.getLevel().setBlock(context.getClickedPos(), state.setValue((DirectionProperty) prop, newDirection), Constants.BlockFlags.DEFAULT_AND_RERENDER);
-						result = ActionResultType.SUCCESS;
-						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-						break;
+					if (newDirection != direction) { //make sure something changed
+						BlockState newState = null;
+						int attempts = 0; //check if the block can even be rotated like this
+						while (attempts < 3) {
+							if (prop.getPossibleValues().contains(newDirection)) {
+								newState = state.setValue((DirectionProperty) prop, newDirection);
+								if (newState.canSurvive(world, pos))
+									break;
+							}
+							newDirection = rotateDirection(newDirection, face.getAxis(), rotation); //try the next rotation
+							attempts++;
+						}
+						if (prop.getPossibleValues().contains(newDirection) && newState.canSurvive(world, pos)) {
+							world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+							result = ActionResultType.SUCCESS;
+							ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+							break;
+						}
 					}
 				}
 				if (prop == BlockStateProperties.AXIS || prop == BlockStateProperties.HORIZONTAL_AXIS) {
 					Direction.Axis axis = prop == BlockStateProperties.AXIS ? state.getValue(BlockStateProperties.AXIS) : state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
 					Direction.Axis newAxis = rotateAxis(axis, face.getAxis(), rotation);
-					if (newAxis == axis) //make sure something changed
-						continue;
+					if (newAxis != axis) { //make sure something changed
+						//check if the block can even be rotated like this
+						if (prop.getPossibleValues().contains(newAxis)) {
+							BlockState newState;
+							if (prop == BlockStateProperties.AXIS)
+								newState = state.setValue(BlockStateProperties.AXIS, newAxis);
+							else
+								newState = state.setValue(BlockStateProperties.HORIZONTAL_AXIS, newAxis);
 
-					//check if the block can even be rotated like this
-					if (prop.getPossibleValues().contains(newAxis)) {
-						if (prop == BlockStateProperties.AXIS)
-							context.getLevel().setBlock(context.getClickedPos(), state.setValue(BlockStateProperties.AXIS, newAxis), Constants.BlockFlags.DEFAULT_AND_RERENDER);
-						else
-							context.getLevel().setBlock(context.getClickedPos(), state.setValue(BlockStateProperties.HORIZONTAL_AXIS, newAxis), Constants.BlockFlags.DEFAULT_AND_RERENDER);
-						result = ActionResultType.SUCCESS;
-						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-						break;
+							if (newState.canSurvive(world, pos)) {
+								world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+								result = ActionResultType.SUCCESS;
+								ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+								break;
+							}
+						}
+					}
+				}
+				if (prop == BlockStateProperties.RAIL_SHAPE || prop == BlockStateProperties.RAIL_SHAPE_STRAIGHT) {
+					RailShape shape = prop == BlockStateProperties.RAIL_SHAPE ? state.getValue(BlockStateProperties.RAIL_SHAPE) : state.getValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT);
+					RailShape newShape = rotateRail(shape, face.getAxis(), rotation);
+					if (newShape != shape) { //make sure something changed
+						//check if the block can even be rotated like this
+						if (shouldRailBeRemoved(pos, world, newShape))
+							newShape = rotateRail(shape, face.getAxis(), rotation.getRotated(Rotation.CLOCKWISE_180));
+
+						if (!shouldRailBeRemoved(pos, world, newShape) && prop.getPossibleValues().contains(newShape)) {
+							BlockState newState;
+							if (prop == BlockStateProperties.RAIL_SHAPE)
+								newState = state.setValue(BlockStateProperties.RAIL_SHAPE, newShape);
+							else
+								newState = state.setValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT, newShape);
+
+							world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+							result = ActionResultType.SUCCESS;
+							ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+							break;
+
+						}
 					}
 				}
 				if (prop == BlockStateProperties.ROTATION_16) {
 					int rotation16 = state.getValue(BlockStateProperties.ROTATION_16);
 					rotation16 = (rotation16 + 1) % 16;
-					context.getLevel().setBlock(context.getClickedPos(), state.setValue(BlockStateProperties.ROTATION_16, rotation16), Constants.BlockFlags.DEFAULT_AND_RERENDER);
+					world.setBlock(pos, state.setValue(BlockStateProperties.ROTATION_16, rotation16), Constants.BlockFlags.DEFAULT_AND_RERENDER);
 					result = ActionResultType.SUCCESS;
 					ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
 					break;
@@ -99,10 +136,29 @@ public class WrenchingModifier extends SingleUseModifier {
 						half = Half.BOTTOM;
 					else
 						half = Half.TOP;
-					context.getLevel().setBlock(context.getClickedPos(), state.setValue(BlockStateProperties.HALF, half), Constants.BlockFlags.DEFAULT_AND_RERENDER);
-					result = ActionResultType.SUCCESS;
-					ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-					break;
+					BlockState newState = state.setValue(BlockStateProperties.HALF, half);
+					if (newState.canSurvive(world, pos)) {
+						world.setBlock(pos, state.setValue(BlockStateProperties.HALF, half), Constants.BlockFlags.DEFAULT_AND_RERENDER);
+						result = ActionResultType.SUCCESS;
+						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+						break;
+					}
+				}
+				if (prop == BlockStateProperties.SLAB_TYPE) {
+					SlabType half = state.getValue(BlockStateProperties.SLAB_TYPE);
+					if (half == SlabType.DOUBLE) {
+						if (half == SlabType.TOP)
+							half = SlabType.BOTTOM;
+						else if (half == SlabType.BOTTOM)
+							half = SlabType.TOP;
+						BlockState newState = state.setValue(BlockStateProperties.SLAB_TYPE, half);
+						if (newState.canSurvive(world, pos)) {
+							world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+							result = ActionResultType.SUCCESS;
+							ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
+							break;
+						}
+					}
 				}
 			}
 		}
@@ -206,33 +262,173 @@ public class WrenchingModifier extends SingleUseModifier {
 		}
 	}
 
-	//modified version of {@link PistonBlock#isPushable(BlockState World BlockPos Direction boolean Direction) }
-	public static boolean isRotatable(BlockState p_185646_0_, World p_185646_1_, BlockPos p_185646_2_, boolean p_185646_4_) {
-		if (p_185646_2_.getY() >= 0 && p_185646_2_.getY() <= p_185646_1_.getMaxBuildHeight() - 1 && p_185646_1_.getWorldBorder().isWithinBounds(p_185646_2_)) {
-			if (p_185646_0_.isAir()) {
-				return true;
-			} else if (!p_185646_0_.is(Blocks.OBSIDIAN) && !p_185646_0_.is(Blocks.CRYING_OBSIDIAN) && !p_185646_0_.is(Blocks.RESPAWN_ANCHOR)) {
-				if (!p_185646_0_.is(Blocks.PISTON) && !p_185646_0_.is(Blocks.STICKY_PISTON)) {
-					if (p_185646_0_.getDestroySpeed(p_185646_1_, p_185646_2_) == -1.0F) {
-						return false;
-					}
-					switch(p_185646_0_.getPistonPushReaction()) {
-					case BLOCK:
-						return false;
-					case DESTROY:
-						return p_185646_4_;
-					case PUSH_ONLY:
-						return true;
-					}
-				} else if (p_185646_0_.getValue(PistonBlock.EXTENDED)) {
-					return false;
+	public RailShape rotateRail(RailShape shape, Direction.Axis rotateOn, Rotation rotation) {
+		switch (rotateOn) {
+		case Y:
+			switch(rotation) {
+			case CLOCKWISE_180:
+				switch(shape) {
+				case ASCENDING_EAST:
+					return RailShape.ASCENDING_WEST;
+				case ASCENDING_WEST:
+					return RailShape.ASCENDING_EAST;
+				case ASCENDING_NORTH:
+					return RailShape.ASCENDING_SOUTH;
+				case ASCENDING_SOUTH:
+					return RailShape.ASCENDING_NORTH;
+				case SOUTH_EAST:
+					return RailShape.NORTH_WEST;
+				case SOUTH_WEST:
+					return RailShape.NORTH_EAST;
+				case NORTH_WEST:
+					return RailShape.SOUTH_EAST;
+				case NORTH_EAST:
+					return RailShape.SOUTH_WEST;
+				case NORTH_SOUTH:
+				case EAST_WEST:
+					return shape;
 				}
-				return true;
-			} else {
+			case COUNTERCLOCKWISE_90:
+				switch(shape) {
+				case ASCENDING_EAST:
+					return RailShape.ASCENDING_NORTH;
+				case ASCENDING_WEST:
+					return RailShape.ASCENDING_SOUTH;
+				case ASCENDING_NORTH:
+					return RailShape.ASCENDING_WEST;
+				case ASCENDING_SOUTH:
+					return RailShape.ASCENDING_EAST;
+				case SOUTH_EAST:
+					return RailShape.NORTH_EAST;
+				case SOUTH_WEST:
+					return RailShape.SOUTH_EAST;
+				case NORTH_WEST:
+					return RailShape.SOUTH_WEST;
+				case NORTH_EAST:
+					return RailShape.NORTH_WEST;
+				case NORTH_SOUTH:
+					return RailShape.EAST_WEST;
+				case EAST_WEST:
+					return RailShape.NORTH_SOUTH;
+				}
+			case CLOCKWISE_90:
+				switch(shape) {
+				case ASCENDING_EAST:
+					return RailShape.ASCENDING_SOUTH;
+				case ASCENDING_WEST:
+					return RailShape.ASCENDING_NORTH;
+				case ASCENDING_NORTH:
+					return RailShape.ASCENDING_EAST;
+				case ASCENDING_SOUTH:
+					return RailShape.ASCENDING_WEST;
+				case SOUTH_EAST:
+					return RailShape.SOUTH_WEST;
+				case SOUTH_WEST:
+					return RailShape.NORTH_WEST;
+				case NORTH_WEST:
+					return RailShape.NORTH_EAST;
+				case NORTH_EAST:
+					return RailShape.SOUTH_EAST;
+				case NORTH_SOUTH:
+					return RailShape.EAST_WEST;
+				case EAST_WEST:
+					return RailShape.NORTH_SOUTH;
+				}
+			default:
+				return shape;
+			}
+		case X:
+			switch(rotation) {
+			case CLOCKWISE_90:
+				switch(shape) {
+				case ASCENDING_NORTH:
+					return RailShape.NORTH_SOUTH;
+				case ASCENDING_SOUTH:
+					return RailShape.NORTH_SOUTH;
+				case NORTH_SOUTH:
+					return RailShape.ASCENDING_NORTH;
+				default:
+					return shape;
+				}
+			case COUNTERCLOCKWISE_90:
+				switch(shape) {
+				case ASCENDING_NORTH:
+					return RailShape.NORTH_SOUTH;
+				case ASCENDING_SOUTH:
+					return RailShape.NORTH_SOUTH;
+				case NORTH_SOUTH:
+					return RailShape.ASCENDING_SOUTH;
+				default:
+					return shape;
+				}
+			default:
+				return shape;
+			}
+		case Z:
+			switch(rotation) {
+			case CLOCKWISE_90:
+				switch(shape) {
+				case ASCENDING_EAST:
+					return RailShape.EAST_WEST;
+				case ASCENDING_WEST:
+					return RailShape.EAST_WEST;
+				case EAST_WEST:
+					return RailShape.ASCENDING_EAST;
+				default:
+					return shape;
+				}
+			case COUNTERCLOCKWISE_90:
+				switch(shape) {
+				case ASCENDING_EAST:
+					return RailShape.EAST_WEST;
+				case ASCENDING_WEST:
+					return RailShape.EAST_WEST;
+				case EAST_WEST:
+					return RailShape.ASCENDING_WEST;
+				default:
+					return shape;
+				}
+			default:
+				return shape;
+			}
+		default:
+			return shape;
+		}
+	}
+
+	public static boolean isRotatable(BlockState state, World world, BlockPos pos) {
+		if (pos.getY() >= 0 && pos.getY() <= world.getMaxBuildHeight() - 1 && world.getWorldBorder().isWithinBounds(pos)) {
+			Collection<Property<?>> properties = state.getProperties();
+			//make sure that multiblocks can't be rotated
+			if (properties.contains(BlockStateProperties.DOUBLE_BLOCK_HALF)) //double tall blocks
+				return false;
+			if (properties.contains(BlockStateProperties.BED_PART)) //beds
+				return false;
+			if (properties.contains(BlockStateProperties.CHEST_TYPE) && state.getValue(BlockStateProperties.CHEST_TYPE) != ChestType.SINGLE) //double chests
+				return false;
+			if (properties.contains(BlockStateProperties.EXTENDED) && state.getValue(BlockStateProperties.EXTENDED)) //extended pistons
+				return false;
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean shouldRailBeRemoved(BlockPos pos, World world, RailShape shape) {
+		if (!Block.canSupportRigidBlock(world, pos.below())) {
+			return true;
+		} else {
+			switch(shape) {
+			case ASCENDING_EAST:
+				return !Block.canSupportRigidBlock(world, pos.east());
+			case ASCENDING_WEST:
+				return !Block.canSupportRigidBlock(world, pos.west());
+			case ASCENDING_NORTH:
+				return !Block.canSupportRigidBlock(world, pos.north());
+			case ASCENDING_SOUTH:
+				return !Block.canSupportRigidBlock(world, pos.south());
+			default:
 				return false;
 			}
-		} else {
-			return false;
 		}
 	}
 }

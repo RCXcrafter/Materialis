@@ -136,7 +136,6 @@ public class MaterialisResources {
 	public static final ToolBaseStatDefinition WRENCH_BASE_STATS = new ToolBaseStatDefinition.Builder()
 			.modifier(ToolStats.ATTACK_DAMAGE, 0.5f)
 			.modifier(ToolStats.ATTACK_SPEED, 1.8f)
-			.modifier(ToolStats.MINING_SPEED, 1.5f)
 			.modifier(ToolStats.DURABILITY, 1.5f)
 			.setDefaultUpgrades(0).setDefaultAbilities(4).build();
 	public static final ToolDefinition WRENCH_DEFINITION = new ToolDefinition(
@@ -147,9 +146,9 @@ public class MaterialisResources {
 
 	public static final ToolBaseStatDefinition BATTLEWRENCH_BASE_STATS = new ToolBaseStatDefinition.Builder()
 			.bonus(ToolStats.ATTACK_DAMAGE, 4.0f)
-			.modifier(ToolStats.ATTACK_DAMAGE, 0.5f)
-			.modifier(ToolStats.ATTACK_SPEED, 1.8f)
-			.modifier(ToolStats.MINING_SPEED, 1.5f)
+			.modifier(ToolStats.ATTACK_DAMAGE, 1.1f)
+			.modifier(ToolStats.ATTACK_SPEED, 1.1f)
+			.modifier(ToolStats.DURABILITY, 2.5f)
 			.setPrimaryHeadWeight(2).setDefaultUpgrades(0).setDefaultAbilities(3).build();
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = new ToolDefinition(
 			BATTLEWRENCH_BASE_STATS,
