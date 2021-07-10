@@ -1,0 +1,43 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:gears/nickel"
+    },
+    {
+      "item": "thermal:wrench"
+    },
+    {
+      "tag": "forge:gears/nickel"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "requirements": {
+    "options": [
+      {
+        "name": "materialis:wrenching",
+        "level": 1
+      },
+      {
+        "name": "materialis:wrenching_hidden",
+        "level": 1
+      }
+    ],
+    "matches_needed": 1,
+    "error": "recipe.materialis.modifier.thermal_wrenching_requirements"
+  },
+  "result": {
+    "name": "materialis:thermal_wrenching",
+    "level": 1
+  },
+  "max_level": 1,
+  "upgrade_slots": 1
+}

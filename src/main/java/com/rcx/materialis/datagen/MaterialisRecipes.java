@@ -273,13 +273,24 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setMaxLevel(1)
 		.setAbilitySlots(1)
 		.build(consumer, prefix(MaterialisModifiers.wrenchingModifier, modifierFolder));
-		
+
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.galvanizedModifier.get())
 		.setTools(Ingredient.of(MaterialisItemTags.GALVANIZABLE))
-        .addInput(Items.PHANTOM_MEMBRANE)
-        .addInput(Tags.Items.INGOTS_IRON)
-        .setUpgradeSlots(2)
-        .build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
+		.addInput(Items.PHANTOM_MEMBRANE)
+		.addInput(Tags.Items.INGOTS_IRON)
+		.setUpgradeSlots(2)
+		.build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.thermalWrenchingModifier.get())
+		.addInput(getTag("forge", "gears/nickel"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "wrench"))))
+		.addInput(getTag("forge", "gears/nickel"))
+		.setRequirements(ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get())))
+		.setRequirementsError("recipe.materialis.modifier.thermal_wrenching_requirements")
+		.setMaxLevel(1)
+		.setUpgradeSlots(1)
+		.setGroup("materialis:thermal")
+		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

@@ -193,6 +193,9 @@
   "modifier.materialis.short_sighted": "Short-Sighted",
   "modifier.materialis.short_sighted.description": "Decreases your reach distance",
   "modifier.materialis.short_sighted.flavor": "Do now, think later",
+  "modifier.materialis.thermal_wrenching": "Thermal Wrenching",
+  "modifier.materialis.thermal_wrenching.description": "Tool can dismantle thermal machines by sneak-right clicking",
+  "modifier.materialis.thermal_wrenching.flavor": "Crescent!",
   "modifier.materialis.underlord": "Underlord",
   "modifier.materialis.underlord.description": "Deals more damage to non-boss undergarden mobs and mines undergarden blocks faster",
   "modifier.materialis.underlord.flavor": "Master of the Undergarden",
@@ -204,8 +207,9 @@
   "modifier.materialis.work_hardened.flavor": "Play hardeneder",
   "modifier.materialis.wrenching": "Wrenching",
   "modifier.materialis.wrenching.description": "Tool can rotate blocks by right clicking",
-  "modifier.materialis.wrenching.flavor": "wretched!",
+  "modifier.materialis.wrenching.flavor": "Wretched!",
   "pattern.materialis.wrench_head": "Wrench Head",
   "recipe.materialis.modifier.runed_requirements": "Runed requires Shiny to apply",
+  "recipe.materialis.modifier.thermal_wrenching_requirements": "Thermal Wrenching requires Wrenching to apply",
   "recipe.materialis.remove_modifier.spell_slot_not_empty": "This change removes a socket that currently contains a spell"
 }

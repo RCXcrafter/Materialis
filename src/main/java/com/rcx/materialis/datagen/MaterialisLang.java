@@ -39,12 +39,13 @@ public class MaterialisLang extends LanguageProvider {
 		addCast(MaterialisResources.INLAY_CAST, "Inlay");
 		addCast(MaterialisResources.WRENCH_HEAD_CAST, "Wrench Head");
 
-		//wrench
+		//wrench stuff
 		addItem(MaterialisResources.WRENCH_HEAD, "Wrench Head");
 		add("pattern.materialis.wrench_head", "Wrench Head");
 		addItem(MaterialisResources.WRENCH, "Wrench");
 		add("item.materialis.wrench.description", "The Wrench is a common tool among engineers. It can have many abilities to increase its usefulness.\nRight Click: Rotate block");
 		addItem(MaterialisResources.BATTLEWRENCH, "Battlewrench");
+		add("recipe.materialis.modifier.thermal_wrenching_requirements", "Thermal Wrenching requires Wrenching to apply");
 
 		//general oredict materials
 		add("material.materialis.brass", "Brass");
@@ -203,11 +204,14 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.otherworldly.flavor", "From another plane of existence!");
 		add("modifier.materialis.otherworldly.description", "Allows the tool to harvest blocks from The Other Place");
 		add("modifier.materialis.wrenching", "Wrenching");
-		add("modifier.materialis.wrenching.flavor", "wretched!");
+		add("modifier.materialis.wrenching.flavor", "Wretched!");
 		add("modifier.materialis.wrenching.description", "Tool can rotate blocks by right clicking");
 		add("modifier.materialis.galvanized", "Galvanized");
 		add("modifier.materialis.galvanized.flavor", "Stainless!");
 		add("modifier.materialis.galvanized.description", "Trades two upgrade slots for an ability slot");
+		add("modifier.materialis.thermal_wrenching", "Thermal Wrenching");
+		add("modifier.materialis.thermal_wrenching.flavor", "Crescent!");
+		add("modifier.materialis.thermal_wrenching.description", "Tool can dismantle thermal machines by sneak-right clicking");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
