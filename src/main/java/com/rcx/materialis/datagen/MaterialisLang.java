@@ -205,6 +205,9 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.wrenching", "Wrenching");
 		add("modifier.materialis.wrenching.flavor", "wretched!");
 		add("modifier.materialis.wrenching.description", "Tool can rotate blocks by right clicking");
+		add("modifier.materialis.galvanized", "Galvanized");
+		add("modifier.materialis.galvanized.flavor", "Stainless!");
+		add("modifier.materialis.galvanized.description", "Trades two upgrade slots for an ability slot");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

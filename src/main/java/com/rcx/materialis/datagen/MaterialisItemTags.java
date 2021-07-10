@@ -27,6 +27,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> TOOLS = ItemTags.bind("forge:tools");
 	public static final INamedTag<Item> WRENCH = ItemTags.bind("forge:tools/wrench");
 	public static final INamedTag<Item> WRENCHING = ItemTags.bind(Materialis.modID + ":wrench");
+	public static final INamedTag<Item> GALVANIZABLE = ItemTags.bind(Materialis.modID + ":galvanizable");
 
 	//create stuff
 	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
@@ -92,6 +93,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(TinkerTags.Items.MULTIPART_TOOL).add(MaterialisResources.WRENCH.get());
 		tag(WRENCH).add(MaterialisResources.WRENCH.get());
 		tag(WRENCHING).add(MaterialisResources.WRENCH.get());
+		tag(GALVANIZABLE).add(MaterialisResources.WRENCH.get());
 		tag(TinkerTags.Items.STRUCTURE_DEBUG).add(MaterialisResources.WRENCH.get());
 		tag(TinkerTags.Items.MELEE_PRIMARY).add(MaterialisResources.BATTLEWRENCH.get());
 		tag(TinkerTags.Items.TWO_HANDED).add(MaterialisResources.BATTLEWRENCH.get());

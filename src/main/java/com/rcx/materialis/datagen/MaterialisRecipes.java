@@ -15,9 +15,11 @@ import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.Tags.Fluids;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.AndCondition;
@@ -271,6 +273,13 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setMaxLevel(1)
 		.setAbilitySlots(1)
 		.build(consumer, prefix(MaterialisModifiers.wrenchingModifier, modifierFolder));
+		
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.galvanizedModifier.get())
+		.setTools(Ingredient.of(MaterialisItemTags.GALVANIZABLE))
+        .addInput(Items.PHANTOM_MEMBRANE)
+        .addInput(Tags.Items.INGOTS_IRON)
+        .setUpgradeSlots(2)
+        .build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

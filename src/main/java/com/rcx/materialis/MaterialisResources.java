@@ -137,7 +137,7 @@ public class MaterialisResources {
 			.modifier(ToolStats.ATTACK_DAMAGE, 0.5f)
 			.modifier(ToolStats.ATTACK_SPEED, 1.8f)
 			.modifier(ToolStats.DURABILITY, 1.5f)
-			.setDefaultUpgrades(0).setDefaultAbilities(4).build();
+			.setDefaultUpgrades(0).setDefaultAbilities(3).build();
 	public static final ToolDefinition WRENCH_DEFINITION = new ToolDefinition(
 			WRENCH_BASE_STATS,
 			() -> Stream.of(WRENCH_HEAD, TinkerToolParts.toolHandle).map(Supplier::get).collect(Collectors.toList()),
