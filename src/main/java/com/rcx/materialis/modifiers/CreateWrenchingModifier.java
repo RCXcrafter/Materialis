@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -65,9 +66,17 @@ public class CreateWrenchingModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
-		if (context.getTarget() instanceof AbstractMinecartEntity)
-			return damage + 100;
-		return damage;
+	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
+		if (context.getTarget() instanceof AbstractMinecartEntity) {
+			DamageSource source;
+			PlayerEntity player = context.getPlayerAttacker();
+			if (player != null) {
+				source = DamageSource.playerAttack(player);
+			} else {
+				source = DamageSource.mobAttack(context.getAttacker());
+			}
+			context.getTarget().hurt(source, 100);
+		}
+		return 0;
 	}
 }
