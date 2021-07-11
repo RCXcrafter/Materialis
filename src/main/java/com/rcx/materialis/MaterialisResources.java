@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import com.google.common.collect.ImmutableList;
 import com.rcx.materialis.block.LightResidueBlock;
-import com.rcx.materialis.item.BasicTool;
+import com.rcx.materialis.item.WrenchTool;
 import com.rcx.materialis.item.OptionalItem;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 
@@ -136,25 +136,27 @@ public class MaterialisResources {
 	public static final ToolBaseStatDefinition WRENCH_BASE_STATS = new ToolBaseStatDefinition.Builder()
 			.modifier(ToolStats.ATTACK_DAMAGE, 0.5f)
 			.modifier(ToolStats.ATTACK_SPEED, 1.8f)
+			.modifier(ToolStats.MINING_SPEED, 2.0f)
 			.modifier(ToolStats.DURABILITY, 1.5f)
 			.setDefaultUpgrades(1).setDefaultAbilities(3).build();
 	public static final ToolDefinition WRENCH_DEFINITION = new ToolDefinition(
 			WRENCH_BASE_STATS,
 			() -> Stream.of(WRENCH_HEAD, TinkerToolParts.toolHandle).map(Supplier::get).collect(Collectors.toList()),
 			() -> ImmutableList.of(new ModifierEntry(MaterialisModifiers.wrenchingModifierHidden.get(), 1)));
-	public static final ItemObject<BasicTool> WRENCH = ITEMS_EXTENDED.register("wrench", () -> new BasicTool(TOOL_PROPS.get().addToolType(ToolType.get("wrench"), 0), WRENCH_DEFINITION));
+	public static final ItemObject<WrenchTool> WRENCH = ITEMS_EXTENDED.register("wrench", () -> new WrenchTool(TOOL_PROPS.get().addToolType(WrenchTool.TOOL_TYPE, 0), WRENCH_DEFINITION));
 
 	public static final ToolBaseStatDefinition BATTLEWRENCH_BASE_STATS = new ToolBaseStatDefinition.Builder()
 			.bonus(ToolStats.ATTACK_DAMAGE, 4.0f)
 			.modifier(ToolStats.ATTACK_DAMAGE, 1.1f)
 			.modifier(ToolStats.ATTACK_SPEED, 1.1f)
+			.modifier(ToolStats.MINING_SPEED, 1.5f)
 			.modifier(ToolStats.DURABILITY, 2.5f)
 			.setPrimaryHeadWeight(2).setDefaultUpgrades(0).setDefaultAbilities(3).build();
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = new ToolDefinition(
 			BATTLEWRENCH_BASE_STATS,
 			() -> Stream.of(TinkerToolParts.hammerHead, TinkerToolParts.toughHandle, WRENCH_HEAD, WRENCH_HEAD).map(Supplier::get).collect(Collectors.toList()),
 			() -> ImmutableList.of(new ModifierEntry(MaterialisModifiers.wrenchingModifierHidden.get(), 1)));
-	public static final ItemObject<BasicTool> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new BasicTool(new Item.Properties().addToolType(ToolType.get("wrench"), 0), BATTLEWRENCH_DEFINITION));
+	public static final ItemObject<WrenchTool> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new WrenchTool(new Item.Properties().addToolType(WrenchTool.TOOL_TYPE, 0), BATTLEWRENCH_DEFINITION));
 
 	//industrial foregoing stuff
 	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new OptionalItem(new Item.Properties().tab(TinkerModule.TAB_GENERAL), new ModLoadedCondition("industrialforegoing")));
