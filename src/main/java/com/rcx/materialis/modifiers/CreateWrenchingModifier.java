@@ -2,7 +2,8 @@ package com.rcx.materialis.modifiers;
 
 import java.util.Random;
 
-import com.rcx.materialis.datagen.MaterialisBlockTags;
+import com.simibubi.create.AllSoundEvents;
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.contraptions.wrench.IWrenchable;
 
 import net.minecraft.block.Block;
@@ -38,7 +39,7 @@ public class CreateWrenchingModifier extends SingleUseModifier {
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			Block block = state.getBlock();
 			if (!(block instanceof IWrenchable)) {
-				if (context.getPlayer().isSecondaryUseActive() && MaterialisBlockTags.CREATE_WRENCH_PICKUP.contains(block))
+				if (context.getPlayer().isSecondaryUseActive() && AllTags.AllBlockTags.WRENCH_PICKUP.matches(state))
 					return onItemUseOnOther(world, pos, state, context);
 				return ActionResultType.PASS;
 			}
@@ -60,8 +61,7 @@ public class CreateWrenchingModifier extends SingleUseModifier {
 			.forEach(itemStack -> player.inventory.placeItemBackInInventory(world, itemStack));
 		state.spawnAfterBreak((ServerWorld) world, pos, ItemStack.EMPTY);
 		world.destroyBlock(pos, false);
-		//TODO: uncomment this when new create version is released
-		//AllSoundEvents.WRENCH_REMOVE.playOnServer(world, pos, 1, rand.nextFloat() * .5f + .5f);
+		AllSoundEvents.WRENCH_REMOVE.playOnServer(world, pos, 1, rand.nextFloat() * .5f + .5f);
 		return ActionResultType.SUCCESS;
 	}
 

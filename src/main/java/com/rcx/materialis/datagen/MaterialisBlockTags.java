@@ -20,9 +20,6 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 	public static final INamedTag<Block> STARMETAL_BLOCK = BlockTags.bind("forge:storage_blocks/starmetal");
 	public static final INamedTag<Block> STARMETAL_ORE = BlockTags.bind("forge:ores/starmetal");
 
-	//wrench
-	public static final INamedTag<Block> CREATE_WRENCH_PICKUP = BlockTags.bind("create:wrench_pickup");
-
 	public MaterialisBlockTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);
 	}
@@ -32,9 +29,6 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
 			addBlockTag(material.BLOCK.get(), BlockTags.bind("forge:storage_blocks/" + material.name));
 		}
-
-		//wrench stuff
-		tag(CREATE_WRENCH_PICKUP);
 
 		//astral sorcery stuff
 		tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
