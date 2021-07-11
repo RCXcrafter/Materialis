@@ -20,6 +20,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 
 public class CreateWrenchingModifier extends SingleUseModifier {
@@ -39,11 +40,14 @@ public class CreateWrenchingModifier extends SingleUseModifier {
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			Block block = state.getBlock();
 			if (!(block instanceof IWrenchable)) {
-				if (context.getPlayer().isSecondaryUseActive() && AllTags.AllBlockTags.WRENCH_PICKUP.matches(state))
+				if (context.getPlayer().isSecondaryUseActive() && AllTags.AllBlockTags.WRENCH_PICKUP.matches(state)) {
+					ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
 					return onItemUseOnOther(world, pos, state, context);
+				}
 				return ActionResultType.PASS;
 			}
 			IWrenchable actor = (IWrenchable) block;
+			ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
 			if (context.getPlayer().isSecondaryUseActive())
 				return actor.onSneakWrenched(state, context);
 			return actor.onWrenched(state, context);
