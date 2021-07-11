@@ -1,15 +1,20 @@
 package com.rcx.materialis.item;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableSet;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.ToolType;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolHarvestLogic;
 import slimeknights.tconstruct.library.tools.item.ToolCore;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 /**
  * Tool with metal and other player made blocks harvest
@@ -22,6 +27,15 @@ public class WrenchTool extends ToolCore {
 
 	public WrenchTool(Properties properties, ToolDefinition toolDefinition) {
 		super(properties, toolDefinition);
+	}
+
+	@Override
+	public int getHarvestLevel(ItemStack stack, ToolType toolClass, @Nullable PlayerEntity player, @Nullable BlockState state) {
+		//wrench is not an existing tool type, so check for effectiveness instead
+		if (canHarvestBlock(stack, state)) { //canHarvestBlock takes care of checking if the tool is broken
+			return ToolStack.from(stack).getStats().getInt(ToolStats.HARVEST_LEVEL);
+		}
+		return -1;
 	}
 
 	@Override
