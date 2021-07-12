@@ -43,7 +43,7 @@ public class MaterialisLang extends LanguageProvider {
 		addItem(MaterialisResources.WRENCH_HEAD, "Wrench Head");
 		add("pattern.materialis.wrench_head", "Wrench Head");
 		addItem(MaterialisResources.WRENCH, "Wrench");
-		add("item.materialis.wrench.description", "The Wrench is a common tool among engineers. It can have many abilities to increase its usefulness.\nRight Click: Rotate block");
+		add("item.materialis.wrench.description", "The Wrench is a common tool among engineers. It can efficiently break machines and has room for many abilities.\nRight Click: Rotate block");
 		addItem(MaterialisResources.BATTLEWRENCH, "Battlewrench");
 		add("recipe.materialis.modifier.thermal_wrenching_requirements", "Thermal Wrenching requires Wrenching to apply");
 		add("recipe.materialis.modifier.create_wrenching_requirements", "Mechanical Wrenching requires Wrenching to apply");

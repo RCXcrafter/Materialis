@@ -164,10 +164,10 @@ public class WrenchingModifier extends SingleUseModifier {
 			}
 			if (prop == BlockStateProperties.SLAB_TYPE) {
 				SlabType half = state.getValue(BlockStateProperties.SLAB_TYPE);
-				if (half == SlabType.DOUBLE) {
+				if (half != SlabType.DOUBLE) {
 					if (half == SlabType.TOP)
 						half = SlabType.BOTTOM;
-					else if (half == SlabType.BOTTOM)
+					else
 						half = SlabType.TOP;
 					BlockState newState = state.setValue(BlockStateProperties.SLAB_TYPE, half);
 					if (newState.canSurvive(world, pos)) {
@@ -429,6 +429,7 @@ public class WrenchingModifier extends SingleUseModifier {
 		return false;
 	}
 
+	//rails don't properly implement canSurvive so this is necessary
 	public static boolean shouldRailBeRemoved(BlockPos pos, World world, RailShape shape) {
 		if (!Block.canSupportRigidBlock(world, pos.below())) {
 			return true;
