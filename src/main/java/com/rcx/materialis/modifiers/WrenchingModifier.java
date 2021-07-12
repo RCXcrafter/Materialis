@@ -48,7 +48,7 @@ public class WrenchingModifier extends SingleUseModifier {
 			World world = context.getLevel();
 			BlockPos pos = context.getClickedPos();
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) != null) {
+			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) != null || world.getBlockEntity(pos) != null) {
 				return blockUse(tool, level, world, pos, state, context);
 			}
 		}
@@ -61,7 +61,7 @@ public class WrenchingModifier extends SingleUseModifier {
 			World world = context.getLevel();
 			BlockPos pos = context.getClickedPos();
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) == null) {
+			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) == null && world.getBlockEntity(pos) == null) {
 				return blockUse(tool, level, world, pos, state, context);
 			}
 		}
