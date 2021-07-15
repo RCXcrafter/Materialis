@@ -69,7 +69,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId ivoryPsimetal = createMaterial("ivory_psimetal");
 
 	//occultism materials
-	public static final MaterialId iesnium = createMaterial("iesnium");
+	//public static final MaterialId iesnium = createMaterial("iesnium");
 
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
@@ -121,7 +121,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, 0x3D3838);
 		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, 0xF6F9ED);
 		//occultism materials
-		addCompatMetalMaterial(iesnium, 3, ORDER_HARVEST, 0x8ADAE3);
+		//addCompatMetalMaterial(iesnium, 3, ORDER_HARVEST, 0x8ADAE3);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -180,7 +180,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(ebonyPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoKillerModifier.get());
 			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoDiggerModifier.get());
 			//occultism materials
-			addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier.get());
+			//addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier.get());
 		}
 	}
 
@@ -236,7 +236,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(ebonyPsimetal, new HeadMaterialStats(900, 8f, 4, 5f), new HandleMaterialStats(0.7f, 0.8f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(900, 10f, 4, 3f), new HandleMaterialStats(1.1f, 1.1f, 0.8f, 1f), ExtraMaterialStats.DEFAULT);
 			//occultism materials
-			addMaterialStats(iesnium, new HeadMaterialStats(921, 8f, 3, 3f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			//addMaterialStats(iesnium, new HeadMaterialStats(921, 8f, 3, 3f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }
