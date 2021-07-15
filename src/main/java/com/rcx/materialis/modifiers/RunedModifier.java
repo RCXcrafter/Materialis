@@ -12,7 +12,7 @@ import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
-import slimeknights.tconstruct.library.tools.item.ToolCore;
+import slimeknights.tconstruct.library.tools.item.ToolItem;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
@@ -30,7 +30,7 @@ public class RunedModifier extends SingleUseModifier {
 
 	@Override
 	public void addVolatileData(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
-		volatileData.putBoolean(ToolCore.SHINY, true);
+		volatileData.putBoolean(ToolItem.SHINY, true);
 	}
 
 	@Override

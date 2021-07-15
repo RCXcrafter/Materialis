@@ -10,7 +10,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import slimeknights.tconstruct.library.tools.item.ToolCore;
+import slimeknights.tconstruct.library.tools.item.ToolItem;
 
 public class QuarkCompat {
 
@@ -18,7 +18,7 @@ public class QuarkCompat {
 
 	public void attachCapabilities(final AttachCapabilitiesEvent<ItemStack> event) {
 		ItemStack stack = event.getObject();
-		if (stack.getItem() instanceof ToolCore) {
+		if (stack.getItem() instanceof ToolItem) {
 			event.addCapability(RUNED_CAPABILITY, new TinkerToolRuneColor(stack));
 		}
 	}

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.ToolType;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolHarvestLogic;
-import slimeknights.tconstruct.library.tools.item.ToolCore;
+import slimeknights.tconstruct.library.tools.item.ToolItem;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
@@ -19,7 +19,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 /**
  * Tool with metal and other player made blocks harvest
  */
-public class WrenchTool extends ToolCore {
+public class WrenchTool extends ToolItem {
 
 	public static final ToolType TOOL_TYPE = ToolType.get("wrench");
 	public static final ImmutableSet<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.DECORATION, Material.BUILDABLE_GLASS, Material.SHULKER_SHELL, Material.GLASS, Material.METAL, Material.HEAVY_METAL, Material.PISTON);
