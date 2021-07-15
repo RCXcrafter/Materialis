@@ -62,7 +62,7 @@ public class MaterialisJEIPlugin implements IModPlugin {
 	 * @param cast     Cast instance
 	 */
 	public static void optionalCast(IIngredientManager manager, CastItemObject cast) {
-		ITag<Item> tag = TagCollectionManager.getInstance().getItems().getTag(new ResourceLocation(Materialis.modID, cast.getName().getPath() + "s"));
+		ITag<Item> tag = TagCollectionManager.getInstance().getItems().getTag(new ResourceLocation("forge", cast.getName().getPath() + "s"));
 		if (tag == null || tag.getValues().isEmpty()) {
 			manager.removeIngredientsAtRuntime(VanillaTypes.ITEM, cast.values().stream().map(ItemStack::new).collect(Collectors.toList()));
 		}
