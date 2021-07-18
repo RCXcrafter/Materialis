@@ -11,9 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
 import net.minecraft.loot.LootParameters;
 import net.minecraftforge.fml.ModList;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
-import slimeknights.tconstruct.tools.TinkerModifiers;
 
 public class ReapingModifier extends SingleUseModifier {
 
@@ -39,7 +39,10 @@ public class ReapingModifier extends SingleUseModifier {
 			LivingEntity target = (LivingEntity) entity;
 			if (target.isInvertedHealAndHarm()) {
 				generatedLoot.clear();
-				ItemStack drop = new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + tool.getModifierLevel(TinkerModifiers.luck.get())));
+				int luck = context.getLootingModifier();
+				if (TinkerTags.Items.SCYTHES.getValues().contains(tool.getItem()))
+					luck++;
+				ItemStack drop = new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + luck));
 				generatedLoot.add(drop);
 				Networking.sendToTracking(target.level, target.blockPosition(), new CrystallizeEffectPacket(target.blockPosition()));
 			}
