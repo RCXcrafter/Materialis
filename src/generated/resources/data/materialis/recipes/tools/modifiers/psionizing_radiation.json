@@ -1,0 +1,34 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:ingots/psimetal"
+    },
+    {
+      "item": "psi:cad_socket_basic"
+    },
+    {
+      "tag": "forge:ingots/psimetal"
+    },
+    {
+      "tag": "forge:gems/psigem"
+    },
+    {
+      "tag": "forge:gems/psigem"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/melee_or_harvest"
+  },
+  "result": {
+    "name": "materialis:psionizing_radiation",
+    "level": 1
+  },
+  "ability_slots": 1
+}

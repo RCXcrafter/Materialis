@@ -63,7 +63,7 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	@Nonnull
 	@Override
 	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-		if (getSlots() > 0 && (cap == PsiAPI.SOCKETABLE_CAPABILITY || cap == PsiAPI.PSI_BAR_DISPLAY_CAPABILITY || cap == PsiAPI.SPELL_ACCEPTOR_CAPABILITY)) {
+		if ((cap == PsiAPI.SOCKETABLE_CAPABILITY || cap == PsiAPI.PSI_BAR_DISPLAY_CAPABILITY || cap == PsiAPI.SPELL_ACCEPTOR_CAPABILITY) && getSlots() > 0) {
 			return capOptional.cast();
 		}
 		return LazyOptional.empty();

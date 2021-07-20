@@ -181,8 +181,11 @@ public class MaterialisLang extends LanguageProvider {
 		add("modifier.materialis.adrenaline.flavor", "Fight or flight!");
 		add("modifier.materialis.adrenaline.description", "Boosts attack damage when your health is low");
 		add("modifier.materialis.psionizing_radiation", "Psionizing Radiation");
-		add("modifier.materialis.psionizing_radiation.flavor", "Not carcinogenic!");
+		add("modifier.materialis.psionizing_radiation.flavor", "Feels kinda funny");
 		add("modifier.materialis.psionizing_radiation.description", "Your tool is highly conductive to psions and is suitable for casting spells, +1 spell socket");
+		add("modifier.materialis.spell_socket", "Socket");
+		add("modifier.materialis.spell_socket.flavor", "More durable than lime sockets!");
+		add("modifier.materialis.spell_socket.description", "Adds one psi spell socket to your tool");
 		add("modifier.materialis.psicho_killer", "Psicho Killer");
 		add("modifier.materialis.psicho_killer.flavor", "Qu'est-ce que c'est?");
 		add("modifier.materialis.psicho_killer.description", "Deals bonus attack damage depending on how much psi you currently have");

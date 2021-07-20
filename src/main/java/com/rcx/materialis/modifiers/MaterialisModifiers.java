@@ -52,6 +52,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> thermalWrenchingModifier = MODIFIERS.register("thermal_wrenching", ThermalWrenchingModifier::new);
 	public static final RegistryObject<Modifier> createWrenchingModifier = MODIFIERS.register("create_wrenching", CreateWrenchingModifier::new);
 	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(0xA8B4BB, ExtraType.ABILITY, ModifierSource.MULTI_LEVEL));
+	public static final RegistryObject<Modifier> spellSocketModifier = MODIFIERS.register("spell_socket", SpellSocketModifier::new);
 
 	//internal modifiers
 	public static final RegistryObject<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(0xFFFFFF, Integer.MIN_VALUE + 50));

@@ -146,7 +146,7 @@ public class MaterialisResources {
 			.modifier(ToolStats.ATTACK_SPEED, 1.1f)
 			.modifier(ToolStats.MINING_SPEED, 1.5f)
 			.modifier(ToolStats.DURABILITY, 2.5f)
-			.setPrimaryHeadWeight(2).setDefaultUpgrades(0).setDefaultAbilities(3).build();
+			.setPrimaryHeadWeight(2).setDefaultUpgrades(1).setDefaultAbilities(2).build();
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(BATTLEWRENCH_BASE_STATS)
 			.addPart(TinkerToolParts.hammerHead).addPart(TinkerToolParts.toughHandle).addPart(WRENCH_HEAD).addPart(WRENCH_HEAD)
 			.addModifier(MaterialisModifiers.wrenchingModifierHidden).build();

@@ -247,9 +247,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "tattered_cloth"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
+		.setTools(TinkerTags.Items.MELEE)
 		.setMaxLevel(1)
 		.setAbilitySlots(1)
-		.setTools(TinkerTags.Items.MELEE)
 		.setGroup("materialis:eidolon")
 		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier, modifierFolder));
 
@@ -258,8 +258,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		RuneModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get())
 		.addInput(getTag("quark", "runes"))
-		.setMaxLevel(1)
 		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setMaxLevel(1)
 		.setRequirements(ModifierMatch.entry(TinkerModifiers.shiny.get()))
 		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
 		.setGroup("materialis:quark")
@@ -304,6 +304,25 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setUpgradeSlots(1)
 		.setGroup("materialis:create")
 		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifier.get())
+		.addInput(getTag("forge", "ingots/psimetal"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))
+		.addInput(getTag("forge", "ingots/psimetal"))
+		.addInput(getTag("forge", "gems/psigem"))
+		.addInput(getTag("forge", "gems/psigem"))
+		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
+		.setAbilitySlots(1)
+		.setGroup("materialis:psi")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellSocketModifier.get())
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))
+		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
+		.setMaxLevel(5)
+		.setUpgradeSlots(1)
+		.setGroup("materialis:psi")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

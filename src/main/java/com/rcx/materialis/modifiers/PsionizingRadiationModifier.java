@@ -2,13 +2,10 @@ package com.rcx.materialis.modifiers;
 
 import java.util.List;
 
-import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
@@ -37,7 +34,6 @@ import vazkii.psi.common.item.ItemCAD;
 public class PsionizingRadiationModifier extends Modifier {
 
 	boolean enabled = ModList.get().isLoaded("psi");
-	static final ValidatedResult SLOT_NOT_EMPTY = ValidatedResult.failure(Util.makeDescriptionId("recipe", new ResourceLocation(Materialis.modID, "remove_modifier.spell_slot_not_empty")));
 
 	public PsionizingRadiationModifier() {
 		super(0xB6A9E7);
@@ -50,15 +46,16 @@ public class PsionizingRadiationModifier extends Modifier {
 
 	@Override
 	public ValidatedResult validate(IModifierToolStack tool, int level) {
+		int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
 		//check if there are still spells in the sockets that are being removed
 		if (enabled && tool instanceof ToolStack) {
-			for (int l = level; l < ISocketable.MAX_ASSEMBLER_SLOTS; l++) {
+			for (int l = sockets; l < ISocketable.MAX_ASSEMBLER_SLOTS; l++) {
 				if (tool.getPersistentData().contains(TinkerToolSocketable.SPELL_SLOTS[l], NBT.TAG_COMPOUND))
-					return SLOT_NOT_EMPTY;
+					return SpellSocketModifier.SLOT_NOT_EMPTY;
 			}
 		}
-		//remove tags if modifier is removed
-		if (level == 0) {
+		//remove tags if all sockets are removed
+		if (sockets == 0) {
 			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
 		}
 		return ValidatedResult.PASS;
