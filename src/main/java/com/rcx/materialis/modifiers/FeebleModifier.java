@@ -12,6 +12,6 @@ public class FeebleModifier extends Modifier {
 
 	@Override
 	public float beforeEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-		return knockback / (1.1f * level);
+		return knockback / (1.0f + 0.2f * level);
 	}
 }
