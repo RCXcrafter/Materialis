@@ -11,8 +11,6 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.common.util.Constants.NBT;
-import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import vazkii.quark.api.IRuneColorProvider;
 import vazkii.quark.api.QuarkCapabilities;
@@ -38,9 +36,6 @@ public class TinkerToolRuneColor implements ICapabilityProvider, IRuneColorProvi
 
 	@Override
 	public int getRuneColor(ItemStack stack) {
-		IModDataReadOnly persistentData = ToolStack.from(stack).getPersistentData();
-		if (persistentData.contains(RunedModifier.RUNE_COLOR, NBT.TAG_INT))
-			return persistentData.getInt(RunedModifier.RUNE_COLOR);
-		return 16;
+		return RunedModifier.getColor(ToolStack.from(stack));
 	}
 }

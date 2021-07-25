@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.rcx.materialis.compat.QuarkCompat;
+import com.rcx.materialis.MaterialisResources;
 
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
@@ -124,7 +124,7 @@ public class RuneModifierRecipeBuilder extends AbstractModifierRecipeBuilder<Run
 
 		@Override
 		public IRecipeSerializer<?> getType() {
-			return QuarkCompat.runeModifierSerializer.get();
+			return MaterialisResources.runeModifierSerializer.get();
 		}
 	}
 }

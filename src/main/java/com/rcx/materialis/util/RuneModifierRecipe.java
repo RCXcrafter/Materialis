@@ -5,10 +5,9 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import com.rcx.materialis.compat.QuarkCompat;
+import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.modifiers.RunedModifier;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.network.PacketBuffer;
@@ -66,9 +65,8 @@ public class RuneModifierRecipe extends ModifierRecipe {
 		//add rune color
 		if (enabled) {
 			for (int i = 0; i < inv.getInputCount(); i++) {
-				Item item = inv.getInput(i).getItem();
-				if (item instanceof IRuneColorProvider) {
-					persistentData.putInt(RunedModifier.RUNE_COLOR, ((IRuneColorProvider) item).getRuneColor(inv.getInput(i)));
+				if (inv.getInput(i).getItem() instanceof IRuneColorProvider) {
+					persistentData.put(RunedModifier.RUNE, inv.getInput(i).serializeNBT());
 					break;
 				}
 			}
@@ -79,7 +77,7 @@ public class RuneModifierRecipe extends ModifierRecipe {
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		return QuarkCompat.runeModifierSerializer.get();
+		return MaterialisResources.runeModifierSerializer.get();
 	}
 
 	public static class Serializer extends AbstractModifierRecipe.Serializer<RuneModifierRecipe> {
