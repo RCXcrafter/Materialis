@@ -19,6 +19,7 @@ import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialStats;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
 import com.rcx.materialis.datagen.MaterialisRecipes;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.util.TintedModifierModel;
 
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
@@ -27,6 +28,7 @@ import net.minecraft.client.renderer.model.Variant;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -40,6 +42,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.tools.ToolClientEvents;
 
@@ -68,9 +71,8 @@ public class Materialis {
 		MaterialisResources.BLOCKS.register(bus);
 		MaterialisResources.ITEMS.register(bus);
 		MaterialisResources.ITEMS_EXTENDED.register(bus);
+		MaterialisResources.RECIPE_SERIALIZERS.register(bus);
 		MaterialisModifiers.MODIFIERS.register(bus);
-
-		QuarkCompat.RECIPE_SERIALIZERS.register(bus);
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
@@ -163,6 +165,11 @@ public class Materialis {
 			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.WRENCH);
 			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.BATTLEWRENCH);
 			ToolClientEvents.registerMaterialItemColors(colors, MaterialisResources.WRENCH_HEAD);
+		}
+		
+		@SubscribeEvent
+		  static void registerModifierModels(ModifierModelRegistrationEvent event) {
+		    event.registerModel(new ResourceLocation(Materialis.modID, "tinted"), TintedModifierModel.UNBAKED_INSTANCE);
 		}
 	}
 }

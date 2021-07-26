@@ -47,6 +47,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
 	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
 
+	//psi stuff
+	public static final INamedTag<Item> COLORIZERS = ItemTags.bind(Materialis.modID + ":psi_colorizers");
+
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
 	}
@@ -132,5 +135,24 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		//psi stuff
 		tag(TinkerTags.Items.ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
 		tag(TinkerTags.Items.ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_white"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_orange"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_magenta"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_light_blue"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_yellow"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_lime"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_pink"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_gray"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_light_gray"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_cyan"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_purple"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_blue"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_brown"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_green"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_red"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_black"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_rainbow"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_psi"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_empty"));
 	}
 }

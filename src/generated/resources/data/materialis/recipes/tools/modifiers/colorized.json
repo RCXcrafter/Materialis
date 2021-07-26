@@ -1,0 +1,22 @@
+{
+  "type": "materialis:colorizer_modifier",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "materialis:psi_colorizers"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "result": {
+    "name": "materialis:colorized",
+    "level": 1
+  },
+  "max_level": 1
+}

@@ -190,6 +190,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.spellSocketModifier, "Socket",
 				"More durable than lime sockets!",
 				"Adds one psi spell socket to your tool");
+		addModifier(MaterialisModifiers.colorizedModifier, "Colorized",
+				"Chromatic!",
+				"Adds a decorative colorizer to your tool");
 		addModifier(MaterialisModifiers.psichoKillerModifier, "Psicho Killer",
 				"Qu'est-ce que c'est?",
 				"Deals bonus attack damage depending on how much psi you currently have");

@@ -8,6 +8,8 @@ import com.rcx.materialis.block.LightResidueBlock;
 import com.rcx.materialis.item.OptionalItem;
 import com.rcx.materialis.item.WrenchTool;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.util.ColorizerModifierRecipe;
+import com.rcx.materialis.util.RuneModifierRecipe;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -21,6 +23,7 @@ import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.common.ToolType;
@@ -52,6 +55,15 @@ public class MaterialisResources {
 	protected static final ItemDeferredRegisterExtension ITEMS_EXTENDED = new ItemDeferredRegisterExtension(Materialis.modID);
 	private static final Supplier<Item.Properties> TOOL_PROPS = () -> new Item.Properties().tab(TinkerTools.TAB_TOOLS);
 	private static final Item.Properties PARTS_PROPS = new Item.Properties().tab(TinkerToolParts.TAB_TOOL_PARTS);
+	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Materialis.modID);
+
+	/*
+	 * RECIPE SERIALIZERS
+	 */
+
+	public static final RegistryObject<RuneModifierRecipe.Serializer> runeModifierSerializer = RECIPE_SERIALIZERS.register("rune_modifier", RuneModifierRecipe.Serializer::new);
+	public static final RegistryObject<ColorizerModifierRecipe.Serializer> colorizerModifierSerializer = RECIPE_SERIALIZERS.register("colorizer_modifier", ColorizerModifierRecipe.Serializer::new);
+
 
 	/*
 	 * FLUIDS

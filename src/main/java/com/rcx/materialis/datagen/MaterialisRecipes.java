@@ -5,6 +5,7 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.util.ColorizerModifierRecipeBuilder;
 import com.rcx.materialis.util.MaterialisByproduct;
 import com.rcx.materialis.util.RuneModifierRecipeBuilder;
 
@@ -312,6 +313,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getTag("forge", "gems/psigem"))
 		.addInput(getTag("forge", "gems/psigem"))
 		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
+		.setMaxLevel(2)
 		.setAbilitySlots(1)
 		.setGroup("materialis:psi")
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
@@ -323,6 +325,13 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setUpgradeSlots(1)
 		.setGroup("materialis:psi")
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
+
+		ColorizerModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get())
+		.addInput(MaterialisItemTags.COLORIZERS)
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setMaxLevel(1)
+		.setGroup("materialis:psi")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
