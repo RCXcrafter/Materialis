@@ -1,0 +1,9 @@
+{
+  "materialis:colorized": "materialis:tinted",
+  "materialis:reaping": "tconstruct:normal",
+  "materialis:wrenching": "tconstruct:normal",
+  "materialis:create_wrenching": "tconstruct:normal",
+  "materialis:thermal_wrenching": "tconstruct:normal",
+  "materialis:psionizing_radiation": "tconstruct:normal",
+  "materialis:spell_socket": "tconstruct:normal"
+}
