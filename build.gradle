@@ -28,7 +28,7 @@ apply plugin: "io.freefair.lombok"
     add sourceSets.main, "materialis.refmap.json"
 }*/
 
-version = '1.16.5-2.0.0'
+version = mod_version
 group = 'com.rcx.materialis' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'materialis'
 
