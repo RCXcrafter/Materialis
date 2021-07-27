@@ -2,10 +2,12 @@ package com.rcx.materialis.modifiers;
 
 import java.util.List;
 
+import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
@@ -34,6 +36,7 @@ import vazkii.psi.common.item.ItemCAD;
 public class PsionizingRadiationModifier extends Modifier {
 
 	boolean enabled = ModList.get().isLoaded("psi");
+	public static final ResourceLocation SUPPRESS_TOOLCASTING = new ResourceLocation(Materialis.modID, "suppress_toolcasting");
 
 	public PsionizingRadiationModifier() {
 		super(0xB6A9E7);
@@ -46,19 +49,7 @@ public class PsionizingRadiationModifier extends Modifier {
 
 	@Override
 	public ValidatedResult validate(IModifierToolStack tool, int level) {
-		int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
-		//check if there are still spells in the sockets that are being removed
-		if (enabled && tool instanceof ToolStack) {
-			for (int l = sockets; l < ISocketable.MAX_ASSEMBLER_SLOTS; l++) {
-				if (tool.getPersistentData().contains(TinkerToolSocketable.SPELL_SLOTS[l], NBT.TAG_COMPOUND))
-					return SpellSocketModifier.SLOT_NOT_EMPTY;
-			}
-		}
-		//remove tags if all sockets are removed
-		if (sockets == 0) {
-			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
-		}
-		return ValidatedResult.PASS;
+		return SpellSocketModifier.validateSockets(tool, level);
 	}
 
 	@Override
@@ -74,7 +65,7 @@ public class PsionizingRadiationModifier extends Modifier {
 
 	@Override
 	public Boolean removeBlock(IModifierToolStack tool, int level, ToolHarvestContext context) {
-		if (enabled && !tool.isBroken() && context.getPlayer() != null) {
+		if (enabled && !tool.isBroken() && context.getPlayer() != null && !tool.getVolatileData().getBoolean(SUPPRESS_TOOLCASTING)) {
 			//level 2 unlocks aoe harvest casting
 			if (context.isAOE() && level < 2) {
 				return null;
@@ -103,7 +94,7 @@ public class PsionizingRadiationModifier extends Modifier {
 
 	@Override
 	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
-		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null && context.getLivingTarget() != null) {
+		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null && context.getLivingTarget() != null && !tool.getVolatileData().getBoolean(SUPPRESS_TOOLCASTING)) {
 			//level 2 unlocks aoe attack casting
 			if (context.isExtraAttack() && level < 2) {
 				return 0;

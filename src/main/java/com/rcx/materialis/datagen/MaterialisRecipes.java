@@ -281,7 +281,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(Tags.Items.INGOTS_IRON)
 		.setUpgradeSlots(2)
 		.build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
-		
+
 		ModifierMatch wrenching = ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get()));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.thermalWrenchingModifier.get())
@@ -313,10 +313,22 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getTag("forge", "gems/psigem"))
 		.addInput(getTag("forge", "gems/psigem"))
 		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
-		.setMaxLevel(2)
 		.setAbilitySlots(1)
 		.setGroup("materialis:psi")
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.castingModifier.get())
+		.addInput(getTag("forge", "ingots/ebony_psimetal"))
+		.addInput(getTag("forge", "gems/psigem"))
+		.addInput(getTag("forge", "ingots/ivory_psimetal"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_battery_ultradense"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_assembly_psimetal"))))
+		.setRequirements(ModifierMatch.entry(MaterialisModifiers.psionizingRadiationModifier.get()))
+		.setRequirementsError("recipe.materialis.modifier.casting_requirements")
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setAbilitySlots(1)
+		.setGroup("materialis:psi")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.castingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellSocketModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))

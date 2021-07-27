@@ -1,0 +1,39 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:ingots/ebony_psimetal"
+    },
+    {
+      "tag": "forge:gems/psigem"
+    },
+    {
+      "tag": "forge:ingots/ivory_psimetal"
+    },
+    {
+      "item": "psi:cad_battery_ultradense"
+    },
+    {
+      "item": "psi:cad_assembly_psimetal"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "requirements": {
+    "name": "materialis:psionizing_radiation",
+    "level": 1,
+    "error": "recipe.materialis.modifier.casting_requirements"
+  },
+  "result": {
+    "name": "materialis:spell_casting",
+    "level": 1
+  },
+  "ability_slots": 1
+}

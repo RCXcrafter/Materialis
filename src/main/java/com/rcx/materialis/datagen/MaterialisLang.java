@@ -102,6 +102,8 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.ebonyPsimetal, "Ebony Psimetal", "", "Adds up to 0.5 extra attack damage that scales with the amount of psi you have per level");
 		addMaterial(MaterialisMaterials.ivoryPsimetal, "Ivory Psimetal", "", "Adds up to 1 extra mining speed that scales with the amount of psi you have per level");
 		add("recipe.materialis.remove_modifier.spell_slot_not_empty", "This change removes a socket that currently contains a spell");
+		add("recipe.materialis.add_modifier.too_many_spell_slots", "This change adds too many sockets to the tool");
+		add("recipe.materialis.modifier.casting_requirements", "Casting requires Psionizing Radiation to apply");
 
 		//quark stuff
 		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");
@@ -190,8 +192,11 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.spellSocketModifier, "Socket",
 				"More durable than lime sockets!",
 				"Adds one psi spell socket to your tool");
+		addModifier(MaterialisModifiers.castingModifier, "Casting",
+				"Doesn't involve molten metal",
+				"Adds the ability to cast spells on right-click but removes the ability to cast spells on block breaking and attacking, +1 spell socket");
 		addModifier(MaterialisModifiers.colorizedModifier, "Colorized",
-				"Chromatic!",
+				"Colormatic!",
 				"Adds a decorative colorizer to your tool");
 		addModifier(MaterialisModifiers.psichoKillerModifier, "Psicho Killer",
 				"Qu'est-ce que c'est?",

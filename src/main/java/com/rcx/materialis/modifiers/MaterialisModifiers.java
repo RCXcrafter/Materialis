@@ -53,6 +53,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> createWrenchingModifier = MODIFIERS.register("create_wrenching", CreateWrenchingModifier::new);
 	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(0xA8B4BB, ExtraType.ABILITY, ModifierSource.MULTI_LEVEL));
 	public static final RegistryObject<Modifier> spellSocketModifier = MODIFIERS.register("spell_socket", SpellSocketModifier::new);
+	public static final RegistryObject<Modifier> castingModifier = MODIFIERS.register("spell_casting", CastingModifier::new);
 	public static final RegistryObject<Modifier> colorizedModifier = MODIFIERS.register("colorized", ColorizedModifier::new);
 
 	//internal modifiers

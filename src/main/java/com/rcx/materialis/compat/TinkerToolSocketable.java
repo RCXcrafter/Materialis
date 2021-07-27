@@ -32,6 +32,8 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	private final LazyOptional<?> capOptional;
 	public static final ResourceLocation SOCKETS = new ResourceLocation(Materialis.modID, "spell_sockets");
 	public static final ResourceLocation SELECTED_SPELL = new ResourceLocation(Materialis.modID, "selected_slot");
+	public static final ResourceLocation CAN_LOOPCAST = new ResourceLocation(Materialis.modID, "can_loopcast");
+	public static final ResourceLocation SHOW_PSI_BAR = new ResourceLocation(Materialis.modID, "show_psi_bar");
 	public static final ResourceLocation[] SPELL_SLOTS = new ResourceLocation[] {
 			new ResourceLocation(Materialis.modID, "spell_slot_0"),
 			new ResourceLocation(Materialis.modID, "spell_slot_1"),
@@ -55,9 +57,8 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	public int getSlots() {
 		IModDataReadOnly volatileData = ToolStack.from(tool).getVolatileData();
 		if (volatileData.contains(SOCKETS, NBT.TAG_INT))
-			return Math.min(volatileData.getInt(SOCKETS), MAX_ASSEMBLER_SLOTS - 1);
-		return Math.min(volatileData.getInt(SOCKETS), MAX_ASSEMBLER_SLOTS - 1);
-
+			return Math.min(volatileData.getInt(SOCKETS), MAX_ASSEMBLER_SLOTS);
+		return 0;
 	}
 
 	@Nonnull
@@ -86,7 +87,7 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	@Override
 	public ItemStack getBulletInSocket(int slot) {
 		IModDataReadOnly persistentData = ToolStack.from(tool).getPersistentData();
-		if (!persistentData.contains(SPELL_SLOTS[slot], NBT.TAG_COMPOUND))
+		if (slot >= SPELL_SLOTS.length || !persistentData.contains(SPELL_SLOTS[slot], NBT.TAG_COMPOUND))
 			return ItemStack.EMPTY;
 		CompoundNBT cmp = persistentData.getCompound(SPELL_SLOTS[slot]);
 
@@ -123,7 +124,12 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 
 	@Override
 	public boolean shouldShow(IPlayerData data) {
-		return false;
+		return ToolStack.from(tool).getVolatileData().getBoolean(SHOW_PSI_BAR);
+	}
+
+	@Override
+	public boolean canLoopcast() {
+		return ToolStack.from(tool).getVolatileData().getBoolean(CAN_LOOPCAST);
 	}
 
 	@Override
