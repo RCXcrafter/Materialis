@@ -80,7 +80,7 @@
   "material.materialis.cloggrum": "Cloggrum",
   "material.materialis.cloggrum.encyclopedia": "Repairing the tool costs up to half as much the higher the durability the tool has",
   "material.materialis.ebony_psimetal": "Ebony Psimetal",
-  "material.materialis.ebony_psimetal.encyclopedia": "Adds up to 0.5 extra attack damage that scales with the amount of psi you have per level",
+  "material.materialis.ebony_psimetal.encyclopedia": "Adds up to 1 extra attack damage that scales with the amount of psi you have per level",
   "material.materialis.fairy": "Fairy",
   "material.materialis.fairy.encyclopedia": "Adds the percentage of health lost multiplied by the level to your mining speed",
   "material.materialis.fairy.flavor": "From the fairy depths of hell.",

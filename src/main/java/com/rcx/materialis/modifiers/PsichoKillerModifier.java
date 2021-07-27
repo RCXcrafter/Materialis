@@ -19,7 +19,7 @@ public class PsichoKillerModifier extends Modifier {
 	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
 		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null) {
 			PlayerData data = PlayerDataHandler.get(context.getPlayerAttacker());
-			return damage + level * data.getAvailablePsi() * 0.5f / ((float) data.getTotalPsi());
+			return damage + level * data.getAvailablePsi() * 1.0f / ((float) data.getTotalPsi());
 		}
 		return damage;
 	}

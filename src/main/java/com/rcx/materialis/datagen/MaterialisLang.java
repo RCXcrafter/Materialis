@@ -99,7 +99,7 @@ public class MaterialisLang extends LanguageProvider {
 
 		//psi stuff
 		addMaterial(MaterialisMaterials.psimetal, "Psimetal", "", "Casts the selected spell on block break for tools and on attack for weapons, also adds one spell socket");
-		addMaterial(MaterialisMaterials.ebonyPsimetal, "Ebony Psimetal", "", "Adds up to 0.5 extra attack damage that scales with the amount of psi you have per level");
+		addMaterial(MaterialisMaterials.ebonyPsimetal, "Ebony Psimetal", "", "Adds up to 1 extra attack damage that scales with the amount of psi you have per level");
 		addMaterial(MaterialisMaterials.ivoryPsimetal, "Ivory Psimetal", "", "Adds up to 1 extra mining speed that scales with the amount of psi you have per level");
 		add("recipe.materialis.remove_modifier.spell_slot_not_empty", "This change removes a socket that currently contains a spell");
 		add("recipe.materialis.add_modifier.too_many_spell_slots", "This change adds too many sockets to the tool");
