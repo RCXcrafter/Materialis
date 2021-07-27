@@ -129,12 +129,8 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 
 	@Override
 	public boolean isItemValid(int slot, ItemStack bullet) {
-		if (!isSocketSlotAvailable(slot))
+		if (!isSocketSlotAvailable(slot) || !ISpellAcceptor.isContainer(bullet))
 			return false;
-
-		if (!ISpellAcceptor.isContainer(bullet))
-			return false;
-
 		return canLoopcast() || !ISpellAcceptor.acceptor(bullet).isCADOnlyContainer();
 	}
 

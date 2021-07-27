@@ -20,6 +20,7 @@ import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import vazkii.psi.api.PsiAPI;
 import vazkii.psi.api.cad.ISocketable;
+import vazkii.psi.api.spell.ISpellAcceptor;
 import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 import vazkii.psi.common.item.ItemCAD;
@@ -67,9 +68,11 @@ public class CastingModifier extends Modifier {
 
 			if (!playerCad.isEmpty()) {
 				ItemStack bullet = ISocketable.socketable(toolStack).getSelectedBullet();
-				ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 40, 25, 0.5F, context -> context.castFrom = hand);
-				ToolDamageUtil.damage(tool, 1, player, toolStack);
-				return ActionResultType.CONSUME;
+				if (!data.overflowed && data.getAvailablePsi() > 0 && !bullet.isEmpty() && ISpellAcceptor.hasSpell(bullet) && ItemCAD.isTruePlayer(player)) {
+					ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 40, 25, 0.5F, context -> context.castFrom = hand);
+					ToolDamageUtil.damage(tool, 1, player, toolStack);
+					return ActionResultType.CONSUME;
+				}
 			}
 		}
 		return ActionResultType.PASS;
