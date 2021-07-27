@@ -128,6 +128,17 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	}
 
 	@Override
+	public boolean isItemValid(int slot, ItemStack bullet) {
+		if (!isSocketSlotAvailable(slot))
+			return false;
+
+		if (!ISpellAcceptor.isContainer(bullet))
+			return false;
+
+		return canLoopcast() || !ISpellAcceptor.acceptor(bullet).isCADOnlyContainer();
+	}
+
+	@Override
 	public boolean canLoopcast() {
 		return ToolStack.from(tool).getVolatileData().getBoolean(CAN_LOOPCAST);
 	}
