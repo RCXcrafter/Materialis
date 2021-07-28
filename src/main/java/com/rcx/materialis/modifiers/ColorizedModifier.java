@@ -37,11 +37,7 @@ public class ColorizedModifier extends SingleUseModifier implements ITintingModi
 
 	@Override
 	public ITextComponent getDisplayName(IModifierToolStack tool, int level) {
-		int color = getTint(tool);
-		if (color == -1)
-			color = getPsiColor();
-		Color colorRGB = Color.fromRgb(color);
-		return new TranslationTextComponent(getTranslationKey()).withStyle(style -> style.withColor(colorRGB));
+		return new TranslationTextComponent(getTranslationKey()).withStyle(style -> style.withColor(Color.fromRgb(getTint(tool))));
 	}
 
 	@Override
@@ -53,7 +49,7 @@ public class ColorizedModifier extends SingleUseModifier implements ITintingModi
 			if (stack.getItem() instanceof ICADColorizer)
 				return ((ICADColorizer) stack.getItem()).getColor(stack);
 		}
-		return -1;
+		return getPsiColor();
 	};
 
 	@Override

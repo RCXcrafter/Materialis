@@ -53,7 +53,12 @@ public class TintedModifierModel implements IBakedModifierModel {
 	}
 
 	@Override
-	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge) {//, int startTintIndex) {
+	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge) {
+		return this.getQuads(tool, entry, spriteGetter, transforms, isLarge, -1);
+	}
+
+	@Override
+	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge, int startTintIndex) {
 		boolean glowing = false;
 		if (entry.getModifier() instanceof ITintingModifier)
 			glowing = ((ITintingModifier) entry.getModifier()).doesGlow(tool);
@@ -65,18 +70,18 @@ public class TintedModifierModel implements IBakedModifierModel {
 			if (textures[index] == null) {
 				quads[index] = ImmutableList.of();
 			} else {
-				quads[index] = ItemLayerModel.getQuadsForSprite(-1, spriteGetter.apply(textures[index]), transforms, glowing);
+				quads[index] = ItemLayerModel.getQuadsForSprite(startTintIndex, spriteGetter.apply(textures[index]), transforms, glowing);
 			}
 		}
 		return quads[index];
 	}
 
-	//@Override
+	@Override
 	public int getTintIndexes() {
 		return 1;
 	}
 
-	//@Override
+	@Override
 	public int getTint(IModifierToolStack tool, ModifierEntry entry, int index) {
 		if (entry.getModifier() instanceof ITintingModifier)
 			return ((ITintingModifier) entry.getModifier()).getTint(tool);
