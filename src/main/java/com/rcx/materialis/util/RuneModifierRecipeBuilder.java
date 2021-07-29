@@ -19,7 +19,7 @@ import net.minecraft.util.ResourceLocation;
 import slimeknights.mantle.recipe.SizedIngredient;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.AbstractModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.adding.AbstractModifierRecipeBuilder;
 
 public class RuneModifierRecipeBuilder extends AbstractModifierRecipeBuilder<RuneModifierRecipeBuilder> {
 
@@ -126,5 +126,11 @@ public class RuneModifierRecipeBuilder extends AbstractModifierRecipeBuilder<Run
 		public IRecipeSerializer<?> getType() {
 			return MaterialisResources.runeModifierSerializer.get();
 		}
+	}
+
+	@Override
+	public RuneModifierRecipeBuilder buildSalvage(Consumer<IFinishedRecipe> arg0, ResourceLocation arg1) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

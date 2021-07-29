@@ -1,6 +1,7 @@
 package com.rcx.materialis.datagen;
 
 import java.util.function.Consumer;
+
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
@@ -44,9 +45,9 @@ import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.ingredient.MaterialIngredient;
 import slimeknights.tconstruct.library.recipe.melting.MaterialMeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.ModifierMatch;
-import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.ModifierRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.tinkerstation.modifier.OverslimeModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
+import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 
