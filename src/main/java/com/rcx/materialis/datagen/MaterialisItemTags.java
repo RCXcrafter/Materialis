@@ -1,5 +1,7 @@
 package com.rcx.materialis.datagen;
 
+import static slimeknights.tconstruct.common.TinkerTags.Items.*;
+
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
@@ -10,10 +12,10 @@ import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ITag.INamedTag;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisItemTags extends ItemTagsProvider {
 
@@ -65,7 +67,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 			tag(Tags.Items.INGOTS).addTag(INGOT);
 			tag(BLOCK).add(material.BLOCK_ITEM.get());
 			tag(Tags.Items.STORAGE_BLOCKS).addTag(BLOCK);
-			tag(TinkerTags.Items.ANVIL_METAL).addTag(BLOCK);
+			tag(ANVIL_METAL).addTag(BLOCK);
 			tag(NUGGET).add(material.NUGGET.get());
 			tag(Tags.Items.NUGGETS).addTag(NUGGET);
 		}
@@ -74,38 +76,25 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(INLAY_CAST).add(MaterialisResources.INLAY_CAST.get());
 		tag(INLAY_CAST_SINGLE).add(MaterialisResources.INLAY_CAST.getSand());
 		tag(INLAY_CAST_SINGLE).add(MaterialisResources.INLAY_CAST.getRedSand());
-		tag(TinkerTags.Items.GOLD_CASTS).add(MaterialisResources.INLAY_CAST.get());
-		tag(TinkerTags.Items.SAND_CASTS).add(MaterialisResources.INLAY_CAST.getSand());
-		tag(TinkerTags.Items.RED_SAND_CASTS).add(MaterialisResources.INLAY_CAST.getRedSand());
-		tag(TinkerTags.Items.MULTI_USE_CASTS).addTag(INLAY_CAST);
-		tag(TinkerTags.Items.SINGLE_USE_CASTS).addTag(INLAY_CAST_SINGLE);
+		tag(GOLD_CASTS).add(MaterialisResources.INLAY_CAST.get());
+		tag(SAND_CASTS).add(MaterialisResources.INLAY_CAST.getSand());
+		tag(RED_SAND_CASTS).add(MaterialisResources.INLAY_CAST.getRedSand());
+		tag(MULTI_USE_CASTS).addTag(INLAY_CAST);
+		tag(SINGLE_USE_CASTS).addTag(INLAY_CAST_SINGLE);
 		tag(WRENCH_HEAD_CAST).add(MaterialisResources.WRENCH_HEAD_CAST.get());
 		tag(WRENCH_HEAD_CAST_SINGLE).add(MaterialisResources.WRENCH_HEAD_CAST.getSand());
 		tag(WRENCH_HEAD_CAST_SINGLE).add(MaterialisResources.WRENCH_HEAD_CAST.getRedSand());
-		tag(TinkerTags.Items.GOLD_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.get());
-		tag(TinkerTags.Items.SAND_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.getSand());
-		tag(TinkerTags.Items.RED_SAND_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.getRedSand());
-		tag(TinkerTags.Items.MULTI_USE_CASTS).addTag(WRENCH_HEAD_CAST);
-		tag(TinkerTags.Items.SINGLE_USE_CASTS).addTag(WRENCH_HEAD_CAST_SINGLE);
+		tag(GOLD_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.get());
+		tag(SAND_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.getSand());
+		tag(RED_SAND_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.getRedSand());
+		tag(MULTI_USE_CASTS).addTag(WRENCH_HEAD_CAST);
+		tag(SINGLE_USE_CASTS).addTag(WRENCH_HEAD_CAST_SINGLE);
 
 		//wrench
 		tag(TOOLS).addTag(WRENCH);
-		tag(TinkerTags.Items.TOOL_PARTS).add(MaterialisResources.WRENCH_HEAD.get());
-		tag(TinkerTags.Items.MELEE).add(MaterialisResources.WRENCH.get());
-		tag(TinkerTags.Items.HARVEST_PRIMARY).add(MaterialisResources.WRENCH.get());
-		tag(TinkerTags.Items.ONE_HANDED).add(MaterialisResources.WRENCH.get());
-		tag(TinkerTags.Items.MULTIPART_TOOL).add(MaterialisResources.WRENCH.get());
-		tag(WRENCH).add(MaterialisResources.WRENCH.get());
-		tag(WRENCHING).add(MaterialisResources.WRENCH.get());
-		tag(GALVANIZABLE).add(MaterialisResources.WRENCH.get());
-		tag(TinkerTags.Items.STRUCTURE_DEBUG).add(MaterialisResources.WRENCH.get());
-		tag(TinkerTags.Items.MELEE_PRIMARY).add(MaterialisResources.BATTLEWRENCH.get());
-		tag(TinkerTags.Items.HARVEST_PRIMARY).add(MaterialisResources.BATTLEWRENCH.get());
-		tag(TinkerTags.Items.TWO_HANDED).add(MaterialisResources.BATTLEWRENCH.get());
-		tag(TinkerTags.Items.MULTIPART_TOOL).add(MaterialisResources.BATTLEWRENCH.get());
-		tag(WRENCH).add(MaterialisResources.BATTLEWRENCH.get());
-		tag(WRENCHING).add(MaterialisResources.BATTLEWRENCH.get());
-		tag(TinkerTags.Items.STRUCTURE_DEBUG).add(MaterialisResources.BATTLEWRENCH.get());
+		tag(TOOL_PARTS).add(MaterialisResources.WRENCH_HEAD.get());
+		addAllTags(MaterialisResources.WRENCH, MULTIPART_TOOL, DURABILITY, HARVEST_PRIMARY, MELEE, ONE_HANDED, WRENCH, WRENCHING, GALVANIZABLE, STRUCTURE_DEBUG);
+		addAllTags(MaterialisResources.BATTLEWRENCH, MULTIPART_TOOL, DURABILITY, HARVEST_PRIMARY, MELEE_PRIMARY, TWO_HANDED, WRENCH, WRENCHING, STRUCTURE_DEBUG);
 
 		//create ingots
 		tag(REFINED_RADIANCE_INGOT).addOptional(new ResourceLocation("create", "refined_radiance"));
@@ -133,26 +122,34 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
 
 		//psi stuff
-		tag(TinkerTags.Items.ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
-		tag(TinkerTags.Items.ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_white"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_orange"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_magenta"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_light_blue"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_yellow"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_lime"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_pink"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_gray"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_light_gray"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_cyan"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_purple"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_blue"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_brown"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_green"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_red"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_black"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_rainbow"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_psi"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_empty"));
+		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
+		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
+		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_white"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_orange"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_magenta"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_light_blue"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_yellow"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_lime"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_pink"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_gray"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_light_gray"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_cyan"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_purple"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_blue"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_brown"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_green"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_red"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_black"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_rainbow"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_psi"))
+		.addOptional(new ResourceLocation("psi", "cad_colorizer_empty"));
+	}
+
+	@SafeVarargs
+	public final void addAllTags(IItemProvider provider, INamedTag<Item>... tags) {
+		Item item = provider.asItem();
+		for (INamedTag<Item> tag : tags) {
+			tag(tag).add(item);
+		}
 	}
 }
