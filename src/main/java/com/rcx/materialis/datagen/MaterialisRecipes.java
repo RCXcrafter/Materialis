@@ -6,9 +6,7 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
-import com.rcx.materialis.util.ColorizerModifierRecipeBuilder;
 import com.rcx.materialis.util.MaterialisByproduct;
-import com.rcx.materialis.util.RuneModifierRecipeBuilder;
 
 import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
@@ -32,6 +30,7 @@ import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.mantle.recipe.SizedIngredient;
+import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
 import slimeknights.mantle.recipe.ingredient.IngredientWithout;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -258,14 +257,14 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
 		.build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefix(TinkerModifiers.overslime, modifierFolder));
 
-		RuneModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get())
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get())
 		.addInput(getTag("quark", "runes"))
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(1)
 		.setRequirements(ModifierMatch.entry(TinkerModifiers.shiny.get()))
 		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
 		.setGroup("materialis:quark")
-		.build(withCondition(consumer, new ModLoadedCondition("quark")), prefix(MaterialisModifiers.runedModifier, modifierFolder));
+		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.runeModifierSerializer.get()).addCondition(new ModLoadedCondition("quark")).build(consumer), prefix(MaterialisModifiers.runedModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.wrenchingModifier.get())
 		.setTools(new IngredientWithout(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(MaterialisItemTags.WRENCHING)))
@@ -339,12 +338,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setGroup("materialis:psi")
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
 
-		ColorizerModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get())
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get())
 		.addInput(MaterialisItemTags.COLORIZERS)
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(1)
 		.setGroup("materialis:psi")
-		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
+		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
