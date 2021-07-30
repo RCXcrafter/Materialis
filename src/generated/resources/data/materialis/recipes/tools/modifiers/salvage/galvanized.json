@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools": {
+    "tag": "materialis:galvanizable"
+  },
+  "modifier": "materialis:galvanized",
+  "min_level": 1,
+  "upgrade_slots": 2,
+  "salvage": [
+    {
+      "item": "minecraft:iron_ingot",
+      "chance": 0.7
+    },
+    {
+      "item": "minecraft:phantom_membrane",
+      "chance": 0.3
+    }
+  ]
+}

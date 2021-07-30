@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools": {
+    "tag": "tconstruct:modifiable/melee"
+  },
+  "modifier": "materialis:reaping",
+  "min_level": 1,
+  "ability_slots": 1,
+  "salvage": [
+    {
+      "item": "eidolon:soul_shard",
+      "min": 0,
+      "max": 2
+    },
+    {
+      "item": "eidolon:tattered_cloth",
+      "min": 0,
+      "max": 2
+    }
+  ]
+}

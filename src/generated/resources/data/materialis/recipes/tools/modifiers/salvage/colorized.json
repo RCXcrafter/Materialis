@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "modifier": "materialis:colorized",
+  "min_level": 1,
+  "salvage": [
+    {
+      "item": "psi:psidust",
+      "chance": 0.3
+    },
+    {
+      "item": "minecraft:iron_ingot",
+      "chance": 0.7
+    }
+  ]
+}

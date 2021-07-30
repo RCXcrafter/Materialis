@@ -32,6 +32,7 @@ import net.minecraftforge.fluids.FluidStack;
 import slimeknights.mantle.recipe.SizedIngredient;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
+import slimeknights.mantle.recipe.data.ItemNameOutput;
 import slimeknights.mantle.recipe.ingredient.IngredientWithout;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
@@ -40,6 +41,7 @@ import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 import slimeknights.tconstruct.library.recipe.FluidValues;
+import slimeknights.tconstruct.library.recipe.RandomItem;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.ingredient.MaterialIngredient;
 import slimeknights.tconstruct.library.recipe.melting.MaterialMeltingRecipeBuilder;
@@ -72,6 +74,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		String materialFolder = "tools/materials/";
 		String compositeFolder = "tools/parts/composite/";
 		String modifierFolder = "tools/modifiers/";
+		String salvageFolder = "tools/modifiers/salvage/";
 		String toolFolder = "tools/building/";
 		String partFolder = "tools/parts/";
 		String castFolder = "smeltery/casts/";
@@ -248,10 +251,13 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "tattered_cloth"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
+		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("eidolon", "soul_shard"), 2), 0))
+		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("eidolon", "tattered_cloth"), 2), 0))
 		.setTools(TinkerTags.Items.MELEE)
 		.setMaxLevel(1)
 		.setAbilitySlots(1)
 		.setGroup("materialis:eidolon")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.reapingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier, modifierFolder));
 
 		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
@@ -259,11 +265,13 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get())
 		.addInput(getTag("quark", "runes"))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("quark", "blank_rune")), 0.5f))
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(1)
 		.setRequirements(ModifierMatch.entry(TinkerModifiers.shiny.get()))
 		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
 		.setGroup("materialis:quark")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.runedModifier, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.runeModifierSerializer.get()).addCondition(new ModLoadedCondition("quark")).build(consumer), prefix(MaterialisModifiers.runedModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.wrenchingModifier.get())
@@ -271,15 +279,20 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(MaterialisResources.WRENCH_HEAD.get())))
 		.addInput(TinkerTags.Items.INGOTS_NETHERITE_SCRAP)
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(TinkerToolParts.toolBinding.get())))
+		.addSalvage(Items.NETHERITE_SCRAP, 0.35f)
 		.setMaxLevel(1)
 		.setAbilitySlots(1)
+		.buildSalvage(consumer, prefix(MaterialisModifiers.wrenchingModifier, salvageFolder))
 		.build(consumer, prefix(MaterialisModifiers.wrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.galvanizedModifier.get())
 		.setTools(Ingredient.of(MaterialisItemTags.GALVANIZABLE))
 		.addInput(Items.PHANTOM_MEMBRANE)
 		.addInput(Tags.Items.INGOTS_IRON)
+		.addSalvage(Items.IRON_INGOT, 0.7f)
+		.addSalvage(Items.PHANTOM_MEMBRANE, 0.3f)
 		.setUpgradeSlots(2)
+		.buildSalvage(consumer, prefix(MaterialisModifiers.galvanizedModifier, salvageFolder))
 		.build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
 
 		ModifierMatch wrenching = ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get()));
@@ -288,22 +301,27 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getTag("forge", "gears/nickel"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "wrench"))))
 		.addInput(getTag("forge", "gears/nickel"))
+		.addSalvage(getTag("forge", "gears/nickel"), 0, 2)
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.thermal_wrenching_requirements")
 		.setMaxLevel(1)
 		.setUpgradeSlots(1)
 		.setGroup("materialis:thermal")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.thermalWrenchingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.createWrenchingModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "wrench"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
+		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("create", "cogwheel"), 2), 0))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("create", "wrench")), 0.9f))
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.create_wrenching_requirements")
 		.setMaxLevel(1)
 		.setUpgradeSlots(1)
 		.setGroup("materialis:create")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.createWrenchingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifier.get())
@@ -312,9 +330,13 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getTag("forge", "ingots/psimetal"))
 		.addInput(getTag("forge", "gems/psigem"))
 		.addInput(getTag("forge", "gems/psigem"))
+		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("psi", "psimetal"), 2), 0))
+		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("psi", "psigem"), 2), 0))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.5f))
 		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
 		.setAbilitySlots(1)
 		.setGroup("materialis:psi")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.psionizingRadiationModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.castingModifier.get())
@@ -323,26 +345,37 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getTag("forge", "ingots/ivory_psimetal"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_battery_ultradense"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_assembly_psimetal"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "ebony_psimetal")), 0.4f))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "ivory_psimetal")), 0.4f))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psigem")), 0.2f))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_battery_ultradense")), 0.3f))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_assembly_psimetal")), 0.6f))
 		.setRequirements(ModifierMatch.entry(MaterialisModifiers.psionizingRadiationModifier.get()))
 		.setRequirementsError("recipe.materialis.modifier.casting_requirements")
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setAbilitySlots(1)
 		.setGroup("materialis:psi")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.castingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.castingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellSocketModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.4f))
 		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
 		.setMaxLevel(5)
 		.setUpgradeSlots(1)
 		.setGroup("materialis:psi")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.spellSocketModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get())
 		.addInput(MaterialisItemTags.COLORIZERS)
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psidust")), 0.3f))
+		.addSalvage(Items.IRON_INGOT, 0.7f)
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(1)
 		.setGroup("materialis:psi")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
 	}
 
