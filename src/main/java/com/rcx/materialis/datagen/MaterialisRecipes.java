@@ -49,6 +49,7 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
+import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 
@@ -255,7 +256,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("eidolon", "tattered_cloth"), 2), 0))
 		.setTools(TinkerTags.Items.MELEE)
 		.setMaxLevel(1)
-		.setAbilitySlots(1)
+		.setSlots(SlotType.ABILITY, 1)
 		.setGroup("materialis:eidolon")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.reapingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier, modifierFolder));
@@ -281,7 +282,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(TinkerToolParts.toolBinding.get())))
 		.addSalvage(Items.NETHERITE_SCRAP, 0.35f)
 		.setMaxLevel(1)
-		.setAbilitySlots(1)
+		.setSlots(SlotType.ABILITY, 1)
 		.buildSalvage(consumer, prefix(MaterialisModifiers.wrenchingModifier, salvageFolder))
 		.build(consumer, prefix(MaterialisModifiers.wrenchingModifier, modifierFolder));
 
@@ -291,7 +292,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(Tags.Items.INGOTS_IRON)
 		.addSalvage(Items.IRON_INGOT, 0.7f)
 		.addSalvage(Items.PHANTOM_MEMBRANE, 0.3f)
-		.setUpgradeSlots(2)
+		.setSlots(SlotType.UPGRADE, 2)
 		.buildSalvage(consumer, prefix(MaterialisModifiers.galvanizedModifier, salvageFolder))
 		.build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
 
@@ -305,7 +306,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.thermal_wrenching_requirements")
 		.setMaxLevel(1)
-		.setUpgradeSlots(1)
+		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:thermal")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.thermalWrenchingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
@@ -319,7 +320,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.create_wrenching_requirements")
 		.setMaxLevel(1)
-		.setUpgradeSlots(1)
+		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:create")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.createWrenchingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
@@ -334,7 +335,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("psi", "psigem"), 2), 0))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.5f))
 		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
-		.setAbilitySlots(1)
+		.setSlots(SlotType.ABILITY, 1)
 		.setGroup("materialis:psi")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.psionizingRadiationModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
@@ -353,7 +354,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirements(ModifierMatch.entry(MaterialisModifiers.psionizingRadiationModifier.get()))
 		.setRequirementsError("recipe.materialis.modifier.casting_requirements")
 		.setTools(TinkerTags.Items.MODIFIABLE)
-		.setAbilitySlots(1)
+		.setSlots(SlotType.ABILITY, 1)
 		.setGroup("materialis:psi")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.castingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.castingModifier, modifierFolder));
@@ -363,7 +364,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.4f))
 		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
 		.setMaxLevel(5)
-		.setUpgradeSlots(1)
+		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:psi")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.spellSocketModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));

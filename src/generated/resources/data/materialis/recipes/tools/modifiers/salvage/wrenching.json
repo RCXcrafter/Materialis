@@ -9,9 +9,11 @@
       "tag": "materialis:wrench"
     }
   },
+  "slots": {
+    "abilities": 1
+  },
   "modifier": "materialis:wrenching",
   "min_level": 1,
-  "ability_slots": 1,
   "salvage": [
     {
       "item": "minecraft:netherite_scrap",

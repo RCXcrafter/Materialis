@@ -11,9 +11,11 @@
   "tools": {
     "tag": "materialis:galvanizable"
   },
+  "slots": {
+    "upgrades": 2
+  },
   "result": {
     "name": "materialis:galvanized",
     "level": 1
-  },
-  "upgrade_slots": 2
+  }
 }

@@ -3,9 +3,11 @@
   "tools": {
     "tag": "tconstruct:modifiable"
   },
+  "slots": {
+    "upgrades": 1
+  },
   "modifier": "materialis:create_wrenching",
   "min_level": 1,
-  "upgrade_slots": 1,
   "salvage": [
     {
       "item": "create:cogwheel",
