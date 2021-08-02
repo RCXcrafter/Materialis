@@ -5,6 +5,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.utils.RomanNumeralHelper;
 
 public class HalfLifeModifier extends Modifier {
 
@@ -36,7 +37,7 @@ public class HalfLifeModifier extends Modifier {
 			level -= 2;
 		return new TranslationTextComponent(getTranslationKey())
 				.append(" ")
-				.append(new TranslationTextComponent(KEY_LEVEL + level))
+				.append(RomanNumeralHelper.getNumeral(level))
 				.withStyle(style -> style.withColor(Color.fromRgb(this.getColor())));
 	}
 }
