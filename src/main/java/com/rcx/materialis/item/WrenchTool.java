@@ -32,7 +32,7 @@ public class WrenchTool extends ToolItem {
 	@Override
 	public int getHarvestLevel(ItemStack stack, ToolType toolClass, @Nullable PlayerEntity player, @Nullable BlockState state) {
 		//wrench is not an existing tool type, so check for effectiveness instead
-		if (state == null || canHarvestBlock(stack, state)) { //canHarvestBlock takes care of checking if the tool is broken
+		if (toolClass == TOOL_TYPE || state == null || canHarvestBlock(stack, state)) { //canHarvestBlock takes care of checking if the tool is broken
 			return ToolStack.from(stack).getStats().getInt(ToolStats.HARVEST_LEVEL);
 		}
 		return -1;
