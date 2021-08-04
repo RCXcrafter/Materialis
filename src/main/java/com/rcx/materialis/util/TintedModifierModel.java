@@ -53,6 +53,7 @@ public class TintedModifierModel implements IBakedModifierModel {
 	}
 
 	@Override
+	@Deprecated
 	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge) {
 		return this.getQuads(tool, entry, spriteGetter, transforms, isLarge, -1);
 	}

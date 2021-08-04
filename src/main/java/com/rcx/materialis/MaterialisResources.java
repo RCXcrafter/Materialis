@@ -38,6 +38,7 @@ import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
+import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.ToolBaseStatDefinition;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
@@ -146,7 +147,9 @@ public class MaterialisResources {
 			.modifier(ToolStats.ATTACK_SPEED, 1.8f)
 			.modifier(ToolStats.MINING_SPEED, 2.0f)
 			.modifier(ToolStats.DURABILITY, 1.5f)
-			.setDefaultUpgrades(1).setDefaultAbilities(3).build();
+			.startingSlots(SlotType.UPGRADE, 1)
+			.startingSlots(SlotType.ABILITY, 3)
+			.build();
 	public static final ToolDefinition WRENCH_DEFINITION = ToolDefinition.builder(WRENCH_BASE_STATS)
 			.addPart(WRENCH_HEAD).addPart(TinkerToolParts.toolHandle)
 			.addModifier(MaterialisModifiers.wrenchingModifierHidden).build();
@@ -158,7 +161,10 @@ public class MaterialisResources {
 			.modifier(ToolStats.ATTACK_SPEED, 1.1f)
 			.modifier(ToolStats.MINING_SPEED, 1.5f)
 			.modifier(ToolStats.DURABILITY, 2.5f)
-			.setPrimaryHeadWeight(2).setDefaultUpgrades(1).setDefaultAbilities(2).build();
+			.setPrimaryHeadWeight(2)
+			.startingSlots(SlotType.UPGRADE, 1)
+			.startingSlots(SlotType.ABILITY, 2)
+			.build();
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(BATTLEWRENCH_BASE_STATS)
 			.addPart(TinkerToolParts.hammerHead).addPart(TinkerToolParts.toughHandle).addPart(WRENCH_HEAD).addPart(WRENCH_HEAD)
 			.addModifier(MaterialisModifiers.wrenchingModifierHidden).build();

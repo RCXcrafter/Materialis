@@ -1,6 +1,5 @@
 package com.rcx.materialis.modifiers;
 
-import net.minecraft.util.text.Color;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -31,13 +30,12 @@ public class HalfLifeModifier extends Modifier {
 	@Override
 	public ITextComponent getDisplayName(int level) {
 		if (level > 2 && level < 5) {
-			return new TranslationTextComponent(getTranslationKey() + "." + level) .withStyle(style -> style.withColor(Color.fromRgb(this.getColor())));
+			return applyStyle(new TranslationTextComponent(getTranslationKey() + "." + level));
 		}
 		if (level > 2)
 			level -= 2;
-		return new TranslationTextComponent(getTranslationKey())
+		return applyStyle(new TranslationTextComponent(getTranslationKey())
 				.append(" ")
-				.append(RomanNumeralHelper.getNumeral(level))
-				.withStyle(style -> style.withColor(Color.fromRgb(this.getColor())));
+				.append(RomanNumeralHelper.getNumeral(level)));
 	}
 }

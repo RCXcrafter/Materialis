@@ -1,5 +1,6 @@
 package com.rcx.materialis.modifiers;
 
+import net.minecraft.item.Item;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
@@ -22,7 +23,7 @@ public class OverweightModifier extends Modifier {
 	}
 
 	@Override
-	public void addVolatileData(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
+	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		OverslimeModifier overslime = TinkerModifiers.overslime.get();
 		overslime.setFriend(volatileData);
 
@@ -33,7 +34,7 @@ public class OverweightModifier extends Modifier {
 	}
 
 	@Override
-	public void addToolStats(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, IModDataReadOnly volatileData, int level, ModifierStatsBuilder builder) {
+	public void addToolStats(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, IModDataReadOnly volatileData, int level, ModifierStatsBuilder builder) {
 		float multiplier = 1.0f - 0.1f * level;
 		ToolStats.ATTACK_SPEED.multiply(builder, multiplier);
 		ToolStats.MINING_SPEED.multiply(builder, multiplier);

@@ -1,5 +1,6 @@
 package com.rcx.materialis.modifiers;
 
+import net.minecraft.item.Item;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
@@ -14,7 +15,7 @@ public class AuxiliaryPowerModifier extends Modifier {
 	}
 
 	@Override
-	public void addToolStats(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, IModDataReadOnly volatileData, int level, ModifierStatsBuilder builder) {
+	public void addToolStats(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, IModDataReadOnly volatileData, int level, ModifierStatsBuilder builder) {
 		ToolStats.ATTACK_SPEED.add(builder, baseStats.getFloat(ToolStats.MINING_SPEED) * level / 20.0f);
 	}
 }

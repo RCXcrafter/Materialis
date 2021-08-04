@@ -4,16 +4,16 @@ import com.rcx.materialis.Materialis;
 
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ExtraModifier;
-import slimeknights.tconstruct.library.modifiers.ExtraModifier.ExtraType;
 import slimeknights.tconstruct.library.modifiers.ExtraModifier.ModifierSource;
+import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.tools.SlotType;
 
 public class MaterialisModifiers {
 	public static final DeferredRegister<Modifier> MODIFIERS = DeferredRegister.create(Modifier.class, Materialis.modID);
 
 	//traits
-	public static final RegistryObject<Modifier> enhancedQuartzModifier = MODIFIERS.register("enhanced_quartz", () -> new ExtraModifier(0xFF8C80, ExtraType.UPGRADE, ModifierSource.TRAIT));
+	public static final RegistryObject<Modifier> enhancedQuartzModifier = MODIFIERS.register("enhanced_quartz", () -> new ExtraModifier(0xFF8C80, SlotType.UPGRADE, ModifierSource.TRAIT));
 	public static final RegistryObject<Modifier> voidingModifier = MODIFIERS.register("voiding", VoidingModifier::new);
 	public static final RegistryObject<Modifier> residualLightModifier = MODIFIERS.register("residual_light", ResidualLightModifier::new);
 	public static final RegistryObject<Modifier> inertiaModifier = MODIFIERS.register("inertia", InertiaModifier::new);
@@ -51,7 +51,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> wrenchingModifier = MODIFIERS.register("wrenching", () -> new WrenchingModifier(0x8A361E, 75));
 	public static final RegistryObject<Modifier> thermalWrenchingModifier = MODIFIERS.register("thermal_wrenching", ThermalWrenchingModifier::new);
 	public static final RegistryObject<Modifier> createWrenchingModifier = MODIFIERS.register("create_wrenching", CreateWrenchingModifier::new);
-	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(0xA8B4BB, ExtraType.ABILITY, ModifierSource.MULTI_LEVEL));
+	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(0xA8B4BB, SlotType.ABILITY, ModifierSource.MULTI_LEVEL));
 	public static final RegistryObject<Modifier> spellSocketModifier = MODIFIERS.register("spell_socket", SpellSocketModifier::new);
 	public static final RegistryObject<Modifier> castingModifier = MODIFIERS.register("spell_casting", CastingModifier::new);
 	public static final RegistryObject<Modifier> colorizedModifier = MODIFIERS.register("colorized", ColorizedModifier::new);

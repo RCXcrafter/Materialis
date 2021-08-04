@@ -11,7 +11,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
-import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import vazkii.psi.api.cad.ICADColorizer;
 import vazkii.psi.client.core.handler.ClientTickHandler;
@@ -27,12 +26,8 @@ public class ColorizedModifier extends SingleUseModifier implements ITintingModi
 	}
 
 	@Override
-	public ValidatedResult validate(IModifierToolStack tool, int level) {
-		//remove tags if modifier is removed
-		if (level == 0)
-			tool.getPersistentData().remove(COLORIZER);
-
-		return ValidatedResult.PASS;
+	public void onRemoved(IModifierToolStack tool) {
+		tool.getPersistentData().remove(COLORIZER);
 	}
 
 	@Override

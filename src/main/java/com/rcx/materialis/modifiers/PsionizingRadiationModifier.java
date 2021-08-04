@@ -5,6 +5,7 @@ import java.util.List;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
@@ -26,6 +27,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.BlockSideHitListener;
+import slimeknights.tconstruct.library.utils.TooltipFlag;
 import vazkii.psi.api.PsiAPI;
 import vazkii.psi.api.cad.ISocketable;
 import vazkii.psi.api.spell.SpellContext;
@@ -53,7 +55,16 @@ public class PsionizingRadiationModifier extends Modifier {
 	}
 
 	@Override
-	public void addVolatileData(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
+	public void onRemoved(IModifierToolStack tool) {
+		int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
+		//remove tags if all sockets are removed
+		if (sockets == 0) {
+			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
+		}
+	}
+
+	@Override
+	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		if (!enabled)
 			return;
 		if (volatileData.contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT)) {
@@ -120,7 +131,7 @@ public class PsionizingRadiationModifier extends Modifier {
 	}
 
 	@Override
-	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, boolean isAdvanced, boolean detailed) {
+	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag tooltipFlag) {
 		if (enabled && tool instanceof ToolStack) {
 			ITextComponent componentName = ISocketable.getSocketedItemName(((ToolStack) tool).createStack(), "psimisc.none");
 			tooltip.add(new TranslationTextComponent("psimisc.spell_selected", componentName));

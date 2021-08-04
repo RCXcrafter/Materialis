@@ -3,6 +3,7 @@ package com.rcx.materialis.modifiers;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraftforge.common.util.Constants.NBT;
@@ -43,15 +44,20 @@ public class SpellSocketModifier extends Modifier {
 					return SpellSocketModifier.SLOT_NOT_EMPTY;
 			}
 		}
-		//remove tags if all sockets are removed
-		if (sockets == 0) {
-			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
-		}
 		return ValidatedResult.PASS;
 	}
 
 	@Override
-	public void addVolatileData(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
+	public void onRemoved(IModifierToolStack tool) {
+		int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
+		//remove tags if all sockets are removed
+		if (sockets == 0) {
+			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
+		}
+	}
+
+	@Override
+	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		if (!enabled)
 			return;
 		if (volatileData.contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT)) {

@@ -3,6 +3,7 @@ package com.rcx.materialis.modifiers;
 import com.rcx.materialis.Materialis;
 
 import net.minecraft.item.DyeColor;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.Color;
@@ -13,7 +14,6 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
-import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.item.ToolItem;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
@@ -33,17 +33,13 @@ public class RunedModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public void addVolatileData(ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
+	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		volatileData.putBoolean(ToolItem.SHINY, true);
 	}
 
 	@Override
-	public ValidatedResult validate(IModifierToolStack tool, int level) {
-		//remove tags if modifier is removed
-		if (level == 0)
-			tool.getPersistentData().remove(RUNE);
-
-		return ValidatedResult.PASS;
+	public void onRemoved(IModifierToolStack tool) {
+		tool.getPersistentData().remove(RUNE);
 	}
 
 	@Override
