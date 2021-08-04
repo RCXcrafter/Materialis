@@ -56,9 +56,8 @@ public class PsionizingRadiationModifier extends Modifier {
 
 	@Override
 	public void onRemoved(IModifierToolStack tool) {
-		int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
 		//remove tags if all sockets are removed
-		if (sockets == 0) {
+		if (tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) == 0) {
 			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
 		}
 	}
