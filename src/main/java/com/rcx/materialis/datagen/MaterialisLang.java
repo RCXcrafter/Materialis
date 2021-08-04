@@ -109,7 +109,7 @@ public class MaterialisLang extends LanguageProvider {
 		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");
 
 		//occultism stuff
-		//addMaterial(MaterialisMaterials.iesnium, "Iesnium", "", "");
+		addMaterial(MaterialisMaterials.iesnium, "Iesnium", "", "Allows the tool to harvest otherworld blocks");
 
 		//modifiers
 		addModifier(MaterialisModifiers.enhancedQuartzModifier, "Enhanced",

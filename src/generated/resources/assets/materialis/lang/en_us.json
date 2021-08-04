@@ -90,6 +90,8 @@
   "material.materialis.forgotten_metal.format": "Forgotten %s",
   "material.materialis.froststeel": "Froststeel",
   "material.materialis.froststeel.encyclopedia": "Applies 7.5 seconds of slowness to attacked mobs per level",
+  "material.materialis.iesnium": "Iesnium",
+  "material.materialis.iesnium.encyclopedia": "Allows the tool to harvest otherworld blocks",
   "material.materialis.invar": "Invar",
   "material.materialis.invar.encyclopedia": "Puts out attacked mobs and deals 1 extra damage for every 1.5 seconds of fire multiplied by the level",
   "material.materialis.ivory_psimetal": "Ivory Psimetal",
