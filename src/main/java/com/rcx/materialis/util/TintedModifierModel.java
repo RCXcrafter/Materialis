@@ -59,7 +59,7 @@ public class TintedModifierModel implements IBakedModifierModel {
 	}
 
 	@Override
-	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge, int startTintIndex) {
+	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge, int startTintIndex) {
 		boolean glowing = false;
 		if (entry.getModifier() instanceof ITintingModifier)
 			glowing = ((ITintingModifier) entry.getModifier()).doesGlow(tool);

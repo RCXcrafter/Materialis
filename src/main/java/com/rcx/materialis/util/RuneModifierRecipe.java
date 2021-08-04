@@ -33,12 +33,6 @@ public class RuneModifierRecipe extends ModifierRecipe {
 
 	private final List<SizedIngredient> inputs;
 
-	@Deprecated
-	public RuneModifierRecipe(ResourceLocation id, List<SizedIngredient> inputs, Ingredient toolRequirement, ModifierMatch requirements, String requirementsError, ModifierEntry result, int maxLevel, int upgradeSlots, int abilitySlots) {
-		super(id, inputs, toolRequirement, requirements, requirementsError, result, maxLevel, upgradeSlots, abilitySlots);
-		this.inputs = inputs;
-	}
-
 	public RuneModifierRecipe(ResourceLocation id, List<SizedIngredient> inputs, Ingredient toolRequirement, ModifierMatch requirements, String requirementsError, ModifierEntry result, int maxLevel, @Nullable SlotCount slots) {
 		super(id, inputs, toolRequirement, requirements, requirementsError, result, maxLevel, slots);
 		this.inputs = inputs;
