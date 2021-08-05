@@ -1,33 +1,18 @@
 package com.rcx.materialis.modifiers;
 
-import java.util.List;
-
 import com.rcx.materialis.Materialis;
-import com.rcx.materialis.compat.TinkerToolSocketable;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
-import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
-import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.BlockSideHitListener;
-import slimeknights.tconstruct.library.utils.TooltipFlag;
 import vazkii.psi.api.PsiAPI;
 import vazkii.psi.api.cad.ISocketable;
 import vazkii.psi.api.spell.SpellContext;
@@ -35,9 +20,8 @@ import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 import vazkii.psi.common.item.ItemCAD;
 
-public class PsionizingRadiationModifier extends Modifier {
+public class PsionizingRadiationModifier extends SpellSocketModifier {
 
-	boolean enabled = ModList.get().isLoaded("psi");
 	public static final ResourceLocation SUPPRESS_TOOLCASTING = new ResourceLocation(Materialis.modID, "suppress_toolcasting");
 
 	public PsionizingRadiationModifier() {
@@ -47,30 +31,6 @@ public class PsionizingRadiationModifier extends Modifier {
 	@Override
 	public int getPriority() {
 		return 200; //before most other things
-	}
-
-	@Override
-	public ValidatedResult validate(IModifierToolStack tool, int level) {
-		return SpellSocketModifier.validateSockets(tool, level);
-	}
-
-	@Override
-	public void onRemoved(IModifierToolStack tool) {
-		//remove tags if all sockets are removed
-		if (tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) == 0) {
-			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
-		}
-	}
-
-	@Override
-	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
-		if (!enabled)
-			return;
-		if (volatileData.contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT)) {
-			volatileData.putInt(TinkerToolSocketable.SOCKETS, volatileData.getInt(TinkerToolSocketable.SOCKETS) + level);
-		} else {
-			volatileData.putInt(TinkerToolSocketable.SOCKETS, level);
-		}
 	}
 
 	@Override
@@ -127,13 +87,5 @@ public class PsionizingRadiationModifier extends Modifier {
 			}
 		}
 		return 0;
-	}
-
-	@Override
-	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag tooltipFlag) {
-		if (enabled && tool instanceof ToolStack) {
-			ITextComponent componentName = ISocketable.getSocketedItemName(((ToolStack) tool).createStack(), "psimisc.none");
-			tooltip.add(new TranslationTextComponent("psimisc.spell_selected", componentName));
-		}
 	}
 }

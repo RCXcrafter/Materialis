@@ -1,11 +1,15 @@
 package com.rcx.materialis.modifiers;
 
+import java.util.List;
+
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
 
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -15,24 +19,23 @@ import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.utils.TooltipFlag;
 import vazkii.psi.api.cad.ISocketable;
 
 public class SpellSocketModifier extends Modifier {
 
-	static boolean enabled = ModList.get().isLoaded("psi");
+	boolean enabled = ModList.get().isLoaded("psi");
+	public static final ResourceLocation SOCKET_OWNER = new ResourceLocation(Materialis.modID, "socket_owner");
 	public static final ValidatedResult SLOT_NOT_EMPTY = ValidatedResult.failure(Util.makeDescriptionId("recipe", new ResourceLocation(Materialis.modID, "remove_modifier.spell_slot_not_empty")));
 	public static final ValidatedResult TOO_MANY_SLOTS = ValidatedResult.failure(Util.makeDescriptionId("recipe", new ResourceLocation(Materialis.modID, "add_modifier.too_many_spell_slots")));
 
-	public SpellSocketModifier() {
-		super(0x3D3D3D);
+	public SpellSocketModifier(int color) {
+		super(color);
 	}
 
 	@Override
 	public ValidatedResult validate(IModifierToolStack tool, int level) {
-		return validateSockets(tool, level);
-	}
-
-	public static ValidatedResult validateSockets(IModifierToolStack tool, int level) {
 		int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
 		//check if there are still spells in the sockets that are being removed or if too many sockets are being added
 		if (enabled) {
@@ -64,5 +67,19 @@ public class SpellSocketModifier extends Modifier {
 		} else {
 			volatileData.putInt(TinkerToolSocketable.SOCKETS, level);
 		}
+		if (!volatileData.contains(SOCKET_OWNER, NBT.TAG_STRING))
+			volatileData.putString(SOCKET_OWNER, getId().toString());
+	}
+
+	@Override
+	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag tooltipFlag) {
+		if (enabled && tool instanceof ToolStack && isOwner(tool.getVolatileData())) {
+			ITextComponent componentName = ISocketable.getSocketedItemName(((ToolStack) tool).createStack(), "psimisc.none");
+			tooltip.add(new TranslationTextComponent("psimisc.spell_selected", componentName));
+		}
+	}
+
+	public boolean isOwner(IModDataReadOnly volatileData) {
+		return getId().toString().equals(volatileData.getString(SOCKET_OWNER));
 	}
 }

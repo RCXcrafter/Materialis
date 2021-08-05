@@ -8,10 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.fml.ModList;
-import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
@@ -26,11 +22,9 @@ import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 import vazkii.psi.common.item.ItemCAD;
 
-public class CastingModifier extends Modifier {
+public class SpellCastingModifier extends SpellSocketModifier {
 
-	boolean enabled = ModList.get().isLoaded("psi");
-
-	public CastingModifier() {
+	public SpellCastingModifier() {
 		super(0x6C89E6);
 	}
 
@@ -40,27 +34,8 @@ public class CastingModifier extends Modifier {
 	}
 
 	@Override
-	public ValidatedResult validate(IModifierToolStack tool, int level) {
-		return SpellSocketModifier.validateSockets(tool, level);
-	}
-
-	@Override
-	public void onRemoved(IModifierToolStack tool) {
-		//remove tags if all sockets are removed
-		if (tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) == 0) {
-			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
-		}
-	}
-
-	@Override
 	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
-		if (!enabled)
-			return;
-		if (volatileData.contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT)) {
-			volatileData.putInt(TinkerToolSocketable.SOCKETS, volatileData.getInt(TinkerToolSocketable.SOCKETS) + level);
-		} else {
-			volatileData.putInt(TinkerToolSocketable.SOCKETS, level);
-		}
+		super.addVolatileData(item, toolDefinition, baseStats, persistentData, level, volatileData);
 		volatileData.putBoolean(PsionizingRadiationModifier.SUPPRESS_TOOLCASTING, true);
 		volatileData.putBoolean(TinkerToolSocketable.CAN_LOOPCAST, true);
 		volatileData.putBoolean(TinkerToolSocketable.SHOW_PSI_BAR, true);

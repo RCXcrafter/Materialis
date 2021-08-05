@@ -340,7 +340,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.buildSalvage(consumer, prefix(MaterialisModifiers.psionizingRadiationModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
 
-		ModifierRecipeBuilder.modifier(MaterialisModifiers.castingModifier.get())
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellCastingModifier.get())
 		.addInput(getTag("forge", "ingots/ebony_psimetal"))
 		.addInput(getTag("forge", "gems/psigem"))
 		.addInput(getTag("forge", "ingots/ivory_psimetal"))
@@ -356,8 +356,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setSlots(SlotType.ABILITY, 1)
 		.setGroup("materialis:psi")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.castingModifier, salvageFolder))
-		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.castingModifier, modifierFolder));
+		.buildSalvage(consumer, prefix(MaterialisModifiers.spellCastingModifier, salvageFolder))
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellCastingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellSocketModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))

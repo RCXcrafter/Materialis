@@ -192,7 +192,7 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.spellSocketModifier, "Socket",
 				"More durable than lime sockets!",
 				"Adds one psi spell socket to your tool");
-		addModifier(MaterialisModifiers.castingModifier, "Casting",
+		addModifier(MaterialisModifiers.spellCastingModifier, "Casting",
 				"Doesn't involve molten metal",
 				"Adds the ability to cast spells on right-click but removes the ability to cast spells on block breaking and attacking, +1 spell socket");
 		addModifier(MaterialisModifiers.colorizedModifier, "Colorized",
