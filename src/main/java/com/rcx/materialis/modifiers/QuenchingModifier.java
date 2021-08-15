@@ -22,7 +22,7 @@ public class QuenchingModifier extends Modifier {
 	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
 		if (context.getTarget().isAlive() && context.getTarget().isOnFire()) {
 			float bonus = 0.0f;
-			bonus = (context.getTarget().getRemainingFireTicks() * level) / 30.0f;
+			bonus = (context.getTarget().getRemainingFireTicks() * level) / 60.0f;
 			context.getTarget().clearFire();
 
 			DamageSource source;

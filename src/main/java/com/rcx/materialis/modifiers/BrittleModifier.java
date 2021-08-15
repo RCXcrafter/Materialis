@@ -11,6 +11,6 @@ public class BrittleModifier extends Modifier {
 
 	@Override
 	public int onDamageTool(IModifierToolStack toolStack, int level, int amount) {
-		return amount * (level + 1);
+		return (int) (amount * Math.pow(2, level));
 	}
 }

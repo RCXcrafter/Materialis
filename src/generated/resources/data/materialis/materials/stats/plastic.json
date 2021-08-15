@@ -4,14 +4,14 @@
     "tconstruct:handle": {
       "durability": 0.8,
       "miningSpeed": 1.0,
-      "attackSpeed": 1.2,
+      "attackSpeed": 1.15,
       "attackDamage": 1.0
     },
     "tconstruct:head": {
       "durability": 200,
-      "miningSpeed": 6.0,
+      "miningSpeed": 4.0,
       "harvestLevel": 2,
-      "attack": 2.0
+      "attack": 1.0
     }
   }
 }
