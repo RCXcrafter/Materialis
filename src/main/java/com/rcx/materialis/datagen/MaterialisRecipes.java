@@ -276,7 +276,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.runeModifierSerializer.get()).addCondition(new ModLoadedCondition("quark")).build(consumer), prefix(MaterialisModifiers.runedModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.wrenchingModifier.get())
-		.setTools(new IngredientWithout(Ingredient.of(TinkerTags.Items.MODIFIABLE), Ingredient.of(MaterialisItemTags.WRENCHING)))
+		.setTools(new IngredientWithout(Ingredient.of(TinkerTags.Items.HELD), Ingredient.of(MaterialisItemTags.WRENCHING)))
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(MaterialisResources.WRENCH_HEAD.get())))
 		.addInput(TinkerTags.Items.INGOTS_NETHERITE_SCRAP)
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(TinkerToolParts.toolBinding.get())))
@@ -287,7 +287,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(consumer, prefix(MaterialisModifiers.wrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.galvanizedModifier.get())
-		.setTools(Ingredient.of(MaterialisItemTags.GALVANIZABLE))
+		.setTools(MaterialisItemTags.GALVANIZABLE)
 		.addInput(Items.PHANTOM_MEMBRANE)
 		.addInput(Tags.Items.INGOTS_IRON)
 		.addSalvage(Items.IRON_INGOT, 0.7f)
@@ -299,6 +299,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		ModifierMatch wrenching = ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get()));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.thermalWrenchingModifier.get())
+		.setTools(Ingredient.of(TinkerTags.Items.HELD))
 		.addInput(getTag("forge", "gears/nickel"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "wrench"))))
 		.addInput(getTag("forge", "gears/nickel"))
@@ -312,6 +313,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.createWrenchingModifier.get())
+		.setTools(TinkerTags.Items.HELD)
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "wrench"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
@@ -334,7 +336,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("psi", "psimetal"), 2), 0))
 		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("psi", "psigem"), 2), 0))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.5f))
-		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
+		.setTools(TinkerTags.Items.HELD)
 		.setSlots(SlotType.ABILITY, 1)
 		.setGroup("materialis:psi")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.psionizingRadiationModifier, salvageFolder))
@@ -353,7 +355,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_assembly_psimetal")), 0.6f))
 		.setRequirements(ModifierMatch.entry(MaterialisModifiers.psionizingRadiationModifier.get()))
 		.setRequirementsError("recipe.materialis.modifier.casting_requirements")
-		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setTools(TinkerTags.Items.HELD)
 		.setSlots(SlotType.ABILITY, 1)
 		.setGroup("materialis:psi")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.spellCastingModifier, salvageFolder))
@@ -362,7 +364,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellSocketModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.4f))
-		.setTools(TinkerTags.Items.MELEE_OR_HARVEST)
+		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:psi")
