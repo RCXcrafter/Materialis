@@ -16,7 +16,7 @@
   "tools": {
     "type": "mantle:without",
     "base": {
-      "tag": "tconstruct:modifiable"
+      "tag": "tconstruct:modifiable/held"
     },
     "without": {
       "tag": "materialis:wrench"
