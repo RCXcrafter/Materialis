@@ -164,7 +164,6 @@ public class Materialis {
 			//tint tool and part textures for fallback
 			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.WRENCH);
 			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.BATTLEWRENCH);
-			ToolClientEvents.registerMaterialItemColors(colors, MaterialisResources.WRENCH_HEAD);
 		}
 		
 		@SubscribeEvent
