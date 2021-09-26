@@ -11,6 +11,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ITag.INamedTag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisFluidTags extends FluidTagsProvider {
 
@@ -25,8 +26,31 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {
 			tag(fluid.OBJECT.getLocalTag()).add(fluid.FLUID.get());
 			tag(fluid.OBJECT.getForgeTag()).add(fluid.FLUID.get());
+			tag(TinkerTags.Fluids.METAL_LIKE).addTag(fluid.OBJECT.getForgeTag());
 		}
 
 		tag(LIQUID_PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
+
+		tag(TinkerTags.Fluids.CHEAP_METAL_SPILLING)
+		.addTag(MaterialisResources.QUICKSILVER_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.CLOGGRUM_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.FROSTSTEEL_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.UTHERIUM_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.REGALIUM_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.IESNIUM_FLUID.OBJECT.getForgeTag());
+		tag(TinkerTags.Fluids.AVERAGE_METAL_SPILLING)
+		.addTag(MaterialisResources.ARCANE_GOLD_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.STARMETAL_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.PINK_SLIME_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.PSIMETAL_FLUID.OBJECT.getForgeTag());
+		tag(TinkerTags.Fluids.EXPENSIVE_METAL_SPILLING)
+		.addTag(MaterialisResources.REFINED_RADIANCE_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.SHADOW_STEEL_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.NEPTUNIUM_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.FORGOTTEN_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT.getForgeTag());
 	}
 }

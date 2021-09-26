@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:molten_fairy",
+    "#forge:molten_refined_radiance",
+    "#forge:molten_shadow_steel",
+    "#forge:molten_arcane_gold",
+    "#forge:molten_neptunium",
+    "#forge:molten_quicksilver",
+    "#forge:molten_starmetal",
+    "#forge:molten_pink_slime",
+    "#forge:molten_cloggrum",
+    "#forge:molten_froststeel",
+    "#forge:molten_utherium",
+    "#forge:molten_forgotten_metal",
+    "#forge:molten_regalium",
+    "#forge:molten_refined_obsidian",
+    "#forge:molten_refined_glowstone",
+    "#forge:molten_psimetal",
+    "#forge:molten_ebony_psimetal",
+    "#forge:molten_ivory_psimetal",
+    "#forge:molten_iesnium"
+  ]
+}

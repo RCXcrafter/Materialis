@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:molten_quicksilver",
+    "#forge:molten_cloggrum",
+    "#forge:molten_froststeel",
+    "#forge:molten_utherium",
+    "#forge:molten_regalium",
+    "#forge:molten_iesnium"
+  ]
+}
