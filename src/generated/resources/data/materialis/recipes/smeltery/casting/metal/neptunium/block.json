@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_neptunium",
+    "tag": "forge:molten_neptunium",
     "amount": 1296
   },
   "result": {

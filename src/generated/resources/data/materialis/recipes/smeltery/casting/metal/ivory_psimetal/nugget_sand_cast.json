@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "tag": "materialis:molten_ivory_psimetal",
+    "tag": "forge:molten_ivory_psimetal",
     "amount": 16
   },
   "result": {

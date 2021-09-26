@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/plate"
   },
   "fluid": {
-    "tag": "materialis:molten_froststeel",
+    "tag": "forge:molten_froststeel",
     "amount": 144
   },
   "result": {

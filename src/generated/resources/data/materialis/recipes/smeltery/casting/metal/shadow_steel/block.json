@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_shadow_steel",
+    "tag": "forge:molten_shadow_steel",
     "amount": 1296
   },
   "result": {

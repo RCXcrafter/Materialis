@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_starmetal",
+    "tag": "forge:molten_starmetal",
     "amount": 1296
   },
   "result": {

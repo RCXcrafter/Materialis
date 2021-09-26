@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/nugget"
   },
   "fluid": {
-    "tag": "materialis:molten_refined_glowstone",
+    "tag": "forge:molten_refined_glowstone",
     "amount": 16
   },
   "result": {

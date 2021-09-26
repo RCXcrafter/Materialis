@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "tag": "materialis:molten_quicksilver",
+    "tag": "forge:molten_quicksilver",
     "amount": 48
   },
   "result": {

@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_refined_obsidian",
+    "tag": "forge:molten_refined_obsidian",
     "amount": 1296
   },
   "result": {

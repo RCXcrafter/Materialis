@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_refined_radiance",
+    "tag": "forge:molten_refined_radiance",
     "amount": 1296
   },
   "result": {

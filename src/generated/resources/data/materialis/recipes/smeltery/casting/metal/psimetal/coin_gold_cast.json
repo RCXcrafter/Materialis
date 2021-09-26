@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/coin"
   },
   "fluid": {
-    "tag": "materialis:molten_psimetal",
+    "tag": "forge:molten_psimetal",
     "amount": 48
   },
   "result": {

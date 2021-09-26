@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_regalium",
+    "tag": "forge:molten_regalium",
     "amount": 1296
   },
   "result": {

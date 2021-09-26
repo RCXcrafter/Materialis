@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_utherium",
+    "tag": "forge:molten_utherium",
     "amount": 1296
   },
   "result": {

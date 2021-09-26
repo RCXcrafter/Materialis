@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/nugget"
   },
   "fluid": {
-    "tag": "materialis:molten_ebony_psimetal",
+    "tag": "forge:molten_ebony_psimetal",
     "amount": 16
   },
   "result": {

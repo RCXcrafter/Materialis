@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_quicksilver",
+    "tag": "forge:molten_quicksilver",
     "amount": 1296
   },
   "result": {

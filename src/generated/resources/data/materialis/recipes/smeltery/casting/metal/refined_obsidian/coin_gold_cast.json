@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/coin"
   },
   "fluid": {
-    "tag": "materialis:molten_refined_obsidian",
+    "tag": "forge:molten_refined_obsidian",
     "amount": 48
   },
   "result": {

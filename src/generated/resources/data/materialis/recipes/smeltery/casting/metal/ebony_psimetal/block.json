@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_ebony_psimetal",
+    "tag": "forge:molten_ebony_psimetal",
     "amount": 1296
   },
   "result": {

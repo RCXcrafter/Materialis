@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/coin"
   },
   "fluid": {
-    "tag": "materialis:molten_cloggrum",
+    "tag": "forge:molten_cloggrum",
     "amount": 48
   },
   "result": {

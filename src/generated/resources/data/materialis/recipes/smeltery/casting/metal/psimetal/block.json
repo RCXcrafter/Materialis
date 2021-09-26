@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_psimetal",
+    "tag": "forge:molten_psimetal",
     "amount": 1296
   },
   "result": {

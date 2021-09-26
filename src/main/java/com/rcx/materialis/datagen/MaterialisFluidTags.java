@@ -24,6 +24,7 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 	public void addTags() {
 		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {
 			tag(fluid.OBJECT.getLocalTag()).add(fluid.FLUID.get());
+			tag(fluid.OBJECT.getForgeTag()).add(fluid.FLUID.get());
 		}
 
 		tag(LIQUID_PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));

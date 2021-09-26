@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "tag": "materialis:molten_starmetal",
+    "tag": "forge:molten_starmetal",
     "amount": 576
   },
   "result": {

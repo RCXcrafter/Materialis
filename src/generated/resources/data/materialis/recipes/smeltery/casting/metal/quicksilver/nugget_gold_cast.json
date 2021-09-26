@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/nugget"
   },
   "fluid": {
-    "tag": "materialis:molten_quicksilver",
+    "tag": "forge:molten_quicksilver",
     "amount": 16
   },
   "result": {

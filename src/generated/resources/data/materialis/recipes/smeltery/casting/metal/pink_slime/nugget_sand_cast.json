@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "tag": "materialis:molten_pink_slime",
+    "tag": "forge:molten_pink_slime",
     "amount": 16
   },
   "result": {

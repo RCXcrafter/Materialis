@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/gear"
   },
   "fluid": {
-    "tag": "materialis:molten_utherium",
+    "tag": "forge:molten_utherium",
     "amount": 576
   },
   "result": {

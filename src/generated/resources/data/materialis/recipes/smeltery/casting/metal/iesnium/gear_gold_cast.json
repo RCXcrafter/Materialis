@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/gear"
   },
   "fluid": {
-    "tag": "materialis:molten_iesnium",
+    "tag": "forge:molten_iesnium",
     "amount": 576
   },
   "result": {

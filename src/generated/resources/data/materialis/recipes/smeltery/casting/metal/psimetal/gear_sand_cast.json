@@ -14,7 +14,7 @@
   },
   "cast_consumed": true,
   "fluid": {
-    "tag": "materialis:molten_psimetal",
+    "tag": "forge:molten_psimetal",
     "amount": 576
   },
   "result": {

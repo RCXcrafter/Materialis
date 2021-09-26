@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/nugget"
   },
   "fluid": {
-    "tag": "materialis:molten_forgotten_metal",
+    "tag": "forge:molten_forgotten_metal",
     "amount": 16
   },
   "result": {

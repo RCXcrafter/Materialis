@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_froststeel",
+    "tag": "forge:molten_froststeel",
     "amount": 1296
   },
   "result": {

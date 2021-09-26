@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_arcane_gold",
+    "tag": "forge:molten_arcane_gold",
     "amount": 1296
   },
   "result": {

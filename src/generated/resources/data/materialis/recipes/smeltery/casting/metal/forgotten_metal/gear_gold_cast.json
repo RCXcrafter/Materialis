@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/gear"
   },
   "fluid": {
-    "tag": "materialis:molten_forgotten_metal",
+    "tag": "forge:molten_forgotten_metal",
     "amount": 576
   },
   "result": {

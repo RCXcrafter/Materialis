@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_iesnium",
+    "tag": "forge:molten_iesnium",
     "amount": 1296
   },
   "result": {

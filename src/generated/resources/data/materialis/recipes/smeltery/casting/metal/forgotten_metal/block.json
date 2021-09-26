@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_forgotten_metal",
+    "tag": "forge:molten_forgotten_metal",
     "amount": 1296
   },
   "result": {

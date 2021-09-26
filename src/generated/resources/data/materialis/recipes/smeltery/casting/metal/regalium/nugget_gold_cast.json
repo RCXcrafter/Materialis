@@ -13,7 +13,7 @@
     "tag": "tconstruct:casts/multi_use/nugget"
   },
   "fluid": {
-    "tag": "materialis:molten_regalium",
+    "tag": "forge:molten_regalium",
     "amount": 16
   },
   "result": {

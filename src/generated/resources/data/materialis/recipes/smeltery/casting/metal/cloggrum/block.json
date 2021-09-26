@@ -10,7 +10,7 @@
     }
   ],
   "fluid": {
-    "name": "materialis:molten_cloggrum",
+    "tag": "forge:molten_cloggrum",
     "amount": 1296
   },
   "result": {
