@@ -5,13 +5,18 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableList;
+import com.google.gson.JsonObject;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.util.JSONUtils;
 import net.minecraft.util.math.vector.TransformationMatrix;
-import net.minecraftforge.client.model.ItemLayerModel;
+import slimeknights.mantle.client.model.util.MantleItemLayerModel;
+import slimeknights.mantle.util.ItemLayerPixels;
+import slimeknights.mantle.util.JsonHelper;
 import slimeknights.tconstruct.library.client.modifiers.IBakedModifierModel;
 import slimeknights.tconstruct.library.client.modifiers.IUnbakedModifierModel;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -24,23 +29,20 @@ import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 public class TintedModifierModel implements IBakedModifierModel {
 
 	/** Constant unbaked model instance, as they are all the same */
-	public static final IUnbakedModifierModel UNBAKED_INSTANCE = (smallGetter, largeGetter) -> {
-		RenderMaterial smallTexture = smallGetter.apply("");
-		RenderMaterial largeTexture = largeGetter.apply("");
-		if (smallTexture != null || largeTexture != null) {
-			return new TintedModifierModel(smallTexture, largeTexture);
-		}
-		return null;
-	};
+	public static final IUnbakedModifierModel UNBAKED_INSTANCE = new Unbaked(-1);
 
 	/** Textures to show */
 	private final RenderMaterial[] textures;
-	/** Cache of quads */
-	@SuppressWarnings("unchecked")
-	private final ImmutableList<BakedQuad>[] quads = new ImmutableList[4];
+	/** Color to apply to the texture */
+	private final int color;
+
+	public TintedModifierModel(@Nullable RenderMaterial smallTexture, @Nullable RenderMaterial largeTexture, int color) {
+		this.color = color;
+		this.textures = new RenderMaterial[]{ smallTexture, largeTexture };
+	}
 
 	public TintedModifierModel(@Nullable RenderMaterial smallTexture, @Nullable RenderMaterial largeTexture) {
-		this.textures = new RenderMaterial[]{ smallTexture, largeTexture };
+		this(smallTexture, largeTexture, -1);
 	}
 
 	@Nullable
@@ -52,29 +54,19 @@ public class TintedModifierModel implements IBakedModifierModel {
 		return entry.getModifier();
 	}
 
-	@Override
 	@Deprecated
-	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge) {
-		return this.getQuads(tool, entry, spriteGetter, transforms, isLarge, -1);
+	@Override
+	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry modifier, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge) {
+		return getQuads(tool, modifier, spriteGetter, transforms, isLarge, -1, null);
 	}
 
 	@Override
-	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry entry, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge, int startTintIndex) {
-		boolean glowing = false;
-		if (entry.getModifier() instanceof ITintingModifier)
-			glowing = ((ITintingModifier) entry.getModifier()).doesGlow(tool);
-
+	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry modifier, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge, int startTintIndex, @Nullable ItemLayerPixels pixels) {
 		int index = isLarge ? 1 : 0;
-		int quadIndex = index + (glowing ? 2 : 0);
-
-		if (quads[index] == null) {
-			if (textures[index] == null) {
-				quads[index] = ImmutableList.of();
-			} else {
-				quads[index] = ItemLayerModel.getQuadsForSprite(startTintIndex, spriteGetter.apply(textures[index]), transforms, glowing);
-			}
-		}
-		return quads[index];
+		boolean glowing = false;
+		if (modifier.getModifier() instanceof ITintingModifier)
+			glowing = ((ITintingModifier) modifier.getModifier()).doesGlow(tool);
+		return MantleItemLayerModel.getQuadsForSprite(color, -1, spriteGetter.apply(textures[index]), transforms, glowing ? 15 : 0, pixels);
 	}
 
 	@Override
@@ -93,5 +85,31 @@ public class TintedModifierModel implements IBakedModifierModel {
 	private static class GlowingModifierCacheKey {
 		private final Modifier modifier;
 		private final boolean glowing;
+	}
+
+	@RequiredArgsConstructor
+	private static class Unbaked implements IUnbakedModifierModel {
+		private final int color;
+
+		@Nullable
+		@Override
+		public IBakedModifierModel forTool(Function<String,RenderMaterial> smallGetter, Function<String,RenderMaterial> largeGetter) {
+			RenderMaterial smallTexture = smallGetter.apply("");
+			RenderMaterial largeTexture = largeGetter.apply("");
+			if (smallTexture != null || largeTexture != null) {
+				return new TintedModifierModel(smallTexture, largeTexture, color);
+			}
+			return null;
+		}
+
+		@Override
+		public IUnbakedModifierModel configure(JsonObject data) {
+			// parse the two keys, if we ended up with something new create an instance
+			int color = JsonHelper.parseColor(JSONUtils.getAsString(data, "color", ""));
+			if (color != this.color) {
+				return new Unbaked(color);
+			}
+			return this;
+		}
 	}
 }
