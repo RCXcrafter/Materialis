@@ -1,0 +1,17 @@
+{
+  "type": "tconstruct:entity_melting",
+  "conditions": [
+    {
+      "modid": "undergarden",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "entity": {
+    "tag": "undergarden:rotspawn"
+  },
+  "result": {
+    "fluid": "materialis:molten_utherium",
+    "amount": 2
+  },
+  "damage": 2
+}

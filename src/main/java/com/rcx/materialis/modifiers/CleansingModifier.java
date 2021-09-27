@@ -10,7 +10,7 @@ import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 
 public class CleansingModifier extends Modifier {
 
-	ITag.INamedTag<EntityType<?>> rotspawnTag = EntityTypeTags.createOptional(new ResourceLocation("undergarden", "rotspawn"));
+	public static ITag.INamedTag<EntityType<?>> rotspawnTag = EntityTypeTags.createOptional(new ResourceLocation("undergarden", "rotspawn"));
 
 	public CleansingModifier() {
 		super(0xEB515B);
