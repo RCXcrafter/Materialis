@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:spilling",
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "fluid": {
+    "name": "materialis:molten_refined_radiance",
+    "amount": 16
+  },
+  "effects": [
+    {
+      "type": "tconstruct:effect",
+      "name": "minecraft:glowing",
+      "time": 800,
+      "level": 1
+    }
+  ]
+}

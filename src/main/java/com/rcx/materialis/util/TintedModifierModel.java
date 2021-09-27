@@ -66,7 +66,7 @@ public class TintedModifierModel implements IBakedModifierModel {
 		boolean glowing = false;
 		if (modifier.getModifier() instanceof ITintingModifier)
 			glowing = ((ITintingModifier) modifier.getModifier()).doesGlow(tool);
-		return MantleItemLayerModel.getQuadsForSprite(color, -1, spriteGetter.apply(textures[index]), transforms, glowing ? 15 : 0, pixels);
+		return MantleItemLayerModel.getQuadsForSprite(color, startTintIndex, spriteGetter.apply(textures[index]), transforms, glowing ? 15 : 0, pixels);
 	}
 
 	@Override

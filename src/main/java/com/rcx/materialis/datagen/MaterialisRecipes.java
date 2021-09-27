@@ -15,10 +15,10 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.Effects;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
@@ -53,6 +53,8 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.spilling.SpillingRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.spilling.effects.EffectSpillingEffect;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
@@ -80,6 +82,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		String compositeFolder = "tools/parts/composite/";
 		String modifierFolder = "tools/modifiers/";
 		String salvageFolder = "tools/modifiers/salvage/";
+		String spillFolder = "tools/spilling/";
 		String toolFolder = "tools/building/";
 		String partFolder = "tools/parts/";
 		String castFolder = "smeltery/casts/";
@@ -111,6 +114,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), "refined_radiance", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.OBJECT, "shadow_steel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), "shadow_steel", false, meltingFolder, true);
+		SpillingRecipeBuilder.forFluid(MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), FluidValues.NUGGET)
+		.addEffect(new EffectSpillingEffect(Effects.GLOWING, 800, 1))
+		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisResources.REFINED_RADIANCE_FLUID.FLUID, spillFolder));
 
 		//eidolon stuff
 		metalTagCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.OBJECT, "arcane_gold", castingFolder, false);
@@ -136,6 +142,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//astral sorcery stuff
 		metalTagCasting(consumer, MaterialisResources.STARMETAL_FLUID.OBJECT, "starmetal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.STARMETAL_FLUID.FLUID.get(), "starmetal", false, meltingFolder, true); //the ore recipe is defined manually
+		SpillingRecipeBuilder.forFluid(MaterialisFluidTags.LIQUID_STARLIGHT, 50)
+		.addEffect(new EffectSpillingEffect(Effects.NIGHT_VISION, 100, 1))
+		.build(withCondition(consumer, new ModLoadedCondition("astralsorcery")), new ResourceLocation(Materialis.modID, spillFolder + "liquid_starlight"));
 
 		//industrial foregoing stuff
 		metalTagCasting(consumer, MaterialisResources.PINK_SLIME_FLUID.OBJECT, "pink_slime", castingFolder, false);
@@ -165,6 +174,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, meltingFolder, true, MaterialisByproduct.CLOGGRUM);
 		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 4, 1.0f).build(withCondition(consumer, new ModLoadedCondition("undergarden")), modResource(meltingFolder + "utheric_shard"));
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(CleansingModifier.rotspawnTag), new FluidStack(MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 8)).build(withCondition(consumer, new ModLoadedCondition("undergarden")));
+		SpillingRecipeBuilder.forFluid(MaterialisFluidTags.VIRULENT_MIX, 50)
+		.addEffect(new EffectSpillingEffect(Effects.POISON, 50, 1))
+		.build(withCondition(consumer, new ModLoadedCondition("undergarden")), new ResourceLocation(Materialis.modID, spillFolder + "virulent_mix"));
 
 		//mekanism stuff
 		metalTagCasting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT, "refined_obsidian", castingFolder, false);

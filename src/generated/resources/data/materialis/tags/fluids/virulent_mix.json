@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "undergarden:virulent_mix_source",
+      "required": false
+    }
+  ]
+}

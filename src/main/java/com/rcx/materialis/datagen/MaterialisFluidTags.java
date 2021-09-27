@@ -16,6 +16,8 @@ import slimeknights.tconstruct.common.TinkerTags;
 public class MaterialisFluidTags extends FluidTagsProvider {
 
 	public static final INamedTag<Fluid> LIQUID_PINK_SLIME = FluidTags.bind(Materialis.modID + ":pink_slime");
+	public static final INamedTag<Fluid> VIRULENT_MIX = FluidTags.bind(Materialis.modID + ":virulent_mix");
+	public static final INamedTag<Fluid> LIQUID_STARLIGHT = FluidTags.bind(Materialis.modID + ":liquid_starlight");
 
 	public MaterialisFluidTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);
@@ -30,6 +32,8 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 		}
 
 		tag(LIQUID_PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
+		tag(VIRULENT_MIX).addOptional(new ResourceLocation("undergarden", "virulent_mix_source"));
+		tag(LIQUID_STARLIGHT).addOptional(new ResourceLocation("astralsorcery", "liquid_starlight"));
 
 		tag(TinkerTags.Fluids.CHEAP_METAL_SPILLING)
 		.addTag(MaterialisResources.QUICKSILVER_FLUID.OBJECT.getForgeTag())
