@@ -204,7 +204,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(nickel, new HeadMaterialStats(520, 5f, 2, 1.5f), new HandleMaterialStats(1f, 0.9f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(platinum, new HeadMaterialStats(100, 11f, 3, 1.5f), new HandleMaterialStats(0.7f, 1.25f, 1.25f, 0.8f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(uranium, new HeadMaterialStats(689, 7f, 2, 2f), new HandleMaterialStats(0.9f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(osmium, new HeadMaterialStats(500, 6f, 2, 2f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(osmium, new HeadMaterialStats(360, 4f, 2, 2f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(tungsten, new HeadMaterialStats(740, 7f, 3, 2.5f), new HandleMaterialStats(1f, 1f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(invar, new HeadMaterialStats(710, 6f, 3, 2f), new HandleMaterialStats(1.2f, 1f, 0.9f, 1f), ExtraMaterialStats.DEFAULT);
 			//create materials
@@ -232,9 +232,9 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(refinedObsidian, new HeadMaterialStats(900, 9f, 3, 2f), new HandleMaterialStats(1.3f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(refinedGlowstone, new HeadMaterialStats(200, 7f, 2, 2.5f), new HandleMaterialStats(0.7f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//psi materials
-			addMaterialStats(psimetal, new HeadMaterialStats(440, 6f, 3, 2f), new HandleMaterialStats(1f, 1.05f, 1f, 1.05f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(ebonyPsimetal, new HeadMaterialStats(900, 5f, 4, 3f), new HandleMaterialStats(0.7f, 0.8f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(900, 8f, 4, 1.5f), new HandleMaterialStats(1.1f, 1.2f, 0.9f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(psimetal, new HeadMaterialStats(330, 6f, 3, 2f), new HandleMaterialStats(1f, 1.05f, 1f, 1.05f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(ebonyPsimetal, new HeadMaterialStats(600, 5f, 4, 3f), new HandleMaterialStats(0.7f, 0.8f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(600, 8f, 4, 1.5f), new HandleMaterialStats(1.1f, 1.2f, 0.9f, 0.9f), ExtraMaterialStats.DEFAULT);
 			//occultism materials
 			addMaterialStats(iesnium, new HeadMaterialStats(921, 7f, 3, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 		}
