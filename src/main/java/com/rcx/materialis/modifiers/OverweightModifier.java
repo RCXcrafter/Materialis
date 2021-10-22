@@ -28,7 +28,7 @@ public class OverweightModifier extends Modifier {
 		overslime.setFriend(volatileData);
 
 		float multiplier = 0.1f * level;
-		float speedEaten = baseStats.getFloat(ToolStats.ATTACK_SPEED) * multiplier + baseStats.getFloat(ToolStats.MINING_SPEED) * multiplier;
+		float speedEaten = baseStats.getFloat(ToolStats.ATTACK_SPEED) * 5.0f * multiplier + baseStats.getFloat(ToolStats.MINING_SPEED) * multiplier;
 
 		overslime.addCapacity(volatileData, (int) (speedEaten * 300.0f));
 	}

@@ -10,6 +10,11 @@ public class BrittleModifier extends Modifier {
 	}
 
 	@Override
+	public int getPriority() {
+		return 160; //before overslime
+	}
+
+	@Override
 	public int onDamageTool(IModifierToolStack toolStack, int level, int amount) {
 		return (int) (amount * Math.pow(2, level));
 	}

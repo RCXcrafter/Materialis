@@ -37,6 +37,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> auxiliaryPowerModifier = MODIFIERS.register("auxiliary_power", AuxiliaryPowerModifier::new);
 	public static final RegistryObject<Modifier> adrenalineModifier = MODIFIERS.register("adrenaline", AdrenalineModifier::new);
 	public static final RegistryObject<Modifier> psionizingRadiationModifier = MODIFIERS.register("psionizing_radiation", PsionizingRadiationModifier::new);
+	public static final RegistryObject<Modifier> lesserPsionizingRadiationModifier = MODIFIERS.register("lesser_psionizing_radiation", LesserPsionizingRadiationModifier::new);
 	public static final RegistryObject<Modifier> psichoKillerModifier = MODIFIERS.register("psicho_killer", PsichoKillerModifier::new);
 	public static final RegistryObject<Modifier> psichoDiggerModifier = MODIFIERS.register("psicho_digger", PsichoDiggerModifier::new);
 	public static final RegistryObject<Modifier> brittleModifier = MODIFIERS.register("brittle", BrittleModifier::new);
@@ -54,6 +55,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(0xA8B4BB, SlotType.ABILITY, ModifierSource.MULTI_LEVEL));
 	public static final RegistryObject<Modifier> spellSocketModifier = MODIFIERS.register("spell_socket", () -> new SpellSocketModifier(0x3D3D3D));
 	public static final RegistryObject<Modifier> spellCastingModifier = MODIFIERS.register("spell_casting", SpellCastingModifier::new);
+	public static final RegistryObject<Modifier> lesserSpellCastingModifier = MODIFIERS.register("lesser_spell_casting", LesserSpellCastingModifier::new);
 	public static final RegistryObject<Modifier> colorizedModifier = MODIFIERS.register("colorized", ColorizedModifier::new);
 
 	//internal modifiers

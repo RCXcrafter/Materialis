@@ -54,13 +54,13 @@ public class MaterialisLang extends LanguageProvider {
 
 		//general oredict materials
 		addMaterial(MaterialisMaterials.brass, "Brass", "Ya like brass?", "Adds +1 attack damage per level that degrades as durability goes down");
-		addMaterial(MaterialisMaterials.aluminum, "Aluminum", "", "-10% attack damage, +20% attack speed per level");
+		addMaterial(MaterialisMaterials.aluminum, "Aluminum", "", "-10% attack damage, +15% attack speed per level");
 		addMaterial(MaterialisMaterials.nickel, "Nickel", "", "Adds half a second of burning per level to targets that are on fire");
-		addMaterial(MaterialisMaterials.platinum, "Platinum", "", "Tool takes double durability damage for every level");
+		//addMaterial(MaterialisMaterials.platinum, "Platinum", "", "Tool takes double durability damage for every level");
 		addMaterial(MaterialisMaterials.uranium, "Uranium", "", "Tool takes up to twice as much durability damage when above half durability and increasingly less damage below half durability");
-		addMaterial(MaterialisMaterials.osmium, "Osmium", "", "Adds 0.5 attack damage per level multiplied by the percentage of health lost");
-		addMaterial(MaterialisMaterials.tungsten, "Tungsten", "", "As the tool loses durability the chance of taking durability damage gradually decreases to 1%");
-		addMaterial(MaterialisMaterials.invar, "Invar", "", "Puts out attacked mobs and deals 1 extra damage for every 3 seconds of fire multiplied by the level");
+		//addMaterial(MaterialisMaterials.osmium, "Osmium", "", "Adds 0.5 attack damage per level multiplied by the percentage of health lost");
+		//addMaterial(MaterialisMaterials.tungsten, "Tungsten", "", "As the tool loses durability the chance of taking durability damage gradually decreases to 1%");
+		//addMaterial(MaterialisMaterials.invar, "Invar", "", "Puts out attacked mobs and deals 1 extra damage for every 3 seconds of fire multiplied by the level");
 
 		//create stuff
 		addMaterial(MaterialisMaterials.roseQuartz, "Rose Quartz", "Disclaimer: Not actually made with roses.", "Grants 1 extra upgrade slot per part");
@@ -95,7 +95,7 @@ public class MaterialisLang extends LanguageProvider {
 
 		//mekanism stuff
 		addMaterial(MaterialisMaterials.refinedObsidian, "Refined Obsidian", "", "-20% reach");
-		addMaterial(MaterialisMaterials.refinedGlowstone, "Refined Glowstone", "", "Adds the mining speed, multiplied by the level, divided by 20, to the attack speed");
+		addMaterial(MaterialisMaterials.refinedGlowstone, "Refined Glowstone", "", "Adds the mining speed, multiplied by the level, divided by 80, to the attack speed");
 
 		//psi stuff
 		addMaterial(MaterialisMaterials.psimetal, "Psimetal", "", "Casts the selected spell on block break for tools and on attack for weapons, also adds one spell socket");
@@ -189,12 +189,18 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.psionizingRadiationModifier, "Psionizing Radiation",
 				"Feels kinda funny",
 				"Your tool is highly conductive to psions and is suitable for casting spells, +1 spell socket");
+		addModifier(MaterialisModifiers.lesserPsionizingRadiationModifier, "Psi Decay",
+				"You can feel it glowing",
+				"Your tool is highly conductive to psions and is suitable for casting spells");
 		addModifier(MaterialisModifiers.spellSocketModifier, "Socket",
 				"More durable than lime sockets!",
 				"Adds one psi spell socket to your tool");
 		addModifier(MaterialisModifiers.spellCastingModifier, "Casting",
 				"Doesn't involve molten metal",
 				"Adds the ability to cast spells on right-click but removes the ability to cast spells on block breaking and attacking, +1 spell socket");
+		addModifier(MaterialisModifiers.lesserSpellCastingModifier, "Casting",
+				"Doesn't involve molten metal",
+				"Adds the ability to cast spells on right-click but removes the ability to cast spells on block breaking and attacking");
 		addModifier(MaterialisModifiers.colorizedModifier, "Colorized",
 				"Colormatic!",
 				"Adds a decorative colorizer to your tool");

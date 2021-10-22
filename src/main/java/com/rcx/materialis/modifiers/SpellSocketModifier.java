@@ -25,7 +25,7 @@ import vazkii.psi.api.cad.ISocketable;
 
 public class SpellSocketModifier extends Modifier {
 
-	boolean enabled = ModList.get().isLoaded("psi");
+	public static boolean enabled = ModList.get().isLoaded("psi");
 	public static final ResourceLocation SOCKET_OWNER = new ResourceLocation(Materialis.modID, "socket_owner");
 	public static final ValidatedResult SLOT_NOT_EMPTY = ValidatedResult.failure(Util.makeDescriptionId("recipe", new ResourceLocation(Materialis.modID, "remove_modifier.spell_slot_not_empty")));
 	public static final ValidatedResult TOO_MANY_SLOTS = ValidatedResult.failure(Util.makeDescriptionId("recipe", new ResourceLocation(Materialis.modID, "add_modifier.too_many_spell_slots")));
