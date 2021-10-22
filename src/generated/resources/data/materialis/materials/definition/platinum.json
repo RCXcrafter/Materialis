@@ -1,23 +1,7 @@
 {
-  "condition": {
-    "values": [
-      {
-        "prop": "force_integration_materials",
-        "type": "tconstruct:config"
-      },
-      {
-        "value": {
-          "tag": "forge:ingots/platinum",
-          "type": "forge:tag_empty"
-        },
-        "type": "forge:not"
-      }
-    ],
-    "type": "forge:or"
-  },
-  "craftable": false,
-  "tier": 3,
-  "sortOrder": 1,
-  "textColor": "#A1FFFF",
-  "hidden": false
+  "redirect": [
+    {
+      "id": "tconstruct:platinum"
+    }
+  ]
 }

@@ -1,11 +1,20 @@
 {
   "condition": {
-    "modid": "create",
-    "type": "forge:mod_loaded"
+    "values": [
+      {
+        "prop": "force_integration_materials",
+        "type": "tconstruct:config"
+      },
+      {
+        "modid": "create",
+        "type": "forge:mod_loaded"
+      }
+    ],
+    "type": "forge:or"
   },
   "craftable": true,
   "tier": 3,
-  "sortOrder": 7,
+  "sortOrder": 10,
   "textColor": "#FF8C80",
   "hidden": false
 }

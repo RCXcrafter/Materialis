@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/quicksilver",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/quicksilver"
+  },
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 72
+  },
+  "temperature": 400,
+  "time": 9
+}

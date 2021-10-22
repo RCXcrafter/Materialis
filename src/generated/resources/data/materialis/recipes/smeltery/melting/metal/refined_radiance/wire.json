@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/refined_radiance",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/refined_radiance"
+  },
+  "result": {
+    "fluid": "materialis:molten_refined_radiance",
+    "amount": 72
+  },
+  "temperature": 1300,
+  "time": 15
+}

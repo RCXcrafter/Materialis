@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/froststeel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/froststeel"
+  },
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 72
+  },
+  "temperature": 860,
+  "time": 12
+}

@@ -7,11 +7,15 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
+import net.minecraftforge.common.crafting.conditions.OrCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
+import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.common.json.ConfigEnabledCondition;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.json.MaterialJson.Redirect;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
@@ -87,13 +91,17 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(brass, 3, ORDER_WEAPON, 0xFFD359);
 		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST, 0xE6B7BF);
 		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST, 0xF9EA98);
-		addCompatMetalMaterial(platinum, 3, ORDER_HARVEST, 0xA1FFFF);
+		//addCompatMetalMaterial(platinum, 3, ORDER_HARVEST, 0xA1FFFF);
+		this.addRedirect(platinum, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "platinum"), null));
 		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST, 0x42BE30);
-		addCompatMetalMaterial(osmium, 2, ORDER_WEAPON, 0xCDE8FD);
-		addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, 0xA7A88F);
-		addCompatMetalMaterial(invar, 3, ORDER_HARVEST, 0xBAE6D5);
+		//addCompatMetalMaterial(osmium, 2, ORDER_WEAPON, 0xCDE8FD);
+		this.addRedirect(osmium, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "osmium"), null));
+		//addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, 0xA7A88F);
+		this.addRedirect(tungsten, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "tungsten"), null));
+		//addCompatMetalMaterial(invar, 3, ORDER_HARVEST, 0xBAE6D5);
+		this.addRedirect(invar, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "invar"), null));
 		//create materials
-		addMaterial(roseQuartz, 3, ORDER_NETHER, true, 0xFF8C80, false, new ModLoadedCondition("create"));
+		addMaterial(roseQuartz, 3, ORDER_NETHER, true, 0xFF8C80, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("create")));
 		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL, 0xFFFFFF);
 		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL, 0x635D71);
 		//eidolon materials
@@ -106,13 +114,13 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//astral sorcery materials
 		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, 0x003CC9);
 		//industrial foregoing materials
-		addMaterial(plastic, 2, ORDER_HARVEST, true, 0xD9D9D9, false, new NotCondition(new TagEmptyCondition("forge:plastic")));
+		addMaterial(plastic, 2, ORDER_HARVEST, true, 0xD9D9D9, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:plastic"))));
 		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL, 0xFF9FEF);
 		//undergarden materials
 		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST, 0x9C8878);
 		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON, 0x95BDE3);
 		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON, 0xEB515B);
-		addMaterial(forgottenMetal, 3, ORDER_GENERAL, false, 0x6CD7AA, false, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal")));
+		addMaterial(forgottenMetal, 3, ORDER_GENERAL, false, 0x6CD7AA, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal"))));
 		//mekanism materials
 		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST, 0xB78FD2);
 		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, 0xFFE55C);
@@ -146,11 +154,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(brass, MaterialisModifiers.polishedModifier.get());
 			addDefaultTraits(aluminum, MaterialisModifiers.featherweightModifier.get());
 			addDefaultTraits(nickel, MaterialisModifiers.refuelingModifier.get());
-			addDefaultTraits(platinum, MaterialisModifiers.brittleModifier.get());
+			//addDefaultTraits(platinum, MaterialisModifiers.brittleModifier.get());
 			addDefaultTraits(uranium, MaterialisModifiers.halfLifeModifier.get());
-			addDefaultTraits(osmium, MaterialisModifiers.adrenalineModifier.get());
-			addDefaultTraits(tungsten, MaterialisModifiers.workHardenedModifier.get());
-			addDefaultTraits(invar, MaterialisModifiers.quenchingModifier.get());
+			//addDefaultTraits(osmium, MaterialisModifiers.adrenalineModifier.get());
+			//addDefaultTraits(tungsten, MaterialisModifiers.workHardenedModifier.get());
+			//addDefaultTraits(invar, MaterialisModifiers.quenchingModifier.get());
 			//create materials
 			addDefaultTraits(roseQuartz, MaterialisModifiers.enhancedQuartzModifier.get());
 			addDefaultTraits(refinedRadiance, MaterialisModifiers.residualLightModifier.get());
@@ -202,11 +210,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(brass, new HeadMaterialStats(450, 7.5f, 2, 2f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(aluminum, new HeadMaterialStats(220, 5f, 2, 1f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(nickel, new HeadMaterialStats(520, 5f, 2, 1.5f), new HandleMaterialStats(1f, 0.9f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(platinum, new HeadMaterialStats(100, 11f, 3, 1.5f), new HandleMaterialStats(0.7f, 1.25f, 1.25f, 0.8f), ExtraMaterialStats.DEFAULT);
+			//(platinum, new HeadMaterialStats(100, 11f, 3, 1.5f), new HandleMaterialStats(0.7f, 1.25f, 1.25f, 0.8f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(uranium, new HeadMaterialStats(689, 7f, 2, 2f), new HandleMaterialStats(0.9f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(osmium, new HeadMaterialStats(360, 4f, 2, 2f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(tungsten, new HeadMaterialStats(740, 7f, 3, 2.5f), new HandleMaterialStats(1f, 1f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(invar, new HeadMaterialStats(710, 6f, 3, 2f), new HandleMaterialStats(1.2f, 1f, 0.9f, 1f), ExtraMaterialStats.DEFAULT);
+			//addMaterialStats(osmium, new HeadMaterialStats(360, 4f, 2, 2f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			//addMaterialStats(tungsten, new HeadMaterialStats(740, 7f, 3, 2.5f), new HandleMaterialStats(1f, 1f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
+			//addMaterialStats(invar, new HeadMaterialStats(710, 6f, 3, 2f), new HandleMaterialStats(1.2f, 1f, 0.9f, 1f), ExtraMaterialStats.DEFAULT);
 			//create materials
 			addMaterialStats(roseQuartz, new HeadMaterialStats(175, 4f, 2, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(refinedRadiance, new HeadMaterialStats(999, 9f, 4, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT);

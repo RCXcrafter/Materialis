@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct:casting_table",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/arcane_gold",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/wire"
+  },
+  "fluid": {
+    "tag": "forge:molten_arcane_gold",
+    "amount": 72
+  },
+  "result": {
+    "tag": "forge:wires/arcane_gold"
+  },
+  "cooling_time": 40
+}

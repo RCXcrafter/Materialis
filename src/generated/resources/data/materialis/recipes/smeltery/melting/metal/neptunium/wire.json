@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/neptunium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/neptunium"
+  },
+  "result": {
+    "fluid": "materialis:molten_neptunium",
+    "amount": 72
+  },
+  "temperature": 1400,
+  "time": 16
+}

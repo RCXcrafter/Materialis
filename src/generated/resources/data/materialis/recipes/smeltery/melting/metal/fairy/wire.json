@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/fairy",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/fairy"
+  },
+  "result": {
+    "fluid": "materialis:molten_fairy",
+    "amount": 72
+  },
+  "temperature": 750,
+  "time": 12
+}

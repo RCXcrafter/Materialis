@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/psimetal",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/psimetal"
+  },
+  "result": {
+    "fluid": "materialis:molten_psimetal",
+    "amount": 72
+  },
+  "temperature": 750,
+  "time": 12
+}
