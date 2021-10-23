@@ -28,7 +28,7 @@ public class OverweightModifier extends Modifier {
 		overslime.setFriend(volatileData);
 
 		float multiplier = 0.1f * level;
-		float speedEaten = baseStats.getFloat(ToolStats.ATTACK_SPEED) * 5.0f * multiplier + baseStats.getFloat(ToolStats.MINING_SPEED) * multiplier;
+		float speedEaten = baseStats.getFloat(ToolStats.ATTACK_DAMAGE) * 2.0f * multiplier + baseStats.getFloat(ToolStats.MINING_SPEED) * multiplier;
 
 		overslime.addCapacity(volatileData, (int) (speedEaten * 300.0f));
 	}
@@ -36,7 +36,7 @@ public class OverweightModifier extends Modifier {
 	@Override
 	public void addToolStats(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, IModDataReadOnly volatileData, int level, ModifierStatsBuilder builder) {
 		float multiplier = 1.0f - 0.1f * level;
-		ToolStats.ATTACK_SPEED.multiply(builder, multiplier);
+		ToolStats.ATTACK_DAMAGE.multiply(builder, multiplier);
 		ToolStats.MINING_SPEED.multiply(builder, multiplier);
 	}
 }

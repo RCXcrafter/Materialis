@@ -161,7 +161,7 @@ public class MaterialisLang extends LanguageProvider {
 				"Decreases knockback on attacked mobs");
 		addModifier(MaterialisModifiers.overweightModifier, "Overweight",
 				"Supersized!",
-				"Eats some mining speed and attack speed to gain more overslime capacity");
+				"Eats some mining speed and attack damage to gain more overslime capacity");
 		addModifier(MaterialisModifiers.economicalModifier, "Economical",
 				"Waste not, want not",
 				"Repairing your tool is cheaper when your tool has low durability");
