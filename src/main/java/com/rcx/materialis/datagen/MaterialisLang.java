@@ -103,7 +103,7 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.ivoryPsimetal, "Ivory Psimetal", "", "Adds up to 1 extra mining speed that scales with the amount of psi you have per level");
 		add("recipe.materialis.remove_modifier.spell_slot_not_empty", "This change removes a socket that currently contains a spell");
 		add("recipe.materialis.add_modifier.too_many_spell_slots", "This change adds too many sockets to the tool");
-		add("recipe.materialis.modifier.casting_requirements", "Casting requires Psionizing Radiation to apply");
+		add("recipe.materialis.modifier.casting_requirements", "Casting requires Psionizing Radiation or Psi Decay to apply");
 
 		//quark stuff
 		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");

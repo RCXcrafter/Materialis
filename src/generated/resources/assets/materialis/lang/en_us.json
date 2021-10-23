@@ -258,7 +258,7 @@
   "modifier.materialis.wrenching.flavor": "Wretched!",
   "pattern.materialis.wrench_head": "Wrench Head",
   "recipe.materialis.add_modifier.too_many_spell_slots": "This change adds too many sockets to the tool",
-  "recipe.materialis.modifier.casting_requirements": "Casting requires Psionizing Radiation to apply",
+  "recipe.materialis.modifier.casting_requirements": "Casting requires Psionizing Radiation or Psi Decay to apply",
   "recipe.materialis.modifier.create_wrenching_requirements": "Mechanical Wrenching requires Wrenching to apply",
   "recipe.materialis.modifier.runed_requirements": "Runed requires Shiny to apply",
   "recipe.materialis.modifier.thermal_wrenching_requirements": "Thermal Wrenching requires Wrenching to apply",

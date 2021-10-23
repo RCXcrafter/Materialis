@@ -203,10 +203,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.brass, materialFolder, "brass", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.aluminum, materialFolder, "aluminum", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.nickel, materialFolder, "nickel", true);
-		metalMaterialRecipe(consumer, MaterialisMaterials.platinum, materialFolder, "platinum", true);
+		//metalMaterialRecipe(consumer, MaterialisMaterials.platinum, materialFolder, "platinum", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.uranium, materialFolder, "uranium", true);
-		metalMaterialRecipe(consumer, MaterialisMaterials.tungsten, materialFolder, "tungsten", true);
-		metalMaterialRecipe(consumer, MaterialisMaterials.invar, materialFolder, "invar", true);
+		//metalMaterialRecipe(consumer, MaterialisMaterials.tungsten, materialFolder, "tungsten", true);
+		//metalMaterialRecipe(consumer, MaterialisMaterials.invar, materialFolder, "invar", true);
 		materialRecipe(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1, materialFolder + "rose_quartz");
 		metalMaterialRecipe(consumer, MaterialisMaterials.refinedRadiance, materialFolder, "refined_radiance", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.shadowSteel, materialFolder, "shadow_steel", true);
@@ -221,7 +221,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.froststeel, materialFolder, "froststeel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.utherium, materialFolder, "utherium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.forgottenMetal, materialFolder, "forgotten_metal", true);
-		metalMaterialRecipe(consumer, MaterialisMaterials.osmium, materialFolder, "osmium", true);
+		//metalMaterialRecipe(consumer, MaterialisMaterials.osmium, materialFolder, "osmium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.refinedObsidian, materialFolder, "refined_obsidian", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.refinedGlowstone, materialFolder, "refined_glowstone", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.psimetal, materialFolder, "psimetal", true);
@@ -234,10 +234,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		materialMeltingCasting(consumer, MaterialisMaterials.brass, TinkerFluids.moltenBrass, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.aluminum, TinkerFluids.moltenAluminum, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.nickel, TinkerFluids.moltenNickel, materialFolder);
-		materialMeltingCasting(consumer, MaterialisMaterials.platinum, TinkerFluids.moltenPlatinum, materialFolder);
+		//materialMeltingCasting(consumer, MaterialisMaterials.platinum, TinkerFluids.moltenPlatinum, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.uranium, TinkerFluids.moltenUranium, materialFolder);
-		materialMeltingCasting(consumer, MaterialisMaterials.tungsten, TinkerFluids.moltenTungsten, materialFolder);
-		materialMeltingCasting(consumer, MaterialisMaterials.invar, TinkerFluids.moltenInvar, materialFolder);
+		//materialMeltingCasting(consumer, MaterialisMaterials.tungsten, TinkerFluids.moltenTungsten, materialFolder);
+		//materialMeltingCasting(consumer, MaterialisMaterials.invar, TinkerFluids.moltenInvar, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.refinedRadiance, MaterialisResources.REFINED_RADIANCE_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.shadowSteel, MaterialisResources.SHADOW_STEEL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.pewter, TinkerFluids.moltenPewter, materialFolder);
@@ -252,7 +252,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		materialComposite(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), MaterialisMaterials.cloggrum, MaterialisMaterials.forgottenMetal, MaterialisResources.FORGOTTEN_FLUID.OBJECT, FluidValues.INGOT, false, compositeFolder);
 		MaterialMeltingRecipeBuilder.material(MaterialisMaterials.forgottenMetal, new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), FluidValues.INGOT))
 		.build(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), modResource(materialFolder + "melting/forgotten_metal"));
-		materialMeltingCasting(consumer, MaterialisMaterials.osmium, TinkerFluids.moltenOsmium, materialFolder);
+		//materialMeltingCasting(consumer, MaterialisMaterials.osmium, TinkerFluids.moltenOsmium, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.refinedObsidian, MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.refinedGlowstone, MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.psimetal, MaterialisResources.PSIMETAL_FLUID.OBJECT, materialFolder);
@@ -370,7 +370,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psigem")), 0.2f))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_battery_ultradense")), 0.3f))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_assembly_psimetal")), 0.6f))
-		.setRequirements(ModifierMatch.entry(MaterialisModifiers.psionizingRadiationModifier.get()))
+		.setRequirements(ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.psionizingRadiationModifier.get()), ModifierMatch.entry(MaterialisModifiers.lesserPsionizingRadiationModifier.get())))
 		.setRequirementsError("recipe.materialis.modifier.casting_requirements")
 		.setTools(TinkerTags.Items.HELD)
 		.setSlots(SlotType.ABILITY, 1)

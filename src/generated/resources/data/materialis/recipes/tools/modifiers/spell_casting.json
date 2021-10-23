@@ -30,8 +30,17 @@
     "abilities": 1
   },
   "requirements": {
-    "name": "materialis:psionizing_radiation",
-    "level": 1,
+    "options": [
+      {
+        "name": "materialis:psionizing_radiation",
+        "level": 1
+      },
+      {
+        "name": "materialis:lesser_psionizing_radiation",
+        "level": 1
+      }
+    ],
+    "matches_needed": 1,
     "error": "recipe.materialis.modifier.casting_requirements"
   },
   "result": {

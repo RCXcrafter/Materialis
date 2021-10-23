@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material_melting",
-  "input": "materialis:osmium",
-  "temperature": 975,
-  "result": {
-    "fluid": "tconstruct:molten_osmium",
-    "amount": 144
-  }
-}
