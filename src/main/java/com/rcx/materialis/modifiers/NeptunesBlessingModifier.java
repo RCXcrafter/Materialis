@@ -1,5 +1,7 @@
 package com.rcx.materialis.modifiers;
 
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
@@ -16,13 +18,25 @@ public class NeptunesBlessingModifier extends SingleUseModifier {
 	@Override
 	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
 		if (context.getTarget().isEyeInFluid(FluidTags.WATER))
-			return damage * 1.5f;
+			return damage * 1.25f;
 		return damage;
 	}
 
 	@Override
 	public void onBreakSpeed(IModifierToolStack tool, int level, BreakSpeed event, Direction sideHit, boolean isEffective, float miningSpeedModifier) {
-		if (isEffective && event.getEntityLiving().isEyeInFluid(FluidTags.WATER))
-			event.setNewSpeed(event.getNewSpeed() * 5.0f);
+		if (isEffective)
+			event.setNewSpeed(event.getNewSpeed() * negateWaterMiningModifier(event.getEntityLiving()));
+	}
+
+	public static float negateWaterMiningModifier(LivingEntity entity) {
+		float modifier = 1.0f;
+		if (entity.isEyeInFluid(FluidTags.WATER)) {
+			if (!EnchantmentHelper.hasAquaAffinity(entity))
+				modifier *= 5.0F;
+
+			if (!entity.isOnGround())
+				modifier *= 5.0F;
+		}
+		return modifier;
 	}
 }

@@ -73,7 +73,7 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.arcaneGold, "Arcane Gold", "", "+1 magic damage per level");
 
 		//aquaculture stuff
-		addMaterial(MaterialisMaterials.neptunium, "Neptunium", "", "1.5x damage to submerged mobs, 5x mining speed when submerged");
+		addMaterial(MaterialisMaterials.neptunium, "Neptunium", "", "1.25x damage to submerged mobs, no mining speed penalty when underwater");
 
 		//mystical world stuff
 		addMaterial(MaterialisMaterials.quicksilver, "Quicksilver", "", "Tool no longer takes durability damage from usages but has a 1% chance of losing durability every second");
@@ -135,7 +135,7 @@ public class MaterialisLang extends LanguageProvider {
 				"Killing undead mobs will destroy their bodies and crystallize their souls, seems to have an affection towards scythes");
 		addModifier(MaterialisModifiers.neptunesBlessingModifier, "Neptune's Blessing",
 				"Stay hydrated",
-				"Increases mining speed underwater and damage to wet mobs");
+				"Increases damage to submerged mobs and allows you to mine normally while swimming");
 		addModifier(MaterialisModifiers.halfLifeModifier, "Half-Life",
 				"Smell the ashes",
 				"Your tool loses durability faster when it has high durability and loses durability slower when it has low durability");
