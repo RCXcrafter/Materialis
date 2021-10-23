@@ -45,6 +45,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> quenchingModifier = MODIFIERS.register("quenching", QuenchingModifier::new);
 	public static final RegistryObject<Modifier> otherworldly1Modifier = MODIFIERS.register("otherworldly_1", () -> new OtherworldlyModifier(1));
 	public static final RegistryObject<Modifier> otherworldly2Modifier = MODIFIERS.register("otherworldly_2", () -> new OtherworldlyModifier(2));
+	public static final RegistryObject<Modifier> overeatingModifier = MODIFIERS.register("overeating", OvereatingModifier::new);
 
 	//upgrades & abilities
 	public static final RegistryObject<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);

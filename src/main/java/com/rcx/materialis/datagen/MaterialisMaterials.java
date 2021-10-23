@@ -174,7 +174,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(starmetal, MaterialisModifiers.nocturnalModifier.get());
 			//industrial foregoing materials
 			addDefaultTraits(plastic, MaterialisModifiers.feebleModifier.get());
-			addDefaultTraits(pinkSlime, MaterialisModifiers.overweightModifier.get(), TinkerModifiers.overslime.get());
+			addDefaultTraits(pinkSlime, MaterialisModifiers.overeatingModifier.get(), TinkerModifiers.overslime.get());
 			//undergarden materials
 			addDefaultTraits(cloggrum, MaterialisModifiers.economicalModifier.get());
 			addDefaultTraits(froststeel, MaterialisModifiers.freezingModifier.get());
@@ -185,8 +185,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(refinedGlowstone, MaterialisModifiers.auxiliaryPowerModifier.get());
 			//psi materials
 			addDefaultTraits(psimetal, MaterialisModifiers.psionizingRadiationModifier.get());
-			addDefaultTraits(ebonyPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoKillerModifier.get());
-			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.psionizingRadiationModifier.get(), MaterialisModifiers.psichoDiggerModifier.get());
+			addDefaultTraits(ebonyPsimetal, MaterialisModifiers.lesserPsionizingRadiationModifier.get(), MaterialisModifiers.psichoKillerModifier.get());
+			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.lesserPsionizingRadiationModifier.get(), MaterialisModifiers.psichoDiggerModifier.get());
 			//occultism materials
 			addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier.get());
 		}

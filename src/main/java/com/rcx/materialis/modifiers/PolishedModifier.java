@@ -13,7 +13,7 @@ public class PolishedModifier extends Modifier {
 	@Override
 	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
 		float total = tool.getDamage() + tool.getCurrentDurability();
-		float extra = level * tool.getCurrentDurability() / total;
+		float extra = 1.5f * level * tool.getCurrentDurability() / total;
 		return damage + extra;
 	}
 }

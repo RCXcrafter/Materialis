@@ -53,7 +53,7 @@ public class MaterialisLang extends LanguageProvider {
 		add("recipe.materialis.modifier.create_wrenching_requirements", "Mechanical Wrenching requires Wrenching to apply");
 
 		//general oredict materials
-		addMaterial(MaterialisMaterials.brass, "Brass", "Ya like brass?", "Adds +1 attack damage per level that degrades as durability goes down");
+		addMaterial(MaterialisMaterials.brass, "Brass", "Ya like brass?", "Adds +1.5 attack damage per level that degrades as durability goes down");
 		addMaterial(MaterialisMaterials.aluminum, "Aluminum", "", "-10% attack damage, +15% attack speed per level");
 		addMaterial(MaterialisMaterials.nickel, "Nickel", "", "Adds half a second of burning per level to targets that are on fire");
 		//addMaterial(MaterialisMaterials.platinum, "Platinum", "", "Tool takes double durability damage for every level");
@@ -83,7 +83,7 @@ public class MaterialisLang extends LanguageProvider {
 
 		//industrial foregoing stuff
 		addMaterial(MaterialisMaterials.plastic, "Plastic", "", "-20% knockback per level");
-		addMaterial(MaterialisMaterials.pinkSlime, "Pink Slime", "", "Takes 10% of mining speed and attack speed per level, 300 multiplied by the stats that were taken is added as overslime capacity");
+		addMaterial(MaterialisMaterials.pinkSlime, "Pink Slime", "Do you have any idea where that's been?", "Overslime can be eaten to restore 1 hunger and 0.1 saturation per level");
 		addItem(MaterialisResources.PINK_SLIME_CRYSTAL, "Pink Slime Crystal");
 
 		//undergarden stuff
@@ -237,6 +237,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.createWrenchingModifier, "Mechanical Wrenching",
 				"Creative!",
 				"Tool can dismantle kinetic components by sneak-right clicking");
+		addModifier(MaterialisModifiers.overeatingModifier, "Overeating",
+				"5 second rule!",
+				"That overslime buffer on your tool suddenly looks very appealing");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
