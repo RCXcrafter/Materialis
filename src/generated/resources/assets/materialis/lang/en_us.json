@@ -125,7 +125,7 @@
   "material.materialis.starmetal.encyclopedia": "Tool gains 2 mining speed per level at midnight",
   "material.materialis.starmetal.flavor": "Not to be confused with star cutting metal.",
   "material.materialis.uranium": "Uranium",
-  "material.materialis.uranium.encyclopedia": "Tool takes up to twice as much durability damage when above half durability and increasingly less damage below half durability",
+  "material.materialis.uranium.encyclopedia": "Tool takes up to twice as much durability damage when above a quarter durability and increasingly less damage below a quarter durability",
   "material.materialis.utherium": "Utherium",
   "material.materialis.utherium.encyclopedia": "Deals 25% extra damage to rotspawn per level",
   "modifier.materialis.adrenaline": "Adrenaline",

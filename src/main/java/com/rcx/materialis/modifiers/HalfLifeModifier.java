@@ -14,13 +14,12 @@ public class HalfLifeModifier extends Modifier {
 
 	@Override
 	public int onDamageTool(IModifierToolStack toolStack, int level, int amount) {
-		float half = (toolStack.getDamage() + toolStack.getCurrentDurability()) / 2;
-		float multiplier = toolStack.getCurrentDurability() / half;
+		float multiplier = (float) Math.pow(4.0f * toolStack.getDamage() / toolStack.getCurrentDurability(), 0.5f);
 		float damage = (float) (amount * Math.pow(multiplier, level));
 		int roundDamage = (int) damage;
 		float extraChance = damage - roundDamage;
 
-		extraChance = Math.max(extraChance, 0.005f); //at least a 0.5% chance of taking damage
+		extraChance = Math.max(extraChance, 0.01f); //at least a 1% chance of taking damage
 		if (RANDOM.nextFloat() < extraChance)
 			roundDamage++;
 

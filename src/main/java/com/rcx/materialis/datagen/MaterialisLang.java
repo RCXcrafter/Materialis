@@ -57,7 +57,7 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.aluminum, "Aluminum", "", "-10% attack damage, +15% attack speed per level");
 		addMaterial(MaterialisMaterials.nickel, "Nickel", "", "Adds half a second of burning per level to targets that are on fire");
 		//addMaterial(MaterialisMaterials.platinum, "Platinum", "", "Tool takes double durability damage for every level");
-		addMaterial(MaterialisMaterials.uranium, "Uranium", "", "Tool takes up to twice as much durability damage when above half durability and increasingly less damage below half durability");
+		addMaterial(MaterialisMaterials.uranium, "Uranium", "", "Tool takes up to twice as much durability damage when above a quarter durability and increasingly less damage below a quarter durability");
 		//addMaterial(MaterialisMaterials.osmium, "Osmium", "", "Adds 0.5 attack damage per level multiplied by the percentage of health lost");
 		//addMaterial(MaterialisMaterials.tungsten, "Tungsten", "", "As the tool loses durability the chance of taking durability damage gradually decreases to 1%");
 		//addMaterial(MaterialisMaterials.invar, "Invar", "", "Puts out attacked mobs and deals 1 extra damage for every 3 seconds of fire multiplied by the level");
