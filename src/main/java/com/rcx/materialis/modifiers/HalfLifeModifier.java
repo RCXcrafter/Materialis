@@ -14,7 +14,7 @@ public class HalfLifeModifier extends Modifier {
 
 	@Override
 	public int onDamageTool(IModifierToolStack toolStack, int level, int amount) {
-		float multiplier = (float) Math.pow(4.0f * toolStack.getDamage() / toolStack.getCurrentDurability(), 0.5f);
+		float multiplier = (float) Math.pow(4.0f * toolStack.getCurrentDurability() / (toolStack.getCurrentDurability() + toolStack.getDamage()), 0.5f);
 		float damage = (float) (amount * Math.pow(multiplier, level));
 		int roundDamage = (int) damage;
 		float extraChance = damage - roundDamage;

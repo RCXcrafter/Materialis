@@ -12,12 +12,11 @@ public class WorkHardenedModifier extends Modifier {
 	@Override
 	public int onDamageTool(IModifierToolStack toolStack, int level, int amount) {
 		float total = (toolStack.getDamage() + toolStack.getCurrentDurability());
-		float multiplier = toolStack.getCurrentDurability() / total;
-		float damage = (float) (amount * Math.pow(multiplier, (level + 1) / 3.0));
+		float multiplier = (toolStack.getCurrentDurability() * level) / (total * 10.0f) - (level - 10.0f) / 10.0f;
+		float damage = amount * multiplier;
 		int roundDamage = (int) damage;
 		float extraChance = damage - roundDamage;
 
-		extraChance = Math.max(extraChance, 0.01f); //at least a 1% chance of taking damage
 		if (RANDOM.nextFloat() < extraChance)
 			roundDamage++;
 
