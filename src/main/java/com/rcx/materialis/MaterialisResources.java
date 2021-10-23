@@ -44,6 +44,7 @@ import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
+import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
@@ -167,6 +168,7 @@ public class MaterialisResources {
 			.build();
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(BATTLEWRENCH_BASE_STATS)
 			.addPart(TinkerToolParts.hammerHead).addPart(TinkerToolParts.toughHandle).addPart(WRENCH_HEAD).addPart(WRENCH_HEAD)
+			.addModifier(TinkerModifiers.twoHanded)
 			.addModifier(MaterialisModifiers.wrenchingModifierHidden).build();
 	public static final ItemObject<WrenchTool> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new WrenchTool(new Item.Properties().addToolType(WrenchTool.TOOL_TYPE, 0), BATTLEWRENCH_DEFINITION));
 
