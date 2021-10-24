@@ -37,7 +37,7 @@ public class PsionizingRadiationModifier extends SpellSocketModifier {
 	public Boolean removeBlock(IModifierToolStack tool, int level, ToolHarvestContext context) {
 		if (enabled && !tool.isBroken() && context.getPlayer() != null && !tool.getVolatileData().getBoolean(SUPPRESS_TOOLCASTING)) {
 			//level 2 unlocks aoe harvest casting
-			if (context.isAOE() && level < 2) {
+			if (context.isAOE() && level < 2 && tool.getModifierLevel(MaterialisModifiers.lesserPsionizingRadiationModifier.get()) == 0) {
 				return null;
 			}
 			ItemStack toolStack = context.getPlayer().getMainHandItem();
@@ -66,7 +66,7 @@ public class PsionizingRadiationModifier extends SpellSocketModifier {
 	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
 		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null && context.getLivingTarget() != null && !tool.getVolatileData().getBoolean(SUPPRESS_TOOLCASTING)) {
 			//level 2 unlocks aoe attack casting
-			if (context.isExtraAttack() && level < 2) {
+			if (context.isExtraAttack() && level < 2 && tool.getModifierLevel(MaterialisModifiers.lesserPsionizingRadiationModifier.get()) == 0) {
 				return 0;
 			}
 			ItemStack toolStack = context.getPlayerAttacker().getMainHandItem();
