@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "aquaculture",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "aquaculture:neptunium_sword"
+  },
+  "result": {
+    "fluid": "materialis:molten_neptunium",
+    "amount": 288
+  },
+  "temperature": 1400,
+  "time": 110
+}

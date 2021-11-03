@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "undergarden",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "undergarden:cloggrum_battleaxe"
+  },
+  "result": {
+    "fluid": "materialis:molten_cloggrum",
+    "amount": 1872
+  },
+  "temperature": 650,
+  "time": 199
+}

@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "undergarden",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "undergarden:froststeel_pickaxe"
+  },
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 432
+  },
+  "temperature": 860,
+  "time": 107
+}

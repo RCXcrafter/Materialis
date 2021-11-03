@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mysticalworld",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mysticalworld:lead_chestplate"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_lead",
+    "amount": 1152
+  },
+  "temperature": 330,
+  "time": 123
+}

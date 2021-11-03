@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mysticalworld",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mysticalworld:silver_chestplate"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_silver",
+    "amount": 1152
+  },
+  "temperature": 790,
+  "time": 169
+}

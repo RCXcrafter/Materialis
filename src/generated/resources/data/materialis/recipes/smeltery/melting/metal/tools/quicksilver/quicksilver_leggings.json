@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mysticalworld",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mysticalworld:quicksilver_leggings"
+  },
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 1008
+  },
+  "temperature": 400,
+  "time": 122
+}

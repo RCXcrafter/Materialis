@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mysticalworld",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mysticalworld:silver_leggings"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_silver",
+    "amount": 1008
+  },
+  "temperature": 790,
+  "time": 158
+}

@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mysticalworld",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mysticalworld:quicksilver_shovel"
+  },
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 144
+  },
+  "temperature": 400,
+  "time": 46
+}

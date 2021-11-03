@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mysticalworld",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mysticalworld:tin_helmet"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_tin",
+    "amount": 720
+  },
+  "temperature": 225,
+  "time": 87
+}

@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "undergarden",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "undergarden:utheric_shovel"
+  },
+  "result": {
+    "fluid": "materialis:molten_utherium",
+    "amount": 144
+  },
+  "temperature": 1070,
+  "time": 68
+}

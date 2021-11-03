@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "undergarden",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "undergarden:cloggrum_chestplate"
+  },
+  "result": {
+    "fluid": "materialis:molten_cloggrum",
+    "amount": 1152
+  },
+  "temperature": 650,
+  "time": 156
+}

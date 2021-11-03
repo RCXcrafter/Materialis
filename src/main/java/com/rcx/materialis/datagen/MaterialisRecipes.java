@@ -15,6 +15,7 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -134,10 +135,58 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//aquaculture stuff
 		metalTagCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.OBJECT, "neptunium", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), "neptunium", false, meltingFolder, true);
+		toolMelting(withCondition(consumer, new ModLoadedCondition("aquaculture")), "neptunium", MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(),
+				new ToolValue("aquaculture:neptunium_axe", 3),
+				new ToolValue("aquaculture:neptunium_hoe", 2),
+				new ToolValue("aquaculture:neptunium_pickaxe", 3),
+				new ToolValue("aquaculture:neptunium_shovel", 1),
+				new ToolValue("aquaculture:neptunium_sword", 2),
+				new ToolValue("aquaculture:neptunium_bow", 3),
+				new ToolValue("aquaculture:neptunium_fishing_rod", 2),
+				new ToolValue("aquaculture:neptunium_fillet_knife", 2),
+				new ToolValue("aquaculture:neptunium_helmet", 5),
+				new ToolValue("aquaculture:neptunium_chestplate", 8),
+				new ToolValue("aquaculture:neptunium_leggings", 7),
+				new ToolValue("aquaculture:neptunium_boots", 4));
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("aquaculture")), "aquaculture",
+				new NameFluid[] {
+						new NameFluid("iron", TinkerFluids.moltenIron.get()),
+						new NameFluid("gold", TinkerFluids.moltenGold.get()),
+						new NameFluid("diamond", TinkerFluids.moltenDiamond.get())
+		},
+				new ToolValue("_fishing_rod", 2),
+				new ToolValue("_fillet_knife", 2));
 
 		//mystical world stuff
 		metalTagCasting(consumer, MaterialisResources.QUICKSILVER_FLUID.OBJECT, "quicksilver", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), "quicksilver", true, meltingFolder, true, MaterialisByproduct.ZINC, MaterialisByproduct.TIN);
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mysticalworld")), "mysticalworld",
+				new NameFluid[] {
+						new NameFluid("copper", TinkerFluids.moltenCopper.get()),
+						new NameFluid("lead", TinkerFluids.moltenLead.get()),
+						new NameFluid("quicksilver", MaterialisResources.QUICKSILVER_FLUID.FLUID.get()),
+						new NameFluid("silver", TinkerFluids.moltenSilver.get()),
+						new NameFluid("tin", TinkerFluids.moltenTin.get())
+		},
+				new ToolValue("_axe", 3),
+				new ToolValue("_hoe", 2),
+				new ToolValue("_pickaxe", 3),
+				new ToolValue("_shovel", 1),
+				new ToolValue("_sword", 2),
+				new ToolValue("_knife", 1),
+				new ToolValue("_spear", 2),
+				new ToolValue("_helmet", 5),
+				new ToolValue("_chestplate", 8),
+				new ToolValue("_leggings", 7),
+				new ToolValue("_boots", 4));
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mysticalworld")), "mysticalworld",
+				new NameFluid[] {
+						new NameFluid("iron", TinkerFluids.moltenIron.get()),
+						new NameFluid("gold", TinkerFluids.moltenGold.get()),
+						new NameFluid("diamond", TinkerFluids.moltenDiamond.get())
+		},
+				new ToolValue("_knife", 1),
+				new ToolValue("_spear", 2));
 
 		//astral sorcery stuff
 		metalTagCasting(consumer, MaterialisResources.STARMETAL_FLUID.OBJECT, "starmetal", castingFolder, false);
@@ -177,6 +226,31 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		SpillingRecipeBuilder.forFluid(MaterialisFluidTags.VIRULENT_MIX, 50)
 		.addEffect(new EffectSpillingEffect(Effects.POISON, 50, 1))
 		.build(withCondition(consumer, new ModLoadedCondition("undergarden")), new ResourceLocation(Materialis.modID, spillFolder + "virulent_mix"));
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), "undergarden",
+				new NameFluid[] {
+						new NameFluid("cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get()),
+						new NameFluid("froststeel", MaterialisResources.FROSTSTEEL_FLUID.FLUID.get()),
+						new NameFluid("utheric", MaterialisResources.UTHERIUM_FLUID.FLUID.get())
+		},
+				new ToolValue("_axe", 3),
+				new ToolValue("_hoe", 2),
+				new ToolValue("_pickaxe", 3),
+				new ToolValue("_shovel", 1),
+				new ToolValue("_sword", 2),
+				new ToolValue("_helmet", 5),
+				new ToolValue("_chestplate", 8),
+				new ToolValue("_leggings", 7),
+				new ToolValue("_boots", 4));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), "forgotten_metal", MaterialisResources.FORGOTTEN_FLUID.FLUID.get(),
+				new ToolValue("undergarden:forgotten_axe", 1),
+				new ToolValue("undergarden:forgotten_hoe", 1),
+				new ToolValue("undergarden:forgotten_pickaxe", 1),
+				new ToolValue("undergarden:forgotten_shovel", 1),
+				new ToolValue("undergarden:forgotten_sword", 1),
+				new ToolValue("undergarden:forgotten_battleaxe", 1));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), "cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get(),
+				new ToolValue("undergarden:cloggrum_shield", 6),
+				new ToolValue("undergarden:cloggrum_battleaxe", 13));
 
 		//mekanism stuff
 		metalTagCasting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT, "refined_obsidian", castingFolder, false);
@@ -477,5 +551,43 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 	protected static ICondition tagConditionDomain(String domain, String name) {
 		return new NotCondition(new TagEmptyCondition(domain, name));
+	}
+
+	public void multipleToolMelting(Consumer<IFinishedRecipe> consumer, String modID, NameFluid[] names, ToolValue... values) {
+		for (NameFluid name : names) {
+			for(ToolValue value : values)
+				toolMelting(consumer, name.name, name.fluid, new ToolValue(modID + ":" + name.name + value.toolID, value.ingotValue));
+		}
+	}
+
+	public void toolMelting(Consumer<IFinishedRecipe> consumer, String name, Fluid fluid, ToolValue... values) {
+		for (ToolValue value : values) {
+			ResourceLocation toolLocation = new ResourceLocation(value.toolID);
+			MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), fluid, (int) (FluidValues.INGOT * value.ingotValue))
+			.setDamagable()
+			.build(consumer, modResource("smeltery/melting/metal/tools/" + name + "/" + toolLocation.getPath()));
+		}
+	}
+
+	public static class NameFluid {
+
+		public String name;
+		public Fluid fluid;
+
+		public NameFluid(String name, Fluid fluid) {
+			this.name = name;
+			this.fluid = fluid;
+		}
+	}
+
+	public static class ToolValue {
+
+		public String toolID;
+		public Double ingotValue;
+
+		public ToolValue(String toolID, double ingotValue) {
+			this.toolID = toolID;
+			this.ingotValue = ingotValue;
+		}
 	}
 }
