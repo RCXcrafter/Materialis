@@ -18,6 +18,8 @@ import com.rcx.materialis.datagen.MaterialisMaterials;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialStats;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
 import com.rcx.materialis.datagen.MaterialisRecipes;
+import com.rcx.materialis.datagen.MaterialisToolDefinitions;
+import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.TintedModifierModel;
 
@@ -151,6 +153,8 @@ public class Materialis {
 			gen.addProvider(materials);
 			gen.addProvider(new MaterialisMaterialStats(gen, materials));
 			gen.addProvider(new MaterialisMaterialTraits(gen, materials));
+			gen.addProvider(new MaterialisToolDefinitions(gen));
+			gen.addProvider(new MaterialisToolSlotLayouts(gen));
 		}
 	}
 

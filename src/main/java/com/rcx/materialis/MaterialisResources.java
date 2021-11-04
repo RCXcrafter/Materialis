@@ -7,7 +7,6 @@ import java.util.function.Supplier;
 import com.rcx.materialis.block.LightResidueBlock;
 import com.rcx.materialis.item.OptionalItem;
 import com.rcx.materialis.item.WrenchTool;
-import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.ColorizerModifierRecipe;
 import com.rcx.materialis.util.RuneModifierRecipe;
 
@@ -38,13 +37,9 @@ import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
-import slimeknights.tconstruct.library.tools.SlotType;
-import slimeknights.tconstruct.library.tools.ToolBaseStatDefinition;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
-import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
@@ -143,33 +138,11 @@ public class MaterialisResources {
 
 	//wrench
 	public static final ItemObject<ToolPartItem> WRENCH_HEAD = ITEMS_EXTENDED.register("wrench_head", () -> new ToolPartItem(PARTS_PROPS, HeadMaterialStats.ID));
-	public static final ToolBaseStatDefinition WRENCH_BASE_STATS = new ToolBaseStatDefinition.Builder()
-			.modifier(ToolStats.ATTACK_DAMAGE, 0.5f)
-			.modifier(ToolStats.ATTACK_SPEED, 1.8f)
-			.modifier(ToolStats.MINING_SPEED, 2.0f)
-			.modifier(ToolStats.DURABILITY, 1.5f)
-			.startingSlots(SlotType.UPGRADE, 1)
-			.startingSlots(SlotType.ABILITY, 3)
-			.build();
-	public static final ToolDefinition WRENCH_DEFINITION = ToolDefinition.builder(WRENCH_BASE_STATS)
-			.addPart(WRENCH_HEAD).addPart(TinkerToolParts.toolHandle)
-			.addModifier(MaterialisModifiers.wrenchingModifierHidden).build();
+
+	public static final ToolDefinition WRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "wrench")).meleeHarvest().build();
 	public static final ItemObject<WrenchTool> WRENCH = ITEMS_EXTENDED.register("wrench", () -> new WrenchTool(TOOL_PROPS.get().addToolType(WrenchTool.TOOL_TYPE, 0), WRENCH_DEFINITION));
 
-	public static final ToolBaseStatDefinition BATTLEWRENCH_BASE_STATS = new ToolBaseStatDefinition.Builder()
-			.bonus(ToolStats.ATTACK_DAMAGE, 4.0f)
-			.modifier(ToolStats.ATTACK_DAMAGE, 1.1f)
-			.modifier(ToolStats.ATTACK_SPEED, 1.1f)
-			.modifier(ToolStats.MINING_SPEED, 1.5f)
-			.modifier(ToolStats.DURABILITY, 2.5f)
-			.setPrimaryHeadWeight(2)
-			.startingSlots(SlotType.UPGRADE, 1)
-			.startingSlots(SlotType.ABILITY, 2)
-			.build();
-	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(BATTLEWRENCH_BASE_STATS)
-			.addPart(TinkerToolParts.hammerHead).addPart(TinkerToolParts.toughHandle).addPart(WRENCH_HEAD).addPart(WRENCH_HEAD)
-			.addModifier(TinkerModifiers.twoHanded)
-			.addModifier(MaterialisModifiers.wrenchingModifierHidden).build();
+	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "battlewrench")).meleeHarvest().build();
 	public static final ItemObject<WrenchTool> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new WrenchTool(new Item.Properties().addToolType(WrenchTool.TOOL_TYPE, 0), BATTLEWRENCH_DEFINITION));
 
 	//industrial foregoing stuff
