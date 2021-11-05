@@ -110,7 +110,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//aquaculture materials
 		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL, 0x17F1B6);
 		//mystical world materials
-		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST, 0xA9C2C4);
+		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST, 0xC6B69F);
 		//astral sorcery materials
 		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, 0x003CC9);
 		//industrial foregoing materials

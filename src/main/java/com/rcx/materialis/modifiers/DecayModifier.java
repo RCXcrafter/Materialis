@@ -13,7 +13,7 @@ public class DecayModifier extends Modifier {
 	int CHANCE_BOUND = 100;
 
 	public DecayModifier() {
-		super(0xA9C2C4);
+		super(0xC6B69F);
 	}
 
 	@Override

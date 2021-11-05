@@ -16,7 +16,7 @@ These parallel universes, also known as "packs", can be freely traveled between 
 
 Parallel universes usually differ in the things that exist in them and sometimes even by how those things work, this book focuses on the former. In one universe something may exist and in another it may not. In some universes this book doesn't exist, and in some universes, the master tinkers don't even exist (but don't tell them about that). The contents of this book depend on the universe you're currently in to make sure that you'll only find relevant information in it. Unfortunately the information in this book may not be accurate in every universe since I can't account for every minor difference each one may have. That being said, most of the time everything should be accurate.
 
-One final note: Try to avoid unbalanced or unstable universes, some people might say it's "fine" but I'd advise you to be cautious.
+These universes can be compared to tools in that you can apply modifiers (or mods, if you will) to them to change their behaviour, some mods change very little, some change a lot. Just like with tools I'd recommend you tinker with them to see what mods you like, though I'd advise you to avoid unstable mods, some people might say it's "fine" but you could irreparably damage your world.
 
 Now that you understand parallel universes, let's get into the things you can tinker with in your current pack!
 
