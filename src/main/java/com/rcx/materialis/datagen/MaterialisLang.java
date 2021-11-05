@@ -240,6 +240,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.overeatingModifier, "Overeating",
 				"5 second rule!",
 				"That overslime buffer on your tool suddenly looks very appealing");
+		addModifier(MaterialisModifiers.psishieldModifier, "Psishield",
+				"Psichological!",
+				"Has a chance of protecting your tool from damage at the cost of psi");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

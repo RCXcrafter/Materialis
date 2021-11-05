@@ -1,5 +1,8 @@
 package com.rcx.materialis.modifiers;
 
+import javax.annotation.Nullable;
+
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -13,7 +16,7 @@ public class HalfLifeModifier extends Modifier {
 	}
 
 	@Override
-	public int onDamageTool(IModifierToolStack toolStack, int level, int amount) {
+	public int onDamageTool(IModifierToolStack toolStack, int level, int amount, @Nullable LivingEntity holder) {
 		float multiplier = (float) Math.pow(4.0f * toolStack.getCurrentDurability() / (toolStack.getCurrentDurability() + toolStack.getDamage()), 0.5f);
 		float damage = (float) (amount * Math.pow(multiplier, level));
 		int roundDamage = (int) damage;

@@ -1,5 +1,7 @@
 package com.rcx.materialis.modifiers;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -27,7 +29,7 @@ public class DecayModifier extends Modifier {
 	}
 
 	@Override
-	public int onDamageTool(IModifierToolStack toolStack, int level, int amount) {
+	public int onDamageTool(IModifierToolStack toolStack, int level, int amount, @Nullable LivingEntity holder) {
 		return 0;
 	}
 }
