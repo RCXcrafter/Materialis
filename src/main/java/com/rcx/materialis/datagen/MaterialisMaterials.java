@@ -129,7 +129,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, 0x3D3838);
 		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, 0xF6F9ED);
 		//occultism materials
-		addCompatMetalMaterial(iesnium, 3, ORDER_HARVEST, 0x8ADAE3);
+		addCompatMetalMaterial(iesnium, 4, ORDER_HARVEST, 0x8ADAE3);
 	}
 
 	private static MaterialId createMaterial(String name) {

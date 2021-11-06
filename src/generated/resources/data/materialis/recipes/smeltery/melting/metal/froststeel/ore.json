@@ -20,8 +20,8 @@
   "time": 93,
   "byproducts": [
     {
-      "fluid": "materialis:molten_utherium",
-      "amount": 16
+      "fluid": "materialis:molten_regalium",
+      "amount": 48
     }
   ]
 }

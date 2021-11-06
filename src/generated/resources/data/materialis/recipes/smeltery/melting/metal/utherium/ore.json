@@ -14,14 +14,8 @@
   },
   "result": {
     "fluid": "materialis:molten_utherium",
-    "amount": 144
+    "amount": 16
   },
   "temperature": 1070,
-  "time": 103,
-  "byproducts": [
-    {
-      "fluid": "materialis:molten_regalium",
-      "amount": 48
-    }
-  ]
+  "time": 103
 }

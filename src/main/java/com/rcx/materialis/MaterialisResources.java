@@ -116,7 +116,7 @@ public class MaterialisResources {
 	public static final FluidWithBlockNBucket IVORY_PSIMETAL_FLUID = addFluid("molten_ivory_psimetal", "Molten Ivory Psimetal", 1430, 12, 3000, 6000);
 
 	//occultism fluids
-	public static final FluidWithBlockNBucket IESNIUM_FLUID = addFluid("molten_iesnium", "Molten Iesnium", 1150, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket IESNIUM_FLUID = addFluid("molten_iesnium", "Molten Iesnium", 1390, 12, 3000, 6000);
 
 
 	/*

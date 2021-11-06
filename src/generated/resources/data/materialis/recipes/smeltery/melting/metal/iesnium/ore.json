@@ -29,8 +29,8 @@
           "fluid": "materialis:molten_iesnium",
           "amount": 144
         },
-        "temperature": 850,
-        "time": 93,
+        "temperature": 1090,
+        "time": 103,
         "byproducts": [
           {
             "fluid": "tconstruct:molten_silver",
@@ -54,8 +54,8 @@
           "fluid": "materialis:molten_iesnium",
           "amount": 144
         },
-        "temperature": 850,
-        "time": 93
+        "temperature": 1090,
+        "time": 103
       }
     }
   ]

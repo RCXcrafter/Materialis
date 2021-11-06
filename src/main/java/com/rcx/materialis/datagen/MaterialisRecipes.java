@@ -214,9 +214,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalTagCasting(consumer, MaterialisResources.CLOGGRUM_FLUID.OBJECT, "cloggrum", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), "cloggrum", true, meltingFolder, true, MaterialisByproduct.FROSTSTEEL);
 		metalTagCasting(consumer, MaterialisResources.FROSTSTEEL_FLUID.OBJECT, "froststeel", castingFolder, false);
-		metalMelting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", true, meltingFolder, true, MaterialisByproduct.UTHERIUM);
+		metalMelting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", true, meltingFolder, true, MaterialisByproduct.REGALIUM);
 		metalTagCasting(consumer, MaterialisResources.UTHERIUM_FLUID.OBJECT, "utherium", castingFolder, false);
-		metalMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", true, meltingFolder, true, MaterialisByproduct.REGALIUM);
+		metalMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", false, meltingFolder, true);
+		oreMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET, "ores/utherium", 1.5f, meltingFolder + "utherium/ore", true);
 		metalTagCasting(consumer, MaterialisResources.FORGOTTEN_FLUID.OBJECT, "forgotten_metal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.REGALIUM_FLUID.OBJECT, "regalium", castingFolder, false);
@@ -254,7 +255,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		//mekanism stuff
 		metalTagCasting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT, "refined_obsidian", castingFolder, false);
-		metalMelting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", false, meltingFolder, true);
+		metalMelting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", false, false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT, "refined_glowstone", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", false, meltingFolder, true);
 

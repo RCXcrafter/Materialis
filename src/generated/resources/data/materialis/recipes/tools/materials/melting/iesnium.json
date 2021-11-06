@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:material_melting",
   "input": "materialis:iesnium",
-  "temperature": 850,
+  "temperature": 1090,
   "result": {
     "fluid": "materialis:molten_iesnium",
     "amount": 144
