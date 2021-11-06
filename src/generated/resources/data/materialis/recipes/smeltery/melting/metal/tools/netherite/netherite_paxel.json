@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mekanismtools",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mekanismtools:netherite_paxel"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_netherite",
+    "amount": 144
+  },
+  "temperature": 1250,
+  "time": 74,
+  "byproducts": [
+    {
+      "fluid": "tconstruct:molten_diamond",
+      "amount": 1008
+    }
+  ]
+}

@@ -14,5 +14,11 @@
     "amount": 144
   },
   "temperature": 1230,
-  "time": 73
+  "time": 73,
+  "byproducts": [
+    {
+      "fluid": "materialis:molten_cloggrum",
+      "amount": 144
+    }
+  ]
 }

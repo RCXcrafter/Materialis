@@ -135,7 +135,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//aquaculture stuff
 		metalTagCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.OBJECT, "neptunium", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(), "neptunium", false, meltingFolder, true);
-		toolMelting(withCondition(consumer, new ModLoadedCondition("aquaculture")), "neptunium", MaterialisResources.NEPTUNIUM_FLUID.FLUID.get(),
+		toolMelting(withCondition(consumer, new ModLoadedCondition("aquaculture")), new NameFluid("neptunium", MaterialisResources.NEPTUNIUM_FLUID.FLUID.get()),
 				new ToolValue("aquaculture:neptunium_axe", 3),
 				new ToolValue("aquaculture:neptunium_hoe", 2),
 				new ToolValue("aquaculture:neptunium_pickaxe", 3),
@@ -242,14 +242,14 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("_chestplate", 8),
 				new ToolValue("_leggings", 7),
 				new ToolValue("_boots", 4));
-		toolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), "forgotten_metal", MaterialisResources.FORGOTTEN_FLUID.FLUID.get(),
-				new ToolValue("undergarden:forgotten_axe", 1),
-				new ToolValue("undergarden:forgotten_hoe", 1),
-				new ToolValue("undergarden:forgotten_pickaxe", 1),
+		toolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), new NameFluid("forgotten_metal", MaterialisResources.CLOGGRUM_FLUID.FLUID.get(), new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), FluidValues.INGOT), true),
+				new ToolValue("undergarden:forgotten_axe", 3),
+				new ToolValue("undergarden:forgotten_hoe", 2),
+				new ToolValue("undergarden:forgotten_pickaxe", 3),
 				new ToolValue("undergarden:forgotten_shovel", 1),
-				new ToolValue("undergarden:forgotten_sword", 1),
-				new ToolValue("undergarden:forgotten_battleaxe", 1));
-		toolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), "cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get(),
+				new ToolValue("undergarden:forgotten_sword", 2),
+				new ToolValue("undergarden:forgotten_battleaxe", 13));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), new NameFluid("cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get()),
 				new ToolValue("undergarden:cloggrum_shield", 6),
 				new ToolValue("undergarden:cloggrum_battleaxe", 13));
 
@@ -258,6 +258,41 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", false, false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT, "refined_glowstone", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", false, meltingFolder, true);
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mekanismtools")), "mekanismtools",
+				new NameFluid[] {
+						new NameFluid("bronze", TinkerFluids.moltenBronze.get()),
+						new NameFluid("osmium", TinkerFluids.moltenOsmium.get()),
+						new NameFluid("refined_glowstone", TinkerFluids.moltenRefinedGlowstone.get()),
+						new NameFluid("refined_obsidian", TinkerFluids.moltenRefinedObsidian.get()),
+						new NameFluid("steel", TinkerFluids.moltenSteel.get())
+		},
+				new ToolValue("_pickaxe", 3),
+				new ToolValue("_axe", 3),
+				new ToolValue("_shovel", 1),
+				new ToolValue("_hoe", 2),
+				new ToolValue("_sword", 2),
+				new ToolValue("_paxel", 7),
+				new ToolValue("_helmet", 5),
+				new ToolValue("_chestplate", 8),
+				new ToolValue("_leggins", 7),
+				new ToolValue("_boots", 4));
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mekanismtools")), "mekanismtools",
+				new NameFluid[] {
+						new NameFluid("bronze", TinkerFluids.moltenBronze.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT), false),
+						new NameFluid("osmium", TinkerFluids.moltenOsmium.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT), false),
+						new NameFluid("refined_glowstone", TinkerFluids.moltenRefinedGlowstone.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT), false),
+						new NameFluid("refined_obsidian", TinkerFluids.moltenRefinedObsidian.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT), false),
+						new NameFluid("steel", TinkerFluids.moltenSteel.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT), false)
+		},
+				new ToolValue("_shield", 6));
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mekanismtools")), "mekanismtools",
+				new NameFluid[] {
+						new NameFluid("iron", TinkerFluids.moltenIron.get()),
+						new NameFluid("gold", TinkerFluids.moltenGold.get()),
+						new NameFluid("diamond", TinkerFluids.moltenDiamond.get()),
+						new NameFluid("netherite", TinkerFluids.moltenDiamond.get(), new FluidStack(TinkerFluids.moltenNetherite.get(), FluidValues.INGOT), true)
+		},
+				new ToolValue("_paxel", 7));
 
 		//psi stuff
 		metalTagCasting(consumer, MaterialisResources.PSIMETAL_FLUID.OBJECT, "psimetal", castingFolder, false);
@@ -266,10 +301,28 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.FLUID.get(), "ebony_psimetal", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT, "ivory_psimetal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.IVORY_PSIMETAL_FLUID.FLUID.get(), "ivory_psimetal", false, meltingFolder, true);
+		toolMelting(withCondition(consumer, new AndCondition(new ModLoadedCondition("psi"), new NotCondition(new ModLoadedCondition("magipsi")))), new NameFluid("psimetal", MaterialisResources.PSIMETAL_FLUID.FLUID.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT * 2), false),
+				new ToolValue("psi:psimetal_axe", 2),
+				new ToolValue("psi:psimetal_pickaxe", 2),
+				new ToolValue("psi:psimetal_shovel", 1));
+		toolMelting(withCondition(consumer, new AndCondition(new ModLoadedCondition("psi"), new NotCondition(new ModLoadedCondition("magipsi")))), new NameFluid("psimetal", MaterialisResources.PSIMETAL_FLUID.FLUID.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT), false),
+				new ToolValue("psi:psimetal_sword", 1));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("magipsi")), new NameFluid("psimetal", MaterialisResources.PSIMETAL_FLUID.FLUID.get(), new FluidStack(TinkerFluids.moltenGold.get(), FluidValues.INGOT), false),
+				new ToolValue("psi:psimetal_axe", 2),
+				new ToolValue("psi:psimetal_pickaxe", 2),
+				new ToolValue("psi:psimetal_shovel", 1),
+				new ToolValue("psi:psimetal_sword", 1));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("psi")), new NameFluid("psimetal", MaterialisResources.PSIMETAL_FLUID.FLUID.get()),
+				new ToolValue("psi:psimetal_exosuit_helmet", 3),
+				new ToolValue("psi:psimetal_exosuit_chestplate", 6),
+				new ToolValue("psi:psimetal_exosuit_leggings", 5),
+				new ToolValue("psi:psimetal_exosuit_boots", 2));
 
 		//occultism stuff
 		metalTagCasting(consumer, MaterialisResources.IESNIUM_FLUID.OBJECT, "iesnium", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID.get(), "iesnium", true, meltingFolder, true, MaterialisByproduct.SILVER);
+		toolMelting(withCondition(consumer, new ModLoadedCondition("occultism")), new NameFluid("iesnium", MaterialisResources.IESNIUM_FLUID.FLUID.get()),
+				new ToolValue("occultism:iesnium_pickaxe", 3));
 
 
 
@@ -557,16 +610,30 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 	public void multipleToolMelting(Consumer<IFinishedRecipe> consumer, String modID, NameFluid[] names, ToolValue... values) {
 		for (NameFluid name : names) {
 			for(ToolValue value : values)
-				toolMelting(consumer, name.name, name.fluid, new ToolValue(modID + ":" + name.name + value.toolID, value.ingotValue));
+				toolMelting(consumer, name, new ToolValue(modID + ":" + name.name + value.toolID, value.ingotValue));
 		}
 	}
 
-	public void toolMelting(Consumer<IFinishedRecipe> consumer, String name, Fluid fluid, ToolValue... values) {
+	public void toolMelting(Consumer<IFinishedRecipe> consumer, NameFluid name, ToolValue... values) {
 		for (ToolValue value : values) {
 			ResourceLocation toolLocation = new ResourceLocation(value.toolID);
-			MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), fluid, (int) (FluidValues.INGOT * value.ingotValue))
-			.setDamagable()
-			.build(consumer, modResource("smeltery/melting/metal/tools/" + name + "/" + toolLocation.getPath()));
+			if (name.byproduct == null) {
+				MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.fluid, (int) (FluidValues.INGOT * value.ingotValue))
+				.setDamagable()
+				.build(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
+			} else {
+				if (!name.byproductIsMain) {
+					MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.fluid, (int) (FluidValues.INGOT * value.ingotValue))
+					.addByproduct(name.byproduct)
+					.setDamagable()
+					.build(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
+				} else {
+					MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.byproduct.getFluid(), name.byproduct.getAmount())
+					.addByproduct(new FluidStack(name.fluid, (int) (FluidValues.INGOT * value.ingotValue)))
+					.setDamagable()
+					.build(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
+				}
+			}
 		}
 	}
 
@@ -574,10 +641,18 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		public String name;
 		public Fluid fluid;
+		public FluidStack byproduct = null;
+		public boolean byproductIsMain = false;
 
 		public NameFluid(String name, Fluid fluid) {
 			this.name = name;
 			this.fluid = fluid;
+		}
+
+		public NameFluid(String name, Fluid fluid, FluidStack byproduct, boolean byproductIsMain) {
+			this(name, fluid);
+			this.byproduct = byproduct;
+			this.byproductIsMain = byproductIsMain;
 		}
 	}
 

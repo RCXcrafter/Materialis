@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mekanismtools",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mekanismtools:refined_obsidian_chestplate"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_refined_obsidian",
+    "amount": 1152
+  },
+  "temperature": 1475,
+  "time": 225
+}

@@ -1,0 +1,36 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "values": [
+        {
+          "modid": "psi",
+          "type": "forge:mod_loaded"
+        },
+        {
+          "value": {
+            "modid": "magipsi",
+            "type": "forge:mod_loaded"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "type": "forge:and"
+    }
+  ],
+  "ingredient": {
+    "item": "psi:psimetal_pickaxe"
+  },
+  "result": {
+    "fluid": "materialis:molten_psimetal",
+    "amount": 288
+  },
+  "temperature": 750,
+  "time": 83,
+  "byproducts": [
+    {
+      "fluid": "tconstruct:molten_iron",
+      "amount": 288
+    }
+  ]
+}

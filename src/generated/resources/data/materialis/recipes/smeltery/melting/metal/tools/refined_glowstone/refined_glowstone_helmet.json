@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mekanismtools",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mekanismtools:refined_glowstone_helmet"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_refined_glowstone",
+    "amount": 720
+  },
+  "temperature": 825,
+  "time": 136
+}

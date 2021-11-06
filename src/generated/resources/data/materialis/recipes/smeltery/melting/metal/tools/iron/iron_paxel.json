@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mekanismtools",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mekanismtools:iron_paxel"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_iron",
+    "amount": 1008
+  },
+  "temperature": 800,
+  "time": 159
+}
