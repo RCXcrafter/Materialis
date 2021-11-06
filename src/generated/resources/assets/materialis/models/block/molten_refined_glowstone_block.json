@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "materialis:block/fluid/molten_refined_glowstone_still"
-  }
-}

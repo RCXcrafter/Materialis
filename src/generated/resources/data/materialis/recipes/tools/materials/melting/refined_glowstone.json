@@ -1,9 +1,9 @@
 {
   "type": "tconstruct:material_melting",
   "input": "materialis:refined_glowstone",
-  "temperature": 900,
+  "temperature": 825,
   "result": {
-    "fluid": "materialis:molten_refined_glowstone",
+    "fluid": "tconstruct:molten_refined_glowstone",
     "amount": 144
   }
 }

@@ -254,10 +254,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("undergarden:cloggrum_battleaxe", 13));
 
 		//mekanism stuff
-		metalTagCasting(consumer, TinkerFluids.moltenRefinedObsidian, "refined_obsidian", castingFolder, false);
-		metalMelting(consumer, TinkerFluids.moltenRefinedObsidian.get(), "refined_obsidian", false, false, meltingFolder, true);
-		metalTagCasting(consumer, TinkerFluids.moltenRefinedGlowstone, "refined_glowstone", castingFolder, false);
-		metalMelting(consumer, TinkerFluids.moltenRefinedGlowstone.get(), "refined_glowstone", false, meltingFolder, true);
+		//metalTagCasting(consumer, TinkerFluids.moltenRefinedObsidian, "refined_obsidian", castingFolder, false);
+		//metalMelting(consumer, TinkerFluids.moltenRefinedObsidian.get(), "refined_obsidian", false, false, meltingFolder, true);
+		//metalTagCasting(consumer, TinkerFluids.moltenRefinedGlowstone, "refined_glowstone", castingFolder, false);
+		//metalMelting(consumer, TinkerFluids.moltenRefinedGlowstone.get(), "refined_glowstone", false, meltingFolder, true);
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mekanismtools")), "mekanismtools",
 				new NameFluid[] {
 						new NameFluid("bronze", TinkerFluids.moltenBronze.get()),

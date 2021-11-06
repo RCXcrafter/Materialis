@@ -1,9 +1,9 @@
 {
   "type": "tconstruct:material_melting",
   "input": "materialis:refined_obsidian",
-  "temperature": 1200,
+  "temperature": 1475,
   "result": {
-    "fluid": "materialis:molten_refined_obsidian",
+    "fluid": "tconstruct:molten_refined_obsidian",
     "amount": 144
   }
 }
