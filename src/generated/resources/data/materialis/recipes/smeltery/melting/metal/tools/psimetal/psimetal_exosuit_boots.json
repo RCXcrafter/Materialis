@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "psi:psimetal_exosuit_boots"
+  },
+  "result": {
+    "fluid": "materialis:molten_psimetal",
+    "amount": 288
+  },
+  "temperature": 750,
+  "time": 83
+}

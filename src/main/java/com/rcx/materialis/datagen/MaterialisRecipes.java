@@ -307,7 +307,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("psi:psimetal_shovel", 1));
 		toolMelting(withCondition(consumer, new AndCondition(new ModLoadedCondition("psi"), new NotCondition(new ModLoadedCondition("magipsi")))), new NameFluid("psimetal", MaterialisResources.PSIMETAL_FLUID.FLUID.get(), new FluidStack(TinkerFluids.moltenIron.get(), FluidValues.INGOT), false),
 				new ToolValue("psi:psimetal_sword", 1));
-		toolMelting(withCondition(consumer, new ModLoadedCondition("magipsi")), new NameFluid("psimetal", MaterialisResources.PSIMETAL_FLUID.FLUID.get(), new FluidStack(TinkerFluids.moltenGold.get(), FluidValues.INGOT), false),
+		toolMelting(withCondition(consumer, new ModLoadedCondition("magipsi")), new NameFluid("psimetal_magical", MaterialisResources.PSIMETAL_FLUID.FLUID.get(), new FluidStack(TinkerFluids.moltenGold.get(), FluidValues.INGOT), false),
 				new ToolValue("psi:psimetal_axe", 2),
 				new ToolValue("psi:psimetal_pickaxe", 2),
 				new ToolValue("psi:psimetal_shovel", 1),

@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "magipsi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "psi:psimetal_axe"
+  },
+  "result": {
+    "fluid": "materialis:molten_psimetal",
+    "amount": 288
+  },
+  "temperature": 750,
+  "time": 83,
+  "byproducts": [
+    {
+      "fluid": "tconstruct:molten_gold",
+      "amount": 144
+    }
+  ]
+}
