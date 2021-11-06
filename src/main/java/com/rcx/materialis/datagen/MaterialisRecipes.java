@@ -254,10 +254,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("undergarden:cloggrum_battleaxe", 13));
 
 		//mekanism stuff
-		metalTagCasting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT, "refined_obsidian", castingFolder, false);
-		metalMelting(consumer, MaterialisResources.REFINED_OBSIDIAN_FLUID.FLUID.get(), "refined_obsidian", false, false, meltingFolder, true);
-		metalTagCasting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT, "refined_glowstone", castingFolder, false);
-		metalMelting(consumer, MaterialisResources.REFINED_GLOWSTONE_FLUID.FLUID.get(), "refined_glowstone", false, meltingFolder, true);
+		metalTagCasting(consumer, TinkerFluids.moltenRefinedObsidian, "refined_obsidian", castingFolder, false);
+		metalMelting(consumer, TinkerFluids.moltenRefinedObsidian.get(), "refined_obsidian", false, false, meltingFolder, true);
+		metalTagCasting(consumer, TinkerFluids.moltenRefinedGlowstone, "refined_glowstone", castingFolder, false);
+		metalMelting(consumer, TinkerFluids.moltenRefinedGlowstone.get(), "refined_glowstone", false, meltingFolder, true);
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mekanismtools")), "mekanismtools",
 				new NameFluid[] {
 						new NameFluid("bronze", TinkerFluids.moltenBronze.get()),
@@ -381,8 +381,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		MaterialMeltingRecipeBuilder.material(MaterialisMaterials.forgottenMetal, new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), FluidValues.NUGGET * 3))
 		.build(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), modResource(materialFolder + "melting/forgotten_metal"));
 		//materialMeltingCasting(consumer, MaterialisMaterials.osmium, TinkerFluids.moltenOsmium, materialFolder);
-		materialMeltingCasting(consumer, MaterialisMaterials.refinedObsidian, MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT, materialFolder);
-		materialMeltingCasting(consumer, MaterialisMaterials.refinedGlowstone, MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.refinedObsidian, TinkerFluids.moltenRefinedObsidian, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.refinedGlowstone, TinkerFluids.moltenRefinedGlowstone, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.psimetal, MaterialisResources.PSIMETAL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.ebonyPsimetal, MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.ivoryPsimetal, MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT, materialFolder);

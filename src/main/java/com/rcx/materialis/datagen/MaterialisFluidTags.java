@@ -46,8 +46,8 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 		.addTag(MaterialisResources.ARCANE_GOLD_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.STARMETAL_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.PINK_SLIME_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT.getForgeTag())
+		//.addTag(MaterialisResources.REFINED_OBSIDIAN_FLUID.OBJECT.getForgeTag())
+		//.addTag(MaterialisResources.REFINED_GLOWSTONE_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.PSIMETAL_FLUID.OBJECT.getForgeTag());
 		tag(TinkerTags.Fluids.EXPENSIVE_METAL_SPILLING)
 		.addTag(MaterialisResources.REFINED_RADIANCE_FLUID.OBJECT.getForgeTag())
