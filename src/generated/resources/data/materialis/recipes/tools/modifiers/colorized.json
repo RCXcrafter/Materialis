@@ -8,7 +8,7 @@
   ],
   "inputs": [
     {
-      "tag": "materialis:psi_colorizers"
+      "tag": "psi:colorizers"
     }
   ],
   "tools": {

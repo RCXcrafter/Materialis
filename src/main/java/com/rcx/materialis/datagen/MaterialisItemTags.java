@@ -49,9 +49,6 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
 	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
 
-	//psi stuff
-	public static final INamedTag<Item> COLORIZERS = ItemTags.bind(Materialis.modID + ":psi_colorizers");
-
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
 	}
@@ -124,25 +121,6 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		//psi stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
-		tag(COLORIZERS).addOptional(new ResourceLocation("psi", "cad_colorizer_white"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_orange"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_magenta"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_light_blue"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_yellow"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_lime"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_pink"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_gray"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_light_gray"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_cyan"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_purple"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_blue"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_brown"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_green"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_red"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_black"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_rainbow"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_psi"))
-		.addOptional(new ResourceLocation("psi", "cad_colorizer_empty"));
 	}
 
 	@SafeVarargs

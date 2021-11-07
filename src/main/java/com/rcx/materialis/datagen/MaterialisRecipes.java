@@ -553,7 +553,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get())
-		.addInput(MaterialisItemTags.COLORIZERS)
+		.addInput(getTag("psi", "colorizers"))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psidust")), 0.3f))
 		.addSalvage(Items.IRON_INGOT, 0.7f)
 		.setTools(TinkerTags.Items.MODIFIABLE)
