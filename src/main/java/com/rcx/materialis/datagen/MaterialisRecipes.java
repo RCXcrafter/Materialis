@@ -274,7 +274,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("_paxel", 7),
 				new ToolValue("_helmet", 5),
 				new ToolValue("_chestplate", 8),
-				new ToolValue("_leggins", 7),
+				new ToolValue("_leggings", 7),
 				new ToolValue("_boots", 4));
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mekanismtools")), "mekanismtools",
 				new NameFluid[] {
@@ -323,6 +323,42 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.IESNIUM_FLUID.FLUID.get(), "iesnium", true, meltingFolder, true, MaterialisByproduct.SILVER);
 		toolMelting(withCondition(consumer, new ModLoadedCondition("occultism")), new NameFluid("iesnium", MaterialisResources.IESNIUM_FLUID.FLUID.get()),
 				new ToolValue("occultism:iesnium_pickaxe", 3));
+
+		//botania stuff
+		metalTagCasting(consumer, MaterialisResources.MANASTEEL_FLUID.OBJECT, "manasteel", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.MANASTEEL_FLUID.FLUID.get(), "manasteel", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.TERRASTEEL_FLUID.OBJECT, "terrasteel", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), "terrasteel", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.ELEMENTIUM_FLUID.OBJECT, "elementium", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.ELEMENTIUM_FLUID.FLUID.get(), "elementium", false, meltingFolder, true);
+		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("botania")), "botania",
+				new NameFluid[] {
+						new NameFluid("manasteel", MaterialisResources.MANASTEEL_FLUID.FLUID.get()),
+						new NameFluid("elementium", MaterialisResources.ELEMENTIUM_FLUID.FLUID.get())
+		},
+				//new ToolValue("_pickaxe", 3), //botania is inconsistent with these names >:(
+				new ToolValue("_axe", 3),
+				new ToolValue("_shovel", 1),
+				new ToolValue("_hoe", 2),
+				new ToolValue("_sword", 2),
+				new ToolValue("_shears", 2),
+				new ToolValue("_helmet", 5),
+				new ToolValue("_chestplate", 8),
+				new ToolValue("_leggings", 7),
+				new ToolValue("_boots", 4));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("botania")), new NameFluid("manasteel", MaterialisResources.MANASTEEL_FLUID.FLUID.get()),
+				new ToolValue("botania:manasteel_pick", 3));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("botania")), new NameFluid("elementium", MaterialisResources.ELEMENTIUM_FLUID.FLUID.get()),
+				new ToolValue("botania:elementium_pickaxe", 3));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("botania")), new NameFluid("terrasteel", MaterialisResources.MANASTEEL_FLUID.FLUID.get(), new FluidStack(MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 3), true),
+				new ToolValue("botania:terrasteel_helmet", 5),
+				new ToolValue("botania:terrasteel_chestplate", 8),
+				new ToolValue("botania:terrasteel_leggings", 7),
+				new ToolValue("botania:terrasteel_boots", 4));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("botania")), new NameFluid("terrasteel", MaterialisResources.TERRASTEEL_FLUID.FLUID.get()),
+				new ToolValue("botania:terra_pick", 4),
+				new ToolValue("botania:terra_axe", 4),
+				new ToolValue("botania:terra_sword", 2));
 
 
 

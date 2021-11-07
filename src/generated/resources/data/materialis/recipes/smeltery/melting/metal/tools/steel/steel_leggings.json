@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mekanismtools",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mekanismtools:steel_leggings"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_steel",
+    "amount": 1008
+  },
+  "temperature": 950,
+  "time": 171
+}

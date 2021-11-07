@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "mekanismtools:osmium_leggins"
+    "item": "mekanismtools:bronze_leggings"
   },
   "result": {
-    "fluid": "tconstruct:molten_osmium",
+    "fluid": "tconstruct:molten_bronze",
     "amount": 1008
   },
-  "temperature": 975,
-  "time": 173
+  "temperature": 700,
+  "time": 151
 }

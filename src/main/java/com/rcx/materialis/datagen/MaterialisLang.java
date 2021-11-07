@@ -243,6 +243,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.psishieldModifier, "Psishield",
 				"Psichological!",
 				"Has a chance of protecting your tool from damage at the cost of psi");
+		addModifier(MaterialisModifiers.manashieldModifier, "Manashield",
+				"Botanical!",
+				"Has a chance of protecting your tool from damage at the cost of mana");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

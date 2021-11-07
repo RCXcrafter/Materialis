@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/elementium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/elementium"
+  },
+  "result": {
+    "fluid": "materialis:molten_elementium",
+    "amount": 72
+  },
+  "temperature": 1160,
+  "time": 14
+}

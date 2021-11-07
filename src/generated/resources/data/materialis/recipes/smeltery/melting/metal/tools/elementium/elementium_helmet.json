@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "botania",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "botania:elementium_helmet"
+  },
+  "result": {
+    "fluid": "materialis:molten_elementium",
+    "amount": 720
+  },
+  "temperature": 1160,
+  "time": 159
+}

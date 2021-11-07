@@ -2,17 +2,17 @@
   "type": "tconstruct:damagable_melting",
   "conditions": [
     {
-      "modid": "mekanismtools",
+      "modid": "botania",
       "type": "forge:mod_loaded"
     }
   ],
   "ingredient": {
-    "item": "mekanismtools:steel_leggins"
+    "item": "botania:manasteel_leggings"
   },
   "result": {
-    "fluid": "tconstruct:molten_steel",
+    "fluid": "materialis:molten_manasteel",
     "amount": 1008
   },
-  "temperature": 950,
-  "time": 171
+  "temperature": 790,
+  "time": 158
 }

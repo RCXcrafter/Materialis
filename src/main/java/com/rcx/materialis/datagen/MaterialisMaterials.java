@@ -75,6 +75,13 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	//occultism materials
 	public static final MaterialId iesnium = createMaterial("iesnium");
 
+	//botania materials
+	public static final MaterialId livingwood = createMaterial("livingwood");
+	public static final MaterialId dreamwood = createMaterial("dreamwood");
+	public static final MaterialId manasteel = createMaterial("manasteel");
+	public static final MaterialId terrasteel = createMaterial("terrasteel");
+	public static final MaterialId elementium = createMaterial("elementium");
+
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
 	}

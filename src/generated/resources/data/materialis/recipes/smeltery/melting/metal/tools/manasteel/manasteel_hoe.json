@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "botania",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "botania:manasteel_hoe"
+  },
+  "result": {
+    "fluid": "materialis:molten_manasteel",
+    "amount": 288
+  },
+  "temperature": 790,
+  "time": 85
+}

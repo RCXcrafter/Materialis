@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "mekanismtools:refined_obsidian_leggins"
+    "item": "mekanismtools:osmium_leggings"
   },
   "result": {
-    "fluid": "tconstruct:molten_refined_obsidian",
+    "fluid": "tconstruct:molten_osmium",
     "amount": 1008
   },
-  "temperature": 1475,
-  "time": 211
+  "temperature": 975,
+  "time": 173
 }

@@ -2,17 +2,17 @@
   "type": "tconstruct:damagable_melting",
   "conditions": [
     {
-      "modid": "mekanismtools",
+      "modid": "botania",
       "type": "forge:mod_loaded"
     }
   ],
   "ingredient": {
-    "item": "mekanismtools:refined_glowstone_leggins"
+    "item": "botania:elementium_leggings"
   },
   "result": {
-    "fluid": "tconstruct:molten_refined_glowstone",
+    "fluid": "materialis:molten_elementium",
     "amount": 1008
   },
-  "temperature": 825,
-  "time": 161
+  "temperature": 1160,
+  "time": 188
 }

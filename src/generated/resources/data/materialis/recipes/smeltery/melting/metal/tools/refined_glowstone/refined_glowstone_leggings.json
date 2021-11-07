@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "mekanismtools:bronze_leggins"
+    "item": "mekanismtools:refined_glowstone_leggings"
   },
   "result": {
-    "fluid": "tconstruct:molten_bronze",
+    "fluid": "tconstruct:molten_refined_glowstone",
     "amount": 1008
   },
-  "temperature": 700,
-  "time": 151
+  "temperature": 825,
+  "time": 161
 }

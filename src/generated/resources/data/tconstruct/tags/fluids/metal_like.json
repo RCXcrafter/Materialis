@@ -17,6 +17,9 @@
     "#forge:molten_psimetal",
     "#forge:molten_ebony_psimetal",
     "#forge:molten_ivory_psimetal",
-    "#forge:molten_iesnium"
+    "#forge:molten_iesnium",
+    "#forge:molten_manasteel",
+    "#forge:molten_terrasteel",
+    "#forge:molten_elementium"
   ]
 }
