@@ -6,17 +6,20 @@ import static net.minecraft.client.renderer.texture.NativeImage.getB;
 import static net.minecraft.client.renderer.texture.NativeImage.getG;
 import static net.minecraft.client.renderer.texture.NativeImage.getR;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import net.minecraft.client.renderer.texture.NativeImage;
 import net.minecraft.util.ResourceLocation;
+import slimeknights.tconstruct.library.client.data.SpriteReader;
 import slimeknights.tconstruct.library.client.data.spritetransformer.IColorMapping;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public class GreyToTextureColorMapping  implements IColorMapping {
+public class GreyToTextureColorMapping implements IColorMapping {
 
 	private final List<ColorTextureMapping> mappings;
 
@@ -44,7 +47,7 @@ public class GreyToTextureColorMapping  implements IColorMapping {
 		ColorTextureMapping first = mappings.get(0);
 		// grey is before the first point, return the first value
 		if (size == 1 || grey <= first.getGrey()) {
-			return first.getColor();
+			return first.getColor(x, y);
 		}
 
 		// grey is after the first point, so try to find two points its between
@@ -57,7 +60,7 @@ public class GreyToTextureColorMapping  implements IColorMapping {
 			}
 			// if the upper bound is an exact match, nothing else to do
 			if (grey == newGrey) {
-				return second.getColor();
+				return second.getColor(x, y);
 			}
 			first = second;
 			second = mappings.get(i);
@@ -65,14 +68,14 @@ public class GreyToTextureColorMapping  implements IColorMapping {
 
 		// if its bigger than the last, return the last value
 		if (grey > second.getGrey()) {
-			return second.getColor();
+			return second.getColor(x, y);
 		}
 
 		// at this point, grey is strictly between first and second, interpolate between the two
 		int diff = grey - first.getGrey();
 		int divisor = second.getGrey() - first.getGrey();
-		int colorA = first.getColor();
-		int colorB = second.getColor();
+		int colorA = first.getColor(x, y);
+		int colorB = second.getColor(x, y);
 		// interpolate each pair of colors
 		int alpha = interpolate(getA(colorA), getA(colorB), diff, divisor);
 		int red   = interpolate(getR(colorA), getR(colorB), diff, divisor);
@@ -111,54 +114,66 @@ public class GreyToTextureColorMapping  implements IColorMapping {
 	}
 
 	/** Creates a new grey to color builder */
-	public static Builder builder() {
-		return new Builder();
+	public static Builder builder(SpriteReader spriteReader) {
+		return new Builder(spriteReader);
 	}
 
 	/** Creates a new grey to color builder starting with greyscale 0 as white */
-	public static Builder builderFromBlack() {
-		return builder().addABGR(0, 0xFF000000);
+	public static Builder builderFromBlack(SpriteReader spriteReader) {
+		return builder(spriteReader).addABGR(0, 0xFF000000);
 	}
 
 	/** Mapping from greyscale to color or texture */
 	private static class ColorTextureMapping {
 		private final int grey;
 		private final int color;
-		private final ResourceLocation texture;
+		private final ResourceLocation textureLocation;
+		private final SpriteReader spriteReader;
+		private NativeImage texture = null;
 
-		public ColorTextureMapping(int grey, int color) {
+		public ColorTextureMapping(SpriteReader spriteReader, int grey, int color) {
+			this.spriteReader = spriteReader;
 			this.grey = grey;
 			this.color = color;
-			this.texture = null;
+			this.textureLocation = null;
 		}
 
-		public ColorTextureMapping(int grey, ResourceLocation texture) {
+		public ColorTextureMapping(SpriteReader spriteReader, int grey, ResourceLocation textureLocation) {
+			this.spriteReader = spriteReader;
 			this.grey = grey;
 			this.color = -1;
-			this.texture = texture;
+			this.textureLocation = textureLocation;
 		}
 
 		public int getGrey() {
 			return grey;
 		}
 
-		public int getColor() {
+		public int getColor(int x, int y) {
+			if (textureLocation != null) {
+				if (texture == null) {
+					try {
+						texture = spriteReader.read(textureLocation);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				return texture.getPixelRGBA(x % texture.getWidth(), y % texture.getHeight());
+			}
 			return color;
-		}
-
-		public boolean hasTexture() {
-			return color == -1;
-		}
-
-		public ResourceLocation getTexture() {
-			return texture;
 		}
 	}
 
 	/** Builder to create a palette of this type */
 	public static class Builder {
+
 		private final ImmutableList.Builder<ColorTextureMapping> builder = ImmutableList.builder();
 		private int lastGrey = -1;
+		private final SpriteReader spriteReader;
+
+		public Builder(SpriteReader spriteReader) {
+			this.spriteReader = spriteReader;
+		}
 
 		/** Validates the given grey value */
 		private void checkGrey(int grey) {
@@ -174,7 +189,7 @@ public class GreyToTextureColorMapping  implements IColorMapping {
 		/** Adds a color to the palette in ABGR format */
 		public Builder addABGR(int grey, int color) {
 			checkGrey(grey);
-			builder.add(new ColorTextureMapping(grey, color));
+			builder.add(new ColorTextureMapping(spriteReader, grey, color));
 			return this;
 		}
 
@@ -182,14 +197,14 @@ public class GreyToTextureColorMapping  implements IColorMapping {
 		public Builder addARGB(int grey, int color) {
 			checkGrey(grey);
 			int newColor = (color & 0xFF00FF00) | (((color & 0x00FF0000) >> 16) & 0x000000FF) | (((color & 0x000000FF) << 16) & 0x00FF0000);
-			builder.add(new ColorTextureMapping(grey, newColor));
+			builder.add(new ColorTextureMapping(spriteReader, grey, newColor));
 			return this;
 		}
 
 		/** Adds a color to the palette in ABGR format */
 		public Builder addTexture(int grey, ResourceLocation texture) {
 			checkGrey(grey);
-			builder.add(new ColorTextureMapping(grey, texture));
+			builder.add(new ColorTextureMapping(spriteReader, grey, texture));
 			return this;
 		}
 

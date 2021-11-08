@@ -147,17 +147,15 @@ public class Materialis {
 			ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 			ItemModelProvider itemModels = new MaterialisItemModels(gen, existingFileHelper);
 			gen.addProvider(itemModels);
-			gen.addProvider(new MaterialisBlockStates(gen, itemModels.existingFileHelper));
-			MaterialisMaterialTextures materialSprites = new MaterialisMaterialTextures();
+			gen.addProvider(new MaterialisBlockStates(gen, existingFileHelper));
+			MaterialisMaterialTextures materialSprites = new MaterialisMaterialTextures(existingFileHelper);
 			TinkerMaterialSpriteProvider tinkerMaterialSprites = new TinkerMaterialSpriteProvider();
 			//gen.addProvider(new MaterialRenderInfoProvider(gen, materialSprites));
 
 			//generate tinkers parts with materialis materials
 			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new TinkerPartSpriteProvider(), materialSprites));
-			//generate materialis parts with materialis materials
-			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new MaterialisPartTextures(), materialSprites));
-			//generate materialis parts with tinkers materials
-			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new MaterialisPartTextures(), tinkerMaterialSprites));
+			//generate materialis parts with tinkers and materialis materials
+			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new MaterialisPartTextures(), materialSprites, tinkerMaterialSprites));
 		} if (event.includeServer()) {
 			gen.addProvider(new MaterialisLootTables(gen));
 			gen.addProvider(new MaterialisRecipes(gen));
