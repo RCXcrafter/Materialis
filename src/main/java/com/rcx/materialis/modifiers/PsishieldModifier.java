@@ -20,7 +20,7 @@ public class PsishieldModifier extends Modifier {
 
 	@Override
 	public int onDamageTool(IModifierToolStack tool, int level, int amount, @Nullable LivingEntity holder) {
-		if (enabled && !tool.isBroken() && holder instanceof PlayerEntity) {
+		if (enabled && !tool.isBroken() && holder != null && holder instanceof PlayerEntity) {
 			PlayerData data = PlayerDataHandler.get((PlayerEntity) holder);
 			if (!data.overflowed && (float) data.getAvailablePsi() / (float) data.getTotalPsi() > 0.5F) {
 				int dealt = 0;
