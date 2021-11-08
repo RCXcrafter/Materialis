@@ -14,9 +14,11 @@ import com.rcx.materialis.datagen.MaterialisItemModels;
 import com.rcx.materialis.datagen.MaterialisItemTags;
 import com.rcx.materialis.datagen.MaterialisLang;
 import com.rcx.materialis.datagen.MaterialisLootTables;
+import com.rcx.materialis.datagen.MaterialisMaterialTextures;
 import com.rcx.materialis.datagen.MaterialisMaterials;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialStats;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
+import com.rcx.materialis.datagen.MaterialisPartTextures;
 import com.rcx.materialis.datagen.MaterialisRecipes;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
@@ -35,6 +37,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -44,9 +47,12 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.tools.ToolClientEvents;
+import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
+import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -138,10 +144,20 @@ public class Materialis {
 
 		if (event.includeClient()) {
 			gen.addProvider(new MaterialisLang(gen));
-			// Let blockstate provider see generated item models by passing its existing file helper
-			ItemModelProvider itemModels = new MaterialisItemModels(gen, event.getExistingFileHelper());
+			ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+			ItemModelProvider itemModels = new MaterialisItemModels(gen, existingFileHelper);
 			gen.addProvider(itemModels);
 			gen.addProvider(new MaterialisBlockStates(gen, itemModels.existingFileHelper));
+			MaterialisMaterialTextures materialSprites = new MaterialisMaterialTextures();
+			TinkerMaterialSpriteProvider tinkerMaterialSprites = new TinkerMaterialSpriteProvider();
+			//gen.addProvider(new MaterialRenderInfoProvider(gen, materialSprites));
+
+			//generate tinkers parts with materialis materials
+			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new TinkerPartSpriteProvider(), materialSprites));
+			//generate materialis parts with materialis materials
+			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new MaterialisPartTextures(), materialSprites));
+			//generate materialis parts with tinkers materials
+			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new MaterialisPartTextures(), tinkerMaterialSprites));
 		} if (event.includeServer()) {
 			gen.addProvider(new MaterialisLootTables(gen));
 			gen.addProvider(new MaterialisRecipes(gen));
@@ -169,10 +185,10 @@ public class Materialis {
 			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.WRENCH);
 			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.BATTLEWRENCH);
 		}
-		
+
 		@SubscribeEvent
-		  static void registerModifierModels(ModifierModelRegistrationEvent event) {
-		    event.registerModel(new ResourceLocation(Materialis.modID, "tinted"), TintedModifierModel.UNBAKED_INSTANCE);
+		static void registerModifierModels(ModifierModelRegistrationEvent event) {
+			event.registerModel(new ResourceLocation(Materialis.modID, "tinted"), TintedModifierModel.UNBAKED_INSTANCE);
 		}
 	}
 }
