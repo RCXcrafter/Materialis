@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:plates/terrasteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:plates/terrasteel"
+  },
+  "result": {
+    "fluid": "materialis:molten_terrasteel",
+    "amount": 144
+  },
+  "temperature": 1280,
+  "time": 74
+}

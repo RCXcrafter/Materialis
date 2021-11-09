@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "materialis:block/molten_terrasteel_block"
+    }
+  }
+}
