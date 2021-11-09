@@ -155,7 +155,7 @@ public class GreyToTextureColorMapping implements IColorMapping {
 					try {
 						texture = spriteReader.read(textureLocation);
 					} catch (IOException e) {
-						e.printStackTrace();
+						throw new IllegalStateException("Missing sprite at " + textureLocation.getNamespace() + ":material/" + textureLocation.getPath() + ".png, cannot generate textures");
 					}
 				}
 				return texture.getPixelRGBA(x % texture.getWidth(), y % texture.getHeight());

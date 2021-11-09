@@ -85,7 +85,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		buildMaterial(MaterialisMaterials.starmetal)
 		.meleeHarvest()
 		.fallbacks("metal")
-		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF07062B).addARGB(102, 0xFF070B4F).addARGB(140, 0xFF001169).addARGB(178, 0xFF002184).addARGB(216, 0xFF0033AA).addARGB(255, 0xFF1E70DB).build());
+		.transformer(new RecolorTextureSpriteTransformer(GreyToTextureColorMapping.builderFromBlack(spriteReader).addARGB(63, 0xFF07062B).addARGB(102, 0xFF070B4F).addTexture(140, getTexture("starmetal_0")).addTexture(178, getTexture("starmetal_1")).addTexture(216, getTexture("starmetal_2")).addTexture(255, getTexture("starmetal_3")).build()));
 		//industrial foregoing materials
 		buildMaterial(MaterialisMaterials.plastic)
 		.meleeHarvest()
