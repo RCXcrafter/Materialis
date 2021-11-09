@@ -41,8 +41,8 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 		.addTag(MaterialisResources.FROSTSTEEL_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.UTHERIUM_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.REGALIUM_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.IESNIUM_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.MANASTEEL_FLUID.OBJECT.getForgeTag());
+		.addTag(MaterialisResources.IESNIUM_FLUID.OBJECT.getForgeTag());
+		//.addTag(MaterialisResources.MANASTEEL_FLUID.OBJECT.getForgeTag());
 		tag(TinkerTags.Fluids.AVERAGE_METAL_SPILLING)
 		.addTag(MaterialisResources.ARCANE_GOLD_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.STARMETAL_FLUID.OBJECT.getForgeTag())
@@ -56,8 +56,8 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 		.addTag(MaterialisResources.NEPTUNIUM_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.FORGOTTEN_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.TERRASTEEL_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.ELEMENTIUM_FLUID.OBJECT.getForgeTag());
+		.addTag(MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT.getForgeTag());
+		//.addTag(MaterialisResources.TERRASTEEL_FLUID.OBJECT.getForgeTag())
+		//.addTag(MaterialisResources.ELEMENTIUM_FLUID.OBJECT.getForgeTag());
 	}
 }

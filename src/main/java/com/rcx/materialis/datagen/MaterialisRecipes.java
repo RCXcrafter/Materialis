@@ -325,7 +325,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("occultism:iesnium_pickaxe", 3));
 
 		//botania stuff
-		metalTagCasting(consumer, MaterialisResources.MANASTEEL_FLUID.OBJECT, "manasteel", castingFolder, false);
+		/*metalTagCasting(consumer, MaterialisResources.MANASTEEL_FLUID.OBJECT, "manasteel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.MANASTEEL_FLUID.FLUID.get(), "manasteel", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.TERRASTEEL_FLUID.OBJECT, "terrasteel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), "terrasteel", false, meltingFolder, true);
@@ -358,7 +358,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		toolMelting(withCondition(consumer, new ModLoadedCondition("botania")), new NameFluid("terrasteel", MaterialisResources.TERRASTEEL_FLUID.FLUID.get()),
 				new ToolValue("botania:terra_pick", 4),
 				new ToolValue("botania:terra_axe", 4),
-				new ToolValue("botania:terra_sword", 2));
+				new ToolValue("botania:terra_sword", 2));*/
 
 
 
