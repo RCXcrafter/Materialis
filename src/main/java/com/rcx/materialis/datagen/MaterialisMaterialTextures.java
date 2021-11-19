@@ -1,25 +1,13 @@
 package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
-import com.rcx.materialis.util.GreyToTextureColorMapping;
-import com.rcx.materialis.util.RecolorTextureSpriteTransformer;
 
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import slimeknights.tconstruct.library.client.data.SpriteReader;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
+import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
 
 public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
-
-	public ExistingFileHelper existingFileHelper;
-	public SpriteReader spriteReader;
-	public static final String FOLDER = "textures/material";
-
-	public MaterialisMaterialTextures(ExistingFileHelper existingFileHelper) {
-		this.existingFileHelper = existingFileHelper;
-		this.spriteReader = new SpriteReader(existingFileHelper, FOLDER);
-	}
 
 	@Override
 	public String getName() {
@@ -31,7 +19,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		buildMaterial(MaterialisMaterials.fairy)
 		.meleeHarvest()
 		.fallbacks("metal")
-		.transformer(new RecolorTextureSpriteTransformer(GreyToTextureColorMapping.builderFromBlack(spriteReader).addTexture(63, getTexture("fairy_outline_dark")).addTexture(102, getTexture("fairy_outline")).addARGB(140, 0xFFF2268E).addARGB(178, 0xFFFF44A3).addARGB(216, 0xFFFF65B4).addARGB(255, 0xFFFF89C6).build()));
+		.transformer(GreyToSpriteTransformer.builderFromBlack().addTexture(63, getTexture("material/fairy_outline_dark")).addTexture(102, getTexture("material/fairy_outline")).addARGB(140, 0xFFF2268E).addARGB(178, 0xFFFF44A3).addARGB(216, 0xFFFF65B4).addARGB(255, 0xFFFF89C6).build());
 		//general oredict materials
 		buildMaterial(MaterialisMaterials.brass)
 		.meleeHarvest()
@@ -85,7 +73,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		buildMaterial(MaterialisMaterials.starmetal)
 		.meleeHarvest()
 		.fallbacks("metal")
-		.transformer(new RecolorTextureSpriteTransformer(GreyToTextureColorMapping.builderFromBlack(spriteReader).addARGB(63, 0xFF07062B).addARGB(102, 0xFF070B4F).addTexture(140, getTexture("starmetal_0")).addTexture(178, getTexture("starmetal_1")).addTexture(216, getTexture("starmetal_2")).addTexture(255, getTexture("starmetal_3")).build()));
+		.transformer(GreyToSpriteTransformer.builderFromBlack().addARGB(63, 0xFF07062B).addARGB(102, 0xFF070B4F).addTexture(140, getTexture("material/starmetal_0")).addTexture(178, getTexture("material/starmetal_1")).addTexture(216, getTexture("material/starmetal_2")).addTexture(255, getTexture("material/starmetal_3")).build());
 		//industrial foregoing materials
 		buildMaterial(MaterialisMaterials.plastic)
 		.meleeHarvest()

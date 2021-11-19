@@ -20,6 +20,7 @@ import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialStats;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
 import com.rcx.materialis.datagen.MaterialisPartTextures;
 import com.rcx.materialis.datagen.MaterialisRecipes;
+import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
@@ -47,6 +48,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
@@ -148,14 +150,15 @@ public class Materialis {
 			ItemModelProvider itemModels = new MaterialisItemModels(gen, existingFileHelper);
 			gen.addProvider(itemModels);
 			gen.addProvider(new MaterialisBlockStates(gen, existingFileHelper));
-			MaterialisMaterialTextures materialSprites = new MaterialisMaterialTextures(existingFileHelper);
+			MaterialisMaterialTextures materialSprites = new MaterialisMaterialTextures();
+			MaterialisPartTextures partSprites = new MaterialisPartTextures();
 			TinkerMaterialSpriteProvider tinkerMaterialSprites = new TinkerMaterialSpriteProvider();
-			//gen.addProvider(new MaterialRenderInfoProvider(gen, materialSprites));
-
+			gen.addProvider(new MaterialisRenderInfo(gen, materialSprites));
+			gen.addProvider(new GeneratorPartTextureJsonGenerator(gen, Materialis.modID, partSprites));
 			//generate tinkers parts with materialis materials
 			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new TinkerPartSpriteProvider(), materialSprites));
 			//generate materialis parts with tinkers and materialis materials
-			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, new MaterialisPartTextures(), materialSprites, tinkerMaterialSprites));
+			gen.addProvider(new MaterialPartTextureGenerator(gen, existingFileHelper, partSprites, materialSprites, tinkerMaterialSprites));
 		} if (event.includeServer()) {
 			gen.addProvider(new MaterialisLootTables(gen));
 			gen.addProvider(new MaterialisRecipes(gen));

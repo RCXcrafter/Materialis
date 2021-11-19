@@ -1,0 +1,49 @@
+{
+  "fallbacks": [
+    "metal"
+  ],
+  "color": "0040D6",
+  "luminosity": 2,
+  "generator": {
+    "transformer": {
+      "type": "tconstruct:grey_to_sprite",
+      "palette": [
+        {
+          "grey": 0,
+          "color": "FF000000"
+        },
+        {
+          "grey": 63,
+          "color": "FF07062B"
+        },
+        {
+          "grey": 102,
+          "color": "FF070B4F"
+        },
+        {
+          "grey": 140,
+          "path": "materialis:material/starmetal_0"
+        },
+        {
+          "grey": 178,
+          "path": "materialis:material/starmetal_1"
+        },
+        {
+          "grey": 216,
+          "path": "materialis:material/starmetal_2"
+        },
+        {
+          "grey": 255,
+          "path": "materialis:material/starmetal_3"
+        }
+      ]
+    },
+    "supportedStats": [
+      "tconstruct:head",
+      "tconstruct:handle",
+      "tconstruct:extra",
+      "tconstruct:repair_kit"
+    ],
+    "ignoreMaterialStats": false
+  }
+}
