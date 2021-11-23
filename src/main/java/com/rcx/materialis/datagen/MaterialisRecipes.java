@@ -248,10 +248,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("undergarden:forgotten_pickaxe", 3),
 				new ToolValue("undergarden:forgotten_shovel", 1),
 				new ToolValue("undergarden:forgotten_sword", 2),
-				new ToolValue("undergarden:forgotten_battleaxe", 13));
+				new ToolValue("undergarden:forgotten_battleaxe", 3));
 		toolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), new NameFluid("cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get()),
 				new ToolValue("undergarden:cloggrum_shield", 6),
-				new ToolValue("undergarden:cloggrum_battleaxe", 13));
+				new ToolValue("undergarden:cloggrum_battleaxe", 3));
 
 		//mekanism stuff
 		//metalTagCasting(consumer, TinkerFluids.moltenRefinedObsidian, "refined_obsidian", castingFolder, false);
