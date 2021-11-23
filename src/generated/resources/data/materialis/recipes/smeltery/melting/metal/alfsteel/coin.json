@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/alfsteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/alfsteel"
+  },
+  "result": {
+    "fluid": "materialis:molten_alfsteel",
+    "amount": 48
+  },
+  "temperature": 1440,
+  "time": 52
+}

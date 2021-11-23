@@ -119,6 +119,9 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.terrasteel, "Terrasteel", "", "Has a 40% chance per level to fire a beam, this costs mana or durability if you have no mana");
 		//add("material.materialis.terrasteel.format", "Terra %s");
 
+		//mythicbotany stuff
+		addMaterial(MaterialisMaterials.alfsteel, "Alfsteel", "", "Has a 40% chance per level to fire a beam, this costs mana or durability if you have no mana");
+
 		//modifiers
 		addModifier(MaterialisModifiers.enhancedQuartzModifier, "Enhanced",
 				"Shiny!",
@@ -265,6 +268,9 @@ public class MaterialisLang extends LanguageProvider {
 				"Has a chance of spawning a pixie when you take damage while holding the tool");
 		addModifier(MaterialisModifiers.terrabeamModifier, "Terrabeam",
 				"Beam me up!",
+				"When swinging your tool you have a chance of firing a beam of mana");
+		addModifier(MaterialisModifiers.elvenBeamModifier, "Elven Beam",
+				"Science cannot yet explain how it works",
 				"When swinging your tool you have a chance of firing a beam of mana");
 	}
 

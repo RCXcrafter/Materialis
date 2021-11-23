@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mythicbotany:alfsteel_ingot",
+      "required": false
+    }
+  ]
+}

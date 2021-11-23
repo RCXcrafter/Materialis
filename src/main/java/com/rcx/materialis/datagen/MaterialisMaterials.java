@@ -83,6 +83,9 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId elementium = createMaterial("elementium");
 	public static final MaterialId terrasteel = createMaterial("terrasteel");
 
+	//mythicbotany materials
+	public static final MaterialId alfsteel = createMaterial("alfsteel");
+
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -144,6 +147,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(manasteel, 2, ORDER_HARVEST + ORDER_COMPAT, 0x3389FF);
 		addCompatMetalMaterial(elementium, 3, ORDER_WEAPON + ORDER_COMPAT, 0xF15CAE);
 		addCompatMetalMaterial(terrasteel, 4, ORDER_WEAPON + ORDER_COMPAT, 0x53F900);
+		//mythicbotany materials
+		addCompatMetalMaterial(alfsteel, 4, ORDER_WEAPON + ORDER_COMPAT, 0xFFC74E);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -209,6 +214,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(manasteel, new ModifierEntry(MaterialisModifiers.manashieldModifier.get(), 2));
 			addDefaultTraits(elementium, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.pixiecallerModifier.get());
 			addDefaultTraits(terrasteel, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.terrabeamModifier.get());
+			//mythicbotany materials
+			addDefaultTraits(alfsteel, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.elvenBeamModifier.get());
 		}
 	}
 
@@ -271,6 +278,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(manasteel, new HeadMaterialStats(300, 6.2f, 3, 1.5f), new HandleMaterialStats(1.1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(elementium, new HeadMaterialStats(720, 5f, 3, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.2f, 0.9f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(terrasteel, new HeadMaterialStats(1000, 9f, 4, 3f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1.15f), ExtraMaterialStats.DEFAULT);
+			//mythicbotany materials
+			addMaterialStats(alfsteel, new HeadMaterialStats(1430, 9f, 4, 3.2f), new HandleMaterialStats(0.9f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }

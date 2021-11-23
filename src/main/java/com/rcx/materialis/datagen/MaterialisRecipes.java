@@ -360,6 +360,20 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("botania:terra_axe", 4),
 				new ToolValue("botania:terra_sword", 2));
 
+		//mythicbotany stuff
+		metalTagCasting(consumer, MaterialisResources.ALFSTEEL_FLUID.OBJECT, "alfsteel", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), "alfsteel", false, meltingFolder, true);
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("mythicbotany", "alfsteel_armor_upgrade")), MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.0f).build(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(meltingFolder + "alfsteel_double_ingot"));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("mythicbotany")), new NameFluid("alfsteel", MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2), true),
+				new ToolValue("mythicbotany:alfsteel_helmet", 3),
+				new ToolValue("mythicbotany:alfsteel_chestplate", 3),
+				new ToolValue("mythicbotany:alfsteel_leggings", 3),
+				new ToolValue("mythicbotany:alfsteel_boots", 3));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("mythicbotany")), new NameFluid("alfsteel", MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT), true),
+				new ToolValue("mythicbotany:alfsteel_pick", 4),
+				new ToolValue("mythicbotany:alfsteel_axe", 4),
+				new ToolValue("mythicbotany:alfsteel_sword", 2));
+
 
 
 		//materials
@@ -399,6 +413,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.manasteel, materialFolder, "manasteel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.elementium, materialFolder, "elementium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.terrasteel, materialFolder, "terrasteel", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.alfsteel, materialFolder, "alfsteel", true);
 
 		//material casting
 		materialMeltingCasting(consumer, MaterialisMaterials.fairy, MaterialisResources.FAIRY_FLUID.OBJECT, materialFolder);
@@ -430,6 +445,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		materialMeltingCasting(consumer, MaterialisMaterials.ebonyPsimetal, MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.ivoryPsimetal, MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.iesnium, MaterialisResources.IESNIUM_FLUID.OBJECT, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.manasteel, MaterialisResources.MANASTEEL_FLUID.OBJECT, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.elementium, MaterialisResources.ELEMENTIUM_FLUID.OBJECT, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.terrasteel, MaterialisResources.TERRASTEEL_FLUID.OBJECT, materialFolder);
+		materialComposite(withCondition(consumer, new ModLoadedCondition("mythicbotany")), MaterialisMaterials.terrasteel, MaterialisMaterials.alfsteel, MaterialisResources.ALFSTEEL_FLUID.OBJECT, FluidValues.NUGGET * 3, false, compositeFolder);
+		MaterialMeltingRecipeBuilder.material(MaterialisMaterials.alfsteel, new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.NUGGET * 3))
+		.build(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(materialFolder + "melting/alfsteel"));
 
 
 

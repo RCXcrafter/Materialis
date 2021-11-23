@@ -32,7 +32,9 @@ public class ManashieldModifier extends Modifier {
 					dealt++;
 				} else {
 					int cost = MANA_PER_DAMAGE;
-					if (tool.getModifierLevel(MaterialisModifiers.terrabeamModifier.get()) > 0)
+					if (tool.getModifierLevel(MaterialisModifiers.elvenBeamModifier.get()) > 0)
+						cost = ElvenBeamModifier.MANA_PER_BEAM;
+					else if (tool.getModifierLevel(MaterialisModifiers.terrabeamModifier.get()) > 0)
 						cost = TerrabeamModifier.MANA_PER_BEAM;
 
 					if (!ManaItemHandler.instance().requestManaExactForTool(toolStack, (PlayerEntity) holder, cost, true))

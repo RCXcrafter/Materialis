@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/alfsteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/alfsteel"
+  },
+  "result": {
+    "fluid": "materialis:molten_alfsteel",
+    "amount": 72
+  },
+  "temperature": 1440,
+  "time": 16
+}

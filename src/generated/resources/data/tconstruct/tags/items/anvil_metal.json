@@ -9,6 +9,11 @@
     {
       "id": "#forge:storage_blocks/ivory_psimetal",
       "required": false
-    }
+    },
+    {
+      "id": "#forge:storage_blocks/terrasteel",
+      "required": false
+    },
+    "#forge:storage_blocks/alfsteel"
   ]
 }

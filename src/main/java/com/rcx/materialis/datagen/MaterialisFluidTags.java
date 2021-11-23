@@ -57,7 +57,8 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 		.addTag(MaterialisResources.FORGOTTEN_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.IVORY_PSIMETAL_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.ELEMENTIUM_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.TERRASTEEL_FLUID.OBJECT.getForgeTag())
-		.addTag(MaterialisResources.ELEMENTIUM_FLUID.OBJECT.getForgeTag());
+		.addTag(MaterialisResources.ALFSTEEL_FLUID.OBJECT.getForgeTag());
 	}
 }

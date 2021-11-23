@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/alfsteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/alfsteel"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "materialis:alfsteel",
+  "leftover": {
+    "tag": "forge:ingots/alfsteel"
+  }
+}

@@ -52,6 +52,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> manashieldModifier = MODIFIERS.register("manashield", ManashieldModifier::new);
 	public static final RegistryObject<Modifier> pixiecallerModifier = MODIFIERS.register("pixiecaller", PixiecallerModifier::new);
 	public static final RegistryObject<Modifier> terrabeamModifier = MODIFIERS.register("terrabeam", TerrabeamModifier::new);
+	public static final RegistryObject<Modifier> elvenBeamModifier = MODIFIERS.register("elven_beam", ElvenBeamModifier::new);
 
 	//upgrades & abilities
 	public static final RegistryObject<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);

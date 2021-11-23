@@ -24,6 +24,7 @@ import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.util.PacketElvenBeam;
 import com.rcx.materialis.util.PacketTerraBeam;
 import com.rcx.materialis.util.TintedModifierModel;
 
@@ -98,8 +99,10 @@ public class Materialis {
 			MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, new PsiCompat()::attachCapabilities);
 		if (ModList.get().isLoaded("quark"))
 			MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, new QuarkCompat()::attachCapabilities);
-		if (ModList.get().isLoaded("botania"))
-			PacketHandler.HANDLER.registerMessage(294, PacketTerraBeam.class, PacketTerraBeam::encode, PacketTerraBeam::decode, PacketTerraBeam::handle);
+		if (ModList.get().isLoaded("botania")) {
+			PacketHandler.HANDLER.registerMessage(293, PacketTerraBeam.class, PacketTerraBeam::encode, PacketTerraBeam::decode, PacketTerraBeam::handle);
+			PacketHandler.HANDLER.registerMessage(294, PacketElvenBeam.class, PacketElvenBeam::encode, PacketElvenBeam::decode, PacketElvenBeam::handle);
+		}
 	}
 
 	/*private void doClientStuff(final FMLClientSetupEvent event) {

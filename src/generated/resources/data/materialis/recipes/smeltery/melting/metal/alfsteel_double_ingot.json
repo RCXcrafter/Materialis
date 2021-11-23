@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "modid": "mythicbotany",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mythicbotany:alfsteel_armor_upgrade"
+  },
+  "result": {
+    "fluid": "materialis:molten_alfsteel",
+    "amount": 288
+  },
+  "temperature": 1440,
+  "time": 79
+}

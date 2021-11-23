@@ -49,6 +49,11 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
 	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
 
+	//mythic botany stuff
+	public static final INamedTag<Item> ALFSTEEL_INGOT = ItemTags.bind("forge:ingots/alfsteel");
+	public static final INamedTag<Item> ALFSTEEL_NUGGET = ItemTags.bind("forge:nuggets/alfsteel");
+	public static final INamedTag<Item> ALFSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/alfsteel");
+
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
 	}
@@ -121,6 +126,18 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		//psi stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
+
+		//botania stuff
+		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/terrasteel"));
+
+		//mythicbotany stuff
+		tag(ALFSTEEL_INGOT).addOptional(new ResourceLocation("mythicbotany", "alfsteel_ingot"));
+		tag(Tags.Items.INGOTS).addTag(ALFSTEEL_INGOT);
+		tag(ALFSTEEL_NUGGET).addOptional(new ResourceLocation("mythicbotany", "alfsteel_nugget"));
+		tag(Tags.Items.NUGGETS).addTag(ALFSTEEL_NUGGET);
+		tag(ALFSTEEL_BLOCK).addOptional(new ResourceLocation("mythicbotany", "alfsteel_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(ALFSTEEL_BLOCK);
+		tag(ANVIL_METAL).addTag(ALFSTEEL_BLOCK);
 	}
 
 	@SafeVarargs

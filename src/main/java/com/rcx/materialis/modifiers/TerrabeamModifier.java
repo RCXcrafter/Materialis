@@ -56,7 +56,7 @@ public class TerrabeamModifier extends Modifier {
 		public static void trySpawnBurst(PlayerEntity player, boolean nothingForFree) {
 			if (enabled && !player.getMainHandItem().isEmpty() && player.getAttackStrengthScale(0) == 1) {
 				ToolStack tool = getHeldTool(player, Hand.MAIN_HAND);
-				if (tool != null) {
+				if (tool != null && tool.getModifierLevel(MaterialisModifiers.elvenBeamModifier.get()) < 1) {
 					int level = tool.getModifierLevel(MaterialisModifiers.terrabeamModifier.get());
 					if (level > 0 && (level * CHANCE > 1.0f || rand.nextFloat() < level * CHANCE)) {
 						EntityManaBurst burst = BurstHandler.getBurst(player);

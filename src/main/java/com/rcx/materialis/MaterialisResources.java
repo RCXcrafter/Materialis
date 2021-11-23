@@ -119,9 +119,12 @@ public class MaterialisResources {
 	public static final FluidWithBlockNBucket IESNIUM_FLUID = addFluid("molten_iesnium", "Molten Iesnium", 1390, 12, 3000, 6000);
 
 	//botania fluids
-	public static final FluidWithBlockNBucket MANASTEEL_FLUID = addFluid("molten_manasteel", "Molten manasteel", 1090, 12, 3000, 6000);
-	public static final FluidWithBlockNBucket ELEMENTIUM_FLUID = addFluid("molten_elementium", "Molten elementium", 1460, 12, 3000, 6000);
-	public static final FluidWithBlockNBucket TERRASTEEL_FLUID = addFluid("molten_terrasteel", "Molten terrasteel", 1580, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket MANASTEEL_FLUID = addFluid("molten_manasteel", "Molten Manasteel", 1090, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket ELEMENTIUM_FLUID = addFluid("molten_elementium", "Molten Elementium", 1460, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket TERRASTEEL_FLUID = addFluid("molten_terrasteel", "Molten Terrasteel", 1580, 12, 3000, 6000);
+
+	//mythicbotany fluids
+	public static final FluidWithBlockNBucket ALFSTEEL_FLUID = addFluid("molten_alfsteel", "Molten Alfsteel", 1740, 12, 3000, 6000);
 
 
 	/*

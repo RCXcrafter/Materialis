@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:manasteel",
+  "temperature": 790,
+  "result": {
+    "fluid": "materialis:molten_manasteel",
+    "amount": 144
+  }
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#forge:nuggets/fairy"
+    "#forge:nuggets/fairy",
+    "#forge:nuggets/alfsteel"
   ]
 }

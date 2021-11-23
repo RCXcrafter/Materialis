@@ -147,6 +147,11 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.meleeHarvest()
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF176600).addARGB(102, 0xFF259300).addARGB(140, 0xFF2EB800).addARGB(178, 0xFF35DA00).addARGB(216, 0xFF5DF82A).addARGB(255, 0xFFA7FF8B).build());
+		//mythicbotany materials
+		buildMaterial(MaterialisMaterials.alfsteel)
+		.meleeHarvest()
+		.fallbacks("metal")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF683900).addARGB(102, 0xFF9E5F00).addARGB(140, 0xFFD37E00).addARGB(178, 0xFFF89100).addARGB(216, 0xFFFFC400).addARGB(255, 0xFFFFE863).build());
 	}
 
 	public static ResourceLocation getTexture(String path) {

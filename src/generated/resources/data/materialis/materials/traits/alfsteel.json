@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "materialis:manashield",
+      "level": 1
+    },
+    {
+      "name": "materialis:elven_beam",
+      "level": 1
+    }
+  ]
+}
