@@ -53,6 +53,9 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> pixiecallerModifier = MODIFIERS.register("pixiecaller", PixiecallerModifier::new);
 	public static final RegistryObject<Modifier> terrabeamModifier = MODIFIERS.register("terrabeam", TerrabeamModifier::new);
 	public static final RegistryObject<Modifier> elvenBeamModifier = MODIFIERS.register("elven_beam", ElvenBeamModifier::new);
+	public static final RegistryObject<Modifier> fluxripperModifier = MODIFIERS.register("fluxripper", FluxripperModifier::new);
+	public static final RegistryObject<Modifier> fluxburnerModifier = MODIFIERS.register("fluxburner", FluxburnerModifier::new);
+	public static final RegistryObject<Modifier> fluxshieldModifier = MODIFIERS.register("fluxshield", FluxshieldModifier::new);
 
 	//upgrades & abilities
 	public static final RegistryObject<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);
@@ -65,6 +68,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> spellCastingModifier = MODIFIERS.register("spell_casting", SpellCastingModifier::new);
 	public static final RegistryObject<Modifier> lesserSpellCastingModifier = MODIFIERS.register("lesser_spell_casting", LesserSpellCastingModifier::new); //unused
 	public static final RegistryObject<Modifier> colorizedModifier = MODIFIERS.register("colorized", ColorizedModifier::new);
+	public static final RegistryObject<Modifier> capacitorModifier = MODIFIERS.register("capacitor", () -> new CapacitorModifier(0xB51212));
 
 	//internal modifiers
 	public static final RegistryObject<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(0xFFFFFF, Integer.MIN_VALUE + 50));

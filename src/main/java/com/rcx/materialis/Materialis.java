@@ -26,6 +26,7 @@ import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.PacketElvenBeam;
 import com.rcx.materialis.util.PacketTerraBeam;
+import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
 
 import net.minecraft.client.renderer.color.ItemColors;
@@ -41,6 +42,7 @@ import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -54,6 +56,7 @@ import slimeknights.tconstruct.library.client.data.material.GeneratorPartTexture
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
+import slimeknights.tconstruct.library.tools.item.ToolItem;
 import slimeknights.tconstruct.tools.ToolClientEvents;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
@@ -102,6 +105,16 @@ public class Materialis {
 		if (ModList.get().isLoaded("botania")) {
 			PacketHandler.HANDLER.registerMessage(293, PacketTerraBeam.class, PacketTerraBeam::encode, PacketTerraBeam::decode, PacketTerraBeam::handle);
 			PacketHandler.HANDLER.registerMessage(294, PacketElvenBeam.class, PacketElvenBeam::encode, PacketElvenBeam::decode, PacketElvenBeam::handle);
+		}
+		MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, this::attachCapabilities);
+	}
+
+	public static final ResourceLocation FLUXED_CAPABILITY = new ResourceLocation(Materialis.modID, "fluxed_capability");
+
+	public void attachCapabilities(final AttachCapabilitiesEvent<ItemStack> event) {
+		ItemStack stack = event.getObject();
+		if (stack.getItem() instanceof ToolItem) {
+			event.addCapability(FLUXED_CAPABILITY, new TinkerToolFluxed(stack));
 		}
 	}
 

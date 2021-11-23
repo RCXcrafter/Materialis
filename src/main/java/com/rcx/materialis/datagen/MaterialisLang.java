@@ -7,6 +7,7 @@ import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.util.TinkerToolFluxed;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
@@ -38,6 +39,7 @@ public class MaterialisLang extends LanguageProvider {
 		}
 
 		addMaterial(MaterialisMaterials.fairy, "Fairy", "From the fairy depths of hell.", "Adds the percentage of health lost multiplied by the level to your mining speed");
+		add(TinkerToolFluxed.STORED_ENERGY_KEY, "Energy: %s / %s RF");
 
 		//custom casts
 		addCast(MaterialisResources.INLAY_CAST, "Inlay");
@@ -259,7 +261,7 @@ public class MaterialisLang extends LanguageProvider {
 				"Boosts attack damage at the cost of mana");
 		addModifier(MaterialisModifiers.manaburnerModifier, "Manaburner",
 				"burn through the mana",
-				"Boosts attack mining speed at the cost of mana");
+				"Boosts mining speed at the cost of mana");
 		addModifier(MaterialisModifiers.manashieldModifier, "Manashield",
 				"Botanical!",
 				"Has a chance of protecting your tool from damage at the cost of mana");
@@ -272,6 +274,18 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.elvenBeamModifier, "Elven Beam",
 				"Science cannot yet explain how it works",
 				"When swinging your tool you have a chance of firing a beam of mana");
+		addModifier(MaterialisModifiers.capacitorModifier, "Capacitor",
+				"This is what makes time travel possible, the flux capacitor",
+				"Increases the energy capacity of the tool by 10000");
+		addModifier(MaterialisModifiers.fluxripperModifier, "Fluxripper",
+				"64 cores!",
+				"Boosts attack damage at the cost of energy");
+		addModifier(MaterialisModifiers.fluxburnerModifier, "Fluxburner",
+				"Empowered!",
+				"Boosts mining speed at the cost of energy");
+		addModifier(MaterialisModifiers.fluxshieldModifier, "Fluxshield",
+				"Energized!",
+				"Has a chance of protecting your tool from damage at the cost of energy");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
