@@ -47,7 +47,11 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> otherworldly2Modifier = MODIFIERS.register("otherworldly_2", () -> new OtherworldlyModifier(2));
 	public static final RegistryObject<Modifier> overeatingModifier = MODIFIERS.register("overeating", OvereatingModifier::new);
 	public static final RegistryObject<Modifier> psishieldModifier = MODIFIERS.register("psishield", PsishieldModifier::new); //unused
+	public static final RegistryObject<Modifier> manaripperModifier = MODIFIERS.register("manaripper", ManaripperModifier::new);
+	public static final RegistryObject<Modifier> manaburnerModifier = MODIFIERS.register("manaburner", ManaburnerModifier::new);
 	public static final RegistryObject<Modifier> manashieldModifier = MODIFIERS.register("manashield", ManashieldModifier::new);
+	public static final RegistryObject<Modifier> pixiecallerModifier = MODIFIERS.register("pixiecaller", PixiecallerModifier::new);
+	public static final RegistryObject<Modifier> terrabeamModifier = MODIFIERS.register("terrabeam", TerrabeamModifier::new);
 
 	//upgrades & abilities
 	public static final RegistryObject<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);

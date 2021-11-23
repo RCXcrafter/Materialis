@@ -6,9 +6,14 @@
       "type": "forge:mod_loaded"
     }
   ],
-  "ingredient": {
-    "item": "create:polished_rose_quartz"
-  },
+  "ingredient": [
+    {
+      "item": "create:rose_quartz"
+    },
+    {
+      "item": "create:polished_rose_quartz"
+    }
+  ],
   "value": 1,
   "needed": 1,
   "material": "materialis:rose_quartz"

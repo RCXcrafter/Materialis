@@ -126,6 +126,27 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.meleeHarvest()
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF233C57).addARGB(102, 0xFF345F7C).addARGB(140, 0xFF3E8C9D).addARGB(178, 0xFF56A7B9).addARGB(216, 0xFF7DCDD8).addARGB(255, 0xFFD0F9FC).build());
+		//botania materials
+		buildMaterial(MaterialisMaterials.livingwood)
+		.meleeHarvest()
+		.fallbacks("wood", "stick")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF130804).addARGB(102, 0xFF180904).addARGB(140, 0xFF1E0D07).addARGB(178, 0xFF271108).addARGB(216, 0xFF33140A).addARGB(255, 0xFF421909).build());
+		buildMaterial(MaterialisMaterials.dreamwood)
+		.meleeHarvest()
+		.fallbacks("wood", "stick")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF83959B).addARGB(102, 0xFF95A5AB).addARGB(140, 0xFFA6B3B7).addARGB(178, 0xFFAFBDC1).addARGB(216, 0xFFBAC4C7).addARGB(255, 0xFFC1CCCC).build());
+		buildMaterial(MaterialisMaterials.manasteel)
+		.meleeHarvest()
+		.fallbacks("metal")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF083772).addARGB(102, 0xFF0A4998).addARGB(140, 0xFF0C5FC6).addARGB(178, 0xFF1776ED).addARGB(216, 0xFF5BA3FF).addARGB(255, 0xFFBDD9FF).build());
+		buildMaterial(MaterialisMaterials.elementium)
+		.meleeHarvest()
+		.fallbacks("metal")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFFBB0067).addARGB(102, 0xFFE90081).addARGB(140, 0xFFEE45A3).addARGB(178, 0xFFF26DB6).addARGB(216, 0xFFF592C8).addARGB(255, 0xFFFACAE4).build());
+		buildMaterial(MaterialisMaterials.terrasteel)
+		.meleeHarvest()
+		.fallbacks("metal")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF176600).addARGB(102, 0xFF259300).addARGB(140, 0xFF2EB800).addARGB(178, 0xFF35DA00).addARGB(216, 0xFF5DF82A).addARGB(255, 0xFFA7FF8B).build());
 	}
 
 	public static ResourceLocation getTexture(String path) {

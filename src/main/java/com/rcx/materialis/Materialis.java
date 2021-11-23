@@ -24,6 +24,7 @@ import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.util.PacketTerraBeam;
 import com.rcx.materialis.util.TintedModifierModel;
 
 import net.minecraft.client.renderer.color.ItemColors;
@@ -55,6 +56,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvide
 import slimeknights.tconstruct.tools.ToolClientEvents;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
+import vazkii.botania.common.network.PacketHandler;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -96,6 +98,8 @@ public class Materialis {
 			MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, new PsiCompat()::attachCapabilities);
 		if (ModList.get().isLoaded("quark"))
 			MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, new QuarkCompat()::attachCapabilities);
+		if (ModList.get().isLoaded("botania"))
+			PacketHandler.HANDLER.registerMessage(294, PacketTerraBeam.class, PacketTerraBeam::encode, PacketTerraBeam::decode, PacketTerraBeam::handle);
 	}
 
 	/*private void doClientStuff(final FMLClientSetupEvent event) {

@@ -49,6 +49,12 @@ public class MaterialisRenderInfo extends AbstractMaterialRenderInfoProvider {
 		buildRenderInfo(MaterialisMaterials.ivoryPsimetal).color(0xF6F9ED);
 		//occultism materials
 		buildRenderInfo(MaterialisMaterials.iesnium).color(0x8ADAE3);
+		//botania materials
+		buildRenderInfo(MaterialisMaterials.livingwood).color(0x421909);
+		buildRenderInfo(MaterialisMaterials.dreamwood).color(0xFFC1CCCC);
+		buildRenderInfo(MaterialisMaterials.manasteel).color(0x3389FF);
+		buildRenderInfo(MaterialisMaterials.elementium).color(0xF15CAE);
+		buildRenderInfo(MaterialisMaterials.terrasteel).color(0x5CFF12);
 	}
 
 	@Override

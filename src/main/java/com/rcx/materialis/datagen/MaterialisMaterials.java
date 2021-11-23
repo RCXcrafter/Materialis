@@ -16,6 +16,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataPr
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.json.MaterialJson.Redirect;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
@@ -79,8 +80,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId livingwood = createMaterial("livingwood");
 	public static final MaterialId dreamwood = createMaterial("dreamwood");
 	public static final MaterialId manasteel = createMaterial("manasteel");
-	public static final MaterialId terrasteel = createMaterial("terrasteel");
 	public static final MaterialId elementium = createMaterial("elementium");
+	public static final MaterialId terrasteel = createMaterial("terrasteel");
 
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
@@ -137,6 +138,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, 0xF6F9ED);
 		//occultism materials
 		addCompatMetalMaterial(iesnium, 4, ORDER_HARVEST, 0x8ADAE3);
+		//botania materials
+		addMaterial(livingwood, 1, ORDER_HARVEST, true, 0x783519, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
+		addMaterial(dreamwood, 2, ORDER_HARVEST, true, 0xC1CCCC, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
+		addCompatMetalMaterial(manasteel, 2, ORDER_HARVEST, 0x3389FF);
+		addCompatMetalMaterial(elementium, 3, ORDER_WEAPON, 0xF15CAE);
+		addCompatMetalMaterial(terrasteel, 4, ORDER_WEAPON, 0x53F900);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -196,6 +203,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.lesserPsionizingRadiationModifier.get(), MaterialisModifiers.psichoDiggerModifier.get());
 			//occultism materials
 			addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier.get());
+			//botania materials
+			addDefaultTraits(livingwood, MaterialisModifiers.manaripperModifier.get());
+			addDefaultTraits(dreamwood, MaterialisModifiers.manaburnerModifier.get());
+			addDefaultTraits(manasteel, new ModifierEntry(MaterialisModifiers.manashieldModifier.get(), 2));
+			addDefaultTraits(elementium, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.pixiecallerModifier.get());
+			addDefaultTraits(terrasteel, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.terrabeamModifier.get());
 		}
 	}
 
@@ -252,6 +265,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(600, 8f, 4, 1.5f), new HandleMaterialStats(1.1f, 1.2f, 0.9f, 0.9f), ExtraMaterialStats.DEFAULT);
 			//occultism materials
 			addMaterialStats(iesnium, new HeadMaterialStats(921, 7f, 3, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			//botania materials
+			addMaterialStats(livingwood, new HeadMaterialStats(70, 3f, 1, 1f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(dreamwood, new HeadMaterialStats(160, 4f, 1, 1.2f), new HandleMaterialStats(1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(manasteel, new HeadMaterialStats(300, 6.2f, 3, 1.5f), new HandleMaterialStats(1.1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(elementium, new HeadMaterialStats(720, 5f, 3, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.2f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(terrasteel, new HeadMaterialStats(1000, 9f, 4, 3f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1.15f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }

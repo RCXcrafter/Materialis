@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "materialis:manashield",
+      "level": 1
+    },
+    {
+      "name": "materialis:pixiecaller",
+      "level": 1
+    }
+  ]
+}

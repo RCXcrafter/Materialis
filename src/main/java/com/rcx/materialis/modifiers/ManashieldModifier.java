@@ -28,10 +28,14 @@ public class ManashieldModifier extends Modifier {
 				toolStack = ((ToolStack) tool).createStack();
 			int dealt = 0;
 			for (int i = 0; i < amount; i++) {
-				if (RANDOM.nextFloat() >= 0.2f * level) {
+				if (RANDOM.nextFloat() >= 0.1f * level) {
 					dealt++;
 				} else {
-					if (!ManaItemHandler.instance().requestManaExactForTool(toolStack, (PlayerEntity) holder, MANA_PER_DAMAGE, true))
+					int cost = MANA_PER_DAMAGE;
+					if (tool.getModifierLevel(MaterialisModifiers.terrabeamModifier.get()) > 0)
+						cost = TerrabeamModifier.MANA_PER_BEAM;
+
+					if (!ManaItemHandler.instance().requestManaExactForTool(toolStack, (PlayerEntity) holder, cost, true))
 						dealt++;
 				}
 			}

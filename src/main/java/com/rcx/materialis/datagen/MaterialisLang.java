@@ -111,6 +111,14 @@ public class MaterialisLang extends LanguageProvider {
 		//occultism stuff
 		addMaterial(MaterialisMaterials.iesnium, "Iesnium", "", "Allows the tool to harvest otherworld blocks");
 
+		//botania stuff
+		addMaterial(MaterialisMaterials.livingwood, "Livingwood", "", "increases attack damage with 1.5 per level, mana cost increases with level");
+		addMaterial(MaterialisMaterials.dreamwood, "Dreamwood", "", "increases mining speed with 2.5 per level, mana cost increases with level");
+		addMaterial(MaterialisMaterials.manasteel, "Manasteel", "", "Has a 10% chance of using mana instead of durability per level");
+		addMaterial(MaterialisMaterials.elementium, "Elementium", "", "Adds a 3% chance to spawn a pixie while holding the tool per level");
+		addMaterial(MaterialisMaterials.terrasteel, "Terrasteel", "", "Has a 40% chance per level to fire a beam, this costs mana or durability if you have no mana");
+		//add("material.materialis.terrasteel.format", "Terra %s");
+
 		//modifiers
 		addModifier(MaterialisModifiers.enhancedQuartzModifier, "Enhanced",
 				"Shiny!",
@@ -243,9 +251,21 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.psishieldModifier, "Psishield",
 				"Psichological!",
 				"Has a chance of protecting your tool from damage at the cost of psi");
+		addModifier(MaterialisModifiers.manaripperModifier, "Manaripper",
+				"Rip and tear",
+				"Boosts attack damage at the cost of mana");
+		addModifier(MaterialisModifiers.manaburnerModifier, "Manaburner",
+				"burn through the mana",
+				"Boosts attack mining speed at the cost of mana");
 		addModifier(MaterialisModifiers.manashieldModifier, "Manashield",
 				"Botanical!",
 				"Has a chance of protecting your tool from damage at the cost of mana");
+		addModifier(MaterialisModifiers.pixiecallerModifier, "Pixiecaller",
+				"Pix or it didn't happen",
+				"Has a chance of spawning a pixie when you take damage while holding the tool");
+		addModifier(MaterialisModifiers.terrabeamModifier, "Terrabeam",
+				"Beam me up!",
+				"When swinging your tool you have a chance of firing a beam of mana");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

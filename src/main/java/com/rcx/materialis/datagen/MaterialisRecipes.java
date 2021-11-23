@@ -327,10 +327,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//botania stuff
 		metalTagCasting(consumer, MaterialisResources.MANASTEEL_FLUID.OBJECT, "manasteel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.MANASTEEL_FLUID.FLUID.get(), "manasteel", false, meltingFolder, true);
-		metalTagCasting(consumer, MaterialisResources.TERRASTEEL_FLUID.OBJECT, "terrasteel", castingFolder, false);
-		metalMelting(consumer, MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), "terrasteel", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.ELEMENTIUM_FLUID.OBJECT, "elementium", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.ELEMENTIUM_FLUID.FLUID.get(), "elementium", false, meltingFolder, true);
+		metalTagCasting(consumer, MaterialisResources.TERRASTEEL_FLUID.OBJECT, "terrasteel", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), "terrasteel", false, meltingFolder, true);
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("botania")), "botania",
 				new NameFluid[] {
 						new NameFluid("manasteel", MaterialisResources.MANASTEEL_FLUID.FLUID.get()),
@@ -371,7 +371,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.uranium, materialFolder, "uranium", true);
 		//metalMaterialRecipe(consumer, MaterialisMaterials.tungsten, materialFolder, "tungsten", true);
 		//metalMaterialRecipe(consumer, MaterialisMaterials.invar, materialFolder, "invar", true);
-		materialRecipe(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "polished_rose_quartz")), 1, 1, materialFolder + "rose_quartz");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "rose_quartz"), new ResourceLocation("create", "polished_rose_quartz")), 1, 1, materialFolder + "rose_quartz");
 		metalMaterialRecipe(consumer, MaterialisMaterials.refinedRadiance, materialFolder, "refined_radiance", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.shadowSteel, materialFolder, "shadow_steel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.pewter, materialFolder, "pewter", true);
@@ -392,6 +392,13 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.ebonyPsimetal, materialFolder, "ebony_psimetal", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.ivoryPsimetal, materialFolder, "ivory_psimetal", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.iesnium, materialFolder, "iesnium", true);
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.livingwood, ItemNameIngredient.from(new ResourceLocation("botania", "livingwood")), 1, 1, materialFolder + "livingwood");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.livingwood, ItemNameIngredient.from(new ResourceLocation("botania", "livingwood_twig")), 2, 1, materialFolder + "livingwood_twig");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.dreamwood, ItemNameIngredient.from(new ResourceLocation("botania", "dreamwood")), 1, 1, materialFolder + "dreamwood");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.dreamwood, ItemNameIngredient.from(new ResourceLocation("botania", "dreamwood_twig")), 2, 1, materialFolder + "dreamwood_twig");
+		metalMaterialRecipe(consumer, MaterialisMaterials.manasteel, materialFolder, "manasteel", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.elementium, materialFolder, "elementium", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.terrasteel, materialFolder, "terrasteel", true);
 
 		//material casting
 		materialMeltingCasting(consumer, MaterialisMaterials.fairy, MaterialisResources.FAIRY_FLUID.OBJECT, materialFolder);

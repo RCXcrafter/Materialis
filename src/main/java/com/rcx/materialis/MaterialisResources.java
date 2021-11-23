@@ -120,8 +120,8 @@ public class MaterialisResources {
 
 	//botania fluids
 	public static final FluidWithBlockNBucket MANASTEEL_FLUID = addFluid("molten_manasteel", "Molten manasteel", 1090, 12, 3000, 6000);
-	public static final FluidWithBlockNBucket TERRASTEEL_FLUID = addFluid("molten_terrasteel", "Molten terrasteel", 1580, 12, 3000, 6000);
 	public static final FluidWithBlockNBucket ELEMENTIUM_FLUID = addFluid("molten_elementium", "Molten elementium", 1460, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket TERRASTEEL_FLUID = addFluid("molten_terrasteel", "Molten terrasteel", 1580, 12, 3000, 6000);
 
 
 	/*

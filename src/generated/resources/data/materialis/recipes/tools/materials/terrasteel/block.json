@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/terrasteel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/terrasteel"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "materialis:terrasteel",
+  "leftover": {
+    "tag": "forge:ingots/terrasteel"
+  }
+}

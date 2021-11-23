@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "modid": "botania",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "botania:dreamwood"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "materialis:dreamwood"
+}
