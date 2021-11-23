@@ -94,56 +94,56 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
 	@Override
 	protected void addMaterials() {
-		addMaterial(fairy, 3, ORDER_NETHER, false, 0xFF87BC);
+		addMaterial(fairy, 3, ORDER_NETHER + ORDER_COMPAT, false, 0xFF87BC);
 		//general oredict materials
-		addCompatMetalMaterial(brass, 3, ORDER_WEAPON, 0xFFD359);
-		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST, 0xE6B7BF);
-		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST, 0xF9EA98);
-		//addCompatMetalMaterial(platinum, 3, ORDER_HARVEST, 0xA1FFFF);
+		addCompatMetalMaterial(brass, 3, ORDER_WEAPON + ORDER_COMPAT, 0xFFD359);
+		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST + ORDER_COMPAT, 0xE6B7BF);
+		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST + ORDER_COMPAT, 0xF9EA98);
+		//addCompatMetalMaterial(platinum, 3, ORDER_HARVEST + ORDER_COMPAT, 0xA1FFFF);
 		this.addRedirect(platinum, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "platinum"), null));
-		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST, 0x42BE30);
-		//addCompatMetalMaterial(osmium, 2, ORDER_WEAPON, 0xCDE8FD);
+		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST + ORDER_COMPAT, 0x42BE30);
+		//addCompatMetalMaterial(osmium, 2, ORDER_WEAPON + ORDER_COMPAT, 0xCDE8FD);
 		this.addRedirect(osmium, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "osmium"), null));
-		//addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON, 0xA7A88F);
+		//addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON + ORDER_COMPAT, 0xA7A88F);
 		this.addRedirect(tungsten, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "tungsten"), null));
-		//addCompatMetalMaterial(invar, 3, ORDER_HARVEST, 0xBAE6D5);
+		//addCompatMetalMaterial(invar, 3, ORDER_HARVEST + ORDER_COMPAT, 0xBAE6D5);
 		this.addRedirect(invar, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "invar"), null));
 		//create materials
-		addMaterial(roseQuartz, 3, ORDER_NETHER, true, 0xFF8C80, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("create")));
-		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL, 0xFFFFFF);
-		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL, 0x635D71);
+		addMaterial(roseQuartz, 3, ORDER_NETHER + ORDER_COMPAT, true, 0xFF8C80, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("create")));
+		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL + ORDER_COMPAT, 0xFFFFFF);
+		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL + ORDER_COMPAT, 0x635D71);
 		//eidolon materials
-		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST, 0xA1A097);
-		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON, 0xFFC069);
+		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST + ORDER_COMPAT, 0xA1A097);
+		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON + ORDER_COMPAT, 0xFFC069);
 		//aquaculture materials
-		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL, 0x17F1B6);
+		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL + ORDER_COMPAT, 0x17F1B6);
 		//mystical world materials
-		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST, 0xC6B69F);
+		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST + ORDER_COMPAT, 0xC6B69F);
 		//astral sorcery materials
-		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST, 0x003CC9);
+		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST + ORDER_COMPAT, 0x003CC9);
 		//industrial foregoing materials
-		addMaterial(plastic, 2, ORDER_HARVEST, true, 0xD9D9D9, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:plastic"))));
-		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL, 0xFF9FEF);
+		addMaterial(plastic, 2, ORDER_HARVEST + ORDER_COMPAT, true, 0xD9D9D9, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:plastic"))));
+		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL + ORDER_COMPAT, 0xFF9FEF);
 		//undergarden materials
-		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST, 0x9C8878);
-		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON, 0x95BDE3);
-		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON, 0xEB515B);
-		addMaterial(forgottenMetal, 3, ORDER_GENERAL, false, 0x6CD7AA, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal"))));
+		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST + ORDER_COMPAT, 0x9C8878);
+		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON + ORDER_COMPAT, 0x95BDE3);
+		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON + ORDER_COMPAT, 0xEB515B);
+		addMaterial(forgottenMetal, 3, ORDER_GENERAL + ORDER_COMPAT, false, 0x6CD7AA, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal"))));
 		//mekanism materials
-		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST, 0xB78FD2);
-		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON, 0xFFE55C);
+		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST + ORDER_COMPAT, 0xB78FD2);
+		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON + ORDER_COMPAT, 0xFFE55C);
 		//psi materials
-		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL, 0xB6A9E7);
-		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL, 0x3D3838);
-		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL, 0xF6F9ED);
+		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL + ORDER_COMPAT, 0xB6A9E7);
+		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL + ORDER_COMPAT, 0x3D3838);
+		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL + ORDER_COMPAT, 0xF6F9ED);
 		//occultism materials
-		addCompatMetalMaterial(iesnium, 4, ORDER_HARVEST, 0x8ADAE3);
+		addCompatMetalMaterial(iesnium, 4, ORDER_HARVEST + ORDER_COMPAT, 0x8ADAE3);
 		//botania materials
-		addMaterial(livingwood, 1, ORDER_HARVEST, true, 0x783519, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
-		addMaterial(dreamwood, 2, ORDER_HARVEST, true, 0xC1CCCC, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
-		addCompatMetalMaterial(manasteel, 2, ORDER_HARVEST, 0x3389FF);
-		addCompatMetalMaterial(elementium, 3, ORDER_WEAPON, 0xF15CAE);
-		addCompatMetalMaterial(terrasteel, 4, ORDER_WEAPON, 0x53F900);
+		addMaterial(livingwood, 1, ORDER_WEAPON + ORDER_COMPAT, true, 0x783519, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
+		addMaterial(dreamwood, 2, ORDER_HARVEST + ORDER_COMPAT, true, 0xC1CCCC, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
+		addCompatMetalMaterial(manasteel, 2, ORDER_HARVEST + ORDER_COMPAT, 0x3389FF);
+		addCompatMetalMaterial(elementium, 3, ORDER_WEAPON + ORDER_COMPAT, 0xF15CAE);
+		addCompatMetalMaterial(terrasteel, 4, ORDER_WEAPON + ORDER_COMPAT, 0x53F900);
 	}
 
 	private static MaterialId createMaterial(String name) {
