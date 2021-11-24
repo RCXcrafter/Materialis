@@ -10,6 +10,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.util.Constants.NBT;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
@@ -25,8 +26,17 @@ public class CapacitorModifier extends Modifier {
 	}
 
 	@Override
+	public ValidatedResult validate(IModifierToolStack tool, int level) {
+		int max = tool.getVolatileData().getInt(TinkerToolFluxed.MAX_ENERGY);
+		if (tool.getPersistentData().getInt(TinkerToolFluxed.STORED_ENERGY) > max)
+			tool.getPersistentData().putInt(TinkerToolFluxed.STORED_ENERGY, max);
+		return ValidatedResult.PASS;
+	}
+
+	@Override
 	public void onRemoved(IModifierToolStack tool) {
-		tool.getPersistentData().remove(TinkerToolFluxed.STORED_ENERGY);
+		if (tool.getVolatileData().getInt(TinkerToolFluxed.MAX_ENERGY) == 0)
+			tool.getPersistentData().remove(TinkerToolFluxed.STORED_ENERGY);
 	}
 
 	@Override
