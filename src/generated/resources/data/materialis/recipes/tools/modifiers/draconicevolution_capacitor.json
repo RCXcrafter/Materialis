@@ -1,0 +1,31 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "draconicevolution",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "item": "draconicevolution:draconium_core"
+    },
+    {
+      "tag": "forge:dusts/redstone"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "slots": {
+    "upgrades": 1
+  },
+  "result": {
+    "name": "materialis:capacitor",
+    "level": 1
+  },
+  "max_level": 5
+}

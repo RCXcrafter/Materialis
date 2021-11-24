@@ -1,0 +1,31 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "mekanism",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "mekanism:alloy_infused"
+    },
+    {
+      "tag": "forge:ingots/gold"
+    },
+    {
+      "item": "mekanism:alloy_infused"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "slots": {
+    "upgrades": 1
+  },
+  "result": {
+    "name": "materialis:capacitor",
+    "level": 1
+  },
+  "max_level": 5
+}

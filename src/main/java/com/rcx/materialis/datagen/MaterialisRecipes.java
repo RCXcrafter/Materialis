@@ -599,6 +599,48 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setGroup("materialis:psi")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
+		.addInput(getTag("forge", "ingots/lead"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "rf_coil"))))
+		.addInput(getTag("forge", "ingots/lead"))
+		.addSalvage(getTag("forge", "dusts/redstone"), 0, 1)
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setMaxLevel(5)
+		.setSlots(SlotType.UPGRADE, 1)
+		.setGroup("materialis:flux")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.capacitorModifier, salvageFolder))
+		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "thermal_"));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
+		.addInput(getTag("forge", "ingots/lead"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("immersiveengineering", "wirecoil_copper"))))
+		.addInput(getTag("forge", "dusts/redstone"))
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setMaxLevel(5)
+		.setSlots(SlotType.UPGRADE, 1)
+		.setGroup("materialis:flux")
+		.build(withCondition(consumer, new ModLoadedCondition("immersiveengineering")), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "immersiveengineering_"));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("mekanism", "alloy_infused"))))
+		.addInput(getTag("forge", "ingots/gold"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("mekanism", "alloy_infused"))))
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setMaxLevel(5)
+		.setSlots(SlotType.UPGRADE, 1)
+		.setGroup("materialis:flux")
+		.build(withCondition(consumer, new ModLoadedCondition("mekanism")), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "mekanism_"));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
+		.addInput(getTag("forge", "dusts/redstone"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("draconicevolution", "draconium_core"))))
+		.addInput(getTag("forge", "dusts/redstone"))
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.setMaxLevel(5)
+		.setSlots(SlotType.UPGRADE, 1)
+		.setGroup("materialis:flux")
+		.build(withCondition(consumer, new ModLoadedCondition("draconicevolution")), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "draconicevolution_"));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

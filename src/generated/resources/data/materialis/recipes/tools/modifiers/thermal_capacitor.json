@@ -1,0 +1,31 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "thermal",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:ingots/lead"
+    },
+    {
+      "item": "thermal:rf_coil"
+    },
+    {
+      "tag": "forge:ingots/lead"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "slots": {
+    "upgrades": 1
+  },
+  "result": {
+    "name": "materialis:capacitor",
+    "level": 1
+  },
+  "max_level": 5
+}
