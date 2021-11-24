@@ -51,7 +51,7 @@ public class CapacitorModifier extends Modifier {
 	}
 
 	@Override
-	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag tooltipFlag) {
+	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag flag) {
 		if (tool instanceof ToolStack && isOwner(tool.getVolatileData())) {
 			tooltip.add(new TranslationTextComponent(TinkerToolFluxed.STORED_ENERGY_KEY, tool.getPersistentData().getInt(TinkerToolFluxed.STORED_ENERGY), tool.getVolatileData().getInt(TinkerToolFluxed.MAX_ENERGY)).withStyle(style -> style.withColor(Color.fromRgb(getColor()))));
 		}

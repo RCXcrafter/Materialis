@@ -149,6 +149,7 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.arcaneModifier, "Arcane",
 				"Magic *snort*",
 				"Deals a small amount of extra magic damage to attacked targets");
+		add("modifier.materialis.arcane.attack_damage", "Magic Damage");
 		addModifier(MaterialisModifiers.reapingModifier, "Reaping",
 				"Harvester of souls",
 				"Killing undead mobs will destroy their bodies and crystallize their souls, seems to have an affection towards scythes");
@@ -169,12 +170,14 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.polishedModifier, "Polished",
 				"I can see my face in it!",
 				"Deals more damage at a higher durability");
+		add("modifier.materialis.polished.attack_damage", "Polished Attack Damage");
 		addModifier(MaterialisModifiers.decayModifier, "Decay",
 				"Also melts in your hands",
 				"Your tool doesn't use durability on use but instead decays over time");
 		addModifier(MaterialisModifiers.nocturnalModifier, "Nocturnal",
 				"Stay up past bedtime!",
 				"gives bonus mining speed during the night, most powerful at midnight");
+		add("modifier.materialis.nocturnal.mining_speed", "Mining Speed at midnight");
 		addModifier(MaterialisModifiers.feebleModifier, "Feeble",
 				"Handle with care",
 				"Decreases knockback on attacked mobs");
@@ -226,9 +229,11 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.psichoKillerModifier, "Psicho Killer",
 				"Qu'est-ce que c'est?",
 				"Deals bonus attack damage depending on how much psi you currently have");
+		add("modifier.materialis.psicho_killer.attack_damage", "Attack Damage at full Psi");
 		addModifier(MaterialisModifiers.psichoDiggerModifier, "Psicho Digger",
 				"Run run run away",
 				"Adds bonus mining speed depending on how much psi you currently have");
+		add("modifier.materialis.psicho_digger.mining_speed", "Mining Speed at full Psi");
 		addModifier(MaterialisModifiers.runedModifier, "Runed",
 				"Runic energy flows!",
 				"Tool glows with a colored enchantment glint");
@@ -265,9 +270,11 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.manaripperModifier, "Manaripper",
 				"Rip and tear",
 				"Boosts attack damage at the cost of mana");
+		add("modifier.materialis.manaripper.attack_damage", "Attack Damage with Mana");
 		addModifier(MaterialisModifiers.manaburnerModifier, "Manaburner",
 				"burn through the mana",
 				"Boosts mining speed at the cost of mana");
+		add("modifier.materialis.manaburner.mining_speed", "Mining Speed with Mana");
 		addModifier(MaterialisModifiers.manashieldModifier, "Manashield",
 				"Botanical!",
 				"Has a chance of protecting your tool from damage at the cost of mana");
@@ -286,9 +293,11 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.fluxripperModifier, "Fluxripper",
 				"64 cores!",
 				"Boosts attack damage at the cost of energy");
+		add("modifier.materialis.fluxripper.attack_damage", "Fluxed Attack Damage");
 		addModifier(MaterialisModifiers.fluxburnerModifier, "Fluxburner",
 				"Empowered!",
 				"Boosts mining speed at the cost of energy");
+		add("modifier.materialis.fluxburner.mining_speed", "Fluxed Mining Speed");
 		addModifier(MaterialisModifiers.fluxshieldModifier, "Fluxshield",
 				"Energized!",
 				"Has a chance of protecting your tool from damage at the cost of energy");

@@ -1,12 +1,17 @@
 package com.rcx.materialis.modifiers;
 
+import java.util.List;
+
 import com.rcx.materialis.util.TinkerToolFluxed;
 
 import net.minecraft.util.Direction;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.library.utils.TooltipFlag;
 
 public class FluxburnerModifier extends CapacitorModifier {
 
@@ -23,12 +28,23 @@ public class FluxburnerModifier extends CapacitorModifier {
 		}
 	}
 
+	@Override
 	public void afterBlockBreak(IModifierToolStack tool, int level, ToolHarvestContext context) {
 		if (context.isAOE() && context.isEffective() && !tool.isBroken()) {
 			TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, false, false); //only eat the energy if the block is actually broken
 		}
 	}
 
+	@Override
+	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag flag) {
+		super.addInformation(tool, level, tooltip, flag);
+		float bonus = 0;
+		if (TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false))
+			bonus = 2.5f * level * tool.getModifier(ToolStats.MINING_SPEED);
+		addStatTooltip(tool, ToolStats.MINING_SPEED, TinkerTags.Items.HARVEST, bonus, tooltip);
+	}
+
+	@Override
 	public int getCapacity() {
 		return 5000;
 	}

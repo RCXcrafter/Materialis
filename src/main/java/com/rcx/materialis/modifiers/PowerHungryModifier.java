@@ -44,6 +44,7 @@ public class PowerHungryModifier extends CapacitorModifier {
 		}
 	}
 
+	@Override
 	public int getCapacity() {
 		return 10000;
 	}

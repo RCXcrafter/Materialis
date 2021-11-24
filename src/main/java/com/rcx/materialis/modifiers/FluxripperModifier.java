@@ -1,10 +1,15 @@
 package com.rcx.materialis.modifiers;
 
+import java.util.List;
+
 import com.rcx.materialis.util.TinkerToolFluxed;
 
+import net.minecraft.util.text.ITextComponent;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import slimeknights.tconstruct.library.utils.TooltipFlag;
 
 public class FluxripperModifier extends CapacitorModifier {
 
@@ -22,6 +27,16 @@ public class FluxripperModifier extends CapacitorModifier {
 		return damage;
 	}
 
+	@Override
+	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag flag) {
+		super.addInformation(tool, level, tooltip, flag);
+		float bonus = 0;
+		if (TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false))
+			bonus = 1.5f * level * tool.getModifier(ToolStats.ATTACK_DAMAGE);
+		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, bonus, tooltip);
+	}
+
+	@Override
 	public int getCapacity() {
 		return 5000;
 	}

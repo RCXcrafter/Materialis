@@ -37,6 +37,7 @@ public class FluxshieldModifier extends CapacitorModifier {
 		return amount;
 	}
 
+	@Override
 	public int getCapacity() {
 		return 5000;
 	}
