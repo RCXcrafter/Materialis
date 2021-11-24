@@ -4,6 +4,7 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class NocturnalModifier extends Modifier {
 
@@ -16,7 +17,7 @@ public class NocturnalModifier extends Modifier {
 		int time = (int) (event.getEntityLiving().level.getDayTime() % 24000l);
 		if (time > 12000) {
 			float bonus = (float) (-Math.sin(time * Math.PI / 12000.0f) * 2 * level);
-			event.setNewSpeed(event.getNewSpeed() + bonus);
+			event.setNewSpeed(event.getNewSpeed() + bonus * tool.getModifier(ToolStats.MINING_SPEED));
 		}
 	}
 }

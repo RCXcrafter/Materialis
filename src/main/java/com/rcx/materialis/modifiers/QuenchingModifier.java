@@ -6,6 +6,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class QuenchingModifier extends Modifier {
 
@@ -32,7 +33,7 @@ public class QuenchingModifier extends Modifier {
 			} else {
 				source = DamageSource.mobAttack(context.getAttacker());
 			}
-			ToolAttackUtil.attackEntitySecondary(source, bonus, context.getTarget(), context.getLivingTarget(), true);
+			ToolAttackUtil.attackEntitySecondary(source, bonus * tool.getModifier(ToolStats.ATTACK_DAMAGE), context.getTarget(), context.getLivingTarget(), true);
 		}
 		return 0;
 	}

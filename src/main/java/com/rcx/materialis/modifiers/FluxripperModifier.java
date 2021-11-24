@@ -4,6 +4,7 @@ import com.rcx.materialis.util.TinkerToolFluxed;
 
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class FluxripperModifier extends CapacitorModifier {
 
@@ -16,7 +17,7 @@ public class FluxripperModifier extends CapacitorModifier {
 	@Override
 	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
 		if (!tool.isBroken() && TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, false, false)) {
-			return damage + 1.5f * level;
+			return damage + 1.5f * level * tool.getModifier(ToolStats.ATTACK_DAMAGE);
 		}
 		return damage;
 	}

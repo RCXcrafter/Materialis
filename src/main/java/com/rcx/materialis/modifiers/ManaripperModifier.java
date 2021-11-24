@@ -7,6 +7,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import vazkii.botania.api.mana.ManaItemHandler;
 
 public class ManaripperModifier extends Modifier {
@@ -26,7 +27,7 @@ public class ManaripperModifier extends Modifier {
 				toolStack = ((ToolStack) tool).createStack();
 
 			if (ManaItemHandler.instance().requestManaExactForTool(toolStack, (PlayerEntity) context.getAttacker(), MANA_COST * level, true))
-				return damage + 1.5f * level;
+				return damage + 1.5f * level * tool.getModifier(ToolStats.ATTACK_DAMAGE);
 		}
 		return damage;
 	}

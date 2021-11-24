@@ -9,6 +9,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import vazkii.botania.api.mana.ManaItemHandler;
 
 public class ManaburnerModifier extends Modifier {
@@ -28,7 +29,7 @@ public class ManaburnerModifier extends Modifier {
 				toolStack = ((ToolStack) tool).createStack();
 
 			if (ManaItemHandler.instance().requestManaExactForTool(toolStack, (PlayerEntity) event.getEntityLiving(), MANA_COST * level, false))
-				event.setNewSpeed(event.getNewSpeed() + 2.5f * level);
+				event.setNewSpeed(event.getNewSpeed() + 2.5f * level * tool.getModifier(ToolStats.MINING_SPEED));
 		}
 	}
 

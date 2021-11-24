@@ -4,6 +4,7 @@ import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 
@@ -19,7 +20,7 @@ public class PsichoKillerModifier extends Modifier {
 	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
 		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null) {
 			PlayerData data = PlayerDataHandler.get(context.getPlayerAttacker());
-			return damage + level * data.getAvailablePsi() * 1.0f / ((float) data.getTotalPsi());
+			return damage + level * tool.getModifier(ToolStats.ATTACK_DAMAGE) * data.getAvailablePsi() * 1.0f / ((float) data.getTotalPsi());
 		}
 		return damage;
 	}
