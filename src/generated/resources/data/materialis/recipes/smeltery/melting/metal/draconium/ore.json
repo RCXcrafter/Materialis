@@ -1,0 +1,72 @@
+{
+  "type": "forge:conditional",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ores/draconium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ingots/platinum",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "ingredient": {
+          "tag": "forge:ores/draconium"
+        },
+        "result": {
+          "fluid": "materialis:molten_draconium",
+          "amount": 144
+        },
+        "temperature": 1050,
+        "time": 102,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_platinum",
+            "amount": 48
+          }
+        ]
+      }
+    },
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ingots/cobalt",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "ingredient": {
+          "tag": "forge:ores/draconium"
+        },
+        "result": {
+          "fluid": "materialis:molten_draconium",
+          "amount": 144
+        },
+        "temperature": 1050,
+        "time": 102,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_cobalt",
+            "amount": 48
+          }
+        ]
+      }
+    }
+  ]
+}

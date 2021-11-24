@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/draconium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/draconium"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "materialis:draconium",
+  "leftover": {
+    "tag": "forge:ingots/draconium"
+  }
+}

@@ -10,12 +10,12 @@ public class FluxripperModifier extends CapacitorModifier {
 	private static final int ENERGY_COST = 100;
 
 	public FluxripperModifier() {
-		super(0xB51212);
+		super(0xFF8800);
 	}
 
 	@Override
 	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
-		if (!tool.isBroken() && TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, false)) {
+		if (!tool.isBroken() && TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, false, false)) {
 			return damage + 1.5f * level;
 		}
 		return damage;

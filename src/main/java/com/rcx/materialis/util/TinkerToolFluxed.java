@@ -74,10 +74,15 @@ public class TinkerToolFluxed implements ICapabilityProvider, IEnergyStorage {
 		return energyReceived;
 	}
 
-	public static boolean removeEnergy(IModifierToolStack tool, int energyRemoved, boolean simulate) {
+	public static boolean removeEnergy(IModifierToolStack tool, int energyRemoved, boolean simulate, boolean drain) {
 		int energyStored = getEnergyStored(tool);
-		if (energyStored < energyRemoved)
+		if (energyStored < energyRemoved) {
+			if (drain && !simulate) {
+				ModDataNBT persistentData = tool.getPersistentData();
+				persistentData.putInt(STORED_ENERGY, 0);
+			}
 			return false;
+		}
 		if (!simulate) {
 			ModDataNBT persistentData = tool.getPersistentData();
 			persistentData.putInt(STORED_ENERGY, energyStored - energyRemoved);

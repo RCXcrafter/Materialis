@@ -126,6 +126,10 @@ public class MaterialisResources {
 	//mythicbotany fluids
 	public static final FluidWithBlockNBucket ALFSTEEL_FLUID = addFluid("molten_alfsteel", "Molten Alfsteel", 1740, 12, 3000, 6000);
 
+	//draconic evolution fluids
+	public static final FluidWithBlockNBucket DRACONIUM_FLUID = addFluid("molten_draconium", "Molten Draconium", 1350, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket AWAKENED_DRACONIUM_FLUID = addFluid("molten_draconium_awakened", "Molten Awakened Draconium", 1770, 12, 3000, 6000);
+
 
 	/*
 	 * BLOCKS

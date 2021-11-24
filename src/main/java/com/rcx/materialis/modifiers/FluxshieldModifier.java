@@ -12,7 +12,12 @@ public class FluxshieldModifier extends CapacitorModifier {
 	private static final int ENERGY_COST = 200;
 
 	public FluxshieldModifier() {
-		super(0xB51212);
+		super(0x905EBE);
+	}
+
+	@Override
+	public int getPriority() {
+		return 110; //before reinforced
 	}
 
 	@Override
@@ -23,7 +28,7 @@ public class FluxshieldModifier extends CapacitorModifier {
 				if (RANDOM.nextFloat() >= 0.1f * level) {
 					dealt++;
 				} else {
-					if (!TinkerToolFluxed.removeEnergy(tool, ENERGY_COST, false))
+					if (!TinkerToolFluxed.removeEnergy(tool, ENERGY_COST, false, false))
 						dealt++;
 				}
 			}

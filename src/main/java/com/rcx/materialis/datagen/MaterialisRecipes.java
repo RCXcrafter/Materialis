@@ -374,6 +374,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("mythicbotany:alfsteel_axe", 4),
 				new ToolValue("mythicbotany:alfsteel_sword", 2));
 
+		//draconic evolution stuff
+		metalTagCasting(consumer, MaterialisResources.DRACONIUM_FLUID.OBJECT, "draconium", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.DRACONIUM_FLUID.FLUID.get(), "draconium", true, meltingFolder, true, MaterialisByproduct.PLATINUM, MaterialisByproduct.COBALT);
+		metalTagCasting(consumer, MaterialisResources.AWAKENED_DRACONIUM_FLUID.OBJECT, "draconium_awakened", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.AWAKENED_DRACONIUM_FLUID.FLUID.get(), "draconium_awakened", false, meltingFolder, true);
+
 
 
 		//materials
@@ -414,6 +420,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.elementium, materialFolder, "elementium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.terrasteel, materialFolder, "terrasteel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.alfsteel, materialFolder, "alfsteel", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.draconium, materialFolder, "draconium", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.awakenedDraconium, materialFolder, "draconium_awakened", true);
 
 		//material casting
 		materialMeltingCasting(consumer, MaterialisMaterials.fairy, MaterialisResources.FAIRY_FLUID.OBJECT, materialFolder);
@@ -451,6 +459,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		materialComposite(withCondition(consumer, new ModLoadedCondition("mythicbotany")), MaterialisMaterials.terrasteel, MaterialisMaterials.alfsteel, MaterialisResources.ALFSTEEL_FLUID.OBJECT, FluidValues.NUGGET * 3, false, compositeFolder);
 		MaterialMeltingRecipeBuilder.material(MaterialisMaterials.alfsteel, new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.NUGGET * 3))
 		.build(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(materialFolder + "melting/alfsteel"));
+		materialMeltingCasting(consumer, MaterialisMaterials.draconium, MaterialisResources.DRACONIUM_FLUID.OBJECT, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.awakenedDraconium, MaterialisResources.AWAKENED_DRACONIUM_FLUID.OBJECT, materialFolder);
 
 
 

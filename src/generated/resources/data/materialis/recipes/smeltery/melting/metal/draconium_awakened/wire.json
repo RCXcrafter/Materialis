@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/draconium_awakened",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/draconium_awakened"
+  },
+  "result": {
+    "fluid": "materialis:molten_draconium_awakened",
+    "amount": 72
+  },
+  "temperature": 1470,
+  "time": 16
+}

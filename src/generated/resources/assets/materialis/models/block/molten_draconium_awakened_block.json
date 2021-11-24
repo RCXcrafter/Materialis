@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "materialis:block/fluid/molten_draconium_awakened_still"
+  }
+}

@@ -26,7 +26,8 @@ public enum MaterialisByproduct implements IByproduct {
 	SILVER  (false, TinkerFluids.moltenSilver),
 	NICKEL  (false, TinkerFluids.moltenNickel),
 	LEAD    (false, TinkerFluids.moltenLead),
-	PLATINUM("platinum", false, TinkerFluids.moltenPlatinum, FluidValues.NUGGET),
+	PLATINUM(false, TinkerFluids.moltenPlatinum),
+	SMALL_PLATINUM("platinum", false, TinkerFluids.moltenPlatinum, FluidValues.NUGGET),
 	// undergarden
 	CLOGGRUM    (true, MaterialisResources.CLOGGRUM_FLUID.FLUID),
 	FROSTSTEEL  (true, MaterialisResources.FROSTSTEEL_FLUID.FLUID),

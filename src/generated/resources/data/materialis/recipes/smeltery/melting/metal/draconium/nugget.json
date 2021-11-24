@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:nuggets/draconium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:nuggets/draconium"
+  },
+  "result": {
+    "fluid": "materialis:molten_draconium",
+    "amount": 16
+  },
+  "temperature": 1050,
+  "time": 23
+}

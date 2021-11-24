@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:draconium",
+  "temperature": 1050,
+  "result": {
+    "fluid": "materialis:molten_draconium",
+    "amount": 144
+  }
+}

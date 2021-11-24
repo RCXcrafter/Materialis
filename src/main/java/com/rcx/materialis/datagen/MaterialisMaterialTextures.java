@@ -152,6 +152,15 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.meleeHarvest()
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF683900).addARGB(102, 0xFF9E5F00).addARGB(140, 0xFFD37E00).addARGB(178, 0xFFF89100).addARGB(216, 0xFFFFC400).addARGB(255, 0xFFFFE863).build());
+		//draconic evolution materials
+		buildMaterial(MaterialisMaterials.draconium)
+		.meleeHarvest()
+		.fallbacks("metal")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF340C52).addARGB(102, 0xFF4E1882).addARGB(140, 0xFF7A42AE).addARGB(178, 0xFF905EBE).addARGB(216, 0xFFAE7ADD).addARGB(255, 0xFFE7B5FF).build());
+		buildMaterial(MaterialisMaterials.awakenedDraconium)
+		.meleeHarvest()
+		.fallbacks("metal")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF970000).addARGB(102, 0xFFC23800).addARGB(140, 0xFFFF5600).addARGB(178, 0xFFFF8800).addARGB(216, 0xFFFFBE00).addARGB(255, 0xFFFFFD03).build());
 	}
 
 	public static ResourceLocation getTexture(String path) {

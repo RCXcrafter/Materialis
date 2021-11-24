@@ -56,6 +56,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> fluxripperModifier = MODIFIERS.register("fluxripper", FluxripperModifier::new);
 	public static final RegistryObject<Modifier> fluxburnerModifier = MODIFIERS.register("fluxburner", FluxburnerModifier::new);
 	public static final RegistryObject<Modifier> fluxshieldModifier = MODIFIERS.register("fluxshield", FluxshieldModifier::new);
+	public static final RegistryObject<Modifier> powerHungryModifier = MODIFIERS.register("power_hungry", PowerHungryModifier::new);
 
 	//upgrades & abilities
 	public static final RegistryObject<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);

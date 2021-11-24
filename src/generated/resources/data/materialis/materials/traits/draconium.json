@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "materialis:power_hungry",
+      "level": 1
+    },
+    {
+      "name": "materialis:fluxshield",
+      "level": 2
+    }
+  ]
+}

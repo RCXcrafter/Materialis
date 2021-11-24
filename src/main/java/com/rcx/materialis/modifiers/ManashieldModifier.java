@@ -21,6 +21,11 @@ public class ManashieldModifier extends Modifier {
 	}
 
 	@Override
+	public int getPriority() {
+		return 110; //before reinforced
+	}
+
+	@Override
 	public int onDamageTool(IModifierToolStack tool, int level, int amount, @Nullable LivingEntity holder) {
 		if (enabled && !tool.isBroken() && holder instanceof PlayerEntity) {
 			ItemStack toolStack = holder.getMainHandItem();

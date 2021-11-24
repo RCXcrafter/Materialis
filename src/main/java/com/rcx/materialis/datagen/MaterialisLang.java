@@ -124,6 +124,12 @@ public class MaterialisLang extends LanguageProvider {
 		//mythicbotany stuff
 		addMaterial(MaterialisMaterials.alfsteel, "Alfsteel", "", "Has a 40% chance per level to fire a beam, this costs mana or durability if you have no mana");
 
+		//draconic evolution stuff
+		addMaterial(MaterialisMaterials.draconium, "Draconium", "", "Has a 10% chance of using 200 RF instead of durability per level");
+		add("material.materialis.draconium.format", "Wyvern %s");
+		addMaterial(MaterialisMaterials.awakenedDraconium, "Awakened Draconium", "", "increases mining speed with 2.5 and attack damage with 1.5 per level, costs 100 RF per level");
+		add("material.materialis.draconium_awakened.format", "Draconic %s");
+
 		//modifiers
 		addModifier(MaterialisModifiers.enhancedQuartzModifier, "Enhanced",
 				"Shiny!",
@@ -286,6 +292,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.fluxshieldModifier, "Fluxshield",
 				"Energized!",
 				"Has a chance of protecting your tool from damage at the cost of energy");
+		addModifier(MaterialisModifiers.powerHungryModifier, "Power Hungry",
+				"Megalomaniac!",
+				"Using the tool costs 100 RF per durability per level, the tool doesn't seem to work so well if it's not powered");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
