@@ -1,0 +1,45 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "immersiveengineering",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:plates/copper"
+    },
+    {
+      "item": "immersiveengineering:hammer"
+    },
+    {
+      "tag": "forge:plates/copper"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/held"
+  },
+  "slots": {
+    "upgrades": 1
+  },
+  "requirements": {
+    "options": [
+      {
+        "name": "materialis:wrenching",
+        "level": 1
+      },
+      {
+        "name": "materialis:wrenching_hidden",
+        "level": 1
+      }
+    ],
+    "matches_needed": 1,
+    "error": "recipe.materialis.modifier.immersive_wrenching_requirements"
+  },
+  "result": {
+    "name": "materialis:immersive_wrenching",
+    "level": 1
+  },
+  "max_level": 1
+}

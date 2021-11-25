@@ -1,0 +1,137 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "immersiveengineering:workbench",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:circuit_table",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:watermill",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:blastfurnace_preheater",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:fluid_pump",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:sample_drill",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:tesla_coil",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:turret_chem",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:turret_gun",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:cloche",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:coke_oven",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:blast_furnace",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:alloy_smelter",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:advanced_blast_furnace",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:crusher",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:sawmill",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:silo",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:tank",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:arc_furnace",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:assembler",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:auto_workbench",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:bucket_wheel",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:excavator",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:metal_press",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:bottling_machine",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:fermenter",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:squeezer",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:mixer",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:refinery",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:diesel_generator",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:lightning_rod",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:transformer",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:transformer_hv",
+      "required": false
+    }
+  ]
+}

@@ -53,6 +53,7 @@ public class MaterialisLang extends LanguageProvider {
 		addItem(MaterialisResources.BATTLEWRENCH, "Battlewrench");
 		add("recipe.materialis.modifier.thermal_wrenching_requirements", "Thermal Wrenching requires Wrenching to apply");
 		add("recipe.materialis.modifier.create_wrenching_requirements", "Mechanical Wrenching requires Wrenching to apply");
+		add("recipe.materialis.modifier.immersive_wrenching_requirements", "Immersive Hammering requires Wrenching to apply");
 
 		//general oredict materials
 		addMaterial(MaterialisMaterials.brass, "Brass", "Ya like brass?", "Adds +1.5 attack damage per level that degrades as durability goes down");
@@ -261,6 +262,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.createWrenchingModifier, "Mechanical Wrenching",
 				"Creative!",
 				"Tool can dismantle kinetic components by sneak-right clicking");
+		addModifier(MaterialisModifiers.immersiveWrenchingModifier, "Immersive Hammering",
+				"Pootis spencer here!",
+				"Tool can assemble multiblocks and configure sides of certain blocks");
 		addModifier(MaterialisModifiers.overeatingModifier, "Overeating",
 				"5 second rule!",
 				"That overslime buffer on your tool suddenly looks very appealing");

@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools": {
+    "tag": "tconstruct:modifiable/held"
+  },
+  "slots": {
+    "upgrades": 1
+  },
+  "modifier": "materialis:immersive_wrenching",
+  "min_level": 1,
+  "salvage": [
+    {
+      "tag": "forge:plates/copper",
+      "min": 2,
+      "max": 0
+    },
+    {
+      "item": "immersiveengineering:hammer",
+      "chance": 0.9
+    }
+  ]
+}

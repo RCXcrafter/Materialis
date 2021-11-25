@@ -546,6 +546,21 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.buildSalvage(consumer, prefix(MaterialisModifiers.createWrenchingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
 
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.immersiveWrenchingModifier.get())
+		.setTools(TinkerTags.Items.HELD)
+		.addInput(getTag("forge", "plates/copper"))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("immersiveengineering", "hammer"))))
+		.addInput(getTag("forge", "plates/copper"))
+		.addSalvage(getTag("forge", "plates/copper"), 2, 0)
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("immersiveengineering", "hammer")), 0.9f))
+		.setRequirements(wrenching)
+		.setRequirementsError("recipe.materialis.modifier.immersive_wrenching_requirements")
+		.setMaxLevel(1)
+		.setSlots(SlotType.UPGRADE, 1)
+		.setGroup("materialis:immersiveengineering")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.immersiveWrenchingModifier, salvageFolder))
+		.build(withCondition(consumer, new ModLoadedCondition("immersiveengineering")), prefix(MaterialisModifiers.immersiveWrenchingModifier, modifierFolder));
+
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifier.get())
 		.addInput(getTag("forge", "ingots/psimetal"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))

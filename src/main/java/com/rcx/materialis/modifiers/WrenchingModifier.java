@@ -2,6 +2,8 @@ package com.rcx.materialis.modifiers;
 
 import java.util.Collection;
 
+import com.rcx.materialis.datagen.MaterialisBlockTags;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemUseContext;
@@ -415,6 +417,8 @@ public class WrenchingModifier extends SingleUseModifier {
 	public static boolean isRotatable(BlockState state, World world, BlockPos pos) {
 		if (pos.getY() >= 0 && pos.getY() <= world.getMaxBuildHeight() - 1 && world.getWorldBorder().isWithinBounds(pos)) {
 			Collection<Property<?>> properties = state.getProperties();
+			if (MaterialisBlockTags.WRENCH_BLACKLIST.contains(state.getBlock()))
+				return false;
 			//make sure that multiblocks can't be rotated
 			if (properties.contains(BlockStateProperties.DOUBLE_BLOCK_HALF)) //double tall blocks
 				return false;
