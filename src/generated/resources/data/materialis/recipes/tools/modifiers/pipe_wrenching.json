@@ -1,0 +1,45 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "prettypipes",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "prettypipes:pipe"
+    },
+    {
+      "item": "prettypipes:wrench"
+    },
+    {
+      "item": "prettypipes:pipe"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/held"
+  },
+  "slots": {
+    "upgrades": 1
+  },
+  "requirements": {
+    "options": [
+      {
+        "name": "materialis:wrenching",
+        "level": 1
+      },
+      {
+        "name": "materialis:wrenching_hidden",
+        "level": 1
+      }
+    ],
+    "matches_needed": 1,
+    "error": "recipe.materialis.modifier.pipe_wrenching_requirements"
+  },
+  "result": {
+    "name": "materialis:pipe_wrenching",
+    "level": 1
+  },
+  "max_level": 1
+}

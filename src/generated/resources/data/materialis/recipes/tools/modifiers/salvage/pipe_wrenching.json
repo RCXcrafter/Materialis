@@ -6,13 +6,17 @@
   "slots": {
     "upgrades": 1
   },
-  "modifier": "materialis:immersive_wrenching",
+  "modifier": "materialis:pipe_wrenching",
   "min_level": 1,
   "salvage": [
     {
-      "tag": "forge:plates/copper",
+      "item": "prettypipes:pipe",
       "min": 0,
       "max": 2
+    },
+    {
+      "item": "prettypipes:wrench",
+      "chance": 0.9
     }
   ]
 }

@@ -551,8 +551,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getTag("forge", "plates/copper"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("immersiveengineering", "hammer"))))
 		.addInput(getTag("forge", "plates/copper"))
-		.addSalvage(getTag("forge", "plates/copper"), 2, 0)
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("immersiveengineering", "hammer")), 0.9f))
+		.addSalvage(getTag("forge", "plates/copper"), 0, 2)
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.immersive_wrenching_requirements")
 		.setMaxLevel(1)
@@ -560,6 +559,21 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setGroup("materialis:immersiveengineering")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.immersiveWrenchingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("immersiveengineering")), prefix(MaterialisModifiers.immersiveWrenchingModifier, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.pipeWrenchingModifier.get())
+		.setTools(TinkerTags.Items.HELD)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "pipe"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "wrench"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "pipe"))))
+		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("prettypipes", "pipe"), 2), 0))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("prettypipes", "wrench")), 0.9f))
+		.setRequirements(wrenching)
+		.setRequirementsError("recipe.materialis.modifier.pipe_wrenching_requirements")
+		.setMaxLevel(1)
+		.setSlots(SlotType.UPGRADE, 1)
+		.setGroup("materialis:prettypipes")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.pipeWrenchingModifier, salvageFolder))
+		.build(withCondition(consumer, new ModLoadedCondition("prettypipes")), prefix(MaterialisModifiers.pipeWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifier.get())
 		.addInput(getTag("forge", "ingots/psimetal"))
