@@ -152,10 +152,10 @@ public class MaterialisResources {
 	public static final ItemObject<ToolPartItem> WRENCH_HEAD = ITEMS_EXTENDED.register("wrench_head", () -> new ToolPartItem(PARTS_PROPS, HeadMaterialStats.ID));
 
 	public static final ToolDefinition WRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "wrench")).meleeHarvest().build();
-	public static final ItemObject<WrenchTool> WRENCH = ITEMS_EXTENDED.register("wrench", () -> new WrenchTool(TOOL_PROPS.get().addToolType(WrenchTool.TOOL_TYPE, 0), WRENCH_DEFINITION));
+	public static final ItemObject<WrenchTool> WRENCH = ITEMS_EXTENDED.register("wrench", () -> new WrenchTool(TOOL_PROPS.get().addToolType(WrenchTool.TOOL_TYPE, 0).addToolType(WrenchTool.HAMMER_TOOL_TYPE, 0), WRENCH_DEFINITION));
 
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "battlewrench")).meleeHarvest().build();
-	public static final ItemObject<WrenchTool> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new WrenchTool(new Item.Properties().addToolType(WrenchTool.TOOL_TYPE, 0), BATTLEWRENCH_DEFINITION));
+	public static final ItemObject<WrenchTool> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new WrenchTool(new Item.Properties().addToolType(WrenchTool.TOOL_TYPE, 0).addToolType(WrenchTool.HAMMER_TOOL_TYPE, 0), BATTLEWRENCH_DEFINITION));
 
 	//industrial foregoing stuff
 	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new OptionalItem(new Item.Properties().tab(TinkerModule.TAB_GENERAL), new ModLoadedCondition("industrialforegoing")));
