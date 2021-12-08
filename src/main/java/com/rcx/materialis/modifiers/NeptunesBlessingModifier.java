@@ -1,12 +1,12 @@
 package com.rcx.materialis.modifiers;
 
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
 import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
@@ -14,6 +14,11 @@ public class NeptunesBlessingModifier extends SingleUseModifier {
 
 	public NeptunesBlessingModifier() {
 		super(0x17F1B6);
+	}
+
+	@Override
+	public int getPriority() {
+		return 130; //before hydraulic
 	}
 
 	@Override
@@ -32,7 +37,7 @@ public class NeptunesBlessingModifier extends SingleUseModifier {
 	public static float negateWaterMiningModifier(LivingEntity entity, boolean negateSwimming) {
 		float modifier = 1.0f;
 		if (entity.isEyeInFluid(FluidTags.WATER)) {
-			if (!EnchantmentHelper.hasAquaAffinity(entity))
+			if (!ModifierUtil.hasAquaAffinity(entity))
 				modifier *= 5.0F;
 
 			if (!entity.isOnGround() && negateSwimming)
