@@ -37,6 +37,7 @@ import slimeknights.mantle.recipe.SizedIngredient;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
 import slimeknights.mantle.recipe.data.ItemNameOutput;
+import slimeknights.mantle.recipe.ingredient.IngredientIntersection;
 import slimeknights.mantle.recipe.ingredient.IngredientWithout;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
@@ -477,6 +478,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setMaxLevel(1)
 		.setSlots(SlotType.ABILITY, 1)
 		.setGroup("materialis:eidolon")
+		.includeUnarmed()
 		.buildSalvage(consumer, prefix(MaterialisModifiers.reapingModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier, modifierFolder));
 
@@ -494,8 +496,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.buildSalvage(consumer, prefix(MaterialisModifiers.runedModifier, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.runeModifierSerializer.get()).addCondition(new ModLoadedCondition("quark")).build(consumer), prefix(MaterialisModifiers.runedModifier, modifierFolder));
 
+		Ingredient interactableWithDurability = new IngredientIntersection(Ingredient.of(TinkerTags.Items.DURABILITY), Ingredient.of(TinkerTags.Items.INTERACTABLE));
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.wrenchingModifier.get())
-		.setTools(new IngredientWithout(Ingredient.of(TinkerTags.Items.HELD), Ingredient.of(MaterialisItemTags.WRENCHING)))
+		.setTools(new IngredientWithout(interactableWithDurability, Ingredient.of(MaterialisItemTags.WRENCHING)))
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(MaterialisResources.WRENCH_HEAD.get())))
 		.addInput(TinkerTags.Items.INGOTS_NETHERITE_SCRAP)
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(TinkerToolParts.toolBinding.get())))
@@ -518,7 +521,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		ModifierMatch wrenching = ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get()));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.thermalWrenchingModifier.get())
-		.setTools(Ingredient.of(TinkerTags.Items.HELD))
+		.setTools(interactableWithDurability)
 		.addInput(getTag("forge", "gears/nickel"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "wrench"))))
 		.addInput(getTag("forge", "gears/nickel"))
@@ -532,7 +535,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.createWrenchingModifier.get())
-		.setTools(TinkerTags.Items.HELD)
+		.setTools(interactableWithDurability)
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "wrench"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
@@ -547,7 +550,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.immersiveWrenchingModifier.get())
-		.setTools(TinkerTags.Items.HELD)
+		.setTools(interactableWithDurability)
 		.addInput(getTag("forge", "plates/copper"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("immersiveengineering", "hammer"))))
 		.addInput(getTag("forge", "plates/copper"))
@@ -561,7 +564,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(withCondition(consumer, new ModLoadedCondition("immersiveengineering")), prefix(MaterialisModifiers.immersiveWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.pipeWrenchingModifier.get())
-		.setTools(TinkerTags.Items.HELD)
+		.setTools(interactableWithDurability)
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "pipe"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "wrench"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "pipe"))))

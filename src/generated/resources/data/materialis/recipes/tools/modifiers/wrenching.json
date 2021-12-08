@@ -16,7 +16,15 @@
   "tools": {
     "type": "mantle:without",
     "base": {
-      "tag": "tconstruct:modifiable/held"
+      "type": "mantle:intersection",
+      "ingredients": [
+        {
+          "tag": "tconstruct:modifiable/durability"
+        },
+        {
+          "tag": "tconstruct:modifiable/interactable"
+        }
+      ]
     },
     "without": {
       "tag": "materialis:wrench"

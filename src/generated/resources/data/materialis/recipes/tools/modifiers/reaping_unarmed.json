@@ -1,0 +1,42 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "eidolon",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "eidolon:tattered_cloth"
+    },
+    {
+      "item": "eidolon:unholy_symbol"
+    },
+    {
+      "item": "eidolon:tattered_cloth"
+    },
+    {
+      "item": "eidolon:soul_shard"
+    },
+    {
+      "item": "eidolon:soul_shard"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/chestplate"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "requirements": {
+    "name": "tconstruct:unarmed",
+    "level": 1,
+    "error": "recipe.tconstruct.modifier.unarmed"
+  },
+  "result": {
+    "name": "materialis:reaping",
+    "level": 1
+  },
+  "max_level": 1
+}
