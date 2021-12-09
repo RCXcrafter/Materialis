@@ -26,8 +26,8 @@
     }
   },
   "slots": {
-    "upgrades": 2,
-    "abilities": 1
+    "upgrades": 1,
+    "abilities": 2
   },
   "traits": [
     {
