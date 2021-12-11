@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvider {
 
@@ -51,6 +52,22 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 		// traits
 		.trait(MaterialisModifiers.wrenchingModifierHidden)
 		.trait(TinkerModifiers.twoHanded);
+
+
+		defineArmor(MaterialisResources.EXOSUIT_DEFINITION)
+		.durabilityFactor(18)
+		.stat(ToolStats.ARMOR, 2, 5, 6, 2)
+		.startingSlots(ArmorSlotType.HELMET, MaterialisResources.SENSOR_SLOT, 1)
+		.startingSlots(SlotType.UPGRADE, 1)
+		.startingSlots(SlotType.DEFENSE, 2)
+		.startingSlots(SlotType.ABILITY, 1)
+		.trait(ArmorSlotType.BOOTS, MaterialisModifiers.psionizingRadiationModifierJump.get())
+		.trait(ArmorSlotType.BOOTS, MaterialisModifiers.spellSocketModifier.get())
+		.trait(ArmorSlotType.LEGGINGS, MaterialisModifiers.psionizingRadiationModifierTick.get())
+		.trait(ArmorSlotType.LEGGINGS, MaterialisModifiers.spellSocketModifier.get())
+		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.psionizingRadiationModifierDamage.get())
+		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.spellSocketModifier.get())
+		.trait(ArmorSlotType.HELMET, MaterialisModifiers.spellSocketModifier.get());
 	}
 
 	@Override

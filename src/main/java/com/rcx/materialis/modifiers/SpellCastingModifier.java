@@ -53,8 +53,13 @@ public class SpellCastingModifier extends SpellSocketModifier {
 			if (!playerCad.isEmpty()) {
 				ItemStack bullet = ISocketable.socketable(toolStack).getSelectedBullet();
 				if (!data.overflowed && data.getAvailablePsi() > 0 && !bullet.isEmpty() && ISpellAcceptor.hasSpell(bullet) && ItemCAD.isTruePlayer(player)) {
-					ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 40, 25, 0.5F, context -> context.castFrom = hand);
+					int timesCast = tool.getPersistentData().getInt(TinkerToolSocketable.TIMES_CAST);
+					ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 40, 25, 0.5F, context -> {
+						context.castFrom = hand;
+						context.loopcastIndex = timesCast;
+					});
 					ToolDamageUtil.damage(tool, 1, player, toolStack);
+					tool.getPersistentData().putInt(TinkerToolSocketable.TIMES_CAST, timesCast + 1);
 					return ActionResultType.CONSUME;
 				}
 			}

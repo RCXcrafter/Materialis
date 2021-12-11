@@ -1,0 +1,23 @@
+{
+  "stats": {
+    "base": {
+      "tconstruct:durability": 234.0,
+      "tconstruct:armor": 2.0
+    }
+  },
+  "slots": {
+    "upgrades": 1,
+    "defense": 2,
+    "abilities": 1
+  },
+  "traits": [
+    {
+      "name": "materialis:psionizing_radiation_jump",
+      "level": 1
+    },
+    {
+      "name": "materialis:spell_socket",
+      "level": 1
+    }
+  ]
+}

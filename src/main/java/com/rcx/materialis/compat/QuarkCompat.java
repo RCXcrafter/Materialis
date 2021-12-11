@@ -5,7 +5,8 @@ import com.rcx.materialis.Materialis;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import slimeknights.tconstruct.library.tools.item.ToolItem;
+import slimeknights.tconstruct.library.tools.item.ModifiableArmorItem;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 
 public class QuarkCompat {
 
@@ -13,7 +14,7 @@ public class QuarkCompat {
 
 	public void attachCapabilities(final AttachCapabilitiesEvent<ItemStack> event) {
 		ItemStack stack = event.getObject();
-		if (stack.getItem() instanceof ToolItem) {
+		if (stack.getItem() instanceof ModifiableItem || stack.getItem() instanceof ModifiableArmorItem) {
 			event.addCapability(RUNED_CAPABILITY, new TinkerToolRuneColor(stack));
 		}
 	}

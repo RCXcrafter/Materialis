@@ -1,0 +1,9 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default",
+  "textures": {
+    "tool":   "materialis:item/tool/psimetal_exosuit/boots",
+    "broken": "materialis:item/tool/psimetal_exosuit/boots_broken"
+  },
+  "modifier_roots": [ "materialis:item/tool/psimetal_exosuit/boots_modifiers/" ]
+}

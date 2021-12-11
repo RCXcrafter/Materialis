@@ -1,0 +1,20 @@
+{
+  "stats": {
+    "base": {
+      "tconstruct:durability": 198.0,
+      "tconstruct:armor": 2.0
+    }
+  },
+  "slots": {
+    "sensor": 1,
+    "upgrades": 1,
+    "defense": 2,
+    "abilities": 1
+  },
+  "traits": [
+    {
+      "name": "materialis:spell_socket",
+      "level": 1
+    }
+  ]
+}

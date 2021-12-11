@@ -17,6 +17,7 @@ import net.minecraftforge.fml.RegistryObject;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisLang extends LanguageProvider {
 
@@ -108,6 +109,13 @@ public class MaterialisLang extends LanguageProvider {
 		add("recipe.materialis.remove_modifier.spell_slot_not_empty", "This change removes a socket that currently contains a spell");
 		add("recipe.materialis.add_modifier.too_many_spell_slots", "This change adds too many sockets to the tool");
 		add("recipe.materialis.modifier.casting_requirements", "Casting requires Psionizing Radiation or Psi Decay to apply");
+		add("stat.tconstruct.slot.display.sensor", "sensor");
+		add("stat.tconstruct.slot.prefix.sensor", "Sensor Slots: ");
+		add("item.tconstruct.creative_slot.sensor", "Creative Sensor Slot");
+		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS), "Tinkers Exosuit Boots");
+		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS), "Tinkers Exosuit Leggings");
+		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE), "Tinkers Exosuit Chestplate");
+		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET), "Tinkers Exosuit Helmet");
 
 		//quark stuff
 		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");
@@ -213,6 +221,36 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.psionizingRadiationModifier, "Psionizing Radiation",
 				"Feels kinda funny",
 				"Your tool is highly conductive to psions and is suitable for casting spells, +1 spell socket");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierBreakBlock, "Psi Decay (Break Block)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when breaking blocks");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierAttack, "Psi Decay (Attack)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when attacking");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierDamage, "Psi Decay (Damage)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when taking damage");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierTick, "Psi Decay (Tick)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells every tick");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierJump, "Psi Decay (Jump)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when jumping");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierFire, "Psi Decay (On Fire)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when taking fire damage");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierHealth, "Psi Decay (Low Health)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when your health is low");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierLight, "Psi Decay (Low Light)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when entering darkness");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierWater, "Psi Decay (Underwater)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when underwater");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierDetonate, "Psi Decay (Detonation)",
+				"You can feel it glowing",
+				"Enables the tool to cast spells when a spell is detonated nearby");
 		addModifier(MaterialisModifiers.lesserPsionizingRadiationModifier, "Psi Decay",
 				"You can feel it glowing",
 				"Your tool is highly conductive to psions and is suitable for casting spells");

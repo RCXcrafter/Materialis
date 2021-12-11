@@ -1,0 +1,9 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default",
+  "textures": {
+    "tool":   "materialis:item/tool/psimetal_exosuit/chestplate",
+    "broken": "materialis:item/tool/psimetal_exosuit/chestplate_broken"
+  },
+  "modifier_roots": [ "materialis:item/tool/psimetal_exosuit/chestplate_modifiers/" ]
+}

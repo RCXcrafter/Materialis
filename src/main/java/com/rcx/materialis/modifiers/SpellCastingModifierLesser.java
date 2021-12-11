@@ -23,9 +23,9 @@ import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 import vazkii.psi.common.item.ItemCAD;
 
-public class LesserSpellCastingModifier extends Modifier {
+public class SpellCastingModifierLesser extends Modifier {
 
-	public LesserSpellCastingModifier() {
+	public SpellCastingModifierLesser() {
 		super(0x6C89E6);
 	}
 
@@ -54,8 +54,13 @@ public class LesserSpellCastingModifier extends Modifier {
 			if (!playerCad.isEmpty()) {
 				ItemStack bullet = ISocketable.socketable(toolStack).getSelectedBullet();
 				if (!data.overflowed && data.getAvailablePsi() > 0 && !bullet.isEmpty() && ISpellAcceptor.hasSpell(bullet) && ItemCAD.isTruePlayer(player)) {
-					ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 40, 25, 0.5F, context -> context.castFrom = hand);
+					int timesCast = tool.getPersistentData().getInt(TinkerToolSocketable.TIMES_CAST);
+					ItemCAD.cast(player.getCommandSenderWorld(), player, data, bullet, playerCad, 40, 25, 0.5F, context -> {
+						context.castFrom = hand;
+						context.loopcastIndex = timesCast;
+					});
 					ToolDamageUtil.damage(tool, 1, player, toolStack);
+					tool.getPersistentData().putInt(TinkerToolSocketable.TIMES_CAST, timesCast + 1);
 					return ActionResultType.CONSUME;
 				}
 			}

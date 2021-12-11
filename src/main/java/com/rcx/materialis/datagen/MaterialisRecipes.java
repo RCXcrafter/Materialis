@@ -673,6 +673,51 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:flux")
 		.build(withCondition(consumer, new ModLoadedCondition("draconicevolution")), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "draconicevolution_"));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierLight.get())
+		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "exosuit_sensor_light"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "exosuit_sensor_light")), 0.4f))
+		.setMaxLevel(1)
+		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
+		.setGroup("psi:sensors")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifierLight, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierFire.get())
+		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "exosuit_sensor_heat"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "exosuit_sensor_heat")), 0.4f))
+		.setMaxLevel(1)
+		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
+		.setGroup("psi:sensors")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifierFire, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierHealth.get())
+		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "exosuit_sensor_stress"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "exosuit_sensor_stress")), 0.4f))
+		.setMaxLevel(1)
+		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
+		.setGroup("psi:sensors")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifierHealth, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierWater.get())
+		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "exosuit_sensor_water"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "exosuit_sensor_water")), 0.4f))
+		.setMaxLevel(1)
+		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
+		.setGroup("psi:sensors")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifierWater, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierDetonate.get())
+		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "exosuit_sensor_trigger"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "exosuit_sensor_trigger")), 0.4f))
+		.setMaxLevel(1)
+		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
+		.setGroup("psi:sensors")
+		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifierDetonate, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

@@ -1,10 +1,9 @@
 package com.rcx.materialis.modifiers;
 
-import com.rcx.materialis.Materialis;
 import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
@@ -13,12 +12,10 @@ import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 
-public class PsionizingRadiationModifier extends SpellSocketModifier {
+public class PsionizingRadiationModifierLesser extends Modifier {
 
-	public static final ResourceLocation SUPPRESS_TOOLCASTING = new ResourceLocation(Materialis.modID, "suppress_toolcasting");
-	public static final ResourceLocation RADIATION_LEVEL = new ResourceLocation(Materialis.modID, "psi_radiation_level");
 
-	public PsionizingRadiationModifier() {
+	public PsionizingRadiationModifierLesser() {
 		super(0xB6A9E7);
 	}
 

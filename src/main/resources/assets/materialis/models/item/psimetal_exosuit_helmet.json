@@ -1,0 +1,9 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default",
+  "textures": {
+    "tool":   "materialis:item/tool/psimetal_exosuit/helmet",
+    "broken": "materialis:item/tool/psimetal_exosuit/helmet_broken"
+  },
+  "modifier_roots": [ "materialis:item/tool/psimetal_exosuit/helmet_modifiers/" ]
+}

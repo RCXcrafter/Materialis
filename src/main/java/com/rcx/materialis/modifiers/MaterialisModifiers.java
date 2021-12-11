@@ -37,7 +37,17 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> auxiliaryPowerModifier = MODIFIERS.register("auxiliary_power", AuxiliaryPowerModifier::new);
 	public static final RegistryObject<Modifier> adrenalineModifier = MODIFIERS.register("adrenaline", AdrenalineModifier::new); //unused
 	public static final RegistryObject<Modifier> psionizingRadiationModifier = MODIFIERS.register("psionizing_radiation", PsionizingRadiationModifier::new);
-	public static final RegistryObject<Modifier> lesserPsionizingRadiationModifier = MODIFIERS.register("lesser_psionizing_radiation", LesserPsionizingRadiationModifier::new);
+	public static final RegistryObject<Modifier> lesserPsionizingRadiationModifier = MODIFIERS.register("lesser_psionizing_radiation", PsionizingRadiationModifierLesser::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierBreakBlock = MODIFIERS.register("psionizing_radiation_break_block", PsionizingRadiationModifierBreakBlock::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierAttack = MODIFIERS.register("psionizing_radiation_attack", PsionizingRadiationModifierAttack::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierDamage = MODIFIERS.register("psionizing_radiation_damage", PsionizingRadiationModifierDamage::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierTick = MODIFIERS.register("psionizing_radiation_tick", PsionizingRadiationModifierTick::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierJump = MODIFIERS.register("psionizing_radiation_jump", PsionizingRadiationModifierJump::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierFire = MODIFIERS.register("psionizing_radiation_fire", PsionizingRadiationModifierFire::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierHealth = MODIFIERS.register("psionizing_radiation_health", PsionizingRadiationModifierHealth::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierLight = MODIFIERS.register("psionizing_radiation_light", PsionizingRadiationModifierLight::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierWater = MODIFIERS.register("psionizing_radiation_water", PsionizingRadiationModifierWater::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierDetonate = MODIFIERS.register("psionizing_radiation_detonate", PsionizingRadiationModifierDetonate::new);
 	public static final RegistryObject<Modifier> psichoKillerModifier = MODIFIERS.register("psicho_killer", PsichoKillerModifier::new);
 	public static final RegistryObject<Modifier> psichoDiggerModifier = MODIFIERS.register("psicho_digger", PsichoDiggerModifier::new);
 	public static final RegistryObject<Modifier> brittleModifier = MODIFIERS.register("brittle", BrittleModifier::new); //unused
@@ -69,7 +79,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(0xA8B4BB, SlotType.ABILITY, ModifierSource.MULTI_LEVEL));
 	public static final RegistryObject<Modifier> spellSocketModifier = MODIFIERS.register("spell_socket", () -> new SpellSocketModifier(0x3D3D3D));
 	public static final RegistryObject<Modifier> spellCastingModifier = MODIFIERS.register("spell_casting", SpellCastingModifier::new);
-	public static final RegistryObject<Modifier> lesserSpellCastingModifier = MODIFIERS.register("lesser_spell_casting", LesserSpellCastingModifier::new); //unused
+	public static final RegistryObject<Modifier> lesserSpellCastingModifier = MODIFIERS.register("lesser_spell_casting", SpellCastingModifierLesser::new); //unused
 	public static final RegistryObject<Modifier> colorizedModifier = MODIFIERS.register("colorized", ColorizedModifier::new);
 	public static final RegistryObject<Modifier> capacitorModifier = MODIFIERS.register("capacitor", () -> new CapacitorModifier(0xB51212));
 

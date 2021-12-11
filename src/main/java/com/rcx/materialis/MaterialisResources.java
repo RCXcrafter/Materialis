@@ -32,16 +32,22 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import slimeknights.mantle.registration.object.EnumObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
+import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
+import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
+import slimeknights.tconstruct.library.tools.definition.ToolStatProviders;
+import slimeknights.tconstruct.library.tools.item.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 
 public class MaterialisResources {
@@ -159,6 +165,15 @@ public class MaterialisResources {
 
 	//industrial foregoing stuff
 	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new OptionalItem(new Item.Properties().tab(TinkerModule.TAB_GENERAL), new ModLoadedCondition("industrialforegoing")));
+
+	//psi armor
+	public static final SlotType SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);
+	public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial
+			.builder(new ResourceLocation(Materialis.modID, "psimetal_exosuit"))
+			.setStatsProvider(ToolStatProviders.NO_PARTS)
+			.setSoundEvent(SoundEvents.ARMOR_EQUIP_GENERIC)
+			.build();
+	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ModifiableArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(TinkerTools.TAB_TOOLS)));
 
 
 

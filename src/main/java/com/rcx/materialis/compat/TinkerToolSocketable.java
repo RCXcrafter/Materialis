@@ -34,6 +34,7 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	public static final ResourceLocation SELECTED_SPELL = new ResourceLocation(Materialis.modID, "selected_slot");
 	public static final ResourceLocation CAN_LOOPCAST = new ResourceLocation(Materialis.modID, "can_loopcast");
 	public static final ResourceLocation SHOW_PSI_BAR = new ResourceLocation(Materialis.modID, "show_psi_bar");
+	public static final ResourceLocation TIMES_CAST = new ResourceLocation(Materialis.modID, "times_cast");
 	public static final ResourceLocation[] SPELL_SLOTS = new ResourceLocation[] {
 			new ResourceLocation(Materialis.modID, "spell_slot_0"),
 			new ResourceLocation(Materialis.modID, "spell_slot_1"),
@@ -100,6 +101,7 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	@Override
 	public void setBulletInSocket(int slot, ItemStack bullet) {
 		CompoundNBT cmp = new CompoundNBT();
+		ToolStack.from(tool).getPersistentData().putInt(TIMES_CAST, 0);
 
 		if (bullet.isEmpty()) {
 			ToolStack.from(tool).getPersistentData().remove(SPELL_SLOTS[slot]);
@@ -120,6 +122,7 @@ public class TinkerToolSocketable implements ICapabilityProvider, ISocketable, I
 	@Override
 	public void setSelectedSlot(int slot) {
 		ToolStack.from(tool).getPersistentData().putInt(SELECTED_SPELL, slot);
+		ToolStack.from(tool).getPersistentData().putInt(TIMES_CAST, 0);
 	}
 
 	@Override

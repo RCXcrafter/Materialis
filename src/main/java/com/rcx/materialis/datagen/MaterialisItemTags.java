@@ -16,6 +16,8 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import slimeknights.mantle.registration.object.EnumObject;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisItemTags extends ItemTagsProvider {
 
@@ -30,6 +32,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> WRENCH = ItemTags.bind("forge:tools/wrench");
 	public static final INamedTag<Item> WRENCHING = ItemTags.bind(Materialis.modID + ":wrench");
 	public static final INamedTag<Item> GALVANIZABLE = ItemTags.bind(Materialis.modID + ":galvanizable");
+	public static final INamedTag<Item> SENSOR_SLOTTABLE = ItemTags.bind(Materialis.modID + ":sensor_slottable");
 
 	//create stuff
 	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
@@ -126,6 +129,8 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		//psi stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
+		addArmorTags(MaterialisResources.PSIMETAL_EXOSUIT, DURABILITY);
+		tag(SENSOR_SLOTTABLE).add(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
 
 		//botania stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/terrasteel"));
@@ -146,5 +151,25 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		for (INamedTag<Item> tag : tags) {
 			tag(tag).add(item);
 		}
+	}
+
+	private INamedTag<Item> getArmorTag(ArmorSlotType slotType) {
+		switch (slotType) {
+		case BOOTS: return BOOTS;
+		case LEGGINGS: return LEGGINGS;
+		case CHESTPLATE: return CHESTPLATES;
+		case HELMET: return HELMETS;
+		}
+		return ARMOR;
+	}
+
+	@SafeVarargs
+	private final void addArmorTags(EnumObject<ArmorSlotType, ? extends Item> armor, INamedTag<Item>... tags) {
+		armor.forEach((type, item) -> {
+			for (INamedTag<Item> tag : tags) {
+				this.tag(tag).add(item);
+			}
+			this.tag(getArmorTag(type)).add(item);
+		});
 	}
 }

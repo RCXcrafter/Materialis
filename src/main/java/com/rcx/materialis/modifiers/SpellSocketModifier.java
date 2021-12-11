@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
+import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -62,11 +63,7 @@ public class SpellSocketModifier extends Modifier {
 	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		if (!enabled)
 			return;
-		if (volatileData.contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT)) {
-			volatileData.putInt(TinkerToolSocketable.SOCKETS, volatileData.getInt(TinkerToolSocketable.SOCKETS) + level);
-		} else {
-			volatileData.putInt(TinkerToolSocketable.SOCKETS, level);
-		}
+		MaterialisUtil.addToVolatileInt(TinkerToolSocketable.SOCKETS, volatileData, level);
 		if (!volatileData.contains(SOCKET_OWNER, NBT.TAG_STRING))
 			volatileData.putString(SOCKET_OWNER, getId().toString());
 	}

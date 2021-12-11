@@ -49,9 +49,12 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import slimeknights.mantle.client.model.NBTKeyModel;
+import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
@@ -81,7 +84,7 @@ public class Materialis {
 		// Register the processIMC method for modloading
 		//bus.addListener(this::processIMC);
 		// Register the doClientStuff method for modloading
-		//bus.addListener(this::doClientStuff);
+		bus.addListener(this::doClientStuff);
 
 		MaterialisResources.FLUIDS.register(bus);
 		MaterialisResources.BLOCKS.register(bus);
@@ -118,12 +121,11 @@ public class Materialis {
 		}
 	}
 
-	/*private void doClientStuff(final FMLClientSetupEvent event) {
-		// do something that can only be done on the client
-		//LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+	private void doClientStuff(final FMLClientSetupEvent event) {
+		NBTKeyModel.registerExtraTexture(new ResourceLocation(TConstruct.MOD_ID, "creative_slot"), "sensor", new ResourceLocation(Materialis.modID, "item/sensor_slot"));
 	}
 
-	private void enqueueIMC(final InterModEnqueueEvent event) {
+	/*private void enqueueIMC(final InterModEnqueueEvent event) {
 		// some example code to dispatch IMC to another mod
 		InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
 	}
