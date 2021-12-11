@@ -329,10 +329,10 @@ public class MaterialisLang extends LanguageProvider {
 				"Has a chance of spawning a pixie when you take damage while holding the tool");
 		addModifier(MaterialisModifiers.terrabeamModifier, "Terrabeam",
 				"Beam me up!",
-				"When swinging your tool you have a chance of firing a beam of mana");
+				"When attacking with your tool you have a chance of firing a beam of mana");
 		addModifier(MaterialisModifiers.elvenBeamModifier, "Elven Beam",
 				"Science cannot yet explain how it works",
-				"When swinging your tool you have a chance of firing a beam of mana");
+				"When attacking with your tool you have a chance of firing a beam of mana");
 		addModifier(MaterialisModifiers.capacitorModifier, "Capacitor",
 				"This is what makes time travel possible, the flux capacitor",
 				"Increases the energy capacity of the tool by 10000");
