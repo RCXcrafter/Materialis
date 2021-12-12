@@ -56,7 +56,7 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 
 		defineArmor(MaterialisResources.EXOSUIT_DEFINITION)
 		.durabilityFactor(18)
-		.stat(ToolStats.ARMOR, 2, 5, 6, 2)
+		.stat(ToolStats.ARMOR, 1, 4, 5, 1)
 		.startingSlots(ArmorSlotType.HELMET, MaterialisResources.SENSOR_SLOT, 1)
 		.startingSlots(SlotType.UPGRADE, 1)
 		.startingSlots(SlotType.DEFENSE, 2)

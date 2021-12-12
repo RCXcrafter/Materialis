@@ -17,6 +17,7 @@ import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Effects;
@@ -57,9 +58,11 @@ import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBui
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.spilling.SpillingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.spilling.effects.EffectSpillingEffect;
+import slimeknights.tconstruct.library.recipe.tinkerstation.repairing.SpecializedRepairRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, ICommonRecipeHelper {
 
@@ -88,6 +91,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		String toolFolder = "tools/building/";
 		String partFolder = "tools/parts/";
 		String castFolder = "smeltery/casts/";
+	    String armorFolder = "armor/building/";
+	    String armorRepairFolder = "armor/repair/";
 
 		metalCasting(consumer, MaterialisResources.FAIRY_FLUID.OBJECT, MaterialisResources.FAIRY_INGOT.BLOCK.get(), MaterialisResources.FAIRY_INGOT.INGOT.get(), MaterialisResources.FAIRY_INGOT.NUGGET.get(), castingFolder, "fairy");
 		metalMelting(consumer, MaterialisResources.FAIRY_FLUID.FLUID.get(), "fairy", false, meltingFolder, false);
@@ -296,6 +301,42 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("_paxel", 7));
 
 		//psi stuff
+		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET))
+		.pattern("gpg")
+		.pattern("b b")
+		.define('p', getTag("forge", "ingots/psimetal"))
+		.define('g', getTag("forge", "gems/psigem"))
+		.define('b', getTag("forge", "ingots/silicon_bronze"))
+		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.save(consumer, modResource(armorFolder + "exosuit_helmet"));
+		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE))
+		.pattern("p p")
+		.pattern("gpg")
+		.pattern("bpb")
+		.define('p', getTag("forge", "ingots/psimetal"))
+		.define('g', getTag("forge", "gems/psigem"))
+		.define('b', getTag("forge", "ingots/silicon_bronze"))
+		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.save(consumer, modResource(armorFolder + "exosuit_chestplate"));
+		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS))
+		.pattern("pgp")
+		.pattern("b b")
+		.pattern("p p")
+		.define('p', getTag("forge", "ingots/psimetal"))
+		.define('g', getTag("forge", "gems/psigem"))
+		.define('b', getTag("forge", "ingots/silicon_bronze"))
+		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.save(consumer, modResource(armorFolder + "exosuit_leggings"));
+		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS))
+		.pattern("g g")
+		.pattern("b b")
+		.define('g', getTag("forge", "gems/psigem"))
+		.define('b', getTag("forge", "ingots/silicon_bronze"))
+		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.save(consumer, modResource(armorFolder + "exosuit_boots"));
+		SpecializedRepairRecipeBuilder.repair(Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new)), MaterialisMaterials.psimetal)
+		.buildRepairKit(consumer, modResource(armorRepairFolder + "exosuit_repair_kit"))
+		.build(consumer, modResource(armorRepairFolder + "exosuit_station"));
 		metalTagCasting(consumer, MaterialisResources.PSIMETAL_FLUID.OBJECT, "psimetal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT, "ebony_psimetal", castingFolder, false);

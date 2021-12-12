@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "g g",
+    "b b"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:gems/psigem"
+    },
+    "b": {
+      "tag": "forge:ingots/silicon_bronze"
+    }
+  },
+  "result": {
+    "item": "materialis:psimetal_exosuit_boots"
+  }
+}

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.rcx.materialis.block.LightResidueBlock;
+import com.rcx.materialis.item.ExosuitModelArmorItem;
 import com.rcx.materialis.item.OptionalItem;
 import com.rcx.materialis.item.WrenchTool;
 import com.rcx.materialis.util.ColorizerModifierRecipe;
@@ -173,7 +174,7 @@ public class MaterialisResources {
 			.setStatsProvider(ToolStatProviders.NO_PARTS)
 			.setSoundEvent(SoundEvents.ARMOR_EQUIP_GENERIC)
 			.build();
-	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ModifiableArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(TinkerTools.TAB_TOOLS)));
+	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(TinkerTools.TAB_TOOLS)));
 
 
 
