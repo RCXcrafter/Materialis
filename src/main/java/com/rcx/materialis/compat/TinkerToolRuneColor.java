@@ -1,34 +1,30 @@
 package com.rcx.materialis.compat;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.modifiers.RunedModifier;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
+import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.IToolCapabilityProvider;
+import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import vazkii.quark.api.IRuneColorProvider;
 import vazkii.quark.api.QuarkCapabilities;
 
-public class TinkerToolRuneColor implements ICapabilityProvider, IRuneColorProvider {
+public class TinkerToolRuneColor implements IToolCapabilityProvider, IRuneColorProvider {
 
-	protected final ItemStack tool;
 	private final LazyOptional<?> capOptional;
 
-	public TinkerToolRuneColor(ItemStack tool) {
-		this.tool = tool;
+	public TinkerToolRuneColor(ItemStack stack, Supplier<? extends IModifierToolStack> toolStack) {
 		this.capOptional = LazyOptional.of(() -> this);
 	}
 
-	@Nonnull
 	@Override
-	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-		if (ToolStack.from(tool).getModifierLevel(MaterialisModifiers.runedModifier.get()) > 0 && (cap == QuarkCapabilities.RUNE_COLOR)) {
+	public <T> LazyOptional<T> getCapability(IModifierToolStack tool, Capability<T> cap) {
+		if (tool.getModifierLevel(MaterialisModifiers.runedModifier.get()) > 0 && (cap == QuarkCapabilities.RUNE_COLOR)) {
 			return capOptional.cast();
 		}
 		return LazyOptional.empty();

@@ -1,27 +1,24 @@
 package com.rcx.materialis.util;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
 import com.rcx.materialis.Materialis;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
+import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.IToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class TinkerToolFluxed implements ICapabilityProvider, IEnergyStorage {
+public class TinkerToolFluxed implements IToolCapabilityProvider, IEnergyStorage {
 
-	protected final ItemStack tool;
+	protected final Supplier<? extends IModifierToolStack> tool;
 	private final LazyOptional<IEnergyStorage> capOptional;
 	public static final String STORED_ENERGY_KEY = "tooltip.materialis.stored_enegry";
 	public static final ResourceLocation MAX_ENERGY = new ResourceLocation(Materialis.modID, "max_energy");
@@ -29,16 +26,14 @@ public class TinkerToolFluxed implements ICapabilityProvider, IEnergyStorage {
 	public static final ResourceLocation ENERGY_OWNER = new ResourceLocation(Materialis.modID, "energy_owner");
 	private static final int MAX_TRANSFER_RATE = 1000;
 
-	public TinkerToolFluxed(ItemStack tool) {
-		this.tool = tool;
+	public TinkerToolFluxed(ItemStack stack, Supplier<? extends IModifierToolStack> toolStack) {
+		this.tool = toolStack;
 		this.capOptional = LazyOptional.of(() -> this);
 	}
 
-	@Nonnull
 	@Override
-	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-		IModDataReadOnly volatileData = ToolStack.from(tool).getVolatileData();
-		if (volatileData.contains(MAX_ENERGY, NBT.TAG_INT) && volatileData.getInt(MAX_ENERGY) > 0 && (cap == CapabilityEnergy.ENERGY)) {
+	public <T> LazyOptional<T> getCapability(IModifierToolStack tool, Capability<T> cap) {
+		if (tool.getVolatileData().getInt(MAX_ENERGY) > 0 && (cap == CapabilityEnergy.ENERGY)) {
 			return CapabilityEnergy.ENERGY.orEmpty(cap, capOptional);
 		}
 		return LazyOptional.empty();
@@ -46,7 +41,7 @@ public class TinkerToolFluxed implements ICapabilityProvider, IEnergyStorage {
 
 	@Override
 	public int receiveEnergy(int maxReceive, boolean simulate) {
-		return receiveEnergy(ToolStack.from(tool), maxReceive, simulate);
+		return receiveEnergy(tool.get(), maxReceive, simulate);
 	}
 
 	@Override
@@ -56,12 +51,12 @@ public class TinkerToolFluxed implements ICapabilityProvider, IEnergyStorage {
 
 	@Override
 	public int getEnergyStored() {
-		return getEnergyStored(ToolStack.from(tool));
+		return getEnergyStored(tool.get());
 	}
 
 	@Override
 	public int getMaxEnergyStored() {
-		return getMaxEnergyStored(ToolStack.from(tool));
+		return getMaxEnergyStored(tool.get());
 	}
 
 	public static int receiveEnergy(IModifierToolStack tool, int maxReceive, boolean simulate) {
