@@ -1,8 +1,10 @@
 package com.rcx.materialis.modifiers;
 
+import com.rcx.materialis.item.ExosuitModelArmorItem;
 import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
@@ -10,6 +12,7 @@ import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import vazkii.psi.api.exosuit.PsiArmorEvent;
+import vazkii.psi.common.item.base.ModItems;
 
 public class PsionizingRadiationModifierDetonate extends Modifier {
 
@@ -27,6 +30,8 @@ public class PsionizingRadiationModifierDetonate extends Modifier {
 	@Override
 	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		MaterialisUtil.addToVolatileInt(PsionizingRadiationModifier.RADIATION_LEVEL, volatileData, level);
+		if (PsionizingRadiationModifier.enabled)
+			volatileData.put(ExosuitModelArmorItem.SENSOR, new ItemStack(ModItems.exosuitSensorTrigger).serializeNBT());
 	}
 
 	public void onPsiArmorEvent(PsiArmorEvent event) {
