@@ -269,6 +269,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.psionizingRadiationModifierSensor, "Sensor",
 				"6th sense!",
 				"Enables the tool to cast spells when the selected sensor is triggered");
+		addModifier(MaterialisModifiers.processorModifier, "Processor",
+				"Is this processed?",
+				"Allows your tool to process input from sensors for casting spells");
 		addModifier(MaterialisModifiers.psichoKillerModifier, "Psicho Killer",
 				"Qu'est-ce que c'est?",
 				"Deals bonus attack damage depending on how much psi you currently have");
