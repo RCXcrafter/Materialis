@@ -266,6 +266,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.colorizedModifier, "Colorized",
 				"Colormatic!",
 				"Adds a decorative colorizer to your tool");
+		addModifier(MaterialisModifiers.psionizingRadiationModifierSensor, "Sensor",
+				"6th sense!",
+				"Enables the tool to cast spells when the selected sensor is triggered");
 		addModifier(MaterialisModifiers.psichoKillerModifier, "Psicho Killer",
 				"Qu'est-ce que c'est?",
 				"Deals bonus attack damage depending on how much psi you currently have");

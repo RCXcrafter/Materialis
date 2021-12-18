@@ -10,6 +10,7 @@ import com.rcx.materialis.item.OptionalItem;
 import com.rcx.materialis.item.WrenchTool;
 import com.rcx.materialis.util.ColorizerModifierRecipe;
 import com.rcx.materialis.util.RuneModifierRecipe;
+import com.rcx.materialis.util.SensorModifierRecipe;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -68,6 +69,7 @@ public class MaterialisResources {
 
 	public static final RegistryObject<RuneModifierRecipe.Serializer> runeModifierSerializer = RECIPE_SERIALIZERS.register("rune_modifier", RuneModifierRecipe.Serializer::new);
 	public static final RegistryObject<ColorizerModifierRecipe.Serializer> colorizerModifierSerializer = RECIPE_SERIALIZERS.register("colorizer_modifier", ColorizerModifierRecipe.Serializer::new);
+	public static final RegistryObject<SensorModifierRecipe.Serializer> sensorModifierSerializer = RECIPE_SERIALIZERS.register("sensor_modifier", SensorModifierRecipe.Serializer::new);
 
 
 	/*

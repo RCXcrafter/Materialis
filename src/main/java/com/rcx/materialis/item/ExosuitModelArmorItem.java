@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.rcx.materialis.Materialis;
+import com.rcx.materialis.modifiers.PsionizingRadiationModifierSensor;
 
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.entity.Entity;
@@ -32,7 +33,6 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeab
 	private LazyValue<BipedModel<?>> model;
 	public String texture;
 	public String overlayTexture;
-	public static final ResourceLocation SENSOR = new ResourceLocation(Materialis.modID, "sensor");
 
 	public ExosuitModelArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builderIn, ToolDefinition toolDefinition) {
 		super(materialIn, slot, builderIn, toolDefinition);
@@ -69,7 +69,11 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeab
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public int getColor(@Nonnull ItemStack stack) {
-		ItemStack sensor = ItemStack.of(ToolStack.copyFrom(stack).getVolatileData().getCompound(SENSOR));
+		ItemStack sensor = ItemStack.of(ToolStack.copyFrom(stack).getVolatileData().getCompound(PsionizingRadiationModifierSensor.SENSOR));
+		if (!sensor.isEmpty() && sensor.getItem() instanceof IExosuitSensor) {
+			return ((IExosuitSensor) sensor.getItem()).getColor(sensor);
+		}
+		sensor = ItemStack.of(ToolStack.copyFrom(stack).getPersistentData().getCompound(PsionizingRadiationModifierSensor.SENSOR));
 		if (!sensor.isEmpty() && sensor.getItem() instanceof IExosuitSensor) {
 			return ((IExosuitSensor) sensor.getItem()).getColor(sensor);
 		}

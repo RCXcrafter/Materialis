@@ -32,7 +32,6 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> WRENCH = ItemTags.bind("forge:tools/wrench");
 	public static final INamedTag<Item> WRENCHING = ItemTags.bind(Materialis.modID + ":wrench");
 	public static final INamedTag<Item> GALVANIZABLE = ItemTags.bind(Materialis.modID + ":galvanizable");
-	public static final INamedTag<Item> SENSOR_SLOTTABLE = ItemTags.bind(Materialis.modID + ":sensor_slottable");
 
 	//create stuff
 	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
@@ -51,6 +50,10 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	//industrial foregoing stuff
 	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
 	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
+
+	//psi stuff
+	public static final INamedTag<Item> SENSOR_SLOTTABLE = ItemTags.bind(Materialis.modID + ":sensor_slottable");
+	public static final INamedTag<Item> SENSOR = ItemTags.bind(Materialis.modID + ":psi_sensor");
 
 	//mythic botany stuff
 	public static final INamedTag<Item> ALFSTEEL_INGOT = ItemTags.bind("forge:ingots/alfsteel");
@@ -131,6 +134,11 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
 		addArmorTags(MaterialisResources.PSIMETAL_EXOSUIT, DURABILITY);
 		tag(SENSOR_SLOTTABLE).add(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
+		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_light"));
+		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_heat"));
+		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_stress"));
+		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_water"));
+		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_trigger"));
 
 		//botania stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/terrasteel"));

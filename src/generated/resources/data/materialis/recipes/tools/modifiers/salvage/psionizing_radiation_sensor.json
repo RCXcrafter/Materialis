@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "tools": {
+    "tag": "materialis:sensor_slottable"
+  },
+  "slots": {
+    "sensor": 1
+  },
+  "modifier": "materialis:psionizing_radiation_sensor",
+  "min_level": 1,
+  "salvage": [
+    {
+      "item": "minecraft:iron_ingot",
+      "min": 0,
+      "max": 2
+    }
+  ]
+}

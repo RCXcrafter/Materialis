@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:modifier",
+  "type": "materialis:sensor_modifier",
   "conditions": [
     {
       "modid": "psi",
@@ -8,7 +8,7 @@
   ],
   "inputs": [
     {
-      "item": "psi:exosuit_sensor_water"
+      "tag": "materialis:psi_sensor"
     }
   ],
   "tools": {
@@ -18,7 +18,7 @@
     "sensor": 1
   },
   "result": {
-    "name": "materialis:psionizing_radiation_water",
+    "name": "materialis:psionizing_radiation_sensor",
     "level": 1
   },
   "max_level": 1

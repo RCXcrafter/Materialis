@@ -1,6 +1,5 @@
 package com.rcx.materialis.modifiers;
 
-import com.rcx.materialis.item.ExosuitModelArmorItem;
 import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.item.Item;
@@ -31,7 +30,7 @@ public class PsionizingRadiationModifierDetonate extends Modifier {
 	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		MaterialisUtil.addToVolatileInt(PsionizingRadiationModifier.RADIATION_LEVEL, volatileData, level);
 		if (PsionizingRadiationModifier.enabled)
-			volatileData.put(ExosuitModelArmorItem.SENSOR, new ItemStack(ModItems.exosuitSensorTrigger).serializeNBT());
+			volatileData.put(PsionizingRadiationModifierSensor.SENSOR, new ItemStack(ModItems.exosuitSensorTrigger).serializeNBT());
 	}
 
 	public void onPsiArmorEvent(PsiArmorEvent event) {

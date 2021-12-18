@@ -1,7 +1,6 @@
 package com.rcx.materialis.modifiers;
 
 import com.rcx.materialis.compat.TinkerToolSocketable;
-import com.rcx.materialis.item.ExosuitModelArmorItem;
 import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.entity.LivingEntity;
@@ -41,7 +40,7 @@ public class PsionizingRadiationModifierFire extends Modifier {
 	public void addVolatileData(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, int level, ModDataNBT volatileData) {
 		MaterialisUtil.addToVolatileInt(PsionizingRadiationModifier.RADIATION_LEVEL, volatileData, level);
 		if (PsionizingRadiationModifier.enabled)
-			volatileData.put(ExosuitModelArmorItem.SENSOR, new ItemStack(ModItems.exosuitSensorHeat).serializeNBT());
+			volatileData.put(PsionizingRadiationModifierSensor.SENSOR, new ItemStack(ModItems.exosuitSensorHeat).serializeNBT());
 	}
 
 	@Override

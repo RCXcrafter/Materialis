@@ -48,6 +48,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> psionizingRadiationModifierLight = MODIFIERS.register("psionizing_radiation_light", PsionizingRadiationModifierLight::new);
 	public static final RegistryObject<Modifier> psionizingRadiationModifierWater = MODIFIERS.register("psionizing_radiation_water", PsionizingRadiationModifierWater::new);
 	public static final RegistryObject<Modifier> psionizingRadiationModifierDetonate = MODIFIERS.register("psionizing_radiation_detonate", PsionizingRadiationModifierDetonate::new);
+	public static final RegistryObject<Modifier> psionizingRadiationModifierSensor = MODIFIERS.register("psionizing_radiation_sensor", PsionizingRadiationModifierSensor::new);
 	public static final RegistryObject<Modifier> psichoKillerModifier = MODIFIERS.register("psicho_killer", PsichoKillerModifier::new);
 	public static final RegistryObject<Modifier> psichoDiggerModifier = MODIFIERS.register("psicho_digger", PsichoDiggerModifier::new);
 	public static final RegistryObject<Modifier> brittleModifier = MODIFIERS.register("brittle", BrittleModifier::new); //unused
