@@ -23,11 +23,13 @@ import com.rcx.materialis.datagen.MaterialisRecipes;
 import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
+import com.rcx.materialis.modifiers.EngineersGogglesModifier;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.PacketElvenBeam;
 import com.rcx.materialis.util.PacketTerraBeam;
 import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
+import com.simibubi.create.content.contraptions.goggles.GoggleOverlayRenderer;
 
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
@@ -112,6 +114,8 @@ public class Materialis {
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
 		NBTKeyModel.registerExtraTexture(new ResourceLocation(TConstruct.MOD_ID, "creative_slot"), "sensor", new ResourceLocation(Materialis.modID, "item/sensor_slot"));
+		if (ModList.get().isLoaded("create"))
+			GoggleOverlayRenderer.registerCustomGoggleCondition(((EngineersGogglesModifier) MaterialisModifiers.engineersGogglesModifier.get())::wearingGoggledHelmet);
 	}
 
 	/*private void enqueueIMC(final InterModEnqueueEvent event) {
