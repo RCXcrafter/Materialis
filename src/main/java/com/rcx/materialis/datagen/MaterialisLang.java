@@ -74,7 +74,7 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.shadowSteel, "Shadow Steel", "", "Voids all dropped items from mob kills and broken blocks, drops bonus xp when killing mobs");
 
 		//eidolon stuff
-		addMaterial(MaterialisMaterials.pewter, "Pewter", "", "-10% attack speed, +20% attack damage per level");
+		addMaterial(MaterialisMaterials.pewter, "Pewter", "", "-5% attack speed, +10% attack damage per level");
 		addMaterial(MaterialisMaterials.arcaneGold, "Arcane Gold", "", "+1 magic damage per level");
 
 		//aquaculture stuff

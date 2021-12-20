@@ -132,7 +132,7 @@
   "material.materialis.nickel": "Nickel",
   "material.materialis.nickel.encyclopedia": "Adds half a second of burning per level to targets that are on fire",
   "material.materialis.pewter": "Pewter",
-  "material.materialis.pewter.encyclopedia": "-10% attack speed, +20% attack damage per level",
+  "material.materialis.pewter.encyclopedia": "-5% attack speed, +10% attack damage per level",
   "material.materialis.pink_slime": "Pink Slime",
   "material.materialis.pink_slime.encyclopedia": "Overslime can be eaten to restore 1 hunger and 0.1 saturation per level",
   "material.materialis.pink_slime.flavor": "Do you have any idea where that's been?",
