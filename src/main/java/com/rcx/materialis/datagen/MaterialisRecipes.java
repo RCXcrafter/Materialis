@@ -718,11 +718,20 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierSensor.get())
 		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
 		.addInput(MaterialisItemTags.SENSOR)
-		.addSalvage(Items.IRON_INGOT, 0, 2)
+		.addSalvage(getTag("forge", "ingots/psimetal"), 0, 2)
 		.setMaxLevel(1)
 		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
 		.buildSalvage(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifierSensor, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.sensorModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.psionizingRadiationModifierSensor, modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.engineersGogglesModifier.get())
+		.setTools(TinkerTags.Items.HELMETS)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "goggles"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("create", "goggles")), 0.9f))
+		.setMaxLevel(1)
+		.setGroup("materialis:create")
+		.buildSalvage(consumer, prefix(MaterialisModifiers.engineersGogglesModifier, salvageFolder))
+		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.engineersGogglesModifier, modifierFolder));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

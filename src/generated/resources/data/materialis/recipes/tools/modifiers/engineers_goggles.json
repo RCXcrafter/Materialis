@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "create:goggles"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/helmets"
+  },
+  "result": {
+    "name": "materialis:engineers_goggles",
+    "level": 1
+  },
+  "max_level": 1
+}

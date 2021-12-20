@@ -356,6 +356,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.powerHungryModifier, "Power Hungry",
 				"Megalomaniac!",
 				"Using the tool costs 100 RF per durability per level, the tool doesn't seem to work so well if it's not powered");
+		addModifier(MaterialisModifiers.engineersGogglesModifier, "Engineers Goggles",
+				"Mind-goggling",
+				"Shows additional information when looking at kinetic devices");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

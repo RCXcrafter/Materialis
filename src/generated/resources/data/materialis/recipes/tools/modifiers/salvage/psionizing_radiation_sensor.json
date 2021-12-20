@@ -16,7 +16,7 @@
   "min_level": 1,
   "salvage": [
     {
-      "item": "minecraft:iron_ingot",
+      "tag": "forge:ingots/psimetal",
       "min": 0,
       "max": 2
     }

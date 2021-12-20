@@ -85,6 +85,7 @@ public class MaterialisModifiers {
 	public static final RegistryObject<Modifier> psionizingRadiationModifierSensor = MODIFIERS.register("psionizing_radiation_sensor", PsionizingRadiationModifierSensor::new);
 	public static final RegistryObject<Modifier> processorModifier = MODIFIERS.register("processor", () -> new ExtraModifier(0xA0A0A0, MaterialisResources.SENSOR_SLOT, ModifierSource.SINGLE_LEVEL)); //unused
 	public static final RegistryObject<Modifier> capacitorModifier = MODIFIERS.register("capacitor", () -> new CapacitorModifier(0xB51212));
+	public static final RegistryObject<Modifier> engineersGogglesModifier = MODIFIERS.register("engineers_goggles", EngineersGogglesModifier::new);
 
 	//internal modifiers
 	public static final RegistryObject<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(0xFFFFFF, Integer.MIN_VALUE + 50));
