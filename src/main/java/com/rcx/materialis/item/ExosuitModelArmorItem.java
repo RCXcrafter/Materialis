@@ -19,6 +19,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.item.ModifiableArmorItem;
@@ -36,14 +37,17 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeab
 
 	public ExosuitModelArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builderIn, ToolDefinition toolDefinition) {
 		super(materialIn, slot, builderIn, toolDefinition);
-		this.initModel(slot);
+		if (FMLEnvironment.dist == Dist.CLIENT)
+			this.initModel(slot);
 	}
 
 	public ExosuitModelArmorItem(ModifiableArmorMaterial material, ArmorSlotType slotType, Properties properties) {
 		super(material, slotType, properties);
-		this.initModel(slotType.getEquipmentSlot());
+		if (FMLEnvironment.dist == Dist.CLIENT)
+			this.initModel(slotType.getEquipmentSlot());
 	}
 
+	@OnlyIn(Dist.CLIENT)
 	protected void initModel(EquipmentSlotType slot) {
 		if (ModList.get().isLoaded("psi")) {
 			if (ModList.get().isLoaded("magipsi")) {
