@@ -33,6 +33,7 @@ import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.mantle.registration.object.EnumObject;
@@ -177,7 +178,7 @@ public class MaterialisResources {
 			.setStatsProvider(ToolStatProviders.NO_PARTS)
 			.setSoundEvent(SoundEvents.ARMOR_EQUIP_GENERIC)
 			.build();
-	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, ModList.get().isLoaded("psi") ? new Item.Properties().tab(TinkerTools.TAB_TOOLS) : new Item.Properties().tab(ItemGroup.TAB_SEARCH)));
+	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(ModList.get().isLoaded("psi") || !FMLEnvironment.production ? TinkerTools.TAB_TOOLS : null)));
 
 
 
