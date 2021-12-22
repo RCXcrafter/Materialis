@@ -729,6 +729,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "goggles"))))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("create", "goggles")), 0.9f))
 		.setMaxLevel(1)
+		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:create")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.engineersGogglesModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.engineersGogglesModifier, modifierFolder));
