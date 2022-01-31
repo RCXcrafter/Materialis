@@ -16,7 +16,6 @@
   },
   "result": {
     "name": "materialis:colorized",
-    "level": 1
-  },
-  "max_level": 1
+    "value": "colorizer"
+  }
 }

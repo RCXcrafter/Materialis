@@ -57,6 +57,7 @@ import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.spilling.SpillingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.spilling.effects.EffectSpillingEffect;
 import slimeknights.tconstruct.library.recipe.tinkerstation.repairing.SpecializedRepairRecipeBuilder;
@@ -527,11 +528,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
 		.build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefix(TinkerModifiers.overslime, modifierFolder));
 
-		ModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get())
+		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get(), "rune")
 		.addInput(getTag("quark", "runes"))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("quark", "blank_rune")), 0.5f))
 		.setTools(TinkerTags.Items.MODIFIABLE)
-		.setMaxLevel(1)
 		.setRequirements(ModifierMatch.entry(TinkerModifiers.shiny.get()))
 		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
 		.setGroup("materialis:quark")
@@ -664,12 +664,11 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.buildSalvage(consumer, prefix(MaterialisModifiers.spellSocketModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
 
-		ModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get())
+		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get(), "colorizer")
 		.addInput(getTag("psi", "colorizers"))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psidust")), 0.3f))
 		.addSalvage(Items.IRON_INGOT, 0.7f)
 		.setTools(TinkerTags.Items.MODIFIABLE)
-		.setMaxLevel(1)
 		.setGroup("materialis:psi")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
@@ -718,11 +717,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setGroup("materialis:flux")
 		.build(withCondition(consumer, capacitorIsUseful), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "draconicevolution_"));
 
-		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierSensor.get())
+		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierSensor.get(), "sensor")
 		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
 		.addInput(MaterialisItemTags.SENSOR)
 		.addSalvage(getTag("forge", "ingots/psimetal"), 0, 2)
-		.setMaxLevel(1)
 		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
 		.buildSalvage(withCondition(consumer, new ModLoadedCondition("psi")), prefix(MaterialisModifiers.psionizingRadiationModifierSensor, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.sensorModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.psionizingRadiationModifierSensor, modifierFolder));

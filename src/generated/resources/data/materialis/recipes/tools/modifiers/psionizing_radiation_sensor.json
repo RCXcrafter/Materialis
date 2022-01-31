@@ -19,7 +19,6 @@
   },
   "result": {
     "name": "materialis:psionizing_radiation_sensor",
-    "level": 1
-  },
-  "max_level": 1
+    "value": "sensor"
+  }
 }

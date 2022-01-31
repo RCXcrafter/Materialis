@@ -21,7 +21,6 @@
   },
   "result": {
     "name": "materialis:runed",
-    "level": 1
-  },
-  "max_level": 1
+    "value": "rune"
+  }
 }
