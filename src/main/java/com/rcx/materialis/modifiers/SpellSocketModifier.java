@@ -37,9 +37,9 @@ public class SpellSocketModifier extends Modifier {
 
 	@Override
 	public ValidatedResult validate(IModifierToolStack tool, int level) {
-		int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
-		//check if there are still spells in the sockets that are being removed or if too many sockets are being added
 		if (enabled) {
+			//check if there are still spells in the sockets that are being removed or if too many sockets are being added
+			int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, NBT.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
 			if (sockets > ISocketable.MAX_ASSEMBLER_SLOTS)
 				return SpellSocketModifier.TOO_MANY_SLOTS;
 
@@ -53,9 +53,11 @@ public class SpellSocketModifier extends Modifier {
 
 	@Override
 	public void onRemoved(IModifierToolStack tool) {
-		//remove tags if all sockets are removed
-		if (tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) == 0) {
-			tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
+		if (enabled) {
+			//remove tags if all sockets are removed
+			if (tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) == 0) {
+				tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
+			}
 		}
 	}
 
