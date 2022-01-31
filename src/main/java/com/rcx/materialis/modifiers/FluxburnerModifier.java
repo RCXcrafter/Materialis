@@ -40,7 +40,7 @@ public class FluxburnerModifier extends CapacitorModifier {
 		super.addInformation(tool, level, tooltip, flag);
 		float bonus = 0;
 		if (TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false))
-			bonus = 2.5f * level * tool.getModifier(ToolStats.MINING_SPEED);
+			bonus = 2.5f * level;
 		addStatTooltip(tool, ToolStats.MINING_SPEED, TinkerTags.Items.HARVEST, bonus, tooltip);
 	}
 

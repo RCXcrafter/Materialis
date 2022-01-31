@@ -27,6 +27,6 @@ public class PolishedModifier extends Modifier {
 	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag flag) {
 		float total = tool.getDamage() + tool.getCurrentDurability();
 		float extra = 1.5f * level * tool.getCurrentDurability() / total;
-		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, extra * tool.getModifier(ToolStats.ATTACK_DAMAGE), tooltip);
+		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, extra, tooltip);
 	}
 }

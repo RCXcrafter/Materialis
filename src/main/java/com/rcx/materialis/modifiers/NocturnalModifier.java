@@ -28,6 +28,6 @@ public class NocturnalModifier extends Modifier {
 
 	@Override
 	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag flag) {
-		addStatTooltip(tool, ToolStats.MINING_SPEED, TinkerTags.Items.HARVEST, 2 * level * tool.getModifier(ToolStats.MINING_SPEED), tooltip);
+		addStatTooltip(tool, ToolStats.MINING_SPEED, TinkerTags.Items.HARVEST, 2 * level, tooltip);
 	}
 }

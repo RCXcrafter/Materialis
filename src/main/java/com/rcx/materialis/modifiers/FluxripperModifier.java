@@ -32,7 +32,7 @@ public class FluxripperModifier extends CapacitorModifier {
 		super.addInformation(tool, level, tooltip, flag);
 		float bonus = 0;
 		if (TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false))
-			bonus = 1.5f * level * tool.getModifier(ToolStats.ATTACK_DAMAGE);
+			bonus = 1.5f * level;
 		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, bonus, tooltip);
 	}
 

@@ -32,6 +32,6 @@ public class PsichoKillerModifier extends Modifier {
 
 	@Override
 	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag flag) {
-		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, level * tool.getModifier(ToolStats.ATTACK_DAMAGE), tooltip);
+		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, level, tooltip);
 	}
 }

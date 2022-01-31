@@ -39,6 +39,6 @@ public class ManaripperModifier extends Modifier {
 
 	@Override
 	public void addInformation(IModifierToolStack tool, int level, List<ITextComponent> tooltip, TooltipFlag flag) {
-		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, 1.5f * level * tool.getModifier(ToolStats.ATTACK_DAMAGE), tooltip);
+		addStatTooltip(tool, ToolStats.ATTACK_DAMAGE, TinkerTags.Items.MELEE, 1.5f * level, tooltip);
 	}
 }
