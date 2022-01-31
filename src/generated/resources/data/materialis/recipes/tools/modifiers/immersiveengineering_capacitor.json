@@ -2,8 +2,17 @@
   "type": "tconstruct:modifier",
   "conditions": [
     {
-      "modid": "immersiveengineering",
-      "type": "forge:mod_loaded"
+      "values": [
+        {
+          "modid": "draconicevolution",
+          "type": "forge:mod_loaded"
+        },
+        {
+          "modid": "immersiveengineering",
+          "type": "forge:mod_loaded"
+        }
+      ],
+      "type": "forge:or"
     }
   ],
   "inputs": [
