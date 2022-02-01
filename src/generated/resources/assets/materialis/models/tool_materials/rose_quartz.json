@@ -1,6 +1,8 @@
 {
   "fallbacks": [
-    "rock"
+    "crystal",
+    "rock",
+    "stick"
   ],
   "color": "FF8C80",
   "luminosity": 0,

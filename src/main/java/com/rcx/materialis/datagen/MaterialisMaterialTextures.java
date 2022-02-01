@@ -41,7 +41,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		//create materials
 		buildMaterial(MaterialisMaterials.roseQuartz)
 		.meleeHarvest()
-		.fallbacks("rock")
+		.fallbacks("crystal", "rock", "stick")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF70283D).addARGB(102, 0xFFA53B57).addARGB(140, 0xFFE06464).addARGB(178, 0xFFFF828A).addARGB(216, 0xFFFFA699).addARGB(255, 0xFFFFDCD1).build());
 		buildMaterial(MaterialisMaterials.refinedRadiance)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
