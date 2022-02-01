@@ -47,6 +47,7 @@ import slimeknights.tconstruct.library.data.recipe.ICommonRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.RandomItem;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
@@ -64,6 +65,7 @@ import slimeknights.tconstruct.library.recipe.tinkerstation.repairing.Specialize
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
+import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, ICommonRecipeHelper {
@@ -89,6 +91,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		String compositeFolder = "tools/parts/composite/";
 		String modifierFolder = "tools/modifiers/";
 		String salvageFolder = "tools/modifiers/salvage/";
+		String slotlessFolder = "tools/modifiers/slotless/";
 		String spillFolder = "tools/spilling/";
 		String toolFolder = "tools/building/";
 		String partFolder = "tools/parts/";
@@ -739,6 +742,36 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setGroup("materialis:create")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.engineersGogglesModifier, salvageFolder))
 		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.engineersGogglesModifier, modifierFolder));
+
+
+		//texture recipes
+		Ingredient plate = Ingredient.of(TinkerTools.plateArmor.values().stream().map(ItemStack::new));
+		plateTexture(consumer, plate, MaterialisMaterials.fairy, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.refinedRadiance, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.shadowSteel, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.pewter, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.arcaneGold, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.neptunium, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.quicksilver, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.starmetal, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.pinkSlime, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.cloggrum, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.froststeel, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.utherium, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.forgottenMetal, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.refinedObsidian, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.refinedGlowstone, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.psimetal, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.ebonyPsimetal, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.ivoryPsimetal, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.iesnium, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.manasteel, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.elementium, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.terrasteel, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.alfsteel, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.draconium, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.awakenedDraconium, true, slotlessFolder);
+		plateTexture(consumer, plate, MaterialisMaterials.fluxInfused, true, slotlessFolder);
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
@@ -816,6 +849,23 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setNeeded(needed)
 		.build(consumer, location("tools/materials/" + saveName));
 	}*/
+
+	/** Adds recipes for a plate armor texture */
+	private void plateTexture(Consumer<IFinishedRecipe> consumer, Ingredient tool, MaterialId material, boolean optional, String folder) {
+		plateTexture(consumer, tool, material, "ingots/" + material.getPath(), optional, folder);
+	}
+
+	/** Adds recipes for a plate armor texture with a custom tag */
+	private void plateTexture(Consumer<IFinishedRecipe> consumer, Ingredient tool, MaterialId material, String tag, boolean optional, String folder) {
+		Ingredient ingot = Ingredient.of(ItemTags.createOptional(new ResourceLocation("forge", tag)));
+		if (optional) {
+			consumer = withCondition(consumer, tagCondition(tag));
+		}
+		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment.get(), material.toString())
+		.setTools(tool)
+		.addInput(ingot).addInput(ingot).addInput(ingot)
+		.build(consumer, wrap(TinkerModifiers.embellishment, folder, "_" + material.getPath()));
+	}
 
 	protected static ICondition tagConditionDomain(String domain, String name) {
 		return new NotCondition(new TagEmptyCondition(domain, name));
