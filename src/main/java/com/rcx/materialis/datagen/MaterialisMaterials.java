@@ -90,6 +90,9 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId draconium = createMaterial("draconium");
 	public static final MaterialId awakenedDraconium = createMaterial("draconium_awakened");
 
+	//redstone arsenal materials
+	public static final MaterialId fluxInfused = createMaterial("flux_infused");
+
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -156,6 +159,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//draconic evolution materials
 		addCompatMetalMaterial(draconium, 4, ORDER_GENERAL + ORDER_COMPAT, 0x905EBE);
 		addCompatMetalMaterial(awakenedDraconium, 4, ORDER_GENERAL + ORDER_COMPAT, 0xFF8800);
+		//redstone arsenal materials
+		addCompatMetalMaterial(fluxInfused, 3, ORDER_GENERAL + ORDER_COMPAT, 0xE68A29);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -226,6 +231,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//draconic evolution materials
 			addDefaultTraits(draconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier.get(), 1), new ModifierEntry(MaterialisModifiers.fluxshieldModifier.get(), 2));
 			addDefaultTraits(awakenedDraconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier.get(), 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier.get(), 1), new ModifierEntry(MaterialisModifiers.fluxburnerModifier.get(), 1));
+			//redstone arsenal materials
+			addDefaultTraits(fluxInfused, MaterialisModifiers.fluxripperModifier.get(), MaterialisModifiers.fluxburnerModifier.get());
 		}
 	}
 
@@ -293,6 +300,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//draconic evolution materials
 			addMaterialStats(draconium, new HeadMaterialStats(1000, 7f, 4, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(awakenedDraconium, new HeadMaterialStats(1500, 9f, 5, 3f), new HandleMaterialStats(1f, 1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			//redstone arsenal materials
+			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, 4, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }

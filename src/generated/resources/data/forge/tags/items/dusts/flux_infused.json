@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "redstone_arsenal:flux_dust",
+      "required": false
+    }
+  ]
+}

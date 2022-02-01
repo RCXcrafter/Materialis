@@ -424,6 +424,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalTagCasting(consumer, MaterialisResources.AWAKENED_DRACONIUM_FLUID.OBJECT, "draconium_awakened", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.AWAKENED_DRACONIUM_FLUID.FLUID.get(), "draconium_awakened", false, meltingFolder, true);
 
+		//redstone arsenal stuff
+		metalTagCasting(consumer, MaterialisResources.FLUX_INFUSED_FLUID.OBJECT, "flux_infused", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.FLUX_INFUSED_FLUID.FLUID.get(), "flux_infused", false, meltingFolder, true);
 
 
 		//materials
@@ -466,6 +469,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.alfsteel, materialFolder, "alfsteel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.draconium, materialFolder, "draconium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.awakenedDraconium, materialFolder, "draconium_awakened", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.fluxInfused, materialFolder, "flux_infused", true);
 
 		//material casting
 		materialMeltingCasting(consumer, MaterialisMaterials.fairy, MaterialisResources.FAIRY_FLUID.OBJECT, materialFolder);
@@ -505,6 +509,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.build(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(materialFolder + "melting/alfsteel"));
 		materialMeltingCasting(consumer, MaterialisMaterials.draconium, MaterialisResources.DRACONIUM_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.awakenedDraconium, MaterialisResources.AWAKENED_DRACONIUM_FLUID.OBJECT, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.fluxInfused, MaterialisResources.FLUX_INFUSED_FLUID.OBJECT, materialFolder);
 
 
 
@@ -673,7 +678,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.buildSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier, salvageFolder))
 		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
 
-		ICondition capacitorIsUseful = new ModLoadedCondition("draconicevolution");
+		ICondition capacitorIsUseful = new OrCondition(new ModLoadedCondition("draconicevolution"), new ModLoadedCondition("redstone_arsenal"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
 		.addInput(getTag("forge", "ingots/lead"))
@@ -685,7 +690,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:flux")
 		.buildSalvage(consumer, prefix(MaterialisModifiers.capacitorModifier, salvageFolder))
-		.build(withCondition(consumer, new OrCondition(capacitorIsUseful, new ModLoadedCondition("thermal"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "thermal_"));
+		.build(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("thermal"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "thermal_"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
 		.addInput(getTag("forge", "ingots/lead"))
@@ -695,7 +700,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:flux")
-		.build(withCondition(consumer, new OrCondition(capacitorIsUseful, new ModLoadedCondition("immersiveengineering"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "immersiveengineering_"));
+		.build(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("immersiveengineering"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "immersiveengineering_"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("mekanism", "alloy_infused"))))
@@ -705,7 +710,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
 		.setGroup("materialis:flux")
-		.build(withCondition(consumer, new OrCondition(capacitorIsUseful, new ModLoadedCondition("mekanism"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "mekanism_"));
+		.build(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("mekanism"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "mekanism_"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
 		.addInput(getTag("forge", "dusts/redstone"))

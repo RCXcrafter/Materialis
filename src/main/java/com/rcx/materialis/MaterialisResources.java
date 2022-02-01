@@ -141,6 +141,9 @@ public class MaterialisResources {
 	public static final FluidWithBlockNBucket DRACONIUM_FLUID = addFluid("molten_draconium", "Molten Draconium", 1350, 12, 3000, 6000);
 	public static final FluidWithBlockNBucket AWAKENED_DRACONIUM_FLUID = addFluid("molten_draconium_awakened", "Molten Awakened Draconium", 1770, 12, 3000, 6000);
 
+	//redstone arsenal fluids
+	public static final FluidWithBlockNBucket FLUX_INFUSED_FLUID = addFluid("molten_flux_infused", "Molten Flux-Infused Metal", 1180, 12, 3000, 6000);
+
 
 	/*
 	 * BLOCKS

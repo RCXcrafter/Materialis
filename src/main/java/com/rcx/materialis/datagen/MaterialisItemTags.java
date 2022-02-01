@@ -60,6 +60,14 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final INamedTag<Item> ALFSTEEL_NUGGET = ItemTags.bind("forge:nuggets/alfsteel");
 	public static final INamedTag<Item> ALFSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/alfsteel");
 
+	//redstone arsenal stuff
+	public static final INamedTag<Item> FLUX_INFUSED_INGOT = ItemTags.bind("forge:ingots/flux_infused");
+	public static final INamedTag<Item> FLUX_INFUSED_NUGGET = ItemTags.bind("forge:nuggets/flux_infused");
+	public static final INamedTag<Item> FLUX_INFUSED_DUST = ItemTags.bind("forge:dusts/flux_infused");
+	public static final INamedTag<Item> FLUX_INFUSED_GEAR = ItemTags.bind("forge:gears/flux_infused");
+	public static final INamedTag<Item> GEARS = ItemTags.bind("forge:gears");
+	public static final INamedTag<Item> FLUX_INFUSED_BLOCK = ItemTags.bind("forge:storage_blocks/flux_infused");
+
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
 	}
@@ -151,6 +159,19 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(ALFSTEEL_BLOCK).addOptional(new ResourceLocation("mythicbotany", "alfsteel_block"));
 		tag(Tags.Items.STORAGE_BLOCKS).addTag(ALFSTEEL_BLOCK);
 		tag(ANVIL_METAL).addTag(ALFSTEEL_BLOCK);
+
+		//redstone arsenal stuff
+		tag(FLUX_INFUSED_INGOT).addOptional(new ResourceLocation("redstone_arsenal", "flux_ingot"));
+		tag(Tags.Items.INGOTS).addTag(FLUX_INFUSED_INGOT);
+		tag(FLUX_INFUSED_NUGGET).addOptional(new ResourceLocation("redstone_arsenal", "flux_nugget"));
+		tag(Tags.Items.NUGGETS).addTag(FLUX_INFUSED_NUGGET);
+		tag(FLUX_INFUSED_DUST).addOptional(new ResourceLocation("redstone_arsenal", "flux_dust"));
+		tag(Tags.Items.DUSTS).addTag(FLUX_INFUSED_DUST);
+		tag(FLUX_INFUSED_GEAR).addOptional(new ResourceLocation("redstone_arsenal", "flux_gear"));
+		tag(GEARS).addTag(FLUX_INFUSED_GEAR);
+		tag(FLUX_INFUSED_BLOCK).addOptional(new ResourceLocation("redstone_arsenal", "flux_metal_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(FLUX_INFUSED_BLOCK);
+		tag(ANVIL_METAL).addTag(FLUX_INFUSED_BLOCK);
 	}
 
 	@SafeVarargs

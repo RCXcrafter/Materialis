@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/flux_infused",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:storage_blocks/flux_infused"
+  },
+  "value": 9,
+  "needed": 1,
+  "material": "materialis:flux_infused",
+  "leftover": {
+    "tag": "forge:ingots/flux_infused"
+  }
+}

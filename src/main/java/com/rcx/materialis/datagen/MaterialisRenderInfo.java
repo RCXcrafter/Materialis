@@ -60,6 +60,8 @@ public class MaterialisRenderInfo extends AbstractMaterialRenderInfoProvider {
 		//draconic evolution materials
 		buildRenderInfo(MaterialisMaterials.draconium).color(0x9B3DF2);
 		buildRenderInfo(MaterialisMaterials.awakenedDraconium).color(0xFF8800);
+		//redstone arsenal materials
+		buildRenderInfo(MaterialisMaterials.fluxInfused).color(0xFFC149);
 	}
 
 	@Override

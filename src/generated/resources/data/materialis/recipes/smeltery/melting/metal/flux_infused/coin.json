@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:coins/flux_infused",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:coins/flux_infused"
+  },
+  "result": {
+    "fluid": "materialis:molten_flux_infused",
+    "amount": 48
+  },
+  "temperature": 880,
+  "time": 42
+}

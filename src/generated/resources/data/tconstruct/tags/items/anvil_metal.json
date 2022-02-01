@@ -14,6 +14,7 @@
       "id": "#forge:storage_blocks/terrasteel",
       "required": false
     },
-    "#forge:storage_blocks/alfsteel"
+    "#forge:storage_blocks/alfsteel",
+    "#forge:storage_blocks/flux_infused"
   ]
 }

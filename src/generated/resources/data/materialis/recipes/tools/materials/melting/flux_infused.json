@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:flux_infused",
+  "temperature": 880,
+  "result": {
+    "fluid": "materialis:molten_flux_infused",
+    "amount": 144
+  }
+}

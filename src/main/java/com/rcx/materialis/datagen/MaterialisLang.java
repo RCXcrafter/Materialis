@@ -140,6 +140,9 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.awakenedDraconium, "Awakened Draconium", "", "increases mining speed with 2.5 and attack damage with 1.5 per level, costs 100 RF per level");
 		add("material.materialis.draconium_awakened.format", "Draconic %s");
 
+		//redstone arsenal stuff
+		addMaterial(MaterialisMaterials.fluxInfused, "Flux-Infused", "", "increases mining speed with 2.5 and attack damage with 1.5 per level, costs 100 RF per level");
+
 		//modifiers
 		addModifier(MaterialisModifiers.enhancedQuartzModifier, "Enhanced",
 				"Shiny!",

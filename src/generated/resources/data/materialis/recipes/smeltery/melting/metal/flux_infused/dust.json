@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:dusts/flux_infused",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:dusts/flux_infused"
+  },
+  "result": {
+    "fluid": "materialis:molten_flux_infused",
+    "amount": 144
+  },
+  "temperature": 880,
+  "time": 47
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "materialis:block/molten_flux_infused_block"
+    }
+  }
+}
