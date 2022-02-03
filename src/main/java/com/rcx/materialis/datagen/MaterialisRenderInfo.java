@@ -35,10 +35,12 @@ public class MaterialisRenderInfo extends AbstractMaterialRenderInfoProvider {
 		//industrial foregoing materials
 		buildRenderInfo(MaterialisMaterials.plastic).color(0xD9D9D9);
 		buildRenderInfo(MaterialisMaterials.pinkSlime).color(0xFF9FEF);
+		buildRenderInfo(MaterialisMaterials.pinkSlimeball).color(0xE27BE3);
 		//undergarden materials
 		buildRenderInfo(MaterialisMaterials.cloggrum).color(0x9C8878);
 		buildRenderInfo(MaterialisMaterials.froststeel).color(0x95BDE3);
 		buildRenderInfo(MaterialisMaterials.utherium).color(0xEB515B);
+		buildRenderInfo(MaterialisMaterials.regalium).color(0xEBBB71);
 		buildRenderInfo(MaterialisMaterials.forgottenMetal).color(0x6CD7AA);
 		//mekanism materials
 		buildRenderInfo(MaterialisMaterials.refinedObsidian).color(0xB78FD2);

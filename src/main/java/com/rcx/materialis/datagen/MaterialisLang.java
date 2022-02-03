@@ -89,12 +89,14 @@ public class MaterialisLang extends LanguageProvider {
 		//industrial foregoing stuff
 		addMaterial(MaterialisMaterials.plastic, "Plastic", "", "-20% knockback per level");
 		addMaterial(MaterialisMaterials.pinkSlime, "Pink Slime", "Do you have any idea where that's been?", "Overslime can be eaten to restore 1 hunger and 0.1 saturation per level");
+		addMaterial(MaterialisMaterials.pinkSlimeball, "Pink Slime", "", "");
 		addItem(MaterialisResources.PINK_SLIME_CRYSTAL, "Pink Slime Crystal");
 
 		//undergarden stuff
 		addMaterial(MaterialisMaterials.cloggrum, "Cloggrum", "", "Repairing the tool costs up to half as much the higher the durability the tool has");
 		addMaterial(MaterialisMaterials.froststeel, "Froststeel", "", "Applies 7.5 seconds of slowness to attacked mobs per level");
 		addMaterial(MaterialisMaterials.utherium, "Utherium", "", "Deals 25% extra damage to rotspawn per level");
+		addMaterial(MaterialisMaterials.regalium, "Regalium", "", "");
 		addMaterial(MaterialisMaterials.forgottenMetal, "Forgotten Metal", "It's the uhhh umm, y- I uhhhh ermmmm...", "Deals 50% extra damage to undergarden mobs per level, +25% mining speed on undergarden blocks per level");
 		add("material.materialis.forgotten_metal.format", "Forgotten %s");
 

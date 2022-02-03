@@ -791,6 +791,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		plateTexture(consumer, armor, MaterialisMaterials.cloggrum, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.froststeel, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.utherium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.regalium, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.forgottenMetal, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.refinedObsidian, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.refinedGlowstone, true, slotlessFolder);
@@ -805,6 +806,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		plateTexture(consumer, armor, MaterialisMaterials.draconium, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.awakenedDraconium, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.fluxInfused, true, slotlessFolder);
+
+		Ingredient slimesuit = Ingredient.of(TinkerTools.slimesuit.values().stream().map(ItemStack::new));
+		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment.get(), MaterialisMaterials.pinkSlimeball.toString())
+		.setTools(slimesuit)
+		.addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME))
+		.build(consumer, wrap(TinkerModifiers.embellishment, slotlessFolder, "_pink_slimeball"));
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

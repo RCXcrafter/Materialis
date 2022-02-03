@@ -83,6 +83,9 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("slime_metal", "metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF602B57).addARGB(102, 0xFF733469).addARGB(140, 0xFFB65DA7).addARGB(178, 0xFFC279B6).addARGB(216, 0xFFD6A5CD).addARGB(255, 0xFFFFEBFF).build());
+		buildMaterial(MaterialisMaterials.pinkSlimeball)
+		.statType(TinkerPartSpriteProvider.SLIMESUIT)
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF973998).addARGB(102, 0xFFB143B2).addARGB(140, 0xFFD150D3).addARGB(178, 0xFFDC6CDD).addARGB(216, 0xFFF196F2).addARGB(255, 0xFFFFDBFF).build());
 		//undergarden materials
 		buildMaterial(MaterialisMaterials.cloggrum)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
@@ -96,6 +99,10 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF3D1421).addARGB(102, 0xFF65282A).addARGB(140, 0xFF9C3832).addARGB(178, 0xFFCE4650).addARGB(216, 0xFFED5F50).addARGB(255, 0xFFFA9387).build());
+		buildMaterial(MaterialisMaterials.regalium)
+		.statType(TinkerPartSpriteProvider.PLATE)
+		.fallbacks("metal")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF623326).addARGB(102, 0xFF945337).addARGB(140, 0xFFB17A4B).addARGB(178, 0xFFC99C63).addARGB(216, 0xFFE9C684).addARGB(255, 0xFFFFF2C6).build());
 		buildMaterial(MaterialisMaterials.forgottenMetal)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
