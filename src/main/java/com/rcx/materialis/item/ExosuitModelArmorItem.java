@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.modifiers.PsionizingRadiationModifierSensor;
+import com.rcx.materialis.util.ExosuitModel;
 
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.entity.Entity;
@@ -51,11 +52,11 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeab
 	protected void initModel(EquipmentSlotType slot) {
 		if (ModList.get().isLoaded("psi")) {
 			if (ModList.get().isLoaded("magipsi")) {
-				this.model = DistExecutor.runForDist(() -> () -> new LazyValue<>(() -> MagicalExosuitModel.provideArmorModelForSlot(slot)), () -> () -> null);
+				this.model = DistExecutor.runForDist(() -> () -> new LazyValue<>(() -> MagicalExosuitModelProvider.provideArmorModelForSlot(slot)), () -> () -> null);
 				texture = Materialis.modID + ":textures/models/armor/" + new ResourceLocation(this.getMaterial().getName()).getPath() + "_magical.png";
 				overlayTexture = Materialis.modID + ":textures/models/armor/" + new ResourceLocation(this.getMaterial().getName()).getPath() + "_magical_sensor.png";
 			} else {
-				this.model = DistExecutor.runForDist(() -> () -> new LazyValue<>(() -> ExosuitModel.provideArmorModelForSlot(slot)), () -> () -> null);
+				this.model = DistExecutor.runForDist(() -> () -> new LazyValue<>(() -> ExosuitModelProvider.provideArmorModelForSlot(slot)), () -> () -> null);
 				texture = Materialis.modID + ":textures/models/armor/" + new ResourceLocation(this.getMaterial().getName()).getPath() + ".png";
 				overlayTexture = Materialis.modID + ":textures/models/armor/" + new ResourceLocation(this.getMaterial().getName()).getPath() + "_sensor.png";
 			}
@@ -90,11 +91,11 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeab
 	@OnlyIn(Dist.CLIENT)
 	public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A base) {
 		if (ModList.get().isLoaded("psi"))
-			return (A) model.get();
-		return super.getArmorModel(entityLiving, itemStack, armorSlot, base);
+			return ExosuitModel.getModel(itemStack, armorSlot, (A) model.get());
+		return ExosuitModel.getModel(itemStack, armorSlot, base);
 	}
 
-	public static class ExosuitModel {
+	public static class ExosuitModelProvider {
 
 		@OnlyIn(Dist.CLIENT)
 		public static BipedModel<?> provideArmorModelForSlot(EquipmentSlotType slot) {
@@ -102,7 +103,7 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeab
 		}
 	}
 
-	public static class MagicalExosuitModel {
+	public static class MagicalExosuitModelProvider {
 
 		@OnlyIn(Dist.CLIENT)
 		public static BipedModel<?> provideArmorModelForSlot(EquipmentSlotType slot) {

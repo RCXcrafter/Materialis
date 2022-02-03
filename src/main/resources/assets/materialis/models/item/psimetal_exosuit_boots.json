@@ -5,5 +5,5 @@
     "tool":   "materialis:item/tool/psimetal_exosuit/boots",
     "broken": "materialis:item/tool/psimetal_exosuit/boots_broken"
   },
-  "modifier_roots": [ "materialis:item/tool/psimetal_exosuit/boots_modifiers/" ]
+  "modifier_roots": [ "materialis:item/tool/psimetal_exosuit/boot_modifiers/" ]
 }

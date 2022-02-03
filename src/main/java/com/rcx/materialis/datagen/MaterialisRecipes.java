@@ -1,5 +1,7 @@
 package com.rcx.materialis.datagen;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 import com.rcx.materialis.Materialis;
@@ -66,6 +68,7 @@ import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
+import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, ICommonRecipeHelper {
@@ -745,33 +748,63 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 
 		//texture recipes
-		Ingredient plate = Ingredient.of(TinkerTools.plateArmor.values().stream().map(ItemStack::new));
-		plateTexture(consumer, plate, MaterialisMaterials.fairy, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.refinedRadiance, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.shadowSteel, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.pewter, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.arcaneGold, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.neptunium, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.quicksilver, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.starmetal, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.pinkSlime, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.cloggrum, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.froststeel, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.utherium, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.forgottenMetal, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.refinedObsidian, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.refinedGlowstone, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.psimetal, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.ebonyPsimetal, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.ivoryPsimetal, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.iesnium, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.manasteel, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.elementium, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.terrasteel, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.alfsteel, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.draconium, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.awakenedDraconium, true, slotlessFolder);
-		plateTexture(consumer, plate, MaterialisMaterials.fluxInfused, true, slotlessFolder);
+		Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));
+		List<Item> armorItems = new ArrayList<Item>();
+		armorItems.addAll(TinkerTools.plateArmor.values());
+		armorItems.addAll(MaterialisResources.PSIMETAL_EXOSUIT.values());
+		Ingredient armor = Ingredient.of(armorItems.stream().map(ItemStack::new));
+
+		plateTexture(consumer, exosuit, MaterialIds.iron, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.copper, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.slimesteel, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.roseGold, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.pigIron, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.manyullyn, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.hepatizon, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.netherite, false, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.osmium, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.tungsten, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.platinum, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.silver, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.lead, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.aluminum, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.nickel, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.tin, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.zinc, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.uranium, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.steel, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.bronze, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.constantan, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.invar, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.electrum, true, slotlessFolder);
+		plateTexture(consumer, exosuit, MaterialIds.brass, true, slotlessFolder);
+
+		plateTexture(consumer, armor, MaterialisMaterials.fairy, false, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.refinedRadiance, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.shadowSteel, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.pewter, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.arcaneGold, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.neptunium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.quicksilver, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.starmetal, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.pinkSlime, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.cloggrum, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.froststeel, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.utherium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.forgottenMetal, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.refinedObsidian, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.refinedGlowstone, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.psimetal, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.ebonyPsimetal, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.ivoryPsimetal, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.iesnium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.manasteel, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.elementium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.terrasteel, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.alfsteel, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.draconium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.awakenedDraconium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.fluxInfused, true, slotlessFolder);
 	}
 
 	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {

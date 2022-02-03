@@ -18,7 +18,7 @@ import vazkii.psi.common.item.component.ItemCADColorizerPsi;
 
 public class ColorizedModifier extends SingleUseModifier implements ITintingModifier {
 
-	boolean enabled = ModList.get().isLoaded("psi");
+	public static boolean enabled = ModList.get().isLoaded("psi");
 	public static final ResourceLocation COLORIZER = new ResourceLocation(Materialis.modID, "colorizer");
 
 	public ColorizedModifier() {
@@ -52,7 +52,7 @@ public class ColorizedModifier extends SingleUseModifier implements ITintingModi
 		return true;
 	};
 
-	public int getPsiColor() {
+	public static int getPsiColor() {
 		if (enabled) {
 			float time = ClientTickHandler.total;
 			float w = (float) (Math.sin(time * 0.4) * 0.5 + 0.5) * 0.1F;
@@ -61,6 +61,6 @@ public class ColorizedModifier extends SingleUseModifier implements ITintingModi
 			float b = 1F;
 			return new java.awt.Color((int) (r * 255), (int) (g * 255), (int) (b * 255)).getRGB();
 		}
-		return this.getColor();
+		return 0xFFFFFF;
 	}
 }

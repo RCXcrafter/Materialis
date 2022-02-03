@@ -25,18 +25,22 @@ import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.EngineersGogglesModifier;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.util.ExosuitModel;
 import com.rcx.materialis.util.PacketElvenBeam;
 import com.rcx.materialis.util.PacketTerraBeam;
 import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
 import com.simibubi.create.content.contraptions.goggles.GoggleOverlayRenderer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.model.ItemTransformVec3f;
 import net.minecraft.client.renderer.model.Variant;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.IReloadableResourceManager;
+import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -45,6 +49,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -57,12 +62,13 @@ import slimeknights.mantle.client.model.NBTKeyModel;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
+import slimeknights.tconstruct.library.client.model.tools.ToolModel;
 import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
-import slimeknights.tconstruct.tools.ToolClientEvents;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 import vazkii.botania.common.network.PacketHandler;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -92,6 +98,8 @@ public class Materialis {
 		MaterialisResources.ITEMS_EXTENDED.register(bus);
 		MaterialisResources.RECIPE_SERIALIZERS.register(bus);
 		MaterialisModifiers.MODIFIERS.register(bus);
+
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> MaterialisClient::onConstruct);
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
@@ -193,13 +201,26 @@ public class Materialis {
 	@EventBusSubscriber(modid = modID, value = Dist.CLIENT, bus = Bus.MOD)
 	public static class MaterialisClient {
 
+		public static void onConstruct() {
+			if (Minecraft.getInstance() != null) {
+				IResourceManager manager = Minecraft.getInstance().getResourceManager();
+				if (manager instanceof IReloadableResourceManager) {
+					((IReloadableResourceManager) manager).registerReloadListener(ExosuitModel.RELOAD_LISTENER);
+				}
+			}
+		}
+
 		@SubscribeEvent
 		static void itemColors(ColorHandlerEvent.Item event) {
 			final ItemColors colors = event.getItemColors();
 
 			//tint tool and part textures for fallback
-			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.WRENCH);
-			ToolClientEvents.registerToolItemColors(colors, MaterialisResources.BATTLEWRENCH);
+			ToolModel.registerItemColors(colors, MaterialisResources.WRENCH);
+			ToolModel.registerItemColors(colors, MaterialisResources.BATTLEWRENCH);
+			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
+			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE));
+			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS));
+			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS));
 		}
 
 		@SubscribeEvent

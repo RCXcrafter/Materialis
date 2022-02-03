@@ -1,0 +1,41 @@
+{
+  "type": "tconstruct:swappable_modifier",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/electrum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:ingots/electrum"
+    },
+    {
+      "tag": "forge:ingots/electrum"
+    },
+    {
+      "tag": "forge:ingots/electrum"
+    }
+  ],
+  "tools": [
+    {
+      "item": "materialis:psimetal_exosuit_boots"
+    },
+    {
+      "item": "materialis:psimetal_exosuit_leggings"
+    },
+    {
+      "item": "materialis:psimetal_exosuit_chestplate"
+    },
+    {
+      "item": "materialis:psimetal_exosuit_helmet"
+    }
+  ],
+  "result": {
+    "name": "tconstruct:embellishment",
+    "value": "tconstruct:electrum"
+  }
+}

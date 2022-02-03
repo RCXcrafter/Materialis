@@ -1,14 +1,5 @@
 {
   "type": "tconstruct:swappable_modifier",
-  "conditions": [
-    {
-      "value": {
-        "tag": "forge:ingots/fairy",
-        "type": "forge:tag_empty"
-      },
-      "type": "forge:not"
-    }
-  ],
   "inputs": [
     {
       "tag": "forge:ingots/fairy"
@@ -32,6 +23,18 @@
     },
     {
       "item": "tconstruct:plate_helmet"
+    },
+    {
+      "item": "materialis:psimetal_exosuit_boots"
+    },
+    {
+      "item": "materialis:psimetal_exosuit_leggings"
+    },
+    {
+      "item": "materialis:psimetal_exosuit_chestplate"
+    },
+    {
+      "item": "materialis:psimetal_exosuit_helmet"
     }
   ],
   "result": {
