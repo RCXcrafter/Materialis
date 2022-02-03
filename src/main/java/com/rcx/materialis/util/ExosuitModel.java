@@ -78,7 +78,7 @@ public class ExosuitModel<T extends LivingEntity> extends ArmorModelWrapper<T> {
 				float newGreen = (float)(color >> 8 & 255) / 255.0F;
 				float newBlue = (float)(color & 255) / 255.0F;
 				IVertexBuilder overlayBuffer = buffer.getBuffer(RenderType.armorCutoutNoCull(OVERLAY_COLORIZER));
-				base.renderToBuffer(matrices, overlayBuffer, 12582912, packedOverlayIn, newRed, newGreen, newBlue, alpha);
+				base.renderToBuffer(matrices, overlayBuffer, 12583120, packedOverlayIn, newRed, newGreen, newBlue, alpha);
 			}
 		}
 	}
