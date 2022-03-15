@@ -1,5 +1,11 @@
 {
   "type": "tconstruct:swappable_modifier",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "inputs": [
     {
       "tag": "forge:ingots/netherite"

@@ -1,5 +1,11 @@
 {
   "type": "tconstruct:specialized_station_repair",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "tool": [
     {
       "item": "materialis:psimetal_exosuit_boots"
