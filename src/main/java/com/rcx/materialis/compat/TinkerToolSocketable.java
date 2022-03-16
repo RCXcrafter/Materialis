@@ -1,4 +1,4 @@
-package com.rcx.materialis.compat;
+/*package com.rcx.materialis.compat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,4 +152,4 @@ public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketabl
 	public boolean castableFromSocket() {
 		return false;
 	}
-}
+}*/

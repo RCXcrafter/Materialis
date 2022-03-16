@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "forge:molten_ebony_psimetal",
-    "amount": 576
+    "amount": 360
   },
   "result": {
     "tag": "forge:gears/ebony_psimetal"

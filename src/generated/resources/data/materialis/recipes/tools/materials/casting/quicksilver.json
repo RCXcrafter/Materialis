@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "tag": "materialis:molten_quicksilver",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 400,
   "output": "materialis:quicksilver"

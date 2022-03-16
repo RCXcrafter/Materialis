@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_large_buds/draconium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_large_buds/draconium"
+  },
+  "result": {
+    "fluid": "materialis:molten_draconium",
+    "amount": 270
+  },
+  "temperature": 1050,
+  "time": 136
+}

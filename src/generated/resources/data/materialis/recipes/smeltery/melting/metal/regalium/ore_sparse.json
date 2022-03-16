@@ -1,0 +1,36 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "tags": [
+        "forge:ores/regalium",
+        "forge:ore_rates/sparse"
+      ],
+      "type": "tconstruct:tag_intersection_present"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "type": "mantle:intersection",
+    "ingredients": [
+      {
+        "tag": "forge:ores/regalium"
+      },
+      {
+        "tag": "forge:ore_rates/sparse"
+      }
+    ]
+  },
+  "result": {
+    "fluid": "materialis:molten_regalium",
+    "amount": 90
+  },
+  "temperature": 620,
+  "time": 81,
+  "byproducts": [
+    {
+      "fluid": "materialis:molten_cloggrum",
+      "amount": 30
+    }
+  ]
+}

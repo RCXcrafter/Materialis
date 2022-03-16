@@ -2,26 +2,19 @@ package com.rcx.materialis.modifiers;
 
 import java.util.List;
 
-import elucent.eidolon.Registry;
-import elucent.eidolon.network.CrystallizeEffectPacket;
-import elucent.eidolon.network.Networking;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameters;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class ReapingModifier extends SingleUseModifier {
 
 	boolean enabled = ModList.get().isLoaded("eidolon");
-
-	public ReapingModifier() {
-		super(0xE388DD);
-	}
 
 	@Override
 	public int getPriority() {
@@ -29,12 +22,12 @@ public class ReapingModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
-		if (!enabled || !context.hasParam(LootParameters.DAMAGE_SOURCE)) {
+	public List<ItemStack> processLoot(IToolStackView tool, int level, List<ItemStack> generatedLoot, LootContext context) {
+		if (!enabled || !context.hasParam(LootContextParams.DAMAGE_SOURCE)) {
 			return generatedLoot;
 		}
 
-		Entity entity = context.getParamOrNull(LootParameters.THIS_ENTITY);
+		Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
 		if (entity != null && entity instanceof LivingEntity) {
 			LivingEntity target = (LivingEntity) entity;
 			if (target.isInvertedHealAndHarm()) {
@@ -42,9 +35,9 @@ public class ReapingModifier extends SingleUseModifier {
 				int luck = context.getLootingModifier();
 				if (TinkerTags.Items.SCYTHES.getValues().contains(tool.getItem()))
 					luck++;
-				ItemStack drop = new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + luck));
+				/*ItemStack drop = new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + luck));
 				generatedLoot.add(drop);
-				Networking.sendToTracking(target.level, target.blockPosition(), new CrystallizeEffectPacket(target.blockPosition()));
+				Networking.sendToTracking(target.level, target.blockPosition(), new CrystallizeEffectPacket(target.blockPosition()));*/
 			}
 		}
 		return generatedLoot;

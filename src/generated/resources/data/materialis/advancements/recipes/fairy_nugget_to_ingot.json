@@ -19,7 +19,9 @@
             "conditions": {
               "items": [
                 {
-                  "item": "materialis:fairy_nugget"
+                  "items": [
+                    "materialis:fairy_nugget"
+                  ]
                 }
               ]
             }

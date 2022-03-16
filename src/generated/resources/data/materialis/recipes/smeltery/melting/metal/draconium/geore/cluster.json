@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_clusters/draconium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_clusters/draconium"
+  },
+  "result": {
+    "fluid": "materialis:molten_draconium",
+    "amount": 360
+  },
+  "temperature": 1050,
+  "time": 170
+}

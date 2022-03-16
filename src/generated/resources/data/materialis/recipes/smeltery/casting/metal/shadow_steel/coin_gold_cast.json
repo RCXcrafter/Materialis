@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "forge:molten_shadow_steel",
-    "amount": 48
+    "amount": 30
   },
   "result": {
     "tag": "forge:coins/shadow_steel"

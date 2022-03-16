@@ -11,14 +11,14 @@
   },
   "result": {
     "fluid": "materialis:molten_forgotten_metal",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 1230,
   "time": 73,
   "byproducts": [
     {
       "fluid": "materialis:molten_cloggrum",
-      "amount": 144
+      "amount": 90
     }
   ]
 }

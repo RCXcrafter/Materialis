@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "forge:molten_flux_infused",
-    "amount": 48
+    "amount": 30
   },
   "result": {
     "tag": "forge:coins/flux_infused"

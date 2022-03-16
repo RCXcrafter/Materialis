@@ -1,0 +1,87 @@
+{
+  "type": "forge:conditional",
+  "conditions": [
+    {
+      "base": "forge:ores/iesnium",
+      "subtracted": [
+        "forge:ore_rates/sparse",
+        "forge:ore_rates/dense"
+      ],
+      "type": "tconstruct:tag_difference_present"
+    }
+  ],
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ingots/silver",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "type": "mantle:difference",
+          "base": {
+            "tag": "forge:ores/iesnium"
+          },
+          "subtracted": [
+            {
+              "tag": "forge:ore_rates/sparse"
+            },
+            {
+              "tag": "forge:ore_rates/dense"
+            }
+          ]
+        },
+        "result": {
+          "fluid": "materialis:molten_iesnium",
+          "amount": 180
+        },
+        "temperature": 1090,
+        "time": 172,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_silver",
+            "amount": 60
+          }
+        ]
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "forge:true"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "type": "mantle:difference",
+          "base": {
+            "tag": "forge:ores/iesnium"
+          },
+          "subtracted": [
+            {
+              "tag": "forge:ore_rates/sparse"
+            },
+            {
+              "tag": "forge:ore_rates/dense"
+            }
+          ]
+        },
+        "result": {
+          "fluid": "materialis:molten_iesnium",
+          "amount": 180
+        },
+        "temperature": 1090,
+        "time": 172
+      }
+    }
+  ]
+}

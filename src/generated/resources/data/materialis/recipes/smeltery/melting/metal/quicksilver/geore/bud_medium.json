@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_medium_buds/quicksilver",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_medium_buds/quicksilver"
+  },
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 180
+  },
+  "temperature": 400,
+  "time": 69
+}

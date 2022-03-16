@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "forge:molten_pink_slime",
-    "amount": 48
+    "amount": 30
   },
   "result": {
     "tag": "forge:coins/pink_slime"

@@ -24,7 +24,7 @@
   "input": "materialis:cloggrum",
   "fluid": {
     "tag": "materialis:molten_forgotten_metal",
-    "amount": 48
+    "amount": 30
   },
   "temperature": 1230,
   "output": "materialis:forgotten_metal"

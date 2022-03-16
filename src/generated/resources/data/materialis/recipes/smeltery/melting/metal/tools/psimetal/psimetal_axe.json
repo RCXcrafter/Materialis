@@ -23,14 +23,14 @@
   },
   "result": {
     "fluid": "materialis:molten_psimetal",
-    "amount": 288
+    "amount": 180
   },
   "temperature": 750,
   "time": 83,
   "byproducts": [
     {
       "fluid": "tconstruct:molten_iron",
-      "amount": 288
+      "amount": 180
     }
   ]
 }

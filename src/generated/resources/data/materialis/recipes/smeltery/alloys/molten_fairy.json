@@ -3,7 +3,7 @@
   "inputs": [
     {
       "name": "tconstruct:molten_gold",
-      "amount": 144
+      "amount": 90
     },
     {
       "name": "tconstruct:liquid_soul",
@@ -16,7 +16,7 @@
   ],
   "result": {
     "fluid": "materialis:molten_fairy",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 750
 }

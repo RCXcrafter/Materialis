@@ -1,0 +1,86 @@
+{
+  "type": "forge:conditional",
+  "conditions": [
+    {
+      "tags": [
+        "forge:ores/draconium",
+        "forge:ore_rates/dense"
+      ],
+      "type": "tconstruct:tag_intersection_present"
+    }
+  ],
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ingots/platinum",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "type": "mantle:intersection",
+          "ingredients": [
+            {
+              "tag": "forge:ores/draconium"
+            },
+            {
+              "tag": "forge:ore_rates/dense"
+            }
+          ]
+        },
+        "result": {
+          "fluid": "materialis:molten_draconium",
+          "amount": 540
+        },
+        "temperature": 1050,
+        "time": 305,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_platinum",
+            "amount": 180
+          }
+        ]
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "forge:true"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "type": "mantle:intersection",
+          "ingredients": [
+            {
+              "tag": "forge:ores/draconium"
+            },
+            {
+              "tag": "forge:ore_rates/dense"
+            }
+          ]
+        },
+        "result": {
+          "fluid": "materialis:molten_draconium",
+          "amount": 540
+        },
+        "temperature": 1050,
+        "time": 305,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_cobalt",
+            "amount": 180
+          }
+        ]
+      }
+    }
+  ]
+}

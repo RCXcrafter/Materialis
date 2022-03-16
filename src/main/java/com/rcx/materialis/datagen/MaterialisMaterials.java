@@ -4,18 +4,17 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.OrCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
-import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.common.json.ConfigEnabledCondition;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
-import slimeknights.tconstruct.library.materials.json.MaterialJson.Redirect;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
@@ -30,11 +29,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId brass = createMaterial("brass");
 	public static final MaterialId aluminum = createMaterial("aluminum");
 	public static final MaterialId nickel = createMaterial("nickel");
-	public static final MaterialId platinum = createMaterial("platinum");
 	public static final MaterialId uranium = createMaterial("uranium");
-	public static final MaterialId osmium = createMaterial("osmium");
-	public static final MaterialId tungsten = createMaterial("tungsten");
-	public static final MaterialId invar = createMaterial("invar");
 
 	//create materials
 	public static final MaterialId roseQuartz = createMaterial("rose_quartz");
@@ -106,65 +101,57 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
 	@Override
 	protected void addMaterials() {
-		addMaterial(fairy, 3, ORDER_NETHER + ORDER_COMPAT, false, 0xFF87BC);
+		addMaterial(fairy, 3, ORDER_NETHER + ORDER_COMPAT, false);
 		//general oredict materials
-		addCompatMetalMaterial(brass, 3, ORDER_WEAPON + ORDER_COMPAT, 0xFFD359);
-		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST + ORDER_COMPAT, 0xE6B7BF);
-		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST + ORDER_COMPAT, 0xF9EA98);
-		//addCompatMetalMaterial(platinum, 3, ORDER_HARVEST + ORDER_COMPAT, 0xA1FFFF);
-		this.addRedirect(platinum, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "platinum"), null));
-		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST + ORDER_COMPAT, 0x42BE30);
-		//addCompatMetalMaterial(osmium, 2, ORDER_WEAPON + ORDER_COMPAT, 0xCDE8FD);
-		this.addRedirect(osmium, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "osmium"), null));
-		//addCompatMetalMaterial(tungsten, 3, ORDER_WEAPON + ORDER_COMPAT, 0xA7A88F);
-		this.addRedirect(tungsten, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "tungsten"), null));
-		//addCompatMetalMaterial(invar, 3, ORDER_HARVEST + ORDER_COMPAT, 0xBAE6D5);
-		this.addRedirect(invar, new Redirect(new ResourceLocation(TConstruct.MOD_ID, "invar"), null));
+		addCompatMetalMaterial(brass, 3, ORDER_WEAPON + ORDER_COMPAT);
+		addCompatMetalMaterial(aluminum, 2, ORDER_HARVEST + ORDER_COMPAT);
+		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST + ORDER_COMPAT);
+		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST + ORDER_COMPAT);
 		//create materials
-		addMaterial(roseQuartz, 3, ORDER_NETHER + ORDER_COMPAT, true, 0xFF8C80, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("create")));
-		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL + ORDER_COMPAT, 0xFFFFFF);
-		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL + ORDER_COMPAT, 0x635D71);
+		addMaterial(roseQuartz, 3, ORDER_NETHER + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("create")));
+		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL + ORDER_COMPAT);
+		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL + ORDER_COMPAT);
 		//eidolon materials
-		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST + ORDER_COMPAT, 0xA1A097);
-		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON + ORDER_COMPAT, 0xFFC069);
+		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST + ORDER_COMPAT);
+		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON + ORDER_COMPAT);
 		//aquaculture materials
-		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL + ORDER_COMPAT, 0x17F1B6);
+		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL + ORDER_COMPAT);
 		//mystical world materials
-		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST + ORDER_COMPAT, 0xC6B69F);
+		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST + ORDER_COMPAT);
 		//astral sorcery materials
-		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST + ORDER_COMPAT, 0x003CC9);
+		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST + ORDER_COMPAT);
 		//industrial foregoing materials
-		addMaterial(plastic, 2, ORDER_HARVEST + ORDER_COMPAT, true, 0xD9D9D9, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:plastic"))));
-		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL + ORDER_COMPAT, 0xFF9FEF);
-		addMaterial(pinkSlimeball, 6, 9, true, 0xE27BE3);
+		addMaterial(plastic, 2, ORDER_HARVEST + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:plastic"))));
+		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL + ORDER_COMPAT);
+		addMaterial(pinkSlimeball, 6, 9, true);
 		//undergarden materials
-		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST + ORDER_COMPAT, 0x9C8878);
-		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON + ORDER_COMPAT, 0x95BDE3);
-		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON + ORDER_COMPAT, 0xEB515B);
-		addCompatMetalMaterial(regalium, 6, 9, 0xEBBB71);
-		addMaterial(forgottenMetal, 3, ORDER_GENERAL + ORDER_COMPAT, false, 0x6CD7AA, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal"))));
+		addCompatMetalMaterial(cloggrum, 2, ORDER_HARVEST + ORDER_COMPAT);
+		addCompatMetalMaterial(froststeel, 2, ORDER_WEAPON + ORDER_COMPAT);
+		addCompatMetalMaterial(utherium, 3, ORDER_WEAPON + ORDER_COMPAT);
+		addCompatMetalMaterial(regalium, 6, 9);
+		addMaterial(forgottenMetal, 3, ORDER_GENERAL + ORDER_COMPAT, false, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/forgotten_metal"))));
 		//mekanism materials
-		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST + ORDER_COMPAT, 0xB78FD2);
-		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON + ORDER_COMPAT, 0xFFE55C);
+		addCompatMetalMaterial(refinedObsidian, 3, ORDER_HARVEST + ORDER_COMPAT);
+		addCompatMetalMaterial(refinedGlowstone, 3, ORDER_WEAPON + ORDER_COMPAT);
 		//psi materials
-		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL + ORDER_COMPAT, 0xB6A9E7);
-		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL + ORDER_COMPAT, 0x3D3838);
-		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL + ORDER_COMPAT, 0xF6F9ED);
+		addCompatMetalMaterial(psimetal, 2, ORDER_SPECIAL + ORDER_COMPAT);
+		addCompatMetalMaterial(ebonyPsimetal, 3, ORDER_SPECIAL + ORDER_COMPAT);
+		addCompatMetalMaterial(ivoryPsimetal, 3, ORDER_SPECIAL + ORDER_COMPAT);
 		//occultism materials
-		addCompatMetalMaterial(iesnium, 4, ORDER_HARVEST + ORDER_COMPAT, 0x8ADAE3);
+		addCompatMetalMaterial(iesnium, 4, ORDER_HARVEST + ORDER_COMPAT);
 		//botania materials
-		addMaterial(livingwood, 1, ORDER_WEAPON + ORDER_COMPAT, true, 0x783519, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
-		addMaterial(dreamwood, 2, ORDER_HARVEST + ORDER_COMPAT, true, 0xC1CCCC, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
-		addCompatMetalMaterial(manasteel, 2, ORDER_HARVEST + ORDER_COMPAT, 0x3389FF);
-		addCompatMetalMaterial(elementium, 3, ORDER_WEAPON + ORDER_COMPAT, 0xF15CAE);
-		addCompatMetalMaterial(terrasteel, 4, ORDER_WEAPON + ORDER_COMPAT, 0x53F900);
+		addMaterial(livingwood, 1, ORDER_WEAPON + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
+		addMaterial(dreamwood, 2, ORDER_HARVEST + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
+		addCompatMetalMaterial(manasteel, 2, ORDER_HARVEST + ORDER_COMPAT);
+		addCompatMetalMaterial(elementium, 3, ORDER_WEAPON + ORDER_COMPAT);
+		addCompatMetalMaterial(terrasteel, 4, ORDER_WEAPON + ORDER_COMPAT);
 		//mythicbotany materials
-		addCompatMetalMaterial(alfsteel, 4, ORDER_WEAPON + ORDER_COMPAT, 0xFFC74E);
+		addCompatMetalMaterial(alfsteel, 4, ORDER_WEAPON + ORDER_COMPAT);
 		//draconic evolution materials
-		addCompatMetalMaterial(draconium, 4, ORDER_GENERAL + ORDER_COMPAT, 0x905EBE);
-		addCompatMetalMaterial(awakenedDraconium, 4, ORDER_GENERAL + ORDER_COMPAT, 0xFF8800);
+		addCompatMetalMaterial(draconium, 4, ORDER_GENERAL + ORDER_COMPAT);
+		addCompatMetalMaterial(awakenedDraconium, 4, ORDER_GENERAL + ORDER_COMPAT);
 		//redstone arsenal materials
-		addCompatMetalMaterial(fluxInfused, 3, ORDER_GENERAL + ORDER_COMPAT, 0xE68A29);
+		addCompatMetalMaterial(fluxInfused, 3, ORDER_GENERAL + ORDER_COMPAT);
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -189,11 +176,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(brass, MaterialisModifiers.polishedModifier.get());
 			addDefaultTraits(aluminum, MaterialisModifiers.featherweightModifier.get());
 			addDefaultTraits(nickel, MaterialisModifiers.refuelingModifier.get());
-			//addDefaultTraits(platinum, MaterialisModifiers.brittleModifier.get());
 			addDefaultTraits(uranium, MaterialisModifiers.halfLifeModifier.get());
-			//addDefaultTraits(osmium, MaterialisModifiers.adrenalineModifier.get());
-			//addDefaultTraits(tungsten, MaterialisModifiers.workHardenedModifier.get());
-			//addDefaultTraits(invar, MaterialisModifiers.quenchingModifier.get());
 			//create materials
 			addDefaultTraits(roseQuartz, MaterialisModifiers.enhancedQuartzModifier.get());
 			addDefaultTraits(refinedRadiance, MaterialisModifiers.residualLightModifier.get());
@@ -255,61 +238,57 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialStats() {
-			addMaterialStats(fairy, new HeadMaterialStats(250, 7.5f, 2, 2f), new HandleMaterialStats(0.9f, 1.15f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(fairy, new HeadMaterialStats(250, 7.5f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 1.15f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//general oredict materials
-			addMaterialStats(brass, new HeadMaterialStats(450, 7.5f, 2, 2f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(aluminum, new HeadMaterialStats(220, 5f, 2, 1f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 0.9f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(nickel, new HeadMaterialStats(520, 5f, 2, 1.5f), new HandleMaterialStats(1f, 0.9f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			//(platinum, new HeadMaterialStats(100, 11f, 3, 1.5f), new HandleMaterialStats(0.7f, 1.25f, 1.25f, 0.8f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(uranium, new HeadMaterialStats(689, 7f, 2, 2f), new HandleMaterialStats(0.9f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(osmium, new HeadMaterialStats(360, 4f, 2, 2f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(tungsten, new HeadMaterialStats(740, 7f, 3, 2.5f), new HandleMaterialStats(1f, 1f, 0.9f, 1.2f), ExtraMaterialStats.DEFAULT);
-			//addMaterialStats(invar, new HeadMaterialStats(710, 6f, 3, 2f), new HandleMaterialStats(1.2f, 1f, 0.9f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(brass, new HeadMaterialStats(450, 7.5f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(aluminum, new HeadMaterialStats(220, 5f, Tiers.IRON, 1f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(nickel, new HeadMaterialStats(520, 5f, Tiers.IRON, 1.5f), new HandleMaterialStats(1f, 0.9f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(uranium, new HeadMaterialStats(689, 7f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
 			//create materials
-			addMaterialStats(roseQuartz, new HeadMaterialStats(175, 4f, 2, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(refinedRadiance, new HeadMaterialStats(999, 9f, 4, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(shadowSteel, new HeadMaterialStats(1300, 10f, 4, 3.5f), new HandleMaterialStats(1f, 1f, 1.1f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(roseQuartz, new HeadMaterialStats(175, 4f, Tiers.IRON, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(refinedRadiance, new HeadMaterialStats(999, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(shadowSteel, new HeadMaterialStats(1300, 10f, Tiers.NETHERITE, 3.5f), new HandleMaterialStats(1f, 1f, 1.1f, 1.1f), ExtraMaterialStats.DEFAULT);
 			//eidolon materials
-			addMaterialStats(pewter, new HeadMaterialStats(325, 6.5f, 2, 1f), new HandleMaterialStats(1f, 1f, 0.9f, 1.05f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(arcaneGold, new HeadMaterialStats(200, 9f, 2, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(pewter, new HeadMaterialStats(325, 6.5f, Tiers.IRON, 1f), new HandleMaterialStats(1f, 1f, 0.9f, 1.05f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(arcaneGold, new HeadMaterialStats(200, 9f, Tiers.IRON, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			//aquaculture materials
-			addMaterialStats(neptunium, new HeadMaterialStats(1450, 8f, 3, 3f), new HandleMaterialStats(1.1f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(neptunium, new HeadMaterialStats(1450, 8f, Tiers.DIAMOND, 3f), new HandleMaterialStats(1.1f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			//mystical world materials
-			addMaterialStats(quicksilver, new HeadMaterialStats(75, 6f, 3, 2f), new HandleMaterialStats(0.25f, 1.2f, 1.2f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(quicksilver, new HeadMaterialStats(75, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.25f, 1.2f, 1.2f, 1f), ExtraMaterialStats.DEFAULT);
 			//astral sorcery materials
-			addMaterialStats(starmetal, new HeadMaterialStats(340, 6f, 2, 1.5f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(starmetal, new HeadMaterialStats(340, 6f, Tiers.IRON, 1.5f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//industrial foregoing materials
-			addMaterialStats(plastic, new HeadMaterialStats(200, 4f, 2, 1f), new HandleMaterialStats(0.8f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(pinkSlime, new HeadMaterialStats(830, 7f, 3, 2f), new HandleMaterialStats(1f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(plastic, new HeadMaterialStats(200, 4f, Tiers.IRON, 1f), new HandleMaterialStats(0.8f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(pinkSlime, new HeadMaterialStats(830, 7f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(pinkSlimeball);
 			//undergarden materials
-			addMaterialStats(cloggrum, new HeadMaterialStats(286, 5f, 2, 1.5f), new HandleMaterialStats(1f, 1.1f, 0.8f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(froststeel, new HeadMaterialStats(575, 6f, 3, 2f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(utherium, new HeadMaterialStats(852, 7f, 4, 2.5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(cloggrum, new HeadMaterialStats(286, 5f, Tiers.IRON, 1.5f), new HandleMaterialStats(1f, 1.1f, 0.8f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(froststeel, new HeadMaterialStats(575, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(utherium, new HeadMaterialStats(852, 7f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(regalium);
-			addMaterialStats(forgottenMetal, new HeadMaterialStats(921, 7.5f, 4, 3f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(forgottenMetal, new HeadMaterialStats(921, 7.5f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			//mekanism materials
-			addMaterialStats(refinedObsidian, new HeadMaterialStats(900, 9f, 3, 2f), new HandleMaterialStats(1.3f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(refinedGlowstone, new HeadMaterialStats(200, 7f, 2, 2.5f), new HandleMaterialStats(0.7f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(refinedObsidian, new HeadMaterialStats(900, 9f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1.3f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(refinedGlowstone, new HeadMaterialStats(200, 7f, Tiers.IRON, 2.5f), new HandleMaterialStats(0.7f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//psi materials
-			addMaterialStats(psimetal, new HeadMaterialStats(330, 6f, 3, 2f), new HandleMaterialStats(1f, 1.05f, 1f, 1.05f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(ebonyPsimetal, new HeadMaterialStats(600, 5f, 4, 3f), new HandleMaterialStats(0.7f, 0.8f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(600, 8f, 4, 1.5f), new HandleMaterialStats(1.1f, 1.2f, 0.9f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(psimetal, new HeadMaterialStats(330, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1f, 1.05f, 1f, 1.05f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(ebonyPsimetal, new HeadMaterialStats(600, 5f, Tiers.NETHERITE, 3f), new HandleMaterialStats(0.7f, 0.8f, 1f, 1.2f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(ivoryPsimetal, new HeadMaterialStats(600, 8f, Tiers.NETHERITE, 1.5f), new HandleMaterialStats(1.1f, 1.2f, 0.9f, 0.9f), ExtraMaterialStats.DEFAULT);
 			//occultism materials
-			addMaterialStats(iesnium, new HeadMaterialStats(921, 7f, 3, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(iesnium, new HeadMaterialStats(921, 7f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//botania materials
-			addMaterialStats(livingwood, new HeadMaterialStats(70, 3f, 1, 1f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(dreamwood, new HeadMaterialStats(160, 4f, 1, 1.2f), new HandleMaterialStats(1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(manasteel, new HeadMaterialStats(300, 6.2f, 3, 1.5f), new HandleMaterialStats(1.1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(elementium, new HeadMaterialStats(720, 5f, 3, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.2f, 0.9f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(terrasteel, new HeadMaterialStats(1000, 9f, 4, 3f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1.15f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(livingwood, new HeadMaterialStats(70, 3f, Tiers.STONE, 1f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(dreamwood, new HeadMaterialStats(160, 4f, Tiers.STONE, 1.2f), new HandleMaterialStats(1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(manasteel, new HeadMaterialStats(300, 6.2f, Tiers.DIAMOND, 1.5f), new HandleMaterialStats(1.1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(elementium, new HeadMaterialStats(720, 5f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.2f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(terrasteel, new HeadMaterialStats(1000, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1.15f), ExtraMaterialStats.DEFAULT);
 			//mythicbotany materials
-			addMaterialStats(alfsteel, new HeadMaterialStats(1430, 9f, 4, 3.2f), new HandleMaterialStats(0.9f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(alfsteel, new HeadMaterialStats(1430, 9f, Tiers.NETHERITE, 3.2f), new HandleMaterialStats(0.9f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
 			//draconic evolution materials
-			addMaterialStats(draconium, new HeadMaterialStats(1000, 7f, 4, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(awakenedDraconium, new HeadMaterialStats(1500, 9f, 5, 3f), new HandleMaterialStats(1f, 1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(draconium, new HeadMaterialStats(1000, 7f, Tiers.NETHERITE, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(awakenedDraconium, new HeadMaterialStats(1500, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1f, 1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			//redstone arsenal materials
-			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, 4, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
 		}
 	}
 }

@@ -6,7 +6,7 @@
   "cast_consumed": true,
   "fluid": {
     "tag": "materialis:molten_fairy",
-    "amount": 16
+    "amount": 10
   },
   "result": "materialis:fairy_nugget",
   "cooling_time": 20

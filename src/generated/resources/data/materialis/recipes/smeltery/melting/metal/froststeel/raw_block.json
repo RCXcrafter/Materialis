@@ -1,0 +1,28 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/raw_froststeel",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "tag": "forge:storage_blocks/raw_froststeel"
+  },
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 810
+  },
+  "temperature": 860,
+  "time": 372,
+  "byproducts": [
+    {
+      "fluid": "materialis:molten_regalium",
+      "amount": 270
+    }
+  ]
+}

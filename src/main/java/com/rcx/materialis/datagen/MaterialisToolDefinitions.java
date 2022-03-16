@@ -5,12 +5,11 @@ import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraftforge.common.ToolActions;
 import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionDataProvider;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
-import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
-import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvider {
 
@@ -33,7 +32,11 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 		.startingSlots(SlotType.UPGRADE, 1)
 		.startingSlots(SlotType.ABILITY, 3)
 		//traits
-		.trait(MaterialisModifiers.wrenchingModifierHidden);
+		.trait(MaterialisModifiers.wrenchingModifierHidden)
+		// harvest
+		.action(ToolActions.PICKAXE_DIG)
+		.action(ToolActions.SHEARS_DISARM)
+		.effective(MaterialisBlockTags.MINABLE_WITH_WRENCH);
 
 		define(MaterialisResources.BATTLEWRENCH_DEFINITION)
 		// parts
@@ -51,10 +54,13 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 		.startingSlots(SlotType.ABILITY, 2)
 		// traits
 		.trait(MaterialisModifiers.wrenchingModifierHidden)
-		.trait(TinkerModifiers.twoHanded);
+		// harvest
+		.action(ToolActions.PICKAXE_DIG)
+		.action(ToolActions.SHEARS_DISARM)
+		.effective(MaterialisBlockTags.MINABLE_WITH_WRENCH);
 
 
-		defineArmor(MaterialisResources.EXOSUIT_DEFINITION)
+		/*defineArmor(MaterialisResources.EXOSUIT_DEFINITION)
 		.durabilityFactor(18)
 		.stat(ToolStats.ARMOR, 1, 4, 5, 1)
 		.startingSlots(ArmorSlotType.HELMET, MaterialisResources.SENSOR_SLOT, 1)
@@ -67,7 +73,7 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 		.trait(ArmorSlotType.LEGGINGS, MaterialisModifiers.spellSocketModifier.get())
 		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.psionizingRadiationModifierDamage.get())
 		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.spellSocketModifier.get())
-		.trait(ArmorSlotType.HELMET, MaterialisModifiers.spellSocketModifier.get());
+		.trait(ArmorSlotType.HELMET, MaterialisModifiers.spellSocketModifier.get());*/
 	}
 
 	@Override

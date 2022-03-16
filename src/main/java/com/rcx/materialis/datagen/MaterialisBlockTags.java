@@ -4,23 +4,24 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
-import net.minecraft.block.Block;
-import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ITag.INamedTag;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.tags.Tag;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisBlockTags extends BlockTagsProvider {
 
-	public static final INamedTag<Block> WRENCH_BLACKLIST = BlockTags.bind(Materialis.modID + ":wrench_blacklist");
+	public static final Tag.Named<Block> WRENCH_BLACKLIST = BlockTags.bind(Materialis.modID + ":wrench_blacklist");
+	public static final Tag.Named<Block> MINABLE_WITH_WRENCH = BlockTags.bind(Materialis.modID + ":mineable/wrench");
 
 	//astral sorcery stuff
-	public static final INamedTag<Block> STARMETAL_BLOCK = BlockTags.bind("forge:storage_blocks/starmetal");
-	public static final INamedTag<Block> STARMETAL_ORE = BlockTags.bind("forge:ores/starmetal");
+	public static final Tag.Named<Block> STARMETAL_BLOCK = BlockTags.bind("forge:storage_blocks/starmetal");
+	public static final Tag.Named<Block> STARMETAL_ORE = BlockTags.bind("forge:ores/starmetal");
 
 	public MaterialisBlockTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);
@@ -31,6 +32,27 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
 			addBlockTag(material.BLOCK.get(), BlockTags.bind("forge:storage_blocks/" + material.name));
 		}
+		tag(BlockTags.NEEDS_IRON_TOOL).addTag(BlockTags.bind("forge:storage_blocks/fairy"));
+		
+		//wrench
+		tag(MINABLE_WITH_WRENCH)
+		.addOptionalTag(new ResourceLocation("forge", "mineable/wrench"))
+		.addOptionalTag(new ResourceLocation("forge", "mineable/hammer"))
+		.addTag(Tags.Blocks.STORAGE_BLOCKS)
+		.addTag(Tags.Blocks.BARRELS)
+		.addTag(Tags.Blocks.CHESTS)
+		.addTag(Tags.Blocks.GLASS)
+		.addTag(Tags.Blocks.GLASS_PANES)
+		.addTag(BlockTags.BUTTONS)
+		.addTag(BlockTags.DOORS)
+		.addTag(BlockTags.TRAPDOORS)
+		.addTag(BlockTags.PRESSURE_PLATES)
+		.addTag(BlockTags.BANNERS)
+		.addTag(BlockTags.ANVIL)
+		.addTag(BlockTags.RAILS)
+		.addTag(BlockTags.BEDS)
+		.addTag(BlockTags.SIGNS)
+		.addTag(BlockTags.BEACON_BASE_BLOCKS);
 
 		//astral sorcery stuff
 		tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
@@ -78,31 +100,12 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 		tag(WRENCH_BLACKLIST).addOptional(new ResourceLocation("immersiveengineering", "lightning_rod"));
 		tag(WRENCH_BLACKLIST).addOptional(new ResourceLocation("immersiveengineering", "transformer"));
 		tag(WRENCH_BLACKLIST).addOptional(new ResourceLocation("immersiveengineering", "transformer_hv"));
-
-		/*tag(BlockTags.bind(new ResourceLocation(Materialis.MODID, "test").toString()))
-		.add(Blocks.DIAMOND_BLOCK)
-		.addTag(BlockTags.STONE_BRICKS)
-		.addTag(net.minecraftforge.common.Tags.Blocks.COBBLESTONE)
-		.addOptional(new ResourceLocation("chisel", "marble/raw"))
-		.addOptionalTag(new ResourceLocation("forge", "storage_blocks/ruby"));
-
-		// Hopefully sorting issues
-		tag(BlockTags.bind(new ResourceLocation(Materialis.MODID, "thing/one").toString()))
-		.add(Blocks.COBBLESTONE);
-		tag(BlockTags.bind(new ResourceLocation(Materialis.MODID, "thing/two").toString()))
-		.add(Blocks.DIORITE);
-		tag(BlockTags.bind(new ResourceLocation(Materialis.MODID, "thing/three").toString()))
-		.add(Blocks.ANDESITE);
-
-		tag(BlockTags.bind(new ResourceLocation(Materialis.MODID, "things").toString()))
-		.add(Blocks.COBBLESTONE)
-		.add(Blocks.DIORITE)
-		.add(Blocks.ANDESITE);*/
 	}
 
-	private void addBlockTag(Block block, INamedTag<Block> tag) {
+	private void addBlockTag(Block block, Tag.Named<Block> tag) {
 		tag(tag).add(block);
 		tag(BlockTags.BEACON_BASE_BLOCKS).addTag(tag);
+		tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(tag);
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(tag);
 		tag(TinkerTags.Blocks.ANVIL_METAL).addTag(tag);
 	}

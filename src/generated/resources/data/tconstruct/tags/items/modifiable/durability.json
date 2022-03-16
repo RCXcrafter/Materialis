@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     "materialis:wrench",
-    "materialis:battlewrench",
-    "materialis:psimetal_exosuit_boots",
-    "materialis:psimetal_exosuit_leggings",
-    "materialis:psimetal_exosuit_chestplate",
-    "materialis:psimetal_exosuit_helmet"
+    "materialis:battlewrench"
   ]
 }

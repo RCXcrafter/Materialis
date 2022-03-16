@@ -11,14 +11,14 @@
   },
   "result": {
     "fluid": "tconstruct:molten_bronze",
-    "amount": 864
+    "amount": 540
   },
   "temperature": 700,
   "time": 139,
   "byproducts": [
     {
       "fluid": "tconstruct:molten_iron",
-      "amount": 144
+      "amount": 90
     }
   ]
 }

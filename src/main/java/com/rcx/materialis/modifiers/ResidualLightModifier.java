@@ -2,21 +2,17 @@ package com.rcx.materialis.modifiers;
 
 import com.rcx.materialis.MaterialisResources;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.state.properties.BlockStateProperties;
-import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class ResidualLightModifier extends SingleUseModifier {
-
-	public ResidualLightModifier() {
-		super(0xFFFFFF);
-	}
 
 	@Override
 	public int getPriority() {
@@ -24,18 +20,18 @@ public class ResidualLightModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public void afterBlockBreak(IModifierToolStack tool, int level, ToolHarvestContext context) {
-		if (context.getWorld().getBlockState(context.getPos()).isAir(context.getWorld(), context.getPos()))
+	public void afterBlockBreak(IToolStackView tool, int level, ToolHarvestContext context) {
+		if (context.getWorld().getBlockState(context.getPos()).isAir())
 			context.getWorld().setBlock(context.getPos(), MaterialisResources.LIGHT_RESIDUE.get().defaultBlockState(), 3 | 64);
 		else if (context.getWorld().getBlockState(context.getPos()).equals(Blocks.WATER.defaultBlockState()))
 			context.getWorld().setBlock(context.getPos(), MaterialisResources.LIGHT_RESIDUE.get().defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, true), 3 | 64);
 	}
 
 	@Override
-	public int afterEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt) {
+	public int afterEntityHit(IToolStackView tool, int level, ToolAttackContext context, float damageDealt) {
 		LivingEntity target = context.getLivingTarget();
 		if (target != null && context.isFullyCharged() && target.isAlive()) {
-			target.addEffect(new EffectInstance(Effects.GLOWING, 400, 0, false, true));
+			target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0, false, true));
 		}
 		return 0;
 	}

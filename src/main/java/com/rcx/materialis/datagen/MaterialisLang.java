@@ -10,14 +10,13 @@ import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.TinkerToolFluxed;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisLang extends LanguageProvider {
 
@@ -114,10 +113,10 @@ public class MaterialisLang extends LanguageProvider {
 		add("stat.tconstruct.slot.display.sensor", "sensor");
 		add("stat.tconstruct.slot.prefix.sensor", "Sensor Slots: ");
 		add("item.tconstruct.creative_slot.sensor", "Creative Sensor Slot");
-		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS), "Tinkers Exosuit Boots");
+		/*addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS), "Tinkers Exosuit Boots");
 		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS), "Tinkers Exosuit Leggings");
 		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE), "Tinkers Exosuit Chestplate");
-		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET), "Tinkers Exosuit Helmet");
+		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET), "Tinkers Exosuit Helmet");*/
 
 		//quark stuff
 		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");

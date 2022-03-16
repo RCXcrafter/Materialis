@@ -9,11 +9,11 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
-import net.minecraft.block.Block;
-import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class MaterialisBlockLootTables extends BlockLootTables {
+public class MaterialisBlockLootTables extends BlockLoot {
 
 	@Nonnull
 	@Override

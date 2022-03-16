@@ -9,7 +9,7 @@
   "input": "materialis:terrasteel",
   "fluid": {
     "tag": "materialis:molten_alfsteel",
-    "amount": 48
+    "amount": 30
   },
   "temperature": 1440,
   "output": "materialis:alfsteel"

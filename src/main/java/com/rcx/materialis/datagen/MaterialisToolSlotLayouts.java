@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.rcx.materialis.MaterialisResources;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Ingredient;
 import slimeknights.tconstruct.library.data.tinkering.AbstractStationSlotLayoutProvider;
 import slimeknights.tconstruct.library.recipe.partbuilder.Pattern;
 import slimeknights.tconstruct.tools.TinkerToolParts;

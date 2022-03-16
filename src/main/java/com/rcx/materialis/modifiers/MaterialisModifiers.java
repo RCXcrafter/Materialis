@@ -3,18 +3,18 @@ package com.rcx.materialis.modifiers;
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
-import slimeknights.tconstruct.library.modifiers.ExtraModifier;
-import slimeknights.tconstruct.library.modifiers.ExtraModifier.ModifierSource;
+import net.minecraftforge.registries.RegistryObject;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.modifiers.impl.ExtraModifier;
+import slimeknights.tconstruct.library.modifiers.impl.ExtraModifier.ModifierSource;
 import slimeknights.tconstruct.library.tools.SlotType;
 
 public class MaterialisModifiers {
 	public static final DeferredRegister<Modifier> MODIFIERS = DeferredRegister.create(Modifier.class, Materialis.modID);
 
 	//traits
-	public static final RegistryObject<Modifier> enhancedQuartzModifier = MODIFIERS.register("enhanced_quartz", () -> new ExtraModifier(0xFF8C80, SlotType.UPGRADE, ModifierSource.TRAIT));
+	public static final RegistryObject<Modifier> enhancedQuartzModifier = MODIFIERS.register("enhanced_quartz", () -> new ExtraModifier(SlotType.UPGRADE, ModifierSource.TRAIT));
 	public static final RegistryObject<Modifier> voidingModifier = MODIFIERS.register("voiding", VoidingModifier::new);
 	public static final RegistryObject<Modifier> residualLightModifier = MODIFIERS.register("residual_light", ResidualLightModifier::new);
 	public static final RegistryObject<Modifier> inertiaModifier = MODIFIERS.register("inertia", InertiaModifier::new);
@@ -72,21 +72,21 @@ public class MaterialisModifiers {
 	//upgrades & abilities
 	public static final RegistryObject<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);
 	public static final RegistryObject<Modifier> runedModifier = MODIFIERS.register("runed", RunedModifier::new);
-	public static final RegistryObject<Modifier> wrenchingModifier = MODIFIERS.register("wrenching", () -> new WrenchingModifier(0x8A361E, 75));
+	public static final RegistryObject<Modifier> wrenchingModifier = MODIFIERS.register("wrenching", () -> new WrenchingModifier(75));
 	public static final RegistryObject<Modifier> thermalWrenchingModifier = MODIFIERS.register("thermal_wrenching", ThermalWrenchingModifier::new);
 	public static final RegistryObject<Modifier> createWrenchingModifier = MODIFIERS.register("create_wrenching", CreateWrenchingModifier::new);
 	public static final RegistryObject<Modifier> immersiveWrenchingModifier = MODIFIERS.register("immersive_wrenching", ImmersiveWrenchingModifier::new);
 	public static final RegistryObject<Modifier> pipeWrenchingModifier = MODIFIERS.register("pipe_wrenching", PipeWrenchingModifier::new);
-	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(0xA8B4BB, SlotType.ABILITY, ModifierSource.MULTI_LEVEL));
-	public static final RegistryObject<Modifier> spellSocketModifier = MODIFIERS.register("spell_socket", () -> new SpellSocketModifier(0x3D3D3D));
+	public static final RegistryObject<Modifier> galvanizedModifier = MODIFIERS.register("galvanized", () -> new ExtraModifier(SlotType.ABILITY, ModifierSource.MULTI_LEVEL));
+	public static final RegistryObject<Modifier> spellSocketModifier = MODIFIERS.register("spell_socket", () -> new SpellSocketModifier());
 	public static final RegistryObject<Modifier> spellCastingModifier = MODIFIERS.register("spell_casting", SpellCastingModifier::new);
 	public static final RegistryObject<Modifier> lesserSpellCastingModifier = MODIFIERS.register("lesser_spell_casting", SpellCastingModifierLesser::new); //unused
 	public static final RegistryObject<Modifier> colorizedModifier = MODIFIERS.register("colorized", ColorizedModifier::new);
 	public static final RegistryObject<Modifier> psionizingRadiationModifierSensor = MODIFIERS.register("psionizing_radiation_sensor", PsionizingRadiationModifierSensor::new);
-	public static final RegistryObject<Modifier> processorModifier = MODIFIERS.register("processor", () -> new ExtraModifier(0xA0A0A0, MaterialisResources.SENSOR_SLOT, ModifierSource.SINGLE_LEVEL)); //unused
-	public static final RegistryObject<Modifier> capacitorModifier = MODIFIERS.register("capacitor", () -> new CapacitorModifier(0xB51212));
+	public static final RegistryObject<Modifier> processorModifier = MODIFIERS.register("processor", () -> new ExtraModifier(MaterialisResources.SENSOR_SLOT, ModifierSource.SINGLE_LEVEL)); //unused
+	public static final RegistryObject<Modifier> capacitorModifier = MODIFIERS.register("capacitor", () -> new CapacitorModifier());
 	public static final RegistryObject<Modifier> engineersGogglesModifier = MODIFIERS.register("engineers_goggles", EngineersGogglesModifier::new);
 
 	//internal modifiers
-	public static final RegistryObject<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(0xFFFFFF, Integer.MIN_VALUE + 50));
+	public static final RegistryObject<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(Integer.MIN_VALUE + 50));
 }

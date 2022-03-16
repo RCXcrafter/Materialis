@@ -15,7 +15,7 @@
   "cast_consumed": true,
   "fluid": {
     "tag": "forge:molten_pink_slime",
-    "amount": 72
+    "amount": 45
   },
   "result": {
     "tag": "forge:wires/pink_slime"

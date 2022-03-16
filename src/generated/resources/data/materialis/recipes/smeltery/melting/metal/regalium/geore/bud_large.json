@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_large_buds/regalium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_large_buds/regalium"
+  },
+  "result": {
+    "fluid": "materialis:molten_regalium",
+    "amount": 270
+  },
+  "temperature": 620,
+  "time": 108
+}

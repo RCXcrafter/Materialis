@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "tag": "materialis:molten_flux_infused",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 880,
   "output": "materialis:flux_infused"

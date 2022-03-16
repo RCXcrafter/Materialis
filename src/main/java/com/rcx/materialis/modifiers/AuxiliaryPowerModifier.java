@@ -1,21 +1,14 @@
 package com.rcx.materialis.modifiers;
 
-import net.minecraft.item.Item;
 import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.tools.ToolDefinition;
-import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
-import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
+import slimeknights.tconstruct.library.tools.context.ToolRebuildContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class AuxiliaryPowerModifier extends Modifier {
 
-	public AuxiliaryPowerModifier() {
-		super(0xFFE55C);
-	}
-
 	@Override
-	public void addToolStats(Item item, ToolDefinition toolDefinition, StatsNBT baseStats, IModDataReadOnly persistentData, IModDataReadOnly volatileData, int level, ModifierStatsBuilder builder) {
-		ToolStats.ATTACK_SPEED.add(builder, baseStats.getFloat(ToolStats.MINING_SPEED) * level / 80.0f);
+	public void addToolStats(ToolRebuildContext context, int level, ModifierStatsBuilder builder) {
+		ToolStats.ATTACK_SPEED.add(builder, context.getBaseStats().get(ToolStats.MINING_SPEED) * level / 80.0f);
 	}
 }

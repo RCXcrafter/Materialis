@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_clusters/quicksilver",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_clusters/quicksilver"
+  },
+  "result": {
+    "fluid": "materialis:molten_quicksilver",
+    "amount": 360
+  },
+  "temperature": 400,
+  "time": 115
+}

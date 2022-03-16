@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_blocks/regalium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_blocks/regalium"
+  },
+  "result": {
+    "fluid": "materialis:molten_regalium",
+    "amount": 360
+  },
+  "temperature": 620,
+  "time": 108
+}

@@ -5,53 +5,43 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.rcx.materialis.block.LightResidueBlock;
-import com.rcx.materialis.item.ExosuitModelArmorItem;
 import com.rcx.materialis.item.OptionalItem;
-import com.rcx.materialis.item.WrenchTool;
-import com.rcx.materialis.util.ColorizerModifierRecipe;
 import com.rcx.materialis.util.RuneModifierRecipe;
 import com.rcx.materialis.util.SensorModifierRecipe;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import slimeknights.mantle.registration.object.EnumObject;
+import net.minecraftforge.registries.RegistryObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.library.tools.SlotType;
-import slimeknights.tconstruct.library.tools.ToolDefinition;
-import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
-import slimeknights.tconstruct.library.tools.definition.ToolStatProviders;
-import slimeknights.tconstruct.library.tools.item.ModifiableArmorItem;
+import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
-import slimeknights.tconstruct.tools.item.ArmorSlotType;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 
 public class MaterialisResources {
@@ -62,14 +52,14 @@ public class MaterialisResources {
 	protected static final ItemDeferredRegisterExtension ITEMS_EXTENDED = new ItemDeferredRegisterExtension(Materialis.modID);
 	private static final Supplier<Item.Properties> TOOL_PROPS = () -> new Item.Properties().tab(TinkerTools.TAB_TOOLS);
 	private static final Item.Properties PARTS_PROPS = new Item.Properties().tab(TinkerToolParts.TAB_TOOL_PARTS);
-	public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Materialis.modID);
+	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Materialis.modID);
 
 	/*
 	 * RECIPE SERIALIZERS
 	 */
 
 	public static final RegistryObject<RuneModifierRecipe.Serializer> runeModifierSerializer = RECIPE_SERIALIZERS.register("rune_modifier", RuneModifierRecipe.Serializer::new);
-	public static final RegistryObject<ColorizerModifierRecipe.Serializer> colorizerModifierSerializer = RECIPE_SERIALIZERS.register("colorizer_modifier", ColorizerModifierRecipe.Serializer::new);
+	//public static final RegistryObject<ColorizerModifierRecipe.Serializer> colorizerModifierSerializer = RECIPE_SERIALIZERS.register("colorizer_modifier", ColorizerModifierRecipe.Serializer::new);
 	public static final RegistryObject<SensorModifierRecipe.Serializer> sensorModifierSerializer = RECIPE_SERIALIZERS.register("sensor_modifier", SensorModifierRecipe.Serializer::new);
 
 
@@ -150,8 +140,7 @@ public class MaterialisResources {
 	 */
 
 	//light residue for residual light modifier
-	public static final RegistryObject<Block> LIGHT_RESIDUE = BLOCKS.register("light_residue", () -> new LightResidueBlock(AbstractBlock.Properties.of(Material.AIR, MaterialColor.NONE).strength(0.0F, 0.0F).lightLevel((state) -> { return 15; }).randomTicks().air().noCollission().noDrops()));
-
+	public static final RegistryObject<Block> LIGHT_RESIDUE = BLOCKS.register("light_residue", () -> new LightResidueBlock(BlockBehaviour.Properties.of(Material.AIR, MaterialColor.NONE).strength(0.0F, 0.0F).lightLevel((state) -> { return 15; }).randomTicks().air().noCollission().noDrops()));
 
 	/*
 	 * ITEMS
@@ -166,23 +155,23 @@ public class MaterialisResources {
 	public static final ItemObject<ToolPartItem> WRENCH_HEAD = ITEMS_EXTENDED.register("wrench_head", () -> new ToolPartItem(PARTS_PROPS, HeadMaterialStats.ID));
 
 	public static final ToolDefinition WRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "wrench")).meleeHarvest().build();
-	public static final ItemObject<WrenchTool> WRENCH = ITEMS_EXTENDED.register("wrench", () -> new WrenchTool(TOOL_PROPS.get().addToolType(WrenchTool.TOOL_TYPE, 0).addToolType(WrenchTool.HAMMER_TOOL_TYPE, 0), WRENCH_DEFINITION));
+	public static final ItemObject<ModifiableItem> WRENCH = ITEMS_EXTENDED.register("wrench", () -> new ModifiableItem(TOOL_PROPS.get(), WRENCH_DEFINITION));
 
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "battlewrench")).meleeHarvest().build();
-	public static final ItemObject<WrenchTool> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new WrenchTool(new Item.Properties().addToolType(WrenchTool.TOOL_TYPE, 0).addToolType(WrenchTool.HAMMER_TOOL_TYPE, 0), BATTLEWRENCH_DEFINITION));
+	public static final ItemObject<ModifiableItem> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new ModifiableItem(new Item.Properties(), BATTLEWRENCH_DEFINITION));
 
 	//industrial foregoing stuff
 	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new OptionalItem(new Item.Properties().tab(TinkerModule.TAB_GENERAL), new ModLoadedCondition("industrialforegoing")));
 
 	//psi armor
 	public static final SlotType SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);
-	public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial
+	/*public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial
 			.builder(new ResourceLocation(Materialis.modID, "psimetal_exosuit"))
 			.setStatsProvider(ToolStatProviders.NO_PARTS)
 			.setSoundEvent(SoundEvents.ARMOR_EQUIP_GENERIC)
 			.build();
 	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(ModList.get().isLoaded("psi") || !FMLEnvironment.production ? TinkerTools.TAB_TOOLS : null)));
-
+*/
 
 
 
@@ -215,7 +204,7 @@ public class MaterialisResources {
 			this.name = name;
 			this.localizedName = localizedName;
 
-			BLOCK = BLOCKS.register(name + "_block", () -> new Block(AbstractBlock.Properties.of(Material.METAL, color).harvestLevel(miningLevel).harvestTool(ToolType.PICKAXE).strength(hardness, explosionResistance).sound(SoundType.METAL).requiresCorrectToolForDrops()));
+			BLOCK = BLOCKS.register(name + "_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL, color).strength(hardness, explosionResistance).sound(SoundType.METAL).requiresCorrectToolForDrops()));
 
 			INGOT = ITEMS.register(name + "_ingot", () -> new Item(new Item.Properties().tab(TinkerModule.TAB_GENERAL)));
 			NUGGET = ITEMS.register(name + "_nugget", () -> new Item(new Item.Properties().tab(TinkerModule.TAB_GENERAL)));
@@ -234,7 +223,7 @@ public class MaterialisResources {
 		public final ResourceLocation TEXTURE_STILL;
 		public final ResourceLocation TEXTURE_FLOW;
 
-		public final RegistryObject<FlowingFluidBlock> FLUID_BLOCK;
+		public final RegistryObject<LiquidBlock> FLUID_BLOCK;
 
 		public final RegistryObject<BucketItem> FLUID_BUCKET;
 
@@ -261,8 +250,8 @@ public class MaterialisResources {
 
 			PROPERTIES = new ForgeFlowingFluid.Properties(FLUID, FLUID_FLOW, FluidAttributes.builder(TEXTURE_STILL, TEXTURE_FLOW).overlay(TEXTURE_STILL).luminosity(light).density(density).viscosity(6000).temperature(temperature).sound(SoundEvents.BUCKET_FILL_LAVA, SoundEvents.BUCKET_EMPTY_LAVA));
 
-			FLUID_BLOCK = BLOCKS.register(name + "_block", () -> new FlowingFluidBlock(FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return light; }).randomTicks().strength(100.0F).noDrops()));
-			FLUID_BUCKET = ITEMS.register(name + "_bucket", () -> new BucketItem(FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ItemGroup.TAB_MISC)));
+			FLUID_BLOCK = BLOCKS.register(name + "_block", () -> new LiquidBlock(FLUID, Block.Properties.of(Material.LAVA).lightLevel((state) -> { return light; }).randomTicks().strength(100.0F).noDrops()));
+			FLUID_BUCKET = ITEMS.register(name + "_bucket", () -> new BucketItem(FLUID, new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(CreativeModeTab.TAB_MISC)));
 
 			PROPERTIES.bucket(FLUID_BUCKET).block(FLUID_BLOCK).explosionResistance(1000F).tickRate(9);
 

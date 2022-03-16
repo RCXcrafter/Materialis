@@ -1,0 +1,36 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "tags": [
+        "forge:ores/cloggrum",
+        "forge:ore_rates/dense"
+      ],
+      "type": "tconstruct:tag_intersection_present"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "type": "mantle:intersection",
+    "ingredients": [
+      {
+        "tag": "forge:ores/cloggrum"
+      },
+      {
+        "tag": "forge:ore_rates/dense"
+      }
+    ]
+  },
+  "result": {
+    "fluid": "materialis:molten_cloggrum",
+    "amount": 540
+  },
+  "temperature": 650,
+  "time": 248,
+  "byproducts": [
+    {
+      "fluid": "materialis:molten_froststeel",
+      "amount": 180
+    }
+  ]
+}

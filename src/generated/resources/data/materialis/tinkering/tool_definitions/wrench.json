@@ -25,5 +25,15 @@
       "name": "materialis:wrenching_hidden",
       "level": 1
     }
-  ]
+  ],
+  "actions": [
+    "pickaxe_dig",
+    "shears_disarm"
+  ],
+  "harvest": {
+    "logic": {
+      "type": "tconstruct:effective_tag",
+      "effective": "materialis:mineable/wrench"
+    }
+  }
 }

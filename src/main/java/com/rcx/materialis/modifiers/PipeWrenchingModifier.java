@@ -1,29 +1,26 @@
 package com.rcx.materialis.modifiers;
 
 import de.ellpeck.prettypipes.Registry;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.ActionResultType;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraftforge.fml.ModList;
-import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class PipeWrenchingModifier extends SingleUseModifier {
 
 	boolean enabled = ModList.get().isLoaded("prettypipes");
 
-	public PipeWrenchingModifier() {
-		super(0xD01F1F);
-	}
-
 	@Override
-	public ActionResultType beforeBlockUse(IModifierToolStack tool, int level, ItemUseContext context) {
+	public InteractionResult beforeBlockUse(IToolStackView tool, int level, UseOnContext context, EquipmentSlot slot) {
 		if (enabled && !tool.isBroken() && context.getPlayer() != null) {
-			ActionResultType result = Registry.wrenchItem.useOn(context);
-			if (result == ActionResultType.SUCCESS)
+			InteractionResult result = Registry.wrenchItem.useOn(context);
+			if (result == InteractionResult.SUCCESS)
 				ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
 			return result;
 		}
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 }

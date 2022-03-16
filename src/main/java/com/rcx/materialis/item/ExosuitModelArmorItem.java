@@ -1,4 +1,4 @@
-package com.rcx.materialis.item;
+/*package com.rcx.materialis.item;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -14,8 +14,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.IDyeableArmorItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.LazyValue; 
+import net.minecraft.world.item.DyeableLeatherItem;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
@@ -30,7 +30,7 @@ import top.theillusivec4.magipsi.client.FocusingPlateModel;
 import vazkii.psi.api.exosuit.IExosuitSensor;
 import vazkii.psi.client.model.ModelPsimetalExosuit;
 
-public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeableArmorItem {
+public class ExosuitModelArmorItem extends ModifiableArmorItem implements DyeableLeatherItem {
 
 	private LazyValue<BipedModel<?>> model;
 	public String texture;
@@ -110,4 +110,4 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem implements IDyeab
 			return new FocusingPlateModel(slot);
 		}
 	}
-}
+}*/

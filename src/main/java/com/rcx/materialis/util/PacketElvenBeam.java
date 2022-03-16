@@ -4,14 +4,14 @@ import java.util.function.Supplier;
 
 import com.rcx.materialis.modifiers.ElvenBeamModifier;
 
-import net.minecraft.network.PacketBuffer;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.network.NetworkEvent;
 
 public class PacketElvenBeam {
 
-	public static void encode(PacketElvenBeam msg, PacketBuffer buf) {}
+	public static void encode(PacketElvenBeam msg, FriendlyByteBuf buf) {}
 
-	public static PacketElvenBeam decode(PacketBuffer buf) {
+	public static PacketElvenBeam decode(FriendlyByteBuf buf) {
 		return new PacketElvenBeam();
 	}
 

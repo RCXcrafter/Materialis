@@ -9,11 +9,11 @@
   "inputs": [
     {
       "name": "tconstruct:molten_gold",
-      "amount": 288
+      "amount": 180
     },
     {
       "name": "tconstruct:molten_iron",
-      "amount": 288
+      "amount": 180
     },
     {
       "tag": "materialis:pink_slime",
@@ -22,7 +22,7 @@
   ],
   "result": {
     "fluid": "materialis:molten_pink_slime",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 960
 }

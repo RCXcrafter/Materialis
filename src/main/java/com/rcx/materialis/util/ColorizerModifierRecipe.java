@@ -1,4 +1,4 @@
-package com.rcx.materialis.util;
+/*package com.rcx.materialis.util;
 
 import java.util.List;
 
@@ -157,4 +157,4 @@ public class ColorizerModifierRecipe extends SwappableModifierRecipe {
 			return super.read(id, json);
 		}
 	}
-}
+}*/

@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "materialis:molten_fairy",
-    "amount": 144
+    "amount": 90
   },
   "result": {
     "tag": "forge:plates/fairy"

@@ -15,7 +15,7 @@
   "cast_consumed": true,
   "fluid": {
     "tag": "forge:molten_forgotten_metal",
-    "amount": 576
+    "amount": 360
   },
   "result": {
     "tag": "forge:gears/forgotten_metal"

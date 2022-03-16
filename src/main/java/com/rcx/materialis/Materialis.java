@@ -3,10 +3,7 @@ package com.rcx.materialis;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.rcx.materialis.compat.TinkerToolRuneColor;
-import com.rcx.materialis.compat.TinkerToolSocketable;
 import com.rcx.materialis.datagen.MaterialisBlockStates;
 import com.rcx.materialis.datagen.MaterialisBlockTags;
 import com.rcx.materialis.datagen.MaterialisFluidTags;
@@ -25,23 +22,16 @@ import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.EngineersGogglesModifier;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
-import com.rcx.materialis.util.ExosuitModel;
 import com.rcx.materialis.util.PacketElvenBeam;
 import com.rcx.materialis.util.PacketTerraBeam;
 import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
 import com.simibubi.create.content.contraptions.goggles.GoggleOverlayRenderer;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.client.renderer.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.model.ItemTransformVec3f;
-import net.minecraft.client.renderer.model.Variant;
-import net.minecraft.data.BlockTagsProvider;
+import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.IReloadableResourceManager;
-import net.minecraft.resources.IResourceManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -56,8 +46,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import slimeknights.mantle.client.model.NBTKeyModel;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
@@ -68,8 +58,8 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvide
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
-import slimeknights.tconstruct.tools.item.ArmorSlotType;
-import vazkii.botania.common.network.PacketHandler;
+import vazkii.botania.forge.network.ForgePacketHandler;
+//import vazkii.botania.common.network.PacketHandler;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -79,7 +69,6 @@ public class Materialis {
 	// Directly reference a log4j logger.
 	private static final Logger LOGGER = LogManager.getLogger();
 	public static final String modID = "materialis";
-	private static Gson GSON = null;
 
 	public Materialis() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -109,13 +98,13 @@ public class Materialis {
 		// some preinit code
 		//LOGGER.info("HELLO FROM PREINIT");
 		//LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-		if (ModList.get().isLoaded("psi"))
-			ToolCapabilityProvider.register(TinkerToolSocketable::new);
+		//if (ModList.get().isLoaded("psi"))
+			//ToolCapabilityProvider.register(TinkerToolSocketable::new);
 		if (ModList.get().isLoaded("quark"))
 			ToolCapabilityProvider.register(TinkerToolRuneColor::new);
 		if (ModList.get().isLoaded("botania")) {
-			PacketHandler.HANDLER.registerMessage(293, PacketTerraBeam.class, PacketTerraBeam::encode, PacketTerraBeam::decode, PacketTerraBeam::handle);
-			PacketHandler.HANDLER.registerMessage(294, PacketElvenBeam.class, PacketElvenBeam::encode, PacketElvenBeam::decode, PacketElvenBeam::handle);
+			ForgePacketHandler.CHANNEL.registerMessage(293, PacketTerraBeam.class, PacketTerraBeam::encode, PacketTerraBeam::decode, PacketTerraBeam::handle);
+			ForgePacketHandler.CHANNEL.registerMessage(294, PacketElvenBeam.class, PacketElvenBeam::encode, PacketElvenBeam::decode, PacketElvenBeam::handle);
 		}
 		ToolCapabilityProvider.register(TinkerToolFluxed::new);
 	}
@@ -159,12 +148,6 @@ public class Materialis {
 
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
-		GSON = new GsonBuilder()
-				.registerTypeAdapter(Variant.class, new Variant.Deserializer())
-				.registerTypeAdapter(ItemCameraTransforms.class, new ItemCameraTransforms.Deserializer())
-				.registerTypeAdapter(ItemTransformVec3f.class, new ItemTransformVec3f.Deserializer())
-				.create();
-
 		DataGenerator gen = event.getGenerator();
 
 		if (event.includeClient()) {
@@ -202,12 +185,12 @@ public class Materialis {
 	public static class MaterialisClient {
 
 		public static void onConstruct() {
-			if (Minecraft.getInstance() != null) {
-				IResourceManager manager = Minecraft.getInstance().getResourceManager();
+			/*if (Minecraft.getInstance() != null) {
+				ResourceManager manager = Minecraft.getInstance().getResourceManager();
 				if (manager instanceof IReloadableResourceManager) {
 					((IReloadableResourceManager) manager).registerReloadListener(ExosuitModel.RELOAD_LISTENER);
 				}
-			}
+			}*/
 		}
 
 		@SubscribeEvent
@@ -217,10 +200,10 @@ public class Materialis {
 			//tint tool and part textures for fallback
 			ToolModel.registerItemColors(colors, MaterialisResources.WRENCH);
 			ToolModel.registerItemColors(colors, MaterialisResources.BATTLEWRENCH);
-			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
+			/*ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
 			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE));
 			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS));
-			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS));
+			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS));*/
 		}
 
 		@SubscribeEvent

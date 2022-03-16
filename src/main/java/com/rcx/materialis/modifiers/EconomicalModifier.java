@@ -1,16 +1,12 @@
 package com.rcx.materialis.modifiers;
 
 import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class EconomicalModifier extends Modifier {
 
-	public EconomicalModifier() {
-		super(0x9C8878);
-	}
-
 	@Override
-	public float getRepairFactor(IModifierToolStack toolStack, int level, float factor) {
+	public float getRepairFactor(IToolStackView toolStack, int level, float factor) {
 		float half = (toolStack.getDamage() + toolStack.getCurrentDurability()) / 2;
 		if (toolStack.getCurrentDurability() > half)
 			return factor;

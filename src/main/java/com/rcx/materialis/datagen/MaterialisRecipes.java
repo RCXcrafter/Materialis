@@ -11,20 +11,20 @@ import com.rcx.materialis.modifiers.CleansingModifier;
 import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.MaterialisByproduct;
 
-import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.RecipeProvider;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.data.ShapelessRecipeBuilder;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.potion.Effects;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.Tags.Fluids;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
@@ -36,13 +36,13 @@ import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.OrCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.fluids.FluidStack;
-import slimeknights.mantle.recipe.EntityIngredient;
-import slimeknights.mantle.recipe.SizedIngredient;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
 import slimeknights.mantle.recipe.data.ItemNameOutput;
+import slimeknights.mantle.recipe.ingredient.EntityIngredient;
+import slimeknights.mantle.recipe.ingredient.IngredientDifference;
 import slimeknights.mantle.recipe.ingredient.IngredientIntersection;
-import slimeknights.mantle.recipe.ingredient.IngredientWithout;
+import slimeknights.mantle.recipe.ingredient.SizedIngredient;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.ICommonRecipeHelper;
@@ -63,13 +63,10 @@ import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifier
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.spilling.SpillingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.spilling.effects.EffectSpillingEffect;
-import slimeknights.tconstruct.library.recipe.tinkerstation.repairing.SpecializedRepairRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
-import slimeknights.tconstruct.tools.data.material.MaterialIds;
-import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, ICommonRecipeHelper {
 
@@ -82,7 +79,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		return Materialis.modID;
 	}
 
-	public void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+	@Override
+	public void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
 			blockIngotNuggetCompression(consumer, material.name, material.BLOCK_ITEM.get(), material.INGOT.get(), material.NUGGET.get());
 		}
@@ -117,7 +115,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(TinkerFluids.moltenGold.get(), FluidValues.INGOT)
 		.addInput(TinkerFluids.liquidSoul.get(), FluidValues.GLASS_BLOCK)
 		.addInput(Fluids.MILK, 1000)
-		.build(consumer, prefix(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
+		.save(consumer, prefix(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
 
 		//wrench stuff
 		partRecipes(consumer, MaterialisResources.WRENCH_HEAD, MaterialisResources.WRENCH_HEAD_CAST, 2, partFolder, castFolder);
@@ -130,8 +128,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalTagCasting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.OBJECT, "shadow_steel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), "shadow_steel", false, meltingFolder, true);
 		SpillingRecipeBuilder.forFluid(MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), FluidValues.NUGGET)
-		.addEffect(new EffectSpillingEffect(Effects.GLOWING, 800, 1))
-		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisResources.REFINED_RADIANCE_FLUID.FLUID, spillFolder));
+		.addEffect(new EffectSpillingEffect(MobEffects.GLOWING, 800, 1))
+		.save(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisResources.REFINED_RADIANCE_FLUID.FLUID, spillFolder));
 
 		//eidolon stuff
 		metalTagCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.OBJECT, "arcane_gold", castingFolder, false);
@@ -141,10 +139,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		tagCasting(consumer, TinkerFluids.moltenPewter, FluidValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays/pewter", castingFolder + "pewter_inlay", true);
 		tagCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.OBJECT, FluidValues.INGOT * 2, MaterialisResources.INLAY_CAST, "inlays/arcane_gold", castingFolder + "arcane_gold_inlay", true);
 
-		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.PEWTER_INLAY), TinkerFluids.moltenPewter.get(), FluidValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("forge", "inlays/pewter")), modResource(meltingFolder + "pewter_inlay"));
-		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.ARCANE_GOLD_INLAY), MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.5f).build(withCondition(consumer, tagConditionDomain("forge", "inlays/arcane_gold")), modResource(meltingFolder + "arcane_gold_inlay"));
+		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.PEWTER_INLAY), TinkerFluids.moltenPewter.get(), FluidValues.INGOT * 2, 1.5f).save(withCondition(consumer, tagConditionDomain("forge", "inlays/pewter")), modResource(meltingFolder + "pewter_inlay"));
+		MeltingRecipeBuilder.melting(Ingredient.of(MaterialisItemTags.ARCANE_GOLD_INLAY), MaterialisResources.ARCANE_GOLD_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.5f).save(withCondition(consumer, tagConditionDomain("forge", "inlays/arcane_gold")), modResource(meltingFolder + "arcane_gold_inlay"));
 
-		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("eidolon", "pewter_blend")), TinkerFluids.moltenPewter.get(), FluidValues.INGOT, 1.0f).build(withCondition(consumer, new ModLoadedCondition("eidolon")), modResource(meltingFolder + "pewter_blend"));
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("eidolon", "pewter_blend")), TinkerFluids.moltenPewter.get(), FluidValues.INGOT, 1.0f).save(withCondition(consumer, new ModLoadedCondition("eidolon")), modResource(meltingFolder + "pewter_blend"));
 
 		//aquaculture stuff
 		metalTagCasting(consumer, MaterialisResources.NEPTUNIUM_FLUID.OBJECT, "neptunium", castingFolder, false);
@@ -206,21 +204,21 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalTagCasting(consumer, MaterialisResources.STARMETAL_FLUID.OBJECT, "starmetal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.STARMETAL_FLUID.FLUID.get(), "starmetal", false, meltingFolder, true); //the ore recipe is defined manually
 		SpillingRecipeBuilder.forFluid(MaterialisFluidTags.LIQUID_STARLIGHT, 50)
-		.addEffect(new EffectSpillingEffect(Effects.NIGHT_VISION, 100, 1))
-		.build(withCondition(consumer, new ModLoadedCondition("astralsorcery")), new ResourceLocation(Materialis.modID, spillFolder + "liquid_starlight"));
+		.addEffect(new EffectSpillingEffect(MobEffects.NIGHT_VISION, 100, 1))
+		.save(withCondition(consumer, new ModLoadedCondition("astralsorcery")), new ResourceLocation(Materialis.modID, spillFolder + "liquid_starlight"));
 
 		//industrial foregoing stuff
 		metalTagCasting(consumer, MaterialisResources.PINK_SLIME_FLUID.OBJECT, "pink_slime", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), "pink_slime", false, meltingFolder, true);
 
-		Consumer<IFinishedRecipe> industrialForegoingLoaded = withCondition(consumer, new ModLoadedCondition("industrialforegoing"));
+		Consumer<FinishedRecipe> industrialForegoingLoaded = withCondition(consumer, new ModLoadedCondition("industrialforegoing"));
 		AlloyRecipeBuilder.alloy(MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), FluidValues.INGOT)
 		.addInput(TinkerFluids.moltenGold.get(), FluidValues.INGOT * 2)
 		.addInput(TinkerFluids.moltenIron.get(), FluidValues.INGOT * 2)
 		.addInput(MaterialisFluidTags.LIQUID_PINK_SLIME, 1000)
-		.build(industrialForegoingLoaded, prefix(MaterialisResources.PINK_SLIME_FLUID.FLUID, alloyFolder));
+		.save(industrialForegoingLoaded, prefix(MaterialisResources.PINK_SLIME_FLUID.FLUID, alloyFolder));
 
-		CookingRecipeBuilder.blasting(Ingredient.of(MaterialisItemTags.PINK_SLIME), MaterialisResources.PINK_SLIME_CRYSTAL.get(), 1.0f, 400)
+		SimpleCookingRecipeBuilder.blasting(Ingredient.of(MaterialisItemTags.PINK_SLIME), MaterialisResources.PINK_SLIME_CRYSTAL.get(), 1.0f, 400)
 		.unlockedBy("has_item", has(MaterialisItemTags.PINK_SLIME))
 		.save(industrialForegoingLoaded, new ResourceLocation(Materialis.modID, "pink_slime_crystal_blasting"));
 
@@ -231,16 +229,16 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.FROSTSTEEL_FLUID.FLUID.get(), "froststeel", true, meltingFolder, true, MaterialisByproduct.REGALIUM);
 		metalTagCasting(consumer, MaterialisResources.UTHERIUM_FLUID.OBJECT, "utherium", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), "utherium", false, meltingFolder, true);
-		oreMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET, "ores/utherium", 1.5f, meltingFolder + "utherium/ore", true);
+		//oreMelting(consumer, MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET, "ores/utherium", 1.5f, meltingFolder + "utherium/ore", true);
 		metalTagCasting(consumer, MaterialisResources.FORGOTTEN_FLUID.OBJECT, "forgotten_metal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), "forgotten_metal", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.REGALIUM_FLUID.OBJECT, "regalium", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, meltingFolder, true, MaterialisByproduct.CLOGGRUM);
-		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 4, 1.0f).build(withCondition(consumer, new ModLoadedCondition("undergarden")), modResource(meltingFolder + "utheric_shard"));
-		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(CleansingModifier.rotspawnTag), new FluidStack(MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 8)).build(withCondition(consumer, new ModLoadedCondition("undergarden")));
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 4, 1.0f).save(withCondition(consumer, new ModLoadedCondition("undergarden")), modResource(meltingFolder + "utheric_shard"));
+		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(CleansingModifier.rotspawnTag), new FluidStack(MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 8)).save(withCondition(consumer, new ModLoadedCondition("undergarden")));
 		SpillingRecipeBuilder.forFluid(MaterialisFluidTags.VIRULENT_MIX, 50)
-		.addEffect(new EffectSpillingEffect(Effects.POISON, 50, 1))
-		.build(withCondition(consumer, new ModLoadedCondition("undergarden")), new ResourceLocation(Materialis.modID, spillFolder + "virulent_mix"));
+		.addEffect(new EffectSpillingEffect(MobEffects.POISON, 50, 1))
+		.save(withCondition(consumer, new ModLoadedCondition("undergarden")), new ResourceLocation(Materialis.modID, spillFolder + "virulent_mix"));
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), "undergarden",
 				new NameFluid[] {
 						new NameFluid("cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get()),
@@ -309,8 +307,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("_paxel", 7));
 
 		//psi stuff
-		Consumer<IFinishedRecipe> psiLoaded = withCondition(consumer, new ModLoadedCondition("psi"));
-		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET))
+		Consumer<FinishedRecipe> psiLoaded = withCondition(consumer, new ModLoadedCondition("psi"));
+		/*ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET))
 		.pattern("gpg")
 		.pattern("b b")
 		.define('p', getTag("forge", "ingots/psimetal"))
@@ -345,7 +343,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.save(psiLoaded, modResource(armorFolder + "exosuit_boots"));
 		SpecializedRepairRecipeBuilder.repair(Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new)), MaterialisMaterials.psimetal)
 		.buildRepairKit(psiLoaded, modResource(armorRepairFolder + "exosuit_repair_kit"))
-		.build(psiLoaded, modResource(armorRepairFolder + "exosuit_station"));
+		.build(psiLoaded, modResource(armorRepairFolder + "exosuit_station"));*/
 		metalTagCasting(consumer, MaterialisResources.PSIMETAL_FLUID.OBJECT, "psimetal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT, "ebony_psimetal", castingFolder, false);
@@ -414,7 +412,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//mythicbotany stuff
 		metalTagCasting(consumer, MaterialisResources.ALFSTEEL_FLUID.OBJECT, "alfsteel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), "alfsteel", false, meltingFolder, true);
-		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("mythicbotany", "alfsteel_armor_upgrade")), MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.0f).build(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(meltingFolder + "alfsteel_double_ingot"));
+		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("mythicbotany", "alfsteel_armor_upgrade")), MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.0f).save(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(meltingFolder + "alfsteel_double_ingot"));
 		toolMelting(withCondition(consumer, new ModLoadedCondition("mythicbotany")), new NameFluid("alfsteel", MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2), true),
 				new ToolValue("mythicbotany:alfsteel_helmet", 3),
 				new ToolValue("mythicbotany:alfsteel_chestplate", 3),
@@ -498,9 +496,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		materialMeltingCasting(consumer, MaterialisMaterials.cloggrum, MaterialisResources.CLOGGRUM_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.froststeel, MaterialisResources.FROSTSTEEL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.utherium, MaterialisResources.UTHERIUM_FLUID.OBJECT, materialFolder);
-		materialComposite(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), MaterialisMaterials.cloggrum, MaterialisMaterials.forgottenMetal, MaterialisResources.FORGOTTEN_FLUID.OBJECT, FluidValues.NUGGET * 3, false, compositeFolder);
+		materialComposite(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), MaterialisMaterials.cloggrum, MaterialisMaterials.forgottenMetal, MaterialisResources.FORGOTTEN_FLUID.OBJECT, false, FluidValues.NUGGET * 3, compositeFolder);
 		MaterialMeltingRecipeBuilder.material(MaterialisMaterials.forgottenMetal, new FluidStack(MaterialisResources.FORGOTTEN_FLUID.FLUID.get(), FluidValues.NUGGET * 3))
-		.build(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), modResource(materialFolder + "melting/forgotten_metal"));
+		.save(withCondition(consumer, new AndCondition(tagCondition("ingots/cloggrum"), tagCondition("ingots/forgotten_metal"))), modResource(materialFolder + "melting/forgotten_metal"));
 		//materialMeltingCasting(consumer, MaterialisMaterials.osmium, TinkerFluids.moltenOsmium, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.refinedObsidian, TinkerFluids.moltenRefinedObsidian, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.refinedGlowstone, TinkerFluids.moltenRefinedGlowstone, materialFolder);
@@ -511,9 +509,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		materialMeltingCasting(consumer, MaterialisMaterials.manasteel, MaterialisResources.MANASTEEL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.elementium, MaterialisResources.ELEMENTIUM_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.terrasteel, MaterialisResources.TERRASTEEL_FLUID.OBJECT, materialFolder);
-		materialComposite(withCondition(consumer, new ModLoadedCondition("mythicbotany")), MaterialisMaterials.terrasteel, MaterialisMaterials.alfsteel, MaterialisResources.ALFSTEEL_FLUID.OBJECT, FluidValues.NUGGET * 3, false, compositeFolder);
+		materialComposite(withCondition(consumer, new ModLoadedCondition("mythicbotany")), MaterialisMaterials.terrasteel, MaterialisMaterials.alfsteel, MaterialisResources.ALFSTEEL_FLUID.OBJECT, false, FluidValues.NUGGET * 3, compositeFolder);
 		MaterialMeltingRecipeBuilder.material(MaterialisMaterials.alfsteel, new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.NUGGET * 3))
-		.build(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(materialFolder + "melting/alfsteel"));
+		.save(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(materialFolder + "melting/alfsteel"));
 		materialMeltingCasting(consumer, MaterialisMaterials.draconium, MaterialisResources.DRACONIUM_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.awakenedDraconium, MaterialisResources.AWAKENED_DRACONIUM_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.fluxInfused, MaterialisResources.FLUX_INFUSED_FLUID.OBJECT, materialFolder);
@@ -532,13 +530,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MELEE)
 		.setMaxLevel(1)
 		.setSlots(SlotType.ABILITY, 1)
-		.setGroup("materialis:eidolon")
 		.includeUnarmed()
-		.buildSalvage(consumer, prefix(MaterialisModifiers.reapingModifier, salvageFolder))
-		.build(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.reapingModifier, salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier, modifierFolder));
 
 		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
-		.build(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefix(TinkerModifiers.overslime, modifierFolder));
+		.save(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefix(TinkerModifiers.overslime, modifierFolder));
 
 		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier.get(), "rune")
 		.addInput(getTag("quark", "runes"))
@@ -546,21 +543,20 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setRequirements(ModifierMatch.entry(TinkerModifiers.shiny.get()))
 		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
-		.setGroup("materialis:quark")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.runedModifier, salvageFolder))
-		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.runeModifierSerializer.get()).addCondition(new ModLoadedCondition("quark")).build(consumer), prefix(MaterialisModifiers.runedModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.runedModifier, salvageFolder))
+		.save(ConsumerWrapperBuilder.wrap(MaterialisResources.runeModifierSerializer.get()).addCondition(new ModLoadedCondition("quark")).build(consumer), prefix(MaterialisModifiers.runedModifier, modifierFolder));
 
-		Ingredient interactableWithDurability = new IngredientIntersection(Ingredient.of(TinkerTags.Items.DURABILITY), Ingredient.of(TinkerTags.Items.INTERACTABLE));
+		Ingredient interactableWithDurability = IngredientIntersection.intersection(Ingredient.of(TinkerTags.Items.DURABILITY), Ingredient.of(TinkerTags.Items.INTERACTABLE));
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.wrenchingModifier.get())
-		.setTools(new IngredientWithout(interactableWithDurability, Ingredient.of(MaterialisItemTags.WRENCHING)))
+		.setTools(IngredientDifference.difference(interactableWithDurability, Ingredient.of(MaterialisItemTags.WRENCHING)))
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(MaterialisResources.WRENCH_HEAD.get())))
 		.addInput(TinkerTags.Items.INGOTS_NETHERITE_SCRAP)
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(TinkerToolParts.toolBinding.get())))
 		.addSalvage(Items.NETHERITE_SCRAP, 0.35f)
 		.setMaxLevel(1)
 		.setSlots(SlotType.ABILITY, 1)
-		.buildSalvage(consumer, prefix(MaterialisModifiers.wrenchingModifier, salvageFolder))
-		.build(consumer, prefix(MaterialisModifiers.wrenchingModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.wrenchingModifier, salvageFolder))
+		.save(consumer, prefix(MaterialisModifiers.wrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.galvanizedModifier.get())
 		.setTools(MaterialisItemTags.GALVANIZABLE)
@@ -569,8 +565,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(Items.IRON_INGOT, 0.7f)
 		.addSalvage(Items.PHANTOM_MEMBRANE, 0.3f)
 		.setSlots(SlotType.UPGRADE, 2)
-		.buildSalvage(consumer, prefix(MaterialisModifiers.galvanizedModifier, salvageFolder))
-		.build(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.galvanizedModifier, salvageFolder))
+		.save(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
 
 		ModifierMatch wrenching = ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier.get()), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden.get()));
 
@@ -584,9 +580,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirementsError("recipe.materialis.modifier.thermal_wrenching_requirements")
 		.setMaxLevel(1)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:thermal")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.thermalWrenchingModifier, salvageFolder))
-		.build(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.thermalWrenchingModifier, salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("thermal")), prefix(MaterialisModifiers.thermalWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.createWrenchingModifier.get())
 		.setTools(interactableWithDurability)
@@ -599,9 +594,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirementsError("recipe.materialis.modifier.create_wrenching_requirements")
 		.setMaxLevel(1)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:create")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.createWrenchingModifier, salvageFolder))
-		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.createWrenchingModifier, salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.createWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.immersiveWrenchingModifier.get())
 		.setTools(interactableWithDurability)
@@ -613,9 +607,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirementsError("recipe.materialis.modifier.immersive_wrenching_requirements")
 		.setMaxLevel(1)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:immersiveengineering")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.immersiveWrenchingModifier, salvageFolder))
-		.build(withCondition(consumer, new ModLoadedCondition("immersiveengineering")), prefix(MaterialisModifiers.immersiveWrenchingModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.immersiveWrenchingModifier, salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("immersiveengineering")), prefix(MaterialisModifiers.immersiveWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.pipeWrenchingModifier.get())
 		.setTools(interactableWithDurability)
@@ -628,9 +621,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirementsError("recipe.materialis.modifier.pipe_wrenching_requirements")
 		.setMaxLevel(1)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:prettypipes")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.pipeWrenchingModifier, salvageFolder))
-		.build(withCondition(consumer, new ModLoadedCondition("prettypipes")), prefix(MaterialisModifiers.pipeWrenchingModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.pipeWrenchingModifier, salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("prettypipes")), prefix(MaterialisModifiers.pipeWrenchingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifier.get())
 		.addInput(getTag("forge", "ingots/psimetal"))
@@ -643,9 +635,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.5f))
 		.setTools(TinkerTags.Items.HELD)
 		.setSlots(SlotType.ABILITY, 1)
-		.setGroup("materialis:psi")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.psionizingRadiationModifier, salvageFolder))
-		.build(psiLoaded, prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.psionizingRadiationModifier, salvageFolder))
+		.save(psiLoaded, prefix(MaterialisModifiers.psionizingRadiationModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellCastingModifier.get())
 		.addInput(getTag("forge", "ingots/ebony_psimetal"))
@@ -662,9 +653,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setRequirementsError("recipe.materialis.modifier.casting_requirements")
 		.setTools(TinkerTags.Items.HELD)
 		.setSlots(SlotType.ABILITY, 1)
-		.setGroup("materialis:psi")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.spellCastingModifier, salvageFolder))
-		.build(psiLoaded, prefix(MaterialisModifiers.spellCastingModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.spellCastingModifier, salvageFolder))
+		.save(psiLoaded, prefix(MaterialisModifiers.spellCastingModifier, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellSocketModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))
@@ -672,19 +662,17 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:psi")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.spellSocketModifier, salvageFolder))
-		.build(psiLoaded, prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.spellSocketModifier, salvageFolder))
+		.save(psiLoaded, prefix(MaterialisModifiers.spellSocketModifier, modifierFolder));
 
-		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get(), "colorizer")
+		/*SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier.get(), "colorizer")
 		.addInput(getTag("psi", "colorizers"))
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psidust")), 0.3f))
 		.addSalvage(Items.IRON_INGOT, 0.7f)
 		.setTools(TinkerTags.Items.MODIFIABLE)
-		.setGroup("materialis:psi")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier, salvageFolder))
-		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
-
+		.saveSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier, salvageFolder))
+		.save(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier, modifierFolder));
+		 */
 		ICondition capacitorIsUseful = new OrCondition(new ModLoadedCondition("draconicevolution"), new ModLoadedCondition("redstone_arsenal"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
@@ -695,9 +683,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:flux")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.capacitorModifier, salvageFolder))
-		.build(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("thermal"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "thermal_"));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.capacitorModifier, salvageFolder))
+		.save(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("thermal"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "thermal_"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
 		.addInput(getTag("forge", "ingots/lead"))
@@ -706,8 +693,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:flux")
-		.build(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("immersiveengineering"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "immersiveengineering_"));
+		.save(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("immersiveengineering"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "immersiveengineering_"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("mekanism", "alloy_infused"))))
@@ -716,8 +702,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:flux")
-		.build(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("mekanism"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "mekanism_"));
+		.save(withCondition(consumer, new AndCondition(capacitorIsUseful, new ModLoadedCondition("mekanism"))), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "mekanism_"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier.get())
 		.addInput(getTag("forge", "dusts/redstone"))
@@ -726,16 +711,15 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:flux")
-		.build(withCondition(consumer, capacitorIsUseful), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "draconicevolution_"));
+		.save(withCondition(consumer, capacitorIsUseful), prefix(MaterialisModifiers.capacitorModifier, modifierFolder + "draconicevolution_"));
 
 		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierSensor.get(), "sensor")
 		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
 		.addInput(MaterialisItemTags.SENSOR)
 		.addSalvage(getTag("forge", "ingots/psimetal"), 0, 2)
 		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
-		.buildSalvage(psiLoaded, prefix(MaterialisModifiers.psionizingRadiationModifierSensor, salvageFolder))
-		.build(ConsumerWrapperBuilder.wrap(MaterialisResources.sensorModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.psionizingRadiationModifierSensor, modifierFolder));
+		.saveSalvage(psiLoaded, prefix(MaterialisModifiers.psionizingRadiationModifierSensor, salvageFolder))
+		.save(ConsumerWrapperBuilder.wrap(MaterialisResources.sensorModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.psionizingRadiationModifierSensor, modifierFolder));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.engineersGogglesModifier.get())
 		.setTools(TinkerTags.Items.HELMETS)
@@ -743,19 +727,18 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("create", "goggles")), 0.9f))
 		.setMaxLevel(1)
 		.setSlots(SlotType.UPGRADE, 1)
-		.setGroup("materialis:create")
-		.buildSalvage(consumer, prefix(MaterialisModifiers.engineersGogglesModifier, salvageFolder))
-		.build(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.engineersGogglesModifier, modifierFolder));
+		.saveSalvage(consumer, prefix(MaterialisModifiers.engineersGogglesModifier, salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.engineersGogglesModifier, modifierFolder));
 
 
 		//texture recipes
-		Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));
+		//Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));
 		List<Item> armorItems = new ArrayList<Item>();
 		armorItems.addAll(TinkerTools.plateArmor.values());
-		armorItems.addAll(MaterialisResources.PSIMETAL_EXOSUIT.values());
+		//armorItems.addAll(MaterialisResources.PSIMETAL_EXOSUIT.values());
 		Ingredient armor = Ingredient.of(armorItems.stream().map(ItemStack::new));
 
-		plateTexture(psiLoaded, exosuit, MaterialIds.iron, false, slotlessFolder);
+		/*plateTexture(psiLoaded, exosuit, MaterialIds.iron, false, slotlessFolder);
 		plateTexture(psiLoaded, exosuit, MaterialIds.copper, false, slotlessFolder);
 		plateTexture(psiLoaded, exosuit, MaterialIds.slimesteel, false, slotlessFolder);
 		plateTexture(psiLoaded, exosuit, MaterialIds.roseGold, false, slotlessFolder);
@@ -778,7 +761,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		plateTexture(psiLoaded, exosuit, MaterialIds.constantan, true, slotlessFolder);
 		plateTexture(psiLoaded, exosuit, MaterialIds.invar, true, slotlessFolder);
 		plateTexture(psiLoaded, exosuit, MaterialIds.electrum, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.brass, true, slotlessFolder);
+		plateTexture(psiLoaded, exosuit, MaterialIds.brass, true, slotlessFolder);*/
 
 		plateTexture(consumer, armor, MaterialisMaterials.fairy, false, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.refinedRadiance, true, slotlessFolder);
@@ -812,10 +795,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment.get(), MaterialisMaterials.pinkSlimeball.toString())
 		.setTools(slimesuit)
 		.addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME)).addInput(Ingredient.of(MaterialisItemTags.PINK_SLIME))
-		.build(industrialForegoingLoaded, wrap(TinkerModifiers.embellishment, slotlessFolder, "_pink_slimeball"));
+		.save(industrialForegoingLoaded, wrap(TinkerModifiers.embellishment, slotlessFolder, "_pink_slimeball"));
 	}
 
-	public void blockIngotNuggetCompression(Consumer<IFinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
+	public void blockIngotNuggetCompression(Consumer<FinishedRecipe> consumer, String name, Item block, Item ingot, Item nugget) {
 		ConditionalRecipe.builder().addCondition(this.TRUE()).addRecipe(
 				ShapedRecipeBuilder.shaped(block, 1)
 				.pattern("XXX")
@@ -892,12 +875,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 	}*/
 
 	/** Adds recipes for a plate armor texture */
-	private void plateTexture(Consumer<IFinishedRecipe> consumer, Ingredient tool, MaterialId material, boolean optional, String folder) {
+	private void plateTexture(Consumer<FinishedRecipe> consumer, Ingredient tool, MaterialId material, boolean optional, String folder) {
 		plateTexture(consumer, tool, material, "ingots/" + material.getPath(), optional, folder);
 	}
 
 	/** Adds recipes for a plate armor texture with a custom tag */
-	private void plateTexture(Consumer<IFinishedRecipe> consumer, Ingredient tool, MaterialId material, String tag, boolean optional, String folder) {
+	private void plateTexture(Consumer<FinishedRecipe> consumer, Ingredient tool, MaterialId material, String tag, boolean optional, String folder) {
 		Ingredient ingot = Ingredient.of(ItemTags.createOptional(new ResourceLocation("forge", tag)));
 		if (optional) {
 			consumer = withCondition(consumer, tagCondition(tag));
@@ -905,38 +888,38 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment.get(), material.toString())
 		.setTools(tool)
 		.addInput(ingot).addInput(ingot).addInput(ingot)
-		.build(consumer, wrap(TinkerModifiers.embellishment, folder, "_" + material.getPath()));
+		.save(consumer, wrap(TinkerModifiers.embellishment, folder, "_" + material.getPath()));
 	}
 
 	protected static ICondition tagConditionDomain(String domain, String name) {
 		return new NotCondition(new TagEmptyCondition(domain, name));
 	}
 
-	public void multipleToolMelting(Consumer<IFinishedRecipe> consumer, String modID, NameFluid[] names, ToolValue... values) {
+	public void multipleToolMelting(Consumer<FinishedRecipe> consumer, String modID, NameFluid[] names, ToolValue... values) {
 		for (NameFluid name : names) {
 			for(ToolValue value : values)
 				toolMelting(consumer, name, new ToolValue(modID + ":" + name.name + value.toolID, value.ingotValue));
 		}
 	}
 
-	public void toolMelting(Consumer<IFinishedRecipe> consumer, NameFluid name, ToolValue... values) {
+	public void toolMelting(Consumer<FinishedRecipe> consumer, NameFluid name, ToolValue... values) {
 		for (ToolValue value : values) {
 			ResourceLocation toolLocation = new ResourceLocation(value.toolID);
 			if (name.byproduct == null) {
 				MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.fluid, (int) (FluidValues.INGOT * value.ingotValue))
 				.setDamagable()
-				.build(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
+				.save(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
 			} else {
 				if (!name.byproductIsMain) {
 					MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.fluid, (int) (FluidValues.INGOT * value.ingotValue))
 					.addByproduct(name.byproduct)
 					.setDamagable()
-					.build(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
+					.save(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
 				} else {
 					MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.byproduct.getFluid(), name.byproduct.getAmount())
 					.addByproduct(new FluidStack(name.fluid, (int) (FluidValues.INGOT * value.ingotValue)))
 					.setDamagable()
-					.build(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
+					.save(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
 				}
 			}
 		}

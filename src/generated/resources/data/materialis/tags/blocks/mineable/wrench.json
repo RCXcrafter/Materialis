@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#forge:mineable/wrench",
+      "required": false
+    },
+    {
+      "id": "#forge:mineable/hammer",
+      "required": false
+    },
+    "#forge:storage_blocks",
+    "#forge:barrels",
+    "#forge:chests",
+    "#forge:glass",
+    "#forge:glass_panes",
+    "#minecraft:buttons",
+    "#minecraft:doors",
+    "#minecraft:trapdoors",
+    "#minecraft:pressure_plates",
+    "#minecraft:banners",
+    "#minecraft:anvil",
+    "#minecraft:rails",
+    "#minecraft:beds",
+    "#minecraft:signs",
+    "#minecraft:beacon_base_blocks"
+  ]
+}

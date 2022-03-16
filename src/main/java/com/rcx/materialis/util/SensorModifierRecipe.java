@@ -7,28 +7,26 @@ import javax.annotation.Nullable;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonObject;
 import com.rcx.materialis.MaterialisResources;
-import com.rcx.materialis.modifiers.PsionizingRadiationModifierSensor;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.fml.ModList;
-import slimeknights.mantle.recipe.SizedIngredient;
+import slimeknights.mantle.recipe.ingredient.SizedIngredient;
 import slimeknights.mantle.util.JsonHelper;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.AbstractModifierRecipe;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipe;
-import slimeknights.tconstruct.library.recipe.tinkerstation.ITinkerStationInventory;
+import slimeknights.tconstruct.library.recipe.tinkerstation.ITinkerStationContainer;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.SlotType.SlotCount;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
-import vazkii.psi.api.exosuit.IExosuitSensor;
 
 public class SensorModifierRecipe extends SwappableModifierRecipe {
 
@@ -36,13 +34,13 @@ public class SensorModifierRecipe extends SwappableModifierRecipe {
 
 	private final String value;
 
-	public SensorModifierRecipe(ResourceLocation id, List<SizedIngredient> inputs, Ingredient toolRequirement, ModifierMatch requirements, String requirementsError, Modifier result, String value, @Nullable SlotCount slots) {
-		super(id, inputs, toolRequirement, requirements, requirementsError, result, value, slots);
+	public SensorModifierRecipe(ResourceLocation id, List<SizedIngredient> inputs, Ingredient toolRequirement, int maxToolSize, ModifierMatch requirements, String requirementsError, Modifier result, String value, @Nullable SlotCount slots) {
+		super(id, inputs, toolRequirement, maxToolSize, requirements, requirementsError, result, value, slots);
 		this.value = value;
 	}
 
 	@Override
-	public ValidatedResult getValidatedResult(ITinkerStationInventory inv) {
+	public ValidatedResult getValidatedResult(ITinkerStationContainer inv) {
 		ToolStack tool = ToolStack.from(inv.getTinkerableStack());
 
 		// if the tool has the modifier already, can skip most requirements
@@ -91,10 +89,10 @@ public class SensorModifierRecipe extends SwappableModifierRecipe {
 		if (enabled) {
 			for (int i = 0; i < inv.getInputCount(); i++) {
 				Item item = inv.getInput(i).getItem();
-				if (item instanceof IExosuitSensor) {
+				/*if (item instanceof IExosuitSensor) {
 					persistentData.put(PsionizingRadiationModifierSensor.SENSOR, inv.getInput(i).serializeNBT());
 					break;
-				}
+				}*/
 			}
 		}
 
@@ -102,7 +100,7 @@ public class SensorModifierRecipe extends SwappableModifierRecipe {
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return MaterialisResources.sensorModifierSerializer.get();
 	}
 
@@ -110,51 +108,38 @@ public class SensorModifierRecipe extends SwappableModifierRecipe {
 
 		@Override
 		protected ModifierEntry readResult(JsonObject json) {
-			JsonObject result = JSONUtils.getAsJsonObject(json, "result");
+			JsonObject result = GsonHelper.getAsJsonObject(json, "result");
 			return new ModifierEntry(ModifierEntry.deserializeModifier(result, "name"), 1);
 		}
 
 		@Override
-		public SensorModifierRecipe read(ResourceLocation id, JsonObject json, Ingredient toolRequirement, ModifierMatch requirements, String requirementsError, ModifierEntry result, int maxLevel, int upgradeSlots, int abilitySlots) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public SensorModifierRecipe read(ResourceLocation id, PacketBuffer buffer, Ingredient toolRequirement, ModifierMatch requirements, String requirementsError, ModifierEntry result, int maxLevel, int upgradeSlots, int abilitySlots) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public SensorModifierRecipe read(ResourceLocation id, JsonObject json, Ingredient toolRequirement, ModifierMatch requirements, String requirementsError, ModifierEntry result, int maxLevel, @Nullable SlotCount slots) {
+		public SensorModifierRecipe fromJson(ResourceLocation id, JsonObject json, Ingredient toolRequirement, int maxToolSize, ModifierMatch requirements,
+				String requirementsError, ModifierEntry result, int maxLevel, @Nullable SlotCount slots) {
 			List<SizedIngredient> ingredients = JsonHelper.parseList(json, "inputs", SizedIngredient::deserialize);
-			String value = JSONUtils.getAsString(JSONUtils.getAsJsonObject(json, "result"), "value");
-			return new SensorModifierRecipe(id, ingredients, toolRequirement, requirements, requirementsError, result.getModifier(), value, slots);
+			String value = GsonHelper.getAsString(GsonHelper.getAsJsonObject(json, "result"), "value");
+			return new SensorModifierRecipe(id, ingredients, toolRequirement, maxToolSize, requirements, requirementsError, result.getModifier(), value, slots);
 		}
 
 		@Override
-		public SensorModifierRecipe read(ResourceLocation id, PacketBuffer buffer, Ingredient toolRequirement, ModifierMatch requirements, String requirementsError, ModifierEntry result, int maxLevel, @Nullable SlotCount slots) {
+		public SensorModifierRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer, Ingredient toolRequirement, int maxToolSize, ModifierMatch requirements,
+				String requirementsError, ModifierEntry result, int maxLevel, @Nullable SlotCount slots) {
 			int size = buffer.readVarInt();
 			ImmutableList.Builder<SizedIngredient> builder = ImmutableList.builder();
 			for (int i = 0; i < size; i++) {
 				builder.add(SizedIngredient.read(buffer));
 			}
 			String value = buffer.readUtf();
-			return new SensorModifierRecipe(id, builder.build(), toolRequirement, requirements, requirementsError, result.getModifier(), value, slots);
+			return new SensorModifierRecipe(id, builder.build(), toolRequirement, maxToolSize, requirements, requirementsError, result.getModifier(), value, slots);
 		}
 
 		@Override
-		protected void writeSafe(PacketBuffer buffer, SensorModifierRecipe recipe) {
-			super.writeSafe(buffer, recipe);
+		protected void toNetworkSafe(FriendlyByteBuf buffer, SensorModifierRecipe recipe) {
+			super.toNetworkSafe(buffer, recipe);
 			buffer.writeVarInt(recipe.inputs.size());
 			for (SizedIngredient ingredient : recipe.inputs) {
 				ingredient.write(buffer);
 			}
 			buffer.writeUtf(recipe.value);
-		}
-
-		@Override
-		public SensorModifierRecipe fromJson(ResourceLocation id, JsonObject json) {
-			return super.read(id, json);
 		}
 	}
 }

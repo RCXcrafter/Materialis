@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "tconstruct:molten_pewter",
-    "amount": 288
+    "amount": 180
   },
   "result": {
     "tag": "forge:inlays/pewter"

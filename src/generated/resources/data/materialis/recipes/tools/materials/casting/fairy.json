@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "tag": "materialis:molten_fairy",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 750,
   "output": "materialis:fairy"

@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "materialis:molten_arcane_gold",
-    "amount": 288
+    "amount": 180
   },
   "result": {
     "tag": "forge:inlays/arcane_gold"

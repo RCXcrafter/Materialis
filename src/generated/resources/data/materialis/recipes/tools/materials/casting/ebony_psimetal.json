@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "tag": "materialis:molten_ebony_psimetal",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 1130,
   "output": "materialis:ebony_psimetal"

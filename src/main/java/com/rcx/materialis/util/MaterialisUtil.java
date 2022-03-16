@@ -1,36 +1,17 @@
 package com.rcx.materialis.util;
 
-import com.rcx.materialis.compat.TinkerToolSocketable;
-import com.rcx.materialis.modifiers.PsionizingRadiationModifier;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
-import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.tools.ToolDefinition;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
-import slimeknights.tconstruct.library.utils.BlockSideHitListener;
-import vazkii.psi.api.PsiAPI;
-import vazkii.psi.api.cad.ISocketable;
-import vazkii.psi.api.exosuit.PsiArmorEvent;
-import vazkii.psi.api.spell.SpellContext;
-import vazkii.psi.common.core.handler.PlayerDataHandler;
-import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
-import vazkii.psi.common.item.ItemCAD;
 
 public class MaterialisUtil {
 
 	public static void addToVolatileInt(ResourceLocation tag, ModDataNBT volatileData, int add) {
-		if (volatileData.contains(tag, NBT.TAG_INT)) {
+		if (volatileData.contains(tag, Tag.TAG_INT)) {
 			volatileData.putInt(tag, volatileData.getInt(tag) + add);
 		} else {
 			volatileData.putInt(tag, add);
@@ -39,8 +20,8 @@ public class MaterialisUtil {
 
 	public static boolean psiLoaded = ModList.get().isLoaded("psi");
 
-	public static void castOnBlockBreak(IModifierToolStack tool, int level, ToolHarvestContext context, boolean checkTag) {
-		if (psiLoaded && !tool.isBroken() && context.getPlayer() != null && !tool.getVolatileData().getBoolean(PsionizingRadiationModifier.SUPPRESS_TOOLCASTING)) {
+	public static void castOnBlockBreak(IToolStackView tool, int level, ToolHarvestContext context, boolean checkTag) {
+		/*if (psiLoaded && !tool.isBroken() && context.getPlayer() != null && !tool.getVolatileData().getBoolean(PsionizingRadiationModifier.SUPPRESS_TOOLCASTING)) {
 			//level 2 unlocks aoe harvest casting
 			if (context.isAOE() && tool.getVolatileData().getInt(PsionizingRadiationModifier.RADIATION_LEVEL) < 2) {
 				return;
@@ -63,11 +44,11 @@ public class MaterialisUtil {
 					spellContext.positionBroken = new BlockRayTraceResult(hit, sideHit, context.getPos(), false);
 				});
 			}
-		}
+		}*/
 	}
 
-	public static void castOnEntityHit(IModifierToolStack tool, int level, ToolAttackContext context, float damageDealt, boolean checkTag) {
-		if (psiLoaded && !tool.isBroken() && context.getPlayerAttacker() != null && context.getLivingTarget() != null && !tool.getVolatileData().getBoolean(PsionizingRadiationModifier.SUPPRESS_TOOLCASTING)) {
+	public static void castOnEntityHit(IToolStackView tool, int level, ToolAttackContext context, float damageDealt, boolean checkTag) {
+		/*if (psiLoaded && !tool.isBroken() && context.getPlayerAttacker() != null && context.getLivingTarget() != null && !tool.getVolatileData().getBoolean(PsionizingRadiationModifier.SUPPRESS_TOOLCASTING)) {
 			//level 2 unlocks aoe attack casting
 			if (context.isExtraAttack() && tool.getVolatileData().getInt(PsionizingRadiationModifier.RADIATION_LEVEL) < 2) {
 				return;
@@ -88,10 +69,10 @@ public class MaterialisUtil {
 					spellContext.tool = finalTool;
 				});
 			}
-		}
+		}*/
 	}
 
-	public static void castOnArmorEvent(PsiArmorEvent event, Modifier modifier, String type) {
+	/*public static void castOnArmorEvent(PsiArmorEvent event, Modifier modifier, String type) {
 		if (event.type.equals(type) && !event.getPlayer().isSpectator()) {
 			for (int i = 0; i < 4; i++) {
 				ItemStack armor = event.getPlayer().inventory.armor.get(i);
@@ -112,5 +93,5 @@ public class MaterialisUtil {
 				}
 			}
 		}
-	}
+	}*/
 }

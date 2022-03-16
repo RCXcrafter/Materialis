@@ -1,0 +1,36 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "tags": [
+        "forge:ores/froststeel",
+        "forge:ore_rates/dense"
+      ],
+      "type": "tconstruct:tag_intersection_present"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "type": "mantle:intersection",
+    "ingredients": [
+      {
+        "tag": "forge:ores/froststeel"
+      },
+      {
+        "tag": "forge:ore_rates/dense"
+      }
+    ]
+  },
+  "result": {
+    "fluid": "materialis:molten_froststeel",
+    "amount": 540
+  },
+  "temperature": 860,
+  "time": 279,
+  "byproducts": [
+    {
+      "fluid": "materialis:molten_regalium",
+      "amount": 180
+    }
+  ]
+}

@@ -5,13 +5,13 @@ import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
-import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 
 public class MaterialisBlockStates extends BlockStateProvider {
 

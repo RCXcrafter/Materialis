@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "tag": "materialis:molten_draconium",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 1050,
   "output": "materialis:draconium"

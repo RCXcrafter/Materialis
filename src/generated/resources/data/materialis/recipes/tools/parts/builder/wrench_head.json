@@ -1,6 +1,14 @@
 {
   "type": "tconstruct:part_builder",
   "pattern": "materialis:wrench_head",
+  "pattern_item": [
+    {
+      "tag": "tconstruct:patterns/default"
+    },
+    {
+      "item": "materialis:wrench_head_cast"
+    }
+  ],
   "cost": 2,
   "result": {
     "item": "materialis:wrench_head"

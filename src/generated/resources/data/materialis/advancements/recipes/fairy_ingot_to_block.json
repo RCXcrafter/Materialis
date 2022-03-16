@@ -19,7 +19,9 @@
             "conditions": {
               "items": [
                 {
-                  "item": "materialis:fairy_ingot"
+                  "items": [
+                    "materialis:fairy_ingot"
+                  ]
                 }
               ]
             }

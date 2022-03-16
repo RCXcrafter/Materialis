@@ -4,14 +4,15 @@ import java.util.function.Supplier;
 
 import com.rcx.materialis.modifiers.TerrabeamModifier;
 
-import net.minecraft.network.PacketBuffer;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.network.NetworkEvent;
+
 
 public class PacketTerraBeam {
 
-	public static void encode(PacketTerraBeam msg, PacketBuffer buf) {}
+	public static void encode(PacketTerraBeam msg, FriendlyByteBuf buf) {}
 
-	public static PacketTerraBeam decode(PacketBuffer buf) {
+	public static PacketTerraBeam decode(FriendlyByteBuf buf) {
 		return new PacketTerraBeam();
 	}
 

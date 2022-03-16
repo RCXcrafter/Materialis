@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "forge:molten_neptunium",
-    "amount": 72
+    "amount": 45
   },
   "result": {
     "tag": "forge:wires/neptunium"

@@ -6,14 +6,14 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 
-import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ItemTagsProvider;
-import net.minecraft.item.Item;
-import net.minecraft.tags.ITag.INamedTag;
+import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.tags.Tag;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import slimeknights.mantle.registration.object.EnumObject;
@@ -22,51 +22,51 @@ import slimeknights.tconstruct.tools.item.ArmorSlotType;
 public class MaterialisItemTags extends ItemTagsProvider {
 
 	//custom casts
-	public static final INamedTag<Item> INLAY_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/inlay");
-	public static final INamedTag<Item> INLAY_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/inlay");
-	public static final INamedTag<Item> WRENCH_HEAD_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/wrench_head");
-	public static final INamedTag<Item> WRENCH_HEAD_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/wrench_head");
+	public static final Tag.Named<Item> INLAY_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/inlay");
+	public static final Tag.Named<Item> INLAY_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/inlay");
+	public static final Tag.Named<Item> WRENCH_HEAD_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/wrench_head");
+	public static final Tag.Named<Item> WRENCH_HEAD_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/wrench_head");
 
 	//wrench
-	public static final INamedTag<Item> TOOLS = ItemTags.bind("forge:tools");
-	public static final INamedTag<Item> WRENCH = ItemTags.bind("forge:tools/wrench");
-	public static final INamedTag<Item> WRENCHING = ItemTags.bind(Materialis.modID + ":wrench");
-	public static final INamedTag<Item> GALVANIZABLE = ItemTags.bind(Materialis.modID + ":galvanizable");
+	public static final Tag.Named<Item> TOOLS = ItemTags.bind("forge:tools");
+	public static final Tag.Named<Item> WRENCH = ItemTags.bind("forge:tools/wrench");
+	public static final Tag.Named<Item> WRENCHING = ItemTags.bind(Materialis.modID + ":wrench");
+	public static final Tag.Named<Item> GALVANIZABLE = ItemTags.bind(Materialis.modID + ":galvanizable");
 
 	//create stuff
-	public static final INamedTag<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
-	public static final INamedTag<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
+	public static final Tag.Named<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
+	public static final Tag.Named<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
 
 	//eidolon stuff
-	public static final INamedTag<Item> INLAYS = ItemTags.bind("forge:inlays");
-	public static final INamedTag<Item> PEWTER_INLAY = ItemTags.bind("forge:inlays/pewter");
-	public static final INamedTag<Item> ARCANE_GOLD_INLAY = ItemTags.bind("forge:inlays/arcane_gold");
+	public static final Tag.Named<Item> INLAYS = ItemTags.bind("forge:inlays");
+	public static final Tag.Named<Item> PEWTER_INLAY = ItemTags.bind("forge:inlays/pewter");
+	public static final Tag.Named<Item> ARCANE_GOLD_INLAY = ItemTags.bind("forge:inlays/arcane_gold");
 
 	//astral sorcery stuff
-	public static final INamedTag<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");
-	public static final INamedTag<Item> STARMETAL_BLOCK = ItemTags.bind("forge:storage_blocks/starmetal");
-	public static final INamedTag<Item> STARMETAL_ORE = ItemTags.bind("forge:ores/starmetal");
+	public static final Tag.Named<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");
+	public static final Tag.Named<Item> STARMETAL_BLOCK = ItemTags.bind("forge:storage_blocks/starmetal");
+	public static final Tag.Named<Item> STARMETAL_ORE = ItemTags.bind("forge:ores/starmetal");
 
 	//industrial foregoing stuff
-	public static final INamedTag<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
-	public static final INamedTag<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
+	public static final Tag.Named<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
+	public static final Tag.Named<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
 
 	//psi stuff
-	public static final INamedTag<Item> SENSOR_SLOTTABLE = ItemTags.bind(Materialis.modID + ":sensor_slottable");
-	public static final INamedTag<Item> SENSOR = ItemTags.bind(Materialis.modID + ":psi_sensor");
+	public static final Tag.Named<Item> SENSOR_SLOTTABLE = ItemTags.bind(Materialis.modID + ":sensor_slottable");
+	public static final Tag.Named<Item> SENSOR = ItemTags.bind(Materialis.modID + ":psi_sensor");
 
 	//mythic botany stuff
-	public static final INamedTag<Item> ALFSTEEL_INGOT = ItemTags.bind("forge:ingots/alfsteel");
-	public static final INamedTag<Item> ALFSTEEL_NUGGET = ItemTags.bind("forge:nuggets/alfsteel");
-	public static final INamedTag<Item> ALFSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/alfsteel");
+	public static final Tag.Named<Item> ALFSTEEL_INGOT = ItemTags.bind("forge:ingots/alfsteel");
+	public static final Tag.Named<Item> ALFSTEEL_NUGGET = ItemTags.bind("forge:nuggets/alfsteel");
+	public static final Tag.Named<Item> ALFSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/alfsteel");
 
 	//redstone arsenal stuff
-	public static final INamedTag<Item> FLUX_INFUSED_INGOT = ItemTags.bind("forge:ingots/flux_infused");
-	public static final INamedTag<Item> FLUX_INFUSED_NUGGET = ItemTags.bind("forge:nuggets/flux_infused");
-	public static final INamedTag<Item> FLUX_INFUSED_DUST = ItemTags.bind("forge:dusts/flux_infused");
-	public static final INamedTag<Item> FLUX_INFUSED_GEAR = ItemTags.bind("forge:gears/flux_infused");
-	public static final INamedTag<Item> GEARS = ItemTags.bind("forge:gears");
-	public static final INamedTag<Item> FLUX_INFUSED_BLOCK = ItemTags.bind("forge:storage_blocks/flux_infused");
+	public static final Tag.Named<Item> FLUX_INFUSED_INGOT = ItemTags.bind("forge:ingots/flux_infused");
+	public static final Tag.Named<Item> FLUX_INFUSED_NUGGET = ItemTags.bind("forge:nuggets/flux_infused");
+	public static final Tag.Named<Item> FLUX_INFUSED_DUST = ItemTags.bind("forge:dusts/flux_infused");
+	public static final Tag.Named<Item> FLUX_INFUSED_GEAR = ItemTags.bind("forge:gears/flux_infused");
+	public static final Tag.Named<Item> GEARS = ItemTags.bind("forge:gears");
+	public static final Tag.Named<Item> FLUX_INFUSED_BLOCK = ItemTags.bind("forge:storage_blocks/flux_infused");
 
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
@@ -75,9 +75,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	@Override
 	protected void addTags() {
 		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
-			INamedTag<Item> INGOT = ItemTags.bind("forge:ingots/" + material.name);
-			INamedTag<Item> BLOCK = ItemTags.bind("forge:storage_blocks/" + material.name);
-			INamedTag<Item> NUGGET = ItemTags.bind("forge:nuggets/" + material.name);
+			Tag.Named<Item> INGOT = ItemTags.bind("forge:ingots/" + material.name);
+			Tag.Named<Item> BLOCK = ItemTags.bind("forge:storage_blocks/" + material.name);
+			Tag.Named<Item> NUGGET = ItemTags.bind("forge:nuggets/" + material.name);
 
 			tag(INGOT).add(material.INGOT.get());
 			tag(Tags.Items.INGOTS).addTag(INGOT);
@@ -140,13 +140,13 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		//psi stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
-		addArmorTags(MaterialisResources.PSIMETAL_EXOSUIT, DURABILITY);
+		/*addArmorTags(MaterialisResources.PSIMETAL_EXOSUIT, DURABILITY);
 		tag(SENSOR_SLOTTABLE).add(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_light"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_heat"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_stress"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_water"));
-		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_trigger"));
+		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_trigger"));*/
 
 		//botania stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/terrasteel"));
@@ -175,14 +175,14 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	}
 
 	@SafeVarargs
-	public final void addAllTags(IItemProvider provider, INamedTag<Item>... tags) {
+	public final void addAllTags(ItemLike provider, Tag.Named<Item>... tags) {
 		Item item = provider.asItem();
-		for (INamedTag<Item> tag : tags) {
+		for (Tag.Named<Item> tag : tags) {
 			tag(tag).add(item);
 		}
 	}
 
-	private INamedTag<Item> getArmorTag(ArmorSlotType slotType) {
+	private Tag.Named<Item> getArmorTag(ArmorSlotType slotType) {
 		switch (slotType) {
 		case BOOTS: return BOOTS;
 		case LEGGINGS: return LEGGINGS;
@@ -193,9 +193,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	}
 
 	@SafeVarargs
-	private final void addArmorTags(EnumObject<ArmorSlotType, ? extends Item> armor, INamedTag<Item>... tags) {
+	private final void addArmorTags(EnumObject<ArmorSlotType, ? extends Item> armor, Tag.Named<Item>... tags) {
 		armor.forEach((type, item) -> {
-			for (INamedTag<Item> tag : tags) {
+			for (Tag.Named<Item> tag : tags) {
 				this.tag(tag).add(item);
 			}
 			this.tag(getArmorTag(type)).add(item);

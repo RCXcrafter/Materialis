@@ -1,4 +1,4 @@
-package com.rcx.materialis.util;
+/*package com.rcx.materialis.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,11 +27,11 @@ import vazkii.psi.common.item.component.ItemCADColorizerPsi;
 
 public class ExosuitModel<T extends LivingEntity> extends ArmorModelWrapper<T> {
 
-	/** Singleton instance */
+	/** Singleton instance * /
 	private static final ExosuitModel<LivingEntity> INSTANCE = new ExosuitModel<>();
-	/** Cache of armor render types */
+	/** Cache of armor render types * /
 	private static final Map<String, RenderType> ARMOR_RENDER_CACHE = new HashMap<>();
-	/** Gets the armor texture for a material */
+	/** Gets the armor texture for a material * /
 	private static ResourceLocation getArmorTexture(String material) {
 		ResourceLocation location = ResourceLocation.tryParse(material);
 		if (location == null) {
@@ -41,19 +41,19 @@ public class ExosuitModel<T extends LivingEntity> extends ArmorModelWrapper<T> {
 			return new ResourceLocation(Materialis.modID, String.format("textures/models/armor/exosuit_magical/accent_%s_%s.png", location.getNamespace(), location.getPath()));
 		return new ResourceLocation(Materialis.modID, String.format("textures/models/armor/exosuit/accent_%s_%s.png", location.getNamespace(), location.getPath()));
 	}
-	/** Overlay texture for colorizer */
+	/** Overlay texture for colorizer * /
 	private static final ResourceLocation OVERLAY_COLORIZER = new ResourceLocation(Materialis.modID, ModList.get().isLoaded("magipsi") ? "textures/models/armor/psimetal_exosuit_magical_colorizer.png" : "textures/models/armor/psimetal_exosuit_colorizer.png");
-	/** Function to get armor render type */
+	/** Function to get armor render type * /
 	private static final Function<String, RenderType> ARMOR_GETTER = mat -> RenderType.armorCutoutNoCull(getArmorTexture(mat));
 
-	/** Listener to clear caches */
+	/** Listener to clear caches * /
 	public static final ISafeManagerReloadListener RELOAD_LISTENER = manager -> {
 		ARMOR_RENDER_CACHE.clear();
 	};
 
 	/**
 	 * Gets the model for a given entity
-	 */
+	 * /
 	@SuppressWarnings("unchecked")
 	public static <A extends BipedModel<?>> A getModel(ItemStack stack, EquipmentSlotType slot, A baseModel) {
 		INSTANCE.setup(stack, slot, baseModel);
@@ -105,4 +105,4 @@ public class ExosuitModel<T extends LivingEntity> extends ArmorModelWrapper<T> {
 			return ((ICADColorizer) stack.getItem()).getColor(stack);
 		return 0xFFFFFF;
 	}
-}
+}*/

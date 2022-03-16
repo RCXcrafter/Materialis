@@ -4,16 +4,12 @@ import javax.annotation.Nullable;
 
 import com.rcx.materialis.util.TinkerToolFluxed;
 
-import net.minecraft.entity.LivingEntity;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import net.minecraft.world.entity.LivingEntity;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class FluxshieldModifier extends CapacitorModifier {
 
 	private static final int ENERGY_COST = 200;
-
-	public FluxshieldModifier() {
-		super(0x905EBE);
-	}
 
 	@Override
 	public int getPriority() {
@@ -21,7 +17,7 @@ public class FluxshieldModifier extends CapacitorModifier {
 	}
 
 	@Override
-	public int onDamageTool(IModifierToolStack tool, int level, int amount, @Nullable LivingEntity holder) {
+	public int onDamageTool(IToolStackView tool, int level, int amount, @Nullable LivingEntity holder) {
 		if (!tool.isBroken()) {
 			int dealt = 0;
 			for (int i = 0; i < amount; i++) {

@@ -11,14 +11,14 @@
   },
   "result": {
     "fluid": "materialis:molten_terrasteel",
-    "amount": 432
+    "amount": 270
   },
   "temperature": 1280,
   "time": 129,
   "byproducts": [
     {
       "fluid": "materialis:molten_manasteel",
-      "amount": 1008
+      "amount": 630
     }
   ]
 }

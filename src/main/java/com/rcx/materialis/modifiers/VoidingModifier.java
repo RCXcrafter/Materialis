@@ -2,20 +2,20 @@ package com.rcx.materialis.modifiers;
 
 import java.util.List;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.helper.ModifierLootingHandler;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
 public class VoidingModifier extends SingleUseModifier {
 
 	public VoidingModifier() {
-		super(0x635D71);
+		super();
 		MinecraftForge.EVENT_BUS.addListener(this::onExperienceDrop);
 	}
 
@@ -25,13 +25,13 @@ public class VoidingModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public List<ItemStack> processLoot(IModifierToolStack tool, int level, List<ItemStack> generatedLoot, LootContext context) {
+	public List<ItemStack> processLoot(IToolStackView tool, int level, List<ItemStack> generatedLoot, LootContext context) {
 		generatedLoot.clear();
 		return generatedLoot;
 	}
 
 	private void onExperienceDrop(LivingExperienceDropEvent event) {
-		ToolStack tool = getHeldTool(event.getAttackingPlayer(), ModifierLootingHandler.getLootingHand(event.getAttackingPlayer()));
+		ToolStack tool = getHeldTool(event.getAttackingPlayer(), ModifierLootingHandler.getLootingSlot(event.getAttackingPlayer()));
 		if (tool != null) {
 			if (tool.getModifierLevel(this) > 0) {
 				float modifier = 1 + RANDOM.nextFloat() * tool.getModifierLevel(TinkerModifiers.luck.get());

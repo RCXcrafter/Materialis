@@ -4,19 +4,15 @@ import javax.annotation.Nullable;
 
 import com.rcx.materialis.util.TinkerToolFluxed;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Direction;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class PowerHungryModifier extends CapacitorModifier {
 
 	private static final int ENERGY_COST = 100;
-
-	public PowerHungryModifier() {
-		super(0xB51212);
-	}
 
 	@Override
 	public int getPriority() {
@@ -24,13 +20,13 @@ public class PowerHungryModifier extends CapacitorModifier {
 	}
 
 	@Override
-	public int onDamageTool(IModifierToolStack tool, int level, int amount, @Nullable LivingEntity holder) {
+	public int onDamageTool(IToolStackView tool, int level, int amount, @Nullable LivingEntity holder) {
 		TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, false, true);
 		return amount;
 	}
 
 	@Override
-	public float getEntityDamage(IModifierToolStack tool, int level, ToolAttackContext context, float baseDamage, float damage) {
+	public float getEntityDamage(IToolStackView tool, int level, ToolAttackContext context, float baseDamage, float damage) {
 		if (TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false)) {
 			return damage;
 		}
@@ -38,7 +34,7 @@ public class PowerHungryModifier extends CapacitorModifier {
 	}
 
 	@Override
-	public void onBreakSpeed(IModifierToolStack tool, int level, BreakSpeed event, Direction sideHit, boolean isEffective, float miningSpeedModifier) {
+	public void onBreakSpeed(IToolStackView tool, int level, BreakSpeed event, Direction sideHit, boolean isEffective, float miningSpeedModifier) {
 		if (!TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false)) {
 			event.setNewSpeed(event.getNewSpeed() / 1.5f);
 		}

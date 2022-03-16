@@ -11,14 +11,14 @@
   },
   "result": {
     "fluid": "materialis:molten_alfsteel",
-    "amount": 288
+    "amount": 180
   },
   "temperature": 1440,
   "time": 111,
   "byproducts": [
     {
       "fluid": "materialis:molten_terrasteel",
-      "amount": 432
+      "amount": 270
     }
   ]
 }

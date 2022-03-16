@@ -19,7 +19,9 @@
             "conditions": {
               "items": [
                 {
-                  "item": "materialis:fairy_block"
+                  "items": [
+                    "materialis:fairy_block"
+                  ]
                 }
               ]
             }

@@ -7,7 +7,7 @@ import com.rcx.materialis.MaterialisResources;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.minecraft.fluid.Fluid;
+import net.minecraft.world.level.material.Fluid;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.IByproduct;
 import slimeknights.tconstruct.library.recipe.FluidValues;
@@ -40,13 +40,13 @@ public enum MaterialisByproduct implements IByproduct {
 	private final boolean alwaysPresent;
 	private final Supplier<? extends Fluid> fluidSupplier;
 	@Getter
-	private final int nuggets;
+	private final int amount;
 
 	MaterialisByproduct(boolean alwaysPresent, Supplier<? extends Fluid> fluidSupplier) {
 		this.name = name().toLowerCase(Locale.ROOT);
 		this.alwaysPresent = alwaysPresent;
 		this.fluidSupplier = fluidSupplier;
-		this.nuggets = FluidValues.NUGGET * 3;
+		this.amount = FluidValues.NUGGET * 3;
 	}
 
 	/** Gets the fluid of this byproduct */

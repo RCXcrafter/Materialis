@@ -2,7 +2,7 @@
   "type": "tconstruct:material_fluid",
   "fluid": {
     "tag": "materialis:molten_elementium",
-    "amount": 144
+    "amount": 90
   },
   "temperature": 1160,
   "output": "materialis:elementium"

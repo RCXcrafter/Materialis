@@ -14,7 +14,7 @@
   },
   "fluid": {
     "tag": "forge:molten_forgotten_metal",
-    "amount": 72
+    "amount": 45
   },
   "result": {
     "tag": "forge:rods/forgotten_metal"

@@ -6,14 +6,14 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonObject;
+import com.mojang.math.Transformation;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.RenderMaterial;
+import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.math.vector.TransformationMatrix;
+import net.minecraft.client.resources.model.Material;
+import net.minecraft.util.GsonHelper;
 import slimeknights.mantle.client.model.util.MantleItemLayerModel;
 import slimeknights.mantle.util.ItemLayerPixels;
 import slimeknights.mantle.util.JsonHelper;
@@ -21,7 +21,7 @@ import slimeknights.tconstruct.library.client.modifiers.IBakedModifierModel;
 import slimeknights.tconstruct.library.client.modifiers.IUnbakedModifierModel;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 /**
  * Model for modifiers that can tint their own texture and/or have a glowing texture
@@ -32,41 +32,35 @@ public class TintedModifierModel implements IBakedModifierModel {
 	public static final IUnbakedModifierModel UNBAKED_INSTANCE = new Unbaked(-1);
 
 	/** Textures to show */
-	private final RenderMaterial[] textures;
+	private final Material[] textures;
 	/** Color to apply to the texture */
 	private final int color;
 
-	public TintedModifierModel(@Nullable RenderMaterial smallTexture, @Nullable RenderMaterial largeTexture, int color) {
+	public TintedModifierModel(@Nullable Material smallTexture, @Nullable Material largeTexture, int color) {
 		this.color = color;
-		this.textures = new RenderMaterial[]{ smallTexture, largeTexture };
+		this.textures = new Material[]{ smallTexture, largeTexture };
 	}
 
-	public TintedModifierModel(@Nullable RenderMaterial smallTexture, @Nullable RenderMaterial largeTexture) {
+	public TintedModifierModel(@Nullable Material smallTexture, @Nullable Material largeTexture) {
 		this(smallTexture, largeTexture, -1);
 	}
 
 	@Nullable
 	@Override
-	public Object getCacheKey(IModifierToolStack tool, ModifierEntry entry) {
+	public Object getCacheKey(IToolStackView tool, ModifierEntry entry) {
 		if (entry.getModifier() instanceof ITintingModifier) {
-			return new GlowingModifierCacheKey(entry.getModifier(), ((ITintingModifier) entry.getModifier()).doesGlow(tool));
+			return new GlowingModifierCacheKey(entry.getModifier(), ((ITintingModifier) entry.getModifier()).getLuminosity(tool));
 		}
 		return entry.getModifier();
 	}
 
-	@Deprecated
 	@Override
-	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry modifier, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge) {
-		return getQuads(tool, modifier, spriteGetter, transforms, isLarge, -1, null);
-	}
-
-	@Override
-	public ImmutableList<BakedQuad> getQuads(IModifierToolStack tool, ModifierEntry modifier, Function<RenderMaterial,TextureAtlasSprite> spriteGetter, TransformationMatrix transforms, boolean isLarge, int startTintIndex, @Nullable ItemLayerPixels pixels) {
+	public ImmutableList<BakedQuad> getQuads(IToolStackView tool, ModifierEntry modifier, Function<Material, TextureAtlasSprite> spriteGetter, Transformation transforms, boolean isLarge, int startTintIndex, @Nullable ItemLayerPixels pixels) {
 		int index = isLarge ? 1 : 0;
-		boolean glowing = false;
+		int luminosity = 0;
 		if (modifier.getModifier() instanceof ITintingModifier)
-			glowing = ((ITintingModifier) modifier.getModifier()).doesGlow(tool);
-		return MantleItemLayerModel.getQuadsForSprite(color, startTintIndex, spriteGetter.apply(textures[index]), transforms, glowing ? 15 : 0, pixels);
+			luminosity = ((ITintingModifier) modifier.getModifier()).getLuminosity(tool);
+		return MantleItemLayerModel.getQuadsForSprite(color, startTintIndex, spriteGetter.apply(textures[index]), transforms, luminosity, pixels);
 	}
 
 	@Override
@@ -75,7 +69,7 @@ public class TintedModifierModel implements IBakedModifierModel {
 	}
 
 	@Override
-	public int getTint(IModifierToolStack tool, ModifierEntry entry, int index) {
+	public int getTint(IToolStackView tool, ModifierEntry entry, int index) {
 		if (entry.getModifier() instanceof ITintingModifier)
 			return ((ITintingModifier) entry.getModifier()).getTint(tool);
 		return -1;
@@ -84,7 +78,7 @@ public class TintedModifierModel implements IBakedModifierModel {
 	@Data
 	private static class GlowingModifierCacheKey {
 		private final Modifier modifier;
-		private final boolean glowing;
+		private final int luminosity;
 	}
 
 	@RequiredArgsConstructor
@@ -93,9 +87,9 @@ public class TintedModifierModel implements IBakedModifierModel {
 
 		@Nullable
 		@Override
-		public IBakedModifierModel forTool(Function<String,RenderMaterial> smallGetter, Function<String,RenderMaterial> largeGetter) {
-			RenderMaterial smallTexture = smallGetter.apply("");
-			RenderMaterial largeTexture = largeGetter.apply("");
+		public IBakedModifierModel forTool(Function<String,Material> smallGetter, Function<String,Material> largeGetter) {
+			Material smallTexture = smallGetter.apply("");
+			Material largeTexture = largeGetter.apply("");
 			if (smallTexture != null || largeTexture != null) {
 				return new TintedModifierModel(smallTexture, largeTexture, color);
 			}
@@ -105,7 +99,7 @@ public class TintedModifierModel implements IBakedModifierModel {
 		@Override
 		public IUnbakedModifierModel configure(JsonObject data) {
 			// parse the two keys, if we ended up with something new create an instance
-			int color = JsonHelper.parseColor(JSONUtils.getAsString(data, "color", ""));
+			int color = JsonHelper.parseColor(GsonHelper.getAsString(data, "color", ""));
 			if (color != this.color) {
 				return new Unbaked(color);
 			}

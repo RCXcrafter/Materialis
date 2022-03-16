@@ -1,0 +1,118 @@
+{
+  "type": "forge:conditional",
+  "conditions": [
+    {
+      "tags": [
+        "forge:ores/quicksilver",
+        "forge:ore_rates/sparse"
+      ],
+      "type": "tconstruct:tag_intersection_present"
+    }
+  ],
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ingots/zinc",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "type": "mantle:intersection",
+          "ingredients": [
+            {
+              "tag": "forge:ores/quicksilver"
+            },
+            {
+              "tag": "forge:ore_rates/sparse"
+            }
+          ]
+        },
+        "result": {
+          "fluid": "materialis:molten_quicksilver",
+          "amount": 90
+        },
+        "temperature": 400,
+        "time": 69,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_zinc",
+            "amount": 30
+          }
+        ]
+      }
+    },
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ingots/tin",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "type": "mantle:intersection",
+          "ingredients": [
+            {
+              "tag": "forge:ores/quicksilver"
+            },
+            {
+              "tag": "forge:ore_rates/sparse"
+            }
+          ]
+        },
+        "result": {
+          "fluid": "materialis:molten_quicksilver",
+          "amount": 90
+        },
+        "temperature": 400,
+        "time": 69,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_tin",
+            "amount": 30
+          }
+        ]
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "forge:true"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "type": "mantle:intersection",
+          "ingredients": [
+            {
+              "tag": "forge:ores/quicksilver"
+            },
+            {
+              "tag": "forge:ore_rates/sparse"
+            }
+          ]
+        },
+        "result": {
+          "fluid": "materialis:molten_quicksilver",
+          "amount": 90
+        },
+        "temperature": 400,
+        "time": 69
+      }
+    }
+  ]
+}

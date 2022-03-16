@@ -4,33 +4,33 @@ import java.util.Collection;
 
 import com.rcx.materialis.datagen.MaterialisBlockTags;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.Property;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.ChestType;
-import net.minecraft.state.properties.Half;
-import net.minecraft.state.properties.RailShape;
-import net.minecraft.state.properties.SlabType;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
-import slimeknights.tconstruct.library.modifiers.SingleUseModifier;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.RailShape;
+import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraftforge.common.TierSortingRegistry;
+import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class WrenchingModifier extends SingleUseModifier {
 
 	private final int priority;
 
-	public WrenchingModifier(int color, int priority) {
-		super(color);
+	public WrenchingModifier(int priority) {
 		this.priority = priority;
 	}
 
@@ -45,34 +45,34 @@ public class WrenchingModifier extends SingleUseModifier {
 	}
 
 	@Override
-	public ActionResultType beforeBlockUse(IModifierToolStack tool, int level, ItemUseContext context) {
+	public InteractionResult beforeBlockUse(IToolStackView tool, int level, UseOnContext context, EquipmentSlot slot) {
 		if (!tool.isBroken() && context.getPlayer() != null) {
-			World world = context.getLevel();
+			Level world = context.getLevel();
 			BlockPos pos = context.getClickedPos();
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) != null || world.getBlockEntity(pos) != null) {
 				return blockUse(tool, level, world, pos, state, context);
 			}
 		}
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 
 	@Override
-	public ActionResultType afterBlockUse(IModifierToolStack tool, int level, ItemUseContext context) {
+	public InteractionResult afterBlockUse(IToolStackView tool, int level, UseOnContext context, EquipmentSlot slot) {
 		if (!tool.isBroken() && context.getPlayer() != null) {
-			World world = context.getLevel();
+			Level world = context.getLevel();
 			BlockPos pos = context.getClickedPos();
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) == null && world.getBlockEntity(pos) == null) {
 				return blockUse(tool, level, world, pos, state, context);
 			}
 		}
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 
-	public ActionResultType blockUse(IModifierToolStack tool, int level, World world, BlockPos pos, BlockState state, ItemUseContext context) {
-		if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, world, pos, context.getPlayer()) || state.getHarvestLevel() > tool.getStats().getInt(ToolStats.HARVEST_LEVEL) || !isRotatable(state, world, pos))
-			return ActionResultType.PASS;
+	public InteractionResult blockUse(IToolStackView tool, int level, Level world, BlockPos pos, BlockState state, UseOnContext context) {
+		if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, world, pos, context.getPlayer()) || TierSortingRegistry.isCorrectTierForDrops(tool.getStats().get(ToolStats.HARVEST_TIER), state) || !isRotatable(state, world, pos))
+			return InteractionResult.PASS;
 
 		Direction face = context.getClickedFace();
 		Rotation rotation = context.getClickedFace().getAxisDirection() == Direction.AxisDirection.POSITIVE ? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90;
@@ -96,9 +96,9 @@ public class WrenchingModifier extends SingleUseModifier {
 						attempts++;
 					}
 					if (success) {
-						world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+						world.setBlock(pos, newState, Block.UPDATE_ALL_IMMEDIATE);
 						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-						return ActionResultType.SUCCESS;
+						return InteractionResult.SUCCESS;
 					}
 				}
 			}
@@ -115,9 +115,9 @@ public class WrenchingModifier extends SingleUseModifier {
 							newState = state.setValue(BlockStateProperties.HORIZONTAL_AXIS, newAxis);
 
 						if (newState.canSurvive(world, pos)) {
-							world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+							world.setBlock(pos, newState, Block.UPDATE_ALL_IMMEDIATE);
 							ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-							return ActionResultType.SUCCESS;
+							return InteractionResult.SUCCESS;
 						}
 					}
 				}
@@ -137,9 +137,9 @@ public class WrenchingModifier extends SingleUseModifier {
 						else
 							newState = state.setValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT, newShape);
 
-						world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+						world.setBlock(pos, newState, Block.UPDATE_ALL_IMMEDIATE);
 						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-						return ActionResultType.SUCCESS;
+						return InteractionResult.SUCCESS;
 
 					}
 				}
@@ -147,9 +147,9 @@ public class WrenchingModifier extends SingleUseModifier {
 			if (prop == BlockStateProperties.ROTATION_16) {
 				int rotation16 = state.getValue(BlockStateProperties.ROTATION_16);
 				rotation16 = (rotation16 + 1) % 16;
-				world.setBlock(pos, state.setValue(BlockStateProperties.ROTATION_16, rotation16), Constants.BlockFlags.DEFAULT_AND_RERENDER);
+				world.setBlock(pos, state.setValue(BlockStateProperties.ROTATION_16, rotation16), Block.UPDATE_ALL_IMMEDIATE);
 				ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-				return ActionResultType.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 			if (prop == BlockStateProperties.HALF) {
 				Half half = state.getValue(BlockStateProperties.HALF);
@@ -159,9 +159,9 @@ public class WrenchingModifier extends SingleUseModifier {
 					half = Half.TOP;
 				BlockState newState = state.setValue(BlockStateProperties.HALF, half);
 				if (newState.canSurvive(world, pos)) {
-					world.setBlock(pos, state.setValue(BlockStateProperties.HALF, half), Constants.BlockFlags.DEFAULT_AND_RERENDER);
+					world.setBlock(pos, state.setValue(BlockStateProperties.HALF, half), Block.UPDATE_ALL_IMMEDIATE);
 					ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-					return ActionResultType.SUCCESS;
+					return InteractionResult.SUCCESS;
 				}
 			}
 			if (prop == BlockStateProperties.SLAB_TYPE) {
@@ -173,14 +173,14 @@ public class WrenchingModifier extends SingleUseModifier {
 						half = SlabType.TOP;
 					BlockState newState = state.setValue(BlockStateProperties.SLAB_TYPE, half);
 					if (newState.canSurvive(world, pos)) {
-						world.setBlock(pos, newState, Constants.BlockFlags.DEFAULT_AND_RERENDER);
+						world.setBlock(pos, newState, Block.UPDATE_ALL_IMMEDIATE);
 						ToolDamageUtil.damage(tool, 1, context.getPlayer(), context.getItemInHand());
-						return ActionResultType.SUCCESS;
+						return InteractionResult.SUCCESS;
 					}
 				}
 			}
 		}
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 
 	public static Direction rotateDirection(Direction direction, Direction.Axis rotateOn, Rotation rotation) {
@@ -414,7 +414,7 @@ public class WrenchingModifier extends SingleUseModifier {
 		}
 	}
 
-	public static boolean isRotatable(BlockState state, World world, BlockPos pos) {
+	public static boolean isRotatable(BlockState state, Level world, BlockPos pos) {
 		if (pos.getY() >= 0 && pos.getY() <= world.getMaxBuildHeight() - 1 && world.getWorldBorder().isWithinBounds(pos)) {
 			Collection<Property<?>> properties = state.getProperties();
 			if (MaterialisBlockTags.WRENCH_BLACKLIST.contains(state.getBlock()))
@@ -434,7 +434,7 @@ public class WrenchingModifier extends SingleUseModifier {
 	}
 
 	//rails don't properly implement canSurvive so this is necessary
-	public static boolean shouldRailBeRemoved(BlockPos pos, World world, RailShape shape) {
+	public static boolean shouldRailBeRemoved(BlockPos pos, Level world, RailShape shape) {
 		if (!Block.canSupportRigidBlock(world, pos.below())) {
 			return true;
 		} else {

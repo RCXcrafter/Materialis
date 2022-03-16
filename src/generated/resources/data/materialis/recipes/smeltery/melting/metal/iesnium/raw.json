@@ -1,0 +1,64 @@
+{
+  "type": "forge:conditional",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:raw_materials/iesnium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "value": {
+            "tag": "forge:ingots/silver",
+            "type": "forge:tag_empty"
+          },
+          "type": "forge:not"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "tag": "forge:raw_materials/iesnium"
+        },
+        "result": {
+          "fluid": "materialis:molten_iesnium",
+          "amount": 90
+        },
+        "temperature": 1090,
+        "time": 103,
+        "byproducts": [
+          {
+            "fluid": "tconstruct:molten_silver",
+            "amount": 30
+          }
+        ]
+      }
+    },
+    {
+      "conditions": [
+        {
+          "type": "forge:true"
+        }
+      ],
+      "recipe": {
+        "type": "tconstruct:ore_melting",
+        "rate": "metal",
+        "ingredient": {
+          "tag": "forge:raw_materials/iesnium"
+        },
+        "result": {
+          "fluid": "materialis:molten_iesnium",
+          "amount": 90
+        },
+        "temperature": 1090,
+        "time": 103
+      }
+    }
+  ]
+}

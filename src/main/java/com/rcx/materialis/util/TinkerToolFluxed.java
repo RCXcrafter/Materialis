@@ -4,21 +4,21 @@ import java.util.function.Supplier;
 
 import com.rcx.materialis.Materialis;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.IToolCapabilityProvider;
-import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IModDataView;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 
 public class TinkerToolFluxed implements IToolCapabilityProvider, IEnergyStorage {
 
-	protected final Supplier<? extends IModifierToolStack> tool;
+	protected final Supplier<? extends IToolStackView> tool;
 	private final LazyOptional<IEnergyStorage> capOptional;
 	public static final String STORED_ENERGY_KEY = "tooltip.materialis.stored_enegry";
 	public static final ResourceLocation MAX_ENERGY = new ResourceLocation(Materialis.modID, "max_energy");
@@ -26,13 +26,13 @@ public class TinkerToolFluxed implements IToolCapabilityProvider, IEnergyStorage
 	public static final ResourceLocation ENERGY_OWNER = new ResourceLocation(Materialis.modID, "energy_owner");
 	private static final int MAX_TRANSFER_RATE = 1000;
 
-	public TinkerToolFluxed(ItemStack stack, Supplier<? extends IModifierToolStack> toolStack) {
+	public TinkerToolFluxed(ItemStack stack, Supplier<? extends IToolStackView> toolStack) {
 		this.tool = toolStack;
 		this.capOptional = LazyOptional.of(() -> this);
 	}
 
 	@Override
-	public <T> LazyOptional<T> getCapability(IModifierToolStack tool, Capability<T> cap) {
+	public <T> LazyOptional<T> getCapability(IToolStackView tool, Capability<T> cap) {
 		if (tool.getVolatileData().getInt(MAX_ENERGY) > 0 && (cap == CapabilityEnergy.ENERGY)) {
 			return CapabilityEnergy.ENERGY.orEmpty(cap, capOptional);
 		}
@@ -59,7 +59,7 @@ public class TinkerToolFluxed implements IToolCapabilityProvider, IEnergyStorage
 		return getMaxEnergyStored(tool.get());
 	}
 
-	public static int receiveEnergy(IModifierToolStack tool, int maxReceive, boolean simulate) {
+	public static int receiveEnergy(IToolStackView tool, int maxReceive, boolean simulate) {
 		int energyStored = getEnergyStored(tool);
 		int energyReceived = Math.min(getMaxEnergyStored(tool) - energyStored, Math.min(MAX_TRANSFER_RATE, maxReceive));
 		if (!simulate) {
@@ -69,7 +69,7 @@ public class TinkerToolFluxed implements IToolCapabilityProvider, IEnergyStorage
 		return energyReceived;
 	}
 
-	public static boolean removeEnergy(IModifierToolStack tool, int energyRemoved, boolean simulate, boolean drain) {
+	public static boolean removeEnergy(IToolStackView tool, int energyRemoved, boolean simulate, boolean drain) {
 		int energyStored = getEnergyStored(tool);
 		if (energyStored < energyRemoved) {
 			if (drain && !simulate) {
@@ -85,16 +85,16 @@ public class TinkerToolFluxed implements IToolCapabilityProvider, IEnergyStorage
 		return true;
 	}
 
-	public static int getEnergyStored(IModifierToolStack tool) {
+	public static int getEnergyStored(IToolStackView tool) {
 		ModDataNBT persistentData = tool.getPersistentData();
-		if (persistentData.contains(STORED_ENERGY, NBT.TAG_INT))
+		if (persistentData.contains(STORED_ENERGY, Tag.TAG_INT))
 			return persistentData.getInt(STORED_ENERGY);
 		return 0;
 	}
 
-	public static int getMaxEnergyStored(IModifierToolStack tool) {
-		IModDataReadOnly volatileData = tool.getVolatileData();
-		if (volatileData.contains(MAX_ENERGY, NBT.TAG_INT))
+	public static int getMaxEnergyStored(IToolStackView tool) {
+		IModDataView volatileData = tool.getVolatileData();
+		if (volatileData.contains(MAX_ENERGY, Tag.TAG_INT))
 			return volatileData.getInt(MAX_ENERGY);
 		return 0;
 	}

@@ -12,12 +12,13 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.runtime.IIngredientManager;
 import mezz.jei.api.runtime.IJeiRuntime;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.TagCollectionManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.SerializationTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.tconstruct.common.registration.CastItemObject;
@@ -36,7 +37,7 @@ public class MaterialisJEIPlugin implements IModPlugin {
 
 		// hide compat that is not present
 		for (FluidWithBlockNBucket fluid : MaterialisResources.fluidList) {
-			ITag<Item> ingot = TagCollectionManager.getInstance().getItems().getTag(new ResourceLocation("forge", "ingots/" + fluid.name.replace("molten_", "")));
+			Tag<Item> ingot = SerializationTags.getInstance().getOrEmpty(Registry.ITEM_REGISTRY).getTag(new ResourceLocation("forge", "ingots/" + fluid.name.replace("molten_", "")));
 			if (ingot == null || ingot.getValues().isEmpty()) {
 				removeFluid(manager, fluid.FLUID.get(), fluid.FLUID_BUCKET.get());
 			}
@@ -62,7 +63,7 @@ public class MaterialisJEIPlugin implements IModPlugin {
 	 * @param cast     Cast instance
 	 */
 	public static void optionalCast(IIngredientManager manager, CastItemObject cast) {
-		ITag<Item> tag = TagCollectionManager.getInstance().getItems().getTag(new ResourceLocation("forge", cast.getName().getPath() + "s"));
+		Tag<Item> tag = SerializationTags.getInstance().getOrEmpty(Registry.ITEM_REGISTRY).getTag(new ResourceLocation("forge", cast.getName().getPath() + "s"));
 		if (tag == null || tag.getValues().isEmpty()) {
 			manager.removeIngredientsAtRuntime(VanillaTypes.ITEM, cast.values().stream().map(ItemStack::new).collect(Collectors.toList()));
 		}
