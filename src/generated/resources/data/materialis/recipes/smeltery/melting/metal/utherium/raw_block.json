@@ -1,0 +1,28 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/raw_utherium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "tag": "forge:storage_blocks/raw_utherium"
+  },
+  "result": {
+    "fluid": "materialis:molten_utherium",
+    "amount": 810
+  },
+  "temperature": 1070,
+  "time": 410,
+  "byproducts": [
+    {
+      "fluid": "materialis:molten_froststeel",
+      "amount": 270
+    }
+  ]
+}

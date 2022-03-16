@@ -50,6 +50,12 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	//industrial foregoing stuff
 	public static final Tag.Named<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
 	public static final Tag.Named<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
+	
+	//undergarden stuff
+	public static final Tag.Named<Item> RAW_CLOGGRUM = ItemTags.bind("forge:raw_materials/cloggrum");
+	public static final Tag.Named<Item> RAW_CLOGGRUM_BLOCK = ItemTags.bind("forge:storage_blocks/raw_cloggrum");
+	public static final Tag.Named<Item> RAW_FROSTSTEEL = ItemTags.bind("forge:raw_materials/froststeel");
+	public static final Tag.Named<Item> RAW_FROSTSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/raw_froststeel");
 
 	//psi stuff
 	public static final Tag.Named<Item> SENSOR_SLOTTABLE = ItemTags.bind(Materialis.modID + ":sensor_slottable");
@@ -59,6 +65,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final Tag.Named<Item> ALFSTEEL_INGOT = ItemTags.bind("forge:ingots/alfsteel");
 	public static final Tag.Named<Item> ALFSTEEL_NUGGET = ItemTags.bind("forge:nuggets/alfsteel");
 	public static final Tag.Named<Item> ALFSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/alfsteel");
+	public static final Tag.Named<Item> ELEMENTIUM_ORE = ItemTags.bind("forge:ores/elementium");
+	public static final Tag.Named<Item> RAW_ELEMENTIUM = ItemTags.bind("forge:raw_materials/elementium");
+	public static final Tag.Named<Item> RAW_ELEMENTIUM_BLOCK = ItemTags.bind("forge:storage_blocks/raw_elementium");
 
 	//redstone arsenal stuff
 	public static final Tag.Named<Item> FLUX_INFUSED_INGOT = ItemTags.bind("forge:ingots/flux_infused");
@@ -136,6 +145,16 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(PINK_SLIME_INGOT).addOptional(new ResourceLocation("industrialforegoing", "pink_slime_ingot"));
 		tag(Tags.Items.INGOTS).addTag(PINK_SLIME_INGOT);
 		tag(PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
+		
+		//undergarden stuff
+		tag(RAW_CLOGGRUM).addOptional(new ResourceLocation("undergarden", "raw_cloggrum"));
+		tag(Tags.Items.RAW_MATERIALS).addTag(RAW_CLOGGRUM);
+		tag(RAW_CLOGGRUM_BLOCK).addOptional(new ResourceLocation("undergarden", "raw_cloggrum_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(RAW_CLOGGRUM_BLOCK);
+		tag(RAW_FROSTSTEEL).addOptional(new ResourceLocation("undergarden", "raw_froststeel"));
+		tag(Tags.Items.RAW_MATERIALS).addTag(RAW_FROSTSTEEL);
+		tag(RAW_FROSTSTEEL_BLOCK).addOptional(new ResourceLocation("undergarden", "raw_froststeel_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(RAW_FROSTSTEEL_BLOCK);
 
 		//psi stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
@@ -159,6 +178,12 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(ALFSTEEL_BLOCK).addOptional(new ResourceLocation("mythicbotany", "alfsteel_block"));
 		tag(Tags.Items.STORAGE_BLOCKS).addTag(ALFSTEEL_BLOCK);
 		tag(ANVIL_METAL).addTag(ALFSTEEL_BLOCK);
+		tag(ELEMENTIUM_ORE).addOptional(new ResourceLocation("mythicbotany", "elementium_ore"));
+		tag(Tags.Items.ORES).addTag(ELEMENTIUM_ORE);
+		tag(RAW_ELEMENTIUM).addOptional(new ResourceLocation("mythicbotany", "raw_elementium"));
+		tag(Tags.Items.RAW_MATERIALS).addTag(RAW_ELEMENTIUM);
+		tag(RAW_ELEMENTIUM_BLOCK).addOptional(new ResourceLocation("mythicbotany", "raw_elementium_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(RAW_ELEMENTIUM_BLOCK);
 
 		//redstone arsenal stuff
 		tag(FLUX_INFUSED_INGOT).addOptional(new ResourceLocation("redstone_arsenal", "flux_ingot"));

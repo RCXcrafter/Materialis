@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mythicbotany:raw_elementium",
+      "required": false
+    }
+  ]
+}

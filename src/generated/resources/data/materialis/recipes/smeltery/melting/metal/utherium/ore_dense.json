@@ -1,0 +1,36 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "tags": [
+        "forge:ores/utherium",
+        "forge:ore_rates/dense"
+      ],
+      "type": "tconstruct:tag_intersection_present"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "type": "mantle:intersection",
+    "ingredients": [
+      {
+        "tag": "forge:ores/utherium"
+      },
+      {
+        "tag": "forge:ore_rates/dense"
+      }
+    ]
+  },
+  "result": {
+    "fluid": "materialis:molten_utherium",
+    "amount": 540
+  },
+  "temperature": 1070,
+  "time": 308,
+  "byproducts": [
+    {
+      "fluid": "materialis:molten_froststeel",
+      "amount": 180
+    }
+  ]
+}

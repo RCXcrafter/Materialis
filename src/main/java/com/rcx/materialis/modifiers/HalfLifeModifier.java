@@ -3,7 +3,7 @@ package com.rcx.materialis.modifiers;
 import javax.annotation.Nullable;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -28,11 +28,11 @@ public class HalfLifeModifier extends Modifier {
 	@Override
 	public Component getDisplayName(int level) {
 		if (level > 2 && level < 5) {
-			return applyStyle(new TextComponent(getTranslationKey() + "." + level));
+			return applyStyle(new TranslatableComponent(getTranslationKey() + "." + level));
 		}
 		if (level > 2)
 			level -= 2;
-		return applyStyle(new TextComponent(getTranslationKey())
+		return applyStyle(new TranslatableComponent(getTranslationKey())
 				.append(" ")
 				.append(RomanNumeralHelper.getNumeral(level)));
 	}

@@ -3,7 +3,10 @@
   "values": [
     "#forge:storage_blocks/fairy",
     "#forge:storage_blocks/starmetal",
+    "#forge:storage_blocks/raw_cloggrum",
+    "#forge:storage_blocks/raw_froststeel",
     "#forge:storage_blocks/alfsteel",
+    "#forge:storage_blocks/raw_elementium",
     "#forge:storage_blocks/flux_infused"
   ]
 }

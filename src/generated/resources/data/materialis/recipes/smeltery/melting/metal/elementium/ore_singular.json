@@ -1,0 +1,40 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "base": "forge:ores/elementium",
+      "subtracted": [
+        "forge:ore_rates/sparse",
+        "forge:ore_rates/dense"
+      ],
+      "type": "tconstruct:tag_difference_present"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "type": "mantle:difference",
+    "base": {
+      "tag": "forge:ores/elementium"
+    },
+    "subtracted": [
+      {
+        "tag": "forge:ore_rates/sparse"
+      },
+      {
+        "tag": "forge:ore_rates/dense"
+      }
+    ]
+  },
+  "result": {
+    "fluid": "materialis:molten_elementium",
+    "amount": 180
+  },
+  "temperature": 1160,
+  "time": 177,
+  "byproducts": [
+    {
+      "fluid": "tconstruct:molten_gold",
+      "amount": 60
+    }
+  ]
+}

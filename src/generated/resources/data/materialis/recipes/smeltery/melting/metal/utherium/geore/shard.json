@@ -2,16 +2,19 @@
   "type": "tconstruct:melting",
   "conditions": [
     {
-      "modid": "undergarden",
-      "type": "forge:mod_loaded"
+      "value": {
+        "tag": "forge:geore_shards/utherium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
     }
   ],
   "ingredient": {
-    "item": "undergarden:utheric_shard"
+    "tag": "forge:geore_shards/utherium"
   },
   "result": {
     "fluid": "materialis:molten_utherium",
-    "amount": 10
+    "amount": 90
   },
   "temperature": 1070,
   "time": 68

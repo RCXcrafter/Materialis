@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_large_buds/utherium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_large_buds/utherium"
+  },
+  "result": {
+    "fluid": "materialis:molten_utherium",
+    "amount": 270
+  },
+  "temperature": 1070,
+  "time": 137
+}

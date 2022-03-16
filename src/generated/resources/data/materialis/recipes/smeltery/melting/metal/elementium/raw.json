@@ -1,0 +1,28 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:raw_materials/elementium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "tag": "forge:raw_materials/elementium"
+  },
+  "result": {
+    "fluid": "materialis:molten_elementium",
+    "amount": 90
+  },
+  "temperature": 1160,
+  "time": 106,
+  "byproducts": [
+    {
+      "fluid": "tconstruct:molten_gold",
+      "amount": 30
+    }
+  ]
+}
