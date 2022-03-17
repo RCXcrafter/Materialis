@@ -1,5 +1,5 @@
 {
-	"modifier.tconstruct": {
+	"modifier.materialis": {
 		"__traits__": null,
 		"enhanced_quartz": "#FF8C80",
 		"voiding": "#635D71",
@@ -75,7 +75,7 @@
 		"wrenching_hidden": "#FFFFFF"
 	},
 
-	"material.tconstruct": {
+	"material.materialis": {
 		"__materialis__": null,
 		"fairy": "#FF87BC",
 		"__general__": null,
