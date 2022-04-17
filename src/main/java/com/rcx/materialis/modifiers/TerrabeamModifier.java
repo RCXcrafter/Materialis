@@ -2,6 +2,7 @@ package com.rcx.materialis.modifiers;
 
 import java.util.Random;
 
+import com.rcx.materialis.datagen.MaterialisModifiers;
 import com.rcx.materialis.util.PacketTerraBeam;
 
 import net.minecraft.sounds.SoundSource;

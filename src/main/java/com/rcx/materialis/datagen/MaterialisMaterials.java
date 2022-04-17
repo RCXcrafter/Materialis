@@ -1,7 +1,6 @@
 package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
-import com.rcx.materialis.modifiers.MaterialisModifiers;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -171,57 +170,57 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialTraits() {
-			addDefaultTraits(fairy, MaterialisModifiers.daredevilModifier.get());
+			addDefaultTraits(fairy, MaterialisModifiers.daredevilModifier);
 			//general oredict materials
-			addDefaultTraits(brass, MaterialisModifiers.polishedModifier.get());
-			addDefaultTraits(aluminum, MaterialisModifiers.featherweightModifier.get());
-			addDefaultTraits(nickel, MaterialisModifiers.refuelingModifier.get());
-			addDefaultTraits(uranium, MaterialisModifiers.halfLifeModifier.get());
+			addDefaultTraits(brass, MaterialisModifiers.polishedModifier);
+			addDefaultTraits(aluminum, MaterialisModifiers.featherweightModifier);
+			addDefaultTraits(nickel, MaterialisModifiers.refuelingModifier);
+			addDefaultTraits(uranium, MaterialisModifiers.halfLifeModifier);
 			//create materials
-			addDefaultTraits(roseQuartz, MaterialisModifiers.enhancedQuartzModifier.get());
-			addDefaultTraits(refinedRadiance, MaterialisModifiers.residualLightModifier.get());
-			addDefaultTraits(shadowSteel, MaterialisModifiers.voidingModifier.get());
+			addDefaultTraits(roseQuartz, MaterialisModifiers.enhancedQuartzModifier);
+			addDefaultTraits(refinedRadiance, MaterialisModifiers.residualLightModifier);
+			addDefaultTraits(shadowSteel, MaterialisModifiers.voidingModifier);
 			//eidolon materials
-			addDefaultTraits(pewter, MaterialisModifiers.inertiaModifier.get());
-			addDefaultTraits(arcaneGold, MaterialisModifiers.arcaneModifier.get());
+			addDefaultTraits(pewter, MaterialisModifiers.inertiaModifier);
+			addDefaultTraits(arcaneGold, MaterialisModifiers.arcaneModifier);
 			//aquaculture materials
-			addDefaultTraits(neptunium, MaterialisModifiers.neptunesBlessingModifier.get());
+			addDefaultTraits(neptunium, MaterialisModifiers.neptunesBlessingModifier);
 			//mystical world materials
-			addDefaultTraits(quicksilver, MaterialisModifiers.decayModifier.get());
+			addDefaultTraits(quicksilver, MaterialisModifiers.decayModifier);
 			//astral sorcery materials
-			addDefaultTraits(starmetal, MaterialisModifiers.nocturnalModifier.get());
+			addDefaultTraits(starmetal, MaterialisModifiers.nocturnalModifier);
 			//industrial foregoing materials
-			addDefaultTraits(plastic, MaterialisModifiers.feebleModifier.get());
-			addDefaultTraits(pinkSlime, MaterialisModifiers.overeatingModifier.get(), TinkerModifiers.overslime.get());
+			addDefaultTraits(plastic, MaterialisModifiers.feebleModifier);
+			addDefaultTraits(pinkSlime, MaterialisModifiers.overeatingModifier, TinkerModifiers.overslime);
 			noTraits(pinkSlimeball);
 			//undergarden materials
-			addDefaultTraits(cloggrum, MaterialisModifiers.economicalModifier.get());
-			addDefaultTraits(froststeel, MaterialisModifiers.freezingModifier.get());
-			addDefaultTraits(utherium, MaterialisModifiers.cleansingModifier.get());
+			addDefaultTraits(cloggrum, MaterialisModifiers.economicalModifier);
+			addDefaultTraits(froststeel, MaterialisModifiers.freezingModifier);
+			addDefaultTraits(utherium, MaterialisModifiers.cleansingModifier);
 			noTraits(regalium);
-			addDefaultTraits(forgottenMetal, MaterialisModifiers.oldTimerModifier.get(), MaterialisModifiers.underlordModifier.get());
+			addDefaultTraits(forgottenMetal, MaterialisModifiers.oldTimerModifier, MaterialisModifiers.underlordModifier);
 			//mekanism materials
-			addDefaultTraits(refinedObsidian, MaterialisModifiers.shortSightedModifier.get());
-			addDefaultTraits(refinedGlowstone, MaterialisModifiers.auxiliaryPowerModifier.get());
+			addDefaultTraits(refinedObsidian, MaterialisModifiers.shortSightedModifier);
+			addDefaultTraits(refinedGlowstone, MaterialisModifiers.auxiliaryPowerModifier);
 			//psi materials
-			addDefaultTraits(psimetal, MaterialisModifiers.psionizingRadiationModifier.get());
-			addDefaultTraits(ebonyPsimetal, MaterialisModifiers.lesserPsionizingRadiationModifier.get(), MaterialisModifiers.psichoKillerModifier.get());
-			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.lesserPsionizingRadiationModifier.get(), MaterialisModifiers.psichoDiggerModifier.get());
+			addDefaultTraits(psimetal, MaterialisModifiers.psionizingRadiationModifier);
+			addDefaultTraits(ebonyPsimetal, MaterialisModifiers.lesserPsionizingRadiationModifier, MaterialisModifiers.psichoKillerModifier);
+			addDefaultTraits(ivoryPsimetal, MaterialisModifiers.lesserPsionizingRadiationModifier, MaterialisModifiers.psichoDiggerModifier);
 			//occultism materials
-			addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier.get());
+			addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier);
 			//botania materials
-			addDefaultTraits(livingwood, MaterialisModifiers.manaripperModifier.get());
-			addDefaultTraits(dreamwood, MaterialisModifiers.manaburnerModifier.get());
-			addDefaultTraits(manasteel, new ModifierEntry(MaterialisModifiers.manashieldModifier.get(), 2));
-			addDefaultTraits(elementium, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.pixiecallerModifier.get());
-			addDefaultTraits(terrasteel, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.terrabeamModifier.get());
+			addDefaultTraits(livingwood, MaterialisModifiers.manaripperModifier);
+			addDefaultTraits(dreamwood, MaterialisModifiers.manaburnerModifier);
+			addDefaultTraits(manasteel, new ModifierEntry(MaterialisModifiers.manashieldModifier, 2));
+			addDefaultTraits(elementium, MaterialisModifiers.manashieldModifier, MaterialisModifiers.pixiecallerModifier);
+			addDefaultTraits(terrasteel, MaterialisModifiers.manashieldModifier, MaterialisModifiers.terrabeamModifier);
 			//mythicbotany materials
-			addDefaultTraits(alfsteel, MaterialisModifiers.manashieldModifier.get(), MaterialisModifiers.elvenBeamModifier.get());
+			addDefaultTraits(alfsteel, MaterialisModifiers.manashieldModifier, MaterialisModifiers.elvenBeamModifier);
 			//draconic evolution materials
-			addDefaultTraits(draconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier.get(), 1), new ModifierEntry(MaterialisModifiers.fluxshieldModifier.get(), 2));
-			addDefaultTraits(awakenedDraconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier.get(), 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier.get(), 1), new ModifierEntry(MaterialisModifiers.fluxburnerModifier.get(), 1));
+			addDefaultTraits(draconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 1), new ModifierEntry(MaterialisModifiers.fluxshieldModifier, 2));
+			addDefaultTraits(awakenedDraconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxburnerModifier, 1));
 			//redstone arsenal materials
-			addDefaultTraits(fluxInfused, MaterialisModifiers.fluxripperModifier.get(), MaterialisModifiers.fluxburnerModifier.get());
+			addDefaultTraits(fluxInfused, MaterialisModifiers.fluxripperModifier, MaterialisModifiers.fluxburnerModifier);
 		}
 	}
 

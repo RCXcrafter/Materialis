@@ -2,7 +2,7 @@ package com.rcx.materialis.compat;
 
 import java.util.function.Supplier;
 
-import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.datagen.MaterialisModifiers;
 import com.rcx.materialis.modifiers.RunedModifier;
 
 import net.minecraft.world.item.ItemStack;

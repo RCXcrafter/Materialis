@@ -8,16 +8,16 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisFluidTags extends FluidTagsProvider {
 
-	public static final Tag.Named<Fluid> LIQUID_PINK_SLIME = FluidTags.bind(Materialis.modID + ":pink_slime");
-	public static final Tag.Named<Fluid> VIRULENT_MIX = FluidTags.bind(Materialis.modID + ":virulent_mix");
-	public static final Tag.Named<Fluid> LIQUID_STARLIGHT = FluidTags.bind(Materialis.modID + ":liquid_starlight");
+	public static final TagKey<Fluid> LIQUID_PINK_SLIME = FluidTags.create(new ResourceLocation(Materialis.modID, "pink_slime"));
+	public static final TagKey<Fluid> VIRULENT_MIX = FluidTags.create(new ResourceLocation(Materialis.modID, "virulent_mix"));
+	public static final TagKey<Fluid> LIQUID_STARLIGHT = FluidTags.create(new ResourceLocation(Materialis.modID, "liquid_starlight"));
 
 	public MaterialisFluidTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);

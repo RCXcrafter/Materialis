@@ -5,6 +5,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.crafting.conditions.ICondition;
+import net.minecraftforge.common.crafting.conditions.ICondition.IContext;
 
 public class OptionalItem extends Item {
 
@@ -17,7 +18,7 @@ public class OptionalItem extends Item {
 
 	@Override
 	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-		if (condition.test())
+		if (condition.test(IContext.EMPTY))
 			super.fillItemCategory(group, items);
 	}
 }

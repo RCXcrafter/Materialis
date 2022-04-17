@@ -185,24 +185,24 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     // Copypasted from tinkers energistics. No shame whatsoever.
-    implementation fg.deobf("slimeknights.tconstruct:TConstruct:1.18.1-${tcon_version}")
-    implementation fg.deobf("slimeknights.mantle:Mantle:1.18.1-${mantle_version}")
+    implementation fg.deobf("slimeknights.tconstruct:TConstruct:1.18.2-${tcon_version}")
+    implementation fg.deobf("slimeknights.mantle:Mantle:1.18.2-${mantle_version}")
 
     //compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api")
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
     //compileOnly fg.deobf("curse.maven:eidolon-429625:3157832")
-    compileOnly fg.deobf("curse.maven:curios-309927:3661868")
+    compileOnly fg.deobf("curse.maven:curios-309927:3748873")
     //compileOnly fg.deobf("vazkii.psi:Psi:${psi_version}")
     //compileOnly fg.deobf("curse.maven:magipsi-396405:3388248")
     compileOnly fg.deobf("vazkii.botania:Botania:${botania_version}")
-    compileOnly fg.deobf("curse.maven:quark-243121:3662309")
+    compileOnly fg.deobf("curse.maven:quark-243121:3740897")
     compileOnly fg.deobf("curse.maven:arl-250363:3642382")
     //compileOnly fg.deobf("curse.maven:thermal-222880:3412300")
     //compileOnly fg.deobf("curse.maven:cofhcore-69162:3407019")
-	compileOnly fg.deobf("curse.maven:create-328085:3687358")
-	compileOnly fg.deobf("curse.maven:immersiveengineering-231951:3587149")
-	compileOnly fg.deobf("curse.maven:prettypipes-376737:3645314")
+	compileOnly fg.deobf("curse.maven:create-328085:3737418")
+	compileOnly fg.deobf("curse.maven:immersiveengineering-231951:3721708")
+	compileOnly fg.deobf("curse.maven:prettypipes-376737:3724800")
 
 	//annotationProcessor 'org.spongepowered:mixin:0.1.2-SNAPSHOT:processor'
 

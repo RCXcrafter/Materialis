@@ -2,7 +2,6 @@ package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
-import com.rcx.materialis.modifiers.MaterialisModifiers;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.ToolActions;

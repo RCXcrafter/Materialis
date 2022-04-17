@@ -13,6 +13,7 @@ import com.rcx.materialis.datagen.MaterialisLang;
 import com.rcx.materialis.datagen.MaterialisLootTables;
 import com.rcx.materialis.datagen.MaterialisMaterialTextures;
 import com.rcx.materialis.datagen.MaterialisMaterials;
+import com.rcx.materialis.datagen.MaterialisModifiers;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialStats;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
 import com.rcx.materialis.datagen.MaterialisPartTextures;
@@ -21,22 +22,24 @@ import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.EngineersGogglesModifier;
-import com.rcx.materialis.modifiers.MaterialisModifiers;
+import com.rcx.materialis.modifiers.OtherworldlyModifier;
 import com.rcx.materialis.util.PacketElvenBeam;
 import com.rcx.materialis.util.PacketTerraBeam;
 import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
-import com.simibubi.create.content.contraptions.goggles.GoggleOverlayRenderer;
+import com.simibubi.create.content.contraptions.goggles.GogglesItem;
 
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -55,6 +58,7 @@ import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureG
 import slimeknights.tconstruct.library.client.model.tools.ToolModel;
 import slimeknights.tconstruct.library.client.modifiers.ModifierModelManager.ModifierModelRegistrationEvent;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
+import slimeknights.tconstruct.library.modifiers.ModifierManager;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
@@ -99,7 +103,7 @@ public class Materialis {
 		//LOGGER.info("HELLO FROM PREINIT");
 		//LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 		//if (ModList.get().isLoaded("psi"))
-			//ToolCapabilityProvider.register(TinkerToolSocketable::new);
+		//ToolCapabilityProvider.register(TinkerToolSocketable::new);
 		if (ModList.get().isLoaded("quark"))
 			ToolCapabilityProvider.register(TinkerToolRuneColor::new);
 		if (ModList.get().isLoaded("botania")) {
@@ -107,12 +111,17 @@ public class Materialis {
 			ForgePacketHandler.CHANNEL.registerMessage(294, PacketElvenBeam.class, PacketElvenBeam::encode, PacketElvenBeam::decode, PacketElvenBeam::handle);
 		}
 		ToolCapabilityProvider.register(TinkerToolFluxed::new);
+		if (ModList.get().isLoaded("create"))
+			GogglesItem.addIsWearingPredicate(((EngineersGogglesModifier) MaterialisModifiers.engineersGogglesModifier.get())::wearingGoggledHelmet);
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
 		NBTKeyModel.registerExtraTexture(new ResourceLocation(TConstruct.MOD_ID, "creative_slot"), "sensor", new ResourceLocation(Materialis.modID, "item/sensor_slot"));
-		if (ModList.get().isLoaded("create"))
-			GoggleOverlayRenderer.registerCustomGoggleCondition(((EngineersGogglesModifier) MaterialisModifiers.engineersGogglesModifier.get())::wearingGoggledHelmet);
+	}
+
+	@SubscribeEvent
+	public static void registerSerializers(RegistryEvent.Register<RecipeSerializer<?>> event) {
+		ModifierManager.MODIFIER_LOADERS.register(new ResourceLocation(modID, "otherworldly"), OtherworldlyModifier.LOADER);
 	}
 
 	/*private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -156,6 +165,7 @@ public class Materialis {
 			ItemModelProvider itemModels = new MaterialisItemModels(gen, existingFileHelper);
 			gen.addProvider(itemModels);
 			gen.addProvider(new MaterialisBlockStates(gen, existingFileHelper));
+			gen.addProvider(new MaterialisModifiers(gen));
 			MaterialisMaterialTextures materialSprites = new MaterialisMaterialTextures();
 			MaterialisPartTextures partSprites = new MaterialisPartTextures();
 			TinkerMaterialSpriteProvider tinkerMaterialSprites = new TinkerMaterialSpriteProvider();

@@ -8,6 +8,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.conditions.ICondition;
+import net.minecraftforge.common.crafting.conditions.ICondition.IContext;
 
 public class OptionalBucketItem extends BucketItem {
 
@@ -25,7 +26,7 @@ public class OptionalBucketItem extends BucketItem {
 
 	@Override
 	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-		if (condition.test())
+		if (condition.test(IContext.EMPTY))
 			super.fillItemCategory(group, items);
 	}
 

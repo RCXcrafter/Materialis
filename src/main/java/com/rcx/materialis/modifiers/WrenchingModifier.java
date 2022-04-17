@@ -71,7 +71,7 @@ public class WrenchingModifier extends SingleUseModifier {
 	}
 
 	public InteractionResult blockUse(IToolStackView tool, int level, Level world, BlockPos pos, BlockState state, UseOnContext context) {
-		if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, world, pos, context.getPlayer()) || TierSortingRegistry.isCorrectTierForDrops(tool.getStats().get(ToolStats.HARVEST_TIER), state) || !isRotatable(state, world, pos))
+		if (context.getPlayer().isSecondaryUseActive() || !state.getBlock().canEntityDestroy(state, world, pos, context.getPlayer()) || !TierSortingRegistry.isCorrectTierForDrops(tool.getStats().get(ToolStats.HARVEST_TIER), state) || !isRotatable(state, world, pos))
 			return InteractionResult.PASS;
 
 		Direction face = context.getClickedFace();
@@ -417,7 +417,7 @@ public class WrenchingModifier extends SingleUseModifier {
 	public static boolean isRotatable(BlockState state, Level world, BlockPos pos) {
 		if (pos.getY() >= 0 && pos.getY() <= world.getMaxBuildHeight() - 1 && world.getWorldBorder().isWithinBounds(pos)) {
 			Collection<Property<?>> properties = state.getProperties();
-			if (MaterialisBlockTags.WRENCH_BLACKLIST.contains(state.getBlock()))
+			if (state.is(MaterialisBlockTags.WRENCH_BLACKLIST))
 				return false;
 			//make sure that multiblocks can't be rotated
 			if (properties.contains(BlockStateProperties.DOUBLE_BLOCK_HALF)) //double tall blocks

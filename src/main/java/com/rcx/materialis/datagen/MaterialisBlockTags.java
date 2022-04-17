@@ -8,7 +8,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -16,12 +16,12 @@ import slimeknights.tconstruct.common.TinkerTags;
 
 public class MaterialisBlockTags extends BlockTagsProvider {
 
-	public static final Tag.Named<Block> WRENCH_BLACKLIST = BlockTags.bind(Materialis.modID + ":wrench_blacklist");
-	public static final Tag.Named<Block> MINABLE_WITH_WRENCH = BlockTags.bind(Materialis.modID + ":mineable/wrench");
+	public static final TagKey<Block> WRENCH_BLACKLIST = BlockTags.create(new ResourceLocation(Materialis.modID, "wrench_blacklist"));
+	public static final TagKey<Block> MINABLE_WITH_WRENCH = BlockTags.create(new ResourceLocation(Materialis.modID, "mineable/wrench"));
 
 	//astral sorcery stuff
-	public static final Tag.Named<Block> STARMETAL_BLOCK = BlockTags.bind("forge:storage_blocks/starmetal");
-	public static final Tag.Named<Block> STARMETAL_ORE = BlockTags.bind("forge:ores/starmetal");
+	public static final TagKey<Block> STARMETAL_BLOCK = BlockTags.create(new ResourceLocation("forge", "storage_blocks/starmetal"));
+	public static final TagKey<Block> STARMETAL_ORE = BlockTags.create(new ResourceLocation("forge", "ores/starmetal"));
 
 	public MaterialisBlockTags(DataGenerator gen, ExistingFileHelper existingFileHelper) {
 		super(gen, Materialis.modID, existingFileHelper);
@@ -30,9 +30,9 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 	@Override
 	protected void addTags() {
 		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
-			addBlockTag(material.BLOCK.get(), BlockTags.bind("forge:storage_blocks/" + material.name));
+			addBlockTag(material.BLOCK.get(), BlockTags.create(new ResourceLocation("forge", "storage_blocks/" + material.name)));
 		}
-		tag(BlockTags.NEEDS_IRON_TOOL).addTag(BlockTags.bind("forge:storage_blocks/fairy"));
+		tag(BlockTags.NEEDS_IRON_TOOL).addTag(BlockTags.create(new ResourceLocation("forge", "storage_blocks/fairy")));
 		
 		//wrench
 		tag(MINABLE_WITH_WRENCH)
@@ -102,7 +102,7 @@ public class MaterialisBlockTags extends BlockTagsProvider {
 		tag(WRENCH_BLACKLIST).addOptional(new ResourceLocation("immersiveengineering", "transformer_hv"));
 	}
 
-	private void addBlockTag(Block block, Tag.Named<Block> tag) {
+	private void addBlockTag(Block block, TagKey<Block> tag) {
 		tag(tag).add(block);
 		tag(BlockTags.BEACON_BASE_BLOCKS).addTag(tag);
 		tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(tag);

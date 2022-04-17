@@ -33,7 +33,7 @@ public class ReapingModifier extends SingleUseModifier {
 			if (target.isInvertedHealAndHarm()) {
 				generatedLoot.clear();
 				int luck = context.getLootingModifier();
-				if (TinkerTags.Items.SCYTHES.getValues().contains(tool.getItem()))
+				if (tool.getItem().builtInRegistryHolder().is(TinkerTags.Items.SCYTHES))
 					luck++;
 				/*ItemStack drop = new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + luck));
 				generatedLoot.add(drop);

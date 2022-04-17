@@ -2,6 +2,7 @@
   "type": "forge:conditional",
   "conditions": [
     {
+      "registry": "minecraft:item",
       "tags": [
         "forge:ores/quicksilver",
         "forge:ore_rates/sparse"
@@ -24,8 +25,8 @@
         "type": "tconstruct:ore_melting",
         "rate": "metal",
         "ingredient": {
-          "type": "mantle:intersection",
-          "ingredients": [
+          "type": "forge:intersection",
+          "children": [
             {
               "tag": "forge:ores/quicksilver"
             },
@@ -62,8 +63,8 @@
         "type": "tconstruct:ore_melting",
         "rate": "metal",
         "ingredient": {
-          "type": "mantle:intersection",
-          "ingredients": [
+          "type": "forge:intersection",
+          "children": [
             {
               "tag": "forge:ores/quicksilver"
             },
@@ -96,8 +97,8 @@
         "type": "tconstruct:ore_melting",
         "rate": "metal",
         "ingredient": {
-          "type": "mantle:intersection",
-          "ingredients": [
+          "type": "forge:intersection",
+          "children": [
             {
               "tag": "forge:ores/quicksilver"
             },

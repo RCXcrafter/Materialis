@@ -2,6 +2,8 @@ package com.rcx.materialis.modifiers;
 
 import javax.annotation.Nullable;
 
+import com.rcx.materialis.datagen.MaterialisModifiers;
+
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

@@ -1,6 +1,26 @@
 package com.rcx.materialis.datagen;
 
-import static slimeknights.tconstruct.common.TinkerTags.Items.*;
+import static slimeknights.tconstruct.common.TinkerTags.Items.ANVIL_METAL;
+import static slimeknights.tconstruct.common.TinkerTags.Items.ARMOR;
+import static slimeknights.tconstruct.common.TinkerTags.Items.BOOTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.CHESTPLATES;
+import static slimeknights.tconstruct.common.TinkerTags.Items.DURABILITY;
+import static slimeknights.tconstruct.common.TinkerTags.Items.FOUNDRY_DEBUG;
+import static slimeknights.tconstruct.common.TinkerTags.Items.GOLD_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.HARVEST_PRIMARY;
+import static slimeknights.tconstruct.common.TinkerTags.Items.HELMETS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.LEGGINGS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.MELEE;
+import static slimeknights.tconstruct.common.TinkerTags.Items.MELEE_PRIMARY;
+import static slimeknights.tconstruct.common.TinkerTags.Items.MULTIPART_TOOL;
+import static slimeknights.tconstruct.common.TinkerTags.Items.MULTI_USE_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.ONE_HANDED;
+import static slimeknights.tconstruct.common.TinkerTags.Items.RED_SAND_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.SAND_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.SINGLE_USE_CASTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.SMELTERY_DEBUG;
+import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.TWO_HANDED;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
@@ -11,7 +31,7 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
@@ -22,60 +42,60 @@ import slimeknights.tconstruct.tools.item.ArmorSlotType;
 public class MaterialisItemTags extends ItemTagsProvider {
 
 	//custom casts
-	public static final Tag.Named<Item> INLAY_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/inlay");
-	public static final Tag.Named<Item> INLAY_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/inlay");
-	public static final Tag.Named<Item> WRENCH_HEAD_CAST = ItemTags.bind(Materialis.modID + ":casts/multi_use/wrench_head");
-	public static final Tag.Named<Item> WRENCH_HEAD_CAST_SINGLE = ItemTags.bind(Materialis.modID + ":casts/single_use/wrench_head");
+	public static final TagKey<Item> INLAY_CAST = ItemTags.create(new ResourceLocation(Materialis.modID, "casts/multi_use/inlay"));
+	public static final TagKey<Item> INLAY_CAST_SINGLE = ItemTags.create(new ResourceLocation(Materialis.modID, "casts/single_use/inlay"));
+	public static final TagKey<Item> WRENCH_HEAD_CAST = ItemTags.create(new ResourceLocation(Materialis.modID, "casts/multi_use/wrench_head"));
+	public static final TagKey<Item> WRENCH_HEAD_CAST_SINGLE = ItemTags.create(new ResourceLocation(Materialis.modID, "casts/single_use/wrench_head"));
 
 	//wrench
-	public static final Tag.Named<Item> TOOLS = ItemTags.bind("forge:tools");
-	public static final Tag.Named<Item> WRENCH = ItemTags.bind("forge:tools/wrench");
-	public static final Tag.Named<Item> WRENCHING = ItemTags.bind(Materialis.modID + ":wrench");
-	public static final Tag.Named<Item> GALVANIZABLE = ItemTags.bind(Materialis.modID + ":galvanizable");
+	public static final TagKey<Item> TOOLS = ItemTags.create(new ResourceLocation("forge", "tools"));
+	public static final TagKey<Item> WRENCH = ItemTags.create(new ResourceLocation("forge", "tools/wrench"));
+	public static final TagKey<Item> WRENCHING = ItemTags.create(new ResourceLocation(Materialis.modID, "wrench"));
+	public static final TagKey<Item> GALVANIZABLE = ItemTags.create(new ResourceLocation(Materialis.modID, "galvanizable"));
 
 	//create stuff
-	public static final Tag.Named<Item> REFINED_RADIANCE_INGOT = ItemTags.bind("forge:ingots/refined_radiance");
-	public static final Tag.Named<Item> SHADOW_STEEL_INGOT = ItemTags.bind("forge:ingots/shadow_steel");
+	public static final TagKey<Item> REFINED_RADIANCE_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/refined_radiance"));
+	public static final TagKey<Item> SHADOW_STEEL_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/shadow_steel"));
 
 	//eidolon stuff
-	public static final Tag.Named<Item> INLAYS = ItemTags.bind("forge:inlays");
-	public static final Tag.Named<Item> PEWTER_INLAY = ItemTags.bind("forge:inlays/pewter");
-	public static final Tag.Named<Item> ARCANE_GOLD_INLAY = ItemTags.bind("forge:inlays/arcane_gold");
+	public static final TagKey<Item> INLAYS = ItemTags.create(new ResourceLocation("forge", "inlays"));
+	public static final TagKey<Item> PEWTER_INLAY = ItemTags.create(new ResourceLocation("forge", "inlays/pewter"));
+	public static final TagKey<Item> ARCANE_GOLD_INLAY = ItemTags.create(new ResourceLocation("forge", "inlays/arcane_gold"));
 
 	//astral sorcery stuff
-	public static final Tag.Named<Item> STARMETAL_INGOT = ItemTags.bind("forge:ingots/starmetal");
-	public static final Tag.Named<Item> STARMETAL_BLOCK = ItemTags.bind("forge:storage_blocks/starmetal");
-	public static final Tag.Named<Item> STARMETAL_ORE = ItemTags.bind("forge:ores/starmetal");
+	public static final TagKey<Item> STARMETAL_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/starmetal"));
+	public static final TagKey<Item> STARMETAL_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/starmetal"));
+	public static final TagKey<Item> STARMETAL_ORE = ItemTags.create(new ResourceLocation("forge", "ores/starmetal"));
 
 	//industrial foregoing stuff
-	public static final Tag.Named<Item> PINK_SLIME_INGOT = ItemTags.bind("forge:ingots/pink_slime");
-	public static final Tag.Named<Item> PINK_SLIME = ItemTags.bind(Materialis.modID + ":pink_slime");
+	public static final TagKey<Item> PINK_SLIME_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/pink_slime"));
+	public static final TagKey<Item> PINK_SLIME = ItemTags.create(new ResourceLocation(Materialis.modID, "pink_slime"));
 	
 	//undergarden stuff
-	public static final Tag.Named<Item> RAW_CLOGGRUM = ItemTags.bind("forge:raw_materials/cloggrum");
-	public static final Tag.Named<Item> RAW_CLOGGRUM_BLOCK = ItemTags.bind("forge:storage_blocks/raw_cloggrum");
-	public static final Tag.Named<Item> RAW_FROSTSTEEL = ItemTags.bind("forge:raw_materials/froststeel");
-	public static final Tag.Named<Item> RAW_FROSTSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/raw_froststeel");
+	public static final TagKey<Item> RAW_CLOGGRUM = ItemTags.create(new ResourceLocation("forge", "raw_materials/cloggrum"));
+	public static final TagKey<Item> RAW_CLOGGRUM_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/raw_cloggrum"));
+	public static final TagKey<Item> RAW_FROSTSTEEL = ItemTags.create(new ResourceLocation("forge", "raw_materials/froststeel"));
+	public static final TagKey<Item> RAW_FROSTSTEEL_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/raw_froststeel"));
 
 	//psi stuff
-	public static final Tag.Named<Item> SENSOR_SLOTTABLE = ItemTags.bind(Materialis.modID + ":sensor_slottable");
-	public static final Tag.Named<Item> SENSOR = ItemTags.bind(Materialis.modID + ":psi_sensor");
+	public static final TagKey<Item> SENSOR_SLOTTABLE = ItemTags.create(new ResourceLocation(Materialis.modID, "sensor_slottable"));
+	public static final TagKey<Item> SENSOR = ItemTags.create(new ResourceLocation(Materialis.modID, "psi_sensor"));
 
 	//mythic botany stuff
-	public static final Tag.Named<Item> ALFSTEEL_INGOT = ItemTags.bind("forge:ingots/alfsteel");
-	public static final Tag.Named<Item> ALFSTEEL_NUGGET = ItemTags.bind("forge:nuggets/alfsteel");
-	public static final Tag.Named<Item> ALFSTEEL_BLOCK = ItemTags.bind("forge:storage_blocks/alfsteel");
-	public static final Tag.Named<Item> ELEMENTIUM_ORE = ItemTags.bind("forge:ores/elementium");
-	public static final Tag.Named<Item> RAW_ELEMENTIUM = ItemTags.bind("forge:raw_materials/elementium");
-	public static final Tag.Named<Item> RAW_ELEMENTIUM_BLOCK = ItemTags.bind("forge:storage_blocks/raw_elementium");
+	public static final TagKey<Item> ALFSTEEL_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/alfsteel"));
+	public static final TagKey<Item> ALFSTEEL_NUGGET = ItemTags.create(new ResourceLocation("forge", "nuggets/alfsteel"));
+	public static final TagKey<Item> ALFSTEEL_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/alfsteel"));
+	public static final TagKey<Item> ELEMENTIUM_ORE = ItemTags.create(new ResourceLocation("forge", "ores/elementium"));
+	public static final TagKey<Item> RAW_ELEMENTIUM = ItemTags.create(new ResourceLocation("forge", "raw_materials/elementium"));
+	public static final TagKey<Item> RAW_ELEMENTIUM_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/raw_elementium"));
 
 	//redstone arsenal stuff
-	public static final Tag.Named<Item> FLUX_INFUSED_INGOT = ItemTags.bind("forge:ingots/flux_infused");
-	public static final Tag.Named<Item> FLUX_INFUSED_NUGGET = ItemTags.bind("forge:nuggets/flux_infused");
-	public static final Tag.Named<Item> FLUX_INFUSED_DUST = ItemTags.bind("forge:dusts/flux_infused");
-	public static final Tag.Named<Item> FLUX_INFUSED_GEAR = ItemTags.bind("forge:gears/flux_infused");
-	public static final Tag.Named<Item> GEARS = ItemTags.bind("forge:gears");
-	public static final Tag.Named<Item> FLUX_INFUSED_BLOCK = ItemTags.bind("forge:storage_blocks/flux_infused");
+	public static final TagKey<Item> FLUX_INFUSED_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/flux_infused"));
+	public static final TagKey<Item> FLUX_INFUSED_NUGGET = ItemTags.create(new ResourceLocation("forge", "nuggets/flux_infused"));
+	public static final TagKey<Item> FLUX_INFUSED_DUST = ItemTags.create(new ResourceLocation("forge", "dusts/flux_infused"));
+	public static final TagKey<Item> FLUX_INFUSED_GEAR = ItemTags.create(new ResourceLocation("forge", "gears/flux_infused"));
+	public static final TagKey<Item> GEARS = ItemTags.create(new ResourceLocation("forge", "gears"));
+	public static final TagKey<Item> FLUX_INFUSED_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/flux_infused"));
 
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
@@ -84,9 +104,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	@Override
 	protected void addTags() {
 		for (IngotWithBlockNNugget material : MaterialisResources.materialList) {
-			Tag.Named<Item> INGOT = ItemTags.bind("forge:ingots/" + material.name);
-			Tag.Named<Item> BLOCK = ItemTags.bind("forge:storage_blocks/" + material.name);
-			Tag.Named<Item> NUGGET = ItemTags.bind("forge:nuggets/" + material.name);
+			TagKey<Item> INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/" + material.name));
+			TagKey<Item> BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/" + material.name));
+			TagKey<Item> NUGGET = ItemTags.create(new ResourceLocation("forge", "nuggets/" + material.name));
 
 			tag(INGOT).add(material.INGOT.get());
 			tag(Tags.Items.INGOTS).addTag(INGOT);
@@ -200,14 +220,14 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	}
 
 	@SafeVarargs
-	public final void addAllTags(ItemLike provider, Tag.Named<Item>... tags) {
+	public final void addAllTags(ItemLike provider, TagKey<Item>... tags) {
 		Item item = provider.asItem();
-		for (Tag.Named<Item> tag : tags) {
+		for (TagKey<Item> tag : tags) {
 			tag(tag).add(item);
 		}
 	}
 
-	private Tag.Named<Item> getArmorTag(ArmorSlotType slotType) {
+	private TagKey<Item> getArmorTag(ArmorSlotType slotType) {
 		switch (slotType) {
 		case BOOTS: return BOOTS;
 		case LEGGINGS: return LEGGINGS;
@@ -218,9 +238,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	}
 
 	@SafeVarargs
-	private final void addArmorTags(EnumObject<ArmorSlotType, ? extends Item> armor, Tag.Named<Item>... tags) {
+	private final void addArmorTags(EnumObject<ArmorSlotType, ? extends Item> armor, TagKey<Item>... tags) {
 		armor.forEach((type, item) -> {
-			for (Tag.Named<Item> tag : tags) {
+			for (TagKey<Item> tag : tags) {
 				this.tag(tag).add(item);
 			}
 			this.tag(getArmorTag(type)).add(item);

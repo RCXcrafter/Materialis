@@ -6,17 +6,17 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
-import com.rcx.materialis.modifiers.MaterialisModifiers;
 import com.rcx.materialis.util.TinkerToolFluxed;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.registries.RegistryObject;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
 public class MaterialisLang extends LanguageProvider {
 
@@ -273,9 +273,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.psionizingRadiationModifierSensor, "Sensor",
 				"6th sense!",
 				"Enables the tool to cast spells when the selected sensor is triggered");
-		addModifier(MaterialisModifiers.processorModifier, "Processor",
+		/*addModifier(MaterialisModifiers.processor, "Processor",
 				"Is this processed?",
-				"Allows your tool to process input from sensors for casting spells");
+				"Allows your tool to process input from sensors for casting spells");*/
 		addModifier(MaterialisModifiers.psichoKillerModifier, "Psicho Killer",
 				"Qu'est-ce que c'est?",
 				"Deals bonus attack damage depending on how much psi you currently have");
@@ -388,8 +388,15 @@ public class MaterialisLang extends LanguageProvider {
 			add("material.materialis." + id + ".encyclopedia", desc);
 	}
 
-	public void addModifier(RegistryObject<Modifier> modifier, String name, String flavour, String desc) {
+	public void addModifier(StaticModifier<Modifier> modifier, String name, String flavour, String desc) {
 		String id = modifier.getId().getPath();
+		add("modifier.materialis." + id, name);
+		add("modifier.materialis." + id + ".flavor", flavour);
+		add("modifier.materialis." + id + ".description", desc);
+	}
+
+	public void addModifier(ModifierId modifier, String name, String flavour, String desc) {
+		String id = modifier.getPath();
 		add("modifier.materialis." + id, name);
 		add("modifier.materialis." + id + ".flavor", flavour);
 		add("modifier.materialis." + id + ".description", desc);
