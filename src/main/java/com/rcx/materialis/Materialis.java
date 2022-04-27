@@ -13,21 +13,19 @@ import com.rcx.materialis.datagen.MaterialisLang;
 import com.rcx.materialis.datagen.MaterialisLootTables;
 import com.rcx.materialis.datagen.MaterialisMaterialTextures;
 import com.rcx.materialis.datagen.MaterialisMaterials;
-import com.rcx.materialis.datagen.MaterialisModifiers;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialStats;
 import com.rcx.materialis.datagen.MaterialisMaterials.MaterialisMaterialTraits;
+import com.rcx.materialis.datagen.MaterialisModifiers;
 import com.rcx.materialis.datagen.MaterialisPartTextures;
 import com.rcx.materialis.datagen.MaterialisRecipes;
 import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
-import com.rcx.materialis.modifiers.EngineersGogglesModifier;
 import com.rcx.materialis.modifiers.OtherworldlyModifier;
 import com.rcx.materialis.util.PacketElvenBeam;
 import com.rcx.materialis.util.PacketTerraBeam;
 import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
-import com.simibubi.create.content.contraptions.goggles.GogglesItem;
 
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.data.DataGenerator;
@@ -63,7 +61,6 @@ import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 import vazkii.botania.forge.network.ForgePacketHandler;
-//import vazkii.botania.common.network.PacketHandler;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -76,13 +73,7 @@ public class Materialis {
 
 	public Materialis() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		// Register the setup method for modloading
 		bus.addListener(this::setup);
-		// Register the enqueueIMC method for modloading
-		//bus.addListener(this::enqueueIMC);
-		// Register the processIMC method for modloading
-		//bus.addListener(this::processIMC);
-		// Register the doClientStuff method for modloading
 		bus.addListener(this::doClientStuff);
 
 		MaterialisResources.FLUIDS.register(bus);
@@ -99,9 +90,6 @@ public class Materialis {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
-		// some preinit code
-		//LOGGER.info("HELLO FROM PREINIT");
-		//LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 		//if (ModList.get().isLoaded("psi"))
 		//ToolCapabilityProvider.register(TinkerToolSocketable::new);
 		if (ModList.get().isLoaded("quark"))
@@ -111,8 +99,6 @@ public class Materialis {
 			ForgePacketHandler.CHANNEL.registerMessage(294, PacketElvenBeam.class, PacketElvenBeam::encode, PacketElvenBeam::decode, PacketElvenBeam::handle);
 		}
 		ToolCapabilityProvider.register(TinkerToolFluxed::new);
-		if (ModList.get().isLoaded("create"))
-			GogglesItem.addIsWearingPredicate(((EngineersGogglesModifier) MaterialisModifiers.engineersGogglesModifier.get())::wearingGoggledHelmet);
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
@@ -123,37 +109,6 @@ public class Materialis {
 	public static void registerSerializers(RegistryEvent.Register<RecipeSerializer<?>> event) {
 		ModifierManager.MODIFIER_LOADERS.register(new ResourceLocation(modID, "otherworldly"), OtherworldlyModifier.LOADER);
 	}
-
-	/*private void enqueueIMC(final InterModEnqueueEvent event) {
-		// some example code to dispatch IMC to another mod
-		InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
-	}
-
-	private void processIMC(final InterModProcessEvent event) {
-		// some example code to receive and process InterModComms from other mods
-		LOGGER.info("Got IMC {}", event.getIMCStream().
-				map(m->m.getMessageSupplier().get()).
-				collect(Collectors.toList()));
-	}
-
-	// You can use SubscribeEvent and let the Event Bus discover methods to call
-	@SubscribeEvent
-	public void onServerStarting(FMLServerStartingEvent event) {
-		// do something when the server starts
-		LOGGER.info("HELLO from server starting");
-	}
-
-	// You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-	// Event bus for receiving Registry Events)
-	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-	public static class RegistryEvents {
-		@SubscribeEvent
-		public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-			// register a new block here
-			LOGGER.info("HELLO from Register Block");
-		}
-	}*/
-
 
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {

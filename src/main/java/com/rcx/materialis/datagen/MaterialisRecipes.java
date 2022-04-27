@@ -721,6 +721,15 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.saveSalvage(consumer, prefix(MaterialisModifiers.engineersGogglesModifier.getId(), salvageFolder))
 		.save(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisModifiers.engineersGogglesModifier.getId(), modifierFolder));
 
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.otherworldGogglesModifier)
+		.setTools(TinkerTags.Items.HELMETS)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("occultism", "otherworld_goggles"))))
+		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("occultism", "otherworld_goggles")), 0.9f))
+		.setMaxLevel(1)
+		.setSlots(SlotType.ABILITY, 1)
+		.saveSalvage(consumer, prefix(MaterialisModifiers.otherworldGogglesModifier.getId(), salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("occultism")), prefix(MaterialisModifiers.otherworldGogglesModifier.getId(), modifierFolder));
+
 
 		//texture recipes
 		//Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));

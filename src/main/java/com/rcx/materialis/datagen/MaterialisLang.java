@@ -363,6 +363,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.engineersGogglesModifier, "Engineers Goggles",
 				"Mind-goggling",
 				"Shows additional information when looking at kinetic devices");
+		addModifier(MaterialisModifiers.otherworldGogglesModifier, "Otherworld Goggles",
+				"Open your third eye",
+				"Allows you to see blocks from the other place, can be toggled with sneak + helmet interact");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

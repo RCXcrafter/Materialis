@@ -88,6 +88,7 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 	//public static final StaticModifier<Modifier> processorModifier = MODIFIERS.register("processor", () -> new ExtraModifier(MaterialisResources.SENSOR_SLOT, ModifierSource.SINGLE_LEVEL)); //unused
 	public static final StaticModifier<Modifier> capacitorModifier = MODIFIERS.register("capacitor", () -> new CapacitorModifier());
 	public static final StaticModifier<Modifier> engineersGogglesModifier = MODIFIERS.register("engineers_goggles", EngineersGogglesModifier::new);
+	public static final StaticModifier<Modifier> otherworldGogglesModifier = MODIFIERS.register("otherworld_goggles", OtherworldGogglesModifier::new);
 
 	//internal modifiers
 	public static final StaticModifier<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(Integer.MIN_VALUE + 50));
