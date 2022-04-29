@@ -13,12 +13,5 @@
     "sensor": 1
   },
   "modifier": "materialis:psionizing_radiation_sensor",
-  "min_level": 1,
-  "salvage": [
-    {
-      "tag": "forge:ingots/psimetal",
-      "min": 0,
-      "max": 2
-    }
-  ]
+  "min_level": 1
 }

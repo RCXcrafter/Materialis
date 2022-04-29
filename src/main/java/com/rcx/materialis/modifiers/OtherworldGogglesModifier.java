@@ -5,12 +5,12 @@ import javax.annotation.Nullable;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.hooks.IArmorInteractModifier;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.RestrictedCompoundTag;
 
-public class OtherworldGogglesModifier extends SingleUseModifier implements IArmorInteractModifier {
+public class OtherworldGogglesModifier extends NoLevelsModifier implements IArmorInteractModifier {
 
 	public static final String OTHERWORLD_GOGGLES = "occultism:otherworld_goggles";
 

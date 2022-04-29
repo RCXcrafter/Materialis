@@ -9,10 +9,10 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.SingleLevelModifier;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class ReapingModifier extends SingleUseModifier {
+public class ReapingModifier extends SingleLevelModifier {
 
 	boolean enabled = ModList.get().isLoaded("eidolon");
 
@@ -32,7 +32,7 @@ public class ReapingModifier extends SingleUseModifier {
 			LivingEntity target = (LivingEntity) entity;
 			if (target.isInvertedHealAndHarm()) {
 				generatedLoot.clear();
-				int luck = context.getLootingModifier();
+				int luck = context.getLootingModifier() + level - 1;
 				if (tool.getItem().builtInRegistryHolder().is(TinkerTags.Items.SCYTHES))
 					luck++;
 				/*ItemStack drop = new ItemStack(Registry.SOUL_SHARD.get(), RANDOM.nextInt(2 + luck));

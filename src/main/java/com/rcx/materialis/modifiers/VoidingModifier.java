@@ -6,13 +6,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.helper.ModifierLootingHandler;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
-import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.data.ModifierIds;
 
-public class VoidingModifier extends SingleUseModifier {
+public class VoidingModifier extends NoLevelsModifier {
 
 	public VoidingModifier() {
 		super();
@@ -34,7 +34,7 @@ public class VoidingModifier extends SingleUseModifier {
 		ToolStack tool = getHeldTool(event.getAttackingPlayer(), ModifierLootingHandler.getLootingSlot(event.getAttackingPlayer()));
 		if (tool != null) {
 			if (tool.getModifierLevel(this) > 0) {
-				float modifier = 1 + RANDOM.nextFloat() * tool.getModifierLevel(TinkerModifiers.luck.get());
+				float modifier = 1 + RANDOM.nextFloat() * tool.getModifierLevel(ModifierIds.luck);
 				event.setDroppedExperience((int) (event.getDroppedExperience() * modifier + 0.4f));
 			}
 		}

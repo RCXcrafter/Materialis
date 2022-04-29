@@ -7,12 +7,12 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.context.ToolHarvestContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class ResidualLightModifier extends SingleUseModifier {
+public class ResidualLightModifier extends NoLevelsModifier {
 
 	@Override
 	public int getPriority() {

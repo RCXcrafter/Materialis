@@ -7,21 +7,5 @@
     "abilities": 1
   },
   "modifier": "materialis:psionizing_radiation",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "psi:psimetal",
-      "min": 0,
-      "max": 2
-    },
-    {
-      "item": "psi:psigem",
-      "min": 0,
-      "max": 2
-    },
-    {
-      "item": "psi:cad_socket_basic",
-      "chance": 0.5
-    }
-  ]
+  "min_level": 1
 }

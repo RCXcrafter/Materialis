@@ -21,11 +21,5 @@
     "abilities": 1
   },
   "modifier": "materialis:wrenching",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "minecraft:netherite_scrap",
-      "chance": 0.35
-    }
-  ]
+  "min_level": 1
 }

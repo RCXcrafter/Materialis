@@ -7,11 +7,5 @@
     "upgrades": 1
   },
   "modifier": "materialis:spell_socket",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "psi:cad_socket_basic",
-      "chance": 0.4
-    }
-  ]
+  "min_level": 1
 }

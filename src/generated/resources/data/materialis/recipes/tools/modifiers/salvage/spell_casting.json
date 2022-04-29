@@ -7,27 +7,5 @@
     "abilities": 1
   },
   "modifier": "materialis:spell_casting",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "psi:ebony_psimetal",
-      "chance": 0.4
-    },
-    {
-      "item": "psi:ivory_psimetal",
-      "chance": 0.4
-    },
-    {
-      "item": "psi:psigem",
-      "chance": 0.2
-    },
-    {
-      "item": "psi:cad_battery_ultradense",
-      "chance": 0.3
-    },
-    {
-      "item": "psi:cad_assembly_psimetal",
-      "chance": 0.6
-    }
-  ]
+  "min_level": 1
 }

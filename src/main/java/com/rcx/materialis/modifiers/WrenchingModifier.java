@@ -21,12 +21,12 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraftforge.common.TierSortingRegistry;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class WrenchingModifier extends SingleUseModifier {
+public class WrenchingModifier extends NoLevelsModifier {
 
 	private final int priority;
 

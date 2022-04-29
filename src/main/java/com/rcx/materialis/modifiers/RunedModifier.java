@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.context.ToolRebuildContext;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -20,7 +20,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import vazkii.arl.util.ClientTicker;
 import vazkii.quark.api.IRuneColorProvider;
 
-public class RunedModifier extends SingleUseModifier {
+public class RunedModifier extends NoLevelsModifier {
 
 	static boolean enabled = ModList.get().isLoaded("quark");
 	public static final ResourceLocation RUNE = new ResourceLocation(Materialis.modID, "rune");

@@ -1,17 +1,17 @@
 package com.rcx.materialis.modifiers;
 
+import blusunrize.immersiveengineering.common.register.IEItems;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraftforge.fml.ModList;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
-import blusunrize.immersiveengineering.common.register.IEItems;
 
-public class ImmersiveWrenchingModifier extends SingleUseModifier {
+public class ImmersiveWrenchingModifier extends NoLevelsModifier {
 
 	boolean enabled = ModList.get().isLoaded("immersiveengineering");
 

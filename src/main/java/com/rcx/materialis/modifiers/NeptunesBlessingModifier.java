@@ -4,13 +4,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 
-public class NeptunesBlessingModifier extends SingleUseModifier {
+public class NeptunesBlessingModifier extends NoLevelsModifier {
 
 	@Override
 	public int getPriority() {

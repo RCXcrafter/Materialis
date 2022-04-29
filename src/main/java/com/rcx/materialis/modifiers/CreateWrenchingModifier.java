@@ -19,12 +19,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fml.ModList;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class CreateWrenchingModifier extends SingleUseModifier {
+public class CreateWrenchingModifier extends NoLevelsModifier {
 
 	boolean enabled = ModList.get().isLoaded("create");
 	Random rand = new Random();

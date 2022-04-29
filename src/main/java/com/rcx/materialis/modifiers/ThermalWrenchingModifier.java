@@ -4,11 +4,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraftforge.fml.ModList;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class ThermalWrenchingModifier extends SingleUseModifier {
+public class ThermalWrenchingModifier extends NoLevelsModifier {
 
 	boolean enabled = ModList.get().isLoaded("thermal");
 

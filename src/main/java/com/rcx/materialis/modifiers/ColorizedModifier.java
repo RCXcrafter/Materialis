@@ -8,10 +8,10 @@ import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
-import slimeknights.tconstruct.library.modifiers.impl.SingleUseModifier;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class ColorizedModifier extends SingleUseModifier implements ITintingModifier {
+public class ColorizedModifier extends NoLevelsModifier implements ITintingModifier {
 
 	public static boolean enabled = ModList.get().isLoaded("psi");
 	public static final ResourceLocation COLORIZER = new ResourceLocation(Materialis.modID, "colorizer");

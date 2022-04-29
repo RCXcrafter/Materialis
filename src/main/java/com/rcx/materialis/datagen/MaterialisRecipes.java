@@ -39,7 +39,6 @@ import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
-import slimeknights.mantle.recipe.data.ItemNameOutput;
 import slimeknights.mantle.recipe.ingredient.EntityIngredient;
 import slimeknights.mantle.recipe.ingredient.SizedIngredient;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -50,7 +49,6 @@ import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
-import slimeknights.tconstruct.library.recipe.RandomItem;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.entitymelting.EntityMeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.ingredient.MaterialIngredient;
@@ -516,8 +514,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "tattered_cloth"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
-		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("eidolon", "soul_shard"), 2), 0))
-		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("eidolon", "tattered_cloth"), 2), 0))
 		.setTools(TinkerTags.Items.MELEE)
 		.setMaxLevel(1)
 		.setSlots(SlotType.ABILITY, 1)
@@ -530,7 +526,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier, "rune")
 		.addInput(getItemTag("quark", "runes"))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("quark", "blank_rune")), 0.5f))
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setRequirements(ModifierMatch.entry(ModifierIds.shiny))
 		.setRequirementsError("recipe.materialis.modifier.runed_requirements")
@@ -543,7 +538,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(MaterialisResources.WRENCH_HEAD.get())))
 		.addInput(TinkerTags.Items.INGOTS_NETHERITE_SCRAP)
 		.addInput(SizedIngredient.of(MaterialIngredient.fromItem(TinkerToolParts.toolBinding.get())))
-		.addSalvage(Items.NETHERITE_SCRAP, 0.35f)
 		.setMaxLevel(1)
 		.setSlots(SlotType.ABILITY, 1)
 		.saveSalvage(consumer, prefix(MaterialisModifiers.wrenchingModifier.getId(), salvageFolder))
@@ -553,8 +547,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.setTools(MaterialisItemTags.GALVANIZABLE)
 		.addInput(Items.PHANTOM_MEMBRANE)
 		.addInput(Tags.Items.INGOTS_IRON)
-		.addSalvage(Items.IRON_INGOT, 0.7f)
-		.addSalvage(Items.PHANTOM_MEMBRANE, 0.3f)
 		.setSlots(SlotType.UPGRADE, 2)
 		.saveSalvage(consumer, prefix(MaterialisModifiers.galvanizedModifier, salvageFolder))
 		.save(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
@@ -566,7 +558,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getItemTag("forge", "gears/nickel"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "wrench"))))
 		.addInput(getItemTag("forge", "gears/nickel"))
-		.addSalvage(getItemTag("forge", "gears/nickel"), 0, 2)
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.thermal_wrenching_requirements")
 		.setMaxLevel(1)
@@ -579,8 +570,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "wrench"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "cogwheel"))))
-		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("create", "cogwheel"), 2), 0))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("create", "wrench")), 0.9f))
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.create_wrenching_requirements")
 		.setMaxLevel(1)
@@ -593,7 +582,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getItemTag("forge", "plates/copper"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("immersiveengineering", "hammer"))))
 		.addInput(getItemTag("forge", "plates/copper"))
-		.addSalvage(getItemTag("forge", "plates/copper"), 0, 2)
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.immersive_wrenching_requirements")
 		.setMaxLevel(1)
@@ -606,8 +594,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "pipe"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "wrench"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("prettypipes", "pipe"))))
-		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("prettypipes", "pipe"), 2), 0))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("prettypipes", "wrench")), 0.9f))
 		.setRequirements(wrenching)
 		.setRequirementsError("recipe.materialis.modifier.pipe_wrenching_requirements")
 		.setMaxLevel(1)
@@ -621,9 +607,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getItemTag("forge", "ingots/psimetal"))
 		.addInput(getItemTag("forge", "gems/psigem"))
 		.addInput(getItemTag("forge", "gems/psigem"))
-		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("psi", "psimetal"), 2), 0))
-		.addSalvage(RandomItem.range(ItemNameOutput.fromName(new ResourceLocation("psi", "psigem"), 2), 0))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.5f))
 		.setTools(TinkerTags.Items.HELD)
 		.setSlots(SlotType.ABILITY, 1)
 		.saveSalvage(consumer, prefix(MaterialisModifiers.psionizingRadiationModifier.getId(), salvageFolder))
@@ -635,11 +618,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getItemTag("forge", "ingots/ivory_psimetal"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_battery_ultradense"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_assembly_psimetal"))))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "ebony_psimetal")), 0.4f))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "ivory_psimetal")), 0.4f))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psigem")), 0.2f))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_battery_ultradense")), 0.3f))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_assembly_psimetal")), 0.6f))
 		.setRequirements(ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.psionizingRadiationModifier), ModifierMatch.entry(MaterialisModifiers.lesserPsionizingRadiationModifier)))
 		.setRequirementsError("recipe.materialis.modifier.casting_requirements")
 		.setTools(TinkerTags.Items.HELD)
@@ -649,7 +627,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.spellSocketModifier)
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("psi", "cad_socket_basic"))))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "cad_socket_basic")), 0.4f))
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
@@ -670,7 +647,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(getItemTag("forge", "ingots/lead"))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("thermal", "rf_coil"))))
 		.addInput(getItemTag("forge", "ingots/lead"))
-		.addSalvage(getItemTag("forge", "dusts/redstone"), 0, 1)
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.setMaxLevel(5)
 		.setSlots(SlotType.UPGRADE, 1)
@@ -707,7 +683,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.psionizingRadiationModifierSensor, "sensor")
 		.setTools(MaterialisItemTags.SENSOR_SLOTTABLE)
 		.addInput(MaterialisItemTags.SENSOR)
-		.addSalvage(getItemTag("forge", "ingots/psimetal"), 0, 2)
 		.setSlots(MaterialisResources.SENSOR_SLOT, 1)
 		.saveSalvage(psiLoaded, prefix(MaterialisModifiers.psionizingRadiationModifierSensor.getId(), salvageFolder))
 		.save(ConsumerWrapperBuilder.wrap(MaterialisResources.sensorModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.psionizingRadiationModifierSensor.getId(), modifierFolder));
@@ -715,7 +690,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.engineersGogglesModifier)
 		.setTools(TinkerTags.Items.HELMETS)
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("create", "goggles"))))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("create", "goggles")), 0.9f))
 		.setMaxLevel(1)
 		.setSlots(SlotType.UPGRADE, 1)
 		.saveSalvage(consumer, prefix(MaterialisModifiers.engineersGogglesModifier.getId(), salvageFolder))
@@ -724,7 +698,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.otherworldGogglesModifier)
 		.setTools(TinkerTags.Items.HELMETS)
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("occultism", "otherworld_goggles"))))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("occultism", "otherworld_goggles")), 0.9f))
 		.setMaxLevel(1)
 		.setSlots(SlotType.ABILITY, 1)
 		.saveSalvage(consumer, prefix(MaterialisModifiers.otherworldGogglesModifier.getId(), salvageFolder))

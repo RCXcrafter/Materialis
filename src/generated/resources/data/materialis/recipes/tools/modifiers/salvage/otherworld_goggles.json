@@ -7,11 +7,5 @@
     "abilities": 1
   },
   "modifier": "materialis:otherworld_goggles",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "occultism:otherworld_goggles",
-      "chance": 0.9
-    }
-  ]
+  "min_level": 1
 }

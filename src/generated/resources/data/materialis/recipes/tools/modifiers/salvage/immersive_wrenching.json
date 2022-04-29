@@ -15,12 +15,5 @@
     "upgrades": 1
   },
   "modifier": "materialis:immersive_wrenching",
-  "min_level": 1,
-  "salvage": [
-    {
-      "tag": "forge:plates/copper",
-      "min": 0,
-      "max": 2
-    }
-  ]
+  "min_level": 1
 }

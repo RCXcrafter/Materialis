@@ -7,12 +7,5 @@
     "upgrades": 1
   },
   "modifier": "materialis:capacitor",
-  "min_level": 1,
-  "salvage": [
-    {
-      "tag": "forge:dusts/redstone",
-      "min": 0,
-      "max": 1
-    }
-  ]
+  "min_level": 1
 }

@@ -7,11 +7,5 @@
     "upgrades": 1
   },
   "modifier": "materialis:engineers_goggles",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "create:goggles",
-      "chance": 0.9
-    }
-  ]
+  "min_level": 1
 }

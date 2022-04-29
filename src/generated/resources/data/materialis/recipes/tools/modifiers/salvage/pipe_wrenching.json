@@ -15,16 +15,5 @@
     "upgrades": 1
   },
   "modifier": "materialis:pipe_wrenching",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "prettypipes:pipe",
-      "min": 0,
-      "max": 2
-    },
-    {
-      "item": "prettypipes:wrench",
-      "chance": 0.9
-    }
-  ]
+  "min_level": 1
 }

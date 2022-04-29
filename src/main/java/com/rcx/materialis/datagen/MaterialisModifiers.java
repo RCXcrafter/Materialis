@@ -9,6 +9,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.dynamic.ExtraModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
+import slimeknights.tconstruct.library.modifiers.util.ModifierLevelDisplay;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 import slimeknights.tconstruct.library.tools.SlotType;
 
@@ -106,8 +107,8 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 
 	@Override
 	protected void addModifiers() {
-		addModifier(enhancedQuartzModifier, ExtraModifier.builder(SlotType.UPGRADE).alwaysShow().multiLevel().build());
-		addModifier(galvanizedModifier, ExtraModifier.builder(SlotType.ABILITY).multiLevel().build());
+		addModifier(enhancedQuartzModifier, ExtraModifier.builder(SlotType.UPGRADE).alwaysShow().display(ModifierLevelDisplay.DEFAULT).build());
+		addModifier(galvanizedModifier, ExtraModifier.builder(SlotType.ABILITY).display(ModifierLevelDisplay.DEFAULT).build());
 		addModifier(otherworldly1Modifier, new OtherworldlyModifier(1));
 		addModifier(otherworldly2Modifier, new OtherworldlyModifier(2));
 

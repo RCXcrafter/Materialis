@@ -7,15 +7,5 @@
     "upgrades": 2
   },
   "modifier": "materialis:galvanized",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "minecraft:iron_ingot",
-      "chance": 0.7
-    },
-    {
-      "item": "minecraft:phantom_membrane",
-      "chance": 0.3
-    }
-  ]
+  "min_level": 1
 }

@@ -4,11 +4,5 @@
     "tag": "tconstruct:modifiable"
   },
   "modifier": "materialis:runed",
-  "min_level": 1,
-  "salvage": [
-    {
-      "item": "quark:blank_rune",
-      "chance": 0.5
-    }
-  ]
+  "min_level": 1
 }
