@@ -70,7 +70,7 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.roseQuartz, "Rose Quartz", "Disclaimer: Not actually made with roses.", "Grants 1 extra upgrade slot per part");
 		addMaterial(MaterialisMaterials.refinedRadiance, "Refined Radiance", "", "Applies 20 seconds of glowing to attacked mobs and leaves a glowing air block when a block is mined that despawns eventually");
 		add("material.materialis.refined_radiance.format", "Radiant %s");
-		addMaterial(MaterialisMaterials.shadowSteel, "Shadow Steel", "", "Voids all dropped items from mob kills and broken blocks, drops bonus xp when killing mobs");
+		addMaterial(MaterialisMaterials.shadowSteel, "Shadow Steel", "", "Voids all dropped items from mob kills and broken blocks, drops bonus xp instead");
 
 		//eidolon stuff
 		addMaterial(MaterialisMaterials.pewter, "Pewter", "", "-5% attack speed, +10% attack damage per level");
@@ -150,7 +150,7 @@ public class MaterialisLang extends LanguageProvider {
 				"Rose quartz goes great with a bonus upgrade!");
 		addModifier(MaterialisModifiers.voidingModifier, "Voiding",
 				"Forged in the void",
-				"Voids block and mob drops, drops extra experience for killing mobs");
+				"Voids block and mob drops, drops extra experience instead");
 		addModifier(MaterialisModifiers.residualLightModifier, "Residual Light",
 				"Forged from light",
 				"Leaves behind pieces of light (photons) when hitting mobs leaving them glowing or when breaking blocks leaving the air glowing for some time");

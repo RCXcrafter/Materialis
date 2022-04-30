@@ -192,7 +192,7 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}")
 
     //compileOnly fg.deobf("curse.maven:eidolon-429625:3157832")
-    compileOnly fg.deobf("curse.maven:curios-309927:3748873")
+    //compileOnly fg.deobf("curse.maven:curios-309927:3748873")
     //compileOnly fg.deobf("vazkii.psi:Psi:${psi_version}")
     //compileOnly fg.deobf("curse.maven:magipsi-396405:3388248")
     compileOnly fg.deobf("vazkii.botania:Botania:${botania_version}")
