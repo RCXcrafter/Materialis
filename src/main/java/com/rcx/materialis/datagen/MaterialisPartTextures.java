@@ -3,7 +3,6 @@ package com.rcx.materialis.datagen;
 import com.rcx.materialis.Materialis;
 
 import slimeknights.tconstruct.library.client.data.material.AbstractPartSpriteProvider;
-import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
 
 public class MaterialisPartTextures extends AbstractPartSpriteProvider {
 
@@ -23,7 +22,7 @@ public class MaterialisPartTextures extends AbstractPartSpriteProvider {
 		buildTool("battlewrench").withLarge().addBreakableHead("head").addBreakableHead("back").addBreakableHead("front");
 		
 		//exosuit textures
-	    addSprite("psimetal_exosuit/helmet_modifiers/tconstruct_embellishment", TinkerPartSpriteProvider.PLATE);
+	    /*addSprite("psimetal_exosuit/helmet_modifiers/tconstruct_embellishment", TinkerPartSpriteProvider.PLATE);
 	    addSprite("psimetal_exosuit/helmet_modifiers/tconstruct_embellishment_broken", TinkerPartSpriteProvider.PLATE);
 	    addSprite("psimetal_exosuit/chestplate_modifiers/tconstruct_embellishment", TinkerPartSpriteProvider.PLATE);
 	    addSprite("psimetal_exosuit/chestplate_modifiers/tconstruct_embellishment_broken", TinkerPartSpriteProvider.PLATE);
@@ -32,6 +31,6 @@ public class MaterialisPartTextures extends AbstractPartSpriteProvider {
 	    addSprite("psimetal_exosuit/boot_modifiers/tconstruct_embellishment", TinkerPartSpriteProvider.PLATE);
 	    addSprite("psimetal_exosuit/boot_modifiers/tconstruct_embellishment_broken", TinkerPartSpriteProvider.PLATE);
 	    addTexture("models/armor/exosuit/accent", TinkerPartSpriteProvider.PLATE);
-	    addTexture("models/armor/exosuit_magical/accent", TinkerPartSpriteProvider.PLATE);
+	    addTexture("models/armor/exosuit_magical/accent", TinkerPartSpriteProvider.PLATE);*/
 	}
 }

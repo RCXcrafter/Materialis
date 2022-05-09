@@ -2,46 +2,6 @@
   "replace": false,
   "parts": [
     {
-      "path": "materialis:item/tool/psimetal_exosuit/helmet_modifiers/tconstruct_embellishment",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:item/tool/psimetal_exosuit/helmet_modifiers/tconstruct_embellishment_broken",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:item/tool/psimetal_exosuit/chestplate_modifiers/tconstruct_embellishment",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:item/tool/psimetal_exosuit/chestplate_modifiers/tconstruct_embellishment_broken",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:item/tool/psimetal_exosuit/leggings_modifiers/tconstruct_embellishment",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:item/tool/psimetal_exosuit/leggings_modifiers/tconstruct_embellishment_broken",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:item/tool/psimetal_exosuit/boot_modifiers/tconstruct_embellishment",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:item/tool/psimetal_exosuit/boot_modifiers/tconstruct_embellishment_broken",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:models/armor/exosuit/accent",
-      "statType": "tconstruct:plate"
-    },
-    {
-      "path": "materialis:models/armor/exosuit_magical/accent",
-      "statType": "tconstruct:plate"
-    },
-    {
       "path": "materialis:item/tool/wrench/head",
       "statType": "tconstruct:head"
     },
