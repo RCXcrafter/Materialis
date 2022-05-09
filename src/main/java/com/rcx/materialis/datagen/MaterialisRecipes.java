@@ -15,7 +15,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
@@ -206,10 +205,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(TinkerFluids.moltenIron.get(), FluidValues.INGOT * 2)
 		.addInput(MaterialisFluidTags.LIQUID_PINK_SLIME, 1000)
 		.save(industrialForegoingLoaded, prefix(MaterialisResources.PINK_SLIME_FLUID.FLUID, alloyFolder));
-
-		SimpleCookingRecipeBuilder.blasting(Ingredient.of(MaterialisItemTags.PINK_SLIME), MaterialisResources.PINK_SLIME_CRYSTAL.get(), 1.0f, 400)
-		.unlockedBy("has_item", has(MaterialisItemTags.PINK_SLIME))
-		.save(industrialForegoingLoaded, new ResourceLocation(Materialis.modID, "pink_slime_crystal_blasting"));
 
 		//undergarden stuff
 		metalTagCasting(consumer, MaterialisResources.CLOGGRUM_FLUID.OBJECT, "cloggrum", castingFolder, false);
@@ -509,7 +504,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.saveSalvage(consumer, prefix(MaterialisModifiers.reapingModifier.getId(), salvageFolder))
 		.save(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier.getId(), modifierFolder));
 
-		OverslimeModifierRecipeBuilder.modifier(MaterialisResources.PINK_SLIME_CRYSTAL.get(), 70)
+		OverslimeModifierRecipeBuilder.modifier(Ingredient.of(MaterialisItemTags.PINK_SLIME), 70)
 		.save(withCondition(consumer, new ModLoadedCondition("industrialforegoing")), prefix(TinkerModifiers.overslime.getId(), modifierFolder));
 
 		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.runedModifier, "rune")

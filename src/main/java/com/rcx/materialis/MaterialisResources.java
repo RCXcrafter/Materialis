@@ -160,9 +160,6 @@ public class MaterialisResources {
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "battlewrench")).meleeHarvest().build();
 	public static final ItemObject<ModifiableItem> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new ModifiableItem(new Item.Properties(), BATTLEWRENCH_DEFINITION));
 
-	//industrial foregoing stuff
-	public static final RegistryObject<Item> PINK_SLIME_CRYSTAL = ITEMS.register("pink_slime_crystal", () -> new OptionalItem(new Item.Properties().tab(TinkerModule.TAB_GENERAL), new ModLoadedCondition("industrialforegoing")));
-
 	//psi armor
 	public static final SlotType SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);
 	/*public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial

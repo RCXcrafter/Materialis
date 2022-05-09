@@ -89,7 +89,6 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.plastic, "Plastic", "", "-20% knockback per level");
 		addMaterial(MaterialisMaterials.pinkSlime, "Pink Slime", "Do you have any idea where that's been?", "Overslime can be eaten to restore 1 hunger and 0.1 saturation per level");
 		addMaterial(MaterialisMaterials.pinkSlimeball, "Pink Slime", "", "");
-		addItem(MaterialisResources.PINK_SLIME_CRYSTAL, "Pink Slime Crystal");
 
 		//undergarden stuff
 		addMaterial(MaterialisMaterials.cloggrum, "Cloggrum", "", "Repairing the tool costs up to half as much the higher the durability the tool has");

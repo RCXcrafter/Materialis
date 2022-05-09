@@ -7,7 +7,7 @@
     }
   ],
   "ingredient": {
-    "item": "materialis:pink_slime_crystal"
+    "tag": "materialis:pink_slime"
   },
   "restore_amount": 70
 }
