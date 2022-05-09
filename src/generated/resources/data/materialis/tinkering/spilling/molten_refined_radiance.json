@@ -1,0 +1,18 @@
+{
+  "condition": {
+    "modid": "create",
+    "type": "forge:mod_loaded"
+  },
+  "fluid": {
+    "tag": "forge:molten_refined_radiance",
+    "amount": 10
+  },
+  "effects": [
+    {
+      "type": "tconstruct:effect",
+      "name": "minecraft:glowing",
+      "time": 800,
+      "level": 1
+    }
+  ]
+}

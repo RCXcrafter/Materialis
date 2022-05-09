@@ -1,11 +1,8 @@
 {
-  "type": "tconstruct:spilling",
-  "conditions": [
-    {
-      "modid": "astralsorcery",
-      "type": "forge:mod_loaded"
-    }
-  ],
+  "condition": {
+    "modid": "astralsorcery",
+    "type": "forge:mod_loaded"
+  },
   "fluid": {
     "tag": "materialis:liquid_starlight",
     "amount": 50

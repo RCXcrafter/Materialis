@@ -18,7 +18,6 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -58,8 +57,6 @@ import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.modifiers.spilling.SpillingRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.modifiers.spilling.effects.EffectSpillingEffect;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
@@ -125,9 +122,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), "refined_radiance", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.OBJECT, "shadow_steel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), "shadow_steel", false, meltingFolder, true);
-		SpillingRecipeBuilder.forFluid(MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), FluidValues.NUGGET)
-		.addEffect(new EffectSpillingEffect(MobEffects.GLOWING, 800, 1))
-		.save(withCondition(consumer, new ModLoadedCondition("create")), prefix(MaterialisResources.REFINED_RADIANCE_FLUID.FLUID, spillFolder));
 
 		//eidolon stuff
 		metalTagCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.OBJECT, "arcane_gold", castingFolder, false);
@@ -201,9 +195,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//astral sorcery stuff
 		metalTagCasting(consumer, MaterialisResources.STARMETAL_FLUID.OBJECT, "starmetal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.STARMETAL_FLUID.FLUID.get(), "starmetal", false, meltingFolder, true); //the ore recipe is defined manually
-		SpillingRecipeBuilder.forFluid(MaterialisFluidTags.LIQUID_STARLIGHT, 50)
-		.addEffect(new EffectSpillingEffect(MobEffects.NIGHT_VISION, 100, 1))
-		.save(withCondition(consumer, new ModLoadedCondition("astralsorcery")), new ResourceLocation(Materialis.modID, spillFolder + "liquid_starlight"));
 
 		//industrial foregoing stuff
 		metalTagCasting(consumer, MaterialisResources.PINK_SLIME_FLUID.OBJECT, "pink_slime", castingFolder, false);
@@ -233,9 +224,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMelting(consumer, MaterialisResources.REGALIUM_FLUID.FLUID.get(), "regalium", true, meltingFolder, true, MaterialisByproduct.CLOGGRUM);
 		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("undergarden", "utheric_shard")), MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET, 1.0f).save(withCondition(consumer, new ModLoadedCondition("undergarden")), modResource(meltingFolder + "utheric_shard"));
 		EntityMeltingRecipeBuilder.melting(EntityIngredient.of(CleansingModifier.rotspawnTag), new FluidStack(MaterialisResources.UTHERIUM_FLUID.FLUID.get(), FluidValues.NUGGET / 8)).save(withCondition(consumer, new ModLoadedCondition("undergarden")));
-		SpillingRecipeBuilder.forFluid(MaterialisFluidTags.VIRULENT_MIX, 50)
-		.addEffect(new EffectSpillingEffect(MobEffects.POISON, 50, 1))
-		.save(withCondition(consumer, new ModLoadedCondition("undergarden")), new ResourceLocation(Materialis.modID, spillFolder + "virulent_mix"));
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("undergarden")), "undergarden",
 				new NameFluid[] {
 						new NameFluid("cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get()),

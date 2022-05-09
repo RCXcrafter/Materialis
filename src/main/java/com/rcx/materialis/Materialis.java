@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.rcx.materialis.compat.TinkerToolRuneColor;
 import com.rcx.materialis.datagen.MaterialisBlockStates;
 import com.rcx.materialis.datagen.MaterialisBlockTags;
+import com.rcx.materialis.datagen.MaterialisFluidSpills;
 import com.rcx.materialis.datagen.MaterialisFluidTags;
 import com.rcx.materialis.datagen.MaterialisItemModels;
 import com.rcx.materialis.datagen.MaterialisItemTags;
@@ -120,7 +121,6 @@ public class Materialis {
 			ItemModelProvider itemModels = new MaterialisItemModels(gen, existingFileHelper);
 			gen.addProvider(itemModels);
 			gen.addProvider(new MaterialisBlockStates(gen, existingFileHelper));
-			gen.addProvider(new MaterialisModifiers(gen));
 			MaterialisMaterialTextures materialSprites = new MaterialisMaterialTextures();
 			MaterialisPartTextures partSprites = new MaterialisPartTextures();
 			TinkerMaterialSpriteProvider tinkerMaterialSprites = new TinkerMaterialSpriteProvider();
@@ -133,6 +133,8 @@ public class Materialis {
 		} if (event.includeServer()) {
 			gen.addProvider(new MaterialisLootTables(gen));
 			gen.addProvider(new MaterialisRecipes(gen));
+			gen.addProvider(new MaterialisModifiers(gen));
+			gen.addProvider(new MaterialisFluidSpills(gen));
 			BlockTagsProvider blockTags = new MaterialisBlockTags(gen, event.getExistingFileHelper());
 			gen.addProvider(blockTags);
 			gen.addProvider(new MaterialisItemTags(gen, blockTags, event.getExistingFileHelper()));

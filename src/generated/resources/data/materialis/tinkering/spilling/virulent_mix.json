@@ -1,11 +1,8 @@
 {
-  "type": "tconstruct:spilling",
-  "conditions": [
-    {
-      "modid": "undergarden",
-      "type": "forge:mod_loaded"
-    }
-  ],
+  "condition": {
+    "modid": "undergarden",
+    "type": "forge:mod_loaded"
+  },
   "fluid": {
     "tag": "materialis:virulent_mix",
     "amount": 50
