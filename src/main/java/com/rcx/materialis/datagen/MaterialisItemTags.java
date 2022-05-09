@@ -70,7 +70,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	//industrial foregoing stuff
 	public static final TagKey<Item> PINK_SLIME_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/pink_slime"));
 	public static final TagKey<Item> PINK_SLIME = ItemTags.create(new ResourceLocation(Materialis.modID, "pink_slime"));
-	
+
 	//undergarden stuff
 	public static final TagKey<Item> RAW_CLOGGRUM = ItemTags.create(new ResourceLocation("forge", "raw_materials/cloggrum"));
 	public static final TagKey<Item> RAW_CLOGGRUM_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/raw_cloggrum"));
@@ -158,14 +158,14 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(Tags.Items.INGOTS).addTag(STARMETAL_INGOT);
 		tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
 		tag(Tags.Items.STORAGE_BLOCKS).addTag(STARMETAL_BLOCK);
-		tag(STARMETAL_ORE).addOptional(new ResourceLocation("astralsorcery", "starmetal_ore"));
-		tag(Tags.Items.ORES).addTag(STARMETAL_ORE);
+		//tag(STARMETAL_ORE).addOptional(new ResourceLocation("astralsorcery", "starmetal_ore"));
+		//tag(Tags.Items.ORES).addTag(STARMETAL_ORE);
 
 		//industrial foregoing stuff
 		tag(PINK_SLIME_INGOT).addOptional(new ResourceLocation("industrialforegoing", "pink_slime_ingot"));
 		tag(Tags.Items.INGOTS).addTag(PINK_SLIME_INGOT);
 		tag(PINK_SLIME).addOptional(new ResourceLocation("industrialforegoing", "pink_slime"));
-		
+
 		//undergarden stuff
 		tag(RAW_CLOGGRUM).addOptional(new ResourceLocation("undergarden", "raw_cloggrum"));
 		tag(Tags.Items.RAW_MATERIALS).addTag(RAW_CLOGGRUM);

@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#forge:ores/starmetal",
     "#forge:ores/elementium"
   ]
 }

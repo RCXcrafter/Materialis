@@ -201,7 +201,7 @@ dependencies {
     //compileOnly fg.deobf("curse.maven:thermal-222880:3412300")
     //compileOnly fg.deobf("curse.maven:cofhcore-69162:3407019")
 	compileOnly fg.deobf("curse.maven:create-328085:3737418")
-	compileOnly fg.deobf("curse.maven:immersiveengineering-231951:3721708")
+	compileOnly fg.deobf("curse.maven:immersiveengineering-231951:3755665")
 	compileOnly fg.deobf("curse.maven:prettypipes-376737:3724800")
 
 	//annotationProcessor 'org.spongepowered:mixin:0.1.2-SNAPSHOT:processor'
