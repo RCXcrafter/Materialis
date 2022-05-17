@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.rcx.materialis.block.LightResidueBlock;
-import com.rcx.materialis.item.OptionalItem;
 import com.rcx.materialis.util.RuneModifierRecipe;
 import com.rcx.materialis.util.SensorModifierRecipe;
 
@@ -24,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;

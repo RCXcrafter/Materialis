@@ -158,8 +158,8 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(Tags.Items.INGOTS).addTag(STARMETAL_INGOT);
 		tag(STARMETAL_BLOCK).addOptional(new ResourceLocation("astralsorcery", "starmetal"));
 		tag(Tags.Items.STORAGE_BLOCKS).addTag(STARMETAL_BLOCK);
-		//tag(STARMETAL_ORE).addOptional(new ResourceLocation("astralsorcery", "starmetal_ore"));
-		//tag(Tags.Items.ORES).addTag(STARMETAL_ORE);
+		tag(STARMETAL_ORE).addOptional(new ResourceLocation("astralsorcery", "starmetal_ore"));
+		tag(Tags.Items.ORES).addTag(STARMETAL_ORE);
 
 		//industrial foregoing stuff
 		tag(PINK_SLIME_INGOT).addOptional(new ResourceLocation("industrialforegoing", "pink_slime_ingot"));
