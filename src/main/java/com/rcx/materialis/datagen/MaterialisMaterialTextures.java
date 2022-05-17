@@ -94,7 +94,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		buildMaterial(MaterialisMaterials.froststeel)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
-		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF616A9B).addARGB(102, 0xFF6177A3).addARGB(140, 0xFF6988B0).addARGB(178, 0xFF7D9EBE).addARGB(216, 0xFF8AADCF).addARGB(255, 0xFFA7C4E0).build());
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF4F5781).addARGB(102, 0xFF4F5781).addARGB(140, 0xFF6988B0).addARGB(178, 0xFF8BB2D6).addARGB(216, 0xFFB9D3EC).addARGB(255, 0xFFE6EDFF).build());
 		buildMaterial(MaterialisMaterials.utherium)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
@@ -102,7 +102,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		buildMaterial(MaterialisMaterials.regalium)
 		.statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
-		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF623326).addARGB(102, 0xFF945337).addARGB(140, 0xFFB17A4B).addARGB(178, 0xFFC99C63).addARGB(216, 0xFFE9C684).addARGB(255, 0xFFFFF2C6).build());
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF6D4516).addARGB(102, 0xFFB96B1D).addARGB(140, 0xFFD8964A).addARGB(178, 0xFFEBBE76).addARGB(216, 0xFFFCD87D).addARGB(255, 0xFFFFEFB2).build());
 		buildMaterial(MaterialisMaterials.forgottenMetal)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
