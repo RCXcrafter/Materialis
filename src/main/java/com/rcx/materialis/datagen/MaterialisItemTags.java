@@ -139,7 +139,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 
 		//plastic
 		tag(PLASTIC_MATERIAL).addOptionalTag(new ResourceLocation("forge", "plastic"))
-		.addOptionalTag(new ResourceLocation("pneumaticraft", "plastic_sheets"))
+		.addOptionalTag(new ResourceLocation("pneumaticcraft", "plastic_sheets"))
 		.addOptional(new ResourceLocation("mekanism", "hdpe_sheet"));
 
 		//wrench
