@@ -7,7 +7,7 @@
       },
       {
         "value": {
-          "tag": "forge:plastic",
+          "tag": "materialis:plastic_material",
           "type": "forge:tag_empty"
         },
         "type": "forge:not"

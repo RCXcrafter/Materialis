@@ -47,6 +47,8 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final TagKey<Item> WRENCH_HEAD_CAST = ItemTags.create(new ResourceLocation(Materialis.modID, "casts/multi_use/wrench_head"));
 	public static final TagKey<Item> WRENCH_HEAD_CAST_SINGLE = ItemTags.create(new ResourceLocation(Materialis.modID, "casts/single_use/wrench_head"));
 
+	public static final TagKey<Item> PLASTIC_MATERIAL = ItemTags.create(new ResourceLocation(Materialis.modID, "plastic_material"));
+
 	//wrench
 	public static final TagKey<Item> TOOLS = ItemTags.create(new ResourceLocation("forge", "tools"));
 	public static final TagKey<Item> WRENCH = ItemTags.create(new ResourceLocation("forge", "tools/wrench"));
@@ -134,6 +136,11 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(RED_SAND_CASTS).add(MaterialisResources.WRENCH_HEAD_CAST.getRedSand());
 		tag(MULTI_USE_CASTS).addTag(WRENCH_HEAD_CAST);
 		tag(SINGLE_USE_CASTS).addTag(WRENCH_HEAD_CAST_SINGLE);
+
+		//plastic
+		tag(PLASTIC_MATERIAL).addOptionalTag(new ResourceLocation("forge", "plastic"))
+		.addOptionalTag(new ResourceLocation("pneumaticraft", "plastic_sheets"))
+		.addOptional(new ResourceLocation("mekanism", "hdpe_sheet"));
 
 		//wrench
 		tag(TOOLS).addTag(WRENCH);

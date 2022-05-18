@@ -120,7 +120,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//astral sorcery materials
 		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST + ORDER_COMPAT);
 		//industrial foregoing materials
-		addMaterial(plastic, 2, ORDER_HARVEST + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:plastic"))));
+		addMaterial(plastic, 2, ORDER_HARVEST + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition(MaterialisItemTags.PLASTIC_MATERIAL.location()))));
 		addCompatMetalMaterial(pinkSlime, 3, ORDER_GENERAL + ORDER_COMPAT);
 		addMaterial(pinkSlimeball, 6, 9, true);
 		//undergarden materials
