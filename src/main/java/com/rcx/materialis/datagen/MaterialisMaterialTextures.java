@@ -138,11 +138,11 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		buildMaterial(MaterialisMaterials.livingwood)
 		.meleeHarvest()
 		.fallbacks("wood", "stick")
-		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF130804).addARGB(102, 0xFF180904).addARGB(140, 0xFF1E0D07).addARGB(178, 0xFF271108).addARGB(216, 0xFF33140A).addARGB(255, 0xFF421909).build());
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF320704).addARGB(102, 0xFF410E05).addARGB(140, 0xFF4A190A).addARGB(178, 0xFF4E1D0B).addARGB(216, 0xFF53210D).addARGB(255, 0xFF5D2409).build());
 		buildMaterial(MaterialisMaterials.dreamwood)
 		.meleeHarvest()
 		.fallbacks("wood", "stick")
-		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF83959B).addARGB(102, 0xFF95A5AB).addARGB(140, 0xFFA6B3B7).addARGB(178, 0xFFAFBDC1).addARGB(216, 0xFFBAC4C7).addARGB(255, 0xFFC1CCCC).build());
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF7B8D87).addARGB(102, 0xFF8B9F9A).addARGB(140, 0xFF9CB2AC).addARGB(178, 0xFFA9C0B9).addARGB(216, 0xFFAFCAC2).addARGB(255, 0xFFBBD3CD).build());
 		buildMaterial(MaterialisMaterials.manasteel)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")

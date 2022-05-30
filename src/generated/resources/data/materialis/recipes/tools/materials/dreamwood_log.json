@@ -7,7 +7,7 @@
     }
   ],
   "ingredient": {
-    "item": "botania:dreamwood"
+    "tag": "botania:dreamwood_logs"
   },
   "value": 1,
   "needed": 1,

@@ -37,6 +37,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import slimeknights.mantle.registration.object.EnumObject;
+import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisItemTags extends ItemTagsProvider {
@@ -196,6 +197,10 @@ public class MaterialisItemTags extends ItemTagsProvider {
 
 		//botania stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/terrasteel"));
+		tag(TinkerTags.Items.VARIANT_LOGS).addOptionalTag(new ResourceLocation("botania", "livingwood_logs"))
+		.addOptionalTag(new ResourceLocation("botania", "dreamwood_logs"));
+		tag(TinkerTags.Items.VARIANT_PLANKS).addOptional(new ResourceLocation("botania", "livingwood_planks"))
+		.addOptional(new ResourceLocation("botania", "dreamwood_planks"));
 
 		//mythicbotany stuff
 		tag(ALFSTEEL_INGOT).addOptional(new ResourceLocation("mythicbotany", "alfsteel_ingot"));

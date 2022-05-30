@@ -440,10 +440,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.ebonyPsimetal, materialFolder, "ebony_psimetal", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.ivoryPsimetal, materialFolder, "ivory_psimetal", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.iesnium, materialFolder, "iesnium", true);
-		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.livingwood, ItemNameIngredient.from(new ResourceLocation("botania", "livingwood")), 1, 1, materialFolder + "livingwood");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.livingwood, Ingredient.of(getItemTag("botania", "livingwood_logs")), 1, 1, materialFolder + "livingwood_log");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.livingwood, ItemNameIngredient.from(new ResourceLocation("botania", "livingwood_planks")), 1, 4, materialFolder + "livingwood_plank");
 		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.livingwood, ItemNameIngredient.from(new ResourceLocation("botania", "livingwood_twig")), 2, 1, materialFolder + "livingwood_twig");
-		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.dreamwood, ItemNameIngredient.from(new ResourceLocation("botania", "dreamwood")), 1, 1, materialFolder + "dreamwood");
-		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.dreamwood, ItemNameIngredient.from(new ResourceLocation("botania", "dreamwood_twig")), 2, 1, materialFolder + "dreamwood_twig");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.dreamwood, Ingredient.of(getItemTag("botania", "dreamwood_logs")), 1, 1, materialFolder + "dreamwood_log");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.dreamwood, ItemNameIngredient.from(new ResourceLocation("botania", "dreamwood_planks")), 1, 1, materialFolder + "dreamwood/plank");
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.dreamwood, ItemNameIngredient.from(new ResourceLocation("botania", "dreamwood_twig")), 2, 1, materialFolder + "dreamwood/twig");
 		metalMaterialRecipe(consumer, MaterialisMaterials.manasteel, materialFolder, "manasteel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.elementium, materialFolder, "elementium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.terrasteel, materialFolder, "terrasteel", true);

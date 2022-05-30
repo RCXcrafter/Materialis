@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:material",
+  "conditions": [
+    {
+      "modid": "botania",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "botania:livingwood_planks"
+  },
+  "value": 1,
+  "needed": 4,
+  "material": "materialis:livingwood"
+}

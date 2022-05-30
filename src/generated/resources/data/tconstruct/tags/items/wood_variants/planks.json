@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "botania:livingwood_planks",
+      "required": false
+    },
+    {
+      "id": "botania:dreamwood_planks",
+      "required": false
+    }
+  ]
+}

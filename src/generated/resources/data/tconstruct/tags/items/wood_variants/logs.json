@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#botania:livingwood_logs",
+      "required": false
+    },
+    {
+      "id": "#botania:dreamwood_logs",
+      "required": false
+    }
+  ]
+}
