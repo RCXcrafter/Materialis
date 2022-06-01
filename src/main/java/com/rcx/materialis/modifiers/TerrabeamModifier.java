@@ -8,15 +8,20 @@ import com.rcx.materialis.util.PacketTerraBeam;
 
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.ModList;
+import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.tools.modifiers.ability.tool.OffhandAttackModifier;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.handler.ModSounds;
@@ -43,9 +48,18 @@ public class TerrabeamModifier extends Modifier {
 		}
 	}
 
+	@Override
+	public InteractionResult onToolUse(IToolStackView tool, int level, Level world, Player player, InteractionHand hand, EquipmentSlot slotType) {
+		if (enabled && !tool.isBroken() && hand == InteractionHand.OFF_HAND && OffhandCooldownTracker.isAttackReady(player) && OffhandCooldownTracker.getCooldown(player) == 1 && tool.getVolatileData().getBoolean(OffhandAttackModifier.DUEL_WIELDING)) {
+			BurstHandler.trySpawnBurst(player, hand, true, false);
+		}
+		return InteractionResult.PASS;
+	}
+
+	@Override
 	public int afterEntityHit(IToolStackView tool, int level, ToolAttackContext context, float damageDealt) {
 		if (enabled && context.getAttacker() instanceof Player)
-			BurstHandler.trySpawnBurst((Player) context.getAttacker(), false);
+			BurstHandler.trySpawnBurst((Player) context.getAttacker(), context.getHand(), false, true);
 		return 0;
 	}
 
@@ -53,9 +67,9 @@ public class TerrabeamModifier extends Modifier {
 
 		public static ItemStack sword = new ItemStack(ModItems.terraSword);
 
-		public static void trySpawnBurst(Player player, boolean nothingForFree) {
-			if (enabled && !player.getMainHandItem().isEmpty() && player.getAttackStrengthScale(0) == 1) {
-				ToolStack tool = getHeldTool(player, InteractionHand.MAIN_HAND);
+		public static void trySpawnBurst(Player player, InteractionHand hand, boolean nothingForFree, boolean checkCooldown) {
+			if (enabled && !player.getItemInHand(hand).isEmpty() && (!checkCooldown || player.getAttackStrengthScale(0) == 1)) {
+				ToolStack tool = getHeldTool(player, hand);
 				if (tool != null && tool.getModifierLevel(MaterialisModifiers.elvenBeamModifier.get()) < 1) {
 					int level = tool.getModifierLevel(MaterialisModifiers.terrabeamModifier.get());
 					if (level > 0 && (level * CHANCE > 1.0f || rand.nextFloat() < level * CHANCE)) {
@@ -63,7 +77,7 @@ public class TerrabeamModifier extends Modifier {
 						player.level.addFreshEntity(burst);
 						if (nothingForFree)
 							if (!ManaItemHandler.instance().requestManaExactForTool(player.getMainHandItem(), player, MANA_PER_BEAM, true))
-								player.getMainHandItem().hurtAndBreak(1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+								player.getMainHandItem().hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
 						player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.terraBlade, SoundSource.PLAYERS, 0.4F, 1.4F);
 					}
 				}
