@@ -23,12 +23,13 @@ import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.OtherworldlyModifier;
-import com.rcx.materialis.util.PacketElvenBeam;
-import com.rcx.materialis.util.PacketTerraBeam;
+import com.rcx.materialis.util.MaterialisPacketHandler;
+import com.rcx.materialis.util.TinkerSpellWriteRecipe;
 import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
 
 import net.minecraft.client.color.item.ItemColors;
+import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -61,7 +62,6 @@ import slimeknights.tconstruct.library.modifiers.ModifierManager;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
-import vazkii.botania.forge.network.ForgePacketHandler;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -69,7 +69,7 @@ import vazkii.botania.forge.network.ForgePacketHandler;
 public class Materialis {
 
 	// Directly reference a log4j logger.
-	private static final Logger LOGGER = LogManager.getLogger();
+	public static final Logger LOGGER = LogManager.getLogger();
 	public static final String modID = "materialis";
 
 	public Materialis() {
@@ -91,14 +91,11 @@ public class Materialis {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
+		MaterialisPacketHandler.init();
 		//if (ModList.get().isLoaded("psi"))
 		//ToolCapabilityProvider.register(TinkerToolSocketable::new);
 		if (ModList.get().isLoaded("quark"))
 			ToolCapabilityProvider.register(TinkerToolRuneColor::new);
-		if (ModList.get().isLoaded("botania")) {
-			ForgePacketHandler.CHANNEL.registerMessage(293, PacketTerraBeam.class, PacketTerraBeam::encode, PacketTerraBeam::decode, PacketTerraBeam::handle);
-			ForgePacketHandler.CHANNEL.registerMessage(294, PacketElvenBeam.class, PacketElvenBeam::encode, PacketElvenBeam::decode, PacketElvenBeam::handle);
-		}
 		ToolCapabilityProvider.register(TinkerToolFluxed::new);
 	}
 
@@ -109,6 +106,10 @@ public class Materialis {
 	@SubscribeEvent
 	public static void registerSerializers(RegistryEvent.Register<RecipeSerializer<?>> event) {
 		ModifierManager.MODIFIER_LOADERS.register(new ResourceLocation(modID, "otherworldly"), OtherworldlyModifier.LOADER);
+		if (ModList.get().isLoaded("ars_nouveau")) {
+			Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(modID, TinkerSpellWriteRecipe.RECIPE_ID), TinkerSpellWriteRecipe.SPELL_WRITE_TYPE);
+			event.getRegistry().register(TinkerSpellWriteRecipe.SERIALIZER.setRegistryName(new ResourceLocation(modID, TinkerSpellWriteRecipe.RECIPE_ID)));
+		}
 	}
 
 	@SubscribeEvent

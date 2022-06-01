@@ -3,6 +3,7 @@ package com.rcx.materialis.modifiers;
 import java.util.Random;
 
 import com.rcx.materialis.datagen.MaterialisModifiers;
+import com.rcx.materialis.util.MaterialisPacketHandler;
 import com.rcx.materialis.util.PacketTerraBeam;
 
 import net.minecraft.sounds.SoundSource;
@@ -20,7 +21,6 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.handler.ModSounds;
 import vazkii.botania.common.item.ModItems;
-import vazkii.botania.forge.network.ForgePacketHandler;
 
 public class TerrabeamModifier extends Modifier {
 
@@ -38,7 +38,7 @@ public class TerrabeamModifier extends Modifier {
 		if (enabled && !event.getItemStack().isEmpty()) {
 			ToolStack tool = getHeldTool(event.getEntityLiving(), InteractionHand.MAIN_HAND);
 			if (tool != null && tool.getModifierLevel(this) > 0) {
-				ForgePacketHandler.CHANNEL.sendToServer(new PacketTerraBeam());
+				MaterialisPacketHandler.INSTANCE.sendToServer(new PacketTerraBeam());
 			}
 		}
 	}

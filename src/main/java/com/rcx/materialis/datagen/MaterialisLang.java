@@ -365,6 +365,9 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.otherworldGogglesModifier, "Otherworld Goggles",
 				"Open your third eye",
 				"Allows you to see blocks from the other place, can be toggled with sneak + helmet interact");
+		addModifier(MaterialisModifiers.reactiveModifier, "Reactive",
+				"Not to be confused with radioactive",
+				"Has a chance to cast the inscribed spell on use");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
@@ -390,7 +393,7 @@ public class MaterialisLang extends LanguageProvider {
 			add("material.materialis." + id + ".encyclopedia", desc);
 	}
 
-	public void addModifier(StaticModifier<Modifier> modifier, String name, String flavour, String desc) {
+	public void addModifier(StaticModifier<? extends Modifier> modifier, String name, String flavour, String desc) {
 		String id = modifier.getId().getPath();
 		add("modifier.materialis." + id, name);
 		add("modifier.materialis." + id + ".flavor", flavour);
