@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "undergarden:utheric_hoe"
+    "item": "undergarden:utherium_helmet"
   },
   "result": {
     "fluid": "materialis:molten_utherium",
-    "amount": 180
+    "amount": 450
   },
   "temperature": 1070,
-  "time": 97
+  "time": 153
 }

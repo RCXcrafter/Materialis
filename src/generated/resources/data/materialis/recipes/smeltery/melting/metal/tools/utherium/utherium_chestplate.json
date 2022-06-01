@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "undergarden:utheric_shovel"
+    "item": "undergarden:utherium_chestplate"
   },
   "result": {
     "fluid": "materialis:molten_utherium",
-    "amount": 90
+    "amount": 720
   },
   "temperature": 1070,
-  "time": 68
+  "time": 193
 }

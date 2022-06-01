@@ -223,7 +223,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new NameFluid[] {
 						new NameFluid("cloggrum", MaterialisResources.CLOGGRUM_FLUID.FLUID.get()),
 						new NameFluid("froststeel", MaterialisResources.FROSTSTEEL_FLUID.FLUID.get()),
-						new NameFluid("utheric", MaterialisResources.UTHERIUM_FLUID.FLUID.get())
+						new NameFluid("utherium", MaterialisResources.UTHERIUM_FLUID.FLUID.get())
 		},
 				new ToolValue("_axe", 3),
 				new ToolValue("_hoe", 2),
@@ -392,8 +392,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//mythicbotany stuff
 		metalTagCasting(consumer, MaterialisResources.ALFSTEEL_FLUID.OBJECT, "alfsteel", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), "alfsteel", false, meltingFolder, true);
-		MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("mythicbotany", "alfsteel_armor_upgrade")), MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.0f).save(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(meltingFolder + "alfsteel_double_ingot"));
-		toolMelting(withCondition(consumer, new ModLoadedCondition("mythicbotany")), new NameFluid("alfsteel", MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2), true),
+		//MeltingRecipeBuilder.melting(ItemNameIngredient.from(new ResourceLocation("mythicbotany", "alfsteel_armor_upgrade")), MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT * 2, 1.0f).save(withCondition(consumer, new ModLoadedCondition("mythicbotany")), modResource(meltingFolder + "alfsteel_double_ingot"));
+		toolMelting(withCondition(consumer, new ModLoadedCondition("mythicbotany")), new NameFluid("alfsteel", MaterialisResources.TERRASTEEL_FLUID.FLUID.get(), new FluidStack(MaterialisResources.ALFSTEEL_FLUID.FLUID.get(), FluidValues.INGOT), true),
 				new ToolValue("mythicbotany:alfsteel_helmet", 3),
 				new ToolValue("mythicbotany:alfsteel_chestplate", 3),
 				new ToolValue("mythicbotany:alfsteel_leggings", 3),

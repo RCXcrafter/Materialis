@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "undergarden:utheric_leggings"
+    "item": "undergarden:utherium_boots"
   },
   "result": {
     "fluid": "materialis:molten_utherium",
-    "amount": 630
+    "amount": 360
   },
   "temperature": 1070,
-  "time": 181
+  "time": 137
 }

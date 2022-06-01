@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "undergarden:utheric_pickaxe"
+    "item": "undergarden:utherium_hoe"
   },
   "result": {
     "fluid": "materialis:molten_utherium",
-    "amount": 270
+    "amount": 180
   },
   "temperature": 1070,
-  "time": 118
+  "time": 97
 }

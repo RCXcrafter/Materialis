@@ -7,12 +7,12 @@
     }
   ],
   "ingredient": {
-    "item": "undergarden:utheric_sword"
+    "item": "undergarden:utherium_axe"
   },
   "result": {
     "fluid": "materialis:molten_utherium",
-    "amount": 180
+    "amount": 270
   },
   "temperature": 1070,
-  "time": 97
+  "time": 118
 }
