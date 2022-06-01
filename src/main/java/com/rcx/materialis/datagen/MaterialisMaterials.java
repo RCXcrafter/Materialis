@@ -107,7 +107,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(nickel, 2, ORDER_HARVEST + ORDER_COMPAT);
 		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST + ORDER_COMPAT);
 		//create materials
-		addMaterial(roseQuartz, 3, ORDER_NETHER + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("create")));
+		addMaterial(roseQuartz, 3, ORDER_NETHER + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition(MaterialisItemTags.ROSE_QUARTZ_MATERIAL.location()))));
 		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL + ORDER_COMPAT);
 		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL + ORDER_COMPAT);
 		//eidolon materials

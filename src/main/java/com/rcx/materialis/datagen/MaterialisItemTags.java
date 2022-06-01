@@ -59,6 +59,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	//create stuff
 	public static final TagKey<Item> REFINED_RADIANCE_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/refined_radiance"));
 	public static final TagKey<Item> SHADOW_STEEL_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/shadow_steel"));
+	public static final TagKey<Item> ROSE_QUARTZ_MATERIAL = ItemTags.create(new ResourceLocation(Materialis.modID, "rose_quartz_material"));
 
 	//eidolon stuff
 	public static final TagKey<Item> INLAYS = ItemTags.create(new ResourceLocation("forge", "inlays"));
@@ -154,6 +155,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(Tags.Items.INGOTS).addTag(REFINED_RADIANCE_INGOT);
 		tag(SHADOW_STEEL_INGOT).addOptional(new ResourceLocation("create", "shadow_steel"));
 		tag(Tags.Items.INGOTS).addTag(SHADOW_STEEL_INGOT);
+		tag(ROSE_QUARTZ_MATERIAL).addOptional(new ResourceLocation("create", "rose_quartz"))
+		.addOptional(new ResourceLocation("create", "polished_rose_quartz"))
+		.addOptional(new ResourceLocation("biomesoplenty", "rose_quartz_shard"));
 
 		//eidolon stuff
 		tag(PEWTER_INLAY).addOptional(new ResourceLocation("eidolon", "pewter_inlay"));

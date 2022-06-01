@@ -421,7 +421,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.aluminum, materialFolder, "aluminum", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.nickel, materialFolder, "nickel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.uranium, materialFolder, "uranium", true);
-		materialRecipe(withCondition(consumer, new ModLoadedCondition("create")), MaterialisMaterials.roseQuartz, ItemNameIngredient.from(new ResourceLocation("create", "rose_quartz"), new ResourceLocation("create", "polished_rose_quartz")), 1, 1, materialFolder + "rose_quartz");
+		materialRecipe(withCondition(consumer, new NotCondition(new TagEmptyCondition(MaterialisItemTags.ROSE_QUARTZ_MATERIAL.location()))), MaterialisMaterials.roseQuartz, Ingredient.of(MaterialisItemTags.ROSE_QUARTZ_MATERIAL), 1, 1, materialFolder + "rose_quartz");
 		metalMaterialRecipe(consumer, MaterialisMaterials.refinedRadiance, materialFolder, "refined_radiance", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.shadowSteel, materialFolder, "shadow_steel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.pewter, materialFolder, "pewter", true);

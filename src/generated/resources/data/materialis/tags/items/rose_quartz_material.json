@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "create:rose_quartz",
+      "required": false
+    },
+    {
+      "id": "create:polished_rose_quartz",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:rose_quartz_shard",
+      "required": false
+    }
+  ]
+}

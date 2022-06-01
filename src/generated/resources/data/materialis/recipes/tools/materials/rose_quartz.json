@@ -2,18 +2,16 @@
   "type": "tconstruct:material",
   "conditions": [
     {
-      "modid": "create",
-      "type": "forge:mod_loaded"
+      "value": {
+        "tag": "materialis:rose_quartz_material",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
     }
   ],
-  "ingredient": [
-    {
-      "item": "create:rose_quartz"
-    },
-    {
-      "item": "create:polished_rose_quartz"
-    }
-  ],
+  "ingredient": {
+    "tag": "materialis:rose_quartz_material"
+  },
   "value": 1,
   "needed": 1,
   "material": "materialis:rose_quartz"

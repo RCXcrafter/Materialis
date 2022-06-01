@@ -6,8 +6,11 @@
         "type": "tconstruct:config"
       },
       {
-        "modid": "create",
-        "type": "forge:mod_loaded"
+        "value": {
+          "tag": "materialis:rose_quartz_material",
+          "type": "forge:tag_empty"
+        },
+        "type": "forge:not"
       }
     ],
     "type": "forge:or"
