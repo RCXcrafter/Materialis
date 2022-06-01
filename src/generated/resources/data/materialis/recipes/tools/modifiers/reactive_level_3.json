@@ -1,0 +1,39 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "ars_nouveau",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "ars_nouveau:abjuration_essence"
+    },
+    {
+      "item": "ars_nouveau:conjuration_essence"
+    },
+    {
+      "item": "ars_nouveau:manipulation_essence"
+    },
+    {
+      "tag": "forge:ender_pearls"
+    },
+    {
+      "tag": "forge:ingots/cobalt"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "requirements": {
+    "name": "materialis:reactive",
+    "level": 2,
+    "error": "recipe.materialis.modifier.reactive_requirements"
+  },
+  "result": {
+    "name": "materialis:reactive",
+    "level": 1
+  },
+  "max_level": 3
+}

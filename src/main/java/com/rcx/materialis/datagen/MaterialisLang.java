@@ -368,6 +368,7 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.reactiveModifier, "Reactive",
 				"Not to be confused with radioactive",
 				"Has a chance to cast the inscribed spell on use");
+		add("recipe.materialis.modifier.reactive_requirements", "Reactive requires a different recipe for every level");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

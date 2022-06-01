@@ -32,28 +32,26 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class TinkerSpellWriteRecipe extends EnchantingApparatusRecipe {
-	
+
 	public static final RecipeSerializer<TinkerSpellWriteRecipe> SERIALIZER = new TinkerSpellWriteRecipe.Serializer();
 	public static final RecipeType<TinkerSpellWriteRecipe> SPELL_WRITE_TYPE = new ModRecipeType<>();
-	
+
 	private static class ModRecipeType<T extends Recipe<?>> implements RecipeType<T> {
-        @Override
-        public String toString() {
-            return Registry.RECIPE_TYPE.getKey(this).toString();
-        }
-    }
+		@Override
+		public String toString() {
+			return Registry.RECIPE_TYPE.getKey(this).toString();
+		}
+	}
 
 	public TinkerSpellWriteRecipe(ResourceLocation id, List<Ingredient> pedestalItems, int cost) {
 		this.pedestalItems = pedestalItems;
 		this.id = id;
 		this.sourceCost = cost;
-		Materialis.LOGGER.info("constructor1 asdfg!");
 	}
 
 	public TinkerSpellWriteRecipe(List<Ingredient> pedestalItems) {
 		this.pedestalItems = pedestalItems;
 		this.id = new ResourceLocation(Materialis.modID, "tinker_spell_write");
-		Materialis.LOGGER.info("constructor2 asdfg!");
 	}
 
 	public static final String RECIPE_ID = "tinker_spell_write";
@@ -62,13 +60,11 @@ public class TinkerSpellWriteRecipe extends EnchantingApparatusRecipe {
 	public boolean isMatch(List<ItemStack> pedestalItems, ItemStack reagent, EnchantingApparatusTile enchantingApparatusTile, @Nullable Player player) {
 		int level = ToolStack.from(reagent).getModifierLevel(MaterialisModifiers.reactiveModifier.get());
 		ItemStack parchment = getParchment(pedestalItems);
-		Materialis.LOGGER.info("ismatch called asdfg!");
 		return !parchment.isEmpty() && !CasterUtil.getCaster(parchment).getSpell().isEmpty() && level > 0 && super.isMatch(pedestalItems, reagent, enchantingApparatusTile, player);
 	}
 
 	@Override
 	public boolean doesReagentMatch(ItemStack reag) {
-		Materialis.LOGGER.info("reagent is checked asdfg!");
 		return true;
 	}
 

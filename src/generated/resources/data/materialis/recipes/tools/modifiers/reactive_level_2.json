@@ -1,0 +1,39 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "ars_nouveau",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "ars_nouveau:air_essence"
+    },
+    {
+      "tag": "forge:rods/blaze"
+    },
+    {
+      "item": "ars_nouveau:fire_essence"
+    },
+    {
+      "item": "ars_nouveau:water_essence"
+    },
+    {
+      "item": "ars_nouveau:earth_essence"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "requirements": {
+    "name": "materialis:reactive",
+    "level": 1,
+    "error": "recipe.materialis.modifier.reactive_requirements"
+  },
+  "result": {
+    "name": "materialis:reactive",
+    "level": 1
+  },
+  "max_level": 2
+}

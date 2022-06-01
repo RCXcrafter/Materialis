@@ -10,14 +10,17 @@ import com.rcx.materialis.util.PacketReactiveSwing;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.ModList;
+import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
@@ -25,14 +28,17 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.RestrictedCompoundTag;
 import slimeknights.tconstruct.library.utils.TooltipKey;
+import slimeknights.tconstruct.tools.modifiers.ability.tool.OffhandAttackModifier;
 
 public class ReactiveModifier extends Modifier {
 
 	public static boolean enabled = ModList.get().isLoaded("ars_nouveau");
 
 	public ReactiveModifier() {
-		if (enabled)
+		if (enabled) {
 			MinecraftForge.EVENT_BUS.addListener(this::leftClick);
+			MinecraftForge.EVENT_BUS.addListener(this::leftClickBlock);
+		}
 	}
 
 	@Override
@@ -49,11 +55,42 @@ public class ReactiveModifier extends Modifier {
 		}
 	}
 
+	//mainhand attack that hits nothing
 	public void recieveLeftClick(Player player) {
-		ItemStack toolStack = player.getMainHandItem();
-		castSpell(ToolStack.from(toolStack), player, toolStack, InteractionHand.MAIN_HAND);
+		if (enabled) {
+			ItemStack stack = player.getMainHandItem();
+			ToolStack tool = ToolStack.from(stack);
+			if (!tool.isBroken() && tool.getModifierLevel(this) > 0)
+				castSpell(tool, player, stack, InteractionHand.MAIN_HAND);
+		}
 	}
 
+	//offhand attack that doesn't hit an entity
+	@Override
+	public InteractionResult onToolUse(IToolStackView tool, int level, Level world, Player player, InteractionHand hand, EquipmentSlot slotType) {
+		if (enabled && !tool.isBroken() && hand == InteractionHand.OFF_HAND && OffhandCooldownTracker.isAttackReady(player) && tool.getVolatileData().getBoolean(OffhandAttackModifier.DUEL_WIELDING)) {
+			ItemStack toolStack = player.getItemBySlot(slotType);
+			if (tool instanceof ToolStack)
+				toolStack = ((ToolStack) tool).createStack();
+			castSpell(tool, player, toolStack, InteractionHand.OFF_HAND);
+		}
+		return InteractionResult.PASS;
+	}
+
+	//mainhand attack that hits a block
+	private void leftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+		if (enabled) {
+			Player player = event.getPlayer();
+			if(player.level.isClientSide)
+				return;
+			ItemStack stack = event.getItemStack();
+			ToolStack tool = ToolStack.from(stack);
+			if (!tool.isBroken() && tool.getModifierLevel(this) > 0)
+				castSpell(tool, player, stack, InteractionHand.MAIN_HAND);
+		}
+	}
+
+	//attack that hits an entity
 	@Override
 	public int afterEntityHit(IToolStackView tool, int level, ToolAttackContext context, float damageDealt) {
 		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null) {

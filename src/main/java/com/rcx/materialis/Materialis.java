@@ -3,6 +3,7 @@ package com.rcx.materialis;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
 import com.rcx.materialis.compat.TinkerToolRuneColor;
 import com.rcx.materialis.datagen.MaterialisBlockStates;
 import com.rcx.materialis.datagen.MaterialisBlockTags;
@@ -85,6 +86,9 @@ public class Materialis {
 		MaterialisModifiers.MODIFIERS.register(bus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> MaterialisClient::onConstruct);
+
+		if (ModList.get().isLoaded("ars_nouveau"))
+			ArsNouveauAPI.getInstance().getEnchantingRecipeTypes().add(TinkerSpellWriteRecipe.SPELL_WRITE_TYPE);
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);

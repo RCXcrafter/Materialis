@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:modifier_salvage",
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "modifier": "materialis:reactive",
+  "min_level": 3,
+  "max_level": 3
+}

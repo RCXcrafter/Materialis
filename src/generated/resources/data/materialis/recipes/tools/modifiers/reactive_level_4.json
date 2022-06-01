@@ -8,14 +8,22 @@
   ],
   "inputs": [
     {
-      "item": "ars_nouveau:source_gem"
+      "tag": "forge:ender_pearls"
+    },
+    {
+      "item": "ars_nouveau:wilden_tribute"
+    },
+    {
+      "item": "tconstruct:jeweled_apple"
     }
   ],
   "tools": {
     "tag": "tconstruct:modifiable"
   },
-  "slots": {
-    "upgrades": 1
+  "requirements": {
+    "name": "materialis:reactive",
+    "level": 3,
+    "error": "recipe.materialis.modifier.reactive_requirements"
   },
   "result": {
     "name": "materialis:reactive",

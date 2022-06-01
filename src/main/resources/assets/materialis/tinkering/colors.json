@@ -74,7 +74,8 @@
 		"capacitor": "#B51212",
 		"engineers_goggles": "#825638",
 		"otherworld_goggles": "#C08AC0",
-		"wrenching_hidden": "#FFFFFF"
+		"wrenching_hidden": "#FFFFFF",
+		"reactive": "#F2D91A"
 	},
 
 	"material.materialis": {

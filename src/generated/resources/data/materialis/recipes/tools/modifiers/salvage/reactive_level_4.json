@@ -3,9 +3,7 @@
   "tools": {
     "tag": "tconstruct:modifiable"
   },
-  "slots": {
-    "upgrades": 1
-  },
   "modifier": "materialis:reactive",
-  "min_level": 1
+  "min_level": 4,
+  "max_level": 4
 }

@@ -57,6 +57,7 @@ import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBui
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
@@ -688,13 +689,56 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.saveSalvage(consumer, prefix(MaterialisModifiers.otherworldGogglesModifier.getId(), salvageFolder))
 		.save(withCondition(consumer, new ModLoadedCondition("occultism")), prefix(MaterialisModifiers.otherworldGogglesModifier.getId(), modifierFolder));
 
+		//all levels of reactive ability
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.reactiveModifier)
 		.setTools(TinkerTags.Items.MODIFIABLE)
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "source_gem"))))
+		.addInput(Tags.Items.STORAGE_BLOCKS_LAPIS)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "source_gem"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "source_gem"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "source_gem"))))
+		.setSalvageLevelRange(1, 1)
+		.setMaxLevel(1)
+		.setSlots(SlotType.ABILITY, 1)
+		.saveSalvage(consumer,  wrap(MaterialisModifiers.reactiveModifier.getId(), salvageFolder, "_level_1"))
+		.save(withCondition(consumer, new ModLoadedCondition("ars_nouveau")), wrap(MaterialisModifiers.reactiveModifier.getId(), modifierFolder, "_level_1"));
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.reactiveModifier)
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "air_essence"))))
+		.addInput(Tags.Items.RODS_BLAZE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "fire_essence"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "water_essence"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "earth_essence"))))
+		.setRequirements(ModifierMatch.entry(MaterialisModifiers.reactiveModifier, 1))
+		.setRequirementsError("recipe.materialis.modifier.reactive_requirements")
+		.setSalvageLevelRange(2, 2)
+		.setMaxLevel(2)
+		.saveSalvage(consumer,  wrap(MaterialisModifiers.reactiveModifier.getId(), salvageFolder, "_level_2"))
+		.save(withCondition(consumer, new ModLoadedCondition("ars_nouveau")), wrap(MaterialisModifiers.reactiveModifier.getId(), modifierFolder, "_level_2"));
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.reactiveModifier)
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "abjuration_essence"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "conjuration_essence"))))
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "manipulation_essence"))))
+		.addInput(Tags.Items.ENDER_PEARLS)
+		.addInput(getItemTag("forge", "ingots/cobalt"))
+		.setRequirements(ModifierMatch.entry(MaterialisModifiers.reactiveModifier, 2))
+		.setRequirementsError("recipe.materialis.modifier.reactive_requirements")
+		.setSalvageLevelRange(3, 3)
+		.setMaxLevel(3)
+		.saveSalvage(consumer,  wrap(MaterialisModifiers.reactiveModifier.getId(), salvageFolder, "_level_3"))
+		.save(withCondition(consumer, new ModLoadedCondition("ars_nouveau")), wrap(MaterialisModifiers.reactiveModifier.getId(), modifierFolder, "_level_3"));
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.reactiveModifier)
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.addInput(Tags.Items.ENDER_PEARLS)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("ars_nouveau", "wilden_tribute"))))
+		.addInput(TinkerCommons.jeweledApple)
+		.setRequirements(ModifierMatch.entry(MaterialisModifiers.reactiveModifier, 3))
+		.setRequirementsError("recipe.materialis.modifier.reactive_requirements")
+		.setSalvageLevelRange(4, 4)
 		.setMaxLevel(4)
-		.setSlots(SlotType.UPGRADE, 1)
-		.saveSalvage(consumer, prefix(MaterialisModifiers.reactiveModifier.getId(), salvageFolder))
-		.save(withCondition(consumer, new ModLoadedCondition("ars_nouveau")), prefix(MaterialisModifiers.reactiveModifier.getId(), modifierFolder));
+		.saveSalvage(consumer,  wrap(MaterialisModifiers.reactiveModifier.getId(), salvageFolder, "_level_4"))
+		.save(withCondition(consumer, new ModLoadedCondition("ars_nouveau")), wrap(MaterialisModifiers.reactiveModifier.getId(), modifierFolder, "_level_4"));
 
 		//texture recipes
 		//Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));
