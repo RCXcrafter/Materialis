@@ -58,8 +58,8 @@ public class ElvenBeamModifier extends Modifier {
 
 	@Override
 	public int afterEntityHit(IToolStackView tool, int level, ToolAttackContext context, float damageDealt) {
-		if (enabled && context.getAttacker() instanceof Player)
-			BurstHandler.trySpawnBurst((Player) context.getAttacker(), InteractionHand.MAIN_HAND, false, true);
+		if (enabled && context.getAttacker() instanceof Player && context.isFullyCharged())
+			BurstHandler.trySpawnBurst((Player) context.getAttacker(), InteractionHand.MAIN_HAND, false, false);
 		return 0;
 	}
 
