@@ -58,10 +58,9 @@ public class ReactiveModifier extends Modifier {
 	//mainhand attack that hits nothing
 	public void recieveLeftClick(Player player) {
 		if (enabled) {
-			ItemStack stack = player.getMainHandItem();
-			ToolStack tool = ToolStack.from(stack);
-			if (!tool.isBroken() && tool.getModifierLevel(this) > 0)
-				castSpell(tool, player, stack, InteractionHand.MAIN_HAND);
+			ToolStack tool = getHeldTool(player, InteractionHand.MAIN_HAND);
+			if (tool != null && !tool.isBroken() && tool.getModifierLevel(this) > 0)
+				castSpell(tool, player, player.getMainHandItem(), InteractionHand.MAIN_HAND);
 		}
 	}
 
@@ -83,10 +82,10 @@ public class ReactiveModifier extends Modifier {
 			Player player = event.getPlayer();
 			if(player.level.isClientSide)
 				return;
-			ItemStack stack = event.getItemStack();
-			ToolStack tool = ToolStack.from(stack);
-			if (!tool.isBroken() && tool.getModifierLevel(this) > 0)
-				castSpell(tool, player, stack, InteractionHand.MAIN_HAND);
+
+			ToolStack tool = getHeldTool(player, InteractionHand.MAIN_HAND);
+			if (tool != null && !tool.isBroken() && tool.getModifierLevel(this) > 0)
+				castSpell(tool, player, event.getItemStack(), InteractionHand.MAIN_HAND);
 		}
 	}
 
