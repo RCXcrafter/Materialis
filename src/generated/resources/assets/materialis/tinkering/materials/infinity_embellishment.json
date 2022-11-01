@@ -1,0 +1,34 @@
+{
+  "fallbacks": [
+    "metal"
+  ],
+  "color": "FFFFFF",
+  "luminosity": 15,
+  "generator": {
+    "transformer": {
+      "type": "tconstruct:grey_to_sprite",
+      "palette": [
+        {
+          "grey": 0,
+          "color": "FF000000"
+        },
+        {
+          "grey": 63,
+          "path": "materialis:material/infinity_loop_dark"
+        },
+        {
+          "grey": 178,
+          "path": "materialis:material/infinity_loop_medium"
+        },
+        {
+          "grey": 255,
+          "path": "materialis:material/infinity_loop_light"
+        }
+      ]
+    },
+    "supportedStats": [
+      "tconstruct:plate"
+    ],
+    "ignoreMaterialStats": false
+  }
+}

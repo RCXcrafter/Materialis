@@ -15,6 +15,7 @@
       "required": false
     },
     "#forge:storage_blocks/alfsteel",
-    "#forge:storage_blocks/flux_infused"
+    "#forge:storage_blocks/flux_infused",
+    "#forge:storage_blocks/crystal_matrix"
   ]
 }

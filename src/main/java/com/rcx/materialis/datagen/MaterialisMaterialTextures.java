@@ -1,12 +1,14 @@
 package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
+import com.rcx.materialis.util.GreyToFittingSpriteTransformer;
 
 import net.minecraft.resources.ResourceLocation;
 import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpriteProvider;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
+import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 
 public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 
@@ -174,6 +176,23 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF781B12).addARGB(102, 0xFFB55B20).addARGB(140, 0xFFD98931).addARGB(178, 0xFFEFB544).addARGB(216, 0xFFF6D55F).addARGB(255, 0xFFFFF3B8).build());
+		//avaritia materials
+		buildMaterial(MaterialisMaterials.crystalMatrix)
+		.statType(ExtraMaterialStats.ID).statType(TinkerPartSpriteProvider.PLATE)
+		.fallbacks("crystal", "rock")
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF289992).addARGB(102, 0xFF39B8B0).addARGB(140, 0xFF54D8D0).addARGB(178, 0xFF78F1E8).addARGB(216, 0xFFA5FFF9).addARGB(255, 0xFFD9FFFD).build());
+		buildMaterial(MaterialisMaterials.neutronium)
+		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
+		.fallbacks("metal")
+		.transformer(GreyToSpriteTransformer.builderFromBlack().addTexture(63, getTexture("material/neutronium_outline")).addTexture(102, getTexture("material/neutronium_outline")).addARGB(140, 0xFF5B5B5B).addARGB(178, 0xFF444444).addARGB(216, 0xFF303030).addARGB(255, 0xFF000000).build());
+		buildMaterial(MaterialisMaterials.infinity)
+		.meleeHarvest()//.statType(TinkerPartSpriteProvider.PLATE)
+		.fallbacks("metal")
+		.transformer(GreyToFittingSpriteTransformer.builderFromBlack().addTexture(63, getTexture("material/infinity_dark")).addTexture(178, getTexture("material/infinity_medium")).addTexture(255, getTexture("material/infinity_light")).build());
+		buildMaterial(MaterialisMaterials.infinityEmbellishment)
+		.statType(TinkerPartSpriteProvider.PLATE)
+		.fallbacks("metal")
+		.transformer(GreyToSpriteTransformer.builderFromBlack().addTexture(63, getTexture("material/infinity_loop_dark")).addTexture(178, getTexture("material/infinity_loop_medium")).addTexture(255, getTexture("material/infinity_loop_light")).build());
 	}
 
 	public static ResourceLocation getTexture(String path) {

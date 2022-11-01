@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "materialis:molten_froststeel",
-    "amount": 360
+    "amount": 360,
+    "unit_size": 10
   },
   "temperature": 860,
   "time": 124

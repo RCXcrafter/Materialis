@@ -1,5 +1,7 @@
 package com.rcx.materialis;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,6 +26,8 @@ import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.OtherworldlyModifier;
+import com.rcx.materialis.util.GreyToFittingSpriteTransformer;
+import com.rcx.materialis.util.InfinityTier;
 import com.rcx.materialis.util.MaterialisPacketHandler;
 import com.rcx.materialis.util.TinkerSpellWriteRecipe;
 import com.rcx.materialis.util.TinkerToolFluxed;
@@ -34,11 +38,13 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -101,6 +107,12 @@ public class Materialis {
 		if (ModList.get().isLoaded("quark"))
 			ToolCapabilityProvider.register(TinkerToolRuneColor::new);
 		ToolCapabilityProvider.register(TinkerToolFluxed::new);
+		if (!TierSortingRegistry.isTierSorted(InfinityTier.instance)) {
+			if (TierSortingRegistry.getSortedTiers().size() != 0)
+				TierSortingRegistry.registerTier(InfinityTier.instance, new ResourceLocation(Materialis.modID + ":infinity"), List.of(TierSortingRegistry.getSortedTiers().get(TierSortingRegistry.getSortedTiers().size() - 1)), List.of());
+			else
+				TierSortingRegistry.registerTier(InfinityTier.instance, new ResourceLocation(Materialis.modID + ":infinity"), List.of(Tiers.NETHERITE), List.of());
+		}
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
@@ -118,6 +130,7 @@ public class Materialis {
 
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
+		TierSortingRegistry.registerTier(InfinityTier.instance, new ResourceLocation(Materialis.modID + ":infinity"), List.of(Tiers.NETHERITE), List.of());
 		DataGenerator gen = event.getGenerator();
 
 		if (event.includeClient()) {
@@ -163,6 +176,7 @@ public class Materialis {
 					((IReloadableResourceManager) manager).registerReloadListener(ExosuitModel.RELOAD_LISTENER);
 				}
 			}*/
+			GreyToFittingSpriteTransformer.init();
 		}
 
 		@SubscribeEvent

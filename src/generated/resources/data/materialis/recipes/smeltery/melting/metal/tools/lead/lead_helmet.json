@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "tconstruct:molten_lead",
-    "amount": 450
+    "amount": 450,
+    "unit_size": 10
   },
   "temperature": 330,
   "time": 97

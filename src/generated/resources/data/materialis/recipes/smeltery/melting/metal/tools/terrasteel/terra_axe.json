@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "materialis:molten_terrasteel",
-    "amount": 360
+    "amount": 360,
+    "unit_size": 10
   },
   "temperature": 1280,
   "time": 149

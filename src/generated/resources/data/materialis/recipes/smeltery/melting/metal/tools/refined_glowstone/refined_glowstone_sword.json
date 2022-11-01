@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "tconstruct:molten_refined_glowstone",
-    "amount": 180
+    "amount": 180,
+    "unit_size": 10
   },
   "temperature": 825,
   "time": 86

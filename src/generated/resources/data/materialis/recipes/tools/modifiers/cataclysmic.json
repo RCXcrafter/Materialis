@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "avaritia",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "avaritia:infinity_catalyst"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "result": {
+    "name": "materialis:cataclysmic",
+    "level": 1
+  }
+}

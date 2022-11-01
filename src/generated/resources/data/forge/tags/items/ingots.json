@@ -7,6 +7,9 @@
     "#forge:ingots/starmetal",
     "#forge:ingots/pink_slime",
     "#forge:ingots/alfsteel",
-    "#forge:ingots/flux_infused"
+    "#forge:ingots/flux_infused",
+    "#forge:ingots/crystal_matrix",
+    "#forge:ingots/neutronium",
+    "#forge:ingots/infinity"
   ]
 }

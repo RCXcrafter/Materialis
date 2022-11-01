@@ -11,6 +11,7 @@ import com.rcx.materialis.MaterialisResources.FluidWithBlockNBucket;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.runtime.IIngredientManager;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.core.Registry;
@@ -55,8 +56,8 @@ public class MaterialisJEIPlugin implements IModPlugin {
 	 * @param bucket   Fluid bucket to remove
 	 */
 	public static void removeFluid(IIngredientManager manager, Fluid fluid, Item bucket) {
-		manager.removeIngredientsAtRuntime(VanillaTypes.FLUID, Collections.singleton(new FluidStack(fluid, FluidAttributes.BUCKET_VOLUME)));
-		manager.removeIngredientsAtRuntime(VanillaTypes.ITEM, Collections.singleton(new ItemStack(bucket)));
+		manager.removeIngredientsAtRuntime(ForgeTypes.FLUID_STACK, Collections.singleton(new FluidStack(fluid, FluidAttributes.BUCKET_VOLUME)));
+		manager.removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, Collections.singleton(new ItemStack(bucket)));
 	}
 
 	/**
@@ -67,7 +68,7 @@ public class MaterialisJEIPlugin implements IModPlugin {
 	public static void optionalCast(IIngredientManager manager, CastItemObject cast) {
 		ITag<Item> tag = getTag(new ResourceLocation("forge", cast.getName().getPath() + "s"));
 		if (tag == null || tag.isEmpty()) {
-			manager.removeIngredientsAtRuntime(VanillaTypes.ITEM, cast.values().stream().map(ItemStack::new).collect(Collectors.toList()));
+			manager.removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, cast.values().stream().map(ItemStack::new).collect(Collectors.toList()));
 		}
 	}
 

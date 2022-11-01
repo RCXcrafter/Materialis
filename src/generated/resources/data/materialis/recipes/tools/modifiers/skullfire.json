@@ -1,0 +1,36 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "avaritia",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:rods/blaze"
+    },
+    {
+      "tag": "forge:nether_stars"
+    },
+    {
+      "tag": "forge:rods/blaze"
+    },
+    {
+      "tag": "forge:storage_blocks/crystal_matrix"
+    },
+    {
+      "tag": "forge:storage_blocks/crystal_matrix"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/melee"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "result": {
+    "name": "materialis:skullfire",
+    "level": 1
+  }
+}

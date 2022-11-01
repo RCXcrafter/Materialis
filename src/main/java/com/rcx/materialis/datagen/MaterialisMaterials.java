@@ -1,6 +1,7 @@
 package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
+import com.rcx.materialis.util.InfinityTier;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -89,6 +90,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	//redstone arsenal materials
 	public static final MaterialId fluxInfused = createMaterial("flux_infused");
 
+	//avaritia materials
+	public static final MaterialId crystalMatrix = createMaterial("crystal_matrix");
+	public static final MaterialId neutronium = createMaterial("neutronium");
+	public static final MaterialId infinity = createMaterial("infinity");
+	public static final MaterialId infinityEmbellishment = createMaterial("infinity_embellishment");
+
 	public MaterialisMaterials(DataGenerator gen) {
 		super(gen);
 	}
@@ -151,6 +158,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(awakenedDraconium, 4, ORDER_GENERAL + ORDER_COMPAT);
 		//redstone arsenal materials
 		addCompatMetalMaterial(fluxInfused, 3, ORDER_GENERAL + ORDER_COMPAT);
+		//avaritia materials
+		addMaterial(crystalMatrix, 4, ORDER_GENERAL + ORDER_BINDING, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/crystal_matrix"))));
+		addMaterial(neutronium, 4, ORDER_WEAPON + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/neutronium"))));
+		addMaterial(infinity, 4, ORDER_SPECIAL + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/infinity"))));
+		addMaterial(infinityEmbellishment, 4, ORDER_SPECIAL + ORDER_COMPAT, false, true, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition("forge:ingots/infinity"))));
 	}
 
 	private static MaterialId createMaterial(String name) {
@@ -221,6 +233,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(awakenedDraconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxburnerModifier, 1));
 			//redstone arsenal materials
 			addDefaultTraits(fluxInfused, MaterialisModifiers.fluxripperModifier, MaterialisModifiers.fluxburnerModifier);
+			//avaritia materials
+			addDefaultTraits(crystalMatrix, MaterialisModifiers.crystallineModifier);
+			addDefaultTraits(neutronium, MaterialisModifiers.supermassiveModifier);
+			addDefaultTraits(infinity, MaterialisModifiers.cataclysmicModifier, MaterialisModifiers.cosmicUnbreakableModifier, MaterialisModifiers.instakillModifier, MaterialisModifiers.instamineModifier, MaterialisModifiers.bedrockBreakerModifier, MaterialisModifiers.cosmicLuckModifier);
+			noTraits(infinityEmbellishment);
 		}
 	}
 
@@ -288,6 +305,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(awakenedDraconium, new HeadMaterialStats(1500, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1f, 1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			//redstone arsenal materials
 			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
+			//avaritia materials
+			addMaterialStats(crystalMatrix, ExtraMaterialStats.DEFAULT);
+			addMaterialStats(neutronium, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(infinity, new HeadMaterialStats(9999, 999f, InfinityTier.instance, 99f), new HandleMaterialStats(9.99f, 9.99f, 9.99f, 9.99f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(infinityEmbellishment);
 		}
 	}
 }

@@ -11,14 +11,16 @@
   },
   "result": {
     "fluid": "materialis:molten_psimetal",
-    "amount": 90
+    "amount": 90,
+    "unit_size": 10
   },
   "temperature": 750,
   "time": 59,
   "byproducts": [
     {
       "fluid": "tconstruct:molten_gold",
-      "amount": 90
+      "amount": 90,
+      "unit_size": 10
     }
   ]
 }

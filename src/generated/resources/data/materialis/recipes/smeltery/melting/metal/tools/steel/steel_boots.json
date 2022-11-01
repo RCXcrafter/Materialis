@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "tconstruct:molten_steel",
-    "amount": 360
+    "amount": 360,
+    "unit_size": 10
   },
   "temperature": 950,
   "time": 130

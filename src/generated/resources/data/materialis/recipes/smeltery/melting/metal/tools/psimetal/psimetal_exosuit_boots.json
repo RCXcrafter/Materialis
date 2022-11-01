@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "materialis:molten_psimetal",
-    "amount": 180
+    "amount": 180,
+    "unit_size": 10
   },
   "temperature": 750,
   "time": 83

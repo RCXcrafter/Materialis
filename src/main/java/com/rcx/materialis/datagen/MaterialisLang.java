@@ -137,11 +137,18 @@ public class MaterialisLang extends LanguageProvider {
 		//draconic evolution stuff
 		addMaterial(MaterialisMaterials.draconium, "Draconium", "", "Has a 10% chance of using 200 RF instead of durability per level");
 		add("material.materialis.draconium.format", "Wyvern %s");
-		addMaterial(MaterialisMaterials.awakenedDraconium, "Awakened Draconium", "", "increases mining speed with 2.5 and attack damage with 1.5 per level, costs 100 RF per level");
+		addMaterial(MaterialisMaterials.awakenedDraconium, "Awakened Draconium", "", "Increases mining speed with 2.5 and attack damage with 1.5 per level, costs 100 RF per level");
 		add("material.materialis.draconium_awakened.format", "Draconic %s");
 
 		//redstone arsenal stuff
-		addMaterial(MaterialisMaterials.fluxInfused, "Flux-Infused", "", "increases mining speed with 2.5 and attack damage with 1.5 per level, costs 100 RF per level");
+		addMaterial(MaterialisMaterials.fluxInfused, "Flux-Infused", "", "Increases mining speed with 2.5 and attack damage with 1.5 per level, costs 100 RF per level");
+
+		//avaritia stuff
+		addMaterial(MaterialisMaterials.crystalMatrix, "Crystal Matrix", "", "Adds 50% mining speed and attack damage per level");
+		addMaterial(MaterialisMaterials.neutronium, "Neutronium", "", "Adds 150% knockback per level");
+		addMaterial(MaterialisMaterials.infinity, "Infinity", "", "");
+		addMaterial(MaterialisMaterials.infinityEmbellishment, "Infinity", "", "");
+		add("stat.tconstruct.harvest_tier.materialis.infinity", "Infinity");
 
 		//modifiers
 		addModifier(MaterialisModifiers.enhancedQuartzModifier, "Enhanced",
@@ -369,6 +376,33 @@ public class MaterialisLang extends LanguageProvider {
 				"Not to be confused with radioactive",
 				"Has a chance to cast the inscribed spell on use");
 		add("recipe.materialis.modifier.reactive_requirements", "Reactive requires a different recipe for every level");
+		addModifier(MaterialisModifiers.crystallineModifier, "Crystalline",
+				"Refractive!",
+				"Adds 50% extra mining speed and attack damage");
+		addModifier(MaterialisModifiers.supermassiveModifier, "Supermassive",
+				"You set my soul alight",
+				"Greatly increases the amount of knockback dealt to enemies");
+		addModifier(MaterialisModifiers.instamineModifier, "Instamine",
+				"Talk about speedmining",
+				"Blocks instantly break when hit");
+		addModifier(MaterialisModifiers.instakillModifier, "Instakill",
+				"Headshot!",
+				"Enemies instantly die when attacked");
+		addModifier(MaterialisModifiers.cosmicLuckModifier, "Luck X",
+				"Flamboyant!",
+				"Gives you many more nice things when mining or killing mobs!");
+		addModifier(MaterialisModifiers.cosmicUnbreakableModifier, "Unbreakable",
+				"Frozen state!",
+				"Tool no longer takes damage from normal usage");
+		addModifier(MaterialisModifiers.bedrockBreakerModifier, "Bedrock Breaker",
+				"Break the unbreakable",
+				"Allows the tool to harvest bedrock");
+		addModifier(MaterialisModifiers.cataclysmicModifier, "Cataclysmic",
+				"Absolutely ludicrous!",
+				"Adds 5 extra upgrades and 1 ability");
+		addModifier(MaterialisModifiers.skullfireModifire, "Skullfire",
+				"Turn the lights out",
+				"Beheads skeletons and scorches them black");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "tconstruct:molten_silver",
-    "amount": 360
+    "amount": 360,
+    "unit_size": 10
   },
   "temperature": 790,
   "time": 120

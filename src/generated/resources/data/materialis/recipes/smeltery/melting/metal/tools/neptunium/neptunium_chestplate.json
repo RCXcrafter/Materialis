@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "materialis:molten_neptunium",
-    "amount": 720
+    "amount": 720,
+    "unit_size": 10
   },
   "temperature": 1400,
   "time": 219

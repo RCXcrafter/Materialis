@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "tconstruct:molten_osmium",
-    "amount": 90
+    "amount": 90,
+    "unit_size": 10
   },
   "temperature": 975,
   "time": 66

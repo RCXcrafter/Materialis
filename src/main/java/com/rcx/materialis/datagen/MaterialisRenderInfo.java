@@ -64,6 +64,11 @@ public class MaterialisRenderInfo extends AbstractMaterialRenderInfoProvider {
 		buildRenderInfo(MaterialisMaterials.awakenedDraconium).color(0xFF8800);
 		//redstone arsenal materials
 		buildRenderInfo(MaterialisMaterials.fluxInfused).color(0xFFC149);
+		//avaritia materials
+		buildRenderInfo(MaterialisMaterials.crystalMatrix).color(0x79F2E9).luminosity(1);
+		buildRenderInfo(MaterialisMaterials.neutronium).color(0x3F3F3F);
+		buildRenderInfo(MaterialisMaterials.infinity).color(0xFFFFFF).luminosity(15);
+		buildRenderInfo(MaterialisMaterials.infinityEmbellishment).color(0xFFFFFF).luminosity(15);
 	}
 
 	@Override

@@ -101,6 +101,16 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	public static final TagKey<Item> GEARS = ItemTags.create(new ResourceLocation("forge", "gears"));
 	public static final TagKey<Item> FLUX_INFUSED_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/flux_infused"));
 
+	//avaritia stuff
+	public static final TagKey<Item> CRYSTAL_MATRIX_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/crystal_matrix"));
+	public static final TagKey<Item> CRYSTAL_MATRIX_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/crystal_matrix"));
+	public static final TagKey<Item> NEUTRONIUM_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/neutronium"));
+	public static final TagKey<Item> NEUTRONIUM_NUGGET = ItemTags.create(new ResourceLocation("forge", "nuggets/neutronium"));
+	public static final TagKey<Item> NEUTRONIUM_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/neutronium"));
+	public static final TagKey<Item> INFINITY_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/infinity"));
+	public static final TagKey<Item> INFINITY_BLOCK = ItemTags.create(new ResourceLocation("forge", "storage_blocks/infinity"));
+
+
 	public MaterialisItemTags(DataGenerator gen, BlockTagsProvider blockTags, ExistingFileHelper existingFileHelper) {
 		super(gen, blockTags, Materialis.modID, existingFileHelper);
 	}
@@ -233,6 +243,23 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(FLUX_INFUSED_BLOCK).addOptional(new ResourceLocation("redstone_arsenal", "flux_metal_block"));
 		tag(Tags.Items.STORAGE_BLOCKS).addTag(FLUX_INFUSED_BLOCK);
 		tag(ANVIL_METAL).addTag(FLUX_INFUSED_BLOCK);
+
+		//avaritia stuff
+		tag(CRYSTAL_MATRIX_INGOT).addOptional(new ResourceLocation("avaritia", "crystal_matrix_ingot"));
+		tag(Tags.Items.INGOTS).addTag(CRYSTAL_MATRIX_INGOT);
+		tag(CRYSTAL_MATRIX_BLOCK).addOptional(new ResourceLocation("avaritia", "crystal_matrix_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(CRYSTAL_MATRIX_BLOCK);
+		tag(ANVIL_METAL).addTag(CRYSTAL_MATRIX_BLOCK);
+		tag(NEUTRONIUM_INGOT).addOptional(new ResourceLocation("avaritia", "neutronium_ingot"));
+		tag(Tags.Items.INGOTS).addTag(NEUTRONIUM_INGOT);
+		tag(NEUTRONIUM_NUGGET).addOptional(new ResourceLocation("avaritia", "neutron_nugget"));
+		tag(Tags.Items.NUGGETS).addTag(NEUTRONIUM_NUGGET);
+		tag(NEUTRONIUM_BLOCK).addOptional(new ResourceLocation("avaritia", "neutronium_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(NEUTRONIUM_BLOCK);
+		tag(INFINITY_INGOT).addOptional(new ResourceLocation("avaritia", "infinity_ingot"));
+		tag(Tags.Items.INGOTS).addTag(INFINITY_INGOT);
+		tag(INFINITY_BLOCK).addOptional(new ResourceLocation("avaritia", "infinity_block"));
+		tag(Tags.Items.STORAGE_BLOCKS).addTag(INFINITY_BLOCK);
 	}
 
 	@SafeVarargs

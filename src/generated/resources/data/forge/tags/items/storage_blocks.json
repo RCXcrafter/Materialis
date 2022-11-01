@@ -7,6 +7,9 @@
     "#forge:storage_blocks/raw_froststeel",
     "#forge:storage_blocks/alfsteel",
     "#forge:storage_blocks/raw_elementium",
-    "#forge:storage_blocks/flux_infused"
+    "#forge:storage_blocks/flux_infused",
+    "#forge:storage_blocks/crystal_matrix",
+    "#forge:storage_blocks/neutronium",
+    "#forge:storage_blocks/infinity"
   ]
 }

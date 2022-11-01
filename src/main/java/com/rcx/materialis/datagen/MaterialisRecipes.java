@@ -454,6 +454,11 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.draconium, materialFolder, "draconium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.awakenedDraconium, materialFolder, "draconium_awakened", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.fluxInfused, materialFolder, "flux_infused", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.crystalMatrix, materialFolder, "crystal_matrix", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.neutronium, materialFolder, "neutronium", true);
+		//metalMaterialRecipe(consumer, MaterialisMaterials.infinity, materialFolder, "infinity", true);
+		materialRecipe(withCondition(consumer, new NotCondition(new TagEmptyCondition(MaterialisItemTags.INFINITY_INGOT.location()))), MaterialisMaterials.infinity, Ingredient.of(MaterialisItemTags.INFINITY_INGOT), 1, 9, materialFolder + "infinity_ingot");
+		materialRecipe(withCondition(consumer, new NotCondition(new TagEmptyCondition(MaterialisItemTags.INFINITY_BLOCK.location()))), MaterialisMaterials.infinity, Ingredient.of(MaterialisItemTags.INFINITY_BLOCK), 1, 1, materialFolder + "infinity_block");
 
 		//material casting
 		materialMeltingCasting(consumer, MaterialisMaterials.fairy, MaterialisResources.FAIRY_FLUID.OBJECT, materialFolder);
@@ -740,6 +745,23 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.saveSalvage(consumer,  wrap(MaterialisModifiers.reactiveModifier.getId(), salvageFolder, "_level_4"))
 		.save(withCondition(consumer, new ModLoadedCondition("ars_nouveau")), wrap(MaterialisModifiers.reactiveModifier.getId(), modifierFolder, "_level_4"));
 
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.cataclysmicModifier)
+		.setTools(TinkerTags.Items.MODIFIABLE)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("avaritia", "infinity_catalyst"))))
+		.saveSalvage(consumer, prefix(MaterialisModifiers.cataclysmicModifier.getId(), salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("avaritia")), prefix(MaterialisModifiers.cataclysmicModifier.getId(), modifierFolder));
+
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.skullfireModifire)
+		.setTools(TinkerTags.Items.MELEE)
+		.addInput(Tags.Items.RODS_BLAZE)
+		.addInput(Tags.Items.NETHER_STARS)
+		.addInput(Tags.Items.RODS_BLAZE)
+		.addInput(MaterialisItemTags.CRYSTAL_MATRIX_BLOCK)
+		.addInput(MaterialisItemTags.CRYSTAL_MATRIX_BLOCK)
+		.setSlots(SlotType.ABILITY, 1)
+		.saveSalvage(consumer, prefix(MaterialisModifiers.skullfireModifire.getId(), salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("avaritia")), prefix(MaterialisModifiers.skullfireModifire.getId(), modifierFolder));
+
 		//texture recipes
 		//Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));
 		List<Item> armorItems = new ArrayList<Item>();
@@ -799,6 +821,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		plateTexture(consumer, armor, MaterialisMaterials.draconium, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.awakenedDraconium, true, slotlessFolder);
 		plateTexture(consumer, armor, MaterialisMaterials.fluxInfused, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.crystalMatrix, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.neutronium, true, slotlessFolder);
+		plateTexture(consumer, armor, MaterialisMaterials.infinityEmbellishment, "ingots/infinity", true, slotlessFolder);
 
 		Ingredient slimesuit = Ingredient.of(TinkerTools.slimesuit.values().stream().map(ItemStack::new));
 		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment, MaterialisMaterials.pinkSlimeball.toString())
@@ -916,18 +941,18 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 			ResourceLocation toolLocation = new ResourceLocation(value.toolID);
 			if (name.byproduct == null) {
 				MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.fluid, (int) (FluidValues.INGOT * value.ingotValue))
-				.setDamagable()
+				.setDamagable(FluidValues.NUGGET)
 				.save(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
 			} else {
 				if (!name.byproductIsMain) {
 					MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.fluid, (int) (FluidValues.INGOT * value.ingotValue))
 					.addByproduct(name.byproduct)
-					.setDamagable()
+					.setDamagable(FluidValues.NUGGET, FluidValues.NUGGET)
 					.save(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
 				} else {
 					MeltingRecipeBuilder.melting(ItemNameIngredient.from(toolLocation), name.byproduct.getFluid(), name.byproduct.getAmount())
 					.addByproduct(new FluidStack(name.fluid, (int) (FluidValues.INGOT * value.ingotValue)))
-					.setDamagable()
+					.setDamagable(FluidValues.NUGGET, FluidValues.NUGGET)
 					.save(consumer, modResource("smeltery/melting/metal/tools/" + name.name + "/" + toolLocation.getPath()));
 				}
 			}

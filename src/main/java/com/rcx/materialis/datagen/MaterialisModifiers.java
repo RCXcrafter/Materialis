@@ -71,6 +71,13 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> fluxburnerModifier = MODIFIERS.register("fluxburner", FluxburnerModifier::new);
 	public static final StaticModifier<Modifier> fluxshieldModifier = MODIFIERS.register("fluxshield", FluxshieldModifier::new);
 	public static final StaticModifier<Modifier> powerHungryModifier = MODIFIERS.register("power_hungry", PowerHungryModifier::new);
+	public static final StaticModifier<Modifier> crystallineModifier = MODIFIERS.register("crystalline", CrystallineModifier::new);
+	public static final StaticModifier<Modifier> supermassiveModifier = MODIFIERS.register("supermassive", SupermassiveModifier::new);
+	public static final StaticModifier<Modifier> cosmicUnbreakableModifier = MODIFIERS.register("cosmic_unbreakable", CosmicUnbreakableModifier::new);
+	public static final StaticModifier<Modifier> instamineModifier = MODIFIERS.register("instamine", InstamineModifier::new);
+	public static final StaticModifier<Modifier> instakillModifier = MODIFIERS.register("instakill", InstakillModifier::new);
+	public static final StaticModifier<Modifier> bedrockBreakerModifier = MODIFIERS.register("bedrock_breaker", BedrockBreakerModifier::new);
+	public static final StaticModifier<Modifier> cosmicLuckModifier = MODIFIERS.register("cosmic_luck", CosmicLuckModifier::new);
 
 	//upgrades & abilities
 	public static final StaticModifier<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);
@@ -91,6 +98,8 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> engineersGogglesModifier = MODIFIERS.register("engineers_goggles", EngineersGogglesModifier::new);
 	public static final StaticModifier<Modifier> otherworldGogglesModifier = MODIFIERS.register("otherworld_goggles", OtherworldGogglesModifier::new);
 	public static final StaticModifier<ReactiveModifier> reactiveModifier = MODIFIERS.register("reactive", ReactiveModifier::new);
+	public static final StaticModifier<Modifier> cataclysmicModifier = MODIFIERS.register("cataclysmic", CataclysmicModifier::new);
+	public static final StaticModifier<Modifier> skullfireModifire = MODIFIERS.register("skullfire", SkullfireModifire::new);
 
 	//internal modifiers
 	public static final StaticModifier<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(Integer.MIN_VALUE + 50));

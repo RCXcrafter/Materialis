@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "materialis:molten_elementium",
-    "amount": 270
+    "amount": 270,
+    "unit_size": 10
   },
   "temperature": 1160,
   "time": 123

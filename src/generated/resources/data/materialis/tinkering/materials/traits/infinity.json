@@ -1,0 +1,28 @@
+{
+  "default": [
+    {
+      "name": "materialis:cataclysmic",
+      "level": 1
+    },
+    {
+      "name": "materialis:cosmic_unbreakable",
+      "level": 1
+    },
+    {
+      "name": "materialis:instakill",
+      "level": 1
+    },
+    {
+      "name": "materialis:instamine",
+      "level": 1
+    },
+    {
+      "name": "materialis:bedrock_breaker",
+      "level": 1
+    },
+    {
+      "name": "materialis:cosmic_luck",
+      "level": 1
+    }
+  ]
+}

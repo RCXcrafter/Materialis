@@ -11,7 +11,8 @@
   },
   "result": {
     "fluid": "tconstruct:molten_refined_obsidian",
-    "amount": 90
+    "amount": 90,
+    "unit_size": 10
   },
   "temperature": 1475,
   "time": 80
