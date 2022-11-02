@@ -29,8 +29,14 @@
   "slots": {
     "abilities": 1
   },
+  "requirements": {
+    "name": "tconstruct:severing",
+    "level": 5,
+    "error": "recipe.materialis.modifier.skullfire_requirements"
+  },
   "result": {
     "name": "materialis:skullfire",
     "level": 1
-  }
+  },
+  "max_level": 1
 }

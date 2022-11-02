@@ -758,7 +758,10 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(Tags.Items.RODS_BLAZE)
 		.addInput(MaterialisItemTags.CRYSTAL_MATRIX_BLOCK)
 		.addInput(MaterialisItemTags.CRYSTAL_MATRIX_BLOCK)
+		.setRequirements(ModifierMatch.entry(TinkerModifiers.severing, 5))
+		.setRequirementsError("recipe.materialis.modifier.skullfire_requirements")
 		.setSlots(SlotType.ABILITY, 1)
+		.setMaxLevel(1)
 		.saveSalvage(consumer, prefix(MaterialisModifiers.skullfireModifire.getId(), salvageFolder))
 		.save(withCondition(consumer, new ModLoadedCondition("avaritia")), prefix(MaterialisModifiers.skullfireModifire.getId(), modifierFolder));
 

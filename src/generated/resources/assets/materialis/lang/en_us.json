@@ -427,6 +427,7 @@
   "recipe.materialis.modifier.pipe_wrenching_requirements": "Pipe Wrenching requires Wrenching to apply",
   "recipe.materialis.modifier.reactive_requirements": "Reactive requires a different recipe for every level",
   "recipe.materialis.modifier.runed_requirements": "Runed requires Shiny to apply",
+  "recipe.materialis.modifier.skullfire_requirements": "Skullfire requires Severing V to apply",
   "recipe.materialis.modifier.thermal_wrenching_requirements": "Thermal Wrenching requires Wrenching to apply",
   "recipe.materialis.remove_modifier.spell_slot_not_empty": "This change removes a socket that currently contains a spell",
   "stat.tconstruct.harvest_tier.materialis.infinity": "Infinity",

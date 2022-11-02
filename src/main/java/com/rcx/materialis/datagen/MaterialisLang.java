@@ -403,6 +403,7 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.skullfireModifire, "Skullfire",
 				"Turn the lights out",
 				"Beheads skeletons and scorches them black");
+		add("recipe.materialis.modifier.skullfire_requirements", "Skullfire requires Severing V to apply");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {
