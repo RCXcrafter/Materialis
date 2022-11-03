@@ -1,0 +1,38 @@
+{
+  "type": "create:mixing",
+  "conditions": [
+    {
+      "prop": "chromatic_recipe",
+      "type": "materialis:config"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "item": "create:powdered_obsidian"
+    },
+    {
+      "item": "create:powdered_obsidian"
+    },
+    {
+      "item": "create:powdered_obsidian"
+    },
+    {
+      "item": "create:polished_rose_quartz"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:chromatic_compound"
+    }
+  ],
+  "heatRequirement": "superheated"
+}

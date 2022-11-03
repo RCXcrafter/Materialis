@@ -6,11 +6,20 @@
         "type": "tconstruct:config"
       },
       {
-        "value": {
-          "tag": "forge:ingots/refined_radiance",
-          "type": "forge:tag_empty"
-        },
-        "type": "forge:not"
+        "values": [
+          {
+            "value": {
+              "tag": "forge:ingots/refined_radiance",
+              "type": "forge:tag_empty"
+            },
+            "type": "forge:not"
+          },
+          {
+            "prop": "chromatic_materials",
+            "type": "materialis:config"
+          }
+        ],
+        "type": "forge:and"
       }
     ],
     "type": "forge:or"

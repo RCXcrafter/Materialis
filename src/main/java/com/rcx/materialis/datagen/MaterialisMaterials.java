@@ -2,10 +2,12 @@ package com.rcx.materialis.datagen;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.util.InfinityTier;
+import com.rcx.materialis.util.MaterialisConfigCondition;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
+import net.minecraftforge.common.crafting.conditions.AndCondition;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.OrCondition;
@@ -115,8 +117,8 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(uranium, 2, ORDER_HARVEST + ORDER_COMPAT);
 		//create materials
 		addMaterial(roseQuartz, 3, ORDER_NETHER + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new NotCondition(new TagEmptyCondition(MaterialisItemTags.ROSE_QUARTZ_MATERIAL.location()))));
-		addCompatMetalMaterial(refinedRadiance, 4, ORDER_SPECIAL + ORDER_COMPAT);
-		addCompatMetalMaterial(shadowSteel, 4, ORDER_SPECIAL + ORDER_COMPAT);
+		addMaterial(refinedRadiance, 4, ORDER_SPECIAL + ORDER_COMPAT, false, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new AndCondition(new NotCondition(new TagEmptyCondition(MaterialisItemTags.REFINED_RADIANCE_INGOT.location())), MaterialisConfigCondition.CHROMATIC_MATERIALS)));
+		addMaterial(shadowSteel, 4, ORDER_SPECIAL + ORDER_COMPAT, false, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new AndCondition(new NotCondition(new TagEmptyCondition(MaterialisItemTags.SHADOW_STEEL_INGOT.location())), MaterialisConfigCondition.CHROMATIC_MATERIALS)));
 		//eidolon materials
 		addCompatMetalMaterial(pewter, 3, ORDER_HARVEST + ORDER_COMPAT);
 		addCompatMetalMaterial(arcaneGold, 3, ORDER_WEAPON + ORDER_COMPAT);

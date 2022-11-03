@@ -28,6 +28,7 @@ import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.OtherworldlyModifier;
 import com.rcx.materialis.util.GreyToFittingSpriteTransformer;
 import com.rcx.materialis.util.InfinityTier;
+import com.rcx.materialis.util.MaterialisConfigCondition;
 import com.rcx.materialis.util.MaterialisPacketHandler;
 import com.rcx.materialis.util.TinkerSpellWriteRecipe;
 import com.rcx.materialis.util.TinkerToolFluxed;
@@ -45,6 +46,7 @@ import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.TierSortingRegistry;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -91,6 +93,8 @@ public class Materialis {
 		MaterialisResources.RECIPE_SERIALIZERS.register(bus);
 		MaterialisModifiers.MODIFIERS.register(bus);
 
+		MaterialisConfig.register();
+
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> MaterialisClient::onConstruct);
 
 		if (ModList.get().isLoaded("ars_nouveau"))
@@ -122,6 +126,7 @@ public class Materialis {
 	@SubscribeEvent
 	public static void registerSerializers(RegistryEvent.Register<RecipeSerializer<?>> event) {
 		ModifierManager.MODIFIER_LOADERS.register(new ResourceLocation(modID, "otherworldly"), OtherworldlyModifier.LOADER);
+		CraftingHelper.register(MaterialisConfigCondition.SERIALIZER);
 		if (ModList.get().isLoaded("ars_nouveau")) {
 			Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(modID, TinkerSpellWriteRecipe.RECIPE_ID), TinkerSpellWriteRecipe.SPELL_WRITE_TYPE);
 			event.getRegistry().register(TinkerSpellWriteRecipe.SERIALIZER.setRegistryName(new ResourceLocation(modID, TinkerSpellWriteRecipe.RECIPE_ID)));
