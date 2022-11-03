@@ -1,8 +1,8 @@
 package com.rcx.materialis.modifiers;
 
-import cofh.lib.block.IDismantleable;
+import cofh.core.init.CoreMobEffects;
+import cofh.lib.api.block.IDismantleable;
 import cofh.lib.util.Utils;
-import cofh.lib.util.references.CoreReferences;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -47,7 +47,7 @@ public class ThermalWrenchingModifier extends NoLevelsModifier {
 		if (enabled) {
 			LivingEntity target = context.getLivingTarget();
 			if (target != null && context.isFullyCharged() && target.isAlive()) {
-				target.addEffect(new MobEffectInstance(CoreReferences.WRENCHED, 60, 0, false, false));
+				target.addEffect(new MobEffectInstance(CoreMobEffects.WRENCHED.get(), 60, 0, false, false));
 			}
 		}
 		return 0;
