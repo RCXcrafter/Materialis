@@ -309,7 +309,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
 			//avaritia materials
 			addMaterialStats(crystalMatrix, ExtraMaterialStats.DEFAULT);
-			addMaterialStats(neutronium, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(neutronium, new HeadMaterialStats(100, 7f, Tiers.NETHERITE, 2.75f), new HandleMaterialStats(1.2f, 1f, 0.7f, 1.2f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(infinity, new HeadMaterialStats(9999, 999f, InfinityTier.instance, 99f), new HandleMaterialStats(9.99f, 9.99f, 9.99f, 9.99f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(infinityEmbellishment);
 		}

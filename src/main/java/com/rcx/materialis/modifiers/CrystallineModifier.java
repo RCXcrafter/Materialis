@@ -1,21 +1,15 @@
 package com.rcx.materialis.modifiers;
 
-import net.minecraft.core.Direction;
-import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
-import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.modifiers.impl.SingleLevelModifier;
+import slimeknights.tconstruct.library.tools.context.ToolRebuildContext;
+import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class CrystallineModifier extends Modifier {
-
-	//this should be done in the stats
-	@Override
-	public float getEntityDamage(IToolStackView tool, int level, ToolAttackContext context, float baseDamage, float damage) {
-		return damage * 1.5f * level;
-	}
+public class CrystallineModifier extends SingleLevelModifier {
 
 	@Override
-	public void onBreakSpeed(IToolStackView tool, int level, BreakSpeed event, Direction sideHit, boolean isEffective, float miningSpeedModifier) {
-		event.setNewSpeed(event.getNewSpeed() * 1.5f * level);
+	public void addToolStats(ToolRebuildContext context, int level, ModifierStatsBuilder builder) {
+		ToolStats.ATTACK_DAMAGE.multiply(builder, 1 + 0.5 * level);
+		ToolStats.MINING_SPEED.multiply(builder, 1 + 0.5 * level);
 	}
 }

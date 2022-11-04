@@ -8,6 +8,6 @@ public class SupermassiveModifier extends Modifier {
 
 	@Override
 	public float beforeEntityHit(IToolStackView tool, int level, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-		return knockback * 2.5f * level;
+		return knockback * (1.0f + 1.5f * level);
 	}
 }
