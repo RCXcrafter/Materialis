@@ -20,7 +20,7 @@ public class SkullfireModifire extends SingleLevelModifier {
 
 	@Override
 	public int getPriority() {
-		return 95; //after severing, but before voiding
+		return 97; //after severing, but before voiding
 	}
 
 	@Override
