@@ -43,6 +43,7 @@
     "matches_needed": 1,
     "error": "recipe.materialis.modifier.casting_requirements"
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:spell_casting",
     "level": 1

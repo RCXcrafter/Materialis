@@ -45,6 +45,7 @@
     "matches_needed": 1,
     "error": "recipe.materialis.modifier.create_wrenching_requirements"
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:create_wrenching",
     "level": 1

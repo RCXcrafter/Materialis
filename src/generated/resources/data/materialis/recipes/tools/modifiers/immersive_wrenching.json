@@ -45,6 +45,7 @@
     "matches_needed": 1,
     "error": "recipe.materialis.modifier.immersive_wrenching_requirements"
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:immersive_wrenching",
     "level": 1

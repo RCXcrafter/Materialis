@@ -17,6 +17,7 @@
   "slots": {
     "sensor": 1
   },
+  "allow_crystal": false,
   "result": {
     "name": "materialis:psionizing_radiation_sensor",
     "value": "sensor"

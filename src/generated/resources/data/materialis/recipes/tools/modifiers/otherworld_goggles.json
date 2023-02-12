@@ -17,6 +17,7 @@
   "slots": {
     "abilities": 1
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:otherworld_goggles",
     "level": 1

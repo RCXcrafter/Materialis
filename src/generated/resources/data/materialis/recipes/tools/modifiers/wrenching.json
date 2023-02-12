@@ -33,6 +33,7 @@
   "slots": {
     "abilities": 1
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:wrenching",
     "level": 1

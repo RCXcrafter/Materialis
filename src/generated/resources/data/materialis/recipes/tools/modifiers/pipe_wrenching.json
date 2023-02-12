@@ -45,6 +45,7 @@
     "matches_needed": 1,
     "error": "recipe.materialis.modifier.pipe_wrenching_requirements"
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:pipe_wrenching",
     "level": 1

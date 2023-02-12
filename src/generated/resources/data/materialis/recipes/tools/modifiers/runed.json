@@ -19,6 +19,7 @@
     "level": 1,
     "error": "recipe.materialis.modifier.runed_requirements"
   },
+  "allow_crystal": false,
   "result": {
     "name": "materialis:runed",
     "value": "rune"

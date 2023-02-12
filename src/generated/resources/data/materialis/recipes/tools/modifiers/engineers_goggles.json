@@ -17,6 +17,7 @@
   "slots": {
     "upgrades": 1
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:engineers_goggles",
     "level": 1

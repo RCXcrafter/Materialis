@@ -23,12 +23,18 @@
       "item": "eidolon:soul_shard"
     }
   ],
-  "tools": {
-    "tag": "tconstruct:modifiable/melee"
-  },
+  "tools": [
+    {
+      "tag": "tconstruct:modifiable/melee"
+    },
+    {
+      "tag": "tconstruct:modifiable/unarmed"
+    }
+  ],
   "slots": {
     "abilities": 1
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:reaping",
     "level": 1

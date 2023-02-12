@@ -45,6 +45,7 @@
     "matches_needed": 1,
     "error": "recipe.materialis.modifier.thermal_wrenching_requirements"
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:thermal_wrenching",
     "level": 1

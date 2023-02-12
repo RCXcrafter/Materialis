@@ -25,6 +25,7 @@
     "level": 3,
     "error": "recipe.materialis.modifier.reactive_requirements"
   },
+  "allow_crystal": true,
   "result": {
     "name": "materialis:reactive",
     "level": 1
