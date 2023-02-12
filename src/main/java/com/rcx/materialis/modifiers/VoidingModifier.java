@@ -2,7 +2,6 @@ package com.rcx.materialis.modifiers;
 
 import java.util.List;
 
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -41,8 +40,7 @@ public class VoidingModifier extends NoLevelsModifier {
 	}
 
 	private void beforeBlockBreak(BreakEvent event) {
-		ToolStack tool = getHeldTool(event.getPlayer(), InteractionHand.MAIN_HAND);
-		if (tool != null && tool.getModifierLevel(this) > 0) {
+		if (ModifierUtil.getModifierLevel(event.getPlayer().getMainHandItem(), this.getId()) > 0) {
 			event.setExpToDrop(boostXP(event.getExpToDrop(), EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_FORTUNE, event.getPlayer().getMainHandItem())));
 		}
 	}

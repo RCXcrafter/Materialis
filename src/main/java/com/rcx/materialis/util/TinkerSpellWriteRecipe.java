@@ -29,7 +29,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.ForgeRegistryEntry;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
 public class TinkerSpellWriteRecipe extends EnchantingApparatusRecipe {
 
@@ -58,7 +58,7 @@ public class TinkerSpellWriteRecipe extends EnchantingApparatusRecipe {
 
 	@Override
 	public boolean isMatch(List<ItemStack> pedestalItems, ItemStack reagent, EnchantingApparatusTile enchantingApparatusTile, @Nullable Player player) {
-		int level = ToolStack.from(reagent).getModifierLevel(MaterialisModifiers.reactiveModifier.get());
+		int level = ModifierUtil.getModifierLevel(reagent, MaterialisModifiers.reactiveModifier.getId());
 		ItemStack parchment = getParchment(pedestalItems);
 		return !parchment.isEmpty() && !CasterUtil.getCaster(parchment).getSpell().isEmpty() && level > 0 && super.isMatch(pedestalItems, reagent, enchantingApparatusTile, player);
 	}

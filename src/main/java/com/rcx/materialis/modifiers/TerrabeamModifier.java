@@ -19,8 +19,8 @@ import net.minecraftforge.fml.ModList;
 import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tools.modifiers.ability.tool.OffhandAttackModifier;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.entity.EntityManaBurst;
@@ -41,8 +41,7 @@ public class TerrabeamModifier extends Modifier {
 
 	private void leftClick(PlayerInteractEvent.LeftClickEmpty event) {
 		if (enabled && !event.getItemStack().isEmpty()) {
-			ToolStack tool = getHeldTool(event.getEntityLiving(), InteractionHand.MAIN_HAND);
-			if (tool != null && tool.getModifierLevel(this) > 0) {
+			if (ModifierUtil.getModifierLevel(event.getItemStack(), this.getId()) > 0) {
 				MaterialisPacketHandler.INSTANCE.sendToServer(new PacketTerraBeam());
 			}
 		}
@@ -69,9 +68,8 @@ public class TerrabeamModifier extends Modifier {
 
 		public static void trySpawnBurst(Player player, InteractionHand hand, boolean nothingForFree, boolean checkCooldown) {
 			if (enabled && !player.getItemInHand(hand).isEmpty() && (!checkCooldown || player.getAttackStrengthScale(0) == 1)) {
-				ToolStack tool = getHeldTool(player, hand);
-				if (tool != null && tool.getModifierLevel(MaterialisModifiers.elvenBeamModifier.get()) < 1) {
-					int level = tool.getModifierLevel(MaterialisModifiers.terrabeamModifier.get());
+				if (ModifierUtil.getModifierLevel(player.getItemInHand(hand), MaterialisModifiers.elvenBeamModifier.getId()) < 1) {
+					int level = ModifierUtil.getModifierLevel(player.getItemInHand(hand), MaterialisModifiers.terrabeamModifier.getId());
 					if (level > 0 && (level * CHANCE > 1.0f || rand.nextFloat() < level * CHANCE)) {
 						EntityManaBurst burst = BurstHandler.getBurst(player);
 						player.level.addFreshEntity(burst);
