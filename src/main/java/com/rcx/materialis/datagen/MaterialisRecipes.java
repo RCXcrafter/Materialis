@@ -51,6 +51,7 @@ import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
 import net.minecraftforge.common.crafting.conditions.TrueCondition;
 import net.minecraftforge.fluids.FluidStack;
 import slimeknights.mantle.recipe.data.ConsumerWrapperBuilder;
+import slimeknights.mantle.recipe.data.IRecipeHelper;
 import slimeknights.mantle.recipe.data.ItemNameIngredient;
 import slimeknights.mantle.recipe.helper.ItemOutput;
 import slimeknights.mantle.recipe.ingredient.EntityIngredient;
@@ -66,6 +67,7 @@ import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
 import slimeknights.tconstruct.library.json.TagDifferencePresentCondition;
 import slimeknights.tconstruct.library.json.TagIntersectionPresentCondition;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.recipe.FluidValues;
 import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
@@ -86,7 +88,7 @@ import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.data.ModifierIds;
 
-public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper {
+public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, IRecipeHelper {
 
 	public MaterialisRecipes(DataGenerator gen) {
 		super(gen);
@@ -801,7 +803,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		List<Item> armorItems = new ArrayList<Item>();
 		armorItems.addAll(TinkerTools.plateArmor.values());
 		//armorItems.addAll(MaterialisResources.PSIMETAL_EXOSUIT.values());
-		Ingredient armor = Ingredient.of(armorItems.stream().map(ItemStack::new));
 
 		/*plateTexture(psiLoaded, exosuit, MaterialIds.iron, false, slotlessFolder);
 		plateTexture(psiLoaded, exosuit, MaterialIds.copper, false, slotlessFolder);
@@ -828,36 +829,36 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		plateTexture(psiLoaded, exosuit, MaterialIds.electrum, true, slotlessFolder);
 		plateTexture(psiLoaded, exosuit, MaterialIds.brass, true, slotlessFolder);*/
 
-		plateTexture(consumer, armor, MaterialisMaterials.fairy, false, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.refinedRadiance, true, slotlessFolder, MaterialisConfigCondition.CHROMATIC_MATERIALS);
-		plateTexture(consumer, armor, MaterialisMaterials.shadowSteel, true, slotlessFolder, MaterialisConfigCondition.CHROMATIC_MATERIALS);
-		plateTexture(consumer, armor, MaterialisMaterials.pewter, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.arcaneGold, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.neptunium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.quicksilver, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.starmetal, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.pinkSlime, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.cloggrum, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.froststeel, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.utherium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.regalium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.forgottenMetal, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.refinedObsidian, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.refinedGlowstone, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.psimetal, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.ebonyPsimetal, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.ivoryPsimetal, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.iesnium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.manasteel, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.elementium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.terrasteel, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.alfsteel, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.draconium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.awakenedDraconium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.fluxInfused, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.crystalMatrix, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.neutronium, true, slotlessFolder);
-		plateTexture(consumer, armor, MaterialisMaterials.infinityEmbellishment, "ingots/infinity", true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.fairy, false, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.refinedRadiance, true, slotlessFolder, MaterialisConfigCondition.CHROMATIC_MATERIALS);
+		plateTexture(consumer, MaterialisMaterials.shadowSteel, true, slotlessFolder, MaterialisConfigCondition.CHROMATIC_MATERIALS);
+		plateTexture(consumer, MaterialisMaterials.pewter, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.arcaneGold, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.neptunium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.quicksilver, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.starmetal, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.pinkSlime, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.cloggrum, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.froststeel, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.utherium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.regalium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.forgottenMetal, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.refinedObsidian, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.refinedGlowstone, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.psimetal, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.ebonyPsimetal, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.ivoryPsimetal, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.iesnium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.manasteel, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.elementium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.terrasteel, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.alfsteel, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.draconium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.awakenedDraconium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.fluxInfused, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.crystalMatrix, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.neutronium, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.infinityEmbellishment, "ingots/infinity", true, slotlessFolder);
 
 		Ingredient slimesuit = Ingredient.of(TinkerTools.slimesuit.values().stream().map(ItemStack::new));
 		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment, MaterialisMaterials.pinkSlimeball.toString())
@@ -943,35 +944,37 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 	}*/
 
 	/** Adds recipes for a plate armor texture */
-	private void plateTexture(Consumer<FinishedRecipe> consumer, Ingredient tool, MaterialId material, boolean optional, String folder) {
-		plateTexture(consumer, tool, material, "ingots/" + material.getPath(), optional, folder);
+	private void plateTexture(Consumer<FinishedRecipe> consumer, MaterialId material, boolean optional, String folder) {
+		plateTexture(consumer, material, "ingots/" + material.getPath(), optional, folder);
+	}
+
+	/** Adds recipes for a plate armor texture with a custom tag */
+	private void plateTexture(Consumer<FinishedRecipe> consumer, MaterialVariantId material, String tag, boolean optional, String folder) {
+		Ingredient ingot = Ingredient.of(getItemTag("forge", tag));
+		if (optional) {
+			consumer = withCondition(consumer, tagCondition(tag));
+		}
+		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment, material.toString())
+		.setTools(TinkerTags.Items.EMBELLISHMENT_METAL)
+		.addInput(ingot).addInput(ingot).addInput(ingot)
+		.save(consumer, wrap(TinkerModifiers.embellishment.getId(), folder, "_" + material.getLocation('_').getPath()));
 	}
 
 	/** Adds recipes for a plate armor texture */
-	private void plateTexture(Consumer<FinishedRecipe> consumer, Ingredient tool, MaterialId material, boolean optional, String folder, ICondition condition) {
-		plateTexture(consumer, tool, material, "ingots/" + material.getPath(), optional, folder, condition);
+	private void plateTexture(Consumer<FinishedRecipe> consumer, MaterialId material, boolean optional, String folder, ICondition condition) {
+		plateTexture(consumer, material, "ingots/" + material.getPath(), optional, folder, condition);
 	}
 
 	/** Adds recipes for a plate armor texture with a custom tag */
-	private void plateTexture(Consumer<FinishedRecipe> consumer, Ingredient tool, MaterialId material, String tag, boolean optional, String folder) {
-		plateTexture(consumer, tool, material, tag, optional, folder, null);
-	}
-
-	/** Adds recipes for a plate armor texture with a custom tag */
-	private void plateTexture(Consumer<FinishedRecipe> consumer, Ingredient tool, MaterialId material, String tag, boolean optional, String folder, ICondition condition) {
-		Ingredient ingot = Ingredient.of(ItemTags.create(new ResourceLocation("forge", tag)));
+	private void plateTexture(Consumer<FinishedRecipe> consumer, MaterialVariantId material, String tag, boolean optional, String folder, ICondition condition) {
+		Ingredient ingot = Ingredient.of(getItemTag("forge", tag));
 		if (optional) {
-			if (condition != null)
-				consumer = withCondition(consumer, tagCondition(tag), condition);
-			else
-				consumer = withCondition(consumer, tagCondition(tag));
-		} else if (condition != null) {
-			consumer = withCondition(consumer, condition);
+			consumer = withCondition(consumer, tagCondition(tag), condition);
 		}
 		SwappableModifierRecipeBuilder.modifier(TinkerModifiers.embellishment, material.toString())
-		.setTools(tool)
+		.setTools(TinkerTags.Items.EMBELLISHMENT_METAL)
 		.addInput(ingot).addInput(ingot).addInput(ingot)
-		.save(consumer, wrap(TinkerModifiers.embellishment.getId(), folder, "_" + material.getPath()));
+		.save(consumer, wrap(TinkerModifiers.embellishment.getId(), folder, "_" + material.getLocation('_').getPath()));
 	}
 
 	protected static ICondition tagConditionDomain(String domain, String name) {

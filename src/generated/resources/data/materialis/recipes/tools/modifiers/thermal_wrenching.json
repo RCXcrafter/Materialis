@@ -32,17 +32,8 @@
     "upgrades": 1
   },
   "requirements": {
-    "options": [
-      {
-        "name": "materialis:wrenching",
-        "level": 1
-      },
-      {
-        "name": "materialis:wrenching_hidden",
-        "level": 1
-      }
-    ],
-    "matches_needed": 1,
+    "name": "materialis:wrenching",
+    "level": 1,
     "error": "recipe.materialis.modifier.thermal_wrenching_requirements"
   },
   "allow_crystal": true,

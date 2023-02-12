@@ -22,7 +22,7 @@
   },
   "traits": [
     {
-      "name": "materialis:wrenching_hidden",
+      "name": "materialis:wrenching",
       "level": 1
     }
   ],
