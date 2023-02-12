@@ -82,7 +82,7 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 	//upgrades & abilities
 	public static final StaticModifier<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);
 	public static final StaticModifier<Modifier> runedModifier = MODIFIERS.register("runed", RunedModifier::new);
-	public static final StaticModifier<Modifier> wrenchingModifier = MODIFIERS.register("wrenching", () -> new WrenchingModifier(75));
+	public static final StaticModifier<Modifier> wrenchingModifier = MODIFIERS.register("wrenching", WrenchingModifier::new);
 	public static final StaticModifier<Modifier> thermalWrenchingModifier = MODIFIERS.register("thermal_wrenching", ThermalWrenchingModifier::new);
 	public static final StaticModifier<Modifier> createWrenchingModifier = MODIFIERS.register("create_wrenching", CreateWrenchingModifier::new);
 	public static final StaticModifier<Modifier> immersiveWrenchingModifier = MODIFIERS.register("immersive_wrenching", ImmersiveWrenchingModifier::new);
@@ -100,9 +100,6 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<ReactiveModifier> reactiveModifier = MODIFIERS.register("reactive", ReactiveModifier::new);
 	public static final StaticModifier<Modifier> cataclysmicModifier = MODIFIERS.register("cataclysmic", CataclysmicModifier::new);
 	public static final StaticModifier<Modifier> skullfireModifire = MODIFIERS.register("skullfire", SkullfireModifire::new);
-
-	//internal modifiers
-	public static final StaticModifier<Modifier> wrenchingModifierHidden = MODIFIERS.register("wrenching_hidden", () -> new WrenchingModifier(Integer.MIN_VALUE + 50));
 
 	//modifier ids
 	public static final ModifierId enhancedQuartzModifier = new ModifierId(Materialis.modID, "enhanced_quartz");

@@ -573,7 +573,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.saveSalvage(consumer, prefix(MaterialisModifiers.galvanizedModifier, salvageFolder))
 		.save(consumer, prefix(MaterialisModifiers.galvanizedModifier, modifierFolder));
 
-		ModifierMatch wrenching = ModifierMatch.list(1, ModifierMatch.entry(MaterialisModifiers.wrenchingModifier), ModifierMatch.entry(MaterialisModifiers.wrenchingModifierHidden));
+		ModifierMatch wrenching = ModifierMatch.entry(MaterialisModifiers.wrenchingModifier);
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.thermalWrenchingModifier)
 		.setTools(interactableWithDurability)

@@ -36,7 +36,7 @@ public class SensorModifierRecipe extends SwappableModifierRecipe {
 	private final String value;
 
 	public SensorModifierRecipe(ResourceLocation id, List<SizedIngredient> inputs, Ingredient toolRequirement, int maxToolSize, ModifierMatch requirements, String requirementsError, ModifierId result, String value, @Nullable SlotCount slots) {
-		super(id, inputs, toolRequirement, maxToolSize, requirements, requirementsError, result, value, slots);
+		super(id, inputs, toolRequirement, maxToolSize, requirements, requirementsError, result, value, slots, false);
 		this.value = value;
 	}
 

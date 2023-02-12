@@ -7,7 +7,6 @@ import com.rcx.materialis.datagen.MaterialisBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -21,50 +20,49 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraftforge.common.TierSortingRegistry;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.TinkerHooks;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.BlockInteractionModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
+import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap.Builder;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class WrenchingModifier extends NoLevelsModifier {
-
-	private final int priority;
-
-	public WrenchingModifier(int priority) {
-		this.priority = priority;
-	}
+public class WrenchingModifier extends NoLevelsModifier implements BlockInteractionModifierHook {
 
 	@Override
 	public int getPriority() {
-		return priority;
+		return 75;
 	}
 
 	@Override
-	public boolean shouldDisplay(boolean advanced) {
-		return priority > Short.MIN_VALUE;
+	protected void registerHooks(Builder hookBuilder) {
+		hookBuilder.addHook(this, TinkerHooks.BLOCK_INTERACT);
 	}
 
 	@Override
-	public InteractionResult beforeBlockUse(IToolStackView tool, int level, UseOnContext context, EquipmentSlot slot) {
+	public InteractionResult beforeBlockUse(IToolStackView tool, ModifierEntry modifier, UseOnContext context, InteractionSource source) {
 		if (!tool.isBroken() && context.getPlayer() != null) {
 			Level world = context.getLevel();
 			BlockPos pos = context.getClickedPos();
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) != null || world.getBlockEntity(pos) != null) {
-				return blockUse(tool, level, world, pos, state, context);
+				return blockUse(tool, modifier.getLevel(), world, pos, state, context);
 			}
 		}
 		return InteractionResult.PASS;
 	}
 
 	@Override
-	public InteractionResult afterBlockUse(IToolStackView tool, int level, UseOnContext context, EquipmentSlot slot) {
+	public InteractionResult afterBlockUse(IToolStackView tool, ModifierEntry modifier, UseOnContext context, InteractionSource source) {
 		if (!tool.isBroken() && context.getPlayer() != null) {
 			Level world = context.getLevel();
 			BlockPos pos = context.getClickedPos();
 			BlockState state = context.getLevel().getBlockState(context.getClickedPos());
 			if (state.getMenuProvider(context.getLevel(), context.getClickedPos()) == null && world.getBlockEntity(pos) == null) {
-				return blockUse(tool, level, world, pos, state, context);
+				return blockUse(tool, modifier.getLevel(), world, pos, state, context);
 			}
 		}
 		return InteractionResult.PASS;

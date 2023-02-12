@@ -31,7 +31,7 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 		.startingSlots(SlotType.UPGRADE, 1)
 		.startingSlots(SlotType.ABILITY, 3)
 		//traits
-		.trait(MaterialisModifiers.wrenchingModifierHidden)
+		.trait(MaterialisModifiers.wrenchingModifier)
 		// harvest
 		.action(ToolActions.PICKAXE_DIG)
 		.action(ToolActions.SHEARS_DISARM)
@@ -52,7 +52,7 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 		.startingSlots(SlotType.UPGRADE, 1)
 		.startingSlots(SlotType.ABILITY, 2)
 		// traits
-		.trait(MaterialisModifiers.wrenchingModifierHidden)
+		.trait(MaterialisModifiers.wrenchingModifier)
 		// harvest
 		.action(ToolActions.PICKAXE_DIG)
 		.action(ToolActions.SHEARS_DISARM)

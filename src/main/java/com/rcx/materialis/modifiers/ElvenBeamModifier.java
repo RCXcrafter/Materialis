@@ -9,15 +9,18 @@ import com.rcx.materialis.util.PacketElvenBeam;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.ModList;
 import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.TinkerHooks;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap.Builder;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -27,7 +30,7 @@ import vazkii.botania.common.entity.EntityManaBurst;
 import vazkii.botania.common.handler.ModSounds;
 import vazkii.botania.common.item.ModItems;
 
-public class ElvenBeamModifier extends Modifier {
+public class ElvenBeamModifier extends Modifier implements GeneralInteractionModifierHook {
 
 	public static boolean enabled = ModList.get().isLoaded("botania");
 	public static int MANA_PER_BEAM = 200;
@@ -39,6 +42,11 @@ public class ElvenBeamModifier extends Modifier {
 			MinecraftForge.EVENT_BUS.addListener(this::leftClick);
 	}
 
+	@Override
+	protected void registerHooks(Builder hookBuilder) {
+		hookBuilder.addHook(this, TinkerHooks.CHARGEABLE_INTERACT);
+	}
+
 	private void leftClick(PlayerInteractEvent.LeftClickEmpty event) {
 		if (enabled && !event.getItemStack().isEmpty()) {
 			if (ModifierUtil.getModifierLevel(event.getItemStack(), this.getId()) > 0) {
@@ -48,7 +56,7 @@ public class ElvenBeamModifier extends Modifier {
 	}
 
 	@Override
-	public InteractionResult onToolUse(IToolStackView tool, int level, Level world, Player player, InteractionHand hand, EquipmentSlot slotType) {
+	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
 		if (enabled && !tool.isBroken() && hand == InteractionHand.OFF_HAND && OffhandCooldownTracker.isAttackReady(player) && OffhandCooldownTracker.getCooldown(player) == 1 && tool.getVolatileData().getBoolean(OffhandAttackModifier.DUEL_WIELDING)) {
 			BurstHandler.trySpawnBurst(player, hand, true, false);
 		}

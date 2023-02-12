@@ -8,22 +8,31 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.TinkerHooks;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
+import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap.Builder;
 import slimeknights.tconstruct.library.tools.context.ToolRebuildContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.modifiers.slotless.OverslimeModifier;
 
-public class OvereatingModifier extends Modifier {
+public class OvereatingModifier extends Modifier implements GeneralInteractionModifierHook {
 
 	private static final ResourceLocation IS_EATING = new ResourceLocation(Materialis.modID, "eating_overslime");
 	public static int overslimeAmount = 20;
+
+	@Override
+	protected void registerHooks(Builder hookBuilder) {
+		hookBuilder.addHook(this, TinkerHooks.CHARGEABLE_INTERACT);
+	}
 
 	@Override
 	public void addVolatileData(ToolRebuildContext context, int level, ModDataNBT volatileData) {
@@ -32,9 +41,9 @@ public class OvereatingModifier extends Modifier {
 	}
 
 	@Override
-	public InteractionResult onToolUse(IToolStackView tool, int level, Level world, Player player, InteractionHand hand, EquipmentSlot slot) {
+	public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
 		OverslimeModifier overslime = TinkerModifiers.overslime.get();
-		if (!tool.isBroken() && overslime.getOverslime(tool) >= overslimeAmount * level && player.canEat(true)) {
+		if (!tool.isBroken() && overslime.getOverslime(tool) >= overslimeAmount * modifier.getLevel() && player.canEat(true)) {
 			player.startUsingItem(hand);
 			// of in the cold food
 			tool.getPersistentData().putBoolean(IS_EATING, true);
@@ -47,23 +56,25 @@ public class OvereatingModifier extends Modifier {
 	}
 
 	@Override
-	public boolean onStoppedUsing(IToolStackView tool, int level, Level world, LivingEntity entity, int timeLeft) {
+	public boolean onStoppedUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, int timeLeft) {
 		tool.getPersistentData().remove(IS_EATING);
 		return false;
 	}
 
 	@Override
-	public boolean onFinishUsing(IToolStackView tool, int level, Level world, LivingEntity entity) {
+	public boolean onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
 		// remove is eating tag to prevent from messing with other modifiers
 		ModDataNBT persistentData = tool.getPersistentData();
 		OverslimeModifier overslime = TinkerModifiers.overslime.get();
 		boolean wasEating = persistentData.getBoolean(IS_EATING);
+		int level = modifier.getLevel();
 		persistentData.remove(IS_EATING);
 
 		if (!tool.isBroken() && overslime.getOverslime(tool) >= overslimeAmount * level && wasEating && entity instanceof Player) {
 			// clear eating marker
 			Player player = (Player) entity;
 			if (player.canEat(false)) {
+				Level world = entity.getLevel();
 				// hot eat the food
 				player.getFoodData().eat(level, level * 0.1f);
 				player.awardStat(Stats.ITEM_USED.get(tool.getItem()));
@@ -80,12 +91,12 @@ public class OvereatingModifier extends Modifier {
 	}
 
 	@Override
-	public UseAnim getUseAction(IToolStackView tool, int level) {
+	public UseAnim getUseAction(IToolStackView tool, ModifierEntry modifier) {
 		return tool.getPersistentData().getBoolean(IS_EATING) ? UseAnim.EAT : UseAnim.NONE;
 	}
 
 	@Override
-	public int getUseDuration(IToolStackView tool, int level) {
+	public int getUseDuration(IToolStackView tool, ModifierEntry modifier) {
 		return tool.getPersistentData().getBoolean(IS_EATING) ? 32 : 0;
 	}
 }
