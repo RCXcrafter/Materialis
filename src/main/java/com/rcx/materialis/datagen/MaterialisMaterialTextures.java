@@ -27,7 +27,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		buildMaterial(MaterialisMaterials.brass)
 		.meleeHarvest()
 		.fallbacks("metal")
-		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF592521).addARGB(102, 0xFF7C4B34).addARGB(140, 0xFFA46F3E).addARGB(178, 0xFFD0A454).addARGB(216, 0xFFF1DD78).addARGB(255, 0xFFFFFCAE).build());
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF602F24).addARGB(102, 0xFF885035).addARGB(140, 0xFFB07347).addARGB(178, 0xFFDEAD5A) /* funny hex code */ .addARGB(216, 0xFFFDDB7E).addARGB(255, 0xFFFFF9C7).build());
 		buildMaterial(MaterialisMaterials.aluminum)
 		.meleeHarvest()
 		.fallbacks("metal")
