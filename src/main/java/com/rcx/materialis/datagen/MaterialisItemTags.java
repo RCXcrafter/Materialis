@@ -14,13 +14,12 @@ import static slimeknights.tconstruct.common.TinkerTags.Items.MELEE;
 import static slimeknights.tconstruct.common.TinkerTags.Items.MELEE_PRIMARY;
 import static slimeknights.tconstruct.common.TinkerTags.Items.MULTIPART_TOOL;
 import static slimeknights.tconstruct.common.TinkerTags.Items.MULTI_USE_CASTS;
-import static slimeknights.tconstruct.common.TinkerTags.Items.ONE_HANDED;
+import static slimeknights.tconstruct.common.TinkerTags.Items.INTERACTABLE_RIGHT;
 import static slimeknights.tconstruct.common.TinkerTags.Items.RED_SAND_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SAND_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SINGLE_USE_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SMELTERY_DEBUG;
 import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
-import static slimeknights.tconstruct.common.TinkerTags.Items.TWO_HANDED;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
@@ -157,8 +156,8 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		//wrench
 		tag(TOOLS).addTag(WRENCH);
 		tag(TOOL_PARTS).add(MaterialisResources.WRENCH_HEAD.get());
-		addAllTags(MaterialisResources.WRENCH, MULTIPART_TOOL, DURABILITY, HARVEST_PRIMARY, MELEE, ONE_HANDED, WRENCH, WRENCHING, GALVANIZABLE, SMELTERY_DEBUG, FOUNDRY_DEBUG);
-		addAllTags(MaterialisResources.BATTLEWRENCH, MULTIPART_TOOL, DURABILITY, HARVEST_PRIMARY, MELEE_PRIMARY, TWO_HANDED, WRENCH, WRENCHING, SMELTERY_DEBUG, FOUNDRY_DEBUG);
+		addAllTags(MaterialisResources.WRENCH, MULTIPART_TOOL, DURABILITY, HARVEST_PRIMARY, MELEE, INTERACTABLE_RIGHT, WRENCH, WRENCHING, GALVANIZABLE, SMELTERY_DEBUG, FOUNDRY_DEBUG);
+		addAllTags(MaterialisResources.BATTLEWRENCH, MULTIPART_TOOL, DURABILITY, HARVEST_PRIMARY, MELEE_PRIMARY, INTERACTABLE_RIGHT, WRENCH, WRENCHING, SMELTERY_DEBUG, FOUNDRY_DEBUG);
 
 		//create ingots
 		tag(REFINED_RADIANCE_INGOT).addOptional(new ResourceLocation("create", "refined_radiance"));

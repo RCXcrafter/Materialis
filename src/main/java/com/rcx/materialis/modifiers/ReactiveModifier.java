@@ -20,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.ModList;
+import slimeknights.mantle.client.TooltipKey;
 import slimeknights.mantle.util.OffhandCooldownTracker;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
@@ -27,7 +28,6 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.RestrictedCompoundTag;
-import slimeknights.tconstruct.library.utils.TooltipKey;
 import slimeknights.tconstruct.tools.modifiers.ability.tool.OffhandAttackModifier;
 
 public class ReactiveModifier extends Modifier {

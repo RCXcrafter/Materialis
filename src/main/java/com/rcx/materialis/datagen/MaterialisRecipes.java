@@ -12,8 +12,8 @@ import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
 import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 import com.rcx.materialis.modifiers.CleansingModifier;
-import com.rcx.materialis.util.MaterialisConfigCondition;
 import com.rcx.materialis.util.MaterialisByproduct;
+import com.rcx.materialis.util.MaterialisConfigCondition;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.content.contraptions.processing.HeatCondition;
@@ -60,7 +60,6 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.data.recipe.IByproduct;
-import slimeknights.tconstruct.library.data.recipe.ICommonRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IMaterialRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.ISmelteryRecipeHelper;
 import slimeknights.tconstruct.library.data.recipe.IToolRecipeHelper;
@@ -72,9 +71,9 @@ import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.casting.ItemCastingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.entitymelting.EntityMeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.ingredient.MaterialIngredient;
+import slimeknights.tconstruct.library.recipe.melting.IMeltingContainer.OreRateType;
 import slimeknights.tconstruct.library.recipe.melting.MaterialMeltingRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeBuilder;
-import slimeknights.tconstruct.library.recipe.melting.IMeltingContainer.OreRateType;
 import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
@@ -87,7 +86,7 @@ import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.data.ModifierIds;
 
-public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, ICommonRecipeHelper {
+public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper {
 
 	public MaterialisRecipes(DataGenerator gen) {
 		super(gen);
@@ -538,10 +537,9 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "tattered_cloth"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
 		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("eidolon", "soul_shard"))))
-		.setTools(TinkerTags.Items.MELEE)
+		.setTools(TinkerTags.Items.MELEE_OR_UNARMED)
 		.setMaxLevel(1)
 		.setSlots(SlotType.ABILITY, 1)
-		.includeUnarmed()
 		.saveSalvage(consumer, prefix(MaterialisModifiers.reapingModifier.getId(), salvageFolder))
 		.save(withCondition(consumer, new ModLoadedCondition("eidolon")), prefix(MaterialisModifiers.reapingModifier.getId(), modifierFolder));
 

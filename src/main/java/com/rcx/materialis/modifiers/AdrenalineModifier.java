@@ -1,14 +1,27 @@
 package com.rcx.materialis.modifiers;
 
+import net.minecraft.world.entity.LivingEntity;
 import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.TinkerHooks;
+import slimeknights.tconstruct.library.modifiers.hook.ConditionalStatModifierHook;
+import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap.Builder;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.stat.FloatToolStat;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class AdrenalineModifier extends Modifier {
+public class AdrenalineModifier extends Modifier implements ConditionalStatModifierHook {
 
 	@Override
-	public float getEntityDamage(IToolStackView tool, int level, ToolAttackContext context, float baseDamage, float damage) {
-		float multiplier = level * (context.getAttacker().getMaxHealth() - context.getAttacker().getHealth()) / context.getAttacker().getMaxHealth() / 2.0f + 0.5f;
-		return damage * multiplier;
+	protected void registerHooks(Builder hookBuilder) {
+		hookBuilder.addHook(this, TinkerHooks.CONDITIONAL_STAT);
+	}
+
+	@Override
+	public float modifyStat(IToolStackView tool, ModifierEntry modifier, LivingEntity living, FloatToolStat stat, float baseValue, float multiplier) {
+		if (stat == ToolStats.ATTACK_DAMAGE) {
+			return baseValue + modifier.getLevel() * (living.getMaxHealth() - living.getHealth()) / living.getMaxHealth() / 2.0f + 0.5f * multiplier;
+		}
+		return baseValue;
 	}
 }
