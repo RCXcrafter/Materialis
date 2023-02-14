@@ -1,0 +1,22 @@
+{
+  "materialis:reaping":				"materialis:gui/modifiers/reaping",
+  "materialis:runed":				"materialis:gui/modifiers/runed",
+  "materialis:wrenching":			"materialis:gui/modifiers/wrenching",
+  "materialis:thermal_wrenching":	"materialis:gui/modifiers/thermal_wrenching",
+  "materialis:create_wrenching":	"materialis:gui/modifiers/create_wrenching",
+  "materialis:immersive_wrenching":	"materialis:gui/modifiers/immersive_wrenching",
+  "materialis:pipe_wrenching":		"materialis:gui/modifiers/pipe_wrenching",
+  "materialis:galvanized":			"materialis:gui/modifiers/galvanized",
+  "materialis:spell_socket":		["psi:items/cad_socket_basic", "tconstruct:gui/modifiers/book"],
+  "materialis:spell_casting":		["psi:items/cad_assembly_psimetal", "tconstruct:gui/modifiers/book"],
+  "materialis:lesser_spell_casting":["psi:items/cad_core_basic", "tconstruct:gui/modifiers/book"],
+  "materialis:colorized":			"materialis:gui/modifiers/colorized",
+  "materialis:psionizing_radiation_sensor": ["materialis:item/sensor_slot", "tconstruct:gui/modifiers/book"],
+  "materialis:processor":			["psi:items/cad_battery_basic", "tconstruct:gui/modifiers/plus"],
+  "materialis:capacitor":			"materialis:gui/modifiers/capacitor",
+  "materialis:engineers_goggles":	["create:item/goggles", "tconstruct:gui/modifiers/book"],
+  "materialis:otherworld_goggles":	["occultism:item/armor/otherworld_goggles", "tconstruct:gui/modifiers/book"],
+  "materialis:reactive":			"materialis:gui/modifiers/reactive",
+  "materialis:cataclysmic":			"materialis:gui/modifiers/cataclysmic",
+  "materialis:skullfire":			"materialis:gui/modifiers/skullfire"
+}
