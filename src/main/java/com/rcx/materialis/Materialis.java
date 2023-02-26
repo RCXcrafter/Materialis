@@ -28,6 +28,7 @@ import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.OtherworldlyModifier;
 import com.rcx.materialis.util.GreyToFittingSpriteTransformer;
 import com.rcx.materialis.util.InfinityTier;
+import com.rcx.materialis.util.ManashotRenderer;
 import com.rcx.materialis.util.MaterialisConfigCondition;
 import com.rcx.materialis.util.MaterialisPacketHandler;
 import com.rcx.materialis.util.TinkerSpellWriteRecipe;
@@ -35,6 +36,7 @@ import com.rcx.materialis.util.TinkerToolFluxed;
 import com.rcx.materialis.util.TintedModifierModel;
 
 import net.minecraft.client.color.item.ItemColors;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
@@ -42,6 +44,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
@@ -90,6 +93,7 @@ public class Materialis {
 		MaterialisResources.BLOCKS.register(bus);
 		MaterialisResources.ITEMS.register(bus);
 		MaterialisResources.ITEMS_EXTENDED.register(bus);
+		MaterialisResources.ENTITIES.register(bus);
 		MaterialisResources.RECIPE_SERIALIZERS.register(bus);
 		MaterialisModifiers.MODIFIERS.register(bus);
 
@@ -182,6 +186,12 @@ public class Materialis {
 				}
 			}*/
 			GreyToFittingSpriteTransformer.init();
+		}
+
+		@OnlyIn(Dist.CLIENT)
+		@SubscribeEvent
+		public static void clientSetup(FMLClientSetupEvent event) {
+			EntityRenderers.register(MaterialisResources.MANASHOT_ENTITY.get(), ManashotRenderer::new);
 		}
 
 		@SubscribeEvent

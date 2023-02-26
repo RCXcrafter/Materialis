@@ -8,13 +8,13 @@
   "perStat": {
     "tconstruct:limb": [
       {
-        "name": "materialis:manashot",
+        "name": "materialis:manabolt",
         "level": 1
       }
     ],
     "tconstruct:grip": [
       {
-        "name": "materialis:manashot",
+        "name": "materialis:manabolt",
         "level": 1
       }
     ]

@@ -57,6 +57,7 @@ public class MaterialisRenderInfo extends AbstractMaterialRenderInfoProvider {
 		buildRenderInfo(MaterialisMaterials.manasteel).color(0x3389FF);
 		buildRenderInfo(MaterialisMaterials.elementium).color(0xF15CAE);
 		buildRenderInfo(MaterialisMaterials.terrasteel).color(0x5CFF12);
+		buildRenderInfo(MaterialisMaterials.manastring).color(0xA5F6FF);
 		//botania materials
 		buildRenderInfo(MaterialisMaterials.alfsteel).color(0xFFC400);
 		//draconic evolution materials

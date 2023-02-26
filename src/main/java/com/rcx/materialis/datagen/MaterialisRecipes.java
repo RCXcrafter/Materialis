@@ -484,6 +484,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.manasteel, materialFolder, "manasteel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.elementium, materialFolder, "elementium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.terrasteel, materialFolder, "terrasteel", true);
+		materialRecipe(withCondition(consumer, new ModLoadedCondition("botania")), MaterialisMaterials.manastring, ItemNameIngredient.from(new ResourceLocation("botania", "mana_string")), 1, 4, materialFolder + "manastring");
 		metalMaterialRecipe(consumer, MaterialisMaterials.alfsteel, materialFolder, "alfsteel", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.draconium, materialFolder, "draconium", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.awakenedDraconium, materialFolder, "draconium_awakened", true);

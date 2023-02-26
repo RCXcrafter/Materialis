@@ -19,6 +19,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataPr
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.stats.BowstringMaterialStats;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 import slimeknights.tconstruct.tools.stats.GripMaterialStats;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
@@ -83,6 +84,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId manasteel = createMaterial("manasteel");
 	public static final MaterialId elementium = createMaterial("elementium");
 	public static final MaterialId terrasteel = createMaterial("terrasteel");
+	public static final MaterialId manastring = createMaterial("manastring");
 
 	//mythicbotany materials
 	public static final MaterialId alfsteel = createMaterial("alfsteel");
@@ -155,6 +157,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		addCompatMetalMaterial(manasteel, 2, ORDER_HARVEST + ORDER_COMPAT);
 		addCompatMetalMaterial(elementium, 3, ORDER_WEAPON + ORDER_COMPAT);
 		addCompatMetalMaterial(terrasteel, 4, ORDER_WEAPON + ORDER_COMPAT);
+		addMaterial(manastring, 2, ORDER_RANGED + ORDER_COMPAT, true, false, new OrCondition(ConfigEnabledCondition.FORCE_INTEGRATION_MATERIALS, new ModLoadedCondition("botania")));
 		//mythicbotany materials
 		addCompatMetalMaterial(alfsteel, 4, ORDER_WEAPON + ORDER_COMPAT);
 		//draconic evolution materials
@@ -229,18 +232,19 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addTraits(livingwood, LimbMaterialStats.ID, MaterialisModifiers.manadrawModifier);
 			addTraits(livingwood, GripMaterialStats.ID, MaterialisModifiers.manadrawModifier);
 			addDefaultTraits(dreamwood, MaterialisModifiers.manaburnerModifier);
-			addTraits(dreamwood, LimbMaterialStats.ID, MaterialisModifiers.manashotModifier);
-			addTraits(dreamwood, GripMaterialStats.ID, MaterialisModifiers.manashotModifier);
+			addTraits(dreamwood, LimbMaterialStats.ID, MaterialisModifiers.manaboltModifier);
+			addTraits(dreamwood, GripMaterialStats.ID, MaterialisModifiers.manaboltModifier);
 			addDefaultTraits(manasteel, new ModifierEntry(MaterialisModifiers.manashieldModifier, 2));
 			addDefaultTraits(elementium, MaterialisModifiers.manashieldModifier, MaterialisModifiers.pixiecallerModifier);
 			addDefaultTraits(terrasteel, MaterialisModifiers.manashieldModifier, MaterialisModifiers.terrabeamModifier);
+			addDefaultTraits(manastring, MaterialisModifiers.manashotModifier);
 			//mythicbotany materials
 			addDefaultTraits(alfsteel, MaterialisModifiers.manashieldModifier, MaterialisModifiers.elvenBeamModifier);
 			//draconic evolution materials
 			addDefaultTraits(draconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 1), new ModifierEntry(MaterialisModifiers.fluxshieldModifier, 2));
 			addDefaultTraits(awakenedDraconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxburnerModifier, 1));
-			addTraits(awakenedDraconium, LimbMaterialStats.ID, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxshotModifier, 1));
-			addTraits(awakenedDraconium, GripMaterialStats.ID, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxshotModifier, 1));
+			addTraits(awakenedDraconium, LimbMaterialStats.ID, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxboltModifier, 1));
+			addTraits(awakenedDraconium, GripMaterialStats.ID, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxboltModifier, 1));
 			//redstone arsenal materials
 			addDefaultTraits(fluxInfused, MaterialisModifiers.fluxripperModifier, MaterialisModifiers.fluxburnerModifier);
 			addTraits(fluxInfused, LimbMaterialStats.ID, MaterialisModifiers.fluxripperModifier, MaterialisModifiers.fluxdrawModifier);
@@ -310,6 +314,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(manasteel, new HeadMaterialStats(300, 6.2f, Tiers.DIAMOND, 1.5f), new HandleMaterialStats(1.1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(300, -0.2f, 0.1f, 0.1f), new GripMaterialStats(1.1f, 0.1f, 1.5f));
 			addMaterialStats(elementium, new HeadMaterialStats(720, 5f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.2f, 0.9f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(720, 0.1f, 0.0f, 0.05f), new GripMaterialStats(0.8f, 0.05f, 2f));
 			addMaterialStats(terrasteel, new HeadMaterialStats(1000, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1.15f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(manastring, BowstringMaterialStats.DEFAULT);
 			//mythicbotany materials
 			addMaterialStats(alfsteel, new HeadMaterialStats(1430, 9f, Tiers.NETHERITE, 3.2f), new HandleMaterialStats(0.9f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
 			//draconic evolution materials

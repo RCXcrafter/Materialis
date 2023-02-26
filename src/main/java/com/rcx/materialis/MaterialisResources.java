@@ -5,11 +5,16 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.rcx.materialis.block.LightResidueBlock;
+import com.rcx.materialis.item.ManaShotItem;
+import com.rcx.materialis.item.ManaShotItem.ManashotEntity;
 import com.rcx.materialis.util.RuneModifierRecipe;
 import com.rcx.materialis.util.SensorModifierRecipe;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -47,6 +52,7 @@ public class MaterialisResources {
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, Materialis.modID);
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Materialis.modID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Materialis.modID);
+	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Materialis.modID);
 	protected static final ItemDeferredRegisterExtension ITEMS_EXTENDED = new ItemDeferredRegisterExtension(Materialis.modID);
 	private static final Supplier<Item.Properties> TOOL_PROPS = () -> new Item.Properties().tab(TinkerTools.TAB_TOOLS);
 	private static final Item.Properties PARTS_PROPS = new Item.Properties().tab(TinkerToolParts.TAB_TOOL_PARTS);
@@ -70,6 +76,10 @@ public class MaterialisResources {
 		FluidWithBlockNBucket fluid = new FluidWithBlockNBucket(name, localizedName, temperature, light, density, viscosity);
 		fluidList.add(fluid);
 		return fluid;
+	}
+
+	public static <T extends Entity> RegistryObject<EntityType<T>> registerEntity(String name, EntityType.Builder<T> builder) {
+		return ENTITIES.register(name, () -> builder.build(Materialis.modID + ":" + name));
 	}
 
 	//materialis fluids
@@ -158,6 +168,9 @@ public class MaterialisResources {
 	public static final ToolDefinition BATTLEWRENCH_DEFINITION = ToolDefinition.builder(new ResourceLocation(Materialis.modID, "battlewrench")).meleeHarvest().build();
 	public static final ItemObject<ModifiableItem> BATTLEWRENCH = ITEMS_EXTENDED.register("battlewrench", () -> new ModifiableItem(new Item.Properties(), BATTLEWRENCH_DEFINITION));
 
+	//arrows
+	public static final RegistryObject<Item> MANASHOT = ITEMS.register("manashot", () -> new ManaShotItem(new Item.Properties()));
+
 	//psi armor
 	public static final SlotType SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);
 	/*public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial
@@ -166,7 +179,13 @@ public class MaterialisResources {
 			.setSoundEvent(SoundEvents.ARMOR_EQUIP_GENERIC)
 			.build();
 	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(ModList.get().isLoaded("psi") || !FMLEnvironment.production ? TinkerTools.TAB_TOOLS : null)));
-*/
+	 */
+
+	/*
+	 * ENTITIES
+	 */
+
+	public static final RegistryObject<EntityType<ManashotEntity>> MANASHOT_ENTITY = registerEntity("manashot", EntityType.Builder.<ManashotEntity>of(ManashotEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20));
 
 
 

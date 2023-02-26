@@ -45,6 +45,10 @@ public class MaterialisLang extends LanguageProvider {
 		addCast(MaterialisResources.INLAY_CAST, "Inlay");
 		addCast(MaterialisResources.WRENCH_HEAD_CAST, "Wrench Head");
 
+		//arrows
+		addItem(MaterialisResources.MANASHOT, "Manashot");
+		addEntityType(MaterialisResources.MANASHOT_ENTITY, "Manashot");
+
 		//wrench stuff
 		addItem(MaterialisResources.WRENCH_HEAD, "Wrench Head");
 		add("pattern.materialis.wrench_head", "Wrench Head");
@@ -124,12 +128,14 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.iesnium, "Iesnium", "", "Allows the tool to harvest otherworld blocks");
 
 		//botania stuff
-		addMaterial(MaterialisMaterials.livingwood, "Livingwood", "", "increases attack damage with 1.5 per level, mana cost increases with level");
-		addMaterial(MaterialisMaterials.dreamwood, "Dreamwood", "", "increases mining speed with 2.5 per level, mana cost increases with level");
+		addMaterial(MaterialisMaterials.livingwood, "Livingwood", "", "Increases attack damage with 1.5 per level, mana cost increases with level");
+		addMaterial(MaterialisMaterials.dreamwood, "Dreamwood", "", "Increases mining speed with 2.5 per level, mana cost increases with level");
 		addMaterial(MaterialisMaterials.manasteel, "Manasteel", "", "Has a 10% chance of using mana instead of durability per level");
 		addMaterial(MaterialisMaterials.elementium, "Elementium", "", "Adds a 3% chance to spawn a pixie while holding the tool per level");
 		addMaterial(MaterialisMaterials.terrasteel, "Terrasteel", "", "Has a 40% chance per level to fire a beam, this costs mana or durability if you have no mana");
 		//add("material.materialis.terrasteel.format", "Terra %s");
+		addMaterial(MaterialisMaterials.manastring, "Mana Infused String", "", "Conjures arrows out of thin air at the cost of mana");
+		add("material.materialis.manastring.format", "Mana Infused %s");
 
 		//mythicbotany stuff
 		addMaterial(MaterialisMaterials.alfsteel, "Alfsteel", "", "Has a 40% chance per level to fire a beam, this costs mana or durability if you have no mana");
@@ -346,10 +352,13 @@ public class MaterialisLang extends LanguageProvider {
 				"Manaical!",
 				"Boosts draw speed at the cost of mana");
 		add("modifier.materialis.manadraw.draw_speed", "Draw Speed with Mana");
-		addModifier(MaterialisModifiers.manashotModifier, "Manashot",
-				"Sick airshot!",
+		addModifier(MaterialisModifiers.manaboltModifier, "Manabolt",
+				"You better make like a nut, and bolt",
 				"Boosts projectile velocity at the cost of mana");
 		add("modifier.materialis.manashot.velocity", "Velocity with Mana");
+		addModifier(MaterialisModifiers.manashotModifier, "Manashot",
+				"Sick airshot!",
+				"Creates arrows out of mana");
 		addModifier(MaterialisModifiers.pixiecallerModifier, "Pixiecaller",
 				"Pix or it didn't happen",
 				"Has a chance of spawning a pixie when you take damage while holding the tool");
@@ -377,7 +386,7 @@ public class MaterialisLang extends LanguageProvider {
 				"Talk about drawing energy",
 				"Boosts draw speed at the cost of flux");
 		add("modifier.materialis.fluxdraw.draw_speed", "Fluxed Draw Speed");
-		addModifier(MaterialisModifiers.fluxshotModifier, "Fluxshot",
+		addModifier(MaterialisModifiers.fluxboltModifier, "Fluxbolt",
 				"Railgun!",
 				"Boosts projectile velocity at the cost of flux");
 		add("modifier.materialis.fluxshot.velocity", "Fluxed Velocity");

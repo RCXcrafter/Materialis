@@ -2,16 +2,17 @@ package com.rcx.materialis.modifiers;
 
 import java.util.List;
 
-import com.rcx.materialis.util.TinkerToolFluxed;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraftforge.fml.ModList;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.common.TinkerTags;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.TinkerHooks;
 import slimeknights.tconstruct.library.modifiers.hook.ConditionalStatModifierHook;
@@ -19,12 +20,15 @@ import slimeknights.tconstruct.library.modifiers.hook.ProjectileLaunchModifierHo
 import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap.Builder;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.FloatToolStat;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import vazkii.botania.api.mana.ManaItemHandler;
 
-public class FluxshotModifier extends CapacitorModifier implements ConditionalStatModifierHook, ProjectileLaunchModifierHook {
+public class ManaboltModifier extends Modifier implements ConditionalStatModifierHook, ProjectileLaunchModifierHook {
 
-	private static final int ENERGY_COST = 100;
+	boolean enabled = ModList.get().isLoaded("botania");
+	private static final int MANA_COST = 80;
 
 	@Override
 	protected void registerHooks(Builder hookBuilder) {
@@ -33,30 +37,30 @@ public class FluxshotModifier extends CapacitorModifier implements ConditionalSt
 
 	@Override
 	public float modifyStat(IToolStackView tool, ModifierEntry modifier, LivingEntity living, FloatToolStat stat, float baseValue, float multiplier) {
-		if (stat == ToolStats.VELOCITY && TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * modifier.getLevel(), true, false)) {
-			return baseValue + 0.1f * multiplier * modifier.getLevel();
+		if (enabled && stat == ToolStats.VELOCITY && !tool.isBroken() && living instanceof Player player) {
+			ItemStack toolStack = player.getMainHandItem();
+			if (tool instanceof ToolStack)
+				toolStack = ((ToolStack) tool).createStack();
+
+			if (ManaItemHandler.instance().requestManaExactForTool(toolStack, player, MANA_COST * modifier.getLevel(), false))
+				return baseValue + 0.1f * multiplier * modifier.getLevel();
 		}
 		return baseValue;
 	}
 
 	@Override
 	public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, Projectile projectile, AbstractArrow arrow, NamespacedNBT persistentData, boolean primary) {
-		if (primary) {
-			TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * modifier.getLevel(), false, false); //only eat the energy if the projectile is actually fired
+		if (enabled && primary && shooter instanceof Player player) {
+			ItemStack toolStack = player.getMainHandItem();
+			if (tool instanceof ToolStack)
+				toolStack = ((ToolStack) tool).createStack();
+
+			ManaItemHandler.instance().requestManaExactForTool(toolStack, player, MANA_COST * modifier.getLevel(), true); //only eat the mana if the projectile is actually fired
 		}
 	}
 
 	@Override
 	public void addInformation(IToolStackView tool, int level, Player player, List<Component> tooltip, TooltipKey key, TooltipFlag flag) {
-		super.addInformation(tool, level, player, tooltip, key, flag);
-		float bonus = 0;
-		if (TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false))
-			bonus = 0.1f * level;
-		addStatTooltip(tool, ToolStats.VELOCITY, TinkerTags.Items.RANGED, bonus, tooltip);
-	}
-
-	@Override
-	public int getCapacity() {
-		return 5000;
+		addStatTooltip(tool, ToolStats.VELOCITY, TinkerTags.Items.RANGED, 0.1f * level, tooltip);
 	}
 }

@@ -8,6 +8,7 @@ import slimeknights.tconstruct.library.client.data.material.AbstractMaterialSpri
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToColorMapping;
 import slimeknights.tconstruct.library.client.data.spritetransformer.GreyToSpriteTransformer;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
+import slimeknights.tconstruct.tools.stats.BowstringMaterialStats;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
 
 public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
@@ -157,6 +158,9 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF176600).addARGB(102, 0xFF259300).addARGB(140, 0xFF2EB800).addARGB(178, 0xFF35DA00).addARGB(216, 0xFF5DF82A).addARGB(255, 0xFFA7FF8B).build());
+		buildMaterial(MaterialisMaterials.manastring)
+		.statType(BowstringMaterialStats.ID)
+		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF51B6FF).addARGB(102, 0xFF63CDFF).addARGB(140, 0xFF87EBFF).addARGB(178, 0xFFA5F6FF).addARGB(216, 0xFFC6FFFF).addARGB(255, 0xFFE8FFFE).build());
 		//mythicbotany materials
 		buildMaterial(MaterialisMaterials.alfsteel)
 		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
