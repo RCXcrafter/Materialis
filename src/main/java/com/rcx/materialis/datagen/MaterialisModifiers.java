@@ -64,12 +64,16 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> manaripperModifier = MODIFIERS.register("manaripper", ManaripperModifier::new);
 	public static final StaticModifier<Modifier> manaburnerModifier = MODIFIERS.register("manaburner", ManaburnerModifier::new);
 	public static final StaticModifier<Modifier> manashieldModifier = MODIFIERS.register("manashield", ManashieldModifier::new);
+	public static final StaticModifier<Modifier> manadrawModifier = MODIFIERS.register("manadraw", ManadrawModifier::new);
+	public static final StaticModifier<Modifier> manashotModifier = MODIFIERS.register("manashot", ManashotModifier::new);
 	public static final StaticModifier<Modifier> pixiecallerModifier = MODIFIERS.register("pixiecaller", PixiecallerModifier::new);
 	public static final StaticModifier<Modifier> terrabeamModifier = MODIFIERS.register("terrabeam", TerrabeamModifier::new);
 	public static final StaticModifier<Modifier> elvenBeamModifier = MODIFIERS.register("elven_beam", ElvenBeamModifier::new);
 	public static final StaticModifier<Modifier> fluxripperModifier = MODIFIERS.register("fluxripper", FluxripperModifier::new);
 	public static final StaticModifier<Modifier> fluxburnerModifier = MODIFIERS.register("fluxburner", FluxburnerModifier::new);
 	public static final StaticModifier<Modifier> fluxshieldModifier = MODIFIERS.register("fluxshield", FluxshieldModifier::new);
+	public static final StaticModifier<Modifier> fluxdrawModifier = MODIFIERS.register("fluxdraw", FluxdrawModifier::new);
+	public static final StaticModifier<Modifier> fluxshotModifier = MODIFIERS.register("fluxshot", FluxshotModifier::new);
 	public static final StaticModifier<Modifier> powerHungryModifier = MODIFIERS.register("power_hungry", PowerHungryModifier::new);
 	public static final StaticModifier<Modifier> crystallineModifier = MODIFIERS.register("crystalline", CrystallineModifier::new);
 	public static final StaticModifier<Modifier> supermassiveModifier = MODIFIERS.register("supermassive", SupermassiveModifier::new);

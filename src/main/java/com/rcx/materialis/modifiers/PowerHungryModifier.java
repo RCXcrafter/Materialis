@@ -4,13 +4,16 @@ import javax.annotation.Nullable;
 
 import com.rcx.materialis.util.TinkerToolFluxed;
 
-import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
-import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.TinkerHooks;
+import slimeknights.tconstruct.library.modifiers.hook.ConditionalStatModifierHook;
+import slimeknights.tconstruct.library.modifiers.util.ModifierHookMap.Builder;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.stat.FloatToolStat;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class PowerHungryModifier extends CapacitorModifier {
+public class PowerHungryModifier extends CapacitorModifier implements ConditionalStatModifierHook {
 
 	private static final int ENERGY_COST = 100;
 
@@ -20,24 +23,22 @@ public class PowerHungryModifier extends CapacitorModifier {
 	}
 
 	@Override
+	protected void registerHooks(Builder hookBuilder) {
+		hookBuilder.addHook(this, TinkerHooks.CONDITIONAL_STAT);
+	}
+
+	@Override
+	public float modifyStat(IToolStackView tool, ModifierEntry modifier, LivingEntity living, FloatToolStat stat, float baseValue, float multiplier) {
+		if ((stat == ToolStats.VELOCITY || stat == ToolStats.MINING_SPEED || stat == ToolStats.ATTACK_DAMAGE) && !TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * modifier.getLevel(), true, false)) {
+			return baseValue / 1.5f;
+		}
+		return baseValue;
+	}
+
+	@Override
 	public int onDamageTool(IToolStackView tool, int level, int amount, @Nullable LivingEntity holder) {
 		TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, false, true);
 		return amount;
-	}
-
-	@Override
-	public float getEntityDamage(IToolStackView tool, int level, ToolAttackContext context, float baseDamage, float damage) {
-		if (TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false)) {
-			return damage;
-		}
-		return damage / 1.5f;
-	}
-
-	@Override
-	public void onBreakSpeed(IToolStackView tool, int level, BreakSpeed event, Direction sideHit, boolean isEffective, float miningSpeedModifier) {
-		if (!TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, true, false)) {
-			event.setNewSpeed(event.getNewSpeed() / 1.5f);
-		}
 	}
 
 	@Override

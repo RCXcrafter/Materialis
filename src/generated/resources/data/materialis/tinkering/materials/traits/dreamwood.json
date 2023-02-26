@@ -4,5 +4,19 @@
       "name": "materialis:manaburner",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:limb": [
+      {
+        "name": "materialis:manashot",
+        "level": 1
+      }
+    ],
+    "tconstruct:grip": [
+      {
+        "name": "materialis:manashot",
+        "level": 1
+      }
+    ]
+  }
 }

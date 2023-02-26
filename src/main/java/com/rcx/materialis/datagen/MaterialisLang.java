@@ -342,6 +342,14 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.manashieldModifier, "Manashield",
 				"Botanical!",
 				"Has a chance of protecting your tool from damage at the cost of mana");
+		addModifier(MaterialisModifiers.manadrawModifier, "Manadraw",
+				"Manaical!",
+				"Boosts draw speed at the cost of mana");
+		add("modifier.materialis.manadraw.draw_speed", "Draw Speed with Mana");
+		addModifier(MaterialisModifiers.manashotModifier, "Manashot",
+				"Sick airshot!",
+				"Boosts projectile velocity at the cost of mana");
+		add("modifier.materialis.manashot.velocity", "Velocity with Mana");
 		addModifier(MaterialisModifiers.pixiecallerModifier, "Pixiecaller",
 				"Pix or it didn't happen",
 				"Has a chance of spawning a pixie when you take damage while holding the tool");
@@ -365,6 +373,14 @@ public class MaterialisLang extends LanguageProvider {
 		addModifier(MaterialisModifiers.fluxshieldModifier, "Fluxshield",
 				"Energized!",
 				"Has a chance of protecting your tool from damage at the cost of energy");
+		addModifier(MaterialisModifiers.fluxdrawModifier, "Fluxdraw",
+				"Talk about drawing energy",
+				"Boosts draw speed at the cost of flux");
+		add("modifier.materialis.fluxdraw.draw_speed", "Fluxed Draw Speed");
+		addModifier(MaterialisModifiers.fluxshotModifier, "Fluxshot",
+				"Railgun!",
+				"Boosts projectile velocity at the cost of flux");
+		add("modifier.materialis.fluxshot.velocity", "Fluxed Velocity");
 		addModifier(MaterialisModifiers.powerHungryModifier, "Power Hungry",
 				"Megalomaniac!",
 				"Using the tool costs 100 RF per durability per level, the tool doesn't seem to work so well if it's not powered");

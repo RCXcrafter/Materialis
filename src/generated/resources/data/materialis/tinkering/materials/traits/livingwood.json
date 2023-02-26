@@ -4,5 +4,19 @@
       "name": "materialis:manaripper",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:limb": [
+      {
+        "name": "materialis:manadraw",
+        "level": 1
+      }
+    ],
+    "tconstruct:grip": [
+      {
+        "name": "materialis:manadraw",
+        "level": 1
+      }
+    ]
+  }
 }

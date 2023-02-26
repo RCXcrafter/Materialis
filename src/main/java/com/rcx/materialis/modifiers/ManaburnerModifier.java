@@ -36,7 +36,7 @@ public class ManaburnerModifier extends Modifier {
 	}
 
 	public void afterBlockBreak(IToolStackView tool, int level, ToolHarvestContext context) {
-		if (enabled && context.isAOE() && context.isEffective() && !tool.isBroken() && context.getPlayer() != null) {
+		if (enabled && !context.isAOE() && context.isEffective() && !tool.isBroken() && context.getPlayer() != null) {
 			ItemStack toolStack = context.getPlayer().getMainHandItem();
 			if (tool instanceof ToolStack)
 				toolStack = ((ToolStack) tool).createStack();

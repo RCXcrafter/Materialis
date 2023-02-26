@@ -8,5 +8,27 @@
       "name": "materialis:fluxburner",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:limb": [
+      {
+        "name": "materialis:fluxripper",
+        "level": 1
+      },
+      {
+        "name": "materialis:fluxdraw",
+        "level": 1
+      }
+    ],
+    "tconstruct:grip": [
+      {
+        "name": "materialis:fluxripper",
+        "level": 1
+      },
+      {
+        "name": "materialis:fluxdraw",
+        "level": 1
+      }
+    ]
+  }
 }

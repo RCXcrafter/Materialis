@@ -226,7 +226,11 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(iesnium, MaterialisModifiers.otherworldly2Modifier);
 			//botania materials
 			addDefaultTraits(livingwood, MaterialisModifiers.manaripperModifier);
+			addTraits(livingwood, LimbMaterialStats.ID, MaterialisModifiers.manadrawModifier);
+			addTraits(livingwood, GripMaterialStats.ID, MaterialisModifiers.manadrawModifier);
 			addDefaultTraits(dreamwood, MaterialisModifiers.manaburnerModifier);
+			addTraits(dreamwood, LimbMaterialStats.ID, MaterialisModifiers.manashotModifier);
+			addTraits(dreamwood, GripMaterialStats.ID, MaterialisModifiers.manashotModifier);
 			addDefaultTraits(manasteel, new ModifierEntry(MaterialisModifiers.manashieldModifier, 2));
 			addDefaultTraits(elementium, MaterialisModifiers.manashieldModifier, MaterialisModifiers.pixiecallerModifier);
 			addDefaultTraits(terrasteel, MaterialisModifiers.manashieldModifier, MaterialisModifiers.terrabeamModifier);
@@ -235,8 +239,12 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//draconic evolution materials
 			addDefaultTraits(draconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 1), new ModifierEntry(MaterialisModifiers.fluxshieldModifier, 2));
 			addDefaultTraits(awakenedDraconium, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxburnerModifier, 1));
+			addTraits(awakenedDraconium, LimbMaterialStats.ID, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxshotModifier, 1));
+			addTraits(awakenedDraconium, GripMaterialStats.ID, new ModifierEntry(MaterialisModifiers.powerHungryModifier, 2), new ModifierEntry(MaterialisModifiers.fluxripperModifier, 1), new ModifierEntry(MaterialisModifiers.fluxshotModifier, 1));
 			//redstone arsenal materials
 			addDefaultTraits(fluxInfused, MaterialisModifiers.fluxripperModifier, MaterialisModifiers.fluxburnerModifier);
+			addTraits(fluxInfused, LimbMaterialStats.ID, MaterialisModifiers.fluxripperModifier, MaterialisModifiers.fluxdrawModifier);
+			addTraits(fluxInfused, GripMaterialStats.ID, MaterialisModifiers.fluxripperModifier, MaterialisModifiers.fluxdrawModifier);
 			//avaritia materials
 			addDefaultTraits(crystalMatrix, MaterialisModifiers.crystallineModifier);
 			addDefaultTraits(neutronium, MaterialisModifiers.supermassiveModifier);
@@ -306,9 +314,9 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addMaterialStats(alfsteel, new HeadMaterialStats(1430, 9f, Tiers.NETHERITE, 3.2f), new HandleMaterialStats(0.9f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
 			//draconic evolution materials
 			addMaterialStats(draconium, new HeadMaterialStats(1000, 7f, Tiers.NETHERITE, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(1000, -0.2f, 0.2f, -0.05f), new GripMaterialStats(0.8f, -0.05f, 2f));
-			addMaterialStats(awakenedDraconium, new HeadMaterialStats(1500, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1f, 1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(awakenedDraconium, new HeadMaterialStats(1500, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1f, 1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(1500, -0.1f, 0.2f, -0.1f), new GripMaterialStats(1.0f, -0.1f, 3f));
 			//redstone arsenal materials
-			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(400, -0.15f, 0.1f, 0.05f), new GripMaterialStats(1.0f, 0.05f, 2.5f));
 			//avaritia materials
 			addMaterialStats(crystalMatrix, ExtraMaterialStats.DEFAULT);
 			addMaterialStats(neutronium, new HeadMaterialStats(100, 7f, Tiers.NETHERITE, 2.75f), new HandleMaterialStats(1.2f, 1f, 0.7f, 1.2f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(100, -0.4f, 0.25f, -0.1f), new GripMaterialStats(1.2f, -0.1f, 2.75f));

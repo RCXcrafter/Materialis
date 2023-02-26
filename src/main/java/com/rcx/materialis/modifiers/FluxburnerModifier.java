@@ -28,7 +28,7 @@ public class FluxburnerModifier extends CapacitorModifier {
 
 	@Override
 	public void afterBlockBreak(IToolStackView tool, int level, ToolHarvestContext context) {
-		if (context.isAOE() && context.isEffective() && !tool.isBroken()) {
+		if (!context.isAOE() && context.isEffective() && !tool.isBroken()) {
 			TinkerToolFluxed.removeEnergy(tool, ENERGY_COST * level, false, false); //only eat the energy if the block is actually broken
 		}
 	}

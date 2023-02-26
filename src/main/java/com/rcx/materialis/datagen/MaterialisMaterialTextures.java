@@ -168,12 +168,12 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF340C52).addARGB(102, 0xFF4E1882).addARGB(140, 0xFF7A42AE).addARGB(178, 0xFF905EBE).addARGB(216, 0xFFAE7ADD).addARGB(255, 0xFFE7B5FF).build());
 		buildMaterial(MaterialisMaterials.awakenedDraconium)
-		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
+		.meleeHarvest().ranged().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF970000).addARGB(102, 0xFFC23800).addARGB(140, 0xFFFF5600).addARGB(178, 0xFFFF8800).addARGB(216, 0xFFFFBE00).addARGB(255, 0xFFFFFD03).build());
 		//redstone arsenal materials
 		buildMaterial(MaterialisMaterials.fluxInfused)
-		.meleeHarvest().statType(TinkerPartSpriteProvider.PLATE)
+		.meleeHarvest().ranged().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF781B12).addARGB(102, 0xFFB55B20).addARGB(140, 0xFFD98931).addARGB(178, 0xFFEFB544).addARGB(216, 0xFFF6D55F).addARGB(255, 0xFFFFF3B8).build());
 		//avaritia materials
