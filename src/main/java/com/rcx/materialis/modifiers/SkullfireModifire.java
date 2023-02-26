@@ -8,15 +8,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.modifiers.impl.SingleLevelModifier;
 import slimeknights.tconstruct.library.recipe.modifiers.severing.SeveringRecipe;
 import slimeknights.tconstruct.library.recipe.modifiers.severing.SeveringRecipeCache;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class SkullfireModifire extends SingleLevelModifier {
-
-	boolean enabled = ModList.get().isLoaded("eidolon");
 
 	@Override
 	public int getPriority() {
@@ -25,7 +22,7 @@ public class SkullfireModifire extends SingleLevelModifier {
 
 	@Override
 	public List<ItemStack> processLoot(IToolStackView tool, int level, List<ItemStack> generatedLoot, LootContext context) {
-		if (!enabled || !context.hasParam(LootContextParams.DAMAGE_SOURCE)) {
+		if (!context.hasParam(LootContextParams.DAMAGE_SOURCE)) {
 			return generatedLoot;
 		}
 		// must have an entity

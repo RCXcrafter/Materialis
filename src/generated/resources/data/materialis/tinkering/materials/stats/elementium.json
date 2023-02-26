@@ -12,6 +12,17 @@
       "miningSpeed": 5.0,
       "harvestTier": "minecraft:diamond",
       "attack": 2.0
+    },
+    "tconstruct:limb": {
+      "durability": 720,
+      "drawSpeed": 0.1,
+      "velocity": 0.0,
+      "accuracy": 0.05
+    },
+    "tconstruct:grip": {
+      "durability": 0.8,
+      "accuracy": 0.05,
+      "meleeAttack": 2.0
     }
   }
 }

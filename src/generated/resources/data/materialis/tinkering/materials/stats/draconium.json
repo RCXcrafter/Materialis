@@ -12,6 +12,17 @@
       "miningSpeed": 7.0,
       "harvestTier": "minecraft:netherite",
       "attack": 2.0
+    },
+    "tconstruct:limb": {
+      "durability": 1000,
+      "drawSpeed": -0.2,
+      "velocity": 0.2,
+      "accuracy": -0.05
+    },
+    "tconstruct:grip": {
+      "durability": 0.8,
+      "accuracy": -0.05,
+      "meleeAttack": 2.0
     }
   }
 }

@@ -20,8 +20,10 @@ import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.stats.ExtraMaterialStats;
+import slimeknights.tconstruct.tools.stats.GripMaterialStats;
 import slimeknights.tconstruct.tools.stats.HandleMaterialStats;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
+import slimeknights.tconstruct.tools.stats.LimbMaterialStats;
 
 public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
@@ -256,35 +258,35 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 
 		@Override
 		protected void addMaterialStats() {
-			addMaterialStats(fairy, new HeadMaterialStats(250, 7.5f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 1.15f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(fairy, new HeadMaterialStats(250, 7.5f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 1.15f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(250, 0.05f, -0.05f, 0.0f), new GripMaterialStats(0.9f, 0.0f, 2f));
 			//general oredict materials
-			addMaterialStats(brass, new HeadMaterialStats(450, 7.5f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(brass, new HeadMaterialStats(450, 7.5f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(450, -0.15f, 0.1f, -0.05f), new GripMaterialStats(0.9f, -0.05f, 2f));
 			addMaterialStats(aluminum, new HeadMaterialStats(220, 5f, Tiers.IRON, 1f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 0.9f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(nickel, new HeadMaterialStats(520, 5f, Tiers.IRON, 1.5f), new HandleMaterialStats(1f, 0.9f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(uranium, new HeadMaterialStats(689, 7f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(nickel, new HeadMaterialStats(520, 5f, Tiers.IRON, 1.5f), new HandleMaterialStats(1f, 0.9f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(520, -0.15f, 0.05f, 0.05f), new GripMaterialStats(1f, 0.05f, 1.5f));
+			addMaterialStats(uranium, new HeadMaterialStats(689, 7f, Tiers.IRON, 2f), new HandleMaterialStats(0.9f, 0.9f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(689, 0f, 0.1f, -0.2f), new GripMaterialStats(0.9f, -0.2f, 2f));
 			//create materials
 			addMaterialStats(roseQuartz, new HeadMaterialStats(175, 4f, Tiers.IRON, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(refinedRadiance, new HeadMaterialStats(999, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(shadowSteel, new HeadMaterialStats(1300, 10f, Tiers.NETHERITE, 3.5f), new HandleMaterialStats(1f, 1f, 1.1f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(refinedRadiance, new HeadMaterialStats(999, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(0.5f, 1f, 1f, 1.3f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(999, -0.3f, 0.25f, 0.1f), new GripMaterialStats(0.5f, 0.1f, 3f));
+			addMaterialStats(shadowSteel, new HeadMaterialStats(1300, 10f, Tiers.NETHERITE, 3.5f), new HandleMaterialStats(1f, 1f, 1.1f, 1.1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(1300, 0.05f, 0.1f, -0.1f), new GripMaterialStats(1f, -0.1f, 3.5f));
 			//eidolon materials
 			addMaterialStats(pewter, new HeadMaterialStats(325, 6.5f, Tiers.IRON, 1f), new HandleMaterialStats(1f, 1f, 0.9f, 1.05f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(arcaneGold, new HeadMaterialStats(200, 9f, Tiers.IRON, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(arcaneGold, new HeadMaterialStats(200, 9f, Tiers.IRON, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(200, 0.15f, -0.2f, 0.1f), new GripMaterialStats(0.8f, 0.1f, 2f));
 			//aquaculture materials
 			addMaterialStats(neptunium, new HeadMaterialStats(1450, 8f, Tiers.DIAMOND, 3f), new HandleMaterialStats(1.1f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			//mystical world materials
-			addMaterialStats(quicksilver, new HeadMaterialStats(75, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.25f, 1.2f, 1.2f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(quicksilver, new HeadMaterialStats(75, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.25f, 1.2f, 1.2f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(75, 0.1f, 0.0f, 0.15f), new GripMaterialStats(0.25f, 0.15f, 2f));
 			//astral sorcery materials
-			addMaterialStats(starmetal, new HeadMaterialStats(340, 6f, Tiers.IRON, 1.5f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(starmetal, new HeadMaterialStats(340, 6f, Tiers.IRON, 1.5f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(340, -0.2f, 0.1f, 0.1f), new GripMaterialStats(1.1f, 0.0f, 1.5f));
 			//industrial foregoing materials
-			addMaterialStats(plastic, new HeadMaterialStats(200, 4f, Tiers.IRON, 1f), new HandleMaterialStats(0.8f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(plastic, new HeadMaterialStats(200, 4f, Tiers.IRON, 1f), new HandleMaterialStats(0.8f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(200, 0.3f, -0.3f, 0.05f), new GripMaterialStats(0.8f, 0.05f, 1f));
 			addMaterialStats(pinkSlime, new HeadMaterialStats(830, 7f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1f, 1.1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(pinkSlimeball);
 			//undergarden materials
-			addMaterialStats(cloggrum, new HeadMaterialStats(286, 5f, Tiers.IRON, 1.5f), new HandleMaterialStats(1f, 1.1f, 0.8f, 1.1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(froststeel, new HeadMaterialStats(575, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(utherium, new HeadMaterialStats(852, 7f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(cloggrum, new HeadMaterialStats(286, 5f, Tiers.IRON, 1.5f), new HandleMaterialStats(1f, 1.1f, 0.8f, 1.1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(286, -0.05f, 0.1f, 0.0f), new GripMaterialStats(1f, 0.0f, 1.5f));
+			addMaterialStats(froststeel, new HeadMaterialStats(575, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(575, 0.0f, 0.1f, -0.05f), new GripMaterialStats(1.2f, -0.05f, 2f));
+			addMaterialStats(utherium, new HeadMaterialStats(852, 7f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1.1f, 1f, 0.9f, 1.1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(852, 0.15f, 0.0f, -0.1f), new GripMaterialStats(1.1f, -0.1f, 2.5f));
 			addMaterialStats(regalium);
-			addMaterialStats(forgottenMetal, new HeadMaterialStats(921, 7.5f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(forgottenMetal, new HeadMaterialStats(921, 7.5f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1.2f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(921, -0.15f, 0.2f, 0.0f), new GripMaterialStats(1.2f, 0.0f, 3f));
 			//mekanism materials
 			addMaterialStats(refinedObsidian, new HeadMaterialStats(900, 9f, Tiers.DIAMOND, 2f), new HandleMaterialStats(1.3f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			addMaterialStats(refinedGlowstone, new HeadMaterialStats(200, 7f, Tiers.IRON, 2.5f), new HandleMaterialStats(0.7f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
@@ -295,22 +297,22 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//occultism materials
 			addMaterialStats(iesnium, new HeadMaterialStats(921, 7f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
 			//botania materials
-			addMaterialStats(livingwood, new HeadMaterialStats(70, 3f, Tiers.STONE, 1f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(dreamwood, new HeadMaterialStats(160, 4f, Tiers.STONE, 1.2f), new HandleMaterialStats(1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(manasteel, new HeadMaterialStats(300, 6.2f, Tiers.DIAMOND, 1.5f), new HandleMaterialStats(1.1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(elementium, new HeadMaterialStats(720, 5f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.2f, 0.9f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(livingwood, new HeadMaterialStats(70, 3f, Tiers.STONE, 1f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(70, 0.0f, 0.05f, 0.0f), new GripMaterialStats(1.1f, 0.0f, 1f));
+			addMaterialStats(dreamwood, new HeadMaterialStats(160, 4f, Tiers.STONE, 1.2f), new HandleMaterialStats(1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(160, 0.05f, 0.0f, 0.0f), new GripMaterialStats(1f, 0.0f, 1.2f));
+			addMaterialStats(manasteel, new HeadMaterialStats(300, 6.2f, Tiers.DIAMOND, 1.5f), new HandleMaterialStats(1.1f, 1.1f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(300, -0.2f, 0.1f, 0.1f), new GripMaterialStats(1.1f, 0.1f, 1.5f));
+			addMaterialStats(elementium, new HeadMaterialStats(720, 5f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.8f, 1.1f, 1.2f, 0.9f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(720, 0.1f, 0.0f, 0.05f), new GripMaterialStats(0.8f, 0.05f, 2f));
 			addMaterialStats(terrasteel, new HeadMaterialStats(1000, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(0.9f, 1.1f, 1.1f, 1.15f), ExtraMaterialStats.DEFAULT);
 			//mythicbotany materials
 			addMaterialStats(alfsteel, new HeadMaterialStats(1430, 9f, Tiers.NETHERITE, 3.2f), new HandleMaterialStats(0.9f, 1f, 1.15f, 1f), ExtraMaterialStats.DEFAULT);
 			//draconic evolution materials
-			addMaterialStats(draconium, new HeadMaterialStats(1000, 7f, Tiers.NETHERITE, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(draconium, new HeadMaterialStats(1000, 7f, Tiers.NETHERITE, 2f), new HandleMaterialStats(0.8f, 1.1f, 1f, 1.1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(1000, -0.2f, 0.2f, -0.05f), new GripMaterialStats(0.8f, -0.05f, 2f));
 			addMaterialStats(awakenedDraconium, new HeadMaterialStats(1500, 9f, Tiers.NETHERITE, 3f), new HandleMaterialStats(1f, 1f, 1.1f, 1f), ExtraMaterialStats.DEFAULT);
 			//redstone arsenal materials
 			addMaterialStats(fluxInfused, new HeadMaterialStats(400, 6f, Tiers.NETHERITE, 2.5f), new HandleMaterialStats(1f, 0.7f, 1.1f, 0.7f), ExtraMaterialStats.DEFAULT);
 			//avaritia materials
 			addMaterialStats(crystalMatrix, ExtraMaterialStats.DEFAULT);
-			addMaterialStats(neutronium, new HeadMaterialStats(100, 7f, Tiers.NETHERITE, 2.75f), new HandleMaterialStats(1.2f, 1f, 0.7f, 1.2f), ExtraMaterialStats.DEFAULT);
-			addMaterialStats(infinity, new HeadMaterialStats(9999, 999f, InfinityTier.instance, 99f), new HandleMaterialStats(9.99f, 9.99f, 9.99f, 9.99f), ExtraMaterialStats.DEFAULT);
+			addMaterialStats(neutronium, new HeadMaterialStats(100, 7f, Tiers.NETHERITE, 2.75f), new HandleMaterialStats(1.2f, 1f, 0.7f, 1.2f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(100, -0.4f, 0.25f, -0.1f), new GripMaterialStats(1.2f, -0.1f, 2.75f));
+			addMaterialStats(infinity, new HeadMaterialStats(9999, 999f, InfinityTier.instance, 99f), new HandleMaterialStats(9.99f, 9.99f, 9.99f, 9.99f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(9999, 99.9f, 99.9f, 1.0f), new GripMaterialStats(9.99f, 1.0f, 99f));
 			addMaterialStats(infinityEmbellishment);
 		}
 	}

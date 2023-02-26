@@ -38,7 +38,7 @@ public class MaterialisLang extends LanguageProvider {
 			addItem(material.NUGGET, material.localizedName + " Nugget");
 		}
 
-		addMaterial(MaterialisMaterials.fairy, "Fairy", "From the fairy depths of hell.", "Adds the percentage of health lost multiplied by the level to your mining speed");
+		addMaterial(MaterialisMaterials.fairy, "Fairy", "From the fairy depths of hell.", "Adds the percentage of health lost multiplied by the level to your mining speed and accuracy");
 		add(TinkerToolFluxed.STORED_ENERGY_KEY, "Energy: %s / %s RF");
 
 		//custom casts
@@ -57,7 +57,7 @@ public class MaterialisLang extends LanguageProvider {
 		add("recipe.materialis.modifier.pipe_wrenching_requirements", "Pipe Wrenching requires Wrenching to apply");
 
 		//general oredict materials
-		addMaterial(MaterialisMaterials.brass, "Brass", "Ya like brass?", "Adds +1.5 attack damage per level that degrades as durability goes down");
+		addMaterial(MaterialisMaterials.brass, "Brass", "Ya like brass?", "Adds +1.5 attack damage and +0.1 velocity per level that degrades as durability goes down");
 		addMaterial(MaterialisMaterials.aluminum, "Aluminum", "", "-10% attack damage, +15% attack speed per level");
 		addMaterial(MaterialisMaterials.nickel, "Nickel", "", "Adds half a second of burning per level to targets that are on fire");
 		//addMaterial(MaterialisMaterials.platinum, "Platinum", "", "Tool takes double durability damage for every level");
@@ -83,7 +83,7 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.quicksilver, "Quicksilver", "", "Tool no longer takes durability damage from usages but has a 1% chance of losing durability every second");
 
 		//astral sorcery stuff
-		addMaterial(MaterialisMaterials.starmetal, "Starmetal", "Not to be confused with star cutting metal.", "Tool gains 2 mining speed per level at midnight");
+		addMaterial(MaterialisMaterials.starmetal, "Starmetal", "Not to be confused with star cutting metal.", "Tool gains 2 mining speed and 0.1 draw speed per level at midnight");
 
 		//industrial foregoing stuff
 		addMaterial(MaterialisMaterials.plastic, "Plastic", "", "-20% knockback per level");
@@ -186,18 +186,20 @@ public class MaterialisLang extends LanguageProvider {
 				"Your tool loses durability slower when it has low durability");
 		addModifier(MaterialisModifiers.daredevilModifier, "Daredevil",
 				"Living on the edge",
-				"Boosts mining speed when your health is low");
+				"Boosts mining speed and accuracy when your health is low");
 		addModifier(MaterialisModifiers.polishedModifier, "Polished",
 				"I can see my face in it!",
-				"Deals more damage at a higher durability");
+				"Boosts damage and velocity at a higher durability");
 		add("modifier.materialis.polished.attack_damage", "Polished Attack Damage");
+		add("modifier.materialis.polished.velocity", "Polished Velocity");
 		addModifier(MaterialisModifiers.decayModifier, "Decay",
 				"Also melts in your hands",
 				"Your tool doesn't use durability on use but instead decays over time");
 		addModifier(MaterialisModifiers.nocturnalModifier, "Nocturnal",
 				"Stay up past bedtime!",
 				"gives bonus mining speed during the night, most powerful at midnight");
-		add("modifier.materialis.nocturnal.mining_speed", "Mining Speed at midnight");
+		add("modifier.materialis.nocturnal.mining_speed", "Nocturnal Mining Speed");
+		add("modifier.materialis.nocturnal.draw_speed", "Nocturnal Draw Speed");
 		addModifier(MaterialisModifiers.feebleModifier, "Feeble",
 				"Handle with care",
 				"Decreases knockback on attacked mobs");
