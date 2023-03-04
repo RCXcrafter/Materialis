@@ -208,8 +208,8 @@ dependencies {
     compileOnly fg.deobf("curse.maven:arl-250363:3642382")
     compileOnly fg.deobf("curse.maven:thermal-222880:4022682")
     compileOnly fg.deobf("curse.maven:cofhcore-69162:4022665")
-	implementation fg.deobf("curse.maven:create-328085:4007544") { transitive = false }
-	implementation fg.deobf("curse.maven:flywheel-486392:3934664") { transitive = false }
+	compileOnly fg.deobf("curse.maven:create-328085:4371807") { transitive = false }
+	compileOnly fg.deobf("curse.maven:flywheel-486392:4341461") { transitive = false }
 	compileOnly fg.deobf("curse.maven:immersiveengineering-231951:3755665")
 	compileOnly fg.deobf("curse.maven:prettypipes-376737:3724800")
 	compileOnly fg.deobf("curse.maven:arsnouveau-401955:3800858")

@@ -83,6 +83,7 @@ public class MaterialisModifiers extends AbstractModifierProvider {
 	public static final StaticModifier<Modifier> instakillModifier = MODIFIERS.register("instakill", InstakillModifier::new);
 	public static final StaticModifier<Modifier> bedrockBreakerModifier = MODIFIERS.register("bedrock_breaker", BedrockBreakerModifier::new);
 	public static final StaticModifier<Modifier> cosmicLuckModifier = MODIFIERS.register("cosmic_luck", CosmicLuckModifier::new);
+	public static final StaticModifier<Modifier> heavenshotModifier = MODIFIERS.register("heavenshot", HeavenshotModifier::new);
 
 	//upgrades & abilities
 	public static final StaticModifier<Modifier> reapingModifier = MODIFIERS.register("reaping", ReapingModifier::new);

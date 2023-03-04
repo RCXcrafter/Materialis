@@ -48,6 +48,7 @@ public class MaterialisLang extends LanguageProvider {
 		//arrows
 		addItem(MaterialisResources.MANASHOT, "Manashot");
 		addEntityType(MaterialisResources.MANASHOT_ENTITY, "Manashot");
+		addItem(MaterialisResources.HEAVENSHOT, "Heavenshot");
 
 		//wrench stuff
 		addItem(MaterialisResources.WRENCH_HEAD, "Wrench Head");
@@ -431,6 +432,9 @@ public class MaterialisLang extends LanguageProvider {
 				"Turn the lights out",
 				"Beheads skeletons and scorches them black");
 		add("recipe.materialis.modifier.skullfire_requirements", "Skullfire requires Severing V to apply");
+		addModifier(MaterialisModifiers.heavenshotModifier, "Heavenshot",
+				"Holy Shot!",
+				"Creates arrows out of thin air that chase targets and explode on impact");
 	}
 
 	public void addFluid(Supplier<? extends ForgeFlowingFluid> key, String name) {

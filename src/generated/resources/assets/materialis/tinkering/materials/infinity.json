@@ -32,7 +32,8 @@
       "tconstruct:extra",
       "tconstruct:repair_kit",
       "tconstruct:limb",
-      "tconstruct:grip"
+      "tconstruct:grip",
+      "tconstruct:bowstring"
     ],
     "ignoreMaterialStats": false
   }

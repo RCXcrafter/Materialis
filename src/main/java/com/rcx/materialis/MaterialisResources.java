@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.rcx.materialis.block.LightResidueBlock;
+import com.rcx.materialis.item.HeavenShotItem;
 import com.rcx.materialis.item.ManaShotItem;
 import com.rcx.materialis.item.ManaShotItem.ManashotEntity;
 import com.rcx.materialis.util.RuneModifierRecipe;
@@ -170,6 +171,7 @@ public class MaterialisResources {
 
 	//arrows
 	public static final RegistryObject<Item> MANASHOT = ITEMS.register("manashot", () -> new ManaShotItem(new Item.Properties()));
+	public static final RegistryObject<Item> HEAVENSHOT = ITEMS.register("heavenshot", () -> new HeavenShotItem(new Item.Properties()));
 
 	//psi armor
 	public static final SlotType SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);

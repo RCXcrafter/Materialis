@@ -36,6 +36,7 @@ public class MaterialisItemModels extends ItemModelProvider {
 		
 		//arrows
 		itemWithModel(MaterialisResources.MANASHOT, "item/generated");
+		itemWithModel(MaterialisResources.HEAVENSHOT, "item/generated");
 
 		//custom casts
 		castModels(MaterialisResources.INLAY_CAST);

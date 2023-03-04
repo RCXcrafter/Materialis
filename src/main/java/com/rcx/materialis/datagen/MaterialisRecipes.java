@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
 
 import javax.annotation.Nullable;
 
@@ -14,13 +13,6 @@ import com.rcx.materialis.MaterialisResources.IngotWithBlockNNugget;
 import com.rcx.materialis.modifiers.CleansingModifier;
 import com.rcx.materialis.util.MaterialisByproduct;
 import com.rcx.materialis.util.MaterialisConfigCondition;
-import com.simibubi.create.AllItems;
-import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.content.contraptions.processing.HeatCondition;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipe;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipeBuilder;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipeSerializer;
-import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider.GeneratedRecipe;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -147,7 +139,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMeltingCondition(consumer, MaterialisResources.REFINED_RADIANCE_FLUID.FLUID.get(), "refined_radiance", false, true, meltingFolder, true, MaterialisConfigCondition.CHROMATIC_MATERIALS);
 		metalTagCastingCondition(consumer, MaterialisResources.SHADOW_STEEL_FLUID.OBJECT, "shadow_steel", castingFolder, false, MaterialisConfigCondition.CHROMATIC_MATERIALS);
 		metalMeltingCondition(consumer, MaterialisResources.SHADOW_STEEL_FLUID.FLUID.get(), "shadow_steel", false, true, meltingFolder, true, MaterialisConfigCondition.CHROMATIC_MATERIALS);
-		create("chromatic_compound", b -> b.require(Tags.Items.DUSTS_GLOWSTONE)
+		/*create("chromatic_compound", b -> b.require(Tags.Items.DUSTS_GLOWSTONE)
 				.require(Tags.Items.DUSTS_GLOWSTONE)
 				.require(Tags.Items.DUSTS_GLOWSTONE)
 				.require(AllItems.POWDERED_OBSIDIAN.get())
@@ -155,7 +147,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				.require(AllItems.POWDERED_OBSIDIAN.get())
 				.require(AllItems.POLISHED_ROSE_QUARTZ.get())
 				.output(AllItems.CHROMATIC_COMPOUND.get(), 1)
-				.requiresHeat(HeatCondition.SUPERHEATED)).register(withCondition(consumer, MaterialisConfigCondition.CHROMATIC_RECIPE));
+				.requiresHeat(HeatCondition.SUPERHEATED)).register(withCondition(consumer, MaterialisConfigCondition.CHROMATIC_RECIPE));*/
 
 		//eidolon stuff
 		metalTagCasting(consumer, MaterialisResources.ARCANE_GOLD_FLUID.OBJECT, "arcane_gold", castingFolder, false);
@@ -1012,7 +1004,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		}
 	}
 
-	public <T extends ProcessingRecipe<?>> GeneratedRecipe createWithDeferredId(Supplier<ResourceLocation> name,
+	/*public <T extends ProcessingRecipe<?>> GeneratedRecipe createWithDeferredId(Supplier<ResourceLocation> name,
 			UnaryOperator<ProcessingRecipeBuilder<T>> transform) {
 		ProcessingRecipeSerializer<T> serializer = AllRecipeTypes.MIXING.getSerializer();
 		GeneratedRecipe generatedRecipe =
@@ -1029,7 +1021,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 	public <T extends ProcessingRecipe<?>> GeneratedRecipe create(String name,
 			UnaryOperator<ProcessingRecipeBuilder<T>> transform) {
 		return create(new ResourceLocation(Materialis.modID, name), transform);
-	}
+	}*/
 
 	public void metalTagCastingCondition(Consumer<FinishedRecipe> consumer, FluidObject<?> fluid, String name, String folder, boolean forceStandard, ICondition condition) {
 		// nugget and ingot

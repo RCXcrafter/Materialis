@@ -190,7 +190,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.fallbacks("metal")
 		.transformer(GreyToSpriteTransformer.builderFromBlack().addTexture(63, getTexture("material/neutronium_outline")).addTexture(102, getTexture("material/neutronium_outline")).addARGB(140, 0xFF5B5B5B).addARGB(178, 0xFF444444).addARGB(216, 0xFF303030).addARGB(255, 0xFF000000).build());
 		buildMaterial(MaterialisMaterials.infinity)
-		.meleeHarvest().ranged()//.statType(TinkerPartSpriteProvider.PLATE)
+		.meleeHarvest().ranged().statType(BowstringMaterialStats.ID)//.statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
 		.transformer(GreyToFittingSpriteTransformer.builderFromBlack().addTexture(63, getTexture("material/infinity_dark")).addTexture(178, getTexture("material/infinity_medium")).addTexture(255, getTexture("material/infinity_light")).build());
 		buildMaterial(MaterialisMaterials.infinityEmbellishment)
