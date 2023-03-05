@@ -791,6 +791,18 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.saveSalvage(consumer, prefix(MaterialisModifiers.skullfireModifire.getId(), salvageFolder))
 		.save(withCondition(consumer, new ModLoadedCondition("avaritia")), prefix(MaterialisModifiers.skullfireModifire.getId(), modifierFolder));
 
+		ModifierRecipeBuilder.modifier(MaterialisModifiers.heavenshotModifier)
+		.setTools(TinkerTags.Items.BOWS)
+		.addInput(MaterialisItemTags.CRYSTAL_MATRIX_INGOT)
+		.addInput(SizedIngredient.of(ItemNameIngredient.from(new ResourceLocation("avaritia", "infinity_catalyst"))))
+		.addInput(MaterialisItemTags.CRYSTAL_MATRIX_INGOT)
+		.addInput(MaterialisItemTags.NEUTRONIUM_INGOT)
+		.addInput(MaterialisItemTags.NEUTRONIUM_INGOT)
+		.setSlots(SlotType.ABILITY, 1)
+		.setMaxLevel(1)
+		.saveSalvage(consumer, prefix(MaterialisModifiers.heavenshotModifier.getId(), salvageFolder))
+		.save(withCondition(consumer, new ModLoadedCondition("avaritia")), prefix(MaterialisModifiers.heavenshotModifier.getId(), modifierFolder));
+
 		//texture recipes
 		//Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));
 		List<Item> armorItems = new ArrayList<Item>();

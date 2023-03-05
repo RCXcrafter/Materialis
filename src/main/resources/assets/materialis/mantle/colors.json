@@ -68,7 +68,6 @@
 		"instamine": "#55FFFF",
 		"bedrock_breaker": "#5580FF",
 		"cosmic_luck": "#AA55FF",
-		"heavenshot": "#70FFE2",
 		"__upgrades_and_abilities__": null,
 		"reaping": "#E388DD",
 		"runed": "#FFFFFF",
@@ -90,7 +89,8 @@
 		"wrenching_hidden": "#FFFFFF",
 		"reactive": "#F2D91A",
 		"cataclysmic": "#FF5555",
-		"skullfire": "#FFDE81"
+		"skullfire": "#FFDE81",
+		"heavenshot": "#70FFE2"
 	},
 
 	"material.materialis": {
@@ -139,6 +139,7 @@
 		"manasteel": "#3389FF",
 		"elementium": "#F15CAE",
 		"terrasteel": "#53F900",
+		"manastring": "#A5F6FF",
 		"__mythicbotany__": null,
 		"alfsteel": "#FFC74E",
 		"__draconic_evolution__": null,

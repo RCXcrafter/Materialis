@@ -1,0 +1,38 @@
+{
+  "type": "tconstruct:modifier",
+  "conditions": [
+    {
+      "modid": "avaritia",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:ingots/crystal_matrix"
+    },
+    {
+      "item": "avaritia:infinity_catalyst"
+    },
+    {
+      "tag": "forge:ingots/crystal_matrix"
+    },
+    {
+      "tag": "forge:ingots/neutronium"
+    },
+    {
+      "tag": "forge:ingots/neutronium"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable/ranged/bows"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "allow_crystal": true,
+  "result": {
+    "name": "materialis:heavenshot",
+    "level": 1
+  },
+  "max_level": 1
+}

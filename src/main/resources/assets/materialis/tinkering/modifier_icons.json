@@ -18,5 +18,6 @@
   "materialis:otherworld_goggles":	["occultism:item/armor/otherworld_goggles", "tconstruct:gui/modifiers/book"],
   "materialis:reactive":			"materialis:gui/modifiers/reactive",
   "materialis:cataclysmic":			"materialis:gui/modifiers/cataclysmic",
-  "materialis:skullfire":			"materialis:gui/modifiers/skullfire"
+  "materialis:skullfire":			"materialis:gui/modifiers/skullfire",
+  "materialis:heavenshot":			"materialis:item/heavenshot"
 }

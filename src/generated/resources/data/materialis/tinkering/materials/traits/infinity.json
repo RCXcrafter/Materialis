@@ -24,13 +24,5 @@
       "name": "materialis:cosmic_luck",
       "level": 1
     }
-  ],
-  "perStat": {
-    "tconstruct:bowstring": [
-      {
-        "name": "materialis:heavenshot",
-        "level": 1
-      }
-    ]
-  }
+  ]
 }

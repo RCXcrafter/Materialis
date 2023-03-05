@@ -253,7 +253,6 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			addDefaultTraits(crystalMatrix, MaterialisModifiers.crystallineModifier);
 			addDefaultTraits(neutronium, MaterialisModifiers.supermassiveModifier);
 			addDefaultTraits(infinity, MaterialisModifiers.cataclysmicModifier, MaterialisModifiers.cosmicUnbreakableModifier, MaterialisModifiers.instakillModifier, MaterialisModifiers.instamineModifier, MaterialisModifiers.bedrockBreakerModifier, MaterialisModifiers.cosmicLuckModifier);
-			addTraits(infinity, BowstringMaterialStats.ID, MaterialisModifiers.heavenshotModifier);
 			noTraits(infinityEmbellishment);
 		}
 	}
@@ -326,7 +325,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//avaritia materials
 			addMaterialStats(crystalMatrix, ExtraMaterialStats.DEFAULT);
 			addMaterialStats(neutronium, new HeadMaterialStats(100, 7f, Tiers.NETHERITE, 2.75f), new HandleMaterialStats(1.2f, 1f, 0.7f, 1.2f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(100, -0.4f, 0.25f, -0.1f), new GripMaterialStats(1.2f, -0.1f, 2.75f));
-			addMaterialStats(infinity, new HeadMaterialStats(9999, 999f, InfinityTier.instance, 99f), new HandleMaterialStats(9.99f, 9.99f, 9.99f, 9.99f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(9999, 99.9f, 99.9f, 1.0f), new GripMaterialStats(9.99f, 1.0f, 99f), BowstringMaterialStats.DEFAULT);
+			addMaterialStats(infinity, new HeadMaterialStats(9999, 999f, InfinityTier.instance, 99f), new HandleMaterialStats(9.99f, 9.99f, 9.99f, 9.99f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(9999, 99.9f, 99.9f, 1.0f), new GripMaterialStats(9.99f, 1.0f, 99f));
 			addMaterialStats(infinityEmbellishment);
 		}
 	}
