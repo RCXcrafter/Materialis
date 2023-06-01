@@ -196,7 +196,8 @@ public class Materialis {
 
 		@SubscribeEvent
 		static void addResourceListener(RegisterClientReloadListenersEvent event) {
-			event.registerReloadListener(ExosuitModel.RELOAD_LISTENER);
+			if (ModList.get().isLoaded("psi"))
+				event.registerReloadListener(ExosuitModel.RELOAD_LISTENER);
 		}
 
 		@SubscribeEvent
