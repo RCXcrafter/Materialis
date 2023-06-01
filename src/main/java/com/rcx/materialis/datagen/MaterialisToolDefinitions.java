@@ -9,6 +9,7 @@ import slimeknights.tconstruct.library.data.tinkering.AbstractToolDefinitionData
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerToolParts;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvider {
 
@@ -59,20 +60,23 @@ public class MaterialisToolDefinitions extends AbstractToolDefinitionDataProvide
 		.effective(MaterialisBlockTags.MINABLE_WITH_WRENCH);
 
 
-		/*defineArmor(MaterialisResources.EXOSUIT_DEFINITION)
+		defineArmor(MaterialisResources.EXOSUIT_DEFINITION)
 		.durabilityFactor(18)
-		.stat(ToolStats.ARMOR, 1, 4, 5, 1)
+		.stat(ArmorSlotType.BOOTS, ToolStats.ARMOR, 1)
+		.stat(ArmorSlotType.LEGGINGS, ToolStats.ARMOR, 4)
+		.stat(ArmorSlotType.CHESTPLATE, ToolStats.ARMOR, 5)
+		.stat(ArmorSlotType.HELMET, ToolStats.ARMOR, 1)
 		.startingSlots(ArmorSlotType.HELMET, MaterialisResources.SENSOR_SLOT, 1)
 		.startingSlots(SlotType.UPGRADE, 1)
 		.startingSlots(SlotType.DEFENSE, 2)
 		.startingSlots(SlotType.ABILITY, 1)
-		.trait(ArmorSlotType.BOOTS, MaterialisModifiers.psionizingRadiationModifierJump.get())
-		.trait(ArmorSlotType.BOOTS, MaterialisModifiers.spellSocketModifier.get())
-		.trait(ArmorSlotType.LEGGINGS, MaterialisModifiers.psionizingRadiationModifierTick.get())
-		.trait(ArmorSlotType.LEGGINGS, MaterialisModifiers.spellSocketModifier.get())
-		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.psionizingRadiationModifierDamage.get())
-		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.spellSocketModifier.get())
-		.trait(ArmorSlotType.HELMET, MaterialisModifiers.spellSocketModifier.get());*/
+		.trait(ArmorSlotType.BOOTS, MaterialisModifiers.psionizingRadiationModifierJump)
+		.trait(ArmorSlotType.BOOTS, MaterialisModifiers.spellSocketModifier)
+		.trait(ArmorSlotType.LEGGINGS, MaterialisModifiers.psionizingRadiationModifierTick)
+		.trait(ArmorSlotType.LEGGINGS, MaterialisModifiers.spellSocketModifier)
+		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.psionizingRadiationModifierDamage)
+		.trait(ArmorSlotType.CHESTPLATE, MaterialisModifiers.spellSocketModifier)
+		.trait(ArmorSlotType.HELMET, MaterialisModifiers.spellSocketModifier);
 	}
 
 	@Override

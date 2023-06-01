@@ -1,7 +1,5 @@
 package com.rcx.materialis.datagen;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -72,6 +70,7 @@ import slimeknights.tconstruct.library.recipe.modifiers.ModifierMatch;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.ModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.OverslimeModifierRecipeBuilder;
 import slimeknights.tconstruct.library.recipe.modifiers.adding.SwappableModifierRecipeBuilder;
+import slimeknights.tconstruct.library.recipe.tinkerstation.repairing.SpecializedRepairRecipeBuilder;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
@@ -79,6 +78,7 @@ import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.data.ModifierIds;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisRecipes extends RecipeProvider implements IConditionBuilder, IMaterialRecipeHelper, IToolRecipeHelper, ISmelteryRecipeHelper, IRecipeHelper {
 
@@ -315,42 +315,42 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		//psi stuff
 		Consumer<FinishedRecipe> psiLoaded = withCondition(consumer, new ModLoadedCondition("psi"));
-		/*ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET))
+		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET))
 		.pattern("gpg")
 		.pattern("b b")
-		.define('p', getTag("forge", "ingots/psimetal"))
-		.define('g', getTag("forge", "gems/psigem"))
-		.define('b', getTag("forge", "ingots/silicon_bronze"))
-		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.define('p', getItemTag("forge", "ingots/psimetal"))
+		.define('g', getItemTag("forge", "gems/psigem"))
+		.define('b', getItemTag("forge", "ingots/cobalt"))
+		.unlockedBy("has_item", has(getItemTag("forge", "gems/psigem")))
 		.save(psiLoaded, modResource(armorFolder + "exosuit_helmet"));
 		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE))
 		.pattern("p p")
 		.pattern("gpg")
 		.pattern("bpb")
-		.define('p', getTag("forge", "ingots/psimetal"))
-		.define('g', getTag("forge", "gems/psigem"))
-		.define('b', getTag("forge", "ingots/silicon_bronze"))
-		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.define('p', getItemTag("forge", "ingots/psimetal"))
+		.define('g', getItemTag("forge", "gems/psigem"))
+		.define('b', getItemTag("forge", "ingots/cobalt"))
+		.unlockedBy("has_item", has(getItemTag("forge", "gems/psigem")))
 		.save(psiLoaded, modResource(armorFolder + "exosuit_chestplate"));
 		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS))
 		.pattern("pgp")
 		.pattern("b b")
 		.pattern("p p")
-		.define('p', getTag("forge", "ingots/psimetal"))
-		.define('g', getTag("forge", "gems/psigem"))
-		.define('b', getTag("forge", "ingots/silicon_bronze"))
-		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.define('p', getItemTag("forge", "ingots/psimetal"))
+		.define('g', getItemTag("forge", "gems/psigem"))
+		.define('b', getItemTag("forge", "ingots/cobalt"))
+		.unlockedBy("has_item", has(getItemTag("forge", "gems/psigem")))
 		.save(psiLoaded, modResource(armorFolder + "exosuit_leggings"));
 		ShapedRecipeBuilder.shaped(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS))
 		.pattern("g g")
 		.pattern("b b")
-		.define('g', getTag("forge", "gems/psigem"))
-		.define('b', getTag("forge", "ingots/silicon_bronze"))
-		.unlockedBy("has_item", has(getTag("forge", "gems/psigem")))
+		.define('g', getItemTag("forge", "gems/psigem"))
+		.define('b', getItemTag("forge", "ingots/cobalt"))
+		.unlockedBy("has_item", has(getItemTag("forge", "gems/psigem")))
 		.save(psiLoaded, modResource(armorFolder + "exosuit_boots"));
 		SpecializedRepairRecipeBuilder.repair(Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new)), MaterialisMaterials.psimetal)
 		.buildRepairKit(psiLoaded, modResource(armorRepairFolder + "exosuit_repair_kit"))
-		.build(psiLoaded, modResource(armorRepairFolder + "exosuit_station"));*/
+		.save(psiLoaded, modResource(armorRepairFolder + "exosuit_station"));
 		metalTagCasting(consumer, MaterialisResources.PSIMETAL_FLUID.OBJECT, "psimetal", castingFolder, false);
 		metalMelting(consumer, MaterialisResources.PSIMETAL_FLUID.FLUID.get(), "psimetal", false, meltingFolder, true);
 		metalTagCasting(consumer, MaterialisResources.EBONY_PSIMETAL_FLUID.OBJECT, "ebony_psimetal", castingFolder, false);
@@ -650,14 +650,12 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.saveSalvage(consumer, prefix(MaterialisModifiers.spellSocketModifier.getId(), salvageFolder))
 		.save(psiLoaded, prefix(MaterialisModifiers.spellSocketModifier.getId(), modifierFolder));
 
-		/*SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier, "colorizer")
-		.addInput(getTag("psi", "colorizers"))
-		.addSalvage(RandomItem.chance(ItemNameOutput.fromName(new ResourceLocation("psi", "psidust")), 0.3f))
-		.addSalvage(Items.IRON_INGOT, 0.7f)
+		SwappableModifierRecipeBuilder.modifier(MaterialisModifiers.colorizedModifier, "colorizer")
+		.addInput(getItemTag("psi", "colorizers"))
 		.setTools(TinkerTags.Items.MODIFIABLE)
-		.saveSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier, salvageFolder))
+		.saveSalvage(consumer, prefix(MaterialisModifiers.colorizedModifier.getId(), salvageFolder))
 		.save(ConsumerWrapperBuilder.wrap(MaterialisResources.colorizerModifierSerializer.get()).addCondition(new ModLoadedCondition("psi")).build(consumer), prefix(MaterialisModifiers.colorizedModifier.getId(), modifierFolder));
-		 */
+
 		ICondition capacitorIsUseful = new OrCondition(new ModLoadedCondition("draconicevolution"), new ModLoadedCondition("redstone_arsenal"));
 
 		ModifierRecipeBuilder.modifier(MaterialisModifiers.capacitorModifier)
@@ -804,36 +802,6 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.save(withCondition(consumer, new ModLoadedCondition("avaritia")), prefix(MaterialisModifiers.heavenshotModifier.getId(), modifierFolder));
 
 		//texture recipes
-		//Ingredient exosuit = Ingredient.of(MaterialisResources.PSIMETAL_EXOSUIT.values().stream().map(ItemStack::new));
-		List<Item> armorItems = new ArrayList<Item>();
-		armorItems.addAll(TinkerTools.plateArmor.values());
-		//armorItems.addAll(MaterialisResources.PSIMETAL_EXOSUIT.values());
-
-		/*plateTexture(psiLoaded, exosuit, MaterialIds.iron, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.copper, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.slimesteel, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.roseGold, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.pigIron, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.manyullyn, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.hepatizon, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.netherite, false, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.osmium, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.tungsten, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.platinum, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.silver, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.lead, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.aluminum, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.nickel, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.tin, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.zinc, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.uranium, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.steel, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.bronze, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.constantan, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.invar, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.electrum, true, slotlessFolder);
-		plateTexture(psiLoaded, exosuit, MaterialIds.brass, true, slotlessFolder);*/
-
 		plateTexture(consumer, MaterialisMaterials.fairy, false, slotlessFolder);
 		plateTexture(consumer, MaterialisMaterials.refinedRadiance, true, slotlessFolder, MaterialisConfigCondition.CHROMATIC_MATERIALS);
 		plateTexture(consumer, MaterialisMaterials.shadowSteel, true, slotlessFolder, MaterialisConfigCondition.CHROMATIC_MATERIALS);

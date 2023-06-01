@@ -3,9 +3,12 @@ package com.rcx.materialis.modifiers;
 import java.util.List;
 
 import com.rcx.materialis.Materialis;
+import com.rcx.materialis.compat.TinkerToolSocketable;
+import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
@@ -19,6 +22,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.Util;
+import vazkii.psi.api.cad.ISocketable;
 
 public class SpellSocketModifier extends Modifier {
 
@@ -31,14 +35,14 @@ public class SpellSocketModifier extends Modifier {
 	public ValidatedResult validate(IToolStackView tool, int level) {
 		if (enabled) {
 			//check if there are still spells in the sockets that are being removed or if too many sockets are being added
-			/*int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, Tag.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
+			int sockets = tool.getVolatileData().contains(TinkerToolSocketable.SOCKETS, Tag.TAG_INT) ? tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) : 0;
 			if (sockets > ISocketable.MAX_ASSEMBLER_SLOTS)
 				return SpellSocketModifier.TOO_MANY_SLOTS;
 
 			for (int l = sockets; l < ISocketable.MAX_ASSEMBLER_SLOTS; l++) {
 				if (tool.getPersistentData().contains(TinkerToolSocketable.SPELL_SLOTS[l], Tag.TAG_COMPOUND))
 					return SpellSocketModifier.SLOT_NOT_EMPTY;
-			}*/
+			}
 		}
 		return ValidatedResult.PASS;
 	}
@@ -47,9 +51,9 @@ public class SpellSocketModifier extends Modifier {
 	public void onRemoved(IToolStackView tool) {
 		if (enabled) {
 			//remove tags if all sockets are removed
-			/*if (tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) == 0) {
+			if (tool.getVolatileData().getInt(TinkerToolSocketable.SOCKETS) == 0) {
 				tool.getPersistentData().remove(TinkerToolSocketable.SELECTED_SPELL);
-			}*/
+			}
 		}
 	}
 
@@ -57,7 +61,7 @@ public class SpellSocketModifier extends Modifier {
 	public void addVolatileData(ToolRebuildContext context, int level, ModDataNBT volatileData) {
 		if (!enabled)
 			return;
-		//MaterialisUtil.addToVolatileInt(TinkerToolSocketable.SOCKETS, volatileData, level);
+		MaterialisUtil.addToVolatileInt(TinkerToolSocketable.SOCKETS, volatileData, level);
 		if (!volatileData.contains(SOCKET_OWNER, Tag.TAG_STRING))
 			volatileData.putString(SOCKET_OWNER, getId().toString());
 	}
@@ -65,8 +69,8 @@ public class SpellSocketModifier extends Modifier {
 	@Override
 	public void addInformation(IToolStackView tool, int level, Player player, List<Component> tooltip, TooltipKey key, TooltipFlag flag) {
 		if (enabled && tool instanceof ToolStack && isOwner(tool.getVolatileData())) {
-			//Component componentName = ISocketable.getSocketedItemName(((ToolStack) tool).createStack(), "psimisc.none");
-			//tooltip.add(new TranslatableComponent("psimisc.spell_selected", componentName));
+			Component componentName = ISocketable.getSocketedItemName(((ToolStack) tool).createStack(), "psimisc.none");
+			tooltip.add(new TranslatableComponent("psimisc.spell_selected", componentName));
 		}
 	}
 

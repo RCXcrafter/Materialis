@@ -17,6 +17,7 @@ import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 public class MaterialisLang extends LanguageProvider {
 
@@ -117,10 +118,10 @@ public class MaterialisLang extends LanguageProvider {
 		add("stat.tconstruct.slot.display.sensor", "sensor");
 		add("stat.tconstruct.slot.prefix.sensor", "Sensor Slots: ");
 		add("item.tconstruct.creative_slot.sensor", "Creative Sensor Slot");
-		/*addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS), "Tinkers Exosuit Boots");
+		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS), "Tinkers Exosuit Boots");
 		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS), "Tinkers Exosuit Leggings");
 		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE), "Tinkers Exosuit Chestplate");
-		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET), "Tinkers Exosuit Helmet");*/
+		addItem(() -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET), "Tinkers Exosuit Helmet");
 
 		//quark stuff
 		add("recipe.materialis.modifier.runed_requirements", "Runed requires Shiny to apply");

@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.rcx.materialis.block.LightResidueBlock;
+import com.rcx.materialis.item.ExosuitModelArmorItem;
 import com.rcx.materialis.item.HeavenShotItem;
 import com.rcx.materialis.item.ManaShotItem;
 import com.rcx.materialis.item.ManaShotItem.ManashotEntity;
+import com.rcx.materialis.util.ColorizerModifierRecipe;
 import com.rcx.materialis.util.RuneModifierRecipe;
 import com.rcx.materialis.util.SensorModifierRecipe;
 
@@ -31,21 +33,28 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.mantle.registration.object.EnumObject;
 import slimeknights.mantle.registration.object.FluidObject;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.TinkerModule;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.definition.ToolStatProviders;
+import slimeknights.tconstruct.library.tools.item.ModifiableArmorItem;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tools.TinkerToolParts;
 import slimeknights.tconstruct.tools.TinkerTools;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 
 public class MaterialisResources {
@@ -64,7 +73,7 @@ public class MaterialisResources {
 	 */
 
 	public static final RegistryObject<RuneModifierRecipe.Serializer> runeModifierSerializer = RECIPE_SERIALIZERS.register("rune_modifier", RuneModifierRecipe.Serializer::new);
-	//public static final RegistryObject<ColorizerModifierRecipe.Serializer> colorizerModifierSerializer = RECIPE_SERIALIZERS.register("colorizer_modifier", ColorizerModifierRecipe.Serializer::new);
+	public static final RegistryObject<ColorizerModifierRecipe.Serializer> colorizerModifierSerializer = RECIPE_SERIALIZERS.register("colorizer_modifier", ColorizerModifierRecipe.Serializer::new);
 	public static final RegistryObject<SensorModifierRecipe.Serializer> sensorModifierSerializer = RECIPE_SERIALIZERS.register("sensor_modifier", SensorModifierRecipe.Serializer::new);
 
 
@@ -175,13 +184,13 @@ public class MaterialisResources {
 
 	//psi armor
 	public static final SlotType SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);
-	/*public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial
+	public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial
 			.builder(new ResourceLocation(Materialis.modID, "psimetal_exosuit"))
 			.setStatsProvider(ToolStatProviders.NO_PARTS)
 			.setSoundEvent(SoundEvents.ARMOR_EQUIP_GENERIC)
 			.build();
 	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(ModList.get().isLoaded("psi") || !FMLEnvironment.production ? TinkerTools.TAB_TOOLS : null)));
-	 */
+
 
 	/*
 	 * ENTITIES

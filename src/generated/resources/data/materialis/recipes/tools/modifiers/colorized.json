@@ -1,0 +1,22 @@
+{
+  "type": "materialis:colorizer_modifier",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "psi:colorizers"
+    }
+  ],
+  "tools": {
+    "tag": "tconstruct:modifiable"
+  },
+  "allow_crystal": false,
+  "result": {
+    "name": "materialis:colorized",
+    "value": "colorizer"
+  }
+}

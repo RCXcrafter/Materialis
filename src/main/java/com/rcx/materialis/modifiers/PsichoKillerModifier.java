@@ -12,6 +12,8 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
+import vazkii.psi.common.core.handler.PlayerDataHandler;
+import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 
 public class PsichoKillerModifier extends Modifier {
 
@@ -19,10 +21,10 @@ public class PsichoKillerModifier extends Modifier {
 
 	@Override
 	public float getEntityDamage(IToolStackView tool, int level, ToolAttackContext context, float baseDamage, float damage) {
-		/*if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null) {
+		if (enabled && !tool.isBroken() && context.getPlayerAttacker() != null) {
 			PlayerData data = PlayerDataHandler.get(context.getPlayerAttacker());
-			return damage + level * tool.getModifier(ToolStats.ATTACK_DAMAGE) * data.getAvailablePsi() * 1.0f / ((float) data.getTotalPsi());
-		}*/
+			return damage + level * tool.getMultiplier(ToolStats.ATTACK_DAMAGE) * data.getAvailablePsi() * 1.0f / ((float) data.getTotalPsi());
+		}
 		return damage;
 	}
 

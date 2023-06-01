@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonObject;
 import com.rcx.materialis.MaterialisResources;
+import com.rcx.materialis.modifiers.PsionizingRadiationModifierSensor;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -28,6 +29,7 @@ import slimeknights.tconstruct.library.recipe.tinkerstation.ValidatedResult;
 import slimeknights.tconstruct.library.tools.SlotType.SlotCount;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import vazkii.psi.api.exosuit.IExosuitSensor;
 
 public class SensorModifierRecipe extends SwappableModifierRecipe {
 
@@ -91,10 +93,10 @@ public class SensorModifierRecipe extends SwappableModifierRecipe {
 		if (enabled) {
 			for (int i = 0; i < inv.getInputCount(); i++) {
 				Item item = inv.getInput(i).getItem();
-				/*if (item instanceof IExosuitSensor) {
+				if (item instanceof IExosuitSensor) {
 					persistentData.put(PsionizingRadiationModifierSensor.SENSOR, inv.getInput(i).serializeNBT());
 					break;
-				}*/
+				}
 			}
 		}
 

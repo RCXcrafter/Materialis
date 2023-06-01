@@ -20,6 +20,7 @@ import static slimeknights.tconstruct.common.TinkerTags.Items.SAND_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SINGLE_USE_CASTS;
 import static slimeknights.tconstruct.common.TinkerTags.Items.SMELTERY_DEBUG;
 import static slimeknights.tconstruct.common.TinkerTags.Items.TOOL_PARTS;
+import static slimeknights.tconstruct.common.TinkerTags.Items.EMBELLISHMENT_METAL;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.MaterialisResources;
@@ -200,13 +201,13 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		//psi stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
-		/*addArmorTags(MaterialisResources.PSIMETAL_EXOSUIT, DURABILITY);
+		addArmorTags(MaterialisResources.PSIMETAL_EXOSUIT, DURABILITY, EMBELLISHMENT_METAL);
 		tag(SENSOR_SLOTTABLE).add(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_light"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_heat"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_stress"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_water"));
-		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_trigger"));*/
+		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_trigger"));
 
 		//botania stuff
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/terrasteel"));

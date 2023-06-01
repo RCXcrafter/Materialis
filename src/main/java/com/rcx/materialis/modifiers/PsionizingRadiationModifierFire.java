@@ -1,14 +1,26 @@
 package com.rcx.materialis.modifiers;
 
+import com.rcx.materialis.compat.TinkerToolSocketable;
 import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.context.ToolRebuildContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import vazkii.psi.api.PsiAPI;
+import vazkii.psi.api.cad.ISocketable;
+import vazkii.psi.api.spell.SpellContext;
+import vazkii.psi.common.core.handler.PlayerDataHandler;
+import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
+import vazkii.psi.common.item.ItemCAD;
+import vazkii.psi.common.item.base.ModItems;
 
 public class PsionizingRadiationModifierFire extends Modifier {
 
@@ -20,17 +32,17 @@ public class PsionizingRadiationModifierFire extends Modifier {
 	@Override
 	public void addVolatileData(ToolRebuildContext context, int level, ModDataNBT volatileData) {
 		MaterialisUtil.addToVolatileInt(PsionizingRadiationModifier.RADIATION_LEVEL, volatileData, level);
-		//if (PsionizingRadiationModifier.enabled)
-			//volatileData.put(PsionizingRadiationModifierSensor.SENSOR, new ItemStack(ModItems.exosuitSensorHeat).serializeNBT());
+		if (PsionizingRadiationModifier.enabled)
+			volatileData.put(PsionizingRadiationModifierSensor.SENSOR, new ItemStack(ModItems.exosuitSensorHeat).serializeNBT());
 	}
 
 	@Override
 	public void onAttacked(IToolStackView tool, int level, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
-		/*if (PsionizingRadiationModifier.enabled && !tool.isBroken() && context.getEntity() != null && context.getEntity() instanceof PlayerEntity && !tool.getVolatileData().getBoolean(PsionizingRadiationModifier.SUPPRESS_TOOLCASTING) && source.isFire()) {
+		if (PsionizingRadiationModifier.enabled && !tool.isBroken() && context.getEntity() != null && context.getEntity() instanceof Player && !tool.getVolatileData().getBoolean(PsionizingRadiationModifier.SUPPRESS_TOOLCASTING) && source.isFire()) {
 			ItemStack toolStack = context.getEntity().getItemBySlot(slotType);
 			if (tool instanceof ToolStack)
 				toolStack = ((ToolStack) tool).createStack();
-			PlayerEntity player = (PlayerEntity) context.getEntity();
+			Player player = (Player) context.getEntity();
 			PlayerData data = PlayerDataHandler.get(player);
 			ItemStack playerCad = PsiAPI.getPlayerCAD(player);
 
@@ -47,6 +59,6 @@ public class PsionizingRadiationModifierFire extends Modifier {
 				});
 				tool.getPersistentData().putInt(TinkerToolSocketable.TIMES_CAST, timesCast + 1);
 			}
-		}*/
+		}
 	}
 }

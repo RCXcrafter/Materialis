@@ -1,4 +1,4 @@
-/*package com.rcx.materialis.compat;
+package com.rcx.materialis.compat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,16 +6,16 @@ import java.util.function.Supplier;
 
 import com.rcx.materialis.Materialis;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.LazyOptional;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.IToolCapabilityProvider;
-import slimeknights.tconstruct.library.tools.nbt.IModDataReadOnly;
-import slimeknights.tconstruct.library.tools.nbt.IModifierToolStack;
+import slimeknights.tconstruct.library.tools.nbt.IModDataView;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import vazkii.psi.api.PsiAPI;
 import vazkii.psi.api.cad.IPsiBarDisplay;
 import vazkii.psi.api.cad.ISocketable;
@@ -25,7 +25,7 @@ import vazkii.psi.api.spell.Spell;
 
 public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketable, IPsiBarDisplay, ISpellAcceptor {
 
-	protected final Supplier<? extends IModifierToolStack> tool;
+	protected final Supplier<? extends IToolStackView> tool;
 	private final LazyOptional<?> capOptional;
 	public static final ResourceLocation SOCKETS = new ResourceLocation(Materialis.modID, "spell_sockets");
 	public static final ResourceLocation SELECTED_SPELL = new ResourceLocation(Materialis.modID, "selected_slot");
@@ -47,20 +47,20 @@ public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketabl
 			new ResourceLocation(Materialis.modID, "spell_slot_11")
 	};
 
-	public TinkerToolSocketable(ItemStack stack, Supplier<? extends IModifierToolStack> toolStack) {
+	public TinkerToolSocketable(ItemStack stack, Supplier<? extends IToolStackView> toolStack) {
 		this.tool = toolStack;
 		this.capOptional = LazyOptional.of(() -> this);
 	}
 
 	public int getSlots() {
-		IModDataReadOnly volatileData = tool.get().getVolatileData();
-		if (volatileData.contains(SOCKETS, NBT.TAG_INT))
+		IModDataView volatileData = tool.get().getVolatileData();
+		if (volatileData.contains(SOCKETS, Tag.TAG_INT))
 			return Math.min(volatileData.getInt(SOCKETS), MAX_ASSEMBLER_SLOTS);
 		return 0;
 	}
 
 	@Override
-	public <T> LazyOptional<T> getCapability(IModifierToolStack tool, Capability<T> cap) {
+	public <T> LazyOptional<T> getCapability(IToolStackView tool, Capability<T> cap) {
 		if ((cap == PsiAPI.SOCKETABLE_CAPABILITY || cap == PsiAPI.PSI_BAR_DISPLAY_CAPABILITY || cap == PsiAPI.SPELL_ACCEPTOR_CAPABILITY) && tool.getVolatileData().getInt(SOCKETS) > 0) {
 			return capOptional.cast();
 		}
@@ -83,10 +83,10 @@ public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketabl
 
 	@Override
 	public ItemStack getBulletInSocket(int slot) {
-		IModDataReadOnly persistentData = tool.get().getPersistentData();
-		if (slot >= SPELL_SLOTS.length || !persistentData.contains(SPELL_SLOTS[slot], NBT.TAG_COMPOUND))
+		IModDataView persistentData = tool.get().getPersistentData();
+		if (slot >= SPELL_SLOTS.length || !persistentData.contains(SPELL_SLOTS[slot], Tag.TAG_COMPOUND))
 			return ItemStack.EMPTY;
-		CompoundNBT cmp = persistentData.getCompound(SPELL_SLOTS[slot]);
+		CompoundTag cmp = persistentData.getCompound(SPELL_SLOTS[slot]);
 
 		if (cmp.isEmpty()) {
 			return ItemStack.EMPTY;
@@ -96,7 +96,7 @@ public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketabl
 
 	@Override
 	public void setBulletInSocket(int slot, ItemStack bullet) {
-		CompoundNBT cmp = new CompoundNBT();
+		CompoundTag cmp = new CompoundTag();
 		tool.get().getPersistentData().putInt(TIMES_CAST, 0);
 
 		if (bullet.isEmpty()) {
@@ -109,8 +109,8 @@ public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketabl
 
 	@Override
 	public int getSelectedSlot() {
-		IModDataReadOnly persistentData = tool.get().getPersistentData();
-		if (persistentData.contains(SELECTED_SPELL, NBT.TAG_INT))
+		IModDataView persistentData = tool.get().getPersistentData();
+		if (persistentData.contains(SELECTED_SPELL, Tag.TAG_INT))
 			return persistentData.getInt(SELECTED_SPELL);
 		return 0;
 	}
@@ -139,7 +139,7 @@ public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketabl
 	}
 
 	@Override
-	public void setSpell(PlayerEntity player, Spell spell) {
+	public void setSpell(Player player, Spell spell) {
 		int slot = getSelectedSlot();
 		ItemStack bullet = getBulletInSocket(slot);
 		if (!bullet.isEmpty() && ISpellAcceptor.isAcceptor(bullet)) {
@@ -152,4 +152,4 @@ public class TinkerToolSocketable implements IToolCapabilityProvider, ISocketabl
 	public boolean castableFromSocket() {
 		return false;
 	}
-}*/
+}

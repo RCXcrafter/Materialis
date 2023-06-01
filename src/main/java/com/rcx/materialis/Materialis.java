@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.hollingsworth.arsnouveau.api.ArsNouveauAPI;
 import com.rcx.materialis.compat.TinkerToolRuneColor;
+import com.rcx.materialis.compat.TinkerToolSocketable;
 import com.rcx.materialis.datagen.MaterialisBlockStates;
 import com.rcx.materialis.datagen.MaterialisBlockTags;
 import com.rcx.materialis.datagen.MaterialisFluidSpills;
@@ -26,6 +27,8 @@ import com.rcx.materialis.datagen.MaterialisRenderInfo;
 import com.rcx.materialis.datagen.MaterialisToolDefinitions;
 import com.rcx.materialis.datagen.MaterialisToolSlotLayouts;
 import com.rcx.materialis.modifiers.OtherworldlyModifier;
+import com.rcx.materialis.util.ArmorModelHelper;
+import com.rcx.materialis.util.ExosuitModel;
 import com.rcx.materialis.util.GreyToFittingSpriteTransformer;
 import com.rcx.materialis.util.InfinityTier;
 import com.rcx.materialis.util.ManashotRenderer;
@@ -46,6 +49,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.TierSortingRegistry;
@@ -74,6 +78,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierManager;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
 import slimeknights.tconstruct.tools.data.sprite.TinkerPartSpriteProvider;
+import slimeknights.tconstruct.tools.item.ArmorSlotType;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("materialis")
@@ -106,12 +111,13 @@ public class Materialis {
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
+		ArmorModelHelper.init();
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
 		MaterialisPacketHandler.init();
-		//if (ModList.get().isLoaded("psi"))
-		//ToolCapabilityProvider.register(TinkerToolSocketable::new);
+		if (ModList.get().isLoaded("psi"))
+			ToolCapabilityProvider.register(TinkerToolSocketable::new);
 		if (ModList.get().isLoaded("quark"))
 			ToolCapabilityProvider.register(TinkerToolRuneColor::new);
 		ToolCapabilityProvider.register(TinkerToolFluxed::new);
@@ -179,12 +185,6 @@ public class Materialis {
 	public static class MaterialisClient {
 
 		public static void onConstruct() {
-			/*if (Minecraft.getInstance() != null) {
-				ResourceManager manager = Minecraft.getInstance().getResourceManager();
-				if (manager instanceof IReloadableResourceManager) {
-					((IReloadableResourceManager) manager).registerReloadListener(ExosuitModel.RELOAD_LISTENER);
-				}
-			}*/
 			GreyToFittingSpriteTransformer.init();
 		}
 
@@ -195,16 +195,21 @@ public class Materialis {
 		}
 
 		@SubscribeEvent
+		static void addResourceListener(RegisterClientReloadListenersEvent event) {
+			event.registerReloadListener(ExosuitModel.RELOAD_LISTENER);
+		}
+
+		@SubscribeEvent
 		static void itemColors(ColorHandlerEvent.Item event) {
 			final ItemColors colors = event.getItemColors();
 
 			//tint tool and part textures for fallback
 			ToolModel.registerItemColors(colors, MaterialisResources.WRENCH);
 			ToolModel.registerItemColors(colors, MaterialisResources.BATTLEWRENCH);
-			/*ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
+			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
 			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE));
 			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS));
-			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS));*/
+			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS));
 		}
 
 		@SubscribeEvent

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "modid": "psi",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "pattern": [
+    "gpg",
+    "b b"
+  ],
+  "key": {
+    "p": {
+      "tag": "forge:ingots/psimetal"
+    },
+    "g": {
+      "tag": "forge:gems/psigem"
+    },
+    "b": {
+      "tag": "forge:ingots/cobalt"
+    }
+  },
+  "result": {
+    "item": "materialis:psimetal_exosuit_helmet"
+  }
+}
