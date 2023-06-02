@@ -12,6 +12,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.item.ModifiableArmorItem;
 import slimeknights.tconstruct.tools.item.ArmorSlotType;
@@ -28,7 +29,9 @@ public class ExosuitModelArmorItem extends ModifiableArmorItem {
 			@Nonnull
 			@Override
 			public Model getBaseArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
-				return ExosuitModel.getModel(entityLiving, itemStack, armorSlot, _default);
+				if (ModList.get().isLoaded("psi"))
+					return ExosuitModel.getModel(entityLiving, itemStack, armorSlot, _default);
+				return _default;
 			}
 		});
 	}

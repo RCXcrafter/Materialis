@@ -111,7 +111,6 @@ public class Materialis {
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
-		ArmorModelHelper.init();
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
@@ -186,6 +185,7 @@ public class Materialis {
 
 		public static void onConstruct() {
 			GreyToFittingSpriteTransformer.init();
+			ArmorModelHelper.init();
 		}
 
 		@OnlyIn(Dist.CLIENT)
