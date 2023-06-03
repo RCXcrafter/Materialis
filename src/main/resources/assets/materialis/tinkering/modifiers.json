@@ -1,5 +1,6 @@
 {
   "materialis:colorized": "materialis:tinted",
+  "materialis:psionizing_radiation_sensor": "materialis:tinted",
   "materialis:reaping": "tconstruct:normal",
   "materialis:wrenching": "tconstruct:normal",
   "materialis:create_wrenching": "tconstruct:normal",
