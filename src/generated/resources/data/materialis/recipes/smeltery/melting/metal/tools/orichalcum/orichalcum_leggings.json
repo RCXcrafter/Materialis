@@ -1,0 +1,19 @@
+{
+  "type": "tconstruct:damagable_melting",
+  "conditions": [
+    {
+      "modid": "mysticalworld",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "ingredient": {
+    "item": "mysticalworld:orichalcum_leggings"
+  },
+  "result": {
+    "fluid": "materialis:molten_orichalcum",
+    "amount": 630,
+    "unit_size": 10
+  },
+  "temperature": 400,
+  "time": 122
+}

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "materialis:orichalcum",
+  "temperature": 400,
+  "result": {
+    "fluid": "materialis:molten_orichalcum",
+    "amount": 90
+  }
+}

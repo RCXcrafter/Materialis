@@ -86,7 +86,7 @@ public class MaterialisLang extends LanguageProvider {
 		addMaterial(MaterialisMaterials.neptunium, "Neptunium", "", "1.25x damage to submerged mobs, no mining speed penalty when underwater");
 
 		//mystical world stuff
-		addMaterial(MaterialisMaterials.quicksilver, "Quicksilver", "", "Tool no longer takes durability damage from usages but has a 1% chance of losing durability every second");
+		addMaterial(MaterialisMaterials.orichalcum, "Orichalcum", "", "Tool no longer takes durability damage from usages but has a 1% chance of losing durability every second");
 
 		//astral sorcery stuff
 		addMaterial(MaterialisMaterials.starmetal, "Starmetal", "Not to be confused with star cutting metal.", "Tool gains 2 mining speed and 0.1 draw speed per level at midnight");

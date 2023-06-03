@@ -124,8 +124,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		//metalMelting(consumer, MaterialisResources.ALUMITE_FLUID.FLUID.get(), "alumite", false, metalFolder, false);
 
 		AlloyRecipeBuilder.alloy(MaterialisResources.FAIRY_FLUID.FLUID.get(), FluidValues.INGOT)
-		.addInput(TinkerFluids.moltenGold.get(), FluidValues.INGOT)
-		.addInput(TinkerFluids.liquidSoul.get(), FluidValues.GLASS_BLOCK)
+		.addInput(TinkerFluids.moltenGold.getForgeTag(), FluidValues.INGOT)
+		.addInput(TinkerFluids.liquidSoul.getForgeTag(), FluidValues.GLASS_BLOCK)
 		.addInput(Fluids.MILK, 1000)
 		.save(consumer, prefix(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
 
@@ -188,13 +188,18 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 				new ToolValue("_fillet_knife", 2));
 
 		//mystical world stuff
-		metalTagCasting(consumer, MaterialisResources.QUICKSILVER_FLUID.OBJECT, "quicksilver", castingFolder, false);
-		metalMelting(consumer, MaterialisResources.QUICKSILVER_FLUID.FLUID.get(), "quicksilver", true, meltingFolder, true, MaterialisByproduct.ZINC, MaterialisByproduct.TIN);
+		metalTagCasting(consumer, MaterialisResources.ORICHALCUM_FLUID.OBJECT, "orichalcum", castingFolder, false);
+		metalMelting(consumer, MaterialisResources.ORICHALCUM_FLUID.FLUID.get(), "orichalcum", true, meltingFolder, true);
+		AlloyRecipeBuilder.alloy(MaterialisResources.ORICHALCUM_FLUID.FLUID.get(), FluidValues.INGOT * 3)
+		.addInput(TinkerFluids.moltenGold.getForgeTag(), FluidValues.INGOT)
+		.addInput(TinkerFluids.moltenSilver.getForgeTag(), FluidValues.INGOT)
+		.addInput(TinkerFluids.moltenCopper.getForgeTag(), FluidValues.INGOT)
+		.save(consumer, prefix(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mysticalworld")), "mysticalworld",
 				new NameFluid[] {
 						new NameFluid("copper", TinkerFluids.moltenCopper.get()),
 						new NameFluid("lead", TinkerFluids.moltenLead.get()),
-						new NameFluid("quicksilver", MaterialisResources.QUICKSILVER_FLUID.FLUID.get()),
+						new NameFluid("orichalcum", MaterialisResources.ORICHALCUM_FLUID.FLUID.get()),
 						new NameFluid("silver", TinkerFluids.moltenSilver.get()),
 						new NameFluid("tin", TinkerFluids.moltenTin.get())
 		},
@@ -228,8 +233,8 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		Consumer<FinishedRecipe> industrialForegoingLoaded = withCondition(consumer, new ModLoadedCondition("industrialforegoing"));
 		AlloyRecipeBuilder.alloy(MaterialisResources.PINK_SLIME_FLUID.FLUID.get(), FluidValues.INGOT)
-		.addInput(TinkerFluids.moltenGold.get(), FluidValues.INGOT * 2)
-		.addInput(TinkerFluids.moltenIron.get(), FluidValues.INGOT * 2)
+		.addInput(TinkerFluids.moltenGold.getForgeTag(), FluidValues.INGOT * 2)
+		.addInput(TinkerFluids.moltenIron.getForgeTag(), FluidValues.INGOT * 2)
 		.addInput(MaterialisFluidTags.LIQUID_PINK_SLIME, 1000)
 		.save(industrialForegoingLoaded, prefix(MaterialisResources.PINK_SLIME_FLUID.FLUID, alloyFolder));
 
@@ -453,7 +458,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		metalMaterialRecipe(consumer, MaterialisMaterials.pewter, materialFolder, "pewter", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.arcaneGold, materialFolder, "arcane_gold", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.neptunium, materialFolder, "neptunium", true);
-		metalMaterialRecipe(consumer, MaterialisMaterials.quicksilver, materialFolder, "quicksilver", true);
+		metalMaterialRecipe(consumer, MaterialisMaterials.orichalcum, materialFolder, "orichalcum", true);
 		metalMaterialRecipe(consumer, MaterialisMaterials.starmetal, materialFolder, "starmetal", true);
 		materialRecipe(withCondition(consumer, new NotCondition(new TagEmptyCondition(MaterialisItemTags.PLASTIC_MATERIAL.location()))), MaterialisMaterials.plastic, Ingredient.of(MaterialisItemTags.PLASTIC_MATERIAL), 1, 1, materialFolder + "plastic");
 		metalMaterialRecipe(consumer, MaterialisMaterials.pinkSlime, materialFolder, "pink_slime", true);
@@ -498,7 +503,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		materialMeltingCasting(consumer, MaterialisMaterials.pewter, TinkerFluids.moltenPewter, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.arcaneGold, MaterialisResources.ARCANE_GOLD_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.neptunium, MaterialisResources.NEPTUNIUM_FLUID.OBJECT, materialFolder);
-		materialMeltingCasting(consumer, MaterialisMaterials.quicksilver, MaterialisResources.QUICKSILVER_FLUID.OBJECT, materialFolder);
+		materialMeltingCasting(consumer, MaterialisMaterials.orichalcum, MaterialisResources.ORICHALCUM_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.starmetal, MaterialisResources.STARMETAL_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.pinkSlime, MaterialisResources.PINK_SLIME_FLUID.OBJECT, materialFolder);
 		materialMeltingCasting(consumer, MaterialisMaterials.cloggrum, MaterialisResources.CLOGGRUM_FLUID.OBJECT, materialFolder);
@@ -808,7 +813,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		plateTexture(consumer, MaterialisMaterials.pewter, true, slotlessFolder);
 		plateTexture(consumer, MaterialisMaterials.arcaneGold, true, slotlessFolder);
 		plateTexture(consumer, MaterialisMaterials.neptunium, true, slotlessFolder);
-		plateTexture(consumer, MaterialisMaterials.quicksilver, true, slotlessFolder);
+		plateTexture(consumer, MaterialisMaterials.orichalcum, true, slotlessFolder);
 		plateTexture(consumer, MaterialisMaterials.starmetal, true, slotlessFolder);
 		plateTexture(consumer, MaterialisMaterials.pinkSlime, true, slotlessFolder);
 		plateTexture(consumer, MaterialisMaterials.cloggrum, true, slotlessFolder);

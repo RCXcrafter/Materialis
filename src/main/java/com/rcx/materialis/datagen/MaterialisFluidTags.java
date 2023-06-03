@@ -36,7 +36,7 @@ public class MaterialisFluidTags extends FluidTagsProvider {
 		tag(LIQUID_STARLIGHT).addOptional(new ResourceLocation("astralsorcery", "liquid_starlight"));
 
 		tag(TinkerTags.Fluids.CHEAP_METAL_SPILLING)
-		.addTag(MaterialisResources.QUICKSILVER_FLUID.OBJECT.getForgeTag())
+		.addTag(MaterialisResources.ORICHALCUM_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.CLOGGRUM_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.FROSTSTEEL_FLUID.OBJECT.getForgeTag())
 		.addTag(MaterialisResources.UTHERIUM_FLUID.OBJECT.getForgeTag())

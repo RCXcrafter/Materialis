@@ -2,11 +2,11 @@
   "type": "tconstruct:alloy",
   "inputs": [
     {
-      "name": "tconstruct:molten_gold",
+      "tag": "forge:molten_gold",
       "amount": 90
     },
     {
-      "name": "tconstruct:liquid_soul",
+      "tag": "forge:liquid_soul",
       "amount": 1000
     },
     {

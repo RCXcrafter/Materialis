@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:ore_melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:raw_materials/orichalcum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "rate": "metal",
+  "ingredient": {
+    "tag": "forge:raw_materials/orichalcum"
+  },
+  "result": {
+    "fluid": "materialis:molten_orichalcum",
+    "amount": 90
+  },
+  "temperature": 400,
+  "time": 69
+}

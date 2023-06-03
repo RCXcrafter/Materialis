@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:geore_medium_buds/orichalcum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:geore_medium_buds/orichalcum"
+  },
+  "result": {
+    "fluid": "materialis:molten_orichalcum",
+    "amount": 180
+  },
+  "temperature": 400,
+  "time": 69
+}

@@ -110,7 +110,7 @@ public class MaterialisResources {
 	public static final FluidWithBlockNBucket NEPTUNIUM_FLUID = addFluid("molten_neptunium", "Molten Neptunium", 1700, 13, 3000, 6000);
 
 	//mystical world fluids
-	public static final FluidWithBlockNBucket QUICKSILVER_FLUID = addFluid("molten_quicksilver", "Molten Quicksilver", 700, 12, 3000, 6000);
+	public static final FluidWithBlockNBucket ORICHALCUM_FLUID = addFluid("molten_orichalcum", "Molten Orichalcum", 700, 12, 3000, 6000);
 
 	//astral sorcery fluids
 	public static final FluidWithBlockNBucket STARMETAL_FLUID = addFluid("molten_starmetal", "Molten Starmetal", 1050, 11, 3000, 6000);

@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:melting",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:wires/orichalcum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "ingredient": {
+    "tag": "forge:wires/orichalcum"
+  },
+  "result": {
+    "fluid": "materialis:molten_orichalcum",
+    "amount": 45
+  },
+  "temperature": 400,
+  "time": 9
+}

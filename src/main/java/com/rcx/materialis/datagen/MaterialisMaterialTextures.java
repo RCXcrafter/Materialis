@@ -69,7 +69,7 @@ public class MaterialisMaterialTextures extends AbstractMaterialSpriteProvider {
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF013929).addARGB(102, 0xFF056B50).addARGB(140, 0xFF07A378).addARGB(178, 0xFF04D199).addARGB(216, 0xFF17F4B8).addARGB(255, 0xFFB6FBE8).build());
 		//mystical world materials
-		buildMaterial(MaterialisMaterials.quicksilver)
+		buildMaterial(MaterialisMaterials.orichalcum)
 		.meleeHarvest().ranged().statType(TinkerPartSpriteProvider.PLATE)
 		.fallbacks("metal")
 		.colorMapper(GreyToColorMapping.builderFromBlack().addARGB(63, 0xFF825637).addARGB(102, 0xFF8C643B).addARGB(140, 0xFFC28858).addARGB(178, 0xFFBF987B).addARGB(216, 0xFFD0BFA1).addARGB(255, 0xFFF9FCC5).build());

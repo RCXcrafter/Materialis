@@ -29,7 +29,7 @@ public class MaterialisRenderInfo extends AbstractMaterialRenderInfoProvider {
 		//aquaculture materials
 		buildRenderInfo(MaterialisMaterials.neptunium).color(0x17F1B6);
 		//mystical world materials
-		buildRenderInfo(MaterialisMaterials.quicksilver).color(0xD6B07C);
+		buildRenderInfo(MaterialisMaterials.orichalcum).color(0xD6B07C);
 		//astral sorcery materials
 		buildRenderInfo(MaterialisMaterials.starmetal).color(0x0040D6).luminosity(2);
 		//industrial foregoing materials

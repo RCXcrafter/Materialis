@@ -49,7 +49,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 	public static final MaterialId neptunium = createMaterial("neptunium");
 
 	//mystical world materials
-	public static final MaterialId quicksilver = createMaterial("quicksilver");
+	public static final MaterialId orichalcum = createMaterial("orichalcum");
 
 	//astral sorcery materials
 	public static final MaterialId starmetal = createMaterial("starmetal");
@@ -129,7 +129,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 		//aquaculture materials
 		addCompatMetalMaterial(neptunium, 3, ORDER_GENERAL + ORDER_COMPAT);
 		//mystical world materials
-		addCompatMetalMaterial(quicksilver, 2, ORDER_HARVEST + ORDER_COMPAT);
+		addCompatMetalMaterial(orichalcum, 2, ORDER_HARVEST + ORDER_COMPAT);
 		//astral sorcery materials
 		addCompatMetalMaterial(starmetal, 3, ORDER_HARVEST + ORDER_COMPAT);
 		//industrial foregoing materials
@@ -205,7 +205,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//aquaculture materials
 			addDefaultTraits(neptunium, MaterialisModifiers.neptunesBlessingModifier);
 			//mystical world materials
-			addDefaultTraits(quicksilver, MaterialisModifiers.decayModifier);
+			addDefaultTraits(orichalcum, MaterialisModifiers.decayModifier);
 			//astral sorcery materials
 			addDefaultTraits(starmetal, MaterialisModifiers.nocturnalModifier);
 			//industrial foregoing materials
@@ -286,7 +286,7 @@ public class MaterialisMaterials extends AbstractMaterialDataProvider {
 			//aquaculture materials
 			addMaterialStats(neptunium, new HeadMaterialStats(1450, 8f, Tiers.DIAMOND, 3f), new HandleMaterialStats(1.1f, 0.9f, 1f, 0.9f), ExtraMaterialStats.DEFAULT);
 			//mystical world materials
-			addMaterialStats(quicksilver, new HeadMaterialStats(75, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.25f, 1.2f, 1.2f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(75, 0.1f, 0.0f, 0.15f), new GripMaterialStats(0.25f, 0.15f, 2f));
+			addMaterialStats(orichalcum, new HeadMaterialStats(75, 6f, Tiers.DIAMOND, 2f), new HandleMaterialStats(0.25f, 1.2f, 1.2f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(75, 0.1f, 0.0f, 0.15f), new GripMaterialStats(0.25f, 0.15f, 2f));
 			//astral sorcery materials
 			addMaterialStats(starmetal, new HeadMaterialStats(340, 6f, Tiers.IRON, 1.5f), new HandleMaterialStats(1.1f, 1f, 1f, 1f), ExtraMaterialStats.DEFAULT, new LimbMaterialStats(340, -0.2f, 0.1f, 0.1f), new GripMaterialStats(1.1f, 0.0f, 1.5f));
 			//industrial foregoing materials
