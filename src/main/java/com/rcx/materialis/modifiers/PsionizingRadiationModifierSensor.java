@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.rcx.materialis.Materialis;
 import com.rcx.materialis.compat.TinkerToolSocketable;
+import com.rcx.materialis.util.ITintingModifier;
 import com.rcx.materialis.util.MaterialisUtil;
 
 import net.minecraft.nbt.Tag;
@@ -31,7 +32,7 @@ import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.core.handler.PlayerDataHandler.PlayerData;
 import vazkii.psi.common.item.ItemCAD;
 
-public class PsionizingRadiationModifierSensor extends Modifier {
+public class PsionizingRadiationModifierSensor extends Modifier implements ITintingModifier {
 
 	public static final ResourceLocation SENSOR = new ResourceLocation(Materialis.modID, "sensor");
 
@@ -103,4 +104,19 @@ public class PsionizingRadiationModifierSensor extends Modifier {
 		}
 		return super.getDisplayName(tool, level);
 	}
+
+	@Override
+	public int getTint(IToolStackView tool) {
+		if (PsionizingRadiationModifier.enabled && tool.getPersistentData().contains(PsionizingRadiationModifierSensor.SENSOR, Tag.TAG_COMPOUND)) {
+			ItemStack stack = ItemStack.of(tool.getPersistentData().getCompound(PsionizingRadiationModifierSensor.SENSOR));
+			if (stack.getItem() instanceof IExosuitSensor)
+				return ((IExosuitSensor) stack.getItem()).getColor(stack);
+		}
+		return 0x82190A;
+	};
+
+	@Override
+	public int getLuminosity(IToolStackView tool) {
+		return 15;
+	};
 }

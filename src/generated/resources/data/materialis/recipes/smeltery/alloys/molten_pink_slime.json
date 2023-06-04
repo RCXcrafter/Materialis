@@ -8,11 +8,11 @@
   ],
   "inputs": [
     {
-      "name": "tconstruct:molten_gold",
+      "tag": "forge:molten_gold",
       "amount": 180
     },
     {
-      "name": "tconstruct:molten_iron",
+      "tag": "forge:molten_iron",
       "amount": 180
     },
     {

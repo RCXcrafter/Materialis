@@ -194,7 +194,15 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 		.addInput(TinkerFluids.moltenGold.getForgeTag(), FluidValues.INGOT)
 		.addInput(TinkerFluids.moltenSilver.getForgeTag(), FluidValues.INGOT)
 		.addInput(TinkerFluids.moltenCopper.getForgeTag(), FluidValues.INGOT)
-		.save(consumer, prefix(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
+		.save(withCondition(consumer, tagCondition("ingots/orichalcum")), prefix(MaterialisResources.ORICHALCUM_FLUID.FLUID, alloyFolder));
+		AlloyRecipeBuilder.alloy(MaterialisResources.ORICHALCUM_FLUID.FLUID.get(), FluidValues.INGOT * 3)
+		.addInput(TinkerFluids.moltenElectrum.getForgeTag(), FluidValues.INGOT * 2)
+		.addInput(TinkerFluids.moltenCopper.getForgeTag(), FluidValues.INGOT)
+		.save(withCondition(consumer, tagCondition("ingots/orichalcum")), prefix(MaterialisResources.ORICHALCUM_FLUID.FLUID, alloyFolder + "electrum_"));
+		AlloyRecipeBuilder.alloy(MaterialisResources.ORICHALCUM_FLUID.FLUID.get(), FluidValues.INGOT * 3)
+		.addInput(TinkerFluids.moltenRoseGold.getForgeTag(), FluidValues.INGOT * 2)
+		.addInput(TinkerFluids.moltenSilver.getForgeTag(), FluidValues.INGOT)
+		.save(withCondition(consumer, tagCondition("ingots/orichalcum")), prefix(MaterialisResources.ORICHALCUM_FLUID.FLUID, alloyFolder + "rose_gold_"));
 		multipleToolMelting(withCondition(consumer, new ModLoadedCondition("mysticalworld")), "mysticalworld",
 				new NameFluid[] {
 						new NameFluid("copper", TinkerFluids.moltenCopper.get()),

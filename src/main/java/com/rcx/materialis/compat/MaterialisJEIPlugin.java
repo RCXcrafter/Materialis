@@ -45,8 +45,6 @@ public class MaterialisJEIPlugin implements IModPlugin {
 				removeFluid(manager, fluid.FLUID.get(), fluid.FLUID_BUCKET.get());
 			}
 		}
-
-		optionalCast(manager, MaterialisResources.INLAY_CAST);
 	}
 
 	/**

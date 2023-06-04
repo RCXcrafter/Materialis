@@ -1,0 +1,31 @@
+{
+  "type": "tconstruct:alloy",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/orichalcum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "forge:molten_gold",
+      "amount": 90
+    },
+    {
+      "tag": "forge:molten_silver",
+      "amount": 90
+    },
+    {
+      "tag": "forge:molten_copper",
+      "amount": 90
+    }
+  ],
+  "result": {
+    "fluid": "materialis:molten_orichalcum",
+    "amount": 270
+  },
+  "temperature": 400
+}

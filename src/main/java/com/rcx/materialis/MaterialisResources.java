@@ -166,7 +166,14 @@ public class MaterialisResources {
 
 	//custom casts
 	private static final Item.Properties SMELTERY_PROPS = new Item.Properties().tab(TinkerSmeltery.TAB_SMELTERY);
-	public static final CastItemObject INLAY_CAST = ITEMS_EXTENDED.registerCast("inlay", SMELTERY_PROPS);
+	public static final CastItemObject INLAY_CAST;
+	static { //this is stupid but I don't care
+		if (ModList.get().isLoaded("eidolon") || !FMLEnvironment.production) {
+			INLAY_CAST = ITEMS_EXTENDED.registerCast("inlay", SMELTERY_PROPS);
+		} else {
+			INLAY_CAST = null;
+		}
+	}
 	public static final CastItemObject WRENCH_HEAD_CAST = ITEMS_EXTENDED.registerCast("wrench_head", SMELTERY_PROPS);
 
 	//wrench
@@ -183,14 +190,23 @@ public class MaterialisResources {
 	public static final RegistryObject<Item> HEAVENSHOT = ITEMS.register("heavenshot", () -> new HeavenShotItem(new Item.Properties()));
 
 	//psi armor
-	public static final SlotType SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);
+	public static final SlotType SENSOR_SLOT;
 	public static final ModifiableArmorMaterial EXOSUIT_DEFINITION = ModifiableArmorMaterial
 			.builder(new ResourceLocation(Materialis.modID, "psimetal_exosuit"))
 			.setStatsProvider(ToolStatProviders.NO_PARTS)
 			.setSoundEvent(SoundEvents.ARMOR_EQUIP_GENERIC)
 			.build();
-	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(ModList.get().isLoaded("psi") || !FMLEnvironment.production ? TinkerTools.TAB_TOOLS : null)));
+	public static final EnumObject<ArmorSlotType, ModifiableArmorItem> PSIMETAL_EXOSUIT;
 
+	static { //this is stupid but I don't care
+		if (ModList.get().isLoaded("psi") || !FMLEnvironment.production) {
+			PSIMETAL_EXOSUIT = ITEMS_EXTENDED.registerEnum("psimetal_exosuit", ArmorSlotType.values(), type -> new ExosuitModelArmorItem(EXOSUIT_DEFINITION, type, new Item.Properties().tab(TinkerTools.TAB_TOOLS)));
+			SENSOR_SLOT = SlotType.create("sensor", 0xFFEB422A);
+		} else {
+			PSIMETAL_EXOSUIT = null;
+			SENSOR_SLOT = null;
+		}
+	}
 
 	/*
 	 * ENTITIES

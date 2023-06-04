@@ -207,10 +207,12 @@ public class Materialis {
 			//tint tool and part textures for fallback
 			ToolModel.registerItemColors(colors, MaterialisResources.WRENCH);
 			ToolModel.registerItemColors(colors, MaterialisResources.BATTLEWRENCH);
-			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
-			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE));
-			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS));
-			ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS));
+			if (ModList.get().isLoaded("psi")) {
+				ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
+				ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.CHESTPLATE));
+				ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.LEGGINGS));
+				ToolModel.registerItemColors(colors, () -> MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.BOOTS));
+			}
 		}
 
 		@SubscribeEvent
