@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "materialis:inlay_cast"
+    {
+      "id": "materialis:inlay_cast",
+      "required": false
+    }
   ]
 }

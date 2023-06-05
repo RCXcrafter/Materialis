@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "materialis:psimetal_exosuit_chestplate"
+    {
+      "id": "materialis:psimetal_exosuit_chestplate",
+      "required": false
+    }
   ]
 }

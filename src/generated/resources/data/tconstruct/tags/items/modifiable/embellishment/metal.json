@@ -1,9 +1,21 @@
 {
   "replace": false,
   "values": [
-    "materialis:psimetal_exosuit_boots",
-    "materialis:psimetal_exosuit_leggings",
-    "materialis:psimetal_exosuit_chestplate",
-    "materialis:psimetal_exosuit_helmet"
+    {
+      "id": "materialis:psimetal_exosuit_boots",
+      "required": false
+    },
+    {
+      "id": "materialis:psimetal_exosuit_leggings",
+      "required": false
+    },
+    {
+      "id": "materialis:psimetal_exosuit_chestplate",
+      "required": false
+    },
+    {
+      "id": "materialis:psimetal_exosuit_helmet",
+      "required": false
+    }
   ]
 }

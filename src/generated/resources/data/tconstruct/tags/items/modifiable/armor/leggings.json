@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "materialis:psimetal_exosuit_leggings"
+    {
+      "id": "materialis:psimetal_exosuit_leggings",
+      "required": false
+    }
   ]
 }

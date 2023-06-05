@@ -132,12 +132,12 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		}
 
 		//custom casts
-		tag(INLAY_CAST).add(MaterialisResources.INLAY_CAST.get());
-		tag(INLAY_CAST_SINGLE).add(MaterialisResources.INLAY_CAST.getSand());
-		tag(INLAY_CAST_SINGLE).add(MaterialisResources.INLAY_CAST.getRedSand());
-		tag(GOLD_CASTS).add(MaterialisResources.INLAY_CAST.get());
-		tag(SAND_CASTS).add(MaterialisResources.INLAY_CAST.getSand());
-		tag(RED_SAND_CASTS).add(MaterialisResources.INLAY_CAST.getRedSand());
+		tag(INLAY_CAST).addOptional(MaterialisResources.INLAY_CAST.get().getRegistryName());
+		tag(INLAY_CAST_SINGLE).addOptional(MaterialisResources.INLAY_CAST.getSand().getRegistryName());
+		tag(INLAY_CAST_SINGLE).addOptional(MaterialisResources.INLAY_CAST.getRedSand().getRegistryName());
+		tag(GOLD_CASTS).addOptional(MaterialisResources.INLAY_CAST.get().getRegistryName());
+		tag(SAND_CASTS).addOptional(MaterialisResources.INLAY_CAST.getSand().getRegistryName());
+		tag(RED_SAND_CASTS).addOptional(MaterialisResources.INLAY_CAST.getRedSand().getRegistryName());
 		tag(MULTI_USE_CASTS).addTag(INLAY_CAST);
 		tag(SINGLE_USE_CASTS).addTag(INLAY_CAST_SINGLE);
 		tag(WRENCH_HEAD_CAST).add(MaterialisResources.WRENCH_HEAD_CAST.get());
@@ -202,7 +202,7 @@ public class MaterialisItemTags extends ItemTagsProvider {
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ebony_psimetal"));
 		tag(ANVIL_METAL).addOptionalTag(new ResourceLocation("forge", "storage_blocks/ivory_psimetal"));
 		addArmorTags(MaterialisResources.PSIMETAL_EXOSUIT, DURABILITY, EMBELLISHMENT_METAL);
-		tag(SENSOR_SLOTTABLE).add(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET));
+		tag(SENSOR_SLOTTABLE).addOptional(MaterialisResources.PSIMETAL_EXOSUIT.get(ArmorSlotType.HELMET).getRegistryName());
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_light"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_heat"));
 		tag(SENSOR).addOptional(new ResourceLocation("psi", "exosuit_sensor_stress"));
@@ -284,9 +284,9 @@ public class MaterialisItemTags extends ItemTagsProvider {
 	private final void addArmorTags(EnumObject<ArmorSlotType, ? extends Item> armor, TagKey<Item>... tags) {
 		armor.forEach((type, item) -> {
 			for (TagKey<Item> tag : tags) {
-				this.tag(tag).add(item);
+				this.tag(tag).addOptional(item.getRegistryName());
 			}
-			this.tag(getArmorTag(type)).add(item);
+			this.tag(getArmorTag(type)).addOptional(item.getRegistryName());
 		});
 	}
 }

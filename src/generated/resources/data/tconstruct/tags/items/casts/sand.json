@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "materialis:inlay_sand_cast",
+    {
+      "id": "materialis:inlay_sand_cast",
+      "required": false
+    },
     "materialis:wrench_head_sand_cast"
   ]
 }
