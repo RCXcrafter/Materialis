@@ -125,7 +125,7 @@ public class MaterialisRecipes extends RecipeProvider implements IConditionBuild
 
 		AlloyRecipeBuilder.alloy(MaterialisResources.FAIRY_FLUID.FLUID.get(), FluidValues.INGOT)
 		.addInput(TinkerFluids.moltenGold.getForgeTag(), FluidValues.INGOT)
-		.addInput(TinkerFluids.liquidSoul.getForgeTag(), FluidValues.GLASS_BLOCK)
+		.addInput(TinkerFluids.liquidSoul.getLocalTag(), FluidValues.GLASS_BLOCK)
 		.addInput(Fluids.MILK, 1000)
 		.save(consumer, prefix(MaterialisResources.FAIRY_FLUID.FLUID, alloyFolder));
 
